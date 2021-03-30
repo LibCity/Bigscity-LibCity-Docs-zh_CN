@@ -4,7 +4,8 @@
 
 ### [Read the Docs](https://readthedocs.org/)
 
-访问：https://bigscity-trafficdl-docs.readthedocs.io/zh_CN/latest/
+访问中文版：https://bigscity-trafficdl-docs.readthedocs.io/zh_CN/latest/
+访问英文版：https://bigscity-trafficdl-docs.readthedocs.io/en/latest/
 
 更新方法：
 
