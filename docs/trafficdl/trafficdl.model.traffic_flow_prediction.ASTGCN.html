@@ -1,0 +1,489 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>trafficdl.model.traffic_flow_prediction.ASTGCN.py &mdash; Bigscity-TrafficDL  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="trafficdl.model.traffic_speed_prediction" href="trafficdl.model.traffic_speed_prediction.html" />
+    <link rel="prev" title="trafficdl.model.traffic_flow_prediction.AGCRN.py" href="trafficdl.model.traffic_flow_prediction.AGCRN.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> Bigscity-TrafficDL
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Get Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/install.html">Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/quick_start.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/directory_structure.html">Directory Structure</a></li>
+</ul>
+<p class="caption"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/config_settings.html">Config Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/data.html">Data Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/model.html">Model Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/evaluator.html">Evaluator Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/executor.html">Executor Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/usage.html">Usage</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/code_style.html">Code Style</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_datasets.html">Customize Dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_models.html">Customize Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_evaluators.html">Customize Evaluators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_executors.html">Customize Executors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_logger.html">Logger</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API REFERENCE</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="trafficdl.config.html">trafficdl.config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trafficdl.data.html">trafficdl.data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trafficdl.evaluator.html">trafficdl.evaluator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trafficdl.executor.html">trafficdl.executor</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="trafficdl.model.html">trafficdl.model</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="trafficdl.model.traffic_demand_prediction.html">trafficdl.model.traffic_demand_prediction</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="trafficdl.model.traffic_flow_prediction.html">trafficdl.model.traffic_flow_prediction</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="trafficdl.model.traffic_flow_prediction.AGCRN.html">trafficdl.model.traffic_flow_prediction.AGCRN.py</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">trafficdl.model.traffic_flow_prediction.ASTGCN.py</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="trafficdl.model.traffic_speed_prediction.html">trafficdl.model.traffic_speed_prediction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trafficdl.model.trajectory_loc_prediction.html">trafficdl.model.trajectory_loc_prediction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trafficdl.model.abstract_model.html">trafficdl.model.abstract_model.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trafficdl.model.abstract_traffic_state_model.html">trafficdl.model.abstract_traffic_state_model.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trafficdl.model.loss.html">trafficdl.model.loss.py</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="trafficdl.pipeline.html">trafficdl.pipeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trafficdl.utils.html">trafficdl.utils</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Bigscity-TrafficDL</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="trafficdl.model.html">trafficdl.model</a> &raquo;</li>
+        
+          <li><a href="trafficdl.model.traffic_flow_prediction.html">trafficdl.model.traffic_flow_prediction</a> &raquo;</li>
+        
+      <li>trafficdl.model.traffic_flow_prediction.ASTGCN.py</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/trafficdl/trafficdl.model.traffic_flow_prediction.ASTGCN.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-trafficdl.model.traffic_flow_prediction.ASTGCN">
+<span id="trafficdl-model-traffic-flow-prediction-astgcn-py"></span><h1>trafficdl.model.traffic_flow_prediction.ASTGCN.py<a class="headerlink" href="#module-trafficdl.model.traffic_flow_prediction.ASTGCN" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt id="trafficdl.model.traffic_flow_prediction.ASTGCN.ASTGCN">
+<em class="property">class </em><code class="sig-prename descclassname">trafficdl.model.traffic_flow_prediction.ASTGCN.</code><code class="sig-name descname">ASTGCN</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">config</span></em>, <em class="sig-param"><span class="n">data_feature</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/trafficdl/model/traffic_flow_prediction/ASTGCN.html#ASTGCN"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#trafficdl.model.traffic_flow_prediction.ASTGCN.ASTGCN" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="trafficdl.model.abstract_traffic_state_model.html#trafficdl.model.abstract_traffic_state_model.AbstractTrafficStateModel" title="trafficdl.model.abstract_traffic_state_model.AbstractTrafficStateModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">trafficdl.model.abstract_traffic_state_model.AbstractTrafficStateModel</span></code></a></p>
+<dl class="py method">
+<dt id="trafficdl.model.traffic_flow_prediction.ASTGCN.ASTGCN.calculate_loss">
+<code class="sig-name descname">calculate_loss</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">batch</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/trafficdl/model/traffic_flow_prediction/ASTGCN.html#ASTGCN.calculate_loss"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#trafficdl.model.traffic_flow_prediction.ASTGCN.ASTGCN.calculate_loss" title="Permalink to this definition">¶</a></dt>
+<dd><p>输入一个batch的数据，返回训练过程的loss，也就是需要定义一个loss函数</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>batch</strong> (<a class="reference internal" href="trafficdl.data.batch.html#trafficdl.data.batch.Batch" title="trafficdl.data.batch.Batch"><em>Batch</em></a>) – a batch of input</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>return training loss</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>torch.tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="trafficdl.model.traffic_flow_prediction.ASTGCN.ASTGCN.forward">
+<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">batch</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/trafficdl/model/traffic_flow_prediction/ASTGCN.html#ASTGCN.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#trafficdl.model.traffic_flow_prediction.ASTGCN.ASTGCN.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Defines the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="trafficdl.model.traffic_flow_prediction.ASTGCN.ASTGCN.predict">
+<code class="sig-name descname">predict</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">batch</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/trafficdl/model/traffic_flow_prediction/ASTGCN.html#ASTGCN.predict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#trafficdl.model.traffic_flow_prediction.ASTGCN.ASTGCN.predict" title="Permalink to this definition">¶</a></dt>
+<dd><p>输入一个batch的数据，返回对应的预测值，一般应该是**多步预测**的结果，一般会调用nn.Moudle的forward()方法</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>batch</strong> (<a class="reference internal" href="trafficdl.data.batch.html#trafficdl.data.batch.Batch" title="trafficdl.data.batch.Batch"><em>Batch</em></a>) – a batch of input</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>predict result of this batch</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>torch.tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="trafficdl.model.traffic_flow_prediction.ASTGCN.ASTGCNBlock">
+<em class="property">class </em><code class="sig-prename descclassname">trafficdl.model.traffic_flow_prediction.ASTGCN.</code><code class="sig-name descname">ASTGCNBlock</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">device</span></em>, <em class="sig-param"><span class="n">in_channels</span></em>, <em class="sig-param"><span class="n">k</span></em>, <em class="sig-param"><span class="n">nb_chev_filter</span></em>, <em class="sig-param"><span class="n">nb_time_filter</span></em>, <em class="sig-param"><span class="n">time_strides</span></em>, <em class="sig-param"><span class="n">cheb_polynomials</span></em>, <em class="sig-param"><span class="n">num_of_vertices</span></em>, <em class="sig-param"><span class="n">num_of_timesteps</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/trafficdl/model/traffic_flow_prediction/ASTGCN.html#ASTGCNBlock"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#trafficdl.model.traffic_flow_prediction.ASTGCN.ASTGCNBlock" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<dl class="py method">
+<dt id="trafficdl.model.traffic_flow_prediction.ASTGCN.ASTGCNBlock.forward">
+<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/trafficdl/model/traffic_flow_prediction/ASTGCN.html#ASTGCNBlock.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#trafficdl.model.traffic_flow_prediction.ASTGCN.ASTGCNBlock.forward" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>x</strong> – (batch_size, N, F_in, T)</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>(batch_size, N, nb_time_filter, T)</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>torch.tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="trafficdl.model.traffic_flow_prediction.ASTGCN.ASTGCNSubmodule">
+<em class="property">class </em><code class="sig-prename descclassname">trafficdl.model.traffic_flow_prediction.ASTGCN.</code><code class="sig-name descname">ASTGCNSubmodule</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">device</span></em>, <em class="sig-param"><span class="n">nb_block</span></em>, <em class="sig-param"><span class="n">in_channels</span></em>, <em class="sig-param"><span class="n">k</span></em>, <em class="sig-param"><span class="n">nb_chev_filter</span></em>, <em class="sig-param"><span class="n">nb_time_filter</span></em>, <em class="sig-param"><span class="n">time_strides</span></em>, <em class="sig-param"><span class="n">cheb_polynomials</span></em>, <em class="sig-param"><span class="n">output_window</span></em>, <em class="sig-param"><span class="n">output_dim</span></em>, <em class="sig-param"><span class="n">num_of_vertices</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/trafficdl/model/traffic_flow_prediction/ASTGCN.html#ASTGCNSubmodule"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#trafficdl.model.traffic_flow_prediction.ASTGCN.ASTGCNSubmodule" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<dl class="py method">
+<dt id="trafficdl.model.traffic_flow_prediction.ASTGCN.ASTGCNSubmodule.forward">
+<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/trafficdl/model/traffic_flow_prediction/ASTGCN.html#ASTGCNSubmodule.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#trafficdl.model.traffic_flow_prediction.ASTGCN.ASTGCNSubmodule.forward" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>x</strong> – (B, T_in, N_nodes, F_in)</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>(B, T_out, N_nodes, out_dim)</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>torch.tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="trafficdl.model.traffic_flow_prediction.ASTGCN.ChebConvWithSAt">
+<em class="property">class </em><code class="sig-prename descclassname">trafficdl.model.traffic_flow_prediction.ASTGCN.</code><code class="sig-name descname">ChebConvWithSAt</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">k</span></em>, <em class="sig-param"><span class="n">cheb_polynomials</span></em>, <em class="sig-param"><span class="n">in_channels</span></em>, <em class="sig-param"><span class="n">out_channels</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/trafficdl/model/traffic_flow_prediction/ASTGCN.html#ChebConvWithSAt"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#trafficdl.model.traffic_flow_prediction.ASTGCN.ChebConvWithSAt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<p>K-order chebyshev graph convolution</p>
+<dl class="py method">
+<dt id="trafficdl.model.traffic_flow_prediction.ASTGCN.ChebConvWithSAt.forward">
+<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">spatial_attention</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/trafficdl/model/traffic_flow_prediction/ASTGCN.html#ChebConvWithSAt.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#trafficdl.model.traffic_flow_prediction.ASTGCN.ChebConvWithSAt.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Chebyshev graph convolution operation</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> – (batch_size, N, F_in, T)</p></li>
+<li><p><strong>spatial_attention</strong> – (batch_size, N, N)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>(batch_size, N, F_out, T)</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>torch.tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="trafficdl.model.traffic_flow_prediction.ASTGCN.FusionLayer">
+<em class="property">class </em><code class="sig-prename descclassname">trafficdl.model.traffic_flow_prediction.ASTGCN.</code><code class="sig-name descname">FusionLayer</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">n</span></em>, <em class="sig-param"><span class="n">h</span></em>, <em class="sig-param"><span class="n">w</span></em>, <em class="sig-param"><span class="n">device</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/trafficdl/model/traffic_flow_prediction/ASTGCN.html#FusionLayer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#trafficdl.model.traffic_flow_prediction.ASTGCN.FusionLayer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<dl class="py method">
+<dt id="trafficdl.model.traffic_flow_prediction.ASTGCN.FusionLayer.forward">
+<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/trafficdl/model/traffic_flow_prediction/ASTGCN.html#FusionLayer.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#trafficdl.model.traffic_flow_prediction.ASTGCN.FusionLayer.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Defines the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="trafficdl.model.traffic_flow_prediction.ASTGCN.SpatialAttentionLayer">
+<em class="property">class </em><code class="sig-prename descclassname">trafficdl.model.traffic_flow_prediction.ASTGCN.</code><code class="sig-name descname">SpatialAttentionLayer</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">device</span></em>, <em class="sig-param"><span class="n">in_channels</span></em>, <em class="sig-param"><span class="n">num_of_vertices</span></em>, <em class="sig-param"><span class="n">num_of_timesteps</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/trafficdl/model/traffic_flow_prediction/ASTGCN.html#SpatialAttentionLayer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#trafficdl.model.traffic_flow_prediction.ASTGCN.SpatialAttentionLayer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<p>compute spatial attention scores</p>
+<dl class="py method">
+<dt id="trafficdl.model.traffic_flow_prediction.ASTGCN.SpatialAttentionLayer.forward">
+<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/trafficdl/model/traffic_flow_prediction/ASTGCN.html#SpatialAttentionLayer.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#trafficdl.model.traffic_flow_prediction.ASTGCN.SpatialAttentionLayer.forward" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>x</strong> (<em>torch.tensor</em>) – (batch_size, N, F_in, T)</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>(B,N,N)</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>torch.tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="trafficdl.model.traffic_flow_prediction.ASTGCN.TemporalAttentionLayer">
+<em class="property">class </em><code class="sig-prename descclassname">trafficdl.model.traffic_flow_prediction.ASTGCN.</code><code class="sig-name descname">TemporalAttentionLayer</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">device</span></em>, <em class="sig-param"><span class="n">in_channels</span></em>, <em class="sig-param"><span class="n">num_of_vertices</span></em>, <em class="sig-param"><span class="n">num_of_timesteps</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/trafficdl/model/traffic_flow_prediction/ASTGCN.html#TemporalAttentionLayer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#trafficdl.model.traffic_flow_prediction.ASTGCN.TemporalAttentionLayer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<dl class="py method">
+<dt id="trafficdl.model.traffic_flow_prediction.ASTGCN.TemporalAttentionLayer.forward">
+<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/trafficdl/model/traffic_flow_prediction/ASTGCN.html#TemporalAttentionLayer.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#trafficdl.model.traffic_flow_prediction.ASTGCN.TemporalAttentionLayer.forward" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>x</strong> – (batch_size, N, F_in, T)</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>(B, T, T)</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>torch.tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt id="trafficdl.model.traffic_flow_prediction.ASTGCN.cheb_polynomial">
+<code class="sig-prename descclassname">trafficdl.model.traffic_flow_prediction.ASTGCN.</code><code class="sig-name descname">cheb_polynomial</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">l_tilde</span></em>, <em class="sig-param"><span class="n">k</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/trafficdl/model/traffic_flow_prediction/ASTGCN.html#cheb_polynomial"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#trafficdl.model.traffic_flow_prediction.ASTGCN.cheb_polynomial" title="Permalink to this definition">¶</a></dt>
+<dd><p>compute a list of chebyshev polynomials from T_0 to T_{K-1}</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>l_tilde</strong> (<em>np.ndarray</em>) – scaled Laplacian, shape (N, N)</p></li>
+<li><p><strong>k</strong> (<em>int</em>) – the maximum order of chebyshev polynomials</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>cheb_polynomials, length: K, from T_0 to T_{K-1}</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list(np.ndarray)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="trafficdl.model.traffic_flow_prediction.ASTGCN.scaled_laplacian">
+<code class="sig-prename descclassname">trafficdl.model.traffic_flow_prediction.ASTGCN.</code><code class="sig-name descname">scaled_laplacian</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">weight</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/trafficdl/model/traffic_flow_prediction/ASTGCN.html#scaled_laplacian"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#trafficdl.model.traffic_flow_prediction.ASTGCN.scaled_laplacian" title="Permalink to this definition">¶</a></dt>
+<dd><p>compute     ilde{L} (scaled laplacian matrix)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>weight</strong> (<em>np.ndarray</em>) – shape is (N, N), N is the num of vertices</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>shape (N, N)</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="trafficdl.model.traffic_speed_prediction.html" class="btn btn-neutral float-right" title="trafficdl.model.traffic_speed_prediction" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="trafficdl.model.traffic_flow_prediction.AGCRN.html" class="btn btn-neutral float-left" title="trafficdl.model.traffic_flow_prediction.AGCRN.py" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, aptx1231
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

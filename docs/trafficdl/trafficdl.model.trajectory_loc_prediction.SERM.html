@@ -1,0 +1,344 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>trafficdl.model.trajectory_loc_prediction.SERM.py &mdash; Bigscity-TrafficDL  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="trafficdl.model.trajectory_loc_prediction.STRNN.py" href="trafficdl.model.trajectory_loc_prediction.STRNN.html" />
+    <link rel="prev" title="trafficdl.model.trajectory_loc_prediction.RNN.py" href="trafficdl.model.trajectory_loc_prediction.RNN.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> Bigscity-TrafficDL
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Get Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/install.html">Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/quick_start.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/directory_structure.html">Directory Structure</a></li>
+</ul>
+<p class="caption"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/config_settings.html">Config Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/data.html">Data Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/model.html">Model Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/evaluator.html">Evaluator Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/executor.html">Executor Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/usage.html">Usage</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/code_style.html">Code Style</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_datasets.html">Customize Dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_models.html">Customize Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_evaluators.html">Customize Evaluators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_executors.html">Customize Executors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_logger.html">Logger</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API REFERENCE</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="trafficdl.config.html">trafficdl.config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trafficdl.data.html">trafficdl.data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trafficdl.evaluator.html">trafficdl.evaluator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trafficdl.executor.html">trafficdl.executor</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="trafficdl.model.html">trafficdl.model</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="trafficdl.model.traffic_demand_prediction.html">trafficdl.model.traffic_demand_prediction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trafficdl.model.traffic_flow_prediction.html">trafficdl.model.traffic_flow_prediction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trafficdl.model.traffic_speed_prediction.html">trafficdl.model.traffic_speed_prediction</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="trafficdl.model.trajectory_loc_prediction.html">trafficdl.model.trajectory_loc_prediction</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="trafficdl.model.trajectory_loc_prediction.DeepMove.html">trafficdl.model.trajectory_loc_prediction.DeepMove.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trafficdl.model.trajectory_loc_prediction.FPMC.html">trafficdl.model.trajectory_loc_prediction.FPMC.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trafficdl.model.trajectory_loc_prediction.LSTPM.html">trafficdl.model.trajectory_loc_prediction.LSTPM.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trafficdl.model.trajectory_loc_prediction.RNN.html">trafficdl.model.trajectory_loc_prediction.RNN.py</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">trafficdl.model.trajectory_loc_prediction.SERM.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trafficdl.model.trajectory_loc_prediction.STRNN.html">trafficdl.model.trajectory_loc_prediction.STRNN.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trafficdl.model.trajectory_loc_prediction.TemplateTLP.html">trafficdl.model.trajectory_loc_prediction.TemplateTLP.py</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="trafficdl.model.abstract_model.html">trafficdl.model.abstract_model.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trafficdl.model.abstract_traffic_state_model.html">trafficdl.model.abstract_traffic_state_model.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trafficdl.model.loss.html">trafficdl.model.loss.py</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="trafficdl.pipeline.html">trafficdl.pipeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trafficdl.utils.html">trafficdl.utils</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Bigscity-TrafficDL</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="trafficdl.model.html">trafficdl.model</a> &raquo;</li>
+        
+          <li><a href="trafficdl.model.trajectory_loc_prediction.html">trafficdl.model.trajectory_loc_prediction</a> &raquo;</li>
+        
+      <li>trafficdl.model.trajectory_loc_prediction.SERM.py</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/trafficdl/trafficdl.model.trajectory_loc_prediction.SERM.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-trafficdl.model.trajectory_loc_prediction.SERM">
+<span id="trafficdl-model-trajectory-loc-prediction-serm-py"></span><h1>trafficdl.model.trajectory_loc_prediction.SERM.py<a class="headerlink" href="#module-trafficdl.model.trajectory_loc_prediction.SERM" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt id="trafficdl.model.trajectory_loc_prediction.SERM.EmbeddingMatrix">
+<em class="property">class </em><code class="sig-prename descclassname">trafficdl.model.trajectory_loc_prediction.SERM.</code><code class="sig-name descname">EmbeddingMatrix</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">input_size</span></em>, <em class="sig-param"><span class="n">output_size</span></em>, <em class="sig-param"><span class="n">word_vec</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/trafficdl/model/trajectory_loc_prediction/SERM.html#EmbeddingMatrix"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#trafficdl.model.trajectory_loc_prediction.SERM.EmbeddingMatrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<dl class="py method">
+<dt id="trafficdl.model.trajectory_loc_prediction.SERM.EmbeddingMatrix.forward">
+<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/trafficdl/model/trajectory_loc_prediction/SERM.html#EmbeddingMatrix.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#trafficdl.model.trajectory_loc_prediction.SERM.EmbeddingMatrix.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Defines the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="trafficdl.model.trajectory_loc_prediction.SERM.EmbeddingMatrix.init_weight">
+<code class="sig-name descname">init_weight</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">word_vec</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/trafficdl/model/trajectory_loc_prediction/SERM.html#EmbeddingMatrix.init_weight"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#trafficdl.model.trajectory_loc_prediction.SERM.EmbeddingMatrix.init_weight" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="trafficdl.model.trajectory_loc_prediction.SERM.SERM">
+<em class="property">class </em><code class="sig-prename descclassname">trafficdl.model.trajectory_loc_prediction.SERM.</code><code class="sig-name descname">SERM</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">config</span></em>, <em class="sig-param"><span class="n">data_feature</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/trafficdl/model/trajectory_loc_prediction/SERM.html#SERM"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#trafficdl.model.trajectory_loc_prediction.SERM.SERM" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="trafficdl.model.abstract_model.html#trafficdl.model.abstract_model.AbstractModel" title="trafficdl.model.abstract_model.AbstractModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">trafficdl.model.abstract_model.AbstractModel</span></code></a></p>
+<dl class="py method">
+<dt id="trafficdl.model.trajectory_loc_prediction.SERM.SERM.calculate_loss">
+<code class="sig-name descname">calculate_loss</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">batch</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/trafficdl/model/trajectory_loc_prediction/SERM.html#SERM.calculate_loss"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#trafficdl.model.trajectory_loc_prediction.SERM.SERM.calculate_loss" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>batch</strong> (<a class="reference internal" href="trafficdl.data.batch.html#trafficdl.data.batch.Batch" title="trafficdl.data.batch.Batch"><em>Batch</em></a>) – a batch of input</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>return training loss</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>torch.tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="trafficdl.model.trajectory_loc_prediction.SERM.SERM.forward">
+<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">batch</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/trafficdl/model/trajectory_loc_prediction/SERM.html#SERM.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#trafficdl.model.trajectory_loc_prediction.SERM.SERM.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Defines the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="trafficdl.model.trajectory_loc_prediction.SERM.SERM.predict">
+<code class="sig-name descname">predict</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">batch</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/trafficdl/model/trajectory_loc_prediction/SERM.html#SERM.predict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#trafficdl.model.trajectory_loc_prediction.SERM.SERM.predict" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>batch</strong> (<a class="reference internal" href="trafficdl.data.batch.html#trafficdl.data.batch.Batch" title="trafficdl.data.batch.Batch"><em>Batch</em></a>) – a batch of input</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>predict result of this batch</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>torch.tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="trafficdl.model.trajectory_loc_prediction.STRNN.html" class="btn btn-neutral float-right" title="trafficdl.model.trajectory_loc_prediction.STRNN.py" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="trafficdl.model.trajectory_loc_prediction.RNN.html" class="btn btn-neutral float-left" title="trafficdl.model.trajectory_loc_prediction.RNN.py" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, aptx1231
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

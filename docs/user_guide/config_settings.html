@@ -1,0 +1,355 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Config Settings &mdash; Bigscity-TrafficDL  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Data Introduction" href="data.html" />
+    <link rel="prev" title="Directory Structure" href="../get_started/directory_structure.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> Bigscity-TrafficDL
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Get Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/install.html">Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/quick_start.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/directory_structure.html">Directory Structure</a></li>
+</ul>
+<p class="caption"><span class="caption-text">User Guide</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Config Settings</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">命令行传参</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#config">自定义 config 文件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">默认参数</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">模块默认参数</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">数据集默认参数</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">任务默认参数</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="data.html">Data Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model.html">Model Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="evaluator.html">Evaluator Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="executor.html">Executor Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/code_style.html">Code Style</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_datasets.html">Customize Dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_models.html">Customize Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_evaluators.html">Customize Evaluators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_executors.html">Customize Executors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_logger.html">Logger</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API REFERENCE</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../trafficdl/trafficdl.config.html">trafficdl.config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../trafficdl/trafficdl.data.html">trafficdl.data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../trafficdl/trafficdl.evaluator.html">trafficdl.evaluator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../trafficdl/trafficdl.executor.html">trafficdl.executor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../trafficdl/trafficdl.model.html">trafficdl.model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../trafficdl/trafficdl.pipeline.html">trafficdl.pipeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../trafficdl/trafficdl.utils.html">trafficdl.utils</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Bigscity-TrafficDL</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Config Settings</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/user_guide/config_settings.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="config-settings">
+<h1>Config Settings<a class="headerlink" href="#config-settings" title="Permalink to this headline">¶</a></h1>
+<p>本框架通过三种方式确定实验的最终配置：用户命令行传参、用户自定义 config 文件、各模块默认参数配置。用户可以通过前两种方式灵活地调整实验的参数配置。</p>
+<p>其优先级为：命令行参数&gt;用户自定义配置文件&gt;模型模块的默认参数&gt;其余模块的默认参数，<strong>高优先级的参数会覆盖低优先级的同名参数</strong>。</p>
+<div class="section" id="id1">
+<h2>命令行传参<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>当用户运行项目根目录下的脚本文件时，可以通过命令行指定修改一些参数，如：</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>python run_model.py --task traj_loc_pred --model DeepMove --dataset foursquare_tky --gpu <span class="nb">false</span> --batch_size <span class="m">15</span>
+</pre></div>
+</div>
+<p><strong>具体所允许传入的参数因不同脚本而异</strong>，可以参见 <a class="reference internal" href="usage.html"><span class="doc">Usage</span></a> 中详细的介绍了项目根目录下可执行的脚本文件，对于脚本<code class="docutils literal notranslate"><span class="pre">run_model.py</span></code>所支持的全部命令行参数如下：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">task</span></code>：任务名，包括<code class="docutils literal notranslate"><span class="pre">traj_loc_pred</span></code>和<code class="docutils literal notranslate"><span class="pre">traffic_state_pred</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">model</span></code>：模型名，应是<code class="docutils literal notranslate"><span class="pre">trafficdl/model/</span></code>目录下各Model类名中的一个</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dataset</span></code>：数据集名</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">config_file</span></code>：自定义config文件名，参见下文</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">saved_model</span></code>：是否保存训练过程中的model</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">train</span></code>：如果模型被训练过，是否重新训练，<strong>默认True</strong></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">batch_size</span></code>：批次大小</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">train_rate</span></code>：训练集所占比例，划分顺序是【训练集，验证集，测试集】</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">eval_rate</span></code>：验证集所占比例，划分顺序是【训练集，验证集，测试集】</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">learning_rate</span></code>：学习率</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">max_epoch</span></code>：训练总轮数</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">gpu</span></code>：是否是用GPU，<strong>默认True</strong></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">gpu_id</span></code>：指定使用的GPU的id，<strong>默认0</strong></p></li>
+</ul>
+<p>也可以使用 <code class="docutils literal notranslate"><span class="pre">-h</span></code> 以获取帮助信息，例如：</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>&gt; python run_model.py -h
+usage: run_model.py <span class="o">[</span>-h<span class="o">]</span> <span class="o">[</span>--task TASK<span class="o">]</span> <span class="o">[</span>--model MODEL<span class="o">]</span> <span class="o">[</span>--dataset DATASET<span class="o">]</span>
+                    <span class="o">[</span>--config_file CONFIG_FILE<span class="o">]</span> <span class="o">[</span>--saved_model SAVED_MODEL<span class="o">]</span>
+                    <span class="o">[</span>--train TRAIN<span class="o">]</span> <span class="o">[</span>--gpu GPU<span class="o">]</span> <span class="o">[</span>--batch_size BATCH_SIZE<span class="o">]</span>
+                    <span class="o">[</span>--train_rate TRAIN_RATE<span class="o">]</span> <span class="o">[</span>--eval_rate EVAL_RATE<span class="o">]</span>
+                    <span class="o">[</span>--learning_rate LEARNING_RATE<span class="o">]</span> <span class="o">[</span>--max_epoch MAX_EPOCH<span class="o">]</span>
+                    <span class="o">[</span>--gpu_id GPU_ID<span class="o">]</span>
+
+optional arguments:
+  -h, --help            show this <span class="nb">help</span> message and <span class="nb">exit</span>
+  --task TASK           the name of task
+  --model MODEL         the name of model
+  --dataset DATASET     the name of dataset
+  --config_file CONFIG_FILE
+                        the file name of config file
+  --saved_model SAVED_MODEL
+                        whether save the trained model
+  --train TRAIN         whether re-train model <span class="k">if</span> the model is trained before
+  --gpu GPU
+  --batch_size BATCH_SIZE
+  --train_rate TRAIN_RATE
+  --eval_rate EVAL_RATE
+  --learning_rate LEARNING_RATE
+  --max_epoch MAX_EPOCH
+  --gpu_id GPU_ID
+</pre></div>
+</div>
+</div>
+<div class="section" id="config">
+<h2>自定义 config 文件<a class="headerlink" href="#config" title="Permalink to this headline">¶</a></h2>
+<p>命令行允许传递的参数多为实验中常见通过的参数，如 <code class="docutils literal notranslate"><span class="pre">batch_size</span></code>。但为了使得用户能够随意修改各模块的默认参数，框架还提供通过命令行指定 config 文件名的方式，从用户自定义的配置文件中读入参数配置。用户自定义的 config 文件应满足如下格式要求：</p>
+<ol class="simple">
+<li><p>用户自定义 config 文件应为 <strong>JSON</strong> 文件。</p></li>
+<li><p>JSON 文件中存放一个字典，其键为<strong>参数名</strong>，值为所要修改的<strong>参数值</strong>。</p></li>
+<li><p><strong>该文件应放置在项目根目录，并通过<code class="docutils literal notranslate"><span class="pre">--config_file</span></code>的方式指定其文件名。</strong></p></li>
+</ol>
+<p>示例：</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+	<span class="nt">&quot;hidden_state_size&quot;</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span>
+	<span class="nt">&quot;loc_embedding_size&quot;</span><span class="p">:</span> <span class="mi">500</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>用户可以通过自定义 config 文件修改任意模块的默认参数，具体的参数名可以前往各模块的章节了解更多信息。</p>
+</div>
+<div class="section" id="id2">
+<h2>默认参数<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id3">
+<h3>模块默认参数<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>所有四个模块都具有默认参数，数据模块、执行模块、评估模块、模型模块的默认配置分别位于以下四个目录</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">trafficdl/config/data</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">trafficdl/config/executor</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">trafficdl/config/evaluator</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">trafficdl/config/model</span></code></p></li>
+</ul>
+<p>每个目录下文件命名规则为<code class="docutils literal notranslate"><span class="pre">类名.json</span></code>，例如对于交通状态预测的执行模块，其默认的配置参数文件为<code class="docutils literal notranslate"><span class="pre">TrafficStateExecutor.json</span></code>。</p>
+</div>
+<div class="section" id="id4">
+<h3>数据集默认参数<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p>数据集的默认参数位于目录<code class="docutils literal notranslate"><span class="pre">raw_data/DataSet_Name/config.json</span></code>，其具体内容请参考<a class="reference internal" href="data/atmoic_files.html"><span class="doc">原子文件</span></a> 章节。</p>
+<p><strong>上述默认参数中，模型模块的优先级最高！</strong></p>
+</div>
+<div class="section" id="id5">
+<h3>任务默认参数<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<p>各任务的默认参数位于<code class="docutils literal notranslate"><span class="pre">trafficdl/config/task_config.json</span></code>文件中，此文件记录各类任务所能支持的全部模型和全部数据集的范围，以及各模型的以下三个参数：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">dataset_class</span></code>：数据集类的类名，应是<code class="docutils literal notranslate"><span class="pre">trafficdl/data/dataset</span></code>目录下各Dataset类名中的一个</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">executor</span></code>：调度类的类名，应是<code class="docutils literal notranslate"><span class="pre">trafficdl/executor/</span></code>目录下各Executor类名中的一个</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">evaluator</span></code>：评估类的类名，应是<code class="docutils literal notranslate"><span class="pre">trafficdl/evaluator/</span></code>目录下各Evaluator类名中的一个</p></li>
+</ul>
+<p>这样一来，可以完成不同模型所使用的不同Dataset类、Executor类、Evaluator类的默认配置。</p>
+<p><strong>增加模型时需要修改<code class="docutils literal notranslate"><span class="pre">trafficdl/config/task_config.json</span></code>文件。</strong></p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="data.html" class="btn btn-neutral float-right" title="Data Introduction" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../get_started/directory_structure.html" class="btn btn-neutral float-left" title="Directory Structure" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, aptx1231
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

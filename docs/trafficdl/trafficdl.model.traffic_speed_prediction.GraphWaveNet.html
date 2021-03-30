@@ -1,0 +1,410 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>trafficdl.model.traffic_speed_prediction.GraphWaveNet.py &mdash; Bigscity-TrafficDL  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="trafficdl.model.traffic_speed_prediction.STGCN.py" href="trafficdl.model.traffic_speed_prediction.STGCN.html" />
+    <link rel="prev" title="trafficdl.model.traffic_speed_prediction.DCRNN.py" href="trafficdl.model.traffic_speed_prediction.DCRNN.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> Bigscity-TrafficDL
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Get Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/install.html">Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/quick_start.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/directory_structure.html">Directory Structure</a></li>
+</ul>
+<p class="caption"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/config_settings.html">Config Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/data.html">Data Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/model.html">Model Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/evaluator.html">Evaluator Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/executor.html">Executor Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/usage.html">Usage</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/code_style.html">Code Style</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_datasets.html">Customize Dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_models.html">Customize Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_evaluators.html">Customize Evaluators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_executors.html">Customize Executors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_logger.html">Logger</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API REFERENCE</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="trafficdl.config.html">trafficdl.config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trafficdl.data.html">trafficdl.data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trafficdl.evaluator.html">trafficdl.evaluator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trafficdl.executor.html">trafficdl.executor</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="trafficdl.model.html">trafficdl.model</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="trafficdl.model.traffic_demand_prediction.html">trafficdl.model.traffic_demand_prediction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trafficdl.model.traffic_flow_prediction.html">trafficdl.model.traffic_flow_prediction</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="trafficdl.model.traffic_speed_prediction.html">trafficdl.model.traffic_speed_prediction</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="trafficdl.model.traffic_speed_prediction.DCRNN.html">trafficdl.model.traffic_speed_prediction.DCRNN.py</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">trafficdl.model.traffic_speed_prediction.GraphWaveNet.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trafficdl.model.traffic_speed_prediction.STGCN.html">trafficdl.model.traffic_speed_prediction.STGCN.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trafficdl.model.traffic_speed_prediction.TGCLSTM.html">trafficdl.model.traffic_speed_prediction.TGCLSTM.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trafficdl.model.traffic_speed_prediction.TGCN.html">trafficdl.model.traffic_speed_prediction.TGCN.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trafficdl.model.traffic_speed_prediction.TemplateTSP.html">trafficdl.model.traffic_speed_prediction.TemplateTSP.py</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="trafficdl.model.trajectory_loc_prediction.html">trafficdl.model.trajectory_loc_prediction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trafficdl.model.abstract_model.html">trafficdl.model.abstract_model.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trafficdl.model.abstract_traffic_state_model.html">trafficdl.model.abstract_traffic_state_model.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trafficdl.model.loss.html">trafficdl.model.loss.py</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="trafficdl.pipeline.html">trafficdl.pipeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trafficdl.utils.html">trafficdl.utils</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Bigscity-TrafficDL</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="trafficdl.model.html">trafficdl.model</a> &raquo;</li>
+        
+          <li><a href="trafficdl.model.traffic_speed_prediction.html">trafficdl.model.traffic_speed_prediction</a> &raquo;</li>
+        
+      <li>trafficdl.model.traffic_speed_prediction.GraphWaveNet.py</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/trafficdl/trafficdl.model.traffic_speed_prediction.GraphWaveNet.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-trafficdl.model.traffic_speed_prediction.GraphWaveNet">
+<span id="trafficdl-model-traffic-speed-prediction-graphwavenet-py"></span><h1>trafficdl.model.traffic_speed_prediction.GraphWaveNet.py<a class="headerlink" href="#module-trafficdl.model.traffic_speed_prediction.GraphWaveNet" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt id="trafficdl.model.traffic_speed_prediction.GraphWaveNet.GCN">
+<em class="property">class </em><code class="sig-prename descclassname">trafficdl.model.traffic_speed_prediction.GraphWaveNet.</code><code class="sig-name descname">GCN</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">c_in</span></em>, <em class="sig-param"><span class="n">c_out</span></em>, <em class="sig-param"><span class="n">dropout</span></em>, <em class="sig-param"><span class="n">support_len</span><span class="o">=</span><span class="default_value">3</span></em>, <em class="sig-param"><span class="n">order</span><span class="o">=</span><span class="default_value">2</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/trafficdl/model/traffic_speed_prediction/GraphWaveNet.html#GCN"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#trafficdl.model.traffic_speed_prediction.GraphWaveNet.GCN" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<dl class="py method">
+<dt id="trafficdl.model.traffic_speed_prediction.GraphWaveNet.GCN.forward">
+<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">support</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/trafficdl/model/traffic_speed_prediction/GraphWaveNet.html#GCN.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#trafficdl.model.traffic_speed_prediction.GraphWaveNet.GCN.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Defines the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="trafficdl.model.traffic_speed_prediction.GraphWaveNet.GWNET">
+<em class="property">class </em><code class="sig-prename descclassname">trafficdl.model.traffic_speed_prediction.GraphWaveNet.</code><code class="sig-name descname">GWNET</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">config</span></em>, <em class="sig-param"><span class="n">data_feature</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/trafficdl/model/traffic_speed_prediction/GraphWaveNet.html#GWNET"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#trafficdl.model.traffic_speed_prediction.GraphWaveNet.GWNET" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="trafficdl.model.abstract_traffic_state_model.html#trafficdl.model.abstract_traffic_state_model.AbstractTrafficStateModel" title="trafficdl.model.abstract_traffic_state_model.AbstractTrafficStateModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">trafficdl.model.abstract_traffic_state_model.AbstractTrafficStateModel</span></code></a></p>
+<dl class="py method">
+<dt id="trafficdl.model.traffic_speed_prediction.GraphWaveNet.GWNET.cal_adj">
+<code class="sig-name descname">cal_adj</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">adjtype</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/trafficdl/model/traffic_speed_prediction/GraphWaveNet.html#GWNET.cal_adj"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#trafficdl.model.traffic_speed_prediction.GraphWaveNet.GWNET.cal_adj" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="trafficdl.model.traffic_speed_prediction.GraphWaveNet.GWNET.calculate_loss">
+<code class="sig-name descname">calculate_loss</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">batch</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/trafficdl/model/traffic_speed_prediction/GraphWaveNet.html#GWNET.calculate_loss"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#trafficdl.model.traffic_speed_prediction.GraphWaveNet.GWNET.calculate_loss" title="Permalink to this definition">¶</a></dt>
+<dd><p>输入一个batch的数据，返回训练过程的loss，也就是需要定义一个loss函数</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>batch</strong> (<a class="reference internal" href="trafficdl.data.batch.html#trafficdl.data.batch.Batch" title="trafficdl.data.batch.Batch"><em>Batch</em></a>) – a batch of input</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>return training loss</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>torch.tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="trafficdl.model.traffic_speed_prediction.GraphWaveNet.GWNET.forward">
+<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">batch</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/trafficdl/model/traffic_speed_prediction/GraphWaveNet.html#GWNET.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#trafficdl.model.traffic_speed_prediction.GraphWaveNet.GWNET.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Defines the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="trafficdl.model.traffic_speed_prediction.GraphWaveNet.GWNET.predict">
+<code class="sig-name descname">predict</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">batch</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/trafficdl/model/traffic_speed_prediction/GraphWaveNet.html#GWNET.predict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#trafficdl.model.traffic_speed_prediction.GraphWaveNet.GWNET.predict" title="Permalink to this definition">¶</a></dt>
+<dd><p>输入一个batch的数据，返回对应的预测值，一般应该是**多步预测**的结果，一般会调用nn.Moudle的forward()方法</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>batch</strong> (<a class="reference internal" href="trafficdl.data.batch.html#trafficdl.data.batch.Batch" title="trafficdl.data.batch.Batch"><em>Batch</em></a>) – a batch of input</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>predict result of this batch</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>torch.tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="trafficdl.model.traffic_speed_prediction.GraphWaveNet.Linear">
+<em class="property">class </em><code class="sig-prename descclassname">trafficdl.model.traffic_speed_prediction.GraphWaveNet.</code><code class="sig-name descname">Linear</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">c_in</span></em>, <em class="sig-param"><span class="n">c_out</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/trafficdl/model/traffic_speed_prediction/GraphWaveNet.html#Linear"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#trafficdl.model.traffic_speed_prediction.GraphWaveNet.Linear" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<dl class="py method">
+<dt id="trafficdl.model.traffic_speed_prediction.GraphWaveNet.Linear.forward">
+<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/trafficdl/model/traffic_speed_prediction/GraphWaveNet.html#Linear.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#trafficdl.model.traffic_speed_prediction.GraphWaveNet.Linear.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Defines the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="trafficdl.model.traffic_speed_prediction.GraphWaveNet.NConv">
+<em class="property">class </em><code class="sig-prename descclassname">trafficdl.model.traffic_speed_prediction.GraphWaveNet.</code><code class="sig-name descname">NConv</code><a class="reference internal" href="../_modules/trafficdl/model/traffic_speed_prediction/GraphWaveNet.html#NConv"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#trafficdl.model.traffic_speed_prediction.GraphWaveNet.NConv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<dl class="py method">
+<dt id="trafficdl.model.traffic_speed_prediction.GraphWaveNet.NConv.forward">
+<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">adj</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/trafficdl/model/traffic_speed_prediction/GraphWaveNet.html#NConv.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#trafficdl.model.traffic_speed_prediction.GraphWaveNet.NConv.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Defines the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt id="trafficdl.model.traffic_speed_prediction.GraphWaveNet.asym_adj">
+<code class="sig-prename descclassname">trafficdl.model.traffic_speed_prediction.GraphWaveNet.</code><code class="sig-name descname">asym_adj</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">adj</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/trafficdl/model/traffic_speed_prediction/GraphWaveNet.html#asym_adj"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#trafficdl.model.traffic_speed_prediction.GraphWaveNet.asym_adj" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="trafficdl.model.traffic_speed_prediction.GraphWaveNet.calculate_normalized_laplacian">
+<code class="sig-prename descclassname">trafficdl.model.traffic_speed_prediction.GraphWaveNet.</code><code class="sig-name descname">calculate_normalized_laplacian</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">adj</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/trafficdl/model/traffic_speed_prediction/GraphWaveNet.html#calculate_normalized_laplacian"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#trafficdl.model.traffic_speed_prediction.GraphWaveNet.calculate_normalized_laplacian" title="Permalink to this definition">¶</a></dt>
+<dd><p># L = D^-1/2 (D-A) D^-1/2 = I - D^-1/2 A D^-1/2
+# D = diag(A 1)
+:param adj:
+:return:</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="trafficdl.model.traffic_speed_prediction.GraphWaveNet.calculate_scaled_laplacian">
+<code class="sig-prename descclassname">trafficdl.model.traffic_speed_prediction.GraphWaveNet.</code><code class="sig-name descname">calculate_scaled_laplacian</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">adj_mx</span></em>, <em class="sig-param"><span class="n">lambda_max</span><span class="o">=</span><span class="default_value">2</span></em>, <em class="sig-param"><span class="n">undirected</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/trafficdl/model/traffic_speed_prediction/GraphWaveNet.html#calculate_scaled_laplacian"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#trafficdl.model.traffic_speed_prediction.GraphWaveNet.calculate_scaled_laplacian" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="trafficdl.model.traffic_speed_prediction.GraphWaveNet.sym_adj">
+<code class="sig-prename descclassname">trafficdl.model.traffic_speed_prediction.GraphWaveNet.</code><code class="sig-name descname">sym_adj</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">adj</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/trafficdl/model/traffic_speed_prediction/GraphWaveNet.html#sym_adj"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#trafficdl.model.traffic_speed_prediction.GraphWaveNet.sym_adj" title="Permalink to this definition">¶</a></dt>
+<dd><p>Symmetrically normalize adjacency matrix.</p>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="trafficdl.model.traffic_speed_prediction.STGCN.html" class="btn btn-neutral float-right" title="trafficdl.model.traffic_speed_prediction.STGCN.py" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="trafficdl.model.traffic_speed_prediction.DCRNN.html" class="btn btn-neutral float-left" title="trafficdl.model.traffic_speed_prediction.DCRNN.py" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, aptx1231
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

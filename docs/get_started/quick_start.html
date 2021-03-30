@@ -1,0 +1,271 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Quick Start &mdash; Bigscity-TrafficDL  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Directory Structure" href="directory_structure.html" />
+    <link rel="prev" title="Install" href="install.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> Bigscity-TrafficDL
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Get Started</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Install</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">运行单个模型</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="directory_structure.html">Directory Structure</a></li>
+</ul>
+<p class="caption"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/config_settings.html">Config Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/data.html">Data Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/model.html">Model Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/evaluator.html">Evaluator Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/executor.html">Executor Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/usage.html">Usage</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/code_style.html">Code Style</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_datasets.html">Customize Dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_models.html">Customize Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_evaluators.html">Customize Evaluators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_executors.html">Customize Executors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_logger.html">Logger</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API REFERENCE</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../trafficdl/trafficdl.config.html">trafficdl.config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../trafficdl/trafficdl.data.html">trafficdl.data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../trafficdl/trafficdl.evaluator.html">trafficdl.evaluator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../trafficdl/trafficdl.executor.html">trafficdl.executor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../trafficdl/trafficdl.model.html">trafficdl.model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../trafficdl/trafficdl.pipeline.html">trafficdl.pipeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../trafficdl/trafficdl.utils.html">trafficdl.utils</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Bigscity-TrafficDL</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Quick Start</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/get_started/quick_start.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="quick-start">
+<h1>Quick Start<a class="headerlink" href="#quick-start" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id1">
+<h2>运行单个模型<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>框架根目录下提供运行单个模型的脚本 run_model.py，并提供一系列命令行参数以允许用户能够调整流水线参数配置。命令行运行示例：</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>python run_model.py --task traj_loc_pred --model DeepMove --dataset foursquare_tky
+</pre></div>
+</div>
+<p>本脚本所支持的命令行参数：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">task</span></code>：所要执行的任务名，包括<code class="docutils literal notranslate"><span class="pre">traj_loc_pred</span></code>和<code class="docutils literal notranslate"><span class="pre">traffic_state_pred</span></code>，默认为<code class="docutils literal notranslate"><span class="pre">traj_loc_pred</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">model</span></code>：所要运行的模型名，应是<code class="docutils literal notranslate"><span class="pre">trafficdl/model/</span></code>目录下各Model类名中的一个，默认为<code class="docutils literal notranslate"><span class="pre">DeepMove</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dataset</span></code>：所要运行的数据集，默认为 <code class="docutils literal notranslate"><span class="pre">foursquare_tky</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">config_file</span></code>：用户指定 config 文件名，默认为 <code class="docutils literal notranslate"><span class="pre">None</span></code>，详见<a class="reference internal" href="../user_guide/config_settings.html"><span class="doc">配置设置</span></a>一节。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">saved_model</span></code>：是否保存训练的模型结果，默认为 <code class="docutils literal notranslate"><span class="pre">True</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">train</span></code>：当模型已被训练时是否要重新训练，默认为 <code class="docutils literal notranslate"><span class="pre">True</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">batch_size</span></code>：单次输入的 Batch 大小。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">train_rate</span></code>：训练集所占比例，如<code class="docutils literal notranslate"><span class="pre">0.6</span></code>，划分顺序是【训练集，验证集，测试集】。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">eval_rate</span></code>：验证集所占比例，如<code class="docutils literal notranslate"><span class="pre">0.2</span></code>，划分顺序是【训练集，验证集，测试集】。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">learning_rate</span></code>：优化器的学习率。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">max_epoch</span></code>：训练的最大轮次。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">gpu</span></code>：是否是用GPU，默认为 <code class="docutils literal notranslate"><span class="pre">True</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">gpu_id</span></code>：指定使用的GPU的id，默认为<code class="docutils literal notranslate"><span class="pre">0</span></code>。</p></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="directory_structure.html" class="btn btn-neutral float-right" title="Directory Structure" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="install.html" class="btn btn-neutral float-left" title="Install" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, aptx1231
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

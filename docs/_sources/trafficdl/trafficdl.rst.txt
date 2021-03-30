@@ -1,0 +1,24 @@
+trafficdl package
+=================
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   trafficdl.config
+   trafficdl.data
+   trafficdl.evaluator
+   trafficdl.executor
+   trafficdl.model
+   trafficdl.pipeline
+   trafficdl.utils
+
+Module contents
+---------------
+
+.. automodule:: trafficdl
+   :members:
+   :undoc-members:
+   :show-inheritance:

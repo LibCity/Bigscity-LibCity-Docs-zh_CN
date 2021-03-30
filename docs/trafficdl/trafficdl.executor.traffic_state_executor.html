@@ -1,0 +1,382 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>trafficdl.executor.traffic_state_executor.py &mdash; Bigscity-TrafficDL  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="trafficdl.executor.traj_loc_pred_executor.py" href="trafficdl.executor.traj_loc_pred_executor.html" />
+    <link rel="prev" title="trafficdl.executor.dcrnn_executor.py" href="trafficdl.executor.dcrnn_executor.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> Bigscity-TrafficDL
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Get Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/install.html">Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/quick_start.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/directory_structure.html">Directory Structure</a></li>
+</ul>
+<p class="caption"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/config_settings.html">Config Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/data.html">Data Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/model.html">Model Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/evaluator.html">Evaluator Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/executor.html">Executor Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/usage.html">Usage</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/code_style.html">Code Style</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_datasets.html">Customize Dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_models.html">Customize Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_evaluators.html">Customize Evaluators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_executors.html">Customize Executors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_logger.html">Logger</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API REFERENCE</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="trafficdl.config.html">trafficdl.config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trafficdl.data.html">trafficdl.data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trafficdl.evaluator.html">trafficdl.evaluator</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="trafficdl.executor.html">trafficdl.executor</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="trafficdl.executor.abstract_executor.html">trafficdl.executor.abstract_executor.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trafficdl.executor.dcrnn_executor.html">trafficdl.executor.dcrnn_executor.py</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">trafficdl.executor.traffic_state_executor.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trafficdl.executor.traj_loc_pred_executor.html">trafficdl.executor.traj_loc_pred_executor.py</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="trafficdl.model.html">trafficdl.model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trafficdl.pipeline.html">trafficdl.pipeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trafficdl.utils.html">trafficdl.utils</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Bigscity-TrafficDL</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="trafficdl.executor.html">trafficdl.executor</a> &raquo;</li>
+        
+      <li>trafficdl.executor.traffic_state_executor.py</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/trafficdl/trafficdl.executor.traffic_state_executor.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-trafficdl.executor.traffic_state_executor">
+<span id="trafficdl-executor-traffic-state-executor-py"></span><h1>trafficdl.executor.traffic_state_executor.py<a class="headerlink" href="#module-trafficdl.executor.traffic_state_executor" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt id="trafficdl.executor.traffic_state_executor.TrafficStateExecutor">
+<em class="property">class </em><code class="sig-prename descclassname">trafficdl.executor.traffic_state_executor.</code><code class="sig-name descname">TrafficStateExecutor</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">config</span></em>, <em class="sig-param"><span class="n">model</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/trafficdl/executor/traffic_state_executor.html#TrafficStateExecutor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#trafficdl.executor.traffic_state_executor.TrafficStateExecutor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="trafficdl.executor.abstract_executor.html#trafficdl.executor.abstract_executor.AbstractExecutor" title="trafficdl.executor.abstract_executor.AbstractExecutor"><code class="xref py py-class docutils literal notranslate"><span class="pre">trafficdl.executor.abstract_executor.AbstractExecutor</span></code></a></p>
+<dl class="py method">
+<dt id="trafficdl.executor.traffic_state_executor.TrafficStateExecutor._build_lr_scheduler">
+<code class="sig-name descname">_build_lr_scheduler</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/trafficdl/executor/traffic_state_executor.html#TrafficStateExecutor._build_lr_scheduler"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#trafficdl.executor.traffic_state_executor.TrafficStateExecutor._build_lr_scheduler" title="Permalink to this definition">¶</a></dt>
+<dd><p>根据全局参数`lr_scheduler`选择对应的lr_scheduler</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="trafficdl.executor.traffic_state_executor.TrafficStateExecutor._build_optimizer">
+<code class="sig-name descname">_build_optimizer</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/trafficdl/executor/traffic_state_executor.html#TrafficStateExecutor._build_optimizer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#trafficdl.executor.traffic_state_executor.TrafficStateExecutor._build_optimizer" title="Permalink to this definition">¶</a></dt>
+<dd><p>根据全局参数`learner`选择optimizer</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="trafficdl.executor.traffic_state_executor.TrafficStateExecutor._train_epoch">
+<code class="sig-name descname">_train_epoch</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">train_dataloader</span></em>, <em class="sig-param"><span class="n">epoch_idx</span></em>, <em class="sig-param"><span class="n">loss_func</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/trafficdl/executor/traffic_state_executor.html#TrafficStateExecutor._train_epoch"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#trafficdl.executor.traffic_state_executor.TrafficStateExecutor._train_epoch" title="Permalink to this definition">¶</a></dt>
+<dd><p>完成模型一个轮次的训练</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>train_dataloader</strong> – 训练数据</p></li>
+<li><p><strong>epoch_idx</strong> – 轮次数</p></li>
+<li><p><strong>loss_func</strong> – 损失函数</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>每个batch的损失的数组</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="trafficdl.executor.traffic_state_executor.TrafficStateExecutor._valid_epoch">
+<code class="sig-name descname">_valid_epoch</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">eval_dataloader</span></em>, <em class="sig-param"><span class="n">epoch_idx</span></em>, <em class="sig-param"><span class="n">loss_func</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/trafficdl/executor/traffic_state_executor.html#TrafficStateExecutor._valid_epoch"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#trafficdl.executor.traffic_state_executor.TrafficStateExecutor._valid_epoch" title="Permalink to this definition">¶</a></dt>
+<dd><p>完成模型一个轮次的评估</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>eval_dataloader</strong> – 评估数据</p></li>
+<li><p><strong>epoch_idx</strong> – 轮次数</p></li>
+<li><p><strong>loss_func</strong> – 损失函数</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>评估数据的平均损失值</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="trafficdl.executor.traffic_state_executor.TrafficStateExecutor.evaluate">
+<code class="sig-name descname">evaluate</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">test_dataloader</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/trafficdl/executor/traffic_state_executor.html#TrafficStateExecutor.evaluate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#trafficdl.executor.traffic_state_executor.TrafficStateExecutor.evaluate" title="Permalink to this definition">¶</a></dt>
+<dd><p>use model to test data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>test_dataloader</strong> (<em>torch.Dataloader</em>) – Dataloader</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="trafficdl.executor.traffic_state_executor.TrafficStateExecutor.load_model">
+<code class="sig-name descname">load_model</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">cache_name</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/trafficdl/executor/traffic_state_executor.html#TrafficStateExecutor.load_model"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#trafficdl.executor.traffic_state_executor.TrafficStateExecutor.load_model" title="Permalink to this definition">¶</a></dt>
+<dd><p>加载对应模型的 cache</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>cache_name</strong> (<em>str</em>) – 保存的文件名</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="trafficdl.executor.traffic_state_executor.TrafficStateExecutor.load_model_with_epoch">
+<code class="sig-name descname">load_model_with_epoch</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">epoch</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/trafficdl/executor/traffic_state_executor.html#TrafficStateExecutor.load_model_with_epoch"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#trafficdl.executor.traffic_state_executor.TrafficStateExecutor.load_model_with_epoch" title="Permalink to this definition">¶</a></dt>
+<dd><p>加载某个epoch的模型</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>epoch</strong> (<em>int</em>) – 轮数</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="trafficdl.executor.traffic_state_executor.TrafficStateExecutor.save_model">
+<code class="sig-name descname">save_model</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">cache_name</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/trafficdl/executor/traffic_state_executor.html#TrafficStateExecutor.save_model"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#trafficdl.executor.traffic_state_executor.TrafficStateExecutor.save_model" title="Permalink to this definition">¶</a></dt>
+<dd><p>将当前的模型保存到文件</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>cache_name</strong> (<em>str</em>) – 保存的文件名</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="trafficdl.executor.traffic_state_executor.TrafficStateExecutor.save_model_with_epoch">
+<code class="sig-name descname">save_model_with_epoch</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">epoch</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/trafficdl/executor/traffic_state_executor.html#TrafficStateExecutor.save_model_with_epoch"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#trafficdl.executor.traffic_state_executor.TrafficStateExecutor.save_model_with_epoch" title="Permalink to this definition">¶</a></dt>
+<dd><p>保存某个epoch的模型</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>epoch</strong> (<em>int</em>) – 轮数</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="trafficdl.executor.traffic_state_executor.TrafficStateExecutor.train">
+<code class="sig-name descname">train</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">train_dataloader</span></em>, <em class="sig-param"><span class="n">eval_dataloader</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/trafficdl/executor/traffic_state_executor.html#TrafficStateExecutor.train"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#trafficdl.executor.traffic_state_executor.TrafficStateExecutor.train" title="Permalink to this definition">¶</a></dt>
+<dd><p>use data to train model with config</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>train_dataloader</strong> (<em>torch.Dataloader</em>) – Dataloader</p></li>
+<li><p><strong>eval_dataloader</strong> (<em>torch.Dataloader</em>) – Dataloader</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="trafficdl.executor.traj_loc_pred_executor.html" class="btn btn-neutral float-right" title="trafficdl.executor.traj_loc_pred_executor.py" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="trafficdl.executor.dcrnn_executor.html" class="btn btn-neutral float-left" title="trafficdl.executor.dcrnn_executor.py" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, aptx1231
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

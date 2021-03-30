@@ -1,0 +1,318 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Args for Data &mdash; Bigscity-TrafficDL  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Model Introduction" href="../model.html" />
+    <link rel="prev" title="Batch" href="batch.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> Bigscity-TrafficDL
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Get Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../get_started/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../get_started/install.html">Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../get_started/quick_start.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../get_started/directory_structure.html">Directory Structure</a></li>
+</ul>
+<p class="caption"><span class="caption-text">User Guide</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../config_settings.html">Config Settings</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../data.html">Data Introduction</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="data_flow.html">Data Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="raw_data.html">Raw Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="atmoic_files.html">Atomic Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="batch.html">Batch</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Args for Data</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#traffic-state-prediction-dataset">Traffic State Prediction DataSet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#trajectory-location-prediction-dataset">Trajectory Location Prediction DataSet</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../model.html">Model Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../evaluator.html">Evaluator Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../executor.html">Executor Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../developer_guide/code_style.html">Code Style</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer_guide/implemented_datasets.html">Customize Dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer_guide/implemented_models.html">Customize Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer_guide/implemented_evaluators.html">Customize Evaluators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer_guide/implemented_executors.html">Customize Executors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer_guide/implemented_logger.html">Logger</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API REFERENCE</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../trafficdl/trafficdl.config.html">trafficdl.config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../trafficdl/trafficdl.data.html">trafficdl.data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../trafficdl/trafficdl.evaluator.html">trafficdl.evaluator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../trafficdl/trafficdl.executor.html">trafficdl.executor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../trafficdl/trafficdl.model.html">trafficdl.model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../trafficdl/trafficdl.pipeline.html">trafficdl.pipeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../trafficdl/trafficdl.utils.html">trafficdl.utils</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Bigscity-TrafficDL</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../data.html">Data Introduction</a> &raquo;</li>
+        
+      <li>Args for Data</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/user_guide/data/args_for_data.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="args-for-data">
+<h1>Args for Data<a class="headerlink" href="#args-for-data" title="Permalink to this headline">¶</a></h1>
+<p>下边介绍数据集涉及的相关参数。</p>
+<div class="section" id="traffic-state-prediction-dataset">
+<h2>Traffic State Prediction DataSet<a class="headerlink" href="#traffic-state-prediction-dataset" title="Permalink to this headline">¶</a></h2>
+<p>下述参数为交通状态预测任务中所用到的全部参数：</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">batch_size</span></code>：批次大小</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cache_dataset</span></code>：是否保存经过<code class="docutils literal notranslate"><span class="pre">Dataset</span></code>类处理好的数据集，<strong>默认True</strong></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">num_workers</span></code>： <code class="docutils literal notranslate"><span class="pre">Dataloader</span></code>类的参数，<strong>这个参数用本地CPU跑，应该设为0</strong></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pad_with_last_sample</span></code>：总样本数跟<code class="docutils literal notranslate"><span class="pre">batch_size</span></code>除不尽的时候，是否用最后一个元素补齐最后一个batch，<strong>默认True</strong></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">train_rate</span></code>：训练集所占比例</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">eval_rate</span></code>：验证集所占比例，划分顺序是【训练集，验证集，测试集】，从前到后的顺序按比例划分</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">input_window</span></code>：预测使用的过去时间步的长度，<strong>交通预测一般使用过去一段时间（即多个时间步的数据对未来数据进行预测）</strong></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">output_window</span></code>：预测未来的时间步的长度，<strong>交通预测一般是多步预测，即预测未来多个时间步的交通状况</strong></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">load_external</span></code>：是否加载外部数据（如天气数据），<strong>默认False</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">normal_external</span></code>：是否对外部数据进行归一化处理，<strong>默认False</strong></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">add_time_in_day</span></code>：时间参数，增加时间片属于一天中的哪个时刻的辅助信息，<strong>默认False</strong>，依赖于参数<code class="docutils literal notranslate"><span class="pre">load_external=True</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">add_day_in_week</span></code>：时间参数，增加时间片属于一周中的哪一天的辅助信息，<strong>默认False</strong>，依赖于参数<code class="docutils literal notranslate"><span class="pre">load_external=True</span></code>。</p></li>
+</ul>
+</li>
+<li><p>从<code class="docutils literal notranslate"><span class="pre">Dataset</span></code>类的<code class="docutils literal notranslate"><span class="pre">get_feature()</span></code>函数中获取的部分参数：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">scaler</span></code>：指定归一化方法，<strong>需要从外部指定</strong>，目前支持<code class="docutils literal notranslate"><span class="pre">normal</span></code>、<code class="docutils literal notranslate"><span class="pre">standard</span></code>、<code class="docutils literal notranslate"><span class="pre">minmax01</span></code>、<code class="docutils literal notranslate"><span class="pre">minmax11</span></code>、<code class="docutils literal notranslate"><span class="pre">none</span></code>，默认<code class="docutils literal notranslate"><span class="pre">none</span></code>。</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">normal</span></code>：除以最大值</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">standard</span></code>：Z-score归一化</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">minmax01</span></code>：MinMax归一化 结果区间[0, 1]</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">minmax11</span></code>：MinMax归一化 结果区间[-1, 1]</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">none</span></code>：不归一化</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">feature_dim*</span></code>：交通数据特征维度的大小，<strong>不能从外部指定</strong>，而是根据不同数据集自动计算得到的，外部数据的存在和其他的一些参数也可能会影响这个维度的大小。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">adj_mx*</span></code>：交通数据构建的邻接矩阵，<strong>不能从外部指定</strong>，从<code class="docutils literal notranslate"><span class="pre">.rel</span></code>文件中计算出来的。与<code class="docutils literal notranslate"><span class="pre">.rel</span></code>文件相关的参数设置请参见<a class="reference internal" href="atmoic_files.html"><span class="doc">原子文件</span></a>一节。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">num_nodes*</span></code>：交通数据实体的个数，例如传感器的数目、网格的数目，<strong>不能从外部指定</strong>，而是根据不同数据集自动计算得到的。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">len_row*</span></code>：网格数据的网格行数，<strong>不能从外部指定</strong>，而是根据不同数据集自动计算得到的。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">len_column*</span></code>：网格数据的网格列数，<strong>不能从外部指定</strong>，而是根据不同数据集自动计算得到的。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">output_dim*</span></code>：交通预测模型输出的预测结果的特征维度的大小，<strong>需要从外部指定</strong>，即预测模型的预测目标。一般不等于<code class="docutils literal notranslate"><span class="pre">feature_dim</span></code>，因为输入数据可能包含了外部特征，但是模型输出的结果一般只包含有效的交通状况信息，而不包含外部信息。该参数由数据集原子文件中的config文件所指定，请参见<a class="reference internal" href="atmoic_files.html"><span class="doc">原子文件</span></a>一节。</p></li>
+</ul>
+</li>
+<li><p>其他不通用的参数</p>
+<p>注：部分交通预测模型通过对接近度(closeness)/周期(period)/趋势(trend)进行建模实现交通预测，默认使用<code class="docutils literal notranslate"><span class="pre">len_closeness</span></code>/<code class="docutils literal notranslate"><span class="pre">len_period</span></code>/<code class="docutils literal notranslate"><span class="pre">len_trend</span></code>的数据作为历史数据进行预测，取代了上文中的参数<code class="docutils literal notranslate"><span class="pre">input_window</span></code>和<code class="docutils literal notranslate"><span class="pre">output_window</span></code>，因此多出了下述若干参数：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">points_per_hour</span></code>：一小时有几个时间步，例如数据集是5min一个时间步，则为12</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">len_closeness</span></code>：closeness时间片序列的长度</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">len_period</span></code>：period时间片序列的长度</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">len_trend</span></code>：trend时间片序列的长度</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pad_forward_period</span></code>：period对应位置的时间片向前扩展多少时间片</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pad_back_period</span></code>：period对应位置的时间片向后扩展多少时间片</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pad_forward_trend</span></code>：trend对应位置的时间片向前扩展多少时间片</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pad_back_trend</span></code>：trend对应位置的时间片向后扩展多少时间片</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">interval_period</span></code>：period时间间隔的长度，一般为1，表示间隔一天</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">interval_trend</span></code>：trend时间间隔的长度，一般为7，表示间隔一周</p></li>
+</ul>
+<p>注：从<code class="docutils literal notranslate"><span class="pre">Dataset</span></code>类的<code class="docutils literal notranslate"><span class="pre">get_feature()</span></code>函数中获取到的<code class="docutils literal notranslate"><span class="pre">len_closeness</span></code>/<code class="docutils literal notranslate"><span class="pre">len_period</span></code>/<code class="docutils literal notranslate"><span class="pre">len_trend</span></code>表示这三段数据的实际长度，因为返回的输入结果<code class="docutils literal notranslate"><span class="pre">batch[‘X’]</span></code>中将这三段数据按顺序拼接到了一起，根据长度可以获取逐段对应的数据。</p>
+</li>
+</ul>
+</div>
+<div class="section" id="trajectory-location-prediction-dataset">
+<h2>Trajectory Location Prediction DataSet<a class="headerlink" href="#trajectory-location-prediction-dataset" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../model.html" class="btn btn-neutral float-right" title="Model Introduction" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="batch.html" class="btn btn-neutral float-left" title="Batch" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, aptx1231
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

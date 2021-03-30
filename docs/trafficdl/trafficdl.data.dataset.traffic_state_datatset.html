@@ -1,0 +1,725 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>trafficdl.data.dataset.traffic_state_datatset.py &mdash; Bigscity-TrafficDL  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="trafficdl.data.dataset.traffic_state_grid_dataset.py" href="trafficdl.data.dataset.traffic_state_grid_dataset.html" />
+    <link rel="prev" title="trafficdl.data.dataset.traffic_state_cpt_dataset.py" href="trafficdl.data.dataset.traffic_state_cpt_dataset.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> Bigscity-TrafficDL
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Get Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/install.html">Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/quick_start.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/directory_structure.html">Directory Structure</a></li>
+</ul>
+<p class="caption"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/config_settings.html">Config Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/data.html">Data Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/model.html">Model Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/evaluator.html">Evaluator Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/executor.html">Executor Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/usage.html">Usage</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/code_style.html">Code Style</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_datasets.html">Customize Dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_models.html">Customize Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_evaluators.html">Customize Evaluators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_executors.html">Customize Executors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_logger.html">Logger</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API REFERENCE</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="trafficdl.config.html">trafficdl.config</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="trafficdl.data.html">trafficdl.data</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="trafficdl.data.dataset.html">trafficdl.data.dataset</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="trafficdl.data.dataset.abstract_dataset.html">trafficdl.data.dataset.abstract_dataset.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trafficdl.data.dataset.acfm_dataset.html">trafficdl.data.dataset.acfm_dataset.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trafficdl.data.dataset.astgcn_dataset.html">trafficdl.data.dataset.astgcn_dataset.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trafficdl.data.dataset.serm_trajectory_dataset.html">trafficdl.data.dataset.serm_trajectory_dataset.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trafficdl.data.dataset.tgclstm_dataset.html">trafficdl.data.dataset.tgclstm_dataset.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trafficdl.data.dataset.traffic_state_cpt_dataset.html">trafficdl.data.dataset.traffic_state_cpt_dataset.py</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">trafficdl.data.dataset.traffic_state_datatset.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trafficdl.data.dataset.traffic_state_grid_dataset.html">trafficdl.data.dataset.traffic_state_grid_dataset.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trafficdl.data.dataset.traffic_state_grid_od_dataset.html">trafficdl.data.dataset.traffic_state_grid_od_dataset.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trafficdl.data.dataset.traffic_state_point_dataset.html">trafficdl.data.dataset.traffic_state_point_dataset.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trafficdl.data.dataset.trajectory_dataset.html">trafficdl.data.dataset.trajectory_dataset.py</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="trafficdl.data.batch.html">trafficdl.data.batch.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trafficdl.data.list_dataset.html">trafficdl.data.list_dataset.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trafficdl.data.utils.html">trafficdl.data.utils.py</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="trafficdl.evaluator.html">trafficdl.evaluator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trafficdl.executor.html">trafficdl.executor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trafficdl.model.html">trafficdl.model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trafficdl.pipeline.html">trafficdl.pipeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trafficdl.utils.html">trafficdl.utils</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Bigscity-TrafficDL</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="trafficdl.data.html">trafficdl.data</a> &raquo;</li>
+        
+          <li><a href="trafficdl.data.dataset.html">trafficdl.data.dataset</a> &raquo;</li>
+        
+      <li>trafficdl.data.dataset.traffic_state_datatset.py</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/trafficdl/trafficdl.data.dataset.traffic_state_datatset.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-trafficdl.data.dataset.traffic_state_datatset">
+<span id="trafficdl-data-dataset-traffic-state-datatset-py"></span><h1>trafficdl.data.dataset.traffic_state_datatset.py<a class="headerlink" href="#module-trafficdl.data.dataset.traffic_state_datatset" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt id="trafficdl.data.dataset.traffic_state_datatset.TrafficStateDataset">
+<em class="property">class </em><code class="sig-prename descclassname">trafficdl.data.dataset.traffic_state_datatset.</code><code class="sig-name descname">TrafficStateDataset</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">config</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/trafficdl/data/dataset/traffic_state_datatset.html#TrafficStateDataset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#trafficdl.data.dataset.traffic_state_datatset.TrafficStateDataset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="trafficdl.data.dataset.abstract_dataset.html#trafficdl.data.dataset.abstract_dataset.AbstractDataset" title="trafficdl.data.dataset.abstract_dataset.AbstractDataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">trafficdl.data.dataset.abstract_dataset.AbstractDataset</span></code></a></p>
+<p>交通状态预测数据集的基类。
+默认使用`input_window`的数据预测`output_window`对应的数据，即一个X，一个y。
+一般将外部数据融合到X中共同进行预测，因此数据为[X, y]。
+默认使用`train_rate`和`eval_rate`在样本数量(num_samples)维度上直接切分训练集、测试集、验证集。</p>
+<dl class="py method">
+<dt id="trafficdl.data.dataset.traffic_state_datatset.TrafficStateDataset._add_external_information">
+<code class="sig-name descname">_add_external_information</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">df</span></em>, <em class="sig-param"><span class="n">ext_data</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/trafficdl/data/dataset/traffic_state_datatset.html#TrafficStateDataset._add_external_information"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#trafficdl.data.dataset.traffic_state_datatset.TrafficStateDataset._add_external_information" title="Permalink to this definition">¶</a></dt>
+<dd><p>将外部数据和原始交通状态数据结合到高维数组中，子类必须实现这个方法来指定如何融合外部数据和交通状态数据,
+如果不想加外部数据，可以把交通状态数据`df`直接返回,
+提供3个实现好的方法适用于不同形状的交通状态数据跟外部数据结合:
+<cite>_add_external_information_3d</cite>/<cite>_add_external_information_4d</cite>/<cite>_add_external_information_6d</cite></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>np.ndarray</em>) – 交通状态数据多维数组</p></li>
+<li><p><strong>ext_data</strong> (<em>np.ndarray</em>) – 外部数据</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>融合后的外部数据和交通状态数据</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="trafficdl.data.dataset.traffic_state_datatset.TrafficStateDataset._add_external_information_3d">
+<code class="sig-name descname">_add_external_information_3d</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">df</span></em>, <em class="sig-param"><span class="n">ext_data</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/trafficdl/data/dataset/traffic_state_datatset.html#TrafficStateDataset._add_external_information_3d"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#trafficdl.data.dataset.traffic_state_datatset.TrafficStateDataset._add_external_information_3d" title="Permalink to this definition">¶</a></dt>
+<dd><p>增加外部信息（一周中的星期几/day of week，一天中的某个时刻/time of day，外部数据）</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>np.ndarray</em>) – 交通状态数据多维数组, (len_time, num_nodes, feature_dim)</p></li>
+<li><p><strong>ext_data</strong> (<em>np.ndarray</em>) – 外部数据</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>融合后的外部数据和交通状态数据, (len_time, num_nodes, feature_dim_plus)</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="trafficdl.data.dataset.traffic_state_datatset.TrafficStateDataset._add_external_information_4d">
+<code class="sig-name descname">_add_external_information_4d</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">df</span></em>, <em class="sig-param"><span class="n">ext_data</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/trafficdl/data/dataset/traffic_state_datatset.html#TrafficStateDataset._add_external_information_4d"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#trafficdl.data.dataset.traffic_state_datatset.TrafficStateDataset._add_external_information_4d" title="Permalink to this definition">¶</a></dt>
+<dd><p>增加外部信息（一周中的星期几/day of week，一天中的某个时刻/time of day，外部数据）</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>np.ndarray</em>) – 交通状态数据多维数组, (len_time, len_row, len_column, feature_dim)</p></li>
+<li><p><strong>ext_data</strong> (<em>np.ndarray</em>) – 外部数据</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>融合后的外部数据和交通状态数据, (len_time, len_row, len_column, feature_dim_plus)</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="trafficdl.data.dataset.traffic_state_datatset.TrafficStateDataset._add_external_information_6d">
+<code class="sig-name descname">_add_external_information_6d</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">df</span></em>, <em class="sig-param"><span class="n">ext_data</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/trafficdl/data/dataset/traffic_state_datatset.html#TrafficStateDataset._add_external_information_6d"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#trafficdl.data.dataset.traffic_state_datatset.TrafficStateDataset._add_external_information_6d" title="Permalink to this definition">¶</a></dt>
+<dd><p>增加外部信息（一周中的星期几/day of week，一天中的某个时刻/time of day，外部数据）</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>np.ndarray</em>) – 交通状态数据多维数组,
+(len_time, len_row, len_column, len_row, len_column, feature_dim)</p></li>
+<li><p><strong>ext_data</strong> (<em>np.ndarray</em>) – 外部数据</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>融合后的外部数据和交通状态数据,
+(len_time, len_row, len_column, len_row, len_column, feature_dim)</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="trafficdl.data.dataset.traffic_state_datatset.TrafficStateDataset._calculate_adjacency_matrix">
+<code class="sig-name descname">_calculate_adjacency_matrix</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/trafficdl/data/dataset/traffic_state_datatset.html#TrafficStateDataset._calculate_adjacency_matrix"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#trafficdl.data.dataset.traffic_state_datatset.TrafficStateDataset._calculate_adjacency_matrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>使用带有阈值的高斯核计算邻接矩阵的权重，如果有其他的计算方法，可以覆盖这个函数,
+公式为：$ w_{ij} = exp left(- frac{d_{ij}^{2}}{sigma^{2}} right) $, $sigma$ 是方差,
+小于阈值`weight_adj_epsilon`的值设为0：$  w_{ij}[w_{ij}&lt;epsilon]=0 $</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>self.adj_mx, N*N的邻接矩阵</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="trafficdl.data.dataset.traffic_state_datatset.TrafficStateDataset._generate_data">
+<code class="sig-name descname">_generate_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/trafficdl/data/dataset/traffic_state_datatset.html#TrafficStateDataset._generate_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#trafficdl.data.dataset.traffic_state_datatset.TrafficStateDataset._generate_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>加载数据文件(.dyna/.grid/.od/.gridod)和外部数据(.ext)，且将二者融合，以X，y的形式返回</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><dl>
+<dt>tuple contains:</dt><dd><p>x(np.ndarray): 模型输入数据，(num_samples, input_length, …, feature_dim)</p>
+<p>y(np.ndarray): 模型输出数据，(num_samples, output_length, …, feature_dim)</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="trafficdl.data.dataset.traffic_state_datatset.TrafficStateDataset._generate_input_data">
+<code class="sig-name descname">_generate_input_data</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">df</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/trafficdl/data/dataset/traffic_state_datatset.html#TrafficStateDataset._generate_input_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#trafficdl.data.dataset.traffic_state_datatset.TrafficStateDataset._generate_input_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>根据全局参数`input_window`和`output_window`切分输入，产生模型需要的张量输入，
+即使用过去`input_window`长度的时间序列去预测未来`output_window`长度的时间序列</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>df</strong> (<em>np.ndarray</em>) – 数据数组，shape: (len_time, …, feature_dim)</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><dl>
+<dt>tuple contains:</dt><dd><p>x(np.ndarray): 模型输入数据，(epoch_size, input_length, …, feature_dim)</p>
+<p>y(np.ndarray): 模型输出数据，(epoch_size, output_length, …, feature_dim)</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="trafficdl.data.dataset.traffic_state_datatset.TrafficStateDataset._generate_train_val_test">
+<code class="sig-name descname">_generate_train_val_test</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/trafficdl/data/dataset/traffic_state_datatset.html#TrafficStateDataset._generate_train_val_test"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#trafficdl.data.dataset.traffic_state_datatset.TrafficStateDataset._generate_train_val_test" title="Permalink to this definition">¶</a></dt>
+<dd><p>加载数据集，并划分训练集、测试集、验证集，并缓存数据集</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><dl>
+<dt>tuple contains:</dt><dd><p>x_train: (num_samples, input_length, …, feature_dim)</p>
+<p>y_train: (num_samples, input_length, …, feature_dim)</p>
+<p>x_val: (num_samples, input_length, …, feature_dim)</p>
+<p>y_val: (num_samples, input_length, …, feature_dim)</p>
+<p>x_test: (num_samples, input_length, …, feature_dim)</p>
+<p>y_test: (num_samples, input_length, …, feature_dim)</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="trafficdl.data.dataset.traffic_state_datatset.TrafficStateDataset._get_scalar">
+<code class="sig-name descname">_get_scalar</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x_train</span></em>, <em class="sig-param"><span class="n">y_train</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/trafficdl/data/dataset/traffic_state_datatset.html#TrafficStateDataset._get_scalar"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#trafficdl.data.dataset.traffic_state_datatset.TrafficStateDataset._get_scalar" title="Permalink to this definition">¶</a></dt>
+<dd><p>根据全局参数`scaler_type`选择数据归一化方法</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x_train</strong> – 训练数据X</p></li>
+<li><p><strong>y_train</strong> – 训练数据y</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>归一化对象</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="trafficdl.utils.normalization.html#trafficdl.utils.normalization.Scaler" title="trafficdl.utils.normalization.Scaler">Scaler</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="trafficdl.data.dataset.traffic_state_datatset.TrafficStateDataset._load_cache_train_val_test">
+<code class="sig-name descname">_load_cache_train_val_test</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/trafficdl/data/dataset/traffic_state_datatset.html#TrafficStateDataset._load_cache_train_val_test"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#trafficdl.data.dataset.traffic_state_datatset.TrafficStateDataset._load_cache_train_val_test" title="Permalink to this definition">¶</a></dt>
+<dd><p>加载之前缓存好的训练集、测试集、验证集</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><dl>
+<dt>tuple contains:</dt><dd><p>x_train: (num_samples, input_length, …, feature_dim)</p>
+<p>y_train: (num_samples, input_length, …, feature_dim)</p>
+<p>x_val: (num_samples, input_length, …, feature_dim)</p>
+<p>y_val: (num_samples, input_length, …, feature_dim)</p>
+<p>x_test: (num_samples, input_length, …, feature_dim)</p>
+<p>y_test: (num_samples, input_length, …, feature_dim)</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="trafficdl.data.dataset.traffic_state_datatset.TrafficStateDataset._load_dyna">
+<code class="sig-name descname">_load_dyna</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filename</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/trafficdl/data/dataset/traffic_state_datatset.html#TrafficStateDataset._load_dyna"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#trafficdl.data.dataset.traffic_state_datatset.TrafficStateDataset._load_dyna" title="Permalink to this definition">¶</a></dt>
+<dd><p>加载数据文件(.dyna/.grid/.od/.gridod)，子类必须实现这个方法来指定如何加载数据文件，返回对应的多维数据,
+提供5个实现好的方法加载上述几类文件，并转换成不同形状的数组:
+<cite>_load_dyna_3d</cite>/<cite>_load_grid_3d</cite>/<cite>_load_grid_4d</cite>/<cite>_load_grid_od_4d</cite>/<cite>_load_grid_od_6d</cite></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>filename</strong> (<em>str</em>) – 数据文件名，不包含后缀</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>数据数组</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="trafficdl.data.dataset.traffic_state_datatset.TrafficStateDataset._load_dyna_3d">
+<code class="sig-name descname">_load_dyna_3d</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filename</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/trafficdl/data/dataset/traffic_state_datatset.html#TrafficStateDataset._load_dyna_3d"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#trafficdl.data.dataset.traffic_state_datatset.TrafficStateDataset._load_dyna_3d" title="Permalink to this definition">¶</a></dt>
+<dd><p>加载.dyna文件，格式[dyna_id, type, time, entity_id, properties(若干列)],
+.geo文件中的id顺序应该跟.dyna中一致,
+其中全局参数`data_col`用于指定需要加载的数据的列，不设置则默认全部加载</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>filename</strong> (<em>str</em>) – 数据文件名，不包含后缀</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>数据数组, 3d-array: (len_time, num_nodes, feature_dim)</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="trafficdl.data.dataset.traffic_state_datatset.TrafficStateDataset._load_ext">
+<code class="sig-name descname">_load_ext</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/trafficdl/data/dataset/traffic_state_datatset.html#TrafficStateDataset._load_ext"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#trafficdl.data.dataset.traffic_state_datatset.TrafficStateDataset._load_ext" title="Permalink to this definition">¶</a></dt>
+<dd><p>加载.ext文件，格式[ext_id, time, properties(若干列)],
+其中全局参数`ext_col`用于指定需要加载的数据的列，不设置则默认全部加载</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>外部数据数组，shape: (timeslots, ext_dim)</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="trafficdl.data.dataset.traffic_state_datatset.TrafficStateDataset._load_geo">
+<code class="sig-name descname">_load_geo</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/trafficdl/data/dataset/traffic_state_datatset.html#TrafficStateDataset._load_geo"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#trafficdl.data.dataset.traffic_state_datatset.TrafficStateDataset._load_geo" title="Permalink to this definition">¶</a></dt>
+<dd><p>加载.geo文件，格式[geo_id, type, coordinates, properties(若干列)]</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="trafficdl.data.dataset.traffic_state_datatset.TrafficStateDataset._load_grid_3d">
+<code class="sig-name descname">_load_grid_3d</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filename</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/trafficdl/data/dataset/traffic_state_datatset.html#TrafficStateDataset._load_grid_3d"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#trafficdl.data.dataset.traffic_state_datatset.TrafficStateDataset._load_grid_3d" title="Permalink to this definition">¶</a></dt>
+<dd><p>加载.grid文件，格式[dyna_id, type, time, row_id, column_id, properties(若干列)],
+.geo文件中的id顺序应该跟.dyna中一致,
+其中全局参数`data_col`用于指定需要加载的数据的列，不设置则默认全部加载,</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>filename</strong> (<em>str</em>) – 数据文件名，不包含后缀</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>数据数组, 3d-array: (len_time, num_grids, feature_dim)</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="trafficdl.data.dataset.traffic_state_datatset.TrafficStateDataset._load_grid_4d">
+<code class="sig-name descname">_load_grid_4d</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filename</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/trafficdl/data/dataset/traffic_state_datatset.html#TrafficStateDataset._load_grid_4d"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#trafficdl.data.dataset.traffic_state_datatset.TrafficStateDataset._load_grid_4d" title="Permalink to this definition">¶</a></dt>
+<dd><p>加载.grid文件，格式[dyna_id, type, time, row_id, column_id, properties(若干列)],
+.geo文件中的id顺序应该跟.dyna中一致,
+其中全局参数`data_col`用于指定需要加载的数据的列，不设置则默认全部加载</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>filename</strong> (<em>str</em>) – 数据文件名，不包含后缀</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>数据数组, 4d-array: (len_time, len_row, len_column, feature_dim)</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="trafficdl.data.dataset.traffic_state_datatset.TrafficStateDataset._load_grid_geo">
+<code class="sig-name descname">_load_grid_geo</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/trafficdl/data/dataset/traffic_state_datatset.html#TrafficStateDataset._load_grid_geo"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#trafficdl.data.dataset.traffic_state_datatset.TrafficStateDataset._load_grid_geo" title="Permalink to this definition">¶</a></dt>
+<dd><p>加载.geo文件，格式[geo_id, type, coordinates, row_id, column_id, properties(若干列)]</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="trafficdl.data.dataset.traffic_state_datatset.TrafficStateDataset._load_grid_od_4d">
+<code class="sig-name descname">_load_grid_od_4d</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filename</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/trafficdl/data/dataset/traffic_state_datatset.html#TrafficStateDataset._load_grid_od_4d"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#trafficdl.data.dataset.traffic_state_datatset.TrafficStateDataset._load_grid_od_4d" title="Permalink to this definition">¶</a></dt>
+<dd><p>加载.gridod文件，格式[dyna_id, type, time, origin_row_id, origin_column_id,
+destination_row_id, destination_column_id, properties(若干列)],
+.geo文件中的id顺序应该跟.dyna中一致,
+其中全局参数`data_col`用于指定需要加载的数据的列，不设置则默认全部加载</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>filename</strong> (<em>str</em>) – 数据文件名，不包含后缀</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>数据数组, 4d-array: (len_time, num_grids, num_grids, feature_dim)</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="trafficdl.data.dataset.traffic_state_datatset.TrafficStateDataset._load_grid_od_6d">
+<code class="sig-name descname">_load_grid_od_6d</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filename</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/trafficdl/data/dataset/traffic_state_datatset.html#TrafficStateDataset._load_grid_od_6d"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#trafficdl.data.dataset.traffic_state_datatset.TrafficStateDataset._load_grid_od_6d" title="Permalink to this definition">¶</a></dt>
+<dd><p>加载.gridod文件，格式[dyna_id, type, time, origin_row_id, origin_column_id,
+destination_row_id, destination_column_id, properties(若干列)],
+.geo文件中的id顺序应该跟.dyna中一致,
+其中全局参数`data_col`用于指定需要加载的数据的列，不设置则默认全部加载</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>filename</strong> (<em>str</em>) – 数据文件名，不包含后缀</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>数据数组, 6d-array: (len_time, len_row, len_column, len_row, len_column, feature_dim)</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="trafficdl.data.dataset.traffic_state_datatset.TrafficStateDataset._load_grid_rel">
+<code class="sig-name descname">_load_grid_rel</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/trafficdl/data/dataset/traffic_state_datatset.html#TrafficStateDataset._load_grid_rel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#trafficdl.data.dataset.traffic_state_datatset.TrafficStateDataset._load_grid_rel" title="Permalink to this definition">¶</a></dt>
+<dd><p>根据网格结构构建邻接矩阵，一个格子跟他周围的8个格子邻接</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>self.adj_mx, N*N的邻接矩阵</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="trafficdl.data.dataset.traffic_state_datatset.TrafficStateDataset._load_rel">
+<code class="sig-name descname">_load_rel</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/trafficdl/data/dataset/traffic_state_datatset.html#TrafficStateDataset._load_rel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#trafficdl.data.dataset.traffic_state_datatset.TrafficStateDataset._load_rel" title="Permalink to this definition">¶</a></dt>
+<dd><p>加载.rel文件，格式[rel_id, type, origin_id, destination_id, properties(若干列)],
+生成N*N的矩阵，其中权重所在的列名用全局参数`weight_col`来指定,
+.rel文件中缺少的位置的权重填充为np.inf,
+全局参数`calculate_weight_adj`表示是否需要对加载的.rel的默认权重进行进一步计算,
+如果需要，则调用函数self._calculate_adjacency_matrix()进行计算</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>self.adj_mx, N*N的邻接矩阵</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="trafficdl.data.dataset.traffic_state_datatset.TrafficStateDataset._split_train_val_test">
+<code class="sig-name descname">_split_train_val_test</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">y</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/trafficdl/data/dataset/traffic_state_datatset.html#TrafficStateDataset._split_train_val_test"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#trafficdl.data.dataset.traffic_state_datatset.TrafficStateDataset._split_train_val_test" title="Permalink to this definition">¶</a></dt>
+<dd><p>划分训练集、测试集、验证集，并缓存数据集</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>np.ndarray</em>) – 输入数据 (num_samples, input_length, …, feature_dim)</p></li>
+<li><p><strong>y</strong> (<em>np.ndarray</em>) – 输出数据 (num_samples, input_length, …, feature_dim)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><dl>
+<dt>tuple contains:</dt><dd><p>x_train: (num_samples, input_length, …, feature_dim)</p>
+<p>y_train: (num_samples, input_length, …, feature_dim)</p>
+<p>x_val: (num_samples, input_length, …, feature_dim)</p>
+<p>y_val: (num_samples, input_length, …, feature_dim)</p>
+<p>x_test: (num_samples, input_length, …, feature_dim)</p>
+<p>y_test: (num_samples, input_length, …, feature_dim)</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="trafficdl.data.dataset.traffic_state_datatset.TrafficStateDataset.get_data">
+<code class="sig-name descname">get_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/trafficdl/data/dataset/traffic_state_datatset.html#TrafficStateDataset.get_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#trafficdl.data.dataset.traffic_state_datatset.TrafficStateDataset.get_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>返回数据的DataLoader，包括训练数据、测试数据、验证数据</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><dl>
+<dt>tuple contains:</dt><dd><p>train_dataloader: Dataloader composed of Batch (class)</p>
+<p>eval_dataloader: Dataloader composed of Batch (class)</p>
+<p>test_dataloader: Dataloader composed of Batch (class)</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="trafficdl.data.dataset.traffic_state_datatset.TrafficStateDataset.get_data_feature">
+<code class="sig-name descname">get_data_feature</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/trafficdl/data/dataset/traffic_state_datatset.html#TrafficStateDataset.get_data_feature"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#trafficdl.data.dataset.traffic_state_datatset.TrafficStateDataset.get_data_feature" title="Permalink to this definition">¶</a></dt>
+<dd><p>返回数据集特征，子类必须实现这个函数，返回必要的特征</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>包含数据集的相关特征的字典</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="trafficdl.data.dataset.traffic_state_grid_dataset.html" class="btn btn-neutral float-right" title="trafficdl.data.dataset.traffic_state_grid_dataset.py" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="trafficdl.data.dataset.traffic_state_cpt_dataset.html" class="btn btn-neutral float-left" title="trafficdl.data.dataset.traffic_state_cpt_dataset.py" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, aptx1231
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

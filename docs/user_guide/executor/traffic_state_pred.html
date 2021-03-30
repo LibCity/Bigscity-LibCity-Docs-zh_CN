@@ -1,0 +1,306 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Traffic State Prediction Executor &mdash; Bigscity-TrafficDL  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Trajectory Location Prediction Executor" href="traj_loc_pred.html" />
+    <link rel="prev" title="Executor Introduction" href="../executor.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> Bigscity-TrafficDL
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Get Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../get_started/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../get_started/install.html">Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../get_started/quick_start.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../get_started/directory_structure.html">Directory Structure</a></li>
+</ul>
+<p class="caption"><span class="caption-text">User Guide</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../config_settings.html">Config Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data.html">Data Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model.html">Model Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../evaluator.html">Evaluator Introduction</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../executor.html">Executor Introduction</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Traffic State Prediction Executor</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#executor-settings">Executor Settings</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="traj_loc_pred.html">Trajectory Location Prediction Executor</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../developer_guide/code_style.html">Code Style</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer_guide/implemented_datasets.html">Customize Dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer_guide/implemented_models.html">Customize Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer_guide/implemented_evaluators.html">Customize Evaluators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer_guide/implemented_executors.html">Customize Executors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer_guide/implemented_logger.html">Logger</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API REFERENCE</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../trafficdl/trafficdl.config.html">trafficdl.config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../trafficdl/trafficdl.data.html">trafficdl.data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../trafficdl/trafficdl.evaluator.html">trafficdl.evaluator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../trafficdl/trafficdl.executor.html">trafficdl.executor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../trafficdl/trafficdl.model.html">trafficdl.model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../trafficdl/trafficdl.pipeline.html">trafficdl.pipeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../trafficdl/trafficdl.utils.html">trafficdl.utils</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Bigscity-TrafficDL</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../executor.html">Executor Introduction</a> &raquo;</li>
+        
+      <li>Traffic State Prediction Executor</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/user_guide/executor/traffic_state_pred.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="traffic-state-prediction-executor">
+<h1>Traffic State Prediction Executor<a class="headerlink" href="#traffic-state-prediction-executor" title="Permalink to this headline">¶</a></h1>
+<p>本调度器类主要负责完成所有交通状态预测（交通速度、流量、需求量）模型的训练和评估过程。</p>
+<div class="section" id="executor-settings">
+<h2>Executor Settings<a class="headerlink" href="#executor-settings" title="Permalink to this headline">¶</a></h2>
+<p>下面主要介绍此调度器类所能够接收的参数：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">max_epoch</span></code>：训练总轮数</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">epoch</span></code>：起始训练的轮数，如果大于0，会<strong>先从’./trafficdl/cache/model_cache’加载该epoch的模型（缓存文件名为[模型名_数据集名_epoch+轮数.tar]）</strong>，然后继续完成接下来的训练或评估。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">learner</span></code>：优化器optimizer的类别，目前支持<code class="docutils literal notranslate"><span class="pre">adam</span></code>、<code class="docutils literal notranslate"><span class="pre">sgd</span></code>、<code class="docutils literal notranslate"><span class="pre">adagrad</span></code>、<code class="docutils literal notranslate"><span class="pre">rmsprop</span></code>、<code class="docutils literal notranslate"><span class="pre">sparse_adam</span></code>。</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">learning_rate</span></code>：optimizer的参数，学习率</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">weight_decay</span></code>：Adam optimizer的参数</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lr_epsilon</span></code>：Adam optimizer的参数</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lr_decay</span></code>：是否是用lr_scheduler，<strong>默认False</strong></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">lr_scheduler</span></code>：lr_scheduler的类别，目前支持<code class="docutils literal notranslate"><span class="pre">MultiStepLR</span></code>、<code class="docutils literal notranslate"><span class="pre">StepLR</span></code>、<code class="docutils literal notranslate"><span class="pre">ExponentialLR</span></code>、<code class="docutils literal notranslate"><span class="pre">CosineAnnealingLR</span></code>、<code class="docutils literal notranslate"><span class="pre">LambdaLR</span></code>。</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">lr_decay_ratio</span></code>：<code class="docutils literal notranslate"><span class="pre">MultiStepLR</span></code>、<code class="docutils literal notranslate"><span class="pre">StepLR</span></code>、<code class="docutils literal notranslate"><span class="pre">ExponentialLR</span></code>的参数</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">steps</span></code>：<code class="docutils literal notranslate"><span class="pre">MultiStepLR</span></code>的参数</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">step_size</span></code>：<code class="docutils literal notranslate"><span class="pre">StepLR</span></code>的参数</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lr_lambda</span></code>：<code class="docutils literal notranslate"><span class="pre">LambdaLR</span></code>的参数【<strong>此参数需要指定为一个函数，目前基于json的配置文件不支持</strong>】</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lr_T_max</span></code>：<code class="docutils literal notranslate"><span class="pre">CosineAnnealingLR</span></code>的参数</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lr_eta_min</span></code>：<code class="docutils literal notranslate"><span class="pre">CosineAnnealingLR</span></code>的参数</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">clip_grad_norm</span></code>：是否是用clip_grad_norm_，<strong>默认False</strong>（<code class="docutils literal notranslate"><span class="pre">torch.nn.utils.clip_grad_norm_</span></code>）</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">max_grad_norm</span></code>：clip_grad_norm_的参数</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">use_early_stop</span></code>：是否是用早停机制，<strong>默认False</strong></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">patience</span></code>：早停机制的轮数，每当验证集误差&gt;最小验证误差，则累计1，反之则清0从头累计，累计到<code class="docutils literal notranslate"><span class="pre">patience</span></code>次就结束训练</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">log_level</span></code>：log的级别设置，默认为<code class="docutils literal notranslate"><span class="pre">INFO</span></code>，超过<code class="docutils literal notranslate"><span class="pre">INFO</span></code>级别的log都将被输出，具体参考第三方库logging</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">log_every</span></code>：训练过程中用log记录过程的频次</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">saved_model</span></code>：是否保存训练过程中的model，<strong>默认True</strong></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">gpu</span></code>：是否是用gpu训练，<strong>默认True</strong></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">gpu_id</span></code>：指定使用的gpu的id，<strong>默认0</strong></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">device*</span></code>：不能从外部指定，由参数<code class="docutils literal notranslate"><span class="pre">gpu</span></code>和<code class="docutils literal notranslate"><span class="pre">gpu_id</span></code>共同确定，在模型的代码中，使用<code class="docutils literal notranslate"><span class="pre">config['device']</span></code>即可取得，不需要使用参数<code class="docutils literal notranslate"><span class="pre">gpu</span></code>和<code class="docutils literal notranslate"><span class="pre">gpu_id</span></code>。</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="traj_loc_pred.html" class="btn btn-neutral float-right" title="Trajectory Location Prediction Executor" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../executor.html" class="btn btn-neutral float-left" title="Executor Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, aptx1231
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

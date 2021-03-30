@@ -1,0 +1,591 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>trafficdl.model.traffic_flow_prediction.ASTGCN &mdash; Bigscity-TrafficDL  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home" alt="Documentation Home"> Bigscity-TrafficDL
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Get Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../get_started/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../get_started/install.html">Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../get_started/quick_start.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../get_started/directory_structure.html">Directory Structure</a></li>
+</ul>
+<p class="caption"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user_guide/config_settings.html">Config Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user_guide/data.html">Data Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user_guide/model.html">Model Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user_guide/evaluator.html">Evaluator Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user_guide/executor.html">Executor Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user_guide/usage.html">Usage</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../developer_guide/code_style.html">Code Style</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../developer_guide/implemented_datasets.html">Customize Dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../developer_guide/implemented_models.html">Customize Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../developer_guide/implemented_evaluators.html">Customize Evaluators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../developer_guide/implemented_executors.html">Customize Executors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../developer_guide/implemented_logger.html">Logger</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API REFERENCE</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../trafficdl/trafficdl.config.html">trafficdl.config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../trafficdl/trafficdl.data.html">trafficdl.data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../trafficdl/trafficdl.evaluator.html">trafficdl.evaluator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../trafficdl/trafficdl.executor.html">trafficdl.executor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../trafficdl/trafficdl.model.html">trafficdl.model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../trafficdl/trafficdl.pipeline.html">trafficdl.pipeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../trafficdl/trafficdl.utils.html">trafficdl.utils</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">Bigscity-TrafficDL</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../../index.html">Module code</a> &raquo;</li>
+        
+      <li>trafficdl.model.traffic_flow_prediction.ASTGCN</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for trafficdl.model.traffic_flow_prediction.ASTGCN</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
+<span class="kn">import</span> <span class="nn">torch.nn.functional</span> <span class="k">as</span> <span class="nn">F</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">logging</span> <span class="kn">import</span> <span class="n">getLogger</span>
+<span class="kn">from</span> <span class="nn">trafficdl.model.abstract_traffic_state_model</span> <span class="kn">import</span> <span class="n">AbstractTrafficStateModel</span>
+<span class="kn">from</span> <span class="nn">trafficdl.model</span> <span class="kn">import</span> <span class="n">loss</span>
+<span class="kn">from</span> <span class="nn">scipy.sparse.linalg</span> <span class="kn">import</span> <span class="n">eigs</span>
+
+
+<div class="viewcode-block" id="scaled_laplacian"><a class="viewcode-back" href="../../../../trafficdl/trafficdl.model.traffic_flow_prediction.ASTGCN.html#trafficdl.model.traffic_flow_prediction.ASTGCN.scaled_laplacian">[docs]</a><span class="k">def</span> <span class="nf">scaled_laplacian</span><span class="p">(</span><span class="n">weight</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    compute \tilde{L} (scaled laplacian matrix)</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        weight(np.ndarray): shape is (N, N), N is the num of vertices</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        np.ndarray: shape (N, N)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">assert</span> <span class="n">weight</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">weight</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">diag</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">weight</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+    <span class="n">lap</span> <span class="o">=</span> <span class="n">diag</span> <span class="o">-</span> <span class="n">weight</span>
+    <span class="n">lambda_max</span> <span class="o">=</span> <span class="n">eigs</span><span class="p">(</span><span class="n">lap</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;LR&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">real</span>
+    <span class="k">return</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">lap</span><span class="p">)</span> <span class="o">/</span> <span class="n">lambda_max</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">identity</span><span class="p">(</span><span class="n">weight</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span></div>
+
+
+<div class="viewcode-block" id="cheb_polynomial"><a class="viewcode-back" href="../../../../trafficdl/trafficdl.model.traffic_flow_prediction.ASTGCN.html#trafficdl.model.traffic_flow_prediction.ASTGCN.cheb_polynomial">[docs]</a><span class="k">def</span> <span class="nf">cheb_polynomial</span><span class="p">(</span><span class="n">l_tilde</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    compute a list of chebyshev polynomials from T_0 to T_{K-1}</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        l_tilde(np.ndarray): scaled Laplacian, shape (N, N)</span>
+<span class="sd">        k(int): the maximum order of chebyshev polynomials</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        list(np.ndarray): cheb_polynomials, length: K, from T_0 to T_{K-1}</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">num</span> <span class="o">=</span> <span class="n">l_tilde</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">cheb_polynomials</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">identity</span><span class="p">(</span><span class="n">num</span><span class="p">),</span> <span class="n">l_tilde</span><span class="o">.</span><span class="n">copy</span><span class="p">()]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
+        <span class="n">cheb_polynomials</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">l_tilde</span> <span class="o">*</span> <span class="n">cheb_polynomials</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">cheb_polynomials</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">2</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">cheb_polynomials</span></div>
+
+
+<div class="viewcode-block" id="SpatialAttentionLayer"><a class="viewcode-back" href="../../../../trafficdl/trafficdl.model.traffic_flow_prediction.ASTGCN.html#trafficdl.model.traffic_flow_prediction.ASTGCN.SpatialAttentionLayer">[docs]</a><span class="k">class</span> <span class="nc">SpatialAttentionLayer</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    compute spatial attention scores</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">device</span><span class="p">,</span> <span class="n">in_channels</span><span class="p">,</span> <span class="n">num_of_vertices</span><span class="p">,</span> <span class="n">num_of_timesteps</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">SpatialAttentionLayer</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">W1</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span><span class="p">(</span><span class="n">num_of_timesteps</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">W2</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span><span class="p">(</span><span class="n">in_channels</span><span class="p">,</span> <span class="n">num_of_timesteps</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">W3</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span><span class="p">(</span><span class="n">in_channels</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bs</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">num_of_vertices</span><span class="p">,</span> <span class="n">num_of_vertices</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Vs</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span><span class="p">(</span><span class="n">num_of_vertices</span><span class="p">,</span> <span class="n">num_of_vertices</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">))</span>
+
+<div class="viewcode-block" id="SpatialAttentionLayer.forward"><a class="viewcode-back" href="../../../../trafficdl/trafficdl.model.traffic_flow_prediction.ASTGCN.html#trafficdl.model.traffic_flow_prediction.ASTGCN.SpatialAttentionLayer.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Args:</span>
+<span class="sd">            x(torch.tensor): (batch_size, N, F_in, T)</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            torch.tensor: (B,N,N)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">lhs</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">W1</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">W2</span><span class="p">)</span>  <span class="c1"># (b,N,F,T)(T)-&gt;(b,N,F)(F,T)-&gt;(b,N,T)</span>
+
+        <span class="n">rhs</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">W3</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">)</span>  <span class="c1"># (F)(b,N,F,T)-&gt;(b,N,T)-&gt;(b,T,N)</span>
+
+        <span class="n">product</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">lhs</span><span class="p">,</span> <span class="n">rhs</span><span class="p">)</span>  <span class="c1"># (b,N,T)(b,T,N) -&gt; (B, N, N)</span>
+
+        <span class="n">s</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Vs</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">sigmoid</span><span class="p">(</span><span class="n">product</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">bs</span><span class="p">))</span>  <span class="c1"># (N,N)(B, N, N)-&gt;(B,N,N)</span>
+
+        <span class="n">s_normalized</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">s_normalized</span></div></div>
+
+
+<div class="viewcode-block" id="ChebConvWithSAt"><a class="viewcode-back" href="../../../../trafficdl/trafficdl.model.traffic_flow_prediction.ASTGCN.html#trafficdl.model.traffic_flow_prediction.ASTGCN.ChebConvWithSAt">[docs]</a><span class="k">class</span> <span class="nc">ChebConvWithSAt</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    K-order chebyshev graph convolution</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">cheb_polynomials</span><span class="p">,</span> <span class="n">in_channels</span><span class="p">,</span> <span class="n">out_channels</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Args:</span>
+<span class="sd">            k(int):</span>
+<span class="sd">            cheb_polynomials:</span>
+<span class="sd">            in_channels(int): num of channels in the input sequence</span>
+<span class="sd">            out_channels(int): num of channels in the output sequence</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">ChebConvWithSAt</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">K</span> <span class="o">=</span> <span class="n">k</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cheb_polynomials</span> <span class="o">=</span> <span class="n">cheb_polynomials</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">in_channels</span> <span class="o">=</span> <span class="n">in_channels</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">out_channels</span> <span class="o">=</span> <span class="n">out_channels</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">DEVICE</span> <span class="o">=</span> <span class="n">cheb_polynomials</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">device</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Theta</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">ParameterList</span><span class="p">([</span><span class="n">nn</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span><span class="p">(</span><span class="n">in_channels</span><span class="p">,</span> <span class="n">out_channels</span><span class="p">)</span><span class="o">.</span>
+                                                    <span class="n">to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">DEVICE</span><span class="p">))</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">k</span><span class="p">)])</span>
+
+<div class="viewcode-block" id="ChebConvWithSAt.forward"><a class="viewcode-back" href="../../../../trafficdl/trafficdl.model.traffic_flow_prediction.ASTGCN.html#trafficdl.model.traffic_flow_prediction.ASTGCN.ChebConvWithSAt.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">spatial_attention</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Chebyshev graph convolution operation</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            x: (batch_size, N, F_in, T)</span>
+<span class="sd">            spatial_attention: (batch_size, N, N)</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            torch.tensor: (batch_size, N, F_out, T)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">batch_size</span><span class="p">,</span> <span class="n">num_of_vertices</span><span class="p">,</span> <span class="n">in_channels</span><span class="p">,</span> <span class="n">num_of_timesteps</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span>
+
+        <span class="n">outputs</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">for</span> <span class="n">time_step</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_of_timesteps</span><span class="p">):</span>
+
+            <span class="n">graph_signal</span> <span class="o">=</span> <span class="n">x</span><span class="p">[:,</span> <span class="p">:,</span> <span class="p">:,</span> <span class="n">time_step</span><span class="p">]</span>  <span class="c1"># (b, N, F_in)</span>
+
+            <span class="n">output</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">num_of_vertices</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">out_channels</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">DEVICE</span><span class="p">)</span>  <span class="c1"># (b, N, F_out)</span>
+
+            <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">K</span><span class="p">):</span>
+
+                <span class="n">t_k</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cheb_polynomials</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>  <span class="c1"># (N,N)</span>
+
+                <span class="n">t_k_with_at</span> <span class="o">=</span> <span class="n">t_k</span><span class="o">.</span><span class="n">mul</span><span class="p">(</span><span class="n">spatial_attention</span><span class="p">)</span>   <span class="c1"># (N,N)*(N,N) = (N,N) 多行和为1, 按着列进行归一化</span>
+
+                <span class="n">theta_k</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Theta</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>  <span class="c1"># (in_channel, out_channel)</span>
+
+                <span class="n">rhs</span> <span class="o">=</span> <span class="n">t_k_with_at</span><span class="o">.</span><span class="n">permute</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">graph_signal</span><span class="p">)</span>
+                <span class="c1"># (N, N)(b, N, F_in) = (b, N, F_in) 因为是左乘，所以多行和为1变为多列和为1，即一行之和为1，进行左乘</span>
+
+                <span class="n">output</span> <span class="o">=</span> <span class="n">output</span> <span class="o">+</span> <span class="n">rhs</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">theta_k</span><span class="p">)</span>  <span class="c1"># (b, N, F_in)(F_in, F_out) = (b, N, F_out)</span>
+
+            <span class="n">outputs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">output</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>  <span class="c1"># (b, N, F_out, 1)</span>
+
+        <span class="k">return</span> <span class="n">F</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">(</span><span class="n">outputs</span><span class="p">,</span> <span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">))</span>  <span class="c1"># (b, N, F_out, T)</span></div></div>
+
+
+<div class="viewcode-block" id="TemporalAttentionLayer"><a class="viewcode-back" href="../../../../trafficdl/trafficdl.model.traffic_flow_prediction.ASTGCN.html#trafficdl.model.traffic_flow_prediction.ASTGCN.TemporalAttentionLayer">[docs]</a><span class="k">class</span> <span class="nc">TemporalAttentionLayer</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">device</span><span class="p">,</span> <span class="n">in_channels</span><span class="p">,</span> <span class="n">num_of_vertices</span><span class="p">,</span> <span class="n">num_of_timesteps</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">TemporalAttentionLayer</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">U1</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span><span class="p">(</span><span class="n">num_of_vertices</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">U2</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span><span class="p">(</span><span class="n">in_channels</span><span class="p">,</span> <span class="n">num_of_vertices</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">U3</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span><span class="p">(</span><span class="n">in_channels</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">be</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">num_of_timesteps</span><span class="p">,</span> <span class="n">num_of_timesteps</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Ve</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span><span class="p">(</span><span class="n">num_of_timesteps</span><span class="p">,</span> <span class="n">num_of_timesteps</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">))</span>
+
+<div class="viewcode-block" id="TemporalAttentionLayer.forward"><a class="viewcode-back" href="../../../../trafficdl/trafficdl.model.traffic_flow_prediction.ASTGCN.html#trafficdl.model.traffic_flow_prediction.ASTGCN.TemporalAttentionLayer.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Args:</span>
+<span class="sd">            x: (batch_size, N, F_in, T)</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            torch.tensor: (B, T, T)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">_</span><span class="p">,</span> <span class="n">num_of_vertices</span><span class="p">,</span> <span class="n">num_of_features</span><span class="p">,</span> <span class="n">num_of_timesteps</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span>
+
+        <span class="n">lhs</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">permute</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">U1</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">U2</span><span class="p">)</span>
+        <span class="c1"># x:(B, N, F_in, T) -&gt; (B, T, F_in, N)</span>
+        <span class="c1"># (B, T, F_in, N)(N) -&gt; (B,T,F_in)</span>
+        <span class="c1"># (B,T,F_in)(F_in,N)-&gt;(B,T,N)</span>
+
+        <span class="n">rhs</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">U3</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>  <span class="c1"># (F)(B,N,F,T)-&gt;(B, N, T)</span>
+
+        <span class="n">product</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">lhs</span><span class="p">,</span> <span class="n">rhs</span><span class="p">)</span>  <span class="c1"># (B,T,N)(B,N,T)-&gt;(B,T,T)</span>
+
+        <span class="n">e</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Ve</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">sigmoid</span><span class="p">(</span><span class="n">product</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">be</span><span class="p">))</span>  <span class="c1"># (B, T, T)</span>
+
+        <span class="n">e_normalized</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">e_normalized</span></div></div>
+
+
+<div class="viewcode-block" id="ASTGCNBlock"><a class="viewcode-back" href="../../../../trafficdl/trafficdl.model.traffic_flow_prediction.ASTGCN.html#trafficdl.model.traffic_flow_prediction.ASTGCN.ASTGCNBlock">[docs]</a><span class="k">class</span> <span class="nc">ASTGCNBlock</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">device</span><span class="p">,</span> <span class="n">in_channels</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">nb_chev_filter</span><span class="p">,</span> <span class="n">nb_time_filter</span><span class="p">,</span>
+                 <span class="n">time_strides</span><span class="p">,</span> <span class="n">cheb_polynomials</span><span class="p">,</span> <span class="n">num_of_vertices</span><span class="p">,</span> <span class="n">num_of_timesteps</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">ASTGCNBlock</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">TAt</span> <span class="o">=</span> <span class="n">TemporalAttentionLayer</span><span class="p">(</span><span class="n">device</span><span class="p">,</span> <span class="n">in_channels</span><span class="p">,</span> <span class="n">num_of_vertices</span><span class="p">,</span> <span class="n">num_of_timesteps</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">SAt</span> <span class="o">=</span> <span class="n">SpatialAttentionLayer</span><span class="p">(</span><span class="n">device</span><span class="p">,</span> <span class="n">in_channels</span><span class="p">,</span> <span class="n">num_of_vertices</span><span class="p">,</span> <span class="n">num_of_timesteps</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cheb_conv_SAt</span> <span class="o">=</span> <span class="n">ChebConvWithSAt</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">cheb_polynomials</span><span class="p">,</span> <span class="n">in_channels</span><span class="p">,</span> <span class="n">nb_chev_filter</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">time_conv</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="n">nb_chev_filter</span><span class="p">,</span> <span class="n">nb_time_filter</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>
+                                   <span class="n">stride</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">time_strides</span><span class="p">),</span> <span class="n">padding</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">residual_conv</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="n">in_channels</span><span class="p">,</span> <span class="n">nb_time_filter</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">stride</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">time_strides</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ln</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">LayerNorm</span><span class="p">(</span><span class="n">nb_time_filter</span><span class="p">)</span>  <span class="c1"># 需要将channel放到最后一个维度上</span>
+
+<div class="viewcode-block" id="ASTGCNBlock.forward"><a class="viewcode-back" href="../../../../trafficdl/trafficdl.model.traffic_flow_prediction.ASTGCN.html#trafficdl.model.traffic_flow_prediction.ASTGCN.ASTGCNBlock.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Args:</span>
+<span class="sd">            x: (batch_size, N, F_in, T)</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            torch.tensor: (batch_size, N, nb_time_filter, T)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">batch_size</span><span class="p">,</span> <span class="n">num_of_vertices</span><span class="p">,</span> <span class="n">num_of_features</span><span class="p">,</span> <span class="n">num_of_timesteps</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span>
+
+        <span class="c1"># TAt</span>
+        <span class="n">temporal_at</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">TAt</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>  <span class="c1"># (B, T, T)</span>
+
+        <span class="n">x_tat</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">num_of_timesteps</span><span class="p">),</span> <span class="n">temporal_at</span><span class="p">)</span>\
+            <span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">num_of_vertices</span><span class="p">,</span> <span class="n">num_of_features</span><span class="p">,</span> <span class="n">num_of_timesteps</span><span class="p">)</span>
+        <span class="c1"># (B, N*F_in, T) * (B, T, T) -&gt; (B, N*F_in, T) -&gt; (B, N, F_in, T)</span>
+
+        <span class="c1"># SAt</span>
+        <span class="n">spatial_at</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">SAt</span><span class="p">(</span><span class="n">x_tat</span><span class="p">)</span>  <span class="c1"># (B, N, N)</span>
+
+        <span class="c1"># cheb gcn</span>
+        <span class="n">spatial_gcn</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cheb_conv_SAt</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">spatial_at</span><span class="p">)</span>  <span class="c1"># (B, N, F_out, T), F_out = nb_chev_filter</span>
+
+        <span class="c1"># convolution along the time axis</span>
+        <span class="n">time_conv_output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">time_conv</span><span class="p">(</span><span class="n">spatial_gcn</span><span class="o">.</span><span class="n">permute</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+        <span class="c1"># (B, N, F_out, T) -&gt; (B, F_out, N, T) 用(1,3)的卷积核去做-&gt;(B, F_out&#39;, N, T&#39;) F_out&#39;=nb_time_filter</span>
+
+        <span class="c1"># residual shortcut</span>
+        <span class="n">x_residual</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">residual_conv</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">permute</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+        <span class="c1"># (B, N, F_in, T) -&gt; (B, F_in, N, T) 用(1,1)的卷积核去做-&gt;(B, F_out&#39;, N, T&#39;) F_out&#39;=nb_time_filter</span>
+
+        <span class="n">x_residual</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ln</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="n">x_residual</span> <span class="o">+</span> <span class="n">time_conv_output</span><span class="p">)</span><span class="o">.</span><span class="n">permute</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">permute</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="c1"># (B, F_out&#39;, N, T&#39;) -&gt; (B, T&#39;, N, F_out&#39;) -ln -&gt; (B, T&#39;, N, F_out&#39;) -&gt; (B, N, F_out&#39;, T&#39;)</span>
+
+        <span class="k">return</span> <span class="n">x_residual</span></div></div>
+
+
+<div class="viewcode-block" id="FusionLayer"><a class="viewcode-back" href="../../../../trafficdl/trafficdl.model.traffic_flow_prediction.ASTGCN.html#trafficdl.model.traffic_flow_prediction.ASTGCN.FusionLayer">[docs]</a><span class="k">class</span> <span class="nc">FusionLayer</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="c1"># Matrix-based fusion</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">device</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">FusionLayer</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="c1"># define the trainable parameter</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">weights</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">))</span>
+
+<div class="viewcode-block" id="FusionLayer.forward"><a class="viewcode-back" href="../../../../trafficdl/trafficdl.model.traffic_flow_prediction.ASTGCN.html#trafficdl.model.traffic_flow_prediction.ASTGCN.FusionLayer.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="c1"># assuming x is of size B-n-h-w</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">weights</span>  <span class="c1"># element-wise multiplication</span>
+        <span class="k">return</span> <span class="n">x</span></div></div>
+
+
+<div class="viewcode-block" id="ASTGCNSubmodule"><a class="viewcode-back" href="../../../../trafficdl/trafficdl.model.traffic_flow_prediction.ASTGCN.html#trafficdl.model.traffic_flow_prediction.ASTGCN.ASTGCNSubmodule">[docs]</a><span class="k">class</span> <span class="nc">ASTGCNSubmodule</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">device</span><span class="p">,</span> <span class="n">nb_block</span><span class="p">,</span> <span class="n">in_channels</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">nb_chev_filter</span><span class="p">,</span> <span class="n">nb_time_filter</span><span class="p">,</span>
+                 <span class="n">time_strides</span><span class="p">,</span> <span class="n">cheb_polynomials</span><span class="p">,</span> <span class="n">output_window</span><span class="p">,</span> <span class="n">output_dim</span><span class="p">,</span> <span class="n">num_of_vertices</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">ASTGCNSubmodule</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">BlockList</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">ModuleList</span><span class="p">([</span><span class="n">ASTGCNBlock</span><span class="p">(</span><span class="n">device</span><span class="p">,</span> <span class="n">in_channels</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">nb_chev_filter</span><span class="p">,</span>
+                                                    <span class="n">nb_time_filter</span><span class="p">,</span> <span class="n">time_strides</span><span class="p">,</span> <span class="n">cheb_polynomials</span><span class="p">,</span>
+                                                    <span class="n">num_of_vertices</span><span class="p">,</span> <span class="n">time_strides</span> <span class="o">*</span> <span class="n">output_window</span><span class="p">)])</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">BlockList</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">ASTGCNBlock</span><span class="p">(</span><span class="n">device</span><span class="p">,</span> <span class="n">nb_time_filter</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">nb_chev_filter</span><span class="p">,</span>
+                                           <span class="n">nb_time_filter</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">cheb_polynomials</span><span class="p">,</span>
+                                           <span class="n">num_of_vertices</span><span class="p">,</span> <span class="n">output_window</span><span class="p">)</span>
+                               <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nb_block</span><span class="o">-</span><span class="mi">1</span><span class="p">)])</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">final_conv</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="n">output_window</span><span class="p">,</span> <span class="n">output_window</span><span class="p">,</span>
+                                    <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">nb_time_filter</span> <span class="o">-</span> <span class="n">output_dim</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">fusionlayer</span> <span class="o">=</span> <span class="n">FusionLayer</span><span class="p">(</span><span class="n">output_window</span><span class="p">,</span> <span class="n">num_of_vertices</span><span class="p">,</span> <span class="n">output_dim</span><span class="p">,</span> <span class="n">device</span><span class="p">)</span>
+
+<div class="viewcode-block" id="ASTGCNSubmodule.forward"><a class="viewcode-back" href="../../../../trafficdl/trafficdl.model.traffic_flow_prediction.ASTGCN.html#trafficdl.model.traffic_flow_prediction.ASTGCN.ASTGCNSubmodule.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Args:</span>
+<span class="sd">            x: (B, T_in, N_nodes, F_in)</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            torch.tensor: (B, T_out, N_nodes, out_dim)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">permute</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># (B, N, F_in(feature_dim), T_in)</span>
+        <span class="k">for</span> <span class="n">block</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">BlockList</span><span class="p">:</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="n">block</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="c1"># (B, N, F_out(nb_time_filter), T_out(output_window))</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">final_conv</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">permute</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+        <span class="c1"># (B,N,F_out,T_out)-&gt;(B,T_out,N,F_out)-conv&lt;1,F_out-out_dim+1&gt;-&gt;(B,T_out,N,out_dim)</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fusionlayer</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">output</span></div></div>
+
+
+<div class="viewcode-block" id="ASTGCN"><a class="viewcode-back" href="../../../../trafficdl/trafficdl.model.traffic_flow_prediction.ASTGCN.html#trafficdl.model.traffic_flow_prediction.ASTGCN.ASTGCN">[docs]</a><span class="k">class</span> <span class="nc">ASTGCN</span><span class="p">(</span><span class="n">AbstractTrafficStateModel</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">data_feature</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="n">data_feature</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">num_nodes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_feature</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;num_nodes&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">feature_dim</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_feature</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;feature_dim&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">len_period</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_feature</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;len_period&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">len_trend</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_feature</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;len_trend&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">len_closeness</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_feature</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;len_closeness&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">len_period</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">len_trend</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">len_closeness</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Num of days/weeks/hours are all zero! Set at least one of them not zero!&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">output_dim</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_feature</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;output_dim&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">output_window</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;output_window&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">device</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;device&#39;</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">&#39;cpu&#39;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nb_block</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;nb_block&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">K</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;K&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nb_chev_filter</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;nb_chev_filter&#39;</span><span class="p">,</span> <span class="mi">64</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nb_time_filter</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;nb_time_filter&#39;</span><span class="p">,</span> <span class="mi">64</span><span class="p">)</span>
+
+        <span class="n">adj_mx</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_feature</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;adj_mx&#39;</span><span class="p">)</span>
+        <span class="n">l_tilde</span> <span class="o">=</span> <span class="n">scaled_laplacian</span><span class="p">(</span><span class="n">adj_mx</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cheb_polynomials</span> <span class="o">=</span> <span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">.</span><span class="n">type</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+                                 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">cheb_polynomial</span><span class="p">(</span><span class="n">l_tilde</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">K</span><span class="p">)]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span> <span class="o">=</span> <span class="n">getLogger</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_scaler</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_feature</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;scaler&#39;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">len_closeness</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">hours_ASTGCN_submodule</span> <span class="o">=</span> \
+                <span class="n">ASTGCNSubmodule</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nb_block</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">feature_dim</span><span class="p">,</span>
+                                <span class="bp">self</span><span class="o">.</span><span class="n">K</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nb_chev_filter</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nb_time_filter</span><span class="p">,</span>
+                                <span class="bp">self</span><span class="o">.</span><span class="n">len_closeness</span> <span class="o">//</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_window</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">cheb_polynomials</span><span class="p">,</span>
+                                <span class="bp">self</span><span class="o">.</span><span class="n">output_window</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_dim</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_nodes</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">len_period</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">days_ASTGCN_submodule</span> <span class="o">=</span> \
+                <span class="n">ASTGCNSubmodule</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nb_block</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">feature_dim</span><span class="p">,</span>
+                                <span class="bp">self</span><span class="o">.</span><span class="n">K</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nb_chev_filter</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nb_time_filter</span><span class="p">,</span>
+                                <span class="bp">self</span><span class="o">.</span><span class="n">len_period</span> <span class="o">//</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_window</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">cheb_polynomials</span><span class="p">,</span>
+                                <span class="bp">self</span><span class="o">.</span><span class="n">output_window</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_dim</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_nodes</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">len_trend</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">weeks_ASTGCN_submodule</span> <span class="o">=</span> \
+                <span class="n">ASTGCNSubmodule</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nb_block</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">feature_dim</span><span class="p">,</span>
+                                <span class="bp">self</span><span class="o">.</span><span class="n">K</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nb_chev_filter</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nb_time_filter</span><span class="p">,</span>
+                                <span class="bp">self</span><span class="o">.</span><span class="n">len_trend</span> <span class="o">//</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_window</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">cheb_polynomials</span><span class="p">,</span>
+                                <span class="bp">self</span><span class="o">.</span><span class="n">output_window</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_dim</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_nodes</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_init_parameters</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">_init_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">p</span><span class="o">.</span><span class="n">dim</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">nn</span><span class="o">.</span><span class="n">init</span><span class="o">.</span><span class="n">xavier_uniform_</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">nn</span><span class="o">.</span><span class="n">init</span><span class="o">.</span><span class="n">uniform_</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+
+<div class="viewcode-block" id="ASTGCN.forward"><a class="viewcode-back" href="../../../../trafficdl/trafficdl.model.traffic_flow_prediction.ASTGCN.html#trafficdl.model.traffic_flow_prediction.ASTGCN.ASTGCN.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">batch</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">batch</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">]</span>  <span class="c1"># (B, Tw+Td+Th, N_nodes, F_in)</span>
+        <span class="c1"># 时间维度(第1维)上的顺序是CPT，即</span>
+        <span class="c1"># [0, len_closeness) -- input1</span>
+        <span class="c1"># [len_closeness, len_closeness+len_period) -- input2</span>
+        <span class="c1"># [len_closeness+len_period, len_closeness+len_period+len_trend) -- input3</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">len_closeness</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">begin_index</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="n">end_index</span> <span class="o">=</span> <span class="n">begin_index</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">len_closeness</span>
+            <span class="n">output_hours</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">hours_ASTGCN_submodule</span><span class="p">(</span><span class="n">x</span><span class="p">[:,</span> <span class="n">begin_index</span><span class="p">:</span><span class="n">end_index</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:])</span>
+            <span class="n">output</span> <span class="o">+=</span> <span class="n">output_hours</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">len_period</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">begin_index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">len_closeness</span>
+            <span class="n">end_index</span> <span class="o">=</span> <span class="n">begin_index</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">len_period</span>
+            <span class="n">output_days</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">days_ASTGCN_submodule</span><span class="p">(</span><span class="n">x</span><span class="p">[:,</span> <span class="n">begin_index</span><span class="p">:</span><span class="n">end_index</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:])</span>
+            <span class="n">output</span> <span class="o">+=</span> <span class="n">output_days</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">len_trend</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">begin_index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">len_closeness</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">len_period</span>
+            <span class="n">end_index</span> <span class="o">=</span> <span class="n">begin_index</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">len_trend</span>
+            <span class="n">output_weeks</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">weeks_ASTGCN_submodule</span><span class="p">(</span><span class="n">x</span><span class="p">[:,</span> <span class="n">begin_index</span><span class="p">:</span><span class="n">end_index</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:])</span>
+            <span class="n">output</span> <span class="o">+=</span> <span class="n">output_weeks</span>
+        <span class="k">return</span> <span class="n">output</span>  <span class="c1"># (B, Tp, N_nodes, F_out)</span></div>
+
+<div class="viewcode-block" id="ASTGCN.calculate_loss"><a class="viewcode-back" href="../../../../trafficdl/trafficdl.model.traffic_flow_prediction.ASTGCN.html#trafficdl.model.traffic_flow_prediction.ASTGCN.ASTGCN.calculate_loss">[docs]</a>    <span class="k">def</span> <span class="nf">calculate_loss</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">batch</span><span class="p">):</span>
+        <span class="n">y_true</span> <span class="o">=</span> <span class="n">batch</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span>
+        <span class="n">y_predicted</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">batch</span><span class="p">)</span>
+        <span class="n">y_true</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_scaler</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">y_true</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">output_dim</span><span class="p">])</span>
+        <span class="n">y_predicted</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_scaler</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">y_predicted</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">output_dim</span><span class="p">])</span>
+        <span class="k">return</span> <span class="n">loss</span><span class="o">.</span><span class="n">masked_mse_torch</span><span class="p">(</span><span class="n">y_predicted</span><span class="p">,</span> <span class="n">y_true</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="ASTGCN.predict"><a class="viewcode-back" href="../../../../trafficdl/trafficdl.model.traffic_flow_prediction.ASTGCN.html#trafficdl.model.traffic_flow_prediction.ASTGCN.ASTGCN.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">batch</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">batch</span><span class="p">)</span></div></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, aptx1231
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

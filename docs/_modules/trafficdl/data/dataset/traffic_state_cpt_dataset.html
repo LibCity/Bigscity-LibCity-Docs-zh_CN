@@ -1,0 +1,670 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>trafficdl.data.dataset.traffic_state_cpt_dataset &mdash; Bigscity-TrafficDL  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home" alt="Documentation Home"> Bigscity-TrafficDL
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Get Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../get_started/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../get_started/install.html">Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../get_started/quick_start.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../get_started/directory_structure.html">Directory Structure</a></li>
+</ul>
+<p class="caption"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user_guide/config_settings.html">Config Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user_guide/data.html">Data Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user_guide/model.html">Model Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user_guide/evaluator.html">Evaluator Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user_guide/executor.html">Executor Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user_guide/usage.html">Usage</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../developer_guide/code_style.html">Code Style</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../developer_guide/implemented_datasets.html">Customize Dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../developer_guide/implemented_models.html">Customize Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../developer_guide/implemented_evaluators.html">Customize Evaluators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../developer_guide/implemented_executors.html">Customize Executors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../developer_guide/implemented_logger.html">Logger</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API REFERENCE</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../trafficdl/trafficdl.config.html">trafficdl.config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../trafficdl/trafficdl.data.html">trafficdl.data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../trafficdl/trafficdl.evaluator.html">trafficdl.evaluator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../trafficdl/trafficdl.executor.html">trafficdl.executor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../trafficdl/trafficdl.model.html">trafficdl.model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../trafficdl/trafficdl.pipeline.html">trafficdl.pipeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../trafficdl/trafficdl.utils.html">trafficdl.utils</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">Bigscity-TrafficDL</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../../index.html">Module code</a> &raquo;</li>
+        
+      <li>trafficdl.data.dataset.traffic_state_cpt_dataset</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for trafficdl.data.dataset.traffic_state_cpt_dataset</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">datetime</span>
+
+<span class="kn">from</span> <span class="nn">trafficdl.data.dataset</span> <span class="kn">import</span> <span class="n">TrafficStateDataset</span>
+<span class="kn">from</span> <span class="nn">trafficdl.data.utils</span> <span class="kn">import</span> <span class="n">generate_dataloader</span>
+<span class="kn">from</span> <span class="nn">trafficdl.utils</span> <span class="kn">import</span> <span class="n">ensure_dir</span>
+
+
+<div class="viewcode-block" id="TrafficStateCPTDataset"><a class="viewcode-back" href="../../../../trafficdl/trafficdl.data.dataset.traffic_state_cpt_dataset.html#trafficdl.data.dataset.traffic_state_cpt_dataset.TrafficStateCPTDataset">[docs]</a><span class="k">class</span> <span class="nc">TrafficStateCPTDataset</span><span class="p">(</span><span class="n">TrafficStateDataset</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    交通状态预测数据集的另一个基类</span>
+<span class="sd">    部分交通预测模型通过对接近度(closeness)/周期(period)/趋势(trend)进行建模实现预测。</span>
+<span class="sd">    默认使用len_closeness/len_period/len_trend的数据预测当前时刻的数据，即一个X，一个y。（一般是单步预测）</span>
+<span class="sd">    **数据原始的时间戳不能为空！**。</span>
+<span class="sd">    一般对外部数据进行单独建模，因此数据为[X, y, X_ext(可选), y_ext(可选)]。</span>
+<span class="sd">    默认使用`train_rate`和`eval_rate`在样本数量(num_samples)维度上直接切分训练集、测试集、验证集。</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">points_per_hour</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;points_per_hour&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">offset_frame</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">timedelta64</span><span class="p">(</span><span class="mi">60</span> <span class="o">//</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">points_per_hour</span><span class="p">),</span> <span class="s1">&#39;m&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">len_closeness</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;len_closeness&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">len_period</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;len_period&#39;</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">len_trend</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;len_trend&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">len_closeness</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">len_period</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">len_trend</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pad_forward_period</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;pad_forward_period&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pad_back_period</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;pad_back_period&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pad_forward_trend</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;pad_forward_trend&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pad_back_trend</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;pad_back_trend&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">interval_period</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;interval_period&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">interval_trend</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;interval_trend&#39;</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">feature_name</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;X&#39;</span><span class="p">:</span> <span class="s1">&#39;float&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="s1">&#39;float&#39;</span><span class="p">,</span> <span class="s1">&#39;X_ext&#39;</span><span class="p">:</span> <span class="s1">&#39;float&#39;</span><span class="p">,</span> <span class="s1">&#39;y_ext&#39;</span><span class="p">:</span> <span class="s1">&#39;float&#39;</span><span class="p">}</span>
+
+<div class="viewcode-block" id="TrafficStateCPTDataset._generate_input_data"><a class="viewcode-back" href="../../../../trafficdl/trafficdl.data.dataset.traffic_state_cpt_dataset.html#trafficdl.data.dataset.traffic_state_cpt_dataset.TrafficStateCPTDataset._generate_input_data">[docs]</a>    <span class="k">def</span> <span class="nf">_generate_input_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">df</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        根据全局参数len_closeness/len_period/len_trend切分输入，产生模型需要的输入。</span>
+<span class="sd">        interval_period是period的长度，一般是一天，单位是天，</span>
+<span class="sd">        interval_trend是trend的长度，一般是一周，单位是天，</span>
+<span class="sd">        pad_**则是向前或向后扩展多长的距离，</span>
+<span class="sd">        用三段的输入一起与预测输出，单步预测。</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            df(np.ndarray): 数据数组，shape: (len_time, ..., feature_dim)</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            tuple: tuple contains:</span>
+<span class="sd">                x(np.ndarray): 模型输入数据，(num_samples, T_c+T_p+T_t, ..., feature_dim) \n</span>
+<span class="sd">                y(np.ndarray): 模型输出数据，(num_samples, 1, ..., feature_dim) \n</span>
+<span class="sd">                ts_x: 输入数据对应的时间片，(num_samples, T_c+T_p+T_t) \n</span>
+<span class="sd">                ts_y: 输出数据对应的时间片，(num_samples, )</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Structure:</span>
+<span class="sd">                  |&lt;---------------------- it ---------------------&gt;|</span>
+<span class="sd">                  |                     |&lt;----------- ip ----------&gt;|</span>
+<span class="sd">           -+--+--+--+--+--+-    -+--+--+--+--+--+-    -+--+--+--+--+-</span>
+<span class="sd">            |  |  |  |  |  | .... |  |  |  |  |  | .... |  |  |  |  | &lt; Y data</span>
+<span class="sd">           -+--+--+--+--+--+-    -+--+--+--+--+--+-    -+--+--+--+--+-</span>
+<span class="sd">            |&lt;bt &gt;|  |&lt; ft&gt;|      |&lt;bp &gt;|  |&lt; fp&gt;|      |&lt;- lc -&gt;|</span>
+<span class="sd">             ^  ^  ^  ^  ^         ^  ^  ^  ^  ^          ^  ^  ^</span>
+<span class="sd">            Trend data x lt       Period data x lp     Closeness data</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># 求三段相对于预测位置（即y）的偏移距离</span>
+        <span class="n">tday</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">points_per_hour</span> <span class="o">*</span> <span class="mi">24</span>  <span class="c1"># 每天的时间片数</span>
+        <span class="n">r_c</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">len_closeness</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">rl_p</span> <span class="o">=</span> <span class="p">[</span><span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">interval_period</span> <span class="o">*</span> <span class="n">tday</span> <span class="o">*</span> <span class="n">i</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">pad_forward_period</span><span class="p">,</span>
+                      <span class="bp">self</span><span class="o">.</span><span class="n">interval_period</span> <span class="o">*</span> <span class="n">tday</span> <span class="o">*</span> <span class="n">i</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">pad_back_period</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">len_period</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)]</span>
+        <span class="n">rl_t</span> <span class="o">=</span> <span class="p">[</span><span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">interval_trend</span> <span class="o">*</span> <span class="n">tday</span> <span class="o">*</span> <span class="n">i</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">pad_forward_trend</span><span class="p">,</span>
+                      <span class="bp">self</span><span class="o">.</span><span class="n">interval_trend</span> <span class="o">*</span> <span class="n">tday</span> <span class="o">*</span> <span class="n">i</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">pad_back_trend</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">len_trend</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)]</span>
+        <span class="c1"># print(&#39;time index&#39;, r_c, rl_p, rl_t)</span>
+        <span class="n">offset_mat</span> <span class="o">=</span> \
+            <span class="p">[</span>
+                <span class="p">[</span><span class="n">e</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">r_c</span><span class="p">],</span>
+                <span class="p">[</span><span class="n">e</span> <span class="k">for</span> <span class="n">r_p</span> <span class="ow">in</span> <span class="n">rl_p</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">r_p</span><span class="p">],</span>
+                <span class="p">[</span><span class="n">e</span> <span class="k">for</span> <span class="n">r_t</span> <span class="ow">in</span> <span class="n">rl_t</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">r_t</span><span class="p">]</span>
+            <span class="p">]</span>  <span class="c1"># [[closeness], [period], [trend]]</span>
+        <span class="c1"># 计算最大值，即最大的偏移距离</span>
+        <span class="n">largest_interval</span> <span class="o">=</span> <span class="nb">max</span><span class="p">([</span><span class="n">k</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">k</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span> <span class="k">else</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">offset_mat</span><span class="p">])</span>
+        <span class="c1"># print(&#39;offset_mat&#39;, offset_mat)</span>
+        <span class="c1"># 从最大的偏移处开始算，因为要向前偏移这么多</span>
+        <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">ts_x</span><span class="p">,</span> <span class="n">ts_y</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[],</span> <span class="p">[],</span> <span class="p">[]</span>
+        <span class="n">ts_dumped</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># 错误时间戳</span>
+        <span class="k">for</span> <span class="n">cur_ts</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">timesolts</span><span class="p">[</span><span class="n">largest_interval</span><span class="p">:]:</span>
+            <span class="c1"># 求当前时间片cur_ts向左偏移offset_mat之后得到的时间片</span>
+            <span class="c1"># ts_mat和offset_mat形状相同([[closeness], [period], [trend]])，存储的是具体的时间戳</span>
+            <span class="n">ts_mat</span> <span class="o">=</span> \
+                <span class="p">[</span>
+                    <span class="p">[</span>
+                        <span class="n">cur_ts</span> <span class="o">-</span> <span class="n">offset</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">offset_frame</span>  <span class="c1"># offset_frame 每个时间片的时长（min）</span>
+                        <span class="k">for</span> <span class="n">offset</span> <span class="ow">in</span> <span class="n">offset_seq</span>
+                    <span class="p">]</span>
+                    <span class="k">for</span> <span class="n">offset_seq</span> <span class="ow">in</span> <span class="n">offset_mat</span>  <span class="c1"># offset_seq: 记录偏移距离的数组</span>
+                <span class="p">]</span>
+            <span class="c1"># print(ts_mat)</span>
+            <span class="c1"># 验证时间戳矩阵里的时间戳是否是合法的</span>
+            <span class="n">flag</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="k">for</span> <span class="n">ts_seq</span> <span class="ow">in</span> <span class="n">ts_mat</span><span class="p">:</span>  <span class="c1"># ts_seq: 时间戳数组</span>
+                <span class="k">for</span> <span class="n">ts</span> <span class="ow">in</span> <span class="n">ts_seq</span><span class="p">:</span>  <span class="c1"># ts: 时间戳</span>
+                    <span class="k">if</span> <span class="n">ts</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">idx_of_timesolts</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+                        <span class="n">ts_dumped</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">cur_ts</span><span class="p">,</span> <span class="n">ts</span><span class="p">))</span>
+                        <span class="n">flag</span> <span class="o">=</span> <span class="kc">False</span>
+                        <span class="k">break</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">flag</span><span class="p">:</span>
+                    <span class="k">break</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">flag</span><span class="p">:</span>  <span class="c1"># 有异常时间戳则进入下一次循环</span>
+                <span class="k">continue</span>
+            <span class="c1"># 获取时间戳矩阵对应位置的数据</span>
+            <span class="n">dat_mat</span> <span class="o">=</span> <span class="p">[[</span><span class="n">df</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">idx_of_timesolts</span><span class="p">[</span><span class="n">ts</span><span class="p">]]</span> <span class="k">for</span> <span class="n">ts</span> <span class="ow">in</span> <span class="n">ts_seq</span><span class="p">]</span> <span class="k">for</span> <span class="n">ts_seq</span> <span class="ow">in</span> <span class="n">ts_mat</span><span class="p">]</span>
+            <span class="n">x_c</span><span class="p">,</span> <span class="n">x_p</span><span class="p">,</span> <span class="n">x_t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">dat_mat</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">dat_mat</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">dat_mat</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+            <span class="c1"># (t_c, ..., feature_dim), (t_p, ..., feature_dim), (t_t, ..., feature_dim)</span>
+            <span class="n">x_exist</span> <span class="o">=</span> <span class="p">[</span><span class="n">x_</span> <span class="k">for</span> <span class="n">x_</span> <span class="ow">in</span> <span class="p">[</span><span class="n">x_c</span><span class="p">,</span> <span class="n">x_p</span><span class="p">,</span> <span class="n">x_t</span><span class="p">]</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">x_</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span>
+            <span class="n">x_input</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">x_exist</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># (t_c+t_p+t_t, ..., feature_dim)</span>
+            <span class="n">x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x_input</span><span class="p">)</span>
+            <span class="n">cur_index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">idx_of_timesolts</span><span class="p">[</span><span class="n">cur_ts</span><span class="p">]</span>
+            <span class="n">y_input</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">cur_index</span><span class="p">:</span><span class="n">cur_index</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>  <span class="c1"># 预测目标即cur_ts处的数据, (1, ..., feature_dim)</span>
+            <span class="n">y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">y_input</span><span class="p">)</span>
+            <span class="n">ts_x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ts_mat</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">ts_mat</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">ts_mat</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>  <span class="c1"># 对应的时间片</span>
+            <span class="n">ts_y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cur_ts</span><span class="p">)</span>                             <span class="c1"># 对应的时间片</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>  <span class="c1"># (num_samples, T_c+T_p+T_t, ..., feature_dim)</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>  <span class="c1"># (num_samples, 1, ..., feature_dim)</span>
+        <span class="n">ts_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">ts_x</span><span class="p">)</span>  <span class="c1"># (num_samples, T_c+T_p+T_t)</span>
+        <span class="n">ts_y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">ts_y</span><span class="p">)</span>  <span class="c1"># (num_samples, )</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Dumped &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">ts_dumped</span><span class="p">))</span> <span class="o">+</span> <span class="s2">&quot; data.&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">ts_x</span><span class="p">,</span> <span class="n">ts_y</span></div>
+
+<div class="viewcode-block" id="TrafficStateCPTDataset._get_external_array"><a class="viewcode-back" href="../../../../trafficdl/trafficdl.data.dataset.traffic_state_cpt_dataset.html#trafficdl.data.dataset.traffic_state_cpt_dataset.TrafficStateCPTDataset._get_external_array">[docs]</a>    <span class="k">def</span> <span class="nf">_get_external_array</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timestamp_list</span><span class="p">,</span> <span class="n">ext_data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">previous_ext</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        根据时间戳数组，获取对应时间的外部特征</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            timestamp_list(np.ndarray): 时间戳序列</span>
+<span class="sd">            ext_data: 外部数据</span>
+<span class="sd">            previous_ext: 是否是用过去时间段的外部数据，因为对于预测的时间段Y，</span>
+<span class="sd">                            一般没有真实的外部数据，所以用前一个时刻的数据，**多步预测则用提前多步的数据**</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            np.ndarray: External data shape is (len(timestamp_list), ext_dim)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">data_list</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_time_in_day</span><span class="p">:</span>
+            <span class="n">time_ind</span> <span class="o">=</span> <span class="p">(</span><span class="n">timestamp_list</span> <span class="o">-</span> <span class="n">timestamp_list</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;datetime64[D]&quot;</span><span class="p">))</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">timedelta64</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;D&quot;</span><span class="p">)</span>
+            <span class="n">data_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">time_ind</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">time_ind</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">))</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_day_in_week</span><span class="p">:</span>
+            <span class="n">dayofweek</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">day</span> <span class="ow">in</span> <span class="n">timestamp_list</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;datetime64[D]&quot;</span><span class="p">):</span>
+                <span class="n">dayofweek</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">day</span><span class="p">),</span> <span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">weekday</span><span class="p">())</span>
+            <span class="n">day_in_week</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">timestamp_list</span><span class="p">),</span> <span class="mi">7</span><span class="p">))</span>
+            <span class="n">day_in_week</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">timestamp_list</span><span class="p">)),</span> <span class="n">dayofweek</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="n">data_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">day_in_week</span><span class="p">)</span>
+        <span class="c1"># 外部数据集</span>
+        <span class="k">if</span> <span class="n">ext_data</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">indexs</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">ts</span> <span class="ow">in</span> <span class="n">timestamp_list</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">previous_ext</span><span class="p">:</span>
+                    <span class="n">ts_index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">idx_of_ext_timesolts</span><span class="p">[</span><span class="n">ts</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">offset_frame</span><span class="p">]</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">ts_index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">idx_of_ext_timesolts</span><span class="p">[</span><span class="n">ts</span><span class="p">]</span>
+                <span class="n">indexs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ts_index</span><span class="p">)</span>
+            <span class="n">select_data</span> <span class="o">=</span> <span class="n">ext_data</span><span class="p">[</span><span class="n">indexs</span><span class="p">]</span>  <span class="c1"># len(timestamp_list) * ext_dim 选出所需要的时间步的数据</span>
+            <span class="n">data_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">select_data</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">data_list</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">data_list</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">timestamp_list</span><span class="p">),</span> <span class="mi">0</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">data</span>  <span class="c1"># (len(timestamp_list), ext_dim)</span></div>
+
+<div class="viewcode-block" id="TrafficStateCPTDataset._load_data"><a class="viewcode-back" href="../../../../trafficdl/trafficdl.data.dataset.traffic_state_cpt_dataset.html#trafficdl.data.dataset.traffic_state_cpt_dataset.TrafficStateCPTDataset._load_data">[docs]</a>    <span class="k">def</span> <span class="nf">_load_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        加载数据文件(.dyna/.grid/.od/.gridod)</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            tuple: tuple contains:</span>
+<span class="sd">                x: (num_samples, T_c+T_p+T_t, ..., feature_dim)</span>
+<span class="sd">                y: (num_samples, 1, ..., feature_dim)</span>
+<span class="sd">                ts_x: (num_samples, T_c+T_p+T_t)</span>
+<span class="sd">                ts_y: (num_samples, )</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># 处理多数据文件问题</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data_files</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+            <span class="n">data_files</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_files</span>
+        <span class="k">else</span><span class="p">:</span>  <span class="c1"># str</span>
+            <span class="n">data_files</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">data_files</span><span class="p">]</span>
+        <span class="n">x_list</span><span class="p">,</span> <span class="n">y_list</span><span class="p">,</span> <span class="n">ts_x_list</span><span class="p">,</span> <span class="n">ts_y_list</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[],</span> <span class="p">[],</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">data_files</span><span class="p">:</span>
+            <span class="n">df</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_load_dyna</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>  <span class="c1"># (len_time, ..., feature_dim)</span>
+            <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">ts_x</span><span class="p">,</span> <span class="n">ts_y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_generate_input_data</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+            <span class="n">x_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>  <span class="c1"># x: (num_samples, T_c+T_p+T_t, ..., feature_dim)</span>
+            <span class="n">y_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>  <span class="c1"># y: (num_samples, 1, ..., feature_dim)</span>
+            <span class="n">ts_x_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ts_x</span><span class="p">)</span>  <span class="c1"># ts_x: (num_samples, T_c+T_p+T_t)</span>
+            <span class="n">ts_y_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ts_y</span><span class="p">)</span>  <span class="c1"># ts_y: (num_samples, )</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">x_list</span><span class="p">)</span>  <span class="c1"># (num_samples_plus, T_c+T_p+T_t, ..., feature_dim)</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">y_list</span><span class="p">)</span>  <span class="c1"># (num_samples_plus, 1, ..., feature_dim)</span>
+        <span class="n">ts_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">ts_x_list</span><span class="p">)</span>  <span class="c1"># (num_samples_plus, T_c+T_p+T_t)</span>
+        <span class="n">ts_y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">ts_y_list</span><span class="p">)</span>  <span class="c1"># (num_samples_plus, )</span>
+        <span class="k">return</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">ts_x</span><span class="p">,</span> <span class="n">ts_y</span></div>
+
+<div class="viewcode-block" id="TrafficStateCPTDataset._load_ext_data"><a class="viewcode-back" href="../../../../trafficdl/trafficdl.data.dataset.traffic_state_cpt_dataset.html#trafficdl.data.dataset.traffic_state_cpt_dataset.TrafficStateCPTDataset._load_ext_data">[docs]</a>    <span class="k">def</span> <span class="nf">_load_ext_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ts_x</span><span class="p">,</span> <span class="n">ts_y</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        加载对应时间的外部数据(.ext)</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            ts_x: 输入数据X对应的时间戳，shape: (num_samples, T_c+T_p+T_t)</span>
+<span class="sd">            ts_y: 输出数据Y对应的时间戳，shape:(num_samples, )</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            tuple: tuple contains:</span>
+<span class="sd">                ext_x(np.ndarray): 对应时间的外部数据, shape: (num_samples, T_c+T_p+T_t, ext_dim),</span>
+<span class="sd">                ext_y(np.ndarray): 对应时间的外部数据, shape: (num_samples, ext_dim)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># 加载外部数据</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">load_external</span> <span class="ow">and</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data_path</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">ext_file</span> <span class="o">+</span> <span class="s1">&#39;.ext&#39;</span><span class="p">):</span>  <span class="c1"># 外部数据集</span>
+            <span class="n">ext_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_load_ext</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">ext_data</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">ext_x</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">ts</span> <span class="ow">in</span> <span class="n">ts_x</span><span class="p">:</span>
+            <span class="n">ext_x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_get_external_array</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="n">ext_data</span><span class="p">))</span>
+        <span class="n">ext_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">ext_x</span><span class="p">)</span>
+        <span class="c1"># ext_x: (num_samples_plus, T_c+T_p+T_t, ext_dim)</span>
+        <span class="n">ext_y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_external_array</span><span class="p">(</span><span class="n">ts_y</span><span class="p">,</span> <span class="n">ext_data</span><span class="p">,</span> <span class="n">previous_ext</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="c1"># ext_y: (num_samples_plus, ext_dim)</span>
+        <span class="k">return</span> <span class="n">ext_x</span><span class="p">,</span> <span class="n">ext_y</span></div>
+
+<div class="viewcode-block" id="TrafficStateCPTDataset._generate_data"><a class="viewcode-back" href="../../../../trafficdl/trafficdl.data.dataset.traffic_state_cpt_dataset.html#trafficdl.data.dataset.traffic_state_cpt_dataset.TrafficStateCPTDataset._generate_data">[docs]</a>    <span class="k">def</span> <span class="nf">_generate_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        加载数据文件(.dyna/.grid/.od/.gridod)和外部数据(.ext)</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            tuple: tuple contains:</span>
+<span class="sd">                x(np.ndarray): 模型输入数据，(num_samples, T_c+T_p+T_t, ..., feature_dim) \n</span>
+<span class="sd">                y(np.ndarray): 模型输出数据，(num_samples, 1, ..., feature_dim) \n</span>
+<span class="sd">                ext_x(np.ndarray): 模型输入外部数据，(num_samples, T_c+T_p+T_t, ext_dim) \n</span>
+<span class="sd">                ext_y(np.ndarray): 模型输出外部数据，(num_samples, ext_dim)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">ts_x</span><span class="p">,</span> <span class="n">ts_y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_load_data</span><span class="p">()</span>
+        <span class="n">ext_x</span><span class="p">,</span> <span class="n">ext_y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_load_ext_data</span><span class="p">(</span><span class="n">ts_x</span><span class="p">,</span> <span class="n">ts_y</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Dataset created&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;x shape: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;, y shape: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;ext_x shape: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">ext_x</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;, ext_y shape: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">ext_y</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">ext_x</span><span class="p">,</span> <span class="n">ext_y</span></div>
+
+<div class="viewcode-block" id="TrafficStateCPTDataset._split_train_val_test"><a class="viewcode-back" href="../../../../trafficdl/trafficdl.data.dataset.traffic_state_cpt_dataset.html#trafficdl.data.dataset.traffic_state_cpt_dataset.TrafficStateCPTDataset._split_train_val_test">[docs]</a>    <span class="k">def</span> <span class="nf">_split_train_val_test</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">ext_x</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ext_y</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        划分训练集、测试集、验证集，并缓存数据集</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            x(np.ndarray): 输入数据 (num_samples, T_c+T_p+T_t, ..., feature_dim)</span>
+<span class="sd">            y(np.ndarray): 输出数据 (num_samples, 1, ..., feature_dim)</span>
+<span class="sd">            ext_x(np.ndarray): 输入外部数据 (num_samples, T_c+T_p+T_t, ext_dim)</span>
+<span class="sd">            ext_y(np.ndarray): 输出外部数据 (num_samples, ext_dim)</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            tuple: tuple contains:</span>
+<span class="sd">                x_train: (num_samples, T_c+T_p+T_t, ..., feature_dim) \n</span>
+<span class="sd">                y_train: (num_samples, 1, ..., feature_dim) \n</span>
+<span class="sd">                x_val: (num_samples, T_c+T_p+T_t, ..., feature_dim) \n</span>
+<span class="sd">                y_val: (num_samples, 1, ..., feature_dim) \n</span>
+<span class="sd">                x_test: (num_samples, T_c+T_p+T_t, ..., feature_dim) \n</span>
+<span class="sd">                y_test: (num_samples, 1, ..., feature_dim) \n</span>
+<span class="sd">                ext_x_train: (num_samples, T_c+T_p+T_t, ext_dim) \n</span>
+<span class="sd">                ext_y_train: (num_samples, ext_dim) \n</span>
+<span class="sd">                ext_x_val: (num_samples, T_c+T_p+T_t, ext_dim) \n</span>
+<span class="sd">                ext_y_val: (num_samples, ext_dim) \n</span>
+<span class="sd">                ext_x_test: (num_samples, T_c+T_p+T_t, ext_dim) \n</span>
+<span class="sd">                ext_y_test: (num_samples, ext_dim)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">test_rate</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">train_rate</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">eval_rate</span>
+        <span class="n">num_samples</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">num_test</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">num_samples</span> <span class="o">*</span> <span class="n">test_rate</span><span class="p">)</span>
+        <span class="n">num_train</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">num_samples</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">train_rate</span><span class="p">)</span>
+        <span class="n">num_val</span> <span class="o">=</span> <span class="n">num_samples</span> <span class="o">-</span> <span class="n">num_test</span> <span class="o">-</span> <span class="n">num_train</span>
+
+        <span class="n">x_train</span><span class="p">,</span> <span class="n">x_val</span><span class="p">,</span> <span class="n">x_test</span> <span class="o">=</span> <span class="n">x</span><span class="p">[:</span><span class="n">num_train</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="n">num_train</span><span class="p">:</span> <span class="n">num_train</span> <span class="o">+</span> <span class="n">num_val</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="o">-</span><span class="n">num_test</span><span class="p">:]</span>
+        <span class="n">y_train</span><span class="p">,</span> <span class="n">y_val</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">y</span><span class="p">[:</span><span class="n">num_train</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">num_train</span><span class="p">:</span> <span class="n">num_train</span> <span class="o">+</span> <span class="n">num_val</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="o">-</span><span class="n">num_test</span><span class="p">:]</span>
+        <span class="n">ext_x_train</span><span class="p">,</span> <span class="n">ext_x_val</span><span class="p">,</span> <span class="n">ext_x_test</span> <span class="o">=</span> <span class="n">ext_x</span><span class="p">[:</span><span class="n">num_train</span><span class="p">],</span> <span class="n">ext_x</span><span class="p">[</span><span class="n">num_train</span><span class="p">:</span> <span class="n">num_train</span> <span class="o">+</span> <span class="n">num_val</span><span class="p">],</span> <span class="n">ext_x</span><span class="p">[</span><span class="o">-</span><span class="n">num_test</span><span class="p">:]</span>
+        <span class="n">ext_y_train</span><span class="p">,</span> <span class="n">ext_y_val</span><span class="p">,</span> <span class="n">ext_y_test</span> <span class="o">=</span> <span class="n">ext_y</span><span class="p">[:</span><span class="n">num_train</span><span class="p">],</span> <span class="n">ext_y</span><span class="p">[</span><span class="n">num_train</span><span class="p">:</span> <span class="n">num_train</span> <span class="o">+</span> <span class="n">num_val</span><span class="p">],</span> <span class="n">ext_y</span><span class="p">[</span><span class="o">-</span><span class="n">num_test</span><span class="p">:]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;train</span><span class="se">\t</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="s2">&quot;x: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">x_train</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;,y: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">y_train</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+                          <span class="o">+</span> <span class="s2">&quot;,x_ext: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">ext_x_train</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;,y_ext: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">ext_y_train</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;eval</span><span class="se">\t</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="s2">&quot;x: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">x_val</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;,y: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">y_val</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+                          <span class="o">+</span> <span class="s2">&quot;,x_ext: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">ext_x_val</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;,y_ext: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">ext_y_val</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;test</span><span class="se">\t</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="s2">&quot;x: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">x_test</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;,y: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">y_test</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+                          <span class="o">+</span> <span class="s2">&quot;,x_ext: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">ext_x_test</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;,y_ext: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">ext_y_test</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">cache_dataset</span><span class="p">:</span>
+            <span class="n">ensure_dir</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cache_file_folder</span><span class="p">)</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">savez_compressed</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">cache_file_name</span><span class="p">,</span>
+                <span class="n">x_train</span><span class="o">=</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="o">=</span><span class="n">y_train</span><span class="p">,</span>
+                <span class="n">x_test</span><span class="o">=</span><span class="n">x_test</span><span class="p">,</span> <span class="n">y_test</span><span class="o">=</span><span class="n">y_test</span><span class="p">,</span>
+                <span class="n">x_val</span><span class="o">=</span><span class="n">x_val</span><span class="p">,</span> <span class="n">y_val</span><span class="o">=</span><span class="n">y_val</span><span class="p">,</span>
+                <span class="n">ext_x_train</span><span class="o">=</span><span class="n">ext_x_train</span><span class="p">,</span> <span class="n">ext_y_train</span><span class="o">=</span><span class="n">ext_y_train</span><span class="p">,</span>
+                <span class="n">ext_x_test</span><span class="o">=</span><span class="n">ext_x_test</span><span class="p">,</span> <span class="n">ext_y_test</span><span class="o">=</span><span class="n">ext_y_test</span><span class="p">,</span>
+                <span class="n">ext_x_val</span><span class="o">=</span><span class="n">ext_x_val</span><span class="p">,</span> <span class="n">ext_y_val</span><span class="o">=</span><span class="n">ext_y_val</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Saved at &#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">cache_file_name</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">x_val</span><span class="p">,</span> <span class="n">y_val</span><span class="p">,</span> <span class="n">x_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> \
+            <span class="n">ext_x_train</span><span class="p">,</span> <span class="n">ext_y_train</span><span class="p">,</span> <span class="n">ext_x_test</span><span class="p">,</span> <span class="n">ext_y_test</span><span class="p">,</span> <span class="n">ext_x_val</span><span class="p">,</span> <span class="n">ext_y_val</span></div>
+
+<div class="viewcode-block" id="TrafficStateCPTDataset._generate_train_val_test"><a class="viewcode-back" href="../../../../trafficdl/trafficdl.data.dataset.traffic_state_cpt_dataset.html#trafficdl.data.dataset.traffic_state_cpt_dataset.TrafficStateCPTDataset._generate_train_val_test">[docs]</a>    <span class="k">def</span> <span class="nf">_generate_train_val_test</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        加载数据集，并划分训练集、测试集、验证集，并缓存数据集</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            tuple: tuple contains:</span>
+<span class="sd">                x_train: (num_samples, T_c+T_p+T_t, ..., feature_dim) \n</span>
+<span class="sd">                y_train: (num_samples, 1, ..., feature_dim) \n</span>
+<span class="sd">                x_val: (num_samples, T_c+T_p+T_t, ..., feature_dim) \n</span>
+<span class="sd">                y_val: (num_samples, 1, ..., feature_dim) \n</span>
+<span class="sd">                x_test: (num_samples, T_c+T_p+T_t, ..., feature_dim) \n</span>
+<span class="sd">                y_test: (num_samples, 1, ..., feature_dim) \n</span>
+<span class="sd">                ext_x_train: (num_samples, T_c+T_p+T_t, ext_dim) \n</span>
+<span class="sd">                ext_y_train: (num_samples, ext_dim) \n</span>
+<span class="sd">                ext_x_val: (num_samples, T_c+T_p+T_t, ext_dim) \n</span>
+<span class="sd">                ext_y_val: (num_samples, ext_dim) \n</span>
+<span class="sd">                ext_x_test: (num_samples, T_c+T_p+T_t, ext_dim) \n</span>
+<span class="sd">                ext_y_test: (num_samples, ext_dim)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">ext_x</span><span class="p">,</span> <span class="n">ext_y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_generate_data</span><span class="p">()</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_split_train_val_test</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">ext_x</span><span class="p">,</span> <span class="n">ext_y</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="TrafficStateCPTDataset._load_cache_train_val_test"><a class="viewcode-back" href="../../../../trafficdl/trafficdl.data.dataset.traffic_state_cpt_dataset.html#trafficdl.data.dataset.traffic_state_cpt_dataset.TrafficStateCPTDataset._load_cache_train_val_test">[docs]</a>    <span class="k">def</span> <span class="nf">_load_cache_train_val_test</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        加载之前缓存好的训练集、测试集、验证集</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            tuple: tuple contains:</span>
+<span class="sd">                x_train: (num_samples, T_c+T_p+T_t, ..., feature_dim) \n</span>
+<span class="sd">                y_train: (num_samples, 1, ..., feature_dim) \n</span>
+<span class="sd">                x_val: (num_samples, T_c+T_p+T_t, ..., feature_dim) \n</span>
+<span class="sd">                y_val: (num_samples, 1, ..., feature_dim) \n</span>
+<span class="sd">                x_test: (num_samples, T_c+T_p+T_t, ..., feature_dim) \n</span>
+<span class="sd">                y_test: (num_samples, 1, ..., feature_dim) \n</span>
+<span class="sd">                ext_x_train: (num_samples, T_c+T_p+T_t, ext_dim) \n</span>
+<span class="sd">                ext_y_train: (num_samples, ext_dim) \n</span>
+<span class="sd">                ext_x_val: (num_samples, T_c+T_p+T_t, ext_dim) \n</span>
+<span class="sd">                ext_y_val: (num_samples, ext_dim) \n</span>
+<span class="sd">                ext_x_test: (num_samples, T_c+T_p+T_t, ext_dim) \n</span>
+<span class="sd">                ext_y_test: (num_samples, ext_dim)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Loading &#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">cache_file_name</span><span class="p">)</span>
+        <span class="n">cat_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cache_file_name</span><span class="p">)</span>
+        <span class="n">x_train</span> <span class="o">=</span> <span class="n">cat_data</span><span class="p">[</span><span class="s1">&#39;x_train&#39;</span><span class="p">]</span>
+        <span class="n">y_train</span> <span class="o">=</span> <span class="n">cat_data</span><span class="p">[</span><span class="s1">&#39;y_train&#39;</span><span class="p">]</span>
+        <span class="n">x_test</span> <span class="o">=</span> <span class="n">cat_data</span><span class="p">[</span><span class="s1">&#39;x_test&#39;</span><span class="p">]</span>
+        <span class="n">y_test</span> <span class="o">=</span> <span class="n">cat_data</span><span class="p">[</span><span class="s1">&#39;y_test&#39;</span><span class="p">]</span>
+        <span class="n">x_val</span> <span class="o">=</span> <span class="n">cat_data</span><span class="p">[</span><span class="s1">&#39;x_val&#39;</span><span class="p">]</span>
+        <span class="n">y_val</span> <span class="o">=</span> <span class="n">cat_data</span><span class="p">[</span><span class="s1">&#39;y_val&#39;</span><span class="p">]</span>
+        <span class="n">ext_x_train</span> <span class="o">=</span> <span class="n">cat_data</span><span class="p">[</span><span class="s1">&#39;ext_x_train&#39;</span><span class="p">]</span>
+        <span class="n">ext_y_train</span> <span class="o">=</span> <span class="n">cat_data</span><span class="p">[</span><span class="s1">&#39;ext_y_train&#39;</span><span class="p">]</span>
+        <span class="n">ext_x_test</span> <span class="o">=</span> <span class="n">cat_data</span><span class="p">[</span><span class="s1">&#39;ext_x_test&#39;</span><span class="p">]</span>
+        <span class="n">ext_y_test</span> <span class="o">=</span> <span class="n">cat_data</span><span class="p">[</span><span class="s1">&#39;ext_y_test&#39;</span><span class="p">]</span>
+        <span class="n">ext_x_val</span> <span class="o">=</span> <span class="n">cat_data</span><span class="p">[</span><span class="s1">&#39;ext_x_val&#39;</span><span class="p">]</span>
+        <span class="n">ext_y_val</span> <span class="o">=</span> <span class="n">cat_data</span><span class="p">[</span><span class="s1">&#39;ext_y_val&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;train</span><span class="se">\t</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="s2">&quot;x: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">x_train</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;,y: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">y_train</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+                          <span class="o">+</span> <span class="s2">&quot;,x_ext: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">ext_x_train</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;,y_ext: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">ext_y_train</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;eval</span><span class="se">\t</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="s2">&quot;x: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">x_val</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;,y: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">y_val</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+                          <span class="o">+</span> <span class="s2">&quot;,x_ext: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">ext_x_val</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;,y_ext: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">ext_y_val</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;test</span><span class="se">\t</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="s2">&quot;x: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">x_test</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;,y: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">y_test</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+                          <span class="o">+</span> <span class="s2">&quot;,x_ext: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">ext_x_test</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;,y_ext: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">ext_y_test</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">x_val</span><span class="p">,</span> <span class="n">y_val</span><span class="p">,</span> <span class="n">x_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> \
+            <span class="n">ext_x_train</span><span class="p">,</span> <span class="n">ext_y_train</span><span class="p">,</span> <span class="n">ext_x_test</span><span class="p">,</span> <span class="n">ext_y_test</span><span class="p">,</span> <span class="n">ext_x_val</span><span class="p">,</span> <span class="n">ext_y_val</span></div>
+
+<div class="viewcode-block" id="TrafficStateCPTDataset.get_data"><a class="viewcode-back" href="../../../../trafficdl/trafficdl.data.dataset.traffic_state_cpt_dataset.html#trafficdl.data.dataset.traffic_state_cpt_dataset.TrafficStateCPTDataset.get_data">[docs]</a>    <span class="k">def</span> <span class="nf">get_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        返回数据的DataLoader，包括训练数据、测试数据、验证数据</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            tuple: tuple contains:</span>
+<span class="sd">                train_dataloader: Dataloader composed of Batch (class) \n</span>
+<span class="sd">                eval_dataloader: Dataloader composed of Batch (class) \n</span>
+<span class="sd">                test_dataloader: Dataloader composed of Batch (class)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># 加载数据集</span>
+        <span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">x_val</span><span class="p">,</span> <span class="n">y_val</span><span class="p">,</span> <span class="n">x_test</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[],</span> <span class="p">[],</span> <span class="p">[],</span> <span class="p">[],</span> <span class="p">[]</span>
+        <span class="n">ext_x_train</span><span class="p">,</span> <span class="n">ext_y_train</span><span class="p">,</span> <span class="n">ext_x_test</span><span class="p">,</span> <span class="n">ext_y_test</span><span class="p">,</span> <span class="n">ext_x_val</span><span class="p">,</span> <span class="n">ext_y_val</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[],</span> <span class="p">[],</span> <span class="p">[],</span> <span class="p">[],</span> <span class="p">[]</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">cache_dataset</span> <span class="ow">and</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cache_file_name</span><span class="p">):</span>
+                <span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">x_val</span><span class="p">,</span> <span class="n">y_val</span><span class="p">,</span> <span class="n">x_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span>  \
+                    <span class="n">ext_x_train</span><span class="p">,</span> <span class="n">ext_y_train</span><span class="p">,</span> <span class="n">ext_x_test</span><span class="p">,</span> <span class="n">ext_y_test</span><span class="p">,</span> <span class="n">ext_x_val</span><span class="p">,</span> <span class="n">ext_y_val</span> \
+                    <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_load_cache_train_val_test</span><span class="p">()</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">x_val</span><span class="p">,</span> <span class="n">y_val</span><span class="p">,</span> <span class="n">x_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> \
+                    <span class="n">ext_x_train</span><span class="p">,</span> <span class="n">ext_y_train</span><span class="p">,</span> <span class="n">ext_x_test</span><span class="p">,</span> <span class="n">ext_y_test</span><span class="p">,</span> <span class="n">ext_x_val</span><span class="p">,</span> <span class="n">ext_y_val</span> \
+                    <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_generate_train_val_test</span><span class="p">()</span>
+        <span class="c1"># 数据归一化</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">feature_dim</span> <span class="o">=</span> <span class="n">x_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">scaler</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_scalar</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+        <span class="n">x_train</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">x_train</span><span class="p">)</span>
+        <span class="n">y_train</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">y_train</span><span class="p">)</span>
+        <span class="n">x_val</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">x_val</span><span class="p">)</span>
+        <span class="n">y_val</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">y_val</span><span class="p">)</span>
+        <span class="n">x_test</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">x_test</span><span class="p">)</span>
+        <span class="n">y_test</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">y_test</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">normal_external</span><span class="p">:</span>
+            <span class="n">ext_x_train</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">ext_x_train</span><span class="p">)</span>
+            <span class="n">ext_y_train</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">ext_y_train</span><span class="p">)</span>
+            <span class="n">ext_x_val</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">ext_x_val</span><span class="p">)</span>
+            <span class="n">ext_y_val</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">ext_y_val</span><span class="p">)</span>
+            <span class="n">ext_x_test</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">ext_x_test</span><span class="p">)</span>
+            <span class="n">ext_y_test</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">ext_y_test</span><span class="p">)</span>
+        <span class="c1"># 把训练集的X和y聚合在一起成为list，测试集验证集同理</span>
+        <span class="c1"># x_train/y_train: (num_samples, input_length, ..., feature_dim)</span>
+        <span class="c1"># train_data(list): train_data[i]是一个元组，由x_train[i]和y_train[i]组成</span>
+        <span class="n">train_data</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">ext_x_train</span><span class="p">,</span> <span class="n">ext_y_train</span><span class="p">))</span>
+        <span class="n">eval_data</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">x_val</span><span class="p">,</span> <span class="n">y_val</span><span class="p">,</span> <span class="n">ext_x_val</span><span class="p">,</span> <span class="n">ext_y_val</span><span class="p">))</span>
+        <span class="n">test_data</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">ext_x_test</span><span class="p">,</span> <span class="n">ext_y_test</span><span class="p">))</span>
+        <span class="c1"># 转Dataloader</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">train_dataloader</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">eval_dataloader</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">test_dataloader</span> <span class="o">=</span> \
+            <span class="n">generate_dataloader</span><span class="p">(</span><span class="n">train_data</span><span class="p">,</span> <span class="n">eval_data</span><span class="p">,</span> <span class="n">test_data</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">feature_name</span><span class="p">,</span>
+                                <span class="bp">self</span><span class="o">.</span><span class="n">batch_size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_workers</span><span class="p">,</span> <span class="n">pad_with_last_sample</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">pad_with_last_sample</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">train_dataloader</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">eval_dataloader</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">test_dataloader</span></div>
+
+<div class="viewcode-block" id="TrafficStateCPTDataset.get_data_feature"><a class="viewcode-back" href="../../../../trafficdl/trafficdl.data.dataset.traffic_state_cpt_dataset.html#trafficdl.data.dataset.traffic_state_cpt_dataset.TrafficStateCPTDataset.get_data_feature">[docs]</a>    <span class="k">def</span> <span class="nf">get_data_feature</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        由于此类的数据输入包含len_closeness/len_period/len_trend的数据，但都融合到X中，</span>
+<span class="sd">        因此，继承此类的子类此函数应该返回这三段数据的具体长度（不一定等于上述的三个参数的值）</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            dict: 包含数据集的相关特征的字典</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s1">&#39;Please implement the function `get_data_feature()`.&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="TrafficStateCPTDataset._add_external_information"><a class="viewcode-back" href="../../../../trafficdl/trafficdl.data.dataset.traffic_state_cpt_dataset.html#trafficdl.data.dataset.traffic_state_cpt_dataset.TrafficStateCPTDataset._add_external_information">[docs]</a>    <span class="k">def</span> <span class="nf">_add_external_information</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">ext_data</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        将外部数据和原始交通状态数据结合到高维数组中，子类必须实现这个方法来指定如何融合外部数据和交通状态数据,</span>
+<span class="sd">        **由于基于len_closeness/len_period/len_trend的方法一般将外部数据单独处理，所以不需要实现此方法。**</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            df(np.ndarray): 交通状态数据多维数组</span>
+<span class="sd">            ext_data(np.ndarray): 外部数据</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            np.ndarray: 融合后的外部数据和交通状态数据</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">df</span></div></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, aptx1231
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

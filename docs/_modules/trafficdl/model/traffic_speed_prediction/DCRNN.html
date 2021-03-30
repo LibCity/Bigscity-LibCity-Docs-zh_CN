@@ -1,0 +1,680 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>trafficdl.model.traffic_speed_prediction.DCRNN &mdash; Bigscity-TrafficDL  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home" alt="Documentation Home"> Bigscity-TrafficDL
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Get Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../get_started/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../get_started/install.html">Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../get_started/quick_start.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../get_started/directory_structure.html">Directory Structure</a></li>
+</ul>
+<p class="caption"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user_guide/config_settings.html">Config Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user_guide/data.html">Data Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user_guide/model.html">Model Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user_guide/evaluator.html">Evaluator Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user_guide/executor.html">Executor Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user_guide/usage.html">Usage</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../developer_guide/code_style.html">Code Style</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../developer_guide/implemented_datasets.html">Customize Dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../developer_guide/implemented_models.html">Customize Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../developer_guide/implemented_evaluators.html">Customize Evaluators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../developer_guide/implemented_executors.html">Customize Executors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../developer_guide/implemented_logger.html">Logger</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API REFERENCE</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../trafficdl/trafficdl.config.html">trafficdl.config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../trafficdl/trafficdl.data.html">trafficdl.data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../trafficdl/trafficdl.evaluator.html">trafficdl.evaluator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../trafficdl/trafficdl.executor.html">trafficdl.executor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../trafficdl/trafficdl.model.html">trafficdl.model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../trafficdl/trafficdl.pipeline.html">trafficdl.pipeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../trafficdl/trafficdl.utils.html">trafficdl.utils</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">Bigscity-TrafficDL</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../../index.html">Module code</a> &raquo;</li>
+        
+      <li>trafficdl.model.traffic_speed_prediction.DCRNN</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for trafficdl.model.traffic_speed_prediction.DCRNN</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">scipy.sparse</span> <span class="k">as</span> <span class="nn">sp</span>
+<span class="kn">from</span> <span class="nn">scipy.sparse</span> <span class="kn">import</span> <span class="n">linalg</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
+<span class="kn">from</span> <span class="nn">logging</span> <span class="kn">import</span> <span class="n">getLogger</span>
+<span class="kn">from</span> <span class="nn">trafficdl.model.abstract_traffic_state_model</span> <span class="kn">import</span> <span class="n">AbstractTrafficStateModel</span>
+<span class="kn">from</span> <span class="nn">trafficdl.model</span> <span class="kn">import</span> <span class="n">loss</span>
+
+
+<div class="viewcode-block" id="calculate_normalized_laplacian"><a class="viewcode-back" href="../../../../trafficdl/trafficdl.model.traffic_speed_prediction.DCRNN.html#trafficdl.model.traffic_speed_prediction.DCRNN.calculate_normalized_laplacian">[docs]</a><span class="k">def</span> <span class="nf">calculate_normalized_laplacian</span><span class="p">(</span><span class="n">adj</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    L = D^-1/2 (D-A) D^-1/2 = I - D^-1/2 A D^-1/2</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        adj: adj matrix</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        np.ndarray: L</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">adj</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">coo_matrix</span><span class="p">(</span><span class="n">adj</span><span class="p">)</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">adj</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+    <span class="n">d_inv_sqrt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5</span><span class="p">)</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+    <span class="n">d_inv_sqrt</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">isinf</span><span class="p">(</span><span class="n">d_inv_sqrt</span><span class="p">)]</span> <span class="o">=</span> <span class="mf">0.</span>
+    <span class="n">d_mat_inv_sqrt</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">diags</span><span class="p">(</span><span class="n">d_inv_sqrt</span><span class="p">)</span>
+    <span class="n">normalized_laplacian</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">adj</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">-</span> <span class="n">adj</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">d_mat_inv_sqrt</span><span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">d_mat_inv_sqrt</span><span class="p">)</span><span class="o">.</span><span class="n">tocoo</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">normalized_laplacian</span></div>
+
+
+<div class="viewcode-block" id="calculate_random_walk_matrix"><a class="viewcode-back" href="../../../../trafficdl/trafficdl.model.traffic_speed_prediction.DCRNN.html#trafficdl.model.traffic_speed_prediction.DCRNN.calculate_random_walk_matrix">[docs]</a><span class="k">def</span> <span class="nf">calculate_random_walk_matrix</span><span class="p">(</span><span class="n">adj_mx</span><span class="p">):</span>
+    <span class="n">adj_mx</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">coo_matrix</span><span class="p">(</span><span class="n">adj_mx</span><span class="p">)</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">adj_mx</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+    <span class="n">d_inv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+    <span class="n">d_inv</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">isinf</span><span class="p">(</span><span class="n">d_inv</span><span class="p">)]</span> <span class="o">=</span> <span class="mf">0.</span>
+    <span class="n">d_mat_inv</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">diags</span><span class="p">(</span><span class="n">d_inv</span><span class="p">)</span>
+    <span class="n">random_walk_mx</span> <span class="o">=</span> <span class="n">d_mat_inv</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">adj_mx</span><span class="p">)</span><span class="o">.</span><span class="n">tocoo</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">random_walk_mx</span></div>
+
+
+<div class="viewcode-block" id="calculate_reverse_random_walk_matrix"><a class="viewcode-back" href="../../../../trafficdl/trafficdl.model.traffic_speed_prediction.DCRNN.html#trafficdl.model.traffic_speed_prediction.DCRNN.calculate_reverse_random_walk_matrix">[docs]</a><span class="k">def</span> <span class="nf">calculate_reverse_random_walk_matrix</span><span class="p">(</span><span class="n">adj_mx</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">calculate_random_walk_matrix</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">adj_mx</span><span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="calculate_scaled_laplacian"><a class="viewcode-back" href="../../../../trafficdl/trafficdl.model.traffic_speed_prediction.DCRNN.html#trafficdl.model.traffic_speed_prediction.DCRNN.calculate_scaled_laplacian">[docs]</a><span class="k">def</span> <span class="nf">calculate_scaled_laplacian</span><span class="p">(</span><span class="n">adj_mx</span><span class="p">,</span> <span class="n">lambda_max</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">undirected</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">undirected</span><span class="p">:</span>
+        <span class="n">adj_mx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="o">.</span><span class="n">reduce</span><span class="p">([</span><span class="n">adj_mx</span><span class="p">,</span> <span class="n">adj_mx</span><span class="o">.</span><span class="n">T</span><span class="p">])</span>
+    <span class="n">lap</span> <span class="o">=</span> <span class="n">calculate_normalized_laplacian</span><span class="p">(</span><span class="n">adj_mx</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">lambda_max</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">lambda_max</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">linalg</span><span class="o">.</span><span class="n">eigsh</span><span class="p">(</span><span class="n">lap</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;LM&#39;</span><span class="p">)</span>
+        <span class="n">lambda_max</span> <span class="o">=</span> <span class="n">lambda_max</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">lap</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">csr_matrix</span><span class="p">(</span><span class="n">lap</span><span class="p">)</span>
+    <span class="n">m</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">lap</span><span class="o">.</span><span class="n">shape</span>
+    <span class="n">identity</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">identity</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;csr&#39;</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">lap</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+    <span class="n">lap</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span> <span class="o">/</span> <span class="n">lambda_max</span> <span class="o">*</span> <span class="n">lap</span><span class="p">)</span> <span class="o">-</span> <span class="n">identity</span>
+    <span class="k">return</span> <span class="n">lap</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="count_parameters"><a class="viewcode-back" href="../../../../trafficdl/trafficdl.model.traffic_speed_prediction.DCRNN.html#trafficdl.model.traffic_speed_prediction.DCRNN.count_parameters">[docs]</a><span class="k">def</span> <span class="nf">count_parameters</span><span class="p">(</span><span class="n">model</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">numel</span><span class="p">()</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">()</span> <span class="k">if</span> <span class="n">p</span><span class="o">.</span><span class="n">requires_grad</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="GCONV"><a class="viewcode-back" href="../../../../trafficdl/trafficdl.model.traffic_speed_prediction.DCRNN.html#trafficdl.model.traffic_speed_prediction.DCRNN.GCONV">[docs]</a><span class="k">class</span> <span class="nc">GCONV</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_nodes</span><span class="p">,</span> <span class="n">max_diffusion_step</span><span class="p">,</span> <span class="n">supports</span><span class="p">,</span> <span class="n">device</span><span class="p">,</span> <span class="n">input_dim</span><span class="p">,</span> <span class="n">hid_dim</span><span class="p">,</span> <span class="n">output_dim</span><span class="p">,</span> <span class="n">bias_start</span><span class="o">=</span><span class="mf">0.0</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_num_nodes</span> <span class="o">=</span> <span class="n">num_nodes</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_max_diffusion_step</span> <span class="o">=</span> <span class="n">max_diffusion_step</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_supports</span> <span class="o">=</span> <span class="n">supports</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_device</span> <span class="o">=</span> <span class="n">device</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_num_matrices</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_supports</span><span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">_max_diffusion_step</span> <span class="o">+</span> <span class="mi">1</span>  <span class="c1"># Ks</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_output_dim</span> <span class="o">=</span> <span class="n">output_dim</span>
+        <span class="n">input_size</span> <span class="o">=</span> <span class="n">input_dim</span> <span class="o">+</span> <span class="n">hid_dim</span>
+        <span class="n">shape</span> <span class="o">=</span> <span class="p">(</span><span class="n">input_size</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_matrices</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_output_dim</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">weight</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="o">*</span><span class="n">shape</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_device</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">biases</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_output_dim</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_device</span><span class="p">))</span>
+        <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">init</span><span class="o">.</span><span class="n">xavier_normal_</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">weight</span><span class="p">)</span>
+        <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">init</span><span class="o">.</span><span class="n">constant_</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">biases</span><span class="p">,</span> <span class="n">bias_start</span><span class="p">)</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_concat</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x_</span><span class="p">):</span>
+        <span class="n">x_</span> <span class="o">=</span> <span class="n">x_</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">([</span><span class="n">x</span><span class="p">,</span> <span class="n">x_</span><span class="p">],</span> <span class="n">dim</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<div class="viewcode-block" id="GCONV.forward"><a class="viewcode-back" href="../../../../trafficdl/trafficdl.model.traffic_speed_prediction.DCRNN.html#trafficdl.model.traffic_speed_prediction.DCRNN.GCONV.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">state</span><span class="p">):</span>
+        <span class="c1"># 对X(t)和H(t-1)做图卷积，并加偏置bias</span>
+        <span class="c1"># Reshape input and state to (batch_size, num_nodes, input_dim/state_dim)</span>
+        <span class="n">batch_size</span> <span class="o">=</span> <span class="n">inputs</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">inputs</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_nodes</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+        <span class="n">state</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_nodes</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+        <span class="n">inputs_and_state</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">([</span><span class="n">inputs</span><span class="p">,</span> <span class="n">state</span><span class="p">],</span> <span class="n">dim</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+        <span class="c1"># (batch_size, num_nodes, total_arg_size(input_dim+state_dim))</span>
+        <span class="n">input_size</span> <span class="o">=</span> <span class="n">inputs_and_state</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>  <span class="c1"># =total_arg_size</span>
+
+        <span class="n">x</span> <span class="o">=</span> <span class="n">inputs_and_state</span>
+        <span class="c1"># T0=I x0=T0*x=x</span>
+        <span class="n">x0</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">permute</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>  <span class="c1"># (num_nodes, total_arg_size, batch_size)</span>
+        <span class="n">x0</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_num_nodes</span><span class="p">,</span> <span class="n">input_size</span> <span class="o">*</span> <span class="n">batch_size</span><span class="p">])</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>  <span class="c1"># (1, num_nodes, total_arg_size * batch_size)</span>
+
+        <span class="c1"># 3阶[T0,T1,T2]Chebyshev多项式近似g(theta)</span>
+        <span class="c1"># 把图卷积公式中的~L替换成了随机游走拉普拉斯D^(-1)*W</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_max_diffusion_step</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">pass</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">support</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_supports</span><span class="p">:</span>
+                <span class="c1"># T1=L x1=T1*x=L*x</span>
+                <span class="n">x1</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">sparse</span><span class="o">.</span><span class="n">mm</span><span class="p">(</span><span class="n">support</span><span class="p">,</span> <span class="n">x0</span><span class="p">)</span>  <span class="c1"># supports: n*n; x0: n*(total_arg_size * batch_size)</span>
+                <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_concat</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x1</span><span class="p">)</span>  <span class="c1"># (2, num_nodes, total_arg_size * batch_size)</span>
+                <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_max_diffusion_step</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+                    <span class="c1"># T2=2LT1-T0=2L^2-1 x2=T2*x=2L^2x-x=2L*x1-x0...</span>
+                    <span class="c1"># T3=2LT2-T1=2L(2L^2-1)-L x3=2L*x2-x1...</span>
+                    <span class="n">x2</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">torch</span><span class="o">.</span><span class="n">sparse</span><span class="o">.</span><span class="n">mm</span><span class="p">(</span><span class="n">support</span><span class="p">,</span> <span class="n">x1</span><span class="p">)</span> <span class="o">-</span> <span class="n">x0</span>
+                    <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_concat</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x2</span><span class="p">)</span>  <span class="c1"># (3, num_nodes, total_arg_size * batch_size)</span>
+                    <span class="n">x1</span><span class="p">,</span> <span class="n">x0</span> <span class="o">=</span> <span class="n">x2</span><span class="p">,</span> <span class="n">x1</span>  <span class="c1"># 循环</span>
+        <span class="c1"># x.shape (Ks, num_nodes, total_arg_size * batch_size)</span>
+        <span class="c1"># Ks = len(supports) * self._max_diffusion_step + 1</span>
+
+        <span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_num_matrices</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_nodes</span><span class="p">,</span> <span class="n">input_size</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">])</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">permute</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>  <span class="c1"># (batch_size, num_nodes, input_size, num_matrices)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">[</span><span class="n">batch_size</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_nodes</span><span class="p">,</span> <span class="n">input_size</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_matrices</span><span class="p">])</span>
+
+        <span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">weight</span><span class="p">)</span>  <span class="c1"># (batch_size * self._num_nodes, self._output_dim)</span>
+        <span class="n">x</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">biases</span>
+        <span class="c1"># Reshape res back to 2D: (batch_size * num_node, state_dim) -&gt; (batch_size, num_node * state_dim)</span>
+        <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="p">[</span><span class="n">batch_size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_nodes</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">_output_dim</span><span class="p">])</span></div></div>
+
+
+<div class="viewcode-block" id="FC"><a class="viewcode-back" href="../../../../trafficdl/trafficdl.model.traffic_speed_prediction.DCRNN.html#trafficdl.model.traffic_speed_prediction.DCRNN.FC">[docs]</a><span class="k">class</span> <span class="nc">FC</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_nodes</span><span class="p">,</span> <span class="n">device</span><span class="p">,</span> <span class="n">input_dim</span><span class="p">,</span> <span class="n">hid_dim</span><span class="p">,</span> <span class="n">output_dim</span><span class="p">,</span> <span class="n">bias_start</span><span class="o">=</span><span class="mf">0.0</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_num_nodes</span> <span class="o">=</span> <span class="n">num_nodes</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_device</span> <span class="o">=</span> <span class="n">device</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_output_dim</span> <span class="o">=</span> <span class="n">output_dim</span>
+        <span class="n">input_size</span> <span class="o">=</span> <span class="n">input_dim</span> <span class="o">+</span> <span class="n">hid_dim</span>
+        <span class="n">shape</span> <span class="o">=</span> <span class="p">(</span><span class="n">input_size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_output_dim</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">weight</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="o">*</span><span class="n">shape</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_device</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">biases</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_output_dim</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_device</span><span class="p">))</span>
+        <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">init</span><span class="o">.</span><span class="n">xavier_normal_</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">weight</span><span class="p">)</span>
+        <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">init</span><span class="o">.</span><span class="n">constant_</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">biases</span><span class="p">,</span> <span class="n">bias_start</span><span class="p">)</span>
+
+<div class="viewcode-block" id="FC.forward"><a class="viewcode-back" href="../../../../trafficdl/trafficdl.model.traffic_speed_prediction.DCRNN.html#trafficdl.model.traffic_speed_prediction.DCRNN.FC.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">state</span><span class="p">):</span>
+        <span class="n">batch_size</span> <span class="o">=</span> <span class="n">inputs</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="c1"># Reshape input and state to (batch_size * self._num_nodes, input_dim/state_dim)</span>
+        <span class="n">inputs</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="p">(</span><span class="n">batch_size</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_nodes</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+        <span class="n">state</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="p">(</span><span class="n">batch_size</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_nodes</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+        <span class="n">inputs_and_state</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">([</span><span class="n">inputs</span><span class="p">,</span> <span class="n">state</span><span class="p">],</span> <span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="c1"># (batch_size * self._num_nodes, input_size(input_dim+state_dim))</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">sigmoid</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">inputs_and_state</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">weight</span><span class="p">))</span>
+        <span class="c1"># (batch_size * self._num_nodes, self._output_dim)</span>
+        <span class="n">value</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">biases</span>
+        <span class="c1"># Reshape res back to 2D: (batch_size * num_node, state_dim) -&gt; (batch_size, num_node * state_dim)</span>
+        <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="p">[</span><span class="n">batch_size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_nodes</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">_output_dim</span><span class="p">])</span></div></div>
+
+
+<div class="viewcode-block" id="DCGRUCell"><a class="viewcode-back" href="../../../../trafficdl/trafficdl.model.traffic_speed_prediction.DCRNN.html#trafficdl.model.traffic_speed_prediction.DCRNN.DCGRUCell">[docs]</a><span class="k">class</span> <span class="nc">DCGRUCell</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_dim</span><span class="p">,</span> <span class="n">num_units</span><span class="p">,</span> <span class="n">adj_mx</span><span class="p">,</span> <span class="n">max_diffusion_step</span><span class="p">,</span> <span class="n">num_nodes</span><span class="p">,</span> <span class="n">device</span><span class="p">,</span> <span class="n">nonlinearity</span><span class="o">=</span><span class="s1">&#39;tanh&#39;</span><span class="p">,</span>
+                 <span class="n">filter_type</span><span class="o">=</span><span class="s2">&quot;laplacian&quot;</span><span class="p">,</span> <span class="n">use_gc_for_ru</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            input_dim:</span>
+<span class="sd">            num_units:</span>
+<span class="sd">            adj_mx:</span>
+<span class="sd">            max_diffusion_step:</span>
+<span class="sd">            num_nodes:</span>
+<span class="sd">            device:</span>
+<span class="sd">            nonlinearity:</span>
+<span class="sd">            filter_type: &quot;laplacian&quot;, &quot;random_walk&quot;, &quot;dual_random_walk&quot;</span>
+<span class="sd">            use_gc_for_ru: whether to use Graph convolution to calculate the reset and update gates.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_activation</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tanh</span> <span class="k">if</span> <span class="n">nonlinearity</span> <span class="o">==</span> <span class="s1">&#39;tanh&#39;</span> <span class="k">else</span> <span class="n">torch</span><span class="o">.</span><span class="n">relu</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_num_nodes</span> <span class="o">=</span> <span class="n">num_nodes</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_num_units</span> <span class="o">=</span> <span class="n">num_units</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_device</span> <span class="o">=</span> <span class="n">device</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_max_diffusion_step</span> <span class="o">=</span> <span class="n">max_diffusion_step</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_supports</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_use_gc_for_ru</span> <span class="o">=</span> <span class="n">use_gc_for_ru</span>
+
+        <span class="n">supports</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">if</span> <span class="n">filter_type</span> <span class="o">==</span> <span class="s2">&quot;laplacian&quot;</span><span class="p">:</span>
+            <span class="n">supports</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">calculate_scaled_laplacian</span><span class="p">(</span><span class="n">adj_mx</span><span class="p">,</span> <span class="n">lambda_max</span><span class="o">=</span><span class="kc">None</span><span class="p">))</span>
+        <span class="k">elif</span> <span class="n">filter_type</span> <span class="o">==</span> <span class="s2">&quot;random_walk&quot;</span><span class="p">:</span>
+            <span class="n">supports</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">calculate_random_walk_matrix</span><span class="p">(</span><span class="n">adj_mx</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">filter_type</span> <span class="o">==</span> <span class="s2">&quot;dual_random_walk&quot;</span><span class="p">:</span>
+            <span class="n">supports</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">calculate_random_walk_matrix</span><span class="p">(</span><span class="n">adj_mx</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+            <span class="n">supports</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">calculate_random_walk_matrix</span><span class="p">(</span><span class="n">adj_mx</span><span class="o">.</span><span class="n">T</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">supports</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">calculate_scaled_laplacian</span><span class="p">(</span><span class="n">adj_mx</span><span class="p">))</span>
+        <span class="k">for</span> <span class="n">support</span> <span class="ow">in</span> <span class="n">supports</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_supports</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_build_sparse_matrix</span><span class="p">(</span><span class="n">support</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_device</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_use_gc_for_ru</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_fn</span> <span class="o">=</span> <span class="n">GCONV</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_num_nodes</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_max_diffusion_step</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_supports</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_device</span><span class="p">,</span>
+                             <span class="n">input_dim</span><span class="o">=</span><span class="n">input_dim</span><span class="p">,</span> <span class="n">hid_dim</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_num_units</span><span class="p">,</span> <span class="n">output_dim</span><span class="o">=</span><span class="mi">2</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">_num_units</span><span class="p">,</span> <span class="n">bias_start</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_fn</span> <span class="o">=</span> <span class="n">FC</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_num_nodes</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_device</span><span class="p">,</span> <span class="n">input_dim</span><span class="o">=</span><span class="n">input_dim</span><span class="p">,</span>
+                          <span class="n">hid_dim</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_num_units</span><span class="p">,</span> <span class="n">output_dim</span><span class="o">=</span><span class="mi">2</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">_num_units</span><span class="p">,</span> <span class="n">bias_start</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_gconv</span> <span class="o">=</span> <span class="n">GCONV</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_num_nodes</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_max_diffusion_step</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_supports</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_device</span><span class="p">,</span>
+                            <span class="n">input_dim</span><span class="o">=</span><span class="n">input_dim</span><span class="p">,</span> <span class="n">hid_dim</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_num_units</span><span class="p">,</span> <span class="n">output_dim</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_num_units</span><span class="p">,</span> <span class="n">bias_start</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_build_sparse_matrix</span><span class="p">(</span><span class="n">lap</span><span class="p">,</span> <span class="n">device</span><span class="p">):</span>
+        <span class="n">lap</span> <span class="o">=</span> <span class="n">lap</span><span class="o">.</span><span class="n">tocoo</span><span class="p">()</span>
+        <span class="n">indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">((</span><span class="n">lap</span><span class="o">.</span><span class="n">row</span><span class="p">,</span> <span class="n">lap</span><span class="o">.</span><span class="n">col</span><span class="p">))</span>
+        <span class="c1"># this is to ensure row-major ordering to equal torch.sparse.sparse_reorder(L)</span>
+        <span class="n">indices</span> <span class="o">=</span> <span class="n">indices</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">lexsort</span><span class="p">((</span><span class="n">indices</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">indices</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]))]</span>
+        <span class="n">lap</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">sparse_coo_tensor</span><span class="p">(</span><span class="n">indices</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">lap</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">lap</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">lap</span>
+
+<div class="viewcode-block" id="DCGRUCell.forward"><a class="viewcode-back" href="../../../../trafficdl/trafficdl.model.traffic_speed_prediction.DCRNN.html#trafficdl.model.traffic_speed_prediction.DCRNN.DCGRUCell.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">hx</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Gated recurrent unit (GRU) with Graph Convolution.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            inputs: (B, num_nodes * input_dim)</span>
+<span class="sd">            hx: (B, num_nodes * rnn_units)</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            torch.tensor: shape (B, num_nodes * rnn_units)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">output_size</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_units</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">sigmoid</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_fn</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">hx</span><span class="p">))</span>  <span class="c1"># (batch_size, num_nodes * output_size)</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_nodes</span><span class="p">,</span> <span class="n">output_size</span><span class="p">))</span>    <span class="c1"># (batch_size, num_nodes, output_size)</span>
+
+        <span class="n">r</span><span class="p">,</span> <span class="n">u</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">tensor</span><span class="o">=</span><span class="n">value</span><span class="p">,</span> <span class="n">split_size_or_sections</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_num_units</span><span class="p">,</span> <span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_nodes</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_units</span><span class="p">))</span>  <span class="c1"># (batch_size, num_nodes * _num_units)</span>
+        <span class="n">u</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_nodes</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_units</span><span class="p">))</span>  <span class="c1"># (batch_size, num_nodes * _num_units)</span>
+
+        <span class="n">c</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_gconv</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">r</span> <span class="o">*</span> <span class="n">hx</span><span class="p">)</span>  <span class="c1"># (batch_size, num_nodes * _num_units)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_activation</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">c</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_activation</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+
+        <span class="n">new_state</span> <span class="o">=</span> <span class="n">u</span> <span class="o">*</span> <span class="n">hx</span> <span class="o">+</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="n">u</span><span class="p">)</span> <span class="o">*</span> <span class="n">c</span>
+        <span class="k">return</span> <span class="n">new_state</span>  <span class="c1"># (batch_size, num_nodes * _num_units)</span></div></div>
+
+
+<div class="viewcode-block" id="Seq2SeqAttrs"><a class="viewcode-back" href="../../../../trafficdl/trafficdl.model.traffic_speed_prediction.DCRNN.html#trafficdl.model.traffic_speed_prediction.DCRNN.Seq2SeqAttrs">[docs]</a><span class="k">class</span> <span class="nc">Seq2SeqAttrs</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">adj_mx</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">adj_mx</span> <span class="o">=</span> <span class="n">adj_mx</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">max_diffusion_step</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;max_diffusion_step&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cl_decay_steps</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;cl_decay_steps&#39;</span><span class="p">,</span> <span class="mi">1000</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">filter_type</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;filter_type&#39;</span><span class="p">,</span> <span class="s1">&#39;laplacian&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">num_nodes</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;num_nodes&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">num_rnn_layers</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;num_rnn_layers&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rnn_units</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;rnn_units&#39;</span><span class="p">,</span> <span class="mi">64</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hidden_state_size</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_nodes</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">rnn_units</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">input_dim</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;feature_dim&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">device</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;device&#39;</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">&#39;cpu&#39;</span><span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="EncoderModel"><a class="viewcode-back" href="../../../../trafficdl/trafficdl.model.traffic_speed_prediction.DCRNN.html#trafficdl.model.traffic_speed_prediction.DCRNN.EncoderModel">[docs]</a><span class="k">class</span> <span class="nc">EncoderModel</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">,</span> <span class="n">Seq2SeqAttrs</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">adj_mx</span><span class="p">):</span>
+        <span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="n">Seq2SeqAttrs</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">adj_mx</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dcgru_layers</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">ModuleList</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dcgru_layers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">DCGRUCell</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">input_dim</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">rnn_units</span><span class="p">,</span> <span class="n">adj_mx</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_diffusion_step</span><span class="p">,</span>
+                                           <span class="bp">self</span><span class="o">.</span><span class="n">num_nodes</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">,</span> <span class="n">filter_type</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">filter_type</span><span class="p">))</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_rnn_layers</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">dcgru_layers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">DCGRUCell</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rnn_units</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">rnn_units</span><span class="p">,</span> <span class="n">adj_mx</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_diffusion_step</span><span class="p">,</span>
+                                               <span class="bp">self</span><span class="o">.</span><span class="n">num_nodes</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">,</span> <span class="n">filter_type</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">filter_type</span><span class="p">))</span>
+
+<div class="viewcode-block" id="EncoderModel.forward"><a class="viewcode-back" href="../../../../trafficdl/trafficdl.model.traffic_speed_prediction.DCRNN.html#trafficdl.model.traffic_speed_prediction.DCRNN.EncoderModel.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">hidden_state</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Encoder forward pass.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            inputs: shape (batch_size, self.num_nodes * self.input_dim)</span>
+<span class="sd">            hidden_state: (num_layers, batch_size, self.hidden_state_size),</span>
+<span class="sd">                optional, zeros if not provided, hidden_state_size = num_nodes * rnn_units</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            tuple: tuple contains:</span>
+<span class="sd">                output: shape (batch_size, self.hidden_state_size) \n</span>
+<span class="sd">                hidden_state: shape (num_layers, batch_size, self.hidden_state_size) \n</span>
+<span class="sd">                (lower indices mean lower layers)</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">batch_size</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">inputs</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">hidden_state</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">hidden_state</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">num_rnn_layers</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">hidden_state_size</span><span class="p">),</span> <span class="n">device</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+        <span class="n">hidden_states</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="n">inputs</span>
+        <span class="k">for</span> <span class="n">layer_num</span><span class="p">,</span> <span class="n">dcgru_layer</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dcgru_layers</span><span class="p">):</span>
+            <span class="n">next_hidden_state</span> <span class="o">=</span> <span class="n">dcgru_layer</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">hidden_state</span><span class="p">[</span><span class="n">layer_num</span><span class="p">])</span>
+            <span class="c1"># next_hidden_state: (batch_size, self.num_nodes * self.rnn_units)</span>
+            <span class="n">hidden_states</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">next_hidden_state</span><span class="p">)</span>
+            <span class="n">output</span> <span class="o">=</span> <span class="n">next_hidden_state</span>  <span class="c1"># 循环</span>
+        <span class="k">return</span> <span class="n">output</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">hidden_states</span><span class="p">)</span>  <span class="c1"># runs in O(num_layers) so not too slow</span></div></div>
+
+
+<div class="viewcode-block" id="DecoderModel"><a class="viewcode-back" href="../../../../trafficdl/trafficdl.model.traffic_speed_prediction.DCRNN.html#trafficdl.model.traffic_speed_prediction.DCRNN.DecoderModel">[docs]</a><span class="k">class</span> <span class="nc">DecoderModel</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">,</span> <span class="n">Seq2SeqAttrs</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">adj_mx</span><span class="p">):</span>
+        <span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="n">Seq2SeqAttrs</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">adj_mx</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">output_dim</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;output_dim&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">projection_layer</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rnn_units</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_dim</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dcgru_layers</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">ModuleList</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dcgru_layers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">DCGRUCell</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">output_dim</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">rnn_units</span><span class="p">,</span> <span class="n">adj_mx</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_diffusion_step</span><span class="p">,</span>
+                                           <span class="bp">self</span><span class="o">.</span><span class="n">num_nodes</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">,</span> <span class="n">filter_type</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">filter_type</span><span class="p">))</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_rnn_layers</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">dcgru_layers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">DCGRUCell</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rnn_units</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">rnn_units</span><span class="p">,</span> <span class="n">adj_mx</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_diffusion_step</span><span class="p">,</span>
+                                               <span class="bp">self</span><span class="o">.</span><span class="n">num_nodes</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">,</span> <span class="n">filter_type</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">filter_type</span><span class="p">))</span>
+
+<div class="viewcode-block" id="DecoderModel.forward"><a class="viewcode-back" href="../../../../trafficdl/trafficdl.model.traffic_speed_prediction.DCRNN.html#trafficdl.model.traffic_speed_prediction.DCRNN.DecoderModel.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">hidden_state</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Decoder forward pass.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            inputs:  shape (batch_size, self.num_nodes * self.output_dim)</span>
+<span class="sd">            hidden_state: (num_layers, batch_size, self.hidden_state_size),</span>
+<span class="sd">                optional, zeros if not provided, hidden_state_size = num_nodes * rnn_units</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            tuple: tuple contains:</span>
+<span class="sd">                output: shape (batch_size, self.num_nodes * self.output_dim) \n</span>
+<span class="sd">                hidden_state: shape (num_layers, batch_size, self.hidden_state_size) \n</span>
+<span class="sd">                (lower indices mean lower layers)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">hidden_states</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="n">inputs</span>
+        <span class="k">for</span> <span class="n">layer_num</span><span class="p">,</span> <span class="n">dcgru_layer</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dcgru_layers</span><span class="p">):</span>
+            <span class="n">next_hidden_state</span> <span class="o">=</span> <span class="n">dcgru_layer</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">hidden_state</span><span class="p">[</span><span class="n">layer_num</span><span class="p">])</span>
+            <span class="c1"># next_hidden_state: (batch_size, self.num_nodes * self.rnn_units)</span>
+            <span class="n">hidden_states</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">next_hidden_state</span><span class="p">)</span>
+            <span class="n">output</span> <span class="o">=</span> <span class="n">next_hidden_state</span>
+        <span class="n">projected</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">projection_layer</span><span class="p">(</span><span class="n">output</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">rnn_units</span><span class="p">))</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="n">projected</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_nodes</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_dim</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">output</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">hidden_states</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="DCRNN"><a class="viewcode-back" href="../../../../trafficdl/trafficdl.model.traffic_speed_prediction.DCRNN.html#trafficdl.model.traffic_speed_prediction.DCRNN.DCRNN">[docs]</a><span class="k">class</span> <span class="nc">DCRNN</span><span class="p">(</span><span class="n">AbstractTrafficStateModel</span><span class="p">,</span> <span class="n">Seq2SeqAttrs</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">data_feature</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">adj_mx</span> <span class="o">=</span> <span class="n">data_feature</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;adj_mx&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">num_nodes</span> <span class="o">=</span> <span class="n">data_feature</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;num_nodes&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">feature_dim</span> <span class="o">=</span> <span class="n">data_feature</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;feature_dim&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">config</span><span class="p">[</span><span class="s1">&#39;num_nodes&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_nodes</span>
+        <span class="n">config</span><span class="p">[</span><span class="s1">&#39;feature_dim&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">feature_dim</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">output_dim</span> <span class="o">=</span> <span class="n">data_feature</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;output_dim&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="n">data_feature</span><span class="p">)</span>
+        <span class="n">Seq2SeqAttrs</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">adj_mx</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">encoder_model</span> <span class="o">=</span> <span class="n">EncoderModel</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">adj_mx</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">decoder_model</span> <span class="o">=</span> <span class="n">DecoderModel</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">adj_mx</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">use_curriculum_learning</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;use_curriculum_learning&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">input_window</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;input_window&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">output_window</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;output_window&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">device</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;device&#39;</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">&#39;cpu&#39;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span> <span class="o">=</span> <span class="n">getLogger</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_scaler</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_feature</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;scaler&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_compute_sampling_threshold</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">batches_seen</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">cl_decay_steps</span> <span class="o">/</span> <span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">cl_decay_steps</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">batches_seen</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">cl_decay_steps</span><span class="p">))</span>
+
+<div class="viewcode-block" id="DCRNN.encoder"><a class="viewcode-back" href="../../../../trafficdl/trafficdl.model.traffic_speed_prediction.DCRNN.html#trafficdl.model.traffic_speed_prediction.DCRNN.DCRNN.encoder">[docs]</a>    <span class="k">def</span> <span class="nf">encoder</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        encoder forward pass on t time steps</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            inputs: shape (input_window, batch_size, num_sensor * input_dim)</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            torch.tensor: (num_layers, batch_size, self.hidden_state_size)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">encoder_hidden_state</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">input_window</span><span class="p">):</span>
+            <span class="n">_</span><span class="p">,</span> <span class="n">encoder_hidden_state</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">encoder_model</span><span class="p">(</span><span class="n">inputs</span><span class="p">[</span><span class="n">t</span><span class="p">],</span> <span class="n">encoder_hidden_state</span><span class="p">)</span>
+            <span class="c1"># encoder_hidden_state: encoder的多层GRU的全部的隐层 (num_layers, batch_size, self.hidden_state_size)</span>
+
+        <span class="k">return</span> <span class="n">encoder_hidden_state</span>  <span class="c1"># 最后一个隐状态</span></div>
+
+<div class="viewcode-block" id="DCRNN.decoder"><a class="viewcode-back" href="../../../../trafficdl/trafficdl.model.traffic_speed_prediction.DCRNN.html#trafficdl.model.traffic_speed_prediction.DCRNN.DCRNN.decoder">[docs]</a>    <span class="k">def</span> <span class="nf">decoder</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">encoder_hidden_state</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">batches_seen</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Decoder forward pass</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            encoder_hidden_state: (num_layers, batch_size, self.hidden_state_size)</span>
+<span class="sd">            labels:  (self.output_window, batch_size, self.num_nodes * self.output_dim)</span>
+<span class="sd">                [optional, not exist for inference]</span>
+<span class="sd">            batches_seen: global step [optional, not exist for inference]</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            torch.tensor: (self.output_window, batch_size, self.num_nodes * self.output_dim)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">batch_size</span> <span class="o">=</span> <span class="n">encoder_hidden_state</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">go_symbol</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">batch_size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_nodes</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_dim</span><span class="p">),</span> <span class="n">device</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+        <span class="n">decoder_hidden_state</span> <span class="o">=</span> <span class="n">encoder_hidden_state</span>
+        <span class="n">decoder_input</span> <span class="o">=</span> <span class="n">go_symbol</span>
+
+        <span class="n">outputs</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">output_window</span><span class="p">):</span>
+            <span class="n">decoder_output</span><span class="p">,</span> <span class="n">decoder_hidden_state</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">decoder_model</span><span class="p">(</span><span class="n">decoder_input</span><span class="p">,</span> <span class="n">decoder_hidden_state</span><span class="p">)</span>
+            <span class="n">decoder_input</span> <span class="o">=</span> <span class="n">decoder_output</span>     <span class="c1"># (batch_size, self.num_nodes * self.output_dim)</span>
+            <span class="n">outputs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">decoder_output</span><span class="p">)</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">training</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">use_curriculum_learning</span><span class="p">:</span>
+                <span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">c</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compute_sampling_threshold</span><span class="p">(</span><span class="n">batches_seen</span><span class="p">):</span>
+                    <span class="n">decoder_input</span> <span class="o">=</span> <span class="n">labels</span><span class="p">[</span><span class="n">t</span><span class="p">]</span>  <span class="c1"># (batch_size, self.num_nodes * self.output_dim)</span>
+        <span class="n">outputs</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">outputs</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">outputs</span></div>
+
+<div class="viewcode-block" id="DCRNN.forward"><a class="viewcode-back" href="../../../../trafficdl/trafficdl.model.traffic_speed_prediction.DCRNN.html#trafficdl.model.traffic_speed_prediction.DCRNN.DCRNN.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">batch</span><span class="p">,</span> <span class="n">batches_seen</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        seq2seq forward pass</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            batch: a batch of input,</span>
+<span class="sd">                batch[&#39;X&#39;]: shape (batch_size, input_window, num_nodes, input_dim) \n</span>
+<span class="sd">                batch[&#39;y&#39;]: shape (batch_size, output_window, num_nodes, output_dim) \n</span>
+<span class="sd">            batches_seen: batches seen till now</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            torch.tensor: (batch_size, self.output_window, self.num_nodes, self.output_dim)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">inputs</span> <span class="o">=</span> <span class="n">batch</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">]</span>
+        <span class="n">labels</span> <span class="o">=</span> <span class="n">batch</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span>
+        <span class="n">batch_size</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">num_nodes</span><span class="p">,</span> <span class="n">input_dim</span> <span class="o">=</span> <span class="n">inputs</span><span class="o">.</span><span class="n">shape</span>
+        <span class="n">inputs</span> <span class="o">=</span> <span class="n">inputs</span><span class="o">.</span><span class="n">permute</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>  <span class="c1"># (input_window, batch_size, num_nodes, input_dim)</span>
+        <span class="n">inputs</span> <span class="o">=</span> <span class="n">inputs</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">input_window</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">,</span> <span class="n">num_nodes</span> <span class="o">*</span> <span class="n">input_dim</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;X: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">inputs</span><span class="o">.</span><span class="n">size</span><span class="p">()))</span>  <span class="c1"># (input_window, batch_size, num_nodes * input_dim)</span>
+
+        <span class="k">if</span> <span class="n">labels</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">labels</span> <span class="o">=</span> <span class="n">labels</span><span class="o">.</span><span class="n">permute</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>  <span class="c1"># (output_window, batch_size, num_nodes, output_dim)</span>
+            <span class="n">labels</span> <span class="o">=</span> <span class="n">labels</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">output_dim</span><span class="p">]</span><span class="o">.</span><span class="n">contiguous</span><span class="p">()</span><span class="o">.</span><span class="n">view</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">output_window</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">,</span> <span class="n">num_nodes</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_dim</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;y: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">labels</span><span class="o">.</span><span class="n">size</span><span class="p">()))</span>
+
+        <span class="n">encoder_hidden_state</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">encoder</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
+        <span class="c1"># (num_layers, batch_size, self.hidden_state_size)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Encoder complete&quot;</span><span class="p">)</span>
+        <span class="n">outputs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">decoder</span><span class="p">(</span><span class="n">encoder_hidden_state</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">batches_seen</span><span class="o">=</span><span class="n">batches_seen</span><span class="p">)</span>
+        <span class="c1"># (self.output_window, batch_size, self.num_nodes * self.output_dim)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Decoder complete&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">batches_seen</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Total trainable parameters </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">count_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">)))</span>
+        <span class="n">outputs</span> <span class="o">=</span> <span class="n">outputs</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">output_window</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_nodes</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_dim</span><span class="p">)</span><span class="o">.</span><span class="n">permute</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">outputs</span></div>
+
+<div class="viewcode-block" id="DCRNN.calculate_loss"><a class="viewcode-back" href="../../../../trafficdl/trafficdl.model.traffic_speed_prediction.DCRNN.html#trafficdl.model.traffic_speed_prediction.DCRNN.DCRNN.calculate_loss">[docs]</a>    <span class="k">def</span> <span class="nf">calculate_loss</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">batch</span><span class="p">,</span> <span class="n">batches_seen</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="n">y_true</span> <span class="o">=</span> <span class="n">batch</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span>
+        <span class="n">y_predicted</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">batch</span><span class="p">,</span> <span class="n">batches_seen</span><span class="p">)</span>
+        <span class="n">y_true</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_scaler</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">y_true</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">output_dim</span><span class="p">])</span>
+        <span class="n">y_predicted</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_scaler</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">y_predicted</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">output_dim</span><span class="p">])</span>
+        <span class="k">return</span> <span class="n">loss</span><span class="o">.</span><span class="n">masked_mae_torch</span><span class="p">(</span><span class="n">y_predicted</span><span class="p">,</span> <span class="n">y_true</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DCRNN.predict"><a class="viewcode-back" href="../../../../trafficdl/trafficdl.model.traffic_speed_prediction.DCRNN.html#trafficdl.model.traffic_speed_prediction.DCRNN.DCRNN.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">batch</span><span class="p">,</span> <span class="n">batches_seen</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">batch</span><span class="p">,</span> <span class="n">batches_seen</span><span class="p">)</span></div></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, aptx1231
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
