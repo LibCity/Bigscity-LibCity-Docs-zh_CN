@@ -1,4 +1,6 @@
-## 基于[Sphinx](http://sphinx-doc.org/)的项目文档
+# Documents of LibTraffic
 
-> 修改方式说明见Easy-update.md
+This document is based on [Sphinx](http://sphinx-doc.org/) and uses [Read the Docs](https://readthedocs.org/) for deployment.
+
+[Click here to visit](https://bigscity-libtraffic-docs.readthedocs.io/zh/latest/).
 
