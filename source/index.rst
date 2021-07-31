@@ -1,10 +1,10 @@
-.. Bigscity-TrafficDL documentation master file, created by
+.. Bigscity-LibTraffic documentation master file, created by
    sphinx-quickstart on Sat Dec 26 22:20:09 2020.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to Bigscity-TrafficDL's documentation!
-==============================================
+Welcome to Bigscity-LibTraffic's documentation!
+=================================================
    
 .. toctree::
    :maxdepth: 1
@@ -24,6 +24,7 @@ Welcome to Bigscity-TrafficDL's documentation!
    user_guide/model
    user_guide/evaluator
    user_guide/executor
+   user_guide/logger
    user_guide/usage
 
 .. toctree::
@@ -33,22 +34,29 @@ Welcome to Bigscity-TrafficDL's documentation!
    developer_guide/code_style
    developer_guide/implemented_datasets
    developer_guide/implemented_models
-   developer_guide/implemented_evaluators
    developer_guide/implemented_executors
-   developer_guide/implemented_logger
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Tutorial
+   
+   tutorial/install_quick_start
+   tutorial/run_model
+   tutorial/add_model
+   tutorial/hyper_tune
 
 .. toctree::
    :maxdepth: 1
    :caption: API REFERENCE
 
-   trafficdl/trafficdl.config
-   trafficdl/trafficdl.data
-   trafficdl/trafficdl.evaluator
-   trafficdl/trafficdl.executor
-   trafficdl/trafficdl.model
-   trafficdl/trafficdl.pipeline
-   trafficdl/trafficdl.utils
-   
+   libtraffic/libtraffic.config
+   libtraffic/libtraffic.data
+   libtraffic/libtraffic.evaluator
+   libtraffic/libtraffic.executor
+   libtraffic/libtraffic.model
+   libtraffic/libtraffic.pipeline
+   libtraffic/libtraffic.utils
+
 Indices and tables
 ==================
 

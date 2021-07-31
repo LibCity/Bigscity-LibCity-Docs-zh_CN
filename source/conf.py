@@ -12,14 +12,14 @@
 #
 import os
 import sys
-sys.path.insert(0, os.path.abspath('../../Bigscity-TrafficDL/'))
+sys.path.insert(0, os.path.abspath('../'))
 import sphinx_rtd_theme
 from recommonmark.parser import CommonMarkParser
 # -- Project information -----------------------------------------------------
 
-project = 'Bigscity-TrafficDL'
+project = 'Bigscity-LibTraffic'
 copyright = '2020, aptx1231'
-author = 'aptx1231'
+author = 'aptx1231, WenMellors'
 
 
 # -- General configuration ---------------------------------------------------
@@ -68,3 +68,21 @@ source_parsers = {
 source_suffix = ['.rst', '.md']
 
 napoleon_include_private_with_doc = True
+
+latex_elements={
+    'papersize':'a4paper',
+    'pointsize':'12pt','classoptions':',oneside','babel':'',
+    'inputenc':'',
+    'utf8extra':'',
+    'preamble': r"""
+    \usepackage{xeCJK}
+    \usepackage{indentfirst}
+    \setlength{\parindent}{2em}
+    \setCJKmainfont{WenQuanYi Micro Hei}
+    \setCJKmonofont[Scale=0.9]{WenQuanYi Micro Hei Mono}
+    \setCJKfamilyfont{song}{WenQuanYi Micro Hei}
+    \setCJKfamilyfont{sf}{WenQuanYi Micro Hei}
+    \XeTeXlinebreaklocale "zh"
+    \XeTeXlinebreakskip = 0pt plus 1pt
+    """
+}

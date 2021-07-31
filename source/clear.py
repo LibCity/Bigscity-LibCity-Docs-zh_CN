@@ -6,7 +6,7 @@ def modify_doc_title_dir(abspath_rstfiles_dir):
     rst_files = os.listdir(abspath_rstfiles_dir)
     del_nodes = ['Submodules', 'Module contents', 'Subpackages']
     del_str = [' module', ' package']
-    del_file = ['trafficdl.rst', 'modules.rst']
+    del_file = ['libtraffic.rst', 'modules.rst']
     for rst_file in rst_files:
         if rst_file in del_file:
             os.remove(os.path.join(abspath_rstfiles_dir, rst_file))
@@ -24,7 +24,7 @@ def modify_doc_title_dir(abspath_rstfiles_dir):
                 flag = 0
                 continue
             if re.search(del_str[0], file_line):
-                modify_line = file_line.replace(del_str[0], '.py')
+                modify_line = file_line.replace(del_str[0], '')
                 write_con.append(modify_line)
                 continue
             if re.search(del_str[1], file_line):
@@ -36,22 +36,23 @@ def modify_doc_title_dir(abspath_rstfiles_dir):
         f.writelines(write_con)
         f.close()
     solve_list = [
-        'trafficdl.model.traffic_flow_prediction.rst',
-        'trafficdl.model.traffic_demand_prediction.rst',
-        'trafficdl.model.traffic_speed_prediction.rst',
-        'trafficdl.model.trajectory_loc_prediction.rst',
-        'trafficdl.config.rst',
-        'trafficdl.data.rst',
-        'trafficdl.data.dataset.rst',
-        'trafficdl.evaluator.rst',
-        'trafficdl.executor.rst',
-        'trafficdl.model.rst',
-        'trafficdl.pipeline.rst',
-        'trafficdl.utils.rst',
+        'libtraffic.model.traffic_flow_prediction.rst',
+        'libtraffic.model.traffic_demand_prediction.rst',
+        'libtraffic.model.traffic_speed_prediction.rst',
+        'libtraffic.model.trajectory_loc_prediction.rst',
+        'libtraffic.data.dataset.trajectory_encoder.rst',
+        'libtraffic.config.rst',
+        'libtraffic.data.rst',
+        'libtraffic.data.dataset.rst',
+        'libtraffic.evaluator.rst',
+        'libtraffic.executor.rst',
+        'libtraffic.model.rst',
+        'libtraffic.pipeline.rst',
+        'libtraffic.utils.rst',
     ]
     for rst_file in rst_files:
         if rst_file in solve_list:
-            # print(rst_file)
+            print(rst_file)
             f = open(os.path.join(abspath_rstfiles_dir, rst_file), 'r')
             file_lines = f.readlines()
             f.close()
@@ -70,4 +71,4 @@ def modify_doc_title_dir(abspath_rstfiles_dir):
 
 
 if __name__ == '__main__':
-    modify_doc_title_dir('./source/trafficdl')
+    modify_doc_title_dir('./source/libtraffic')
