@@ -1,11 +1,10 @@
 Executor Introduction
 ======================
 
-我们为每个任务提供一个标准的Executor，用来负责模型的训练、验证与评估。
+We provide a standard Executor for each task, which is responsible for the training, verification and evaluation of the model.
+The user can adjust the effect of training by modifying the parameter settings of the executor.
 
-如何你的模型不能够满足使用标准的Executor，你也可以为他设计单独的Executor。
-
-用户可以通过修改执行器的参数设置，来调整训练的效果。
+If your model is not satisfied with the existing standard Executor, you can also design a new Executor for it. For details, please refer to :doc:`../developer_guide/implemented_executors`.
 
 .. toctree::
    :maxdepth: 1

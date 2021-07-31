@@ -1,7 +1,7 @@
 Evaluator Introduction
 ==========================
 
-考虑到不同的任务的模型输出格式不同。因此对于不同的任务，框架实现了不同的评估器，并支持多种主流评估方法。下面给出不同任务所支持的评估方法。
+Considering the different output formats of models for different tasks, the framework implements different evaluators for different tasks and supports a variety of mainstream evaluation methods. The evaluation methods supported by different tasks are given below.
 
 ============================== ==============================
 Task Name                      Supported Metrics
