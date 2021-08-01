@@ -1,6 +1,6 @@
 # 自定义Dataset
 
-本文档用于介绍如何在`LibTraffic`下开发一个新的数据集。
+本文档用于介绍如何在`LibTraffic`中开发一个新的数据集。
 
 ## 已实现的Dataset类
 
@@ -20,7 +20,7 @@
 
 - `TrafficStateCPTDataset`
 
-  用于交通状态预测任务的另一个基类。**注意这是抽象类，不能直接使用。**一些交通预测模型通过对接近度/周期/趋势的建模来实现预测。默认情况下，`len_closeness`/`len_period`/`len_trend` 的数据被用来预测当前时刻的数据（单步预测）。此类生成的[batch](../user_guide/data/batch.md)对象包含4个键，分别是`X`，`y`，`X_ext`和`y_ext` 。此处的 `len_closeness`/`len_period`/`len_trend` 是data的参数, 点击[here](../user_guide/data/args_for_data.md) 查看细节。
+  用于交通状态预测任务的另一个基类。**注意这是抽象类，不能直接使用**。一些交通预测模型通过对接近度/周期/趋势的建模来实现预测。默认情况下，`len_closeness`/`len_period`/`len_trend` 的数据被用来预测当前时刻的数据（单步预测）。此类生成的[batch](../user_guide/data/batch.md)对象包含4个键，分别是`X`，`y`，`X_ext`和`y_ext` 。此处的 `len_closeness`/`len_period`/`len_trend` 是data的参数, 点击[here](../user_guide/data/args_for_data.md) 查看细节。
 
 - `TrafficStatePointDataset`
 
