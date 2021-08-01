@@ -4,7 +4,7 @@
 
 ## 创建新的Model类
 
-首先，我们创建的新的模型应该继承`AbstractModel`或`AbstractTrafficStateModel`。注意，对于交通状态预测任务，请继承` AbstractTrafficStateModel`类，对于轨迹位置预测任务，请继承`AbstractModel`类。
+首先，我们创建的新的模型应该继承`AbstractModel`或`AbstractTrafficStateModel`。注意，对于交通状态预测任务，请继承` AbstractTrafficStateModel`类，对于轨迹位置预测任务，请继承`AbstractModel`类。 
 
 这里我们以交通状态预测任务为例。我们想为交通速度预测任务开发一个名为`NewModel`的模型。
 
