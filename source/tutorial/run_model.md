@@ -168,18 +168,18 @@ python run_model.py --task traffic_state_pred --dataset METR_LA --model GRU --le
 
 首先，记录模块提示模型运行的记录会保存在`libtraffic/log`文件夹下的相应文件中，并开始模型训练的流水线。
 
-<img src="D:\BIGSCity\LibTraffic\宣传\Tutorial\运行LibTraffic中已复现的模型\img\log1.png" alt="log1" style="zoom:67%;" />
+![](/_static/run_model1.png)
 
 然后，执行模块会加载原子文件，创建数据集，划分训练集、验证集、测试集，并将划分好的数据集保存在`libtraffic/cache/dataset_cache`下。下次在相同参数的数据集上运行模型时，不需要重新进行数据预处理操作。
 
-<img src="D:\BIGSCity\LibTraffic\宣传\Tutorial\运行LibTraffic中已复现的模型\img\log2.png" alt="log2" style="zoom:67%;" />
+![](/_static/run_model2.png)
 
 记录模块还会输出模型的结构和参数量、优化器和学习率调整机制。我们可以发现，优化器已经变成了我们在自定义配置文件`GRU_METR_LA.json`中设置的`sgd`。
 
-<img src="D:\BIGSCity\LibTraffic\宣传\Tutorial\运行LibTraffic中已复现的模型\img\log3.png" alt="log3" style="zoom:67%;" />
+![](/_static/run_model3.png)
 
 接下来，执行模块就开始训练模型了。结束一个epoch的训练，记录模块会输出模型在训练集和验证集上的误差、学习率、训练时间。我们可以发现，学习率已经变成了我们通过命令行传递进去的`0.02`。
 
-<img src="D:\BIGSCity\LibTraffic\宣传\Tutorial\运行LibTraffic中已复现的模型\img\log4.png" alt="log4" style="zoom:67%;" />
+![](/_static/run_model4.png)
 
 最终，模型训练结束后，执行模块会在测试集上评测模型的性能，并将训练好的模型和评测结果分别保存在`libtraffic/cache/model_cache/`和`libtraffic/cache/evaluate_cache/`下。
