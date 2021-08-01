@@ -1,12 +1,12 @@
 # 自定义Model
 
-本文档用于介绍如何在`TrafficDL`下开发一个新模型。
+本文档将介绍如何在`LibTraffic`中开发一个新模型。
 
 ## 创建新的Model类
 
-首先，我们创建的新的模型应该继承`AbstractModel`或`AbstractTrafficStateModel`。注意，对于交通状态预测任务，请继承` AbstractTrafficStateModel`类，对于轨迹位置预测任务，请继承`AbstractModel`类。 
+首先，我们创建的新模型应该继承`AbstractModel`或`AbstractTrafficStateModel`。注意，对于交通状态预测任务，请继承` AbstractTrafficStateModel`类，对于轨迹位置预测任务，请继承`AbstractModel`类。 
 
-这里我们以交通状态预测任务为例。我们想为交通速度预测任务开发一个名为`NewModel`的模型。
+这里我们以交通状态预测任务为例。如果想为交通速度预测任务开发一个名为`NewModel`的模型。
 
 首先请在`libtraffic/model/traffic_speed_prediction/`目录下创建一个新的文件`NewModel.py`，并在该文件中写入以下代码。
 
@@ -28,9 +28,9 @@ class NewModel(AbstractTrafficStateModel):
 
 然后我们需要实现`__init__()`方法，`__init__()`用于根据数据特征和配置信息来定义模型结构。
 
-`__init__()`的输入参数是`config`和`data_feature`，其中`config`包含各种配置信息，包括模型参数等，`data_feature`包含建立我们模型的数据集的特征。
+`__init__()`的输入参数是`config`和`data_feature`，其中`config`包含各种配置信息，包括模型参数等，`data_feature`包含建立模型的数据集的特征。
 
-这里我们以一个简单的LSTM交通预测模型为例.你可以像这样定义`__init__()`。
+这里我们以一个简单的LSTM交通预测模型为例。你可以像这样定义`__init__()`。
 
 ```python
 import torch
@@ -61,7 +61,7 @@ class NewModel(AbstractTrafficStateModel):
         self.fc = nn.Linear(self.hidden_size, self.num_nodes * self.output_dim)
 ```
 
-在代码的第一部分，我们从`data_feature`中获取必要的参数，包括节点数（`num_nodes`）、数据输入尺寸（`feature_dim`）、输出尺寸（`output_dim`）和数据规范化对象（`scaler`），并初始化记录器。
+在代码的第一部分，我们从`data_feature`中获取必要的参数，包括节点数（`num_nodes`）、数据输入尺寸（`feature_dim`）、输出尺寸（`output_dim`）和数据规范化对象（`scaler`），并初始化`logger`。
 
 在代码的第二部分，我们从配置中获取必要的参数，包括隐藏层尺寸（`hidden_size`）、网络层数（`num_layers`）、输入时间长度（`input_window`）、输出时间长度（`output_window`），等等。
 
@@ -69,13 +69,13 @@ class NewModel(AbstractTrafficStateModel):
 
 ## 实现predict()
 
-然后我们定义`predict()`方法，用来预测模型的结果。`predict()`的输入参数是`batch`，它是一个 [Batch](https://github.com/LibTraffic/Bigscity-LibTraffic-Docs-zh_CN/blob/master/source/user_guide/data/batch.md)类的对象。
+然后我们定义`predict()`方法，用来获得模型的预测结果。`predict()`的输入参数是`batch`，它是一个[Batch](../user_guide/data/batch.md)类的对象。
 
-`AbstractModel`和`AbstractTrafficStateModel`都继承自`torch.nn.Module`类。如果你熟悉Pytorch框架，你会发现这个函数与`torch.nn.Module`中的`forward()`函数类似。在大多数情况下，你可以在这个函数里面直接调用`forward()`函数来获得模型的输出。
+`AbstractModel`和`AbstractTrafficStateModel`两个抽象类都继承自`torch.nn.Module`类。如果你熟悉Pytorch框架，你会发现这个函数与`torch.nn.Module`中的`forward()`函数类似。在大多数情况下，你可以在这个函数里面直接调用`forward()`函数来获得模型的输出。
 
-这个函数的目的是，你可以在`forward()`函数计算的模型输出的基础上做一些额外的处理。例如，当`forward()`函数计算的是模型的单步预测结果，而你需要的是多步预测的结果，你可以使用`predict()`函数来实现。
+`predict()`函数可以在`forward()`函数计算的模型输出的基础上做一些额外的处理。例如，当`forward()`函数计算的是模型的单步预测结果，而你需要的是多步预测的结果时，可以使用`predict()`函数来实现。
 
-例如，你可以这样定义`predict()`。
+例如，你可以这样定义`predict()`：
 
 ```python
 class NewModel(AbstractTrafficStateModel):
@@ -103,13 +103,13 @@ class NewModel(AbstractTrafficStateModel):
 
 ## 实现calcualte_loss()
 
-最后，我们定义了`calculate_loss()`方法，`calculate_loss()`用于计算预测结果与地面实测值之间的损失。
+最后，我们定义了`calculate_loss()`方法，`calculate_loss()`用于计算预测结果与真实值之间的`loss`。
 
-`calculate_loss()`的输入参数是`batch`，它是一个[Batch](https://github.com/LibTraffic/Bigscity-LibTraffic-Docs-zh_CN/blob/master/source/user_guide/data/batch.md)类的对象。该方法返回一个用于反向传播的`Torch.Tensor`。
+`calculate_loss()`的输入参数是`batch`，它是一个[Batch](../user_guide/data/batch.md)类的对象。该方法返回一个用于反向传播的`Torch.Tensor`。
 
 你可以自定义损失函数或者调用我们在`libtraffic/model/loss.py`文件中定义的损失函数。
 
-例如，你可以像这样定义`calcualte_loss()`。
+例如，你可以像这样定义`calcualte_loss()`：
 
 ```python
 from libtraffic.model import loss
@@ -163,13 +163,9 @@ __all__ = [
 }
 ```
 
-- Second, you need to add a file in the `libtraffic/config/model/` directory to set the default parameters of your model. You can also set parameters of other modules which you want to cover as the parameters of the model module have the highest priority than other modules.
+- 其次，你需要在`libtraffic/config/model/`目录下添加一个文件来设置你的模型的默认参数。你也可以设置你想覆盖的其他模块的参数，因为模型模块的参数比其他模块有最高的优先级。
 
-  For example, you can add this file `libtraffic/config/model/traffic_state_pred/NewModel.json` and add codes like the follows. You can see that in addition to the three parameters related to the model structure, we also define the number of training rounds(`max_epoch`), optimizer(`learner`), and learning rate(`learning_rate`) to cover the default execution configuration.
-
-  第二，你需要在`libtraffic/config/model/目录下添加一个文件来设置你的模型的默认参数。你也可以设置你想覆盖的其他模块的参数，因为模型模块的参数比其他模块有最高的优先权。
-
-  例如，你可以添加这个文件`libtraffic/config/model/traffic_state_pred/NewModel.json`并添加如下代码。你可以看到，除了与模型结构有关的三个参数外，我们还定义了训练轮数（`max_epoch`）、优化器（`learner`）和学习率（`learning_rate`），以涵盖默认的执行配置。
+  例如，你可以添加这个文件`libtraffic/config/model/traffic_state_pred/NewModel.json`并添加如下代码。在代码中，除了与模型结构有关的三个参数外，我们还定义了训练轮数（`max_epoch`）、优化器（`learner`）和学习率（`learning_rate`），以涵盖默认的执行配置。
 
 ```json
 {
@@ -183,11 +179,11 @@ __all__ = [
 }
 ```
 
-**注意：配置的文件名和`allowed_model`列表中的值必须与你添加的模型的类名相同。**就像上面的`NewModel`。
+**注意：配置的文件名和`allowed_model`列表中的值必须与你添加的模型的类名相同**。 就像上面的`NewModel`。
 
 现在你已经学会了如何添加一个新的模型，尝试用以下命令来运行这个模型！
 
 ```shell
-python run_model.py --task traffic_state_pred --model NewModel --data
+python run_model.py --task traffic_state_pred --model NewModel --dataset METR_LA
 ```
 

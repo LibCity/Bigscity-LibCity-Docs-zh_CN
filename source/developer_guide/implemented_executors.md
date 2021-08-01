@@ -1,14 +1,14 @@
-# 自定义Executor类
+# 自定义Executor
 
-本文档用于介绍如何在`TrafficDL`下开发一个新的executor。
+本文档将介绍如何在`LibTraffic`中开发一个新的执行器。
 
-对于一个新的模型，如果训练方法复杂，而现有的执行器不能用于训练和评估，那么我们就需要开发一个新的执行器。
+当一个新添加的模型训练方法复杂，现有的执行器不能用于训练和评估，我们就需要开发一个新的执行器。
 
 ## 创建新的Executor类
 
-首先，我们创建的新executor应该继承自`AbstractExecutoror`。
+首先，我们创建的执行器应该继承自`AbstractExecutoror`。
 
-例如，我们想为交通状态预测任务开发一个名为`NewExecutor`的执行器，并将代码写入`libtraffic/executor/`目录下的`newexecutor.py`。
+例如，如下代码可用于开发一个名为`NewExecutor`的交通状态预测执行器，代码被写入`libtraffic/executor/`目录下的`newexecutor.py`。
 
 ```python
 from libtraffic.executor.abstract_executor import AbstractExecutor
