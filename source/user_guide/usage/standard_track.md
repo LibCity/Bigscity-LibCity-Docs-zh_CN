@@ -6,23 +6,6 @@
 
 不同任务的标准数据输入格式和评估输入格式解释如下：
 
-### 轨迹位置预测
-
-标准数据输入格式是类字典的[Batch](../data/batch.md)对象实例。该对象的key名如下：
-
-* `history_loc`：历史轨迹位置信息，`shape = (batch_size, history_len)`，`history_len` 是历史轨迹的长度。
-* `history_tim`：历史轨迹时间信息，`shape = (batch_size, history_len)`。
-* `current_loc`：当前轨迹位置信息，`shape = (batch_size, current_len)`，`current_len` 是当前轨迹长度。
-* `current_tim`：当前轨迹时间信息，`shape = (batch_size, current_len)`。
-* `uid`：每个轨迹的用户的id，`shape = (batch_size)`。
-* `target`：期望下一跳的位置，`shape = (batch_size) `。
-
-标准评价输入格式是类字典对象，字典的key名如下：
-
-* `uid`： 每个轨迹使用者的id， `shape = (batch_size)`。
-* `loc_true`：预期下一跳的位置， `shape = (batch_size)`。
-* `loc_pred`：模型预测输出，`shape = (batch_size, output_dim)`。
-
 ## 交通状态预测
 
 根据交通数据空间结构的不同，交通状态数据一般可以用以下格式的张量表示：
@@ -41,8 +24,23 @@
 
 标准数据输入格式是一个字典对象，并且这个字典有下列key名：
 
-- `y_true`：The ground-truth值，格式与输入的`y`相同。
+- `y_true`：真实值，格式与输入的`y`相同。
 - `y_pred`：预测值，格式与输入的`y`相同。
 
+## 轨迹位置预测
 
+标准数据输入格式是类字典的[Batch](../data/batch.md)对象实例。该对象的key名如下：
+
+- `history_loc`：历史轨迹位置信息，`shape = (batch_size, history_len)`，`history_len` 是历史轨迹的长度。
+- `history_tim`：历史轨迹时间信息，`shape = (batch_size, history_len)`。
+- `current_loc`：当前轨迹位置信息，`shape = (batch_size, current_len)`，`current_len` 是当前轨迹长度。
+- `current_tim`：当前轨迹时间信息，`shape = (batch_size, current_len)`。
+- `uid`：每个轨迹的用户的id，`shape = (batch_size)`。
+- `target`：期望下一跳的位置，`shape = (batch_size) `。
+
+标准评价输入格式是类字典对象，字典的key名如下：
+
+- `uid`： 每个轨迹使用者的id， `shape = (batch_size)`。
+- `loc_true`：预期下一跳的位置， `shape = (batch_size)`。
+- `loc_pred`：模型预测输出，`shape = (batch_size, output_dim)`。
 

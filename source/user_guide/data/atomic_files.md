@@ -13,7 +13,7 @@
 
 注：对于不同的交通预测任务，可能用到不同的原子文件，同一个数据集不一定包含全部六种原子文件。
 
-**`.geo`、 `.rel`、 `.dyna` 和 `.ext` 的格式类似 `csv` 文件， 即含有多列数据。**
+**`.geo`、`.usr`、 `.rel`、 `.dyna` 和 `.ext` 的格式类似 `csv` 文件， 即含有多列数据。**
 
 ## Geo 表
 
@@ -27,7 +27,7 @@ Geo 表中一个元素由以下四部分组成：
 
 *  coordinates：由 float 类型组成的数组或嵌套数组。 描述 geo 实体的位置信息，采用 [Geojson](https://tools.ietf.org/html/rfc7946#section-1) 的 coordinates 格式
 
-*  properties： 描述该 geo 的属性信息，若有多个属性，可以使用不同的列名定义为多列数据，如 `POI_name`， `POI_type`。 \[**对于网格数据，必有两列 `row_id` 和 `column_id` 属性表示网格的行列编号。**\]
+*  properties： 描述该 geo 的属性信息，若有多个属性，可以使用不同的列名定义为多列数据，如 `POI_name`， `POI_type`。 （**对于网格数据，必有两列 `row_id` 和 `column_id` 属性表示网格的行列编号**。）
 
 
 > 注： Geojson 的 coordinates 格式为： (**经度, 纬度**)

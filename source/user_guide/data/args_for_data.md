@@ -1,8 +1,8 @@
-# 数据参数
+# 数据模块参数
 
-下文描述数据集中涉及的相关参数。
+下文描述数据模块中涉及的相关参数。
 
-## Traffic State Prediction DataSet
+## 交通状况预测数据模块
 
 以下参数是在流量状态预测任务中用到的所有参数。
 
@@ -10,9 +10,7 @@
 
 * `cache_dataset`： 是否保存处理后的数据集。默认为 `True`。
 
-* `num_workers`
-  ： [Dataloader](https://pytorch.org/docs/stable/data.html?highlight=dataloader#torch.utils.data.DataLoader) 的参数。默认为 `0`
-  。
+* `num_workers`： [Dataloader](https://pytorch.org/docs/stable/data.html?highlight=dataloader#torch.utils.data.DataLoader) 的参数。默认为 `0`。
 
 * `pad_with_last_sample`： 当样本总数不能被 `batch_size` 整除时， 是否用最后一个元素填充最后一批。默认为`True`。
 
@@ -27,7 +25,7 @@
 * `load_external`： 是否加载外部数据(如天气数据)。默认为 `False`。
 
     * `normal_external`： 是否规范化外部数据。默认为 `False`。
-    
+
     * `ext_scaler`: 指定规范化方法，对外部数据进行规范化，需要在外部指定。 取值为 \[`normal`, `standard`, `minmax01`, `minmax11`, `none`\]。 默认为 `none`。
 
     * `add_time_in_day`： 时间参数，添加一天中时间的辅助信息。默认为 `False`。 该参数依赖于参数 `load_external=True`。
@@ -47,20 +45,13 @@
         * `minmax11`： MinMax 规范化， 结果区间为 \[-1, 1\]。
 
         * `none`： 不进行规范化。
-
     * `feature_dim*`： 交通数据特征维的大小，**不能在外部指定**，而是根据不同的数据集自动计算 。 外部数据和其他一些参数也可能影响这个维度的大小。
-
-    * `adj_mx*`： 由流量数据构造的邻接矩阵，**不能从外部指定**，而是由 `.rel` 文件自动计算。 有关 `.rel` 文件的参数设置， 请查阅 [atomic files](./atomic_files.md)
-      小节。
-
+    * `adj_mx*`： 由流量数据构造的邻接矩阵，**不能从外部指定**，而是由 `.rel` 文件自动计算。 有关 `.rel` 文件的参数设置， 请查阅 [原子文件](./atomic_files.md) 小节。
     * `num_nodes*`： 交通数据实体的数量，如传感器的数量、网格的数量等，**不能从外部指定**，而是根据不同的数据集自动计算。
-
     * `len_row*`： 网格数据的网格行数，**不能从外部指定**，而是根据不同的数据集自动计算。
-
     * `len_column*`： 网格数据的网格列数，**不能从外部指定**，而是根据不同的数据集自动计算。
-
     * `output_dim*`： 流量预测模型输出结果的特征维的大小，**需要在外部指定**。 其通常不等于 `feature_dim`， 因为输入数据可能包含外部特征，但模型的输出结果通常只包含有效的交通信息，而不含外部信息。
-      该参数通过数据集的 atomic file 设置， 请查阅 [atomic file](./atomic_files.md) 小节。
+      该参数通过数据集的 atomic file 设置， 请查阅 [原子文件](./atomic_files.md) 小节。
 
 * 其他非常用参数
 
@@ -87,14 +78,13 @@
 
 > 注： 从 `Dataset`类的`get_feature()` 方法当中获取的 `len_closeness`/`len_period`/`len_trend` 表示**这三段数据的实际长度**。 在返回值 `batch['X']` 中， 这三段数据按顺序拼接在一起。因此根据长度可以获得每一组数据。
 
-### Trajectory Location Prediction DataSet
+## 轨迹下一跳预测数据模块
 
-以下参数均为标准轨迹下一位置预测数据集使用的参数：
+以下参数均为标准轨迹下一跳预测数据集使用的参数：
 
 * `batch_size`：训练和测试批量大小。默认为`64`。
 * `cache_dataset`：是否保存处理后的数据集。默认为`真`。
-* `num_workers`：[Dataloader](https://pytorch.org/docs/stable/data.html?highlight=dataloader#torch.utils.data.DataLoader)
-  的参数。默认为`0`。
+* `num_workers`：[Dataloader](https://pytorch.org/docs/stable/data.html?highlight=dataloader#torch.utils.data.DataLoader)的参数。默认为`0`。
 * `train_rate`：训练集占总数据集的比例。默认为`0.7`。 （划分顺序为训练集、验证集、测试集）
 * `eval_rate`：验证集的比例。默认为`0.1`。
 

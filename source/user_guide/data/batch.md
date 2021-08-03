@@ -8,7 +8,8 @@
 
 因此，您可以使用以下方法来获得相应的值：
 ```python
-loc \= batch\['current\_loc'\]
-tim \= batch\['current\_tim'\]
+loc = batch['current_loc']
+tim = batch['current_tim']
 ```
 **`Batch` 类统一了模型的输入格式，框架得以实现通用的训练、预测执行器类和标准模型抽象类。**
+

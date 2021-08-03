@@ -13,8 +13,8 @@ python run_model.py --task=[task_name] --model=[model_name] --dataset=[dataset_n
 支持参数:
 
 - `task`：要执行的任务的名称，包括`traffic_state_pred` 和`traj_loc_pred`。默认为 `traffic_state_pred`。
-- `model`：要执行的模型的名称。默认为 `GRU`。( [支持模型](../model))
-- `dataset`：要执行的数据集。默认为 `METR_LA`。（[支持数据集](../data/raw_data.md)）
+- `model`：要执行的模型的名称。默认为 `GRU`。([支持的模型](../model))
+- `dataset`：要执行的数据集。默认为 `METR_LA`。（[支持的数据集](../data/raw_data.md)）
 - `config_file`：用户定义配置文件的名称。默认为 `None`。([查看更多](../config_settings.md))
 - `saved_model`：是否保存训练好的模型。默认为 `True`。
 - `train`：如果模型已经过预训练，是否对模型进行再训练。默认为 `True`。

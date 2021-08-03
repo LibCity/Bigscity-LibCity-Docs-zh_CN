@@ -19,14 +19,13 @@
 - `gpu_per_trial`：每次试验所分配的gpu数量，默认值为1。
 
      `task, model, dataset, space_file` 这三个参数必须在命令行中指定。例如，你可以按照下方格式运行超参数调整：
-     
-    ```shell
-    python hyper_tune.py --task [task_name] --model=[model_name] --dataset=[dataset_name] --space_file=[file_name]
-    ```
-    
-    
 
-#### 空间文件
+     ```shell
+     python hyper_tune.py --task [task_name] --model=[model_name] --dataset=[dataset_name] --space_file=[file_name]
+     ```
+
+
+## 空间文件
 
 空间文件应该使用JSON文件格式储存。空间文件的内容是一个字典，其键为参数名，其值为空间描述变量。
 
