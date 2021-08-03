@@ -1,24 +1,29 @@
-# Code Style
+# 代码风格
 
-Every major open-source project has its own style guide: a set of conventions (sometimes arbitrary) about how to write code for that project. It is much easier to understand a large codebase when all the code in it is in a consistent style.
+每个主流开源项目都有其自己的风格指南：关于如何为该项目编写代码的一组约定（有时是任意的）。当所有代码都采用统一的风格时，更加容易理解大型代码库。
 
-The code style of our project basically follows [Google Python Style Guide](https://google.github.io/styleguide/pyguide.html) ([Chinese version](https://zh-google-styleguide.readthedocs.io/en/latest/google-python-styleguide/contents/)). In order to better manage the quality of the code submitted by each co-developer, the project uses the python lint tool [flake8](https://flake8.pycqa.org/en/latest/) to find potential bugs and style problems in source code.
+我们的代码风格基本遵循了 [Google Python Style Guide](https://google.github.io/styleguide/pyguide.html) ([Chinese version](https://zh-google-styleguide.readthedocs.io/en/latest/google-python-styleguide/contents/))。为了更好的管理各合作开发者提交的代码质量，这个项目使用python lint工具[flake8](https://flake8.pycqa.org/en/latest/) 来查找潜在的bug和源代码中的风格问题。
 
-### Working with Flake8
 
-Besides using flake8, the project also uses [pep8-naming](https://github.com/PyCQA/pep8-naming), a plugin for flake8, to check code naming style. Please install flake8 and pep8-naming according to `/requirements.txt`.
 
-After installing flake8, we recommend you to integrate flake8 into Git pre-commit hook. For example, you can running following commands:
+### 使用Flake8
+
+除了使用flake8，项目也使用了[pep8-naming](https://github.com/PyCQA/pep8-naming)，一种flake8的插件来检查代码命名风格，请根据requirements.txt安装flake8和pep8-naming库。
+
+在安装了flake8后，我们建议您将flake8集成到Git pre-commit hook中使用。例如，您可以运行下列指令
 
 ```shell
 $ flake8 --install-hook git
 $ git config --bool flake8.strict true
 ```
 
-Now, whenever you create a git commit, flake8 will automatically check the code style of your commit and prevent you from submitting bad codes.
+现在，每当您git commit时，flake8都将自动检查您commit的代码风格和并防止您submit错误代码。 
 
-### Project Flake8 Configuration
 
-Although the project basically follows the [Google Python Style Guide](https://google.github.io/styleguide/pyguide.html), we have made certain modifications to some uncomfortable specifications. The modifications we made will be recorded in detail, seeing below.
 
-* `max-line-length`: We change the maximum line length from 80 characters to 120 characters.
+### 项目Flake8配置
+
+虽然这个项目基本遵循了[Google Python Style Guide](https://google.github.io/styleguide/pyguide.html)，但我们已经针对一些不合适的规范做出了某些修改。这些我们做的修改将被记录，详情请见下方。
+
+- `max-line-length`:我们将最大行长度从80个字符更改为120个字符
+
