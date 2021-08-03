@@ -205,7 +205,7 @@
 
 **链接：** https://github.com/zhiyongc/Seattle-Loop-Data
 
-**描述：**Loop Seattle 数据集由部署在西雅图地区高速公路(I-5、I-405、I-90和SR-520)上的感应环路探测器收集，包含来自323个传感器站的交通状态数据。
+**描述：** Loop Seattle 数据集由部署在西雅图地区高速公路(I-5、I-405、I-90和SR-520)上的感应环路探测器收集，包含来自323个传感器站的交通状态数据。
 
 ### Q-Traffic
 **地点：** Beijing, China
@@ -345,10 +345,10 @@ LAT / LONG 点序列描述了传感器链路的位置
 **描述：** NYC Accident data 包含纽约市的事故数据.
 
 ### Road network data (OpenStreetMap)
-**链接：**https://www.openstreetmap.org/
+**链接：** https://www.openstreetmap.org/
 
 ### Weather and events data
-**链接：**https://www.wunderground.com/
+**链接：** https://www.wunderground.com/
 
 ## Others
 
