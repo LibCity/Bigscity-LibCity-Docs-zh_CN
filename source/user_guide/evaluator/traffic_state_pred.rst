@@ -1,9 +1,9 @@
-Traffic State Prediction Evaluator
+交通状态预测评估器
 ==================================
 
 我们实现了若干种评估损失函数，以使得同一任务下的不同的模型可以在同样的标准下进行比较。
 
-Evaluation Metrics
+评估指标
 ------------------
 
 对于交通状态预测任务，本评估器实现了一系列评估指标：
@@ -21,7 +21,7 @@ Evaluation Metrics
 
 其中，真实值为\ :math:`y=\{y_1,y_2,...,y_n\}`\ ，预测值为\ :math:`\hat{y} = \{\hat{y_1}, \hat{y_2}, ..., \hat{y_n}\}`\ ，\ :math:`n`\ 为样本个数，均值\ :math:`\bar{y}=\frac{1}{n}\sum_{i=1}^ny_i`\ ，方差\ :math:`Var(y_i)=\frac{1}{n}\sum_{i=1}^n(y_{i}-\bar{y})^2`\ 。
 
-Evaluation Settings
+评估设置
 -------------------
 
 下面是评估器所涉及到的一系列参数：
