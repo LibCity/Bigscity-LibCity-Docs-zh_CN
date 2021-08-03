@@ -7,8 +7,8 @@
 下面主要介绍此调度器类所能够接收的参数：
 
 - `max_epoch`：训练总轮数，初值由模型设定。
-- `epoch`：起始训练的轮数，如果大于0，会**先从'./trafficdl/cache/model_cache'加载该epoch的模型（缓存文件名为[模型名\_数据集名\_epoch+轮数.tar]）**，然后继续完成接下来的训练或评估。
-- `learner`：优化器optimizer的类别（字符串），目前支持`adam`、`sgd`、`adagrad`、`rmsprop`、`sparse_adam`，**默认'adam'**。
+- `epoch`：起始训练的轮数，如果大于0，会先从`./libtraffic/cache/model_cache`加载该epoch的模型（缓存文件名为[模型名\_数据集名\_epoch+轮数.tar]），然后继续完成接下来的训练或评估。
+- `learner`：优化器[optimizer](https://pytorch.org/docs/stable/optim.html#module-torch.optim)的类别（字符串），目前支持`adam`、`sgd`、`adagrad`、`rmsprop`、`sparse_adam`，**默认'adam'**。
   - `learning_rate`：optimizer的参数，学习率，**默认0.01**。
   - `weight_decay`：optimizer的参数，**默认0.0**。
   - `lr_epsilon`：optimizer的参数，**默认1e-8**。
@@ -16,8 +16,8 @@
   - `lr_beta2`： optimizer的参数，**默认0.999**。
   - `lr_alpha`： optimizer的参数，**默认0.99**。
   - `lr_momentum`： optimizer的参数，**默认0**。
-- `lr_decay`：是否是用lr_scheduler，**默认False**。
-  - `lr_scheduler`：lr_scheduler的类别，目前支持`MultiStepLR`、`StepLR`、`ExponentialLR`、`CosineAnnealingLR`、`LambdaLR`以及`ReduceLROnPlateau`。
+- `lr_decay`：是否是用[lr_scheduler](https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate)，**默认False**。
+  - `lr_scheduler`：[lr_scheduler](https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate)的类别，目前支持`MultiStepLR`、`StepLR`、`ExponentialLR`、`CosineAnnealingLR`、`LambdaLR`以及`ReduceLROnPlateau`。
     - `lr_decay_ratio`：`MultiStepLR`、`StepLR`、`ExponentialLR`、`ReduceLROnPlateau`的参数。
     - `steps`：`MultiStepLR`的参数。
     - `step_size`：`StepLR`的参数。
@@ -26,8 +26,8 @@
     - `lr_eta_min`：`CosineAnnealingLR`的参数。
     - `lr_patience`： `ReduceLROnPlateau`的参数。
     - `lr_threshold`：`ReduceLROnPlateau`的参数。
-- `clip_grad_norm`：是否是用clip_grad_norm\_，**默认False**（`torch.nn.utils.clip_grad_norm_`）。
-  - `max_grad_norm`：clip_grad_norm_的参数。
+- `clip_grad_norm`：是否是用[clip_grad_norm_](https://pytorch.org/docs/stable/generated/torch.nn.utils.clip_grad_norm_.html)，**默认False**（`torch.nn.utils.clip_grad_norm_`）。
+  - `max_grad_norm`：[clip_grad_norm_](https://pytorch.org/docs/stable/generated/torch.nn.utils.clip_grad_norm_.html)的参数。
 - `use_early_stop`：是否是用早停机制，**默认False。**
   - `patience`：早停机制的轮数，每当验证集误差>最小验证误差，则累计1，反之则清0从头累计，累计到`patience`次就结束训练。
 - `train_loss`： 训练时使用的损失函数（字符串）。目前支持`mae`、`mape`、`mse`、`rmse`、`masked_mae`、`masked_mape`、`masked_mse`、`masked_rmse`、`r2`、`evar`。

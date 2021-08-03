@@ -1,6 +1,6 @@
 # 代码风格
 
-每个主流开源项目都有其自己的风格指南：关于如何为该项目编写代码的一组约定（有时是任意的）。当所有代码都采用统一的风格时，更加容易理解大型代码库。
+每个主流开源项目都有其自己的风格指南：关于如何为该项目编写代码的一组约定。当所有代码都采用统一的风格时，更加容易理解大型代码库。
 
 我们的代码风格基本遵循了 [Google Python Style Guide](https://google.github.io/styleguide/pyguide.html) ([Chinese version](https://zh-google-styleguide.readthedocs.io/en/latest/google-python-styleguide/contents/))。为了更好的管理各合作开发者提交的代码质量，这个项目使用python lint工具[flake8](https://flake8.pycqa.org/en/latest/) 来查找潜在的bug和源代码中的风格问题。
 
@@ -25,5 +25,5 @@ $ git config --bool flake8.strict true
 
 虽然这个项目基本遵循了[Google Python Style Guide](https://google.github.io/styleguide/pyguide.html)，但我们已经针对一些不合适的规范做出了某些修改。这些我们做的修改将被记录，详情请见下方。
 
-- `max-line-length`:我们将最大行长度从80个字符更改为120个字符
+- `max-line-length`：我们将最大行长度从80个字符更改为120个字符。
 

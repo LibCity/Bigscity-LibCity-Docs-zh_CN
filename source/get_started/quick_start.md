@@ -42,7 +42,7 @@ python run_model.py --task traffic_state_pred --model GRU --dataset METR_LA
 - `batch_size`：训练集和验证集的批次大小。
 - `train_rate`：训练集在整个数据集中所占的比例。（划分的顺序是训练集、验证集、测试集）
 - `eval_rate`：验证集在整个数据集中所占的比例。
-- `learning_rate`：学习率。不同的模型默认的学习率可能是不同的，请参考相关的配置文件了解更多细节。
-- `max_epoch`：最大的训练轮数。默认值随模型变化而变化。
+- `learning_rate`：学习率。默认值因模型而异。
+- `max_epoch`：最大的训练轮数。默认值因模型而异。
 - `gpu`：是否使用GPU。默认为`True`。
 - `gpu_id`：使用的GPU的ID。默认为`0`。

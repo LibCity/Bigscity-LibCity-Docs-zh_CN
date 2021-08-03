@@ -33,7 +33,7 @@
 
 > （该文件应存放于项目根目录，与 `hyper_tune.py` 同级）
 >
-> 更多的参数空间信息可以参考[文档。](https://bigscity-libtraffic-docs.readthedocs.io/en/latest/user_guide/usage/parameter_tuning.html)
+> 更多的参数空间信息可以参考[文档](../user_guide/usage/parameter_tuning.md)。
 
 ```json
 {
@@ -70,7 +70,7 @@ python hyper_tune.py --task traffc_state_pred --model GRU --dataset METR_LA --sp
 
 > （目前脚本只支持以模型在验证集上的 loss 作为性能评估标准）
 >
-> 关于脚本的更多命令行参数，可以参见[文档。](https://bigscity-libtraffic-docs.readthedocs.io/en/latest/user_guide/usage/parameter_tuning.html)
+> 关于脚本的更多命令行参数，可以参见[文档](../user_guide/usage/parameter_tuning.md)。
 
 下图为运行过程的截图：
 

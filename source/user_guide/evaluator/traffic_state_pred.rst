@@ -26,7 +26,7 @@
 
 下面是评估器所涉及到的一系列参数：
 
-位置：trafficdl/config/evaluator/TrafficStateEvaluator.json
+位置：libtraffic/config/evaluator/TrafficStateEvaluator.json
 
 - ``metrics``\ ：指定评价指标数组，评估类的\ ``allowed_metrics``\ 表示该任务可以接受的指标类型，不能超出此范围。
 
