@@ -20,7 +20,7 @@
 
 **描述：** 与METR LA略有不同，缺失值通过线性插值得到补充。
 
-### SZ\_Taxi
+### SZ\_TAXI
 
 **地点：** Shenzhen, China
 
@@ -30,7 +30,7 @@
 
 **描述：** SZ-Taxi 数据集包含深圳市的出租车轨迹，包括道路邻接矩阵和道路交通速度信息。
 
-### Loop\_Seattle
+### LOOP\_SEATTLE
 
 **地点：** Greater Seattle Area, China
 
@@ -40,7 +40,7 @@
 
 **描述：** Loop Seattle 数据集由部署在西雅图地区高速公路(I-5、I-405、I-90和SR-520)上的感应环路探测器收集，包含来自323个传感器站的交通状态数据。
 
-### Q-Traffic
+### Q-TRAFFIC
 
 **地点：** Beijing, China
 
@@ -109,16 +109,6 @@
 **链接：** https://github.com/Davidham3/STGCN/tree/master/datasets
 
 **描述：** PeMSD7(M) 数据集描述了加州第7区228个站点的高速公路速度信息。
-
-### PeMSD-SF
-
-**地点：** San Francisco Bay Area, USA
-
-**时期：** Jan. 1, 2008 ~ Mar. 30, 2009
-
-**链接：** http://archive.ics.uci.edu/ml/datasets/PEMS-SF
-
-**描述：** PeMSD-SF数据集描述了旧金山湾区高速公路不同车道的占用率，在0到1之间。
 
 ### PEMS-BAY
 

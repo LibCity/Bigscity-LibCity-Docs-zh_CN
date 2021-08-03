@@ -27,6 +27,8 @@
 * `load_external`： 是否加载外部数据(如天气数据)。默认为 `False`。
 
     * `normal_external`： 是否规范化外部数据。默认为 `False`。
+    
+    * `ext_scaler`: 指定规范化方法，对外部数据进行规范化，需要在外部指定。 取值为 \[`normal`, `standard`, `minmax01`, `minmax11`, `none`\]。 默认为 `none`。
 
     * `add_time_in_day`： 时间参数，添加一天中时间的辅助信息。默认为 `False`。 该参数依赖于参数 `load_external=True`。
 
@@ -65,9 +67,7 @@
   注： 一些交通预测模型通过接近度(closeness)/周期(period)/趋势(trend)进行建模来实现预测， 并使用 `len_closeness`/`len_period`/`len_trend`
   数据作为历史数据进行预测，而不是上述 `input_window` 和 `output_window`， 所以有以下额外参数 are added：
 
-    * `points_per_hour`： 一个小时有多少个时间步长，例如，若数据集为5分钟一个时间步，那么它就是12。
-
-    * `len_closeness`： closeness 时间片序列的长度。
+   * `len_closeness`： closeness 时间片序列的长度。
 
     * `len_period`： period 时间片序列的长度。
 
