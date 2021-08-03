@@ -1,15 +1,17 @@
 Evaluator Introduction
 ==========================
 
-Considering the different output formats of models for different tasks, the framework implements different evaluators for different tasks and supports a variety of mainstream evaluation methods. The evaluation methods supported by different tasks are given below.
+考虑到不同任务的模型输出格式不同，该框架针对不同的任务实现了不同的评估器，支持多种主流评估方法。 
+
+下面给出不同任务支持的评估方法。
 
 ============================== ==============================
-Task Name                      Supported Metrics
+任务名                         支持的评估指标
 ============================== ==============================
-Trajectory Location prediction TopK
-Traffic Flow Prediction        MAE、MSE、RMSE、MAPE、R2、EVAR
-Traffic Speed Prediction       MAE、MSE、RMSE、MAPE、R2、EVAR
-On-Demand Service predition    MAE、MSE、RMSE、MAPE、R2、EVAR
+交通轨迹预测                    TopK
+交通流量预测                    MAE、MSE、RMSE、MAPE、R2、EVAR
+交通速度预测                    MAE、MSE、RMSE、MAPE、R2、EVAR
+按需服务预测                    MAE、MSE、RMSE、MAPE、R2、EVAR
 ============================== ==============================
 
 .. toctree::

@@ -1,6 +1,6 @@
-Usage
+用法
 ===================
-This document introduces how to use various features in libtraffic, such as how to train different models, how to use different data sets, and how to complete the call of various components of the entire process.
+本文档介绍了如何使用libtraffic中的各种特性，比如如何训练不同的模型，如何使用不同的数据集，以及如何完成整个过程中各个组件的调用。
 
 .. toctree::
    :maxdepth: 1

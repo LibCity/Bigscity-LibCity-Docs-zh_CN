@@ -1,10 +1,9 @@
-Executor Introduction
-======================
+调度器简介
+==========
 
-We provide a standard Executor for each task, which is responsible for the training, verification and evaluation of the model.
-The user can adjust the effect of training by modifying the parameter settings of the executor.
+我们为每个任务提供一个标准的调度器，负责模型的训练、验证和评估，用户可以通过修改执行器的参数设置来调整训练的效果。
 
-If your model is not satisfied with the existing standard Executor, you can also design a new Executor for it. For details, please refer to :doc:`../developer_guide/implemented_executors`.
+如果您的模型对现有的标准 Executor 不满意，您还可以为其设计一个新的 Executor，详情请参考 :doc:`../developer_guide/implemented_executors`。
 
 .. toctree::
    :maxdepth: 1
