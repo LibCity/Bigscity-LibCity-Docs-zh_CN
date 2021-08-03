@@ -18,7 +18,7 @@
 python run_model.py --task traj_loc_pred --model DeepMove --dataset foursquare_tky --gpu false --batch_size 15
 ```
 
-不同的脚本文件允许传递不同的参数。更多细节参见[用法](./usage.rst)。
+不同的脚本文件允许传递不同的参数。更多细节参见[用法](./usage/run_model.md)。
 
 也可使用`-h`选项得到帮助信息。例如：
 
