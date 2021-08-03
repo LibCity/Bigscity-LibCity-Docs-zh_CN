@@ -7,9 +7,9 @@ LibTraffic 是一个统一、灵活、全面、可扩展的交通预测库，为
 LibTraffic 目前支持以下任务：
 
 * 交通状态预测（Traffic State Prediction）
-  * 交通流量预测（Traffic Flow Prediction）
-  * 交通速度预测（Traffic Speed Prediction）
-  * 交通需求量预测（On-Demand Service Predition）
+* 交通流量预测（Traffic Flow Prediction）
+* 交通速度预测（Traffic Speed Prediction）
+* 交通需求量预测（On-Demand Service Predition）
 * 轨迹下一跳预测（Traffic Location Prediction）
 
 #### 特性
@@ -22,9 +22,9 @@ LibTraffic 目前支持以下任务：
 
 ![](/_static/framework.png)
 
-* **Configuration Module**: 负责管理框架中涉及的所有参数。
-* **Data Module**: 负责加载数据集和数据预处理操作。
-* **Model Module**: 负责初始化基线模型或自定义模型。
-* **Evaluation Module**: 负责通过多个指标评估模型预测结果。
-* **Execution Module**: 负责模型训练和预测。
+* **Configuration Module**：负责管理框架中涉及的所有参数。
+* **Data Module**：负责加载数据集和数据预处理操作。
+* **Model Module**：负责初始化基线模型或自定义模型。
+* **Evaluation Module**：负责通过多个指标评估模型预测结果。
+* **Execution Module**：负责模型训练和预测。
 
