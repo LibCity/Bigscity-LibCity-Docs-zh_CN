@@ -4,13 +4,13 @@
 
 ## 下载数据集
 
-`LibTraffic`提供了29个交通数据集，并在[网站](https://libtraffic.github.io/Bigscity-LibTraffic-Website/#/data)和[文档](https://bigscity-libtraffic-docs.readthedocs.io/zh/latest/user_guide/data/raw_data.html)上展示了其基本信息。为了格式化各种交通数据，我们设计并实现了6种原子文件格式，它们可以描述不同交通预测任务大部分的输入数据。更多细节可见[文档](https://bigscity-libtraffic-docs.readthedocs.io/zh/latest/user_guide/data/atomic_files.html)的相关内容。
+`LibTraffic`提供了29个交通数据集，并在[网站](https://libtraffic.github.io/Bigscity-LibTraffic-Website/#/data)和[文档](../user_guide/data/raw_data.md)上展示了其基本信息。为了格式化各种交通数据，我们设计并实现了6种原子文件格式，它们可以描述不同交通预测任务大部分的输入数据。更多细节可见[文档](../user_guide/data/atomic_files.md)的相关内容。
 
 我们已经将处理好的数据集的原子文件上传至[百度网盘](https://pan.baidu.com/s/1qEfcXBO-QwZfiT0G3IYMpQ#list/path=%2F)（提取码：1231）和[Google Drive](https://drive.google.com/drive/folders/1g5v2Gq1tkOq8XO0HDCZ9nOTtRpB6-gPe)，用户可以直接进行下载。
 
 以METR_LA数据集为例，下载成功后，我们会得到一个名为`METR_LA`的文件夹。
 
-> 如果您还没有安装`LibTraffic`，您可以在[这里](https://bigscity-libtraffic-docs.readthedocs.io/zh/latest/tutorial/install_quick_start.html)找到安装教程。
+> 如果您还没有安装`LibTraffic`，您可以在[这里](install_quick_start.md)找到安装教程。
 
 如果`LibTraffic`安装成功后，我们会得到一个名为`Bigscity-LibTraffic`的文件夹。我们需要在项目根目录下创建一个名为`raw_data`的文件夹，用来存放处理好的数据集原子文件。然后，我们需要将之前下载好的`METR_LA`文件夹移动到`raw_data`文件夹下。此时`raw_data`文件夹下有一个`METR_LA`文件夹，而在`METR_LA`文件夹下有4个原子文件。
 

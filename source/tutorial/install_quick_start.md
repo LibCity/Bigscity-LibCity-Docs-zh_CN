@@ -45,9 +45,9 @@ pip install -r requirements.txt
 
 ### 下载一个数据集
 
-LibTraffic中使用的数据集是以一种统一的[原子文件](https://bigscity-libtraffic-docs.readthedocs.io/zh/latest/user_guide/data/atomic_files.html)格式存储的。
+LibTraffic中使用的数据集是以一种统一的[原子文件](../user_guide/data/atomic_files.md)格式存储的。
 
-为了直接在`LibTraffic`中使用[原始数据集](https://bigscity-libtraffic-docs.readthedocs.io/zh/latest/user_guide/data/raw_data.html)，我们已经将所有这些数据集转换成了原子文件的格式，并提供了[转换工具](https://github.com/LibTraffic/Bigscity-LibTraffic-Datasets)。
+为了直接在`LibTraffic`中使用[原始数据集](../user_guide/data/raw_data.md)，我们已经将所有这些数据集转换成了原子文件的格式，并提供了[转换工具](https://github.com/LibTraffic/Bigscity-LibTraffic-Datasets)。
 
 您可以直接下载我们处理好的数据集。数据集链接是[百度网盘](https://pan.baidu.com/s/1qEfcXBO-QwZfiT0G3IYMpQ)（提取码：1231）或[Google Drive](https://drive.google.com/drive/folders/1g5v2Gq1tkOq8XO0HDCZ9nOTtRpB6-gPe?usp=sharing)。
 
@@ -77,9 +77,9 @@ python run_model.py --task traffic_state_pred --model GRU --dataset METR_LA
 支持的参数有：
 
 - `task`：要执行的任务名，包括`traffic_state_pred`和`traj_loc_pred`。默认为`traffic_state_pred`.
-- `model`：要执行的模型名。默认为`GRU`。（[支持的模型](https://bigscity-libtraffic-docs.readthedocs.io/zh/latest/user_guide/model.html)）
-- `dataset`：要执行的数据集。默认为`METR_LA`。（[支持的数据集](https://bigscity-libtraffic-docs.readthedocs.io/zh/latest/user_guide/data/raw_data.html)）
-- `config_file`：用户自定义的配置文件名。默认为`None`。（[了解更多](https://bigscity-libtraffic-docs.readthedocs.io/zh/latest/user_guide/config_settings.html)）
+- `model`：要执行的模型名。默认为`GRU`。（[支持的模型](../user_guide/model)）
+- `dataset`：要执行的数据集。默认为`METR_LA`。（[支持的数据集](../user_guide/data/raw_data.md)）
+- `config_file`：用户自定义的配置文件名。默认为`None`。（[了解更多](../user_guide/config_settings.md)）
 - `saved_model`：是否保存训练好的模型。默认为`True`。
 - `train`：如果模型已经预训练过了，是否要重新训练模型。默认为`True`。
 - `batch_size`：训练集和验证集的批次大小。
