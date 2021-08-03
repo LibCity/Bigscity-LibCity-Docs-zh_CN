@@ -1,4 +1,4 @@
-# 配置设置
+# 参数设置
 
 实验参数配置由三方面决定：命令行传入的参数、用户定义的配置文件和框架默认的配置文件。由此，用户可以灵活地通过前两种方式调整实验的参数配置。
 
@@ -18,7 +18,7 @@
 python run_model.py --task traj_loc_pred --model DeepMove --dataset foursquare_tky --gpu false --batch_size 15
 ```
 
-不同的脚本文件允许传递不同的参数。更多细节参见[用法](https：//bigscity-libtraffic-docs.readthedocs.io/zh/latest/user_guide/usage.html)。
+不同的脚本文件允许传递不同的参数。更多细节参见[用法](./usage.rst)。
 
 也可使用`-h`选项得到帮助信息。例如：
 
@@ -71,7 +71,7 @@ optional arguments:
 
 ### 默认配置
 
-#### 默认模块配置
+#### 模块默认配置
 
 数据模块、执行器模块、评估模块和模型所在模块的配置分别位于以下目录中：
 
