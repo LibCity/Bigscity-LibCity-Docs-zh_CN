@@ -3,12 +3,12 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to Bigscity-LibTraffic's documentation!
+欢迎来到 Bigscity-LibTraffic 的文档页!
 =================================================
    
 .. toctree::
    :maxdepth: 1
-   :caption: Get Started
+   :caption: 起步
 
    get_started/introduction
    get_started/install
@@ -17,7 +17,7 @@ Welcome to Bigscity-LibTraffic's documentation!
 
 .. toctree::
    :maxdepth: 1
-   :caption: User Guide
+   :caption: 用户指导
 
    user_guide/config_settings
    user_guide/data
@@ -29,7 +29,7 @@ Welcome to Bigscity-LibTraffic's documentation!
 
 .. toctree::
    :maxdepth: 1
-   :caption: Developer Guide
+   :caption: 开发者指导
 
    developer_guide/code_style
    developer_guide/implemented_datasets
@@ -38,7 +38,7 @@ Welcome to Bigscity-LibTraffic's documentation!
 
 .. toctree::
    :maxdepth: 1
-   :caption: Tutorial
+   :caption: 入门教程
    
    tutorial/install_quick_start
    tutorial/run_model
@@ -47,7 +47,7 @@ Welcome to Bigscity-LibTraffic's documentation!
 
 .. toctree::
    :maxdepth: 1
-   :caption: API REFERENCE
+   :caption: API文档
 
    libtraffic/libtraffic.config
    libtraffic/libtraffic.data
