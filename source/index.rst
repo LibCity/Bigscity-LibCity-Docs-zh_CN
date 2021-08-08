@@ -3,8 +3,8 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to Bigscity-LibTraffic's documentation!(Under development, please see the english version!)
-=====================================================================================================
+Welcome to Bigscity-LibTraffic's documentation!
+=================================================
    
 .. toctree::
    :maxdepth: 1
