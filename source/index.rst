@@ -57,7 +57,7 @@
    libtraffic/libtraffic.pipeline
    libtraffic/libtraffic.utils
 
-Indices and tables
+索引
 ==================
 
 * :ref:`genindex`
