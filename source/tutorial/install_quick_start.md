@@ -1,16 +1,16 @@
 # 安装和快速上手
 
-## 安装LibTraffic
+## 安装LibCity
 
 ### 从源代码安装
 
-LibTraffic目前可以从源代码安装。
+LibCity目前可以从源代码安装。
 
 请执行下列命令来获得源代码。
 
 ```
-git clone https://github.com/LibTraffic/Bigscity-LibTraffic.git
-cd Bigscity-LibTraffic
+git clone https://github.com/LibCity/Bigscity-LibCity.git
+cd Bigscity-LibCity
 ```
 
 ### 配置依赖
@@ -31,34 +31,34 @@ Conda:
 conda install pytorch==1.7.1 torchvision==0.8.2 torchaudio==0.7.2 cudatoolkit=10.2 -c pytorch
 ```
 
-在安装PyTorch后，我们可以通过pip使用下列命令安装`LibTraffic`的所有依赖。
+在安装PyTorch后，我们可以通过pip使用下列命令安装`LibCity`的所有依赖。
 
 ```
 pip install -r requirements.txt
 ```
 
-现在，我们就可以使用`LibTraffic`了，更多的细节可以看`Quick Start`一节。
+现在，我们就可以使用`LibCity`了，更多的细节可以看`Quick Start`一节。
 
-值得注意的是，大多数模型依赖的包都记录在了`requirements.txt`中。除了以上需要的包，`STAGGCN`模型的实现需要依赖第三方库`torch-geometric`。如果您想运行这个模型，请参考[这里](https://github.com/rusty1s/pytorch_geometric)来根据您的环境安装这个包，并可以取消`libtraffic/model/traffic_speed_prediction/STAGGCN.py`第五行的注释。
+值得注意的是，大多数模型依赖的包都记录在了`requirements.txt`中。除了以上需要的包，`STAGGCN`模型的实现需要依赖第三方库`torch-geometric`。如果您想运行这个模型，请参考[这里](https://github.com/rusty1s/pytorch_geometric)来根据您的环境安装这个包，并可以取消`libcity/model/traffic_speed_prediction/STAGGCN.py`第五行的注释。
 
 ## 快速上手
 
 ### 下载一个数据集
 
-LibTraffic中使用的数据集是以一种统一的[原子文件](../user_guide/data/atomic_files.md)格式存储的。
+LibCity中使用的数据集是以一种统一的[原子文件](../user_guide/data/atomic_files.md)格式存储的。
 
-为了直接在`LibTraffic`中使用[原始数据集](../user_guide/data/raw_data.md)，我们已经将所有这些数据集转换成了原子文件的格式，并提供了[转换工具](https://github.com/LibTraffic/Bigscity-LibTraffic-Datasets)。
+为了直接在`LibCity`中使用[原始数据集](../user_guide/data/raw_data.md)，我们已经将所有这些数据集转换成了原子文件的格式，并提供了[转换工具](https://github.com/LibCity/Bigscity-LibCity-Datasets)。
 
 您可以直接下载我们处理好的数据集。数据集链接是[百度网盘](https://pan.baidu.com/s/1qEfcXBO-QwZfiT0G3IYMpQ)（提取码：1231）或[Google Drive](https://drive.google.com/drive/folders/1g5v2Gq1tkOq8XO0HDCZ9nOTtRpB6-gPe?usp=sharing)。
 
-在运行`LibTraffic`的模型前，请确保您至少下载了一个数据集，并把它放在了`Bigscity-LibTraffic/raw_data/dataset_name/*`目录下。
+在运行`LibCity`的模型前，请确保您至少下载了一个数据集，并把它放在了`Bigscity-LibCity/raw_data/dataset_name/*`目录下。
 
 例如，如果您下载了METR_LA数据集，目录结构如下所示：
 
-- `Bigscity-LibTraffic/raw_data/METR_LA/METR_LA.geo`
-- `Bigscity-LibTraffic/raw_data/METR_LA/METR_LA.rel`
-- `Bigscity-LibTraffic/raw_data/METR_LA/METR_LA.dyna`
-- `Bigscity-LibTraffic/raw_data/METR_LA/config.json`
+- `Bigscity-LibCity/raw_data/METR_LA/METR_LA.geo`
+- `Bigscity-LibCity/raw_data/METR_LA/METR_LA.rel`
+- `Bigscity-LibCity/raw_data/METR_LA/METR_LA.dyna`
+- `Bigscity-LibCity/raw_data/METR_LA/config.json`
 
 ### 运行模型流水线
 

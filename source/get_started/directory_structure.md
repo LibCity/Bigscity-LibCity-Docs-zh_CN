@@ -8,7 +8,7 @@
 
   存放测试脚本。
 
-- |-libtraffic/
+- |-libcity/
 
   项目代码根目录。
 

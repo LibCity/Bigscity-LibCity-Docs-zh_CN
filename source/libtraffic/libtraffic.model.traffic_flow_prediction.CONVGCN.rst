@@ -1,7 +1,7 @@
-libtraffic.model.traffic\_flow\_prediction.CONVGCN
+libcity.model.traffic\_flow\_prediction.CONVGCN
 =========================================================
 
-.. automodule:: libtraffic.model.traffic_flow_prediction.CONVGCN
+.. automodule:: libcity.model.traffic_flow_prediction.CONVGCN
    :members:
    :undoc-members:
    :show-inheritance:

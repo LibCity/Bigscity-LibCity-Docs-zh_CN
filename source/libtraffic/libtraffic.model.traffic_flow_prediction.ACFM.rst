@@ -1,7 +1,7 @@
-libtraffic.model.traffic\_flow\_prediction.ACFM
+libcity.model.traffic\_flow\_prediction.ACFM
 ======================================================
 
-.. automodule:: libtraffic.model.traffic_flow_prediction.ACFM
+.. automodule:: libcity.model.traffic_flow_prediction.ACFM
    :members:
    :undoc-members:
    :show-inheritance:

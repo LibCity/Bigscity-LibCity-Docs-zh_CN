@@ -1,7 +1,7 @@
-libtraffic.executor.mtgnn\_executor
+libcity.executor.mtgnn\_executor
 ==========================================
 
-.. automodule:: libtraffic.executor.mtgnn_executor
+.. automodule:: libcity.executor.mtgnn_executor
    :members:
    :undoc-members:
    :show-inheritance:

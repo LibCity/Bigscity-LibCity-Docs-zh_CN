@@ -1,21 +1,21 @@
-libtraffic.model
+libcity.model
 ========================
 
 
 .. toctree::
    :maxdepth: 4
 
-   libtraffic.model.traffic_demand_prediction
-   libtraffic.model.traffic_flow_prediction
-   libtraffic.model.traffic_speed_prediction
-   libtraffic.model.trajectory_loc_prediction
+   libcity.model.traffic_demand_prediction
+   libcity.model.traffic_flow_prediction
+   libcity.model.traffic_speed_prediction
+   libcity.model.trajectory_loc_prediction
 
 
 .. toctree::
    :maxdepth: 4
 
-   libtraffic.model.abstract_model
-   libtraffic.model.abstract_traffic_state_model
-   libtraffic.model.loss
+   libcity.model.abstract_model
+   libcity.model.abstract_traffic_state_model
+   libcity.model.loss
 
 

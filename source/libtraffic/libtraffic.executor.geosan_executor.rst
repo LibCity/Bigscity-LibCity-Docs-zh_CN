@@ -1,7 +1,7 @@
-libtraffic.executor.geosan\_executor
+libcity.executor.geosan\_executor
 ===========================================
 
-.. automodule:: libtraffic.executor.geosan_executor
+.. automodule:: libcity.executor.geosan_executor
    :members:
    :undoc-members:
    :show-inheritance:

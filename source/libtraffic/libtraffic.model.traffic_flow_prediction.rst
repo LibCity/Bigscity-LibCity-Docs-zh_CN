@@ -1,26 +1,26 @@
-libtraffic.model.traffic\_flow\_prediction
+libcity.model.traffic\_flow\_prediction
 ==================================================
 
 
 .. toctree::
    :maxdepth: 4
 
-   libtraffic.model.traffic_flow_prediction.ACFM
-   libtraffic.model.traffic_flow_prediction.ACFMCommon
-   libtraffic.model.traffic_flow_prediction.AGCRN
-   libtraffic.model.traffic_flow_prediction.ASTGCN
-   libtraffic.model.traffic_flow_prediction.ASTGCNCommon
-   libtraffic.model.traffic_flow_prediction.CONVGCN
-   libtraffic.model.traffic_flow_prediction.CRANN
-   libtraffic.model.traffic_flow_prediction.DGCN
-   libtraffic.model.traffic_flow_prediction.MSTGCN
-   libtraffic.model.traffic_flow_prediction.MultiSTGCnet
-   libtraffic.model.traffic_flow_prediction.ResLSTM
-   libtraffic.model.traffic_flow_prediction.STDN
-   libtraffic.model.traffic_flow_prediction.STNN
-   libtraffic.model.traffic_flow_prediction.STResNet
-   libtraffic.model.traffic_flow_prediction.STResNetCommon
-   libtraffic.model.traffic_flow_prediction.STSGCN
-   libtraffic.model.traffic_flow_prediction.ToGCN
+   libcity.model.traffic_flow_prediction.ACFM
+   libcity.model.traffic_flow_prediction.ACFMCommon
+   libcity.model.traffic_flow_prediction.AGCRN
+   libcity.model.traffic_flow_prediction.ASTGCN
+   libcity.model.traffic_flow_prediction.ASTGCNCommon
+   libcity.model.traffic_flow_prediction.CONVGCN
+   libcity.model.traffic_flow_prediction.CRANN
+   libcity.model.traffic_flow_prediction.DGCN
+   libcity.model.traffic_flow_prediction.MSTGCN
+   libcity.model.traffic_flow_prediction.MultiSTGCnet
+   libcity.model.traffic_flow_prediction.ResLSTM
+   libcity.model.traffic_flow_prediction.STDN
+   libcity.model.traffic_flow_prediction.STNN
+   libcity.model.traffic_flow_prediction.STResNet
+   libcity.model.traffic_flow_prediction.STResNetCommon
+   libcity.model.traffic_flow_prediction.STSGCN
+   libcity.model.traffic_flow_prediction.ToGCN
 
 

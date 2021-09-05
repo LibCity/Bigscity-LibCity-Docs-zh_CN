@@ -1,13 +1,13 @@
-libtraffic.utils
+libcity.utils
 ========================
 
 
 .. toctree::
    :maxdepth: 4
 
-   libtraffic.utils.argument_list
-   libtraffic.utils.dataset
-   libtraffic.utils.normalization
-   libtraffic.utils.utils
+   libcity.utils.argument_list
+   libcity.utils.dataset
+   libcity.utils.normalization
+   libcity.utils.utils
 
 

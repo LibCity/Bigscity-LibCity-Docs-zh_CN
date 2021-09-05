@@ -1,7 +1,7 @@
-libtraffic.model.trajectory\_loc\_prediction.STAN
+libcity.model.trajectory\_loc\_prediction.STAN
 ========================================================
 
-.. automodule:: libtraffic.model.trajectory_loc_prediction.STAN
+.. automodule:: libcity.model.trajectory_loc_prediction.STAN
    :members:
    :undoc-members:
    :show-inheritance:

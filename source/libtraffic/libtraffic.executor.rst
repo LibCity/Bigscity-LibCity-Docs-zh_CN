@@ -1,16 +1,16 @@
-libtraffic.executor
+libcity.executor
 ===========================
 
 
 .. toctree::
    :maxdepth: 4
 
-   libtraffic.executor.abstract_executor
-   libtraffic.executor.dcrnn_executor
-   libtraffic.executor.geosan_executor
-   libtraffic.executor.hyper_tuning
-   libtraffic.executor.mtgnn_executor
-   libtraffic.executor.traffic_state_executor
-   libtraffic.executor.traj_loc_pred_executor
+   libcity.executor.abstract_executor
+   libcity.executor.dcrnn_executor
+   libcity.executor.geosan_executor
+   libcity.executor.hyper_tuning
+   libcity.executor.mtgnn_executor
+   libcity.executor.traffic_state_executor
+   libcity.executor.traj_loc_pred_executor
 
 

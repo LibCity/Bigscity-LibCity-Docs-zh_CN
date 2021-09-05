@@ -1,7 +1,7 @@
-libtraffic.model.loss
+libcity.model.loss
 ============================
 
-.. automodule:: libtraffic.model.loss
+.. automodule:: libcity.model.loss
    :members:
    :undoc-members:
    :show-inheritance:

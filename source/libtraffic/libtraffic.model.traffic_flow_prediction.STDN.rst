@@ -1,7 +1,7 @@
-libtraffic.model.traffic\_flow\_prediction.STDN
+libcity.model.traffic\_flow\_prediction.STDN
 ======================================================
 
-.. automodule:: libtraffic.model.traffic_flow_prediction.STDN
+.. automodule:: libcity.model.traffic_flow_prediction.STDN
    :members:
    :undoc-members:
    :show-inheritance:

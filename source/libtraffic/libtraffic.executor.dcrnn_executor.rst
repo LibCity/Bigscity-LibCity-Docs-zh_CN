@@ -1,7 +1,7 @@
-libtraffic.executor.dcrnn\_executor
+libcity.executor.dcrnn\_executor
 ==========================================
 
-.. automodule:: libtraffic.executor.dcrnn_executor
+.. automodule:: libcity.executor.dcrnn_executor
    :members:
    :undoc-members:
    :show-inheritance:

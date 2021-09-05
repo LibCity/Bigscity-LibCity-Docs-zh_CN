@@ -1,7 +1,7 @@
-libtraffic.data.batch
+libcity.data.batch
 ============================
 
-.. automodule:: libtraffic.data.batch
+.. automodule:: libcity.data.batch
    :members:
    :undoc-members:
    :show-inheritance:

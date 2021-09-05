@@ -1,7 +1,7 @@
-libtraffic.model.trajectory\_loc\_prediction.SERM
+libcity.model.trajectory\_loc\_prediction.SERM
 ========================================================
 
-.. automodule:: libtraffic.model.trajectory_loc_prediction.SERM
+.. automodule:: libcity.model.trajectory_loc_prediction.SERM
    :members:
    :undoc-members:
    :show-inheritance:

@@ -1,7 +1,7 @@
-libtraffic.executor.abstract\_executor
+libcity.executor.abstract\_executor
 =============================================
 
-.. automodule:: libtraffic.executor.abstract_executor
+.. automodule:: libcity.executor.abstract_executor
    :members:
    :undoc-members:
    :show-inheritance:

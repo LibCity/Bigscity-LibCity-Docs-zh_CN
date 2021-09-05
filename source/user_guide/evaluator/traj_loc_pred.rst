@@ -55,7 +55,7 @@
 
 下面是评估器所涉及到的一系列参数：
 
-位置：libtraffic/config/evaluator/TrajLocPredEvaluator.json
+位置：libcity/config/evaluator/TrajLocPredEvaluator.json
 
 * ``metrics (list of string)``: 默认值为 ``["Recall"]``。可选参数为 ``["Precision", "Recall", "F1", "MRR", "MAP", "NDCG"]``。
 

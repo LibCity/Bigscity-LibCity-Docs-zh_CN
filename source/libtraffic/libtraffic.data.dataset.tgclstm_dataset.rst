@@ -1,7 +1,7 @@
-libtraffic.data.dataset.tgclstm\_dataset
+libcity.data.dataset.tgclstm\_dataset
 ===============================================
 
-.. automodule:: libtraffic.data.dataset.tgclstm_dataset
+.. automodule:: libcity.data.dataset.tgclstm_dataset
    :members:
    :undoc-members:
    :show-inheritance:

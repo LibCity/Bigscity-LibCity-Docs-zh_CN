@@ -1,12 +1,12 @@
-# 安装LibTraffic
+# 安装LibCity
 
-`LibTraffic`只能通过源代码安装。
+`LibCity`只能通过源代码安装。
 
 请执行以下命令获取源代码。
 
 ```shell
-git clone https://github.com/LibTraffic/Bigscity-LibTraffic
-cd Bigscity-LibTraffic
+git clone https://github.com/LibCity/Bigscity-LibCity
+cd Bigscity-LibCity
 ```
 
 获取源代码后，您可以配置环境。
@@ -25,12 +25,12 @@ Conda:
 conda install pytorch==1.7.1 torchvision==0.8.2 torchaudio==0.7.2 cudatoolkit=10.2 -c pytorch
 ```
 
-在安装Pytorch后，您可以通过pip使用下面的命令安装Libtraffic的所有依赖项。
+在安装Pytorch后，您可以通过pip使用下面的命令安装LibCity的所有依赖项。
 
 ```shell
 pip install -r requirements.txt
 ```
 
-现在，您可以使用`LibTraffic`，更多细节请参考[快速入门](./quick_start.md)一节。
+现在，您可以使用`LibCity`，更多细节请参考[快速入门](./quick_start.md)一节。
 
-值得注意的是，大多数模型依赖的包都记录在`requirements.txt`中。除了以上需要的包，`STAGGCN`模型的实现需要依赖第三方库`torch-geometric`。如果您想运行这个模型，请参考[这里](https://github.com/rusty1s/pytorch_geometric)来根据您的环境安装这个包，并取消`libtraffic/model/traffic_speed_prediction/STAGGCN.py`第五行的注释。
+值得注意的是，大多数模型依赖的包都记录在`requirements.txt`中。除了以上需要的包，`STAGGCN`模型的实现需要依赖第三方库`torch-geometric`。如果您想运行这个模型，请参考[这里](https://github.com/rusty1s/pytorch_geometric)来根据您的环境安装这个包，并取消`libcity/model/traffic_speed_prediction/STAGGCN.py`第五行的注释。

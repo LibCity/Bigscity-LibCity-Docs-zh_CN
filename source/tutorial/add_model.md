@@ -1,6 +1,6 @@
-# 在LibTraffic中添加新模型
+# 在LibCity中添加新模型
 
-本文档将介绍如何在`LibTraffic`中开发一个新模型。
+本文档将介绍如何在`LibCity`中开发一个新模型。
 
 ## 创建新的Model类
 
@@ -8,10 +8,10 @@
 
 这里我们以交通状态预测任务为例。如果想为交通速度预测任务开发一个名为`NewModel`的模型。
 
-首先请在`libtraffic/model/traffic_speed_prediction/`目录下创建一个新的文件`NewModel.py`，并在该文件中写入以下代码。
+首先请在`libcity/model/traffic_speed_prediction/`目录下创建一个新的文件`NewModel.py`，并在该文件中写入以下代码。
 
 ```python
-from libtraffic.model.abstract_traffic_state_model import AbstractTrafficStateModel
+from libcity.model.abstract_traffic_state_model import AbstractTrafficStateModel
 
 class NewModel(AbstractTrafficStateModel):
     def __init__(self, config, data_feature):
@@ -36,7 +36,7 @@ class NewModel(AbstractTrafficStateModel):
 import torch
 import torch.nn as nn
 from logging import getLogger
-from libtraffic.model.abstract_traffic_state_model import AbstractTrafficStateModel
+from libcity.model.abstract_traffic_state_model import AbstractTrafficStateModel
 
 
 class NewModel(AbstractTrafficStateModel):
@@ -107,12 +107,12 @@ class NewModel(AbstractTrafficStateModel):
 
 `calculate_loss()`的输入参数是`batch`，它是一个[Batch](../user_guide/data/batch.md)类的对象。该方法返回一个用于反向传播的`Torch.Tensor`。
 
-你可以自定义损失函数或者调用我们在`libtraffic/model/loss.py`文件中定义的损失函数。
+你可以自定义损失函数或者调用我们在`libcity/model/loss.py`文件中定义的损失函数。
 
 例如，你可以像这样定义`calcualte_loss()`：
 
 ```python
-from libtraffic.model import loss
+from libcity.model import loss
 
 class NewModel(AbstractTrafficStateModel):
     def calculate_loss(self, batch):
@@ -129,12 +129,12 @@ class NewModel(AbstractTrafficStateModel):
 
 ## 导入模型
 
-添加模型后，你需要修改你的模型所属的任务文件夹中的`__init__.py`文件。在上面的例子中，你需要修改的文件是`libtraffic/model/traffic_speed_prediction/__init__.py`。
+添加模型后，你需要修改你的模型所属的任务文件夹中的`__init__.py`文件。在上面的例子中，你需要修改的文件是`libcity/model/traffic_speed_prediction/__init__.py`。
 
 请添加这样的代码：
 
 ```python
-from libtraffic.model.traffic_speed_prediction.NewModel import NewModel
+from libcity.model.traffic_speed_prediction.NewModel import NewModel
 
 __all__ = [
     "NewModel",
@@ -145,7 +145,7 @@ __all__ = [
 
 最后，你需要修改一些相关的`config`文件。
 
-- 首先，你需要修改`libtraffic/config/task_config.json`，它用于设置每个任务所支持的模型和数据集，并指定模型所使用的基本参数（数据模块、执行模块、评估模块）。
+- 首先，你需要修改`libcity/config/task_config.json`，它用于设置每个任务所支持的模型和数据集，并指定模型所使用的基本参数（数据模块、执行模块、评估模块）。
 
   例如，你可以添加如下代码，这意味着`NewModel`使用的数据模块类是`TrafficStatePointDataset`，执行模块类是`TrafficStateExecutor`，而评估模块类是`TrafficStateEvaluator`。
 
@@ -163,9 +163,9 @@ __all__ = [
 }
 ```
 
-- 其次，你需要在`libtraffic/config/model/`目录下添加一个文件来设置你的模型的默认参数。你也可以设置你想覆盖的其他模块的参数，因为模型模块的参数比其他模块有最高的优先级。
+- 其次，你需要在`libcity/config/model/`目录下添加一个文件来设置你的模型的默认参数。你也可以设置你想覆盖的其他模块的参数，因为模型模块的参数比其他模块有最高的优先级。
 
-  例如，你可以添加这个文件`libtraffic/config/model/traffic_state_pred/NewModel.json`并添加如下代码。在代码中，除了与模型结构有关的三个参数外，我们还定义了训练轮数（`max_epoch`）、优化器（`learner`）和学习率（`learning_rate`），以涵盖默认的执行配置。
+  例如，你可以添加这个文件`libcity/config/model/traffic_state_pred/NewModel.json`并添加如下代码。在代码中，除了与模型结构有关的三个参数外，我们还定义了训练轮数（`max_epoch`）、优化器（`learner`）和学习率（`learning_rate`），以涵盖默认的执行配置。
 
 ```json
 {

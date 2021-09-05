@@ -75,10 +75,10 @@ optional arguments:
 
 数据模块、执行器模块、评估模块和模型所在模块的配置分别位于以下目录中：
 
-- `/libtraffic/config/data`
-- `/libtraffic/config/executor`
-- `/libtraffic/config/evaluator`
-- `/libtraffic/config/model`
+- `/libcity/config/data`
+- `/libcity/config/executor`
+- `/libcity/config/evaluator`
+- `/libcity/config/model`
 
 各目录中文件命名规则均为`类名.json`。例如，对交通状态预测的执行模块而言，默认参数文件名为`TrafficStateExecutor.json`。
 
@@ -88,7 +88,7 @@ optional arguments:
 
 #### 任务配置文件
 
-任务配置文件用来记录各任务支持的模型与数据集列表，以及其下各模型默认的数据模块、执行器模块和评估模块类名，它们的存储路径为`/libtraffic/config/task_config.json`。
+任务配置文件用来记录各任务支持的模型与数据集列表，以及其下各模型默认的数据模块、执行器模块和评估模块类名，它们的存储路径为`/libcity/config/task_config.json`。
 
 此处为任务配置文件一例：
 ```json
@@ -104,6 +104,6 @@ optional arguments:
 }
 ```
 
-**增加新模块时，需要修改`libtraffic/config/task_config.json`。**
+**增加新模块时，需要修改`libcity/config/task_config.json`。**
 
 由以上配置文件，`DCRNN`使用的数据模块类为`TrafficStatePointDataset`，执行器模块为`DCRNNExecutor`，评估模块类为`TrafficStateEvaluator`。

@@ -1,7 +1,7 @@
-libtraffic.data.dataset.abstract\_dataset
+libcity.data.dataset.abstract\_dataset
 ================================================
 
-.. automodule:: libtraffic.data.dataset.abstract_dataset
+.. automodule:: libcity.data.dataset.abstract_dataset
    :members:
    :undoc-members:
    :show-inheritance:

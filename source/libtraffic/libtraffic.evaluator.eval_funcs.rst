@@ -1,7 +1,7 @@
-libtraffic.evaluator.eval\_funcs
+libcity.evaluator.eval\_funcs
 =======================================
 
-.. automodule:: libtraffic.evaluator.eval_funcs
+.. automodule:: libcity.evaluator.eval_funcs
    :members:
    :undoc-members:
    :show-inheritance:

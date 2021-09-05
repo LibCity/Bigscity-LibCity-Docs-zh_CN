@@ -1,7 +1,7 @@
-libtraffic.model.traffic\_speed\_prediction.ATDM
+libcity.model.traffic\_speed\_prediction.ATDM
 =======================================================
 
-.. automodule:: libtraffic.model.traffic_speed_prediction.ATDM
+.. automodule:: libcity.model.traffic_speed_prediction.ATDM
    :members:
    :undoc-members:
    :show-inheritance:

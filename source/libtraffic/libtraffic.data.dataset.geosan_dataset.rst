@@ -1,7 +1,7 @@
-libtraffic.data.dataset.geosan\_dataset
+libcity.data.dataset.geosan\_dataset
 ==============================================
 
-.. automodule:: libtraffic.data.dataset.geosan_dataset
+.. automodule:: libcity.data.dataset.geosan_dataset
    :members:
    :undoc-members:
    :show-inheritance:

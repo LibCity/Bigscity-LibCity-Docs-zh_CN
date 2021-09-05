@@ -1,7 +1,7 @@
-libtraffic.utils.dataset
+libcity.utils.dataset
 ===============================
 
-.. automodule:: libtraffic.utils.dataset
+.. automodule:: libcity.utils.dataset
    :members:
    :undoc-members:
    :show-inheritance:

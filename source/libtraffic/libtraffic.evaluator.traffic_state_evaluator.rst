@@ -1,7 +1,7 @@
-libtraffic.evaluator.traffic\_state\_evaluator
+libcity.evaluator.traffic\_state\_evaluator
 =====================================================
 
-.. automodule:: libtraffic.evaluator.traffic_state_evaluator
+.. automodule:: libcity.evaluator.traffic_state_evaluator
    :members:
    :undoc-members:
    :show-inheritance:

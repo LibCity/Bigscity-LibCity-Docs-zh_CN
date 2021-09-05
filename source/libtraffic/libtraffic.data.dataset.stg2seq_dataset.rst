@@ -1,7 +1,7 @@
-libtraffic.data.dataset.stg2seq\_dataset
+libcity.data.dataset.stg2seq\_dataset
 ===============================================
 
-.. automodule:: libtraffic.data.dataset.stg2seq_dataset
+.. automodule:: libcity.data.dataset.stg2seq_dataset
    :members:
    :undoc-members:
    :show-inheritance:

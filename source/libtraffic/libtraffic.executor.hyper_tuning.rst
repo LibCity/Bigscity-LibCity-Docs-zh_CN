@@ -1,7 +1,7 @@
-libtraffic.executor.hyper\_tuning
+libcity.executor.hyper\_tuning
 ========================================
 
-.. automodule:: libtraffic.executor.hyper_tuning
+.. automodule:: libcity.executor.hyper_tuning
    :members:
    :undoc-members:
    :show-inheritance:

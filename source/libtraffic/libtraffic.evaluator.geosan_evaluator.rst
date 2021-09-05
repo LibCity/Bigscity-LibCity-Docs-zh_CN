@@ -1,7 +1,7 @@
-libtraffic.evaluator.geosan\_evaluator
+libcity.evaluator.geosan\_evaluator
 =============================================
 
-.. automodule:: libtraffic.evaluator.geosan_evaluator
+.. automodule:: libcity.evaluator.geosan_evaluator
    :members:
    :undoc-members:
    :show-inheritance:

@@ -1,12 +1,12 @@
 ## 使用自动化工具调参
 
-这里我们以 GRU 为例，使用 LibTraffic 中提供的自动化调参工具（`hyper_tune.py`）优化其在 METR_LA 数据集上的交通速度预测性能。
+这里我们以 GRU 为例，使用 LibCity 中提供的自动化调参工具（`hyper_tune.py`）优化其在 METR_LA 数据集上的交通速度预测性能。
 
 首先，我们可以查看 GRU 在交通速度预测任务中可能会使用到的超参数，以决定要对哪些参数进行调整。
 
 #### 查看相关参数
 
-根据 `/libtraffic/config/task_config.json` 查看 GRU 在交通速度预测任务下使用到的各个模块。
+根据 `/libcity/config/task_config.json` 查看 GRU 在交通速度预测任务下使用到的各个模块。
 
 ```json
 "GRU": {
@@ -16,7 +16,7 @@
 }
 ```
 
-根据配置文件可知，GRU 所使用的数据模块类为 `TrafficStatePointDataset`，执行模块类为 `TrafficStateExecutor`，评估模块类为 `TrafficStateEvaluator`。我们可以根据查找到的模块类名去 `/libtraffic/config/` 具体模块配置的文件夹下，找到对应模块的详细超参数配置。
+根据配置文件可知，GRU 所使用的数据模块类为 `TrafficStatePointDataset`，执行模块类为 `TrafficStateExecutor`，评估模块类为 `TrafficStateEvaluator`。我们可以根据查找到的模块类名去 `/libcity/config/` 具体模块配置的文件夹下，找到对应模块的详细超参数配置。
 
 这里，我们认为对模型性能影响较大的是执行模块与模型本身的超参数。因此，我们查看了 `/config/executor/TrafficStateExecutor.json` 与 `/config/model/traffic_state_pred/GRU.json`两个配置文件。在查看过后，我们决定对学习率 `learning_rate`，最大训练轮次 `max_epoch`，隐藏层维度 `hidden_size`，Dropout 率 `dropout` 四个超参数进行调整。
 

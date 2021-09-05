@@ -1,10 +1,10 @@
-libtraffic.config
+libcity.config
 =========================
 
 
 .. toctree::
    :maxdepth: 4
 
-   libtraffic.config.config_parser
+   libcity.config.config_parser
 
 

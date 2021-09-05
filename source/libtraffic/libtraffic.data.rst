@@ -1,18 +1,18 @@
-libtraffic.data
+libcity.data
 =======================
 
 
 .. toctree::
    :maxdepth: 4
 
-   libtraffic.data.dataset
+   libcity.data.dataset
 
 
 .. toctree::
    :maxdepth: 4
 
-   libtraffic.data.batch
-   libtraffic.data.list_dataset
-   libtraffic.data.utils
+   libcity.data.batch
+   libcity.data.list_dataset
+   libcity.data.utils
 
 

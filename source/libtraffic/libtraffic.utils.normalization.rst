@@ -1,7 +1,7 @@
-libtraffic.utils.normalization
+libcity.utils.normalization
 =====================================
 
-.. automodule:: libtraffic.utils.normalization
+.. automodule:: libcity.utils.normalization
    :members:
    :undoc-members:
    :show-inheritance:

@@ -7,7 +7,7 @@
 下面主要介绍此调度器类所能够接收的参数：
 
 - `max_epoch`：训练总轮数，初值由模型设定。
-- `epoch`：起始训练的轮数，如果大于0，会先从`./libtraffic/cache/model_cache`加载该epoch的模型（缓存文件名为[模型名\_数据集名\_epoch+轮数.tar]），然后继续完成接下来的训练或评估。
+- `epoch`：起始训练的轮数，如果大于0，会先从`./libcity/cache/model_cache`加载该epoch的模型（缓存文件名为[模型名\_数据集名\_epoch+轮数.tar]），然后继续完成接下来的训练或评估。
 - `learner`：优化器[optimizer](https://pytorch.org/docs/stable/optim.html#module-torch.optim)的类别（字符串），目前支持`adam`、`sgd`、`adagrad`、`rmsprop`、`sparse_adam`，**默认'adam'**。
   - `learning_rate`：optimizer的参数，学习率，**默认0.01**。
   - `weight_decay`：optimizer的参数，**默认0.0**。

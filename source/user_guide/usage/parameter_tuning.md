@@ -1,14 +1,14 @@
 # 参数调整
 
-与训练和评估模型相似，LibTraffic向研究者提供了一个脚本`hyper_tune.py`来自动搜索超参数。这个脚本是基于第三方开源库[Ray Tune](https://docs.ray.io/en/master/tune/index.html)的实现。
+与训练和评估模型相似，LibCity向研究者提供了一个脚本`hyper_tune.py`来自动搜索超参数。这个脚本是基于第三方开源库[Ray Tune](https://docs.ray.io/en/master/tune/index.html)的实现。
 
 与`run_model.py`相同，`hyper_tune.py`也提供了一系列命令行参数，允许使用者来调整实验配置。除了`run_model.py`提供的命令行指令参数，`hyper_tune.py`也支持了下列独有参数。
 
 - `space_file`：指定超参数搜索空间的配置文件，默认为`None`。
 
-- `scheduler`：将在`ray.tune.run`中使用的试验调度器， 默认值为`FIFO`，目前，LibTraffic 支持`FIFO`， `ASHA`，`MedianStoppingRule`。（试验是从搜索空间中采样一次接着进行训练和评估。）
+- `scheduler`：将在`ray.tune.run`中使用的试验调度器， 默认值为`FIFO`，目前，LibCity 支持`FIFO`， `ASHA`，`MedianStoppingRule`。（试验是从搜索空间中采样一次接着进行训练和评估。）
 
-- `search_alg`：将被用在`ray.tune.run`的搜索算法，默认值为`BasicSearch`。目前， LibTraffic支持`BasicSearch`，`BayesOptSearch`，`HyperOpt`。 LibTraffic 将使用损失函数作为搜索指标。
+- `search_alg`：将被用在`ray.tune.run`的搜索算法，默认值为`BasicSearch`。目前， LibCity支持`BasicSearch`，`BayesOptSearch`，`HyperOpt`。 LibCity 将使用损失函数作为搜索指标。
 
 - `num_samples`：从超参数空间的取样次数，默认值为5。
 

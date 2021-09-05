@@ -1,7 +1,7 @@
-libtraffic.config.config\_parser
+libcity.config.config\_parser
 =======================================
 
-.. automodule:: libtraffic.config.config_parser
+.. automodule:: libcity.config.config_parser
    :members:
    :undoc-members:
    :show-inheritance:

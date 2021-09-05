@@ -1,7 +1,7 @@
-libtraffic.utils.argument\_list
+libcity.utils.argument\_list
 ======================================
 
-.. automodule:: libtraffic.utils.argument_list
+.. automodule:: libcity.utils.argument_list
    :members:
    :undoc-members:
    :show-inheritance:

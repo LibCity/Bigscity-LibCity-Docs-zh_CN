@@ -6,7 +6,7 @@ def modify_doc_title_dir(abspath_rstfiles_dir):
     rst_files = os.listdir(abspath_rstfiles_dir)
     del_nodes = ['Submodules', 'Module contents', 'Subpackages']
     del_str = [' module', ' package']
-    del_file = ['libtraffic.rst', 'modules.rst']
+    del_file = ['libcity.rst', 'modules.rst']
     for rst_file in rst_files:
         if rst_file in del_file:
             os.remove(os.path.join(abspath_rstfiles_dir, rst_file))
@@ -36,19 +36,19 @@ def modify_doc_title_dir(abspath_rstfiles_dir):
         f.writelines(write_con)
         f.close()
     solve_list = [
-        'libtraffic.model.traffic_flow_prediction.rst',
-        'libtraffic.model.traffic_demand_prediction.rst',
-        'libtraffic.model.traffic_speed_prediction.rst',
-        'libtraffic.model.trajectory_loc_prediction.rst',
-        'libtraffic.data.dataset.trajectory_encoder.rst',
-        'libtraffic.config.rst',
-        'libtraffic.data.rst',
-        'libtraffic.data.dataset.rst',
-        'libtraffic.evaluator.rst',
-        'libtraffic.executor.rst',
-        'libtraffic.model.rst',
-        'libtraffic.pipeline.rst',
-        'libtraffic.utils.rst',
+        'libcity.model.traffic_flow_prediction.rst',
+        'libcity.model.traffic_demand_prediction.rst',
+        'libcity.model.traffic_speed_prediction.rst',
+        'libcity.model.trajectory_loc_prediction.rst',
+        'libcity.data.dataset.trajectory_encoder.rst',
+        'libcity.config.rst',
+        'libcity.data.rst',
+        'libcity.data.dataset.rst',
+        'libcity.evaluator.rst',
+        'libcity.executor.rst',
+        'libcity.model.rst',
+        'libcity.pipeline.rst',
+        'libcity.utils.rst',
     ]
     for rst_file in rst_files:
         if rst_file in solve_list:
@@ -71,4 +71,4 @@ def modify_doc_title_dir(abspath_rstfiles_dir):
 
 
 if __name__ == '__main__':
-    modify_doc_title_dir('./source/libtraffic')
+    modify_doc_title_dir('./source/libcity')

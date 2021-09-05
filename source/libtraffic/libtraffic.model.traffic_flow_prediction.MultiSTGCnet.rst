@@ -1,7 +1,7 @@
-libtraffic.model.traffic\_flow\_prediction.MultiSTGCnet
+libcity.model.traffic\_flow\_prediction.MultiSTGCnet
 ==============================================================
 
-.. automodule:: libtraffic.model.traffic_flow_prediction.MultiSTGCnet
+.. automodule:: libcity.model.traffic_flow_prediction.MultiSTGCnet
    :members:
    :undoc-members:
    :show-inheritance:

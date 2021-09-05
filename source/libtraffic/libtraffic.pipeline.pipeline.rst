@@ -1,7 +1,7 @@
-libtraffic.pipeline.pipeline
+libcity.pipeline.pipeline
 ===================================
 
-.. automodule:: libtraffic.pipeline.pipeline
+.. automodule:: libcity.pipeline.pipeline
    :members:
    :undoc-members:
    :show-inheritance:

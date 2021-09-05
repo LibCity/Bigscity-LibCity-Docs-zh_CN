@@ -1,6 +1,6 @@
 # 自定义Dataset
 
-本文档用于介绍如何在`LibTraffic`中开发一个新的数据集。
+本文档用于介绍如何在`LibCity`中开发一个新的数据集。
 
 ## 已实现的Dataset类
 
@@ -40,12 +40,12 @@
 
 首先，我们创建的数据集应该继承自`AbstractDataset`或它的子类。
 
-例如，若想为交通状态预测任务开发一个名为`NewDataset`的数据集，需要将代码写入`libtraffic/data/dataset/`目录下的`newdataset.py`文件中。
+例如，若想为交通状态预测任务开发一个名为`NewDataset`的数据集，需要将代码写入`libcity/data/dataset/`目录下的`newdataset.py`文件中。
 
 在如下代码中，我们的`NewDataset`继承了`AbstractDataset`类的子类`TrafficStatePointDataset`。
 
 ```python
-from libtraffic.data.dataset import TrafficStatePointDataset
+from libcity.data.dataset import TrafficStatePointDataset
 
 class NewDatasets(TrafficStatePointDataset):
     def __init__(self, config):
@@ -56,7 +56,7 @@ class NewDatasets(TrafficStatePointDataset):
 或者可以直接继承`AbstractDataset` 类，代码如下。
 
 ```python
-from libtraffic.data.dataset import AbstractDataset
+from libcity.data.dataset import AbstractDataset
 
 class NewDatasets(AbstractDataset):
     def __init__(self, config):
@@ -65,7 +65,7 @@ class NewDatasets(AbstractDataset):
 
 ## 重写对应方法
 
-`AbstractDataset`中的函数`get_data()`被用来分割数据，并获取3个数据加载器`train_dataloader`、`eval_dataloader`和`test_dataloader`。若想要获取数据加载器，需要调用函数`libtraffic.data.utils.generate_dataloader`来从输入数据的列表中获取，其中生成的数据加载器包含[Batch](../user_guide/data/batch.md)对象。
+`AbstractDataset`中的函数`get_data()`被用来分割数据，并获取3个数据加载器`train_dataloader`、`eval_dataloader`和`test_dataloader`。若想要获取数据加载器，需要调用函数`libcity.data.utils.generate_dataloader`来从输入数据的列表中获取，其中生成的数据加载器包含[Batch](../user_guide/data/batch.md)对象。
 
 `AbstractDataset`中的函数`get_data_feature()`被用来返回一些数据集的特征，这些特征将被模型和执行器使用。
 
@@ -78,7 +78,7 @@ class NewDatasets(AbstractDataset):
 样例1用来演示如何直接继承`AbstractDataset`并重写函数`get_data_feature()`以返回我们想要的一些值。
 
 ```python
-from libtraffic.data.dataset import AbstractDataset
+from libcity.data.dataset import AbstractDataset
 
 class NewDatasets(AbstractDataset):
     def __init__(self, config):
@@ -95,7 +95,7 @@ class NewDatasets(AbstractDataset):
 样例2用来演示如何继承`AbstractDataset`的子类并重写其中的一个方法（`_load_rel`）。
 
 ```python
-from libtraffic.data.dataset import TrafficStatePointDataset
+from libcity.data.dataset import TrafficStatePointDataset
 
 class NewDatasets(TrafficStatePointDataset):
     def __init__(self, config):
@@ -114,7 +114,7 @@ class NewDatasets(TrafficStatePointDataset):
 样例3用来解释如何继承`AbstractDataset`的子类，并返回从原始数据文件转化而来的，含有不同键的`Batch`。具体来说，我们打算返回三个键值对，其中键包括：`X`，`Y`和`Z`。这只是一个例子，更多的细节，你可以参考`TrafficStateCPTDataset`，它有四个键的`Batch`。
 
 ```python
-from libtraffic.data.dataset import TrafficStateDataset
+from libcity.data.dataset import TrafficStateDataset
 
 class NewDatasets(TrafficStateDataset):
     def __init__(self, config):
@@ -135,7 +135,7 @@ class NewDatasets(TrafficStateDataset):
         train_data = list(zip(x_train, y_train, z_train))
         eval_data = list(zip(x_val, y_val, z_val))
         test_data = list(zip(x_test, y_test, z_test))
-        # Get dataloader by libtraffic.data.utils.generate_dataloader.
+        # Get dataloader by libcity.data.utils.generate_dataloader.
         self.train_dataloader, self.eval_dataloader, self.test_dataloader = \
             generate_dataloader(train_data, eval_data, test_data, self.feature_name,
                                 self.batch_size, self.num_workers)

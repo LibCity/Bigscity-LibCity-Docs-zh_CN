@@ -1,7 +1,7 @@
-libtraffic.model.trajectory\_loc\_prediction.CARA
+libcity.model.trajectory\_loc\_prediction.CARA
 ========================================================
 
-.. automodule:: libtraffic.model.trajectory_loc_prediction.CARA
+.. automodule:: libcity.model.trajectory_loc_prediction.CARA
    :members:
    :undoc-members:
    :show-inheritance:

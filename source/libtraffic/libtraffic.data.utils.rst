@@ -1,7 +1,7 @@
-libtraffic.data.utils
+libcity.data.utils
 ============================
 
-.. automodule:: libtraffic.data.utils
+.. automodule:: libcity.data.utils
    :members:
    :undoc-members:
    :show-inheritance:
