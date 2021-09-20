@@ -39,8 +39,6 @@ pip install -r requirements.txt
 
 现在，我们就可以使用`LibCity`了，更多的细节可以看`Quick Start`一节。
 
-值得注意的是，大多数模型依赖的包都记录在了`requirements.txt`中。除了以上需要的包，`STAGGCN`模型的实现需要依赖第三方库`torch-geometric`。如果您想运行这个模型，请参考[这里](https://github.com/rusty1s/pytorch_geometric)来根据您的环境安装这个包，并可以取消`libcity/model/traffic_speed_prediction/STAGGCN.py`第五行的注释。
-
 ## 快速上手
 
 ### 下载一个数据集
