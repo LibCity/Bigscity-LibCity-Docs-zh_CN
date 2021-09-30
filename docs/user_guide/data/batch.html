@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Batch &mdash; Bigscity-TrafficDL  documentation</title>
+  <title>Batch &mdash; Bigscity-LibCity  documentation</title>
   
 
   
@@ -37,8 +37,8 @@
     
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Args for Data" href="args_for_data.html" />
-    <link rel="prev" title="Atomic Files" href="atmoic_files.html" /> 
+    <link rel="next" title="数据模块参数" href="args_for_data.html" />
+    <link rel="prev" title="原子文件" href="atomic_files.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -52,7 +52,7 @@
           
 
           
-            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> Bigscity-TrafficDL
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> Bigscity-LibCity
           
 
           
@@ -83,47 +83,53 @@
               
             
             
-              <p class="caption"><span class="caption-text">Get Started</span></p>
+              <p class="caption"><span class="caption-text">起步</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../get_started/introduction.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../get_started/install.html">Install</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../get_started/quick_start.html">Quick Start</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../get_started/directory_structure.html">Directory Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../get_started/introduction.html">介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../get_started/install.html">安装LibCity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../get_started/quick_start.html">快速入门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../get_started/directory_structure.html">目录结构</a></li>
 </ul>
-<p class="caption"><span class="caption-text">User Guide</span></p>
+<p class="caption"><span class="caption-text">用户指导</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../config_settings.html">Config Settings</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../data.html">Data Introduction</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="data_flow.html">Data Flow</a></li>
-<li class="toctree-l2"><a class="reference internal" href="raw_data.html">Raw Data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="atmoic_files.html">Atomic Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../config_settings.html">参数设置</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../data.html">数据说明</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="data_flow.html">数据流</a></li>
+<li class="toctree-l2"><a class="reference internal" href="raw_data.html">原始数据</a></li>
+<li class="toctree-l2"><a class="reference internal" href="atomic_files.html">原子文件</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Batch</a></li>
-<li class="toctree-l2"><a class="reference internal" href="args_for_data.html">Args for Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="args_for_data.html">数据模块参数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dataset_for_task.html">数据集适用的任务</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../model.html">Model Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../evaluator.html">Evaluator Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../executor.html">Executor Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model.html">复现模型列表</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../evaluator.html">评估模块简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../executor.html">执行模块简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">使用示例</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Developer Guide</span></p>
+<p class="caption"><span class="caption-text">开发者指导</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../developer_guide/code_style.html">Code Style</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../developer_guide/implemented_datasets.html">Customize Dataset</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../developer_guide/implemented_models.html">Customize Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../developer_guide/implemented_evaluators.html">Customize Evaluators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../developer_guide/implemented_executors.html">Customize Executors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../developer_guide/implemented_logger.html">Logger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer_guide/code_style.html">代码风格</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer_guide/implemented_datasets.html">自定义Dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer_guide/implemented_models.html">自定义Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer_guide/implemented_executors.html">自定义Executor</a></li>
 </ul>
-<p class="caption"><span class="caption-text">API REFERENCE</span></p>
+<p class="caption"><span class="caption-text">入门教程</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../trafficdl/trafficdl.config.html">trafficdl.config</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../trafficdl/trafficdl.data.html">trafficdl.data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../trafficdl/trafficdl.evaluator.html">trafficdl.evaluator</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../trafficdl/trafficdl.executor.html">trafficdl.executor</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../trafficdl/trafficdl.model.html">trafficdl.model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../trafficdl/trafficdl.pipeline.html">trafficdl.pipeline</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../trafficdl/trafficdl.utils.html">trafficdl.utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial/install_quick_start.html">安装和快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial/run_model.html">运行LibCity中已复现的模型</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial/add_model.html">在LibCity中添加新模型</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial/hyper_tune.html">使用自动化工具调参</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API文档</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../libcity/libcity.config.html">libcity.config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../libcity/libcity.data.html">libcity.data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../libcity/libcity.evaluator.html">libcity.evaluator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../libcity/libcity.executor.html">libcity.executor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../libcity/libcity.model.html">libcity.model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../libcity/libcity.pipeline.html">libcity.pipeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../libcity/libcity.utils.html">libcity.utils</a></li>
 </ul>
 
             
@@ -139,7 +145,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../index.html">Bigscity-TrafficDL</a>
+          <a href="../../index.html">Bigscity-LibCity</a>
         
       </nav>
 
@@ -170,7 +176,7 @@
     
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
         
-          <li><a href="../data.html">Data Introduction</a> &raquo;</li>
+          <li><a href="../data.html">数据说明</a> &raquo;</li>
         
       <li>Batch</li>
     
@@ -193,15 +199,15 @@
             
   <div class="section" id="batch">
 <h1>Batch<a class="headerlink" href="#batch" title="Permalink to this headline">¶</a></h1>
-<p><code class="docutils literal notranslate"><span class="pre">Batch</span></code>类是由<code class="docutils literal notranslate"><span class="pre">DataLoader</span></code>加载并输入到预测模型中的<strong>内部数据表示形式</strong>。</p>
-<p><strong>从数据流的<code class="docutils literal notranslate"><span class="pre">Dataloader</span></code>中取出的对象都是<code class="docutils literal notranslate"><span class="pre">Batch</span></code>类的对象。</strong></p>
-<p><code class="docutils literal notranslate"><span class="pre">Batch</span></code>类是基于<code class="docutils literal notranslate"><span class="pre">python.dict</span></code>实现的抽象数据结构，其构成<code class="docutils literal notranslate"><span class="pre">key-value</span></code>的结构，其中<code class="docutils literal notranslate"><span class="pre">key</span></code>是模型输入的特征名，<code class="docutils literal notranslate"><span class="pre">value</span></code>是对应特征的张量（<code class="docutils literal notranslate"><span class="pre">torch.Tensor</span></code>），其包含一个<code class="docutils literal notranslate"><span class="pre">batch</span></code>或<code class="docutils literal notranslate"><span class="pre">mini-batch</span></code>的全部数据。</p>
-<p>所以可以使用如下的方式来获取相应的值：</p>
+<p><code class="docutils literal notranslate"><span class="pre">Batch</span></code> 类是由 <code class="docutils literal notranslate"><span class="pre">DataLoader</span></code> 加载并输入到预测模型中的<strong>内部数据表示</strong>。</p>
+<p><strong>从数据流的 <code class="docutils literal notranslate"><span class="pre">Dataloader</span></code> 取出的对象都是 <code class="docutils literal notranslate"><span class="pre">Batch</span></code> 类的对象。</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">Batch</span></code> 类是基于 <code class="docutils literal notranslate"><span class="pre">python.dict</span></code>实现的抽象数据结构。 其构成键值对结构，以特征名为键， 以特征名对应的张量(<code class="docutils literal notranslate"><span class="pre">torch.Tensor</span></code>)为值。值包含一个 <code class="docutils literal notranslate"><span class="pre">batch</span></code> 或 <code class="docutils literal notranslate"><span class="pre">mini-batch</span></code> 的全部数据。</p>
+<p>因此，您可以使用以下方法来获得相应的值：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">loc</span> <span class="o">=</span> <span class="n">batch</span><span class="p">[</span><span class="s1">&#39;current_loc&#39;</span><span class="p">]</span>
 <span class="n">tim</span> <span class="o">=</span> <span class="n">batch</span><span class="p">[</span><span class="s1">&#39;current_tim&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
-<p><strong><code class="docutils literal notranslate"><span class="pre">Batch</span></code>类的存在，统一了模型的输入格式，框架得以实现通用的训练、预测执行器类和标准模型抽象类。</strong></p>
+<p><strong><code class="docutils literal notranslate"><span class="pre">Batch</span></code> 类统一了模型的输入格式，框架得以实现通用的训练、预测执行器类和标准模型抽象类。</strong></p>
 </div>
 
 
@@ -212,10 +218,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="args_for_data.html" class="btn btn-neutral float-right" title="Args for Data" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="args_for_data.html" class="btn btn-neutral float-right" title="数据模块参数" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="atmoic_files.html" class="btn btn-neutral float-left" title="Atomic Files" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="atomic_files.html" class="btn btn-neutral float-left" title="原子文件" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

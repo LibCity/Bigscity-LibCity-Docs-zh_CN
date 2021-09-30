@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Code Style &mdash; Bigscity-TrafficDL  documentation</title>
+  <title>代码风格 &mdash; Bigscity-LibCity  documentation</title>
   
 
   
@@ -37,8 +37,8 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Customize Dataset" href="implemented_datasets.html" />
-    <link rel="prev" title="标准赛道" href="../user_guide/usage/standard_track.html" /> 
+    <link rel="next" title="自定义Dataset" href="implemented_datasets.html" />
+    <link rel="prev" title="使用 logger" href="../user_guide/usage/logger.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -52,7 +52,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> Bigscity-TrafficDL
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> Bigscity-LibCity
           
 
           
@@ -83,44 +83,49 @@
               
             
             
-              <p class="caption"><span class="caption-text">Get Started</span></p>
+              <p class="caption"><span class="caption-text">起步</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../get_started/introduction.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../get_started/install.html">Install</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../get_started/quick_start.html">Quick Start</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../get_started/directory_structure.html">Directory Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/introduction.html">介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/install.html">安装LibCity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/quick_start.html">快速入门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/directory_structure.html">目录结构</a></li>
 </ul>
-<p class="caption"><span class="caption-text">User Guide</span></p>
+<p class="caption"><span class="caption-text">用户指导</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/config_settings.html">Config Settings</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/data.html">Data Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/model.html">Model Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/evaluator.html">Evaluator Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/executor.html">Executor Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/config_settings.html">参数设置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/data.html">数据说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/model.html">复现模型列表</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/evaluator.html">评估模块简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/executor.html">执行模块简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/usage.html">使用示例</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Developer Guide</span></p>
+<p class="caption"><span class="caption-text">开发者指导</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Code Style</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#working-with-flake8">Working with Flake8</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#project-flake8-configuration">Project Flake8 Configuration</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">代码风格</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#flake8">使用Flake8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">项目Flake8配置</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="implemented_datasets.html">Customize Dataset</a></li>
-<li class="toctree-l1"><a class="reference internal" href="implemented_models.html">Customize Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="implemented_evaluators.html">Customize Evaluators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="implemented_executors.html">Customize Executors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="implemented_logger.html">Logger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="implemented_datasets.html">自定义Dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="implemented_models.html">自定义Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="implemented_executors.html">自定义Executor</a></li>
 </ul>
-<p class="caption"><span class="caption-text">API REFERENCE</span></p>
+<p class="caption"><span class="caption-text">入门教程</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../trafficdl/trafficdl.config.html">trafficdl.config</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../trafficdl/trafficdl.data.html">trafficdl.data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../trafficdl/trafficdl.evaluator.html">trafficdl.evaluator</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../trafficdl/trafficdl.executor.html">trafficdl.executor</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../trafficdl/trafficdl.model.html">trafficdl.model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../trafficdl/trafficdl.pipeline.html">trafficdl.pipeline</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../trafficdl/trafficdl.utils.html">trafficdl.utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/install_quick_start.html">安装和快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/run_model.html">运行LibCity中已复现的模型</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/add_model.html">在LibCity中添加新模型</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/hyper_tune.html">使用自动化工具调参</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API文档</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../libcity/libcity.config.html">libcity.config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../libcity/libcity.data.html">libcity.data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../libcity/libcity.evaluator.html">libcity.evaluator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../libcity/libcity.executor.html">libcity.executor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../libcity/libcity.model.html">libcity.model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../libcity/libcity.pipeline.html">libcity.pipeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../libcity/libcity.utils.html">libcity.utils</a></li>
 </ul>
 
             
@@ -136,7 +141,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">Bigscity-TrafficDL</a>
+          <a href="../index.html">Bigscity-LibCity</a>
         
       </nav>
 
@@ -167,7 +172,7 @@
     
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>Code Style</li>
+      <li>代码风格</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -186,25 +191,25 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="code-style">
-<h1>Code Style<a class="headerlink" href="#code-style" title="Permalink to this headline">¶</a></h1>
-<p>Every major open-source project has its own style guide: a set of conventions (sometimes arbitrary) about how to write code for that project. It is much easier to understand a large codebase when all the code in it is in a consistent style.</p>
-<p>The code style of our project basically follows <a class="reference external" href="https://google.github.io/styleguide/pyguide.html">Google Python Style Guide</a> (<a class="reference external" href="https://zh-google-styleguide.readthedocs.io/en/latest/google-python-styleguide/contents/">Chinese version</a>). In order to better manage the quality of the code submitted by each co-developer, the project uses the python lint tool <a class="reference external" href="https://flake8.pycqa.org/en/latest/">flake8</a> to find potential bugs and style problems in source code.</p>
-<div class="section" id="working-with-flake8">
-<h2>Working with Flake8<a class="headerlink" href="#working-with-flake8" title="Permalink to this headline">¶</a></h2>
-<p>Besides using flake8, the project also uses <a class="reference external" href="https://github.com/PyCQA/pep8-naming">pep8-naming</a>, a plugin for flake8, to check code naming style. Please install flake8 and pep8-naming according to <code class="docutils literal notranslate"><span class="pre">/requirements.txt</span></code>.</p>
-<p>After installing flake8, we recommend you to integrate flake8 into Git pre-commit hook. For example, you can running following commands:</p>
+  <div class="section" id="id1">
+<h1>代码风格<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p>每个主流开源项目都有其自己的风格指南：关于如何为该项目编写代码的一组约定。当所有代码都采用统一的风格时，更加容易理解大型代码库。</p>
+<p>我们的代码风格基本遵循了 <a class="reference external" href="https://google.github.io/styleguide/pyguide.html">Google Python Style Guide</a>（<a class="reference external" href="https://zh-google-styleguide.readthedocs.io/en/latest/google-python-styleguide/contents/">Chinese version</a>）。为了更好的管理各合作开发者提交的代码质量，这个项目使用python lint工具<a class="reference external" href="https://flake8.pycqa.org/en/latest/">flake8</a>来查找潜在的bug和源代码中的风格问题。</p>
+<div class="section" id="flake8">
+<h2>使用Flake8<a class="headerlink" href="#flake8" title="Permalink to this headline">¶</a></h2>
+<p>除了使用flake8，项目也使用了<a class="reference external" href="https://github.com/PyCQA/pep8-naming">pep8-naming</a>，一种flake8的插件来检查代码命名风格，请根据requirements.txt安装flake8和pep8-naming库。</p>
+<p>在安装了flake8后，我们建议您将flake8集成到Git pre-commit hook中使用。例如，您可以运行下列指令：</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ flake8 --install-hook git
 $ git config --bool flake8.strict <span class="nb">true</span>
 </pre></div>
 </div>
-<p>Now, whenever you create a git commit, flake8 will automatically check the code style of your commit and prevent you from submitting bad codes.</p>
+<p>现在，每当您git commit时，flake8都将自动检查您commit的代码风格和并防止您submit错误代码。</p>
 </div>
-<div class="section" id="project-flake8-configuration">
-<h2>Project Flake8 Configuration<a class="headerlink" href="#project-flake8-configuration" title="Permalink to this headline">¶</a></h2>
-<p>Although the project basically follows the <a class="reference external" href="https://google.github.io/styleguide/pyguide.html">Google Python Style Guide</a>, we have made certain modifications to some uncomfortable specifications. The modifications we made will be recorded in detail, seeing below.</p>
+<div class="section" id="id2">
+<h2>项目Flake8配置<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>虽然这个项目基本遵循了<a class="reference external" href="https://google.github.io/styleguide/pyguide.html">Google Python Style Guide</a>，但我们已经针对一些不合适的规范做出了某些修改。我们做的修改将被详细记录，请见下方。</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">max-line-length</span></code>: We change the maximum line length from 80 characters to 120 characters.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">max-line-length</span></code>：我们将最大行长度从80个字符更改为120个字符。</p></li>
 </ul>
 </div>
 </div>
@@ -217,10 +222,10 @@ $ git config --bool flake8.strict <span class="nb">true</span>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="implemented_datasets.html" class="btn btn-neutral float-right" title="Customize Dataset" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="implemented_datasets.html" class="btn btn-neutral float-right" title="自定义Dataset" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../user_guide/usage/standard_track.html" class="btn btn-neutral float-left" title="标准赛道" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../user_guide/usage/logger.html" class="btn btn-neutral float-left" title="使用 logger" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

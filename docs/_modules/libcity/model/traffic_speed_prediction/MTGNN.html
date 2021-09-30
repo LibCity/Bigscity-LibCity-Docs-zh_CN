@@ -1,0 +1,774 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>libcity.model.traffic_speed_prediction.MTGNN &mdash; Bigscity-LibCity  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home" alt="Documentation Home"> Bigscity-LibCity
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">起步</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../get_started/introduction.html">介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../get_started/install.html">安装LibCity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../get_started/quick_start.html">快速入门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../get_started/directory_structure.html">目录结构</a></li>
+</ul>
+<p class="caption"><span class="caption-text">用户指导</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user_guide/config_settings.html">参数设置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user_guide/data.html">数据说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user_guide/model.html">复现模型列表</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user_guide/evaluator.html">评估模块简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user_guide/executor.html">执行模块简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user_guide/usage.html">使用示例</a></li>
+</ul>
+<p class="caption"><span class="caption-text">开发者指导</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../developer_guide/code_style.html">代码风格</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../developer_guide/implemented_datasets.html">自定义Dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../developer_guide/implemented_models.html">自定义Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../developer_guide/implemented_executors.html">自定义Executor</a></li>
+</ul>
+<p class="caption"><span class="caption-text">入门教程</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorial/install_quick_start.html">安装和快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorial/run_model.html">运行LibCity中已复现的模型</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorial/add_model.html">在LibCity中添加新模型</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorial/hyper_tune.html">使用自动化工具调参</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API文档</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../libcity/libcity.config.html">libcity.config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../libcity/libcity.data.html">libcity.data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../libcity/libcity.evaluator.html">libcity.evaluator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../libcity/libcity.executor.html">libcity.executor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../libcity/libcity.model.html">libcity.model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../libcity/libcity.pipeline.html">libcity.pipeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../libcity/libcity.utils.html">libcity.utils</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">Bigscity-LibCity</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../../index.html">Module code</a> &raquo;</li>
+        
+      <li>libcity.model.traffic_speed_prediction.MTGNN</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for libcity.model.traffic_speed_prediction.MTGNN</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">division</span>
+<span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
+<span class="kn">from</span> <span class="nn">torch.nn</span> <span class="kn">import</span> <span class="n">init</span>
+<span class="kn">import</span> <span class="nn">numbers</span>
+<span class="kn">import</span> <span class="nn">torch.nn.functional</span> <span class="k">as</span> <span class="nn">F</span>
+<span class="kn">from</span> <span class="nn">logging</span> <span class="kn">import</span> <span class="n">getLogger</span>
+<span class="kn">from</span> <span class="nn">libcity.model.abstract_traffic_state_model</span> <span class="kn">import</span> <span class="n">AbstractTrafficStateModel</span>
+<span class="kn">from</span> <span class="nn">libcity.model</span> <span class="kn">import</span> <span class="n">loss</span>
+
+
+<div class="viewcode-block" id="NConv"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_speed_prediction.MTGNN.html#libcity.model.traffic_speed_prediction.MTGNN.NConv">[docs]</a><span class="k">class</span> <span class="nc">NConv</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">NConv</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+
+<div class="viewcode-block" id="NConv.forward"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_speed_prediction.MTGNN.html#libcity.model.traffic_speed_prediction.MTGNN.NConv.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">adj</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">einsum</span><span class="p">(</span><span class="s1">&#39;ncwl,vw-&gt;ncvl&#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">adj</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">x</span><span class="o">.</span><span class="n">contiguous</span><span class="p">()</span></div></div>
+
+
+<div class="viewcode-block" id="DyNconv"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_speed_prediction.MTGNN.html#libcity.model.traffic_speed_prediction.MTGNN.DyNconv">[docs]</a><span class="k">class</span> <span class="nc">DyNconv</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">DyNconv</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+
+<div class="viewcode-block" id="DyNconv.forward"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_speed_prediction.MTGNN.html#libcity.model.traffic_speed_prediction.MTGNN.DyNconv.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">adj</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">einsum</span><span class="p">(</span><span class="s1">&#39;ncvl,nvwl-&gt;ncwl&#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">adj</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">x</span><span class="o">.</span><span class="n">contiguous</span><span class="p">()</span></div></div>
+
+
+<div class="viewcode-block" id="Linear"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_speed_prediction.MTGNN.html#libcity.model.traffic_speed_prediction.MTGNN.Linear">[docs]</a><span class="k">class</span> <span class="nc">Linear</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">c_in</span><span class="p">,</span> <span class="n">c_out</span><span class="p">,</span> <span class="n">bias</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Linear</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mlp</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="n">c_in</span><span class="p">,</span> <span class="n">c_out</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">padding</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">stride</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">bias</span><span class="o">=</span><span class="n">bias</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Linear.forward"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_speed_prediction.MTGNN.html#libcity.model.traffic_speed_prediction.MTGNN.Linear.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">mlp</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="Prop"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_speed_prediction.MTGNN.html#libcity.model.traffic_speed_prediction.MTGNN.Prop">[docs]</a><span class="k">class</span> <span class="nc">Prop</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">c_in</span><span class="p">,</span> <span class="n">c_out</span><span class="p">,</span> <span class="n">gdep</span><span class="p">,</span> <span class="n">dropout</span><span class="p">,</span> <span class="n">alpha</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Prop</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nconv</span> <span class="o">=</span> <span class="n">NConv</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mlp</span> <span class="o">=</span> <span class="n">Linear</span><span class="p">(</span><span class="n">c_in</span><span class="p">,</span> <span class="n">c_out</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">gdep</span> <span class="o">=</span> <span class="n">gdep</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dropout</span> <span class="o">=</span> <span class="n">dropout</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">alpha</span> <span class="o">=</span> <span class="n">alpha</span>
+
+<div class="viewcode-block" id="Prop.forward"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_speed_prediction.MTGNN.html#libcity.model.traffic_speed_prediction.MTGNN.Prop.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">adj</span><span class="p">):</span>
+        <span class="n">adj</span> <span class="o">=</span> <span class="n">adj</span> <span class="o">+</span> <span class="n">torch</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">adj</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="n">adj</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">h</span> <span class="o">=</span> <span class="n">x</span>
+        <span class="n">dv</span> <span class="o">=</span> <span class="n">d</span>
+        <span class="n">a</span> <span class="o">=</span> <span class="n">adj</span> <span class="o">/</span> <span class="n">dv</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">gdep</span><span class="p">):</span>
+            <span class="n">h</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">alpha</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">alpha</span><span class="p">)</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">nconv</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+        <span class="n">ho</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mlp</span><span class="p">(</span><span class="n">h</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">ho</span></div></div>
+
+
+<div class="viewcode-block" id="MixProp"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_speed_prediction.MTGNN.html#libcity.model.traffic_speed_prediction.MTGNN.MixProp">[docs]</a><span class="k">class</span> <span class="nc">MixProp</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">c_in</span><span class="p">,</span> <span class="n">c_out</span><span class="p">,</span> <span class="n">gdep</span><span class="p">,</span> <span class="n">dropout</span><span class="p">,</span> <span class="n">alpha</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">MixProp</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nconv</span> <span class="o">=</span> <span class="n">NConv</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mlp</span> <span class="o">=</span> <span class="n">Linear</span><span class="p">((</span><span class="n">gdep</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">c_in</span><span class="p">,</span> <span class="n">c_out</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">gdep</span> <span class="o">=</span> <span class="n">gdep</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dropout</span> <span class="o">=</span> <span class="n">dropout</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">alpha</span> <span class="o">=</span> <span class="n">alpha</span>
+
+<div class="viewcode-block" id="MixProp.forward"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_speed_prediction.MTGNN.html#libcity.model.traffic_speed_prediction.MTGNN.MixProp.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">adj</span><span class="p">):</span>
+        <span class="n">adj</span> <span class="o">=</span> <span class="n">adj</span> <span class="o">+</span> <span class="n">torch</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">adj</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="n">adj</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">h</span> <span class="o">=</span> <span class="n">x</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="p">[</span><span class="n">h</span><span class="p">]</span>
+        <span class="n">a</span> <span class="o">=</span> <span class="n">adj</span> <span class="o">/</span> <span class="n">d</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">gdep</span><span class="p">):</span>
+            <span class="n">h</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">alpha</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">alpha</span><span class="p">)</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">nconv</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+            <span class="n">out</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">h</span><span class="p">)</span>
+        <span class="n">ho</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">ho</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mlp</span><span class="p">(</span><span class="n">ho</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">ho</span></div></div>
+
+
+<div class="viewcode-block" id="DyMixprop"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_speed_prediction.MTGNN.html#libcity.model.traffic_speed_prediction.MTGNN.DyMixprop">[docs]</a><span class="k">class</span> <span class="nc">DyMixprop</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">c_in</span><span class="p">,</span> <span class="n">c_out</span><span class="p">,</span> <span class="n">gdep</span><span class="p">,</span> <span class="n">dropout</span><span class="p">,</span> <span class="n">alpha</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">DyMixprop</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nconv</span> <span class="o">=</span> <span class="n">DyNconv</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mlp1</span> <span class="o">=</span> <span class="n">Linear</span><span class="p">((</span><span class="n">gdep</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">c_in</span><span class="p">,</span> <span class="n">c_out</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mlp2</span> <span class="o">=</span> <span class="n">Linear</span><span class="p">((</span><span class="n">gdep</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">c_in</span><span class="p">,</span> <span class="n">c_out</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">gdep</span> <span class="o">=</span> <span class="n">gdep</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dropout</span> <span class="o">=</span> <span class="n">dropout</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">alpha</span> <span class="o">=</span> <span class="n">alpha</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lin1</span> <span class="o">=</span> <span class="n">Linear</span><span class="p">(</span><span class="n">c_in</span><span class="p">,</span> <span class="n">c_in</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lin2</span> <span class="o">=</span> <span class="n">Linear</span><span class="p">(</span><span class="n">c_in</span><span class="p">,</span> <span class="n">c_in</span><span class="p">)</span>
+
+<div class="viewcode-block" id="DyMixprop.forward"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_speed_prediction.MTGNN.html#libcity.model.traffic_speed_prediction.MTGNN.DyMixprop.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="n">x1</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tanh</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lin1</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+        <span class="n">x2</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tanh</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lin2</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+        <span class="n">adj</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nconv</span><span class="p">(</span><span class="n">x1</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">x2</span><span class="p">)</span>
+        <span class="n">adj0</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">adj</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+        <span class="n">adj1</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">adj</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">dim</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+        <span class="n">h</span> <span class="o">=</span> <span class="n">x</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="p">[</span><span class="n">h</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">gdep</span><span class="p">):</span>
+            <span class="n">h</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">alpha</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">alpha</span><span class="p">)</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">nconv</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">adj0</span><span class="p">)</span>
+            <span class="n">out</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">h</span><span class="p">)</span>
+        <span class="n">ho</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">ho1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mlp1</span><span class="p">(</span><span class="n">ho</span><span class="p">)</span>
+
+        <span class="n">h</span> <span class="o">=</span> <span class="n">x</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="p">[</span><span class="n">h</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">gdep</span><span class="p">):</span>
+            <span class="n">h</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">alpha</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">alpha</span><span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">nconv</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">adj1</span><span class="p">)</span>
+            <span class="n">out</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">h</span><span class="p">)</span>
+        <span class="n">ho</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">ho2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mlp2</span><span class="p">(</span><span class="n">ho</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">ho1</span><span class="o">+</span><span class="n">ho2</span></div></div>
+
+
+<div class="viewcode-block" id="Dilated1D"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_speed_prediction.MTGNN.html#libcity.model.traffic_speed_prediction.MTGNN.Dilated1D">[docs]</a><span class="k">class</span> <span class="nc">Dilated1D</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cin</span><span class="p">,</span> <span class="n">cout</span><span class="p">,</span> <span class="n">dilation_factor</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Dilated1D</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tconv</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">ModuleList</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">kernel_set</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tconv</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="n">cin</span><span class="p">,</span> <span class="n">cout</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span> <span class="n">dilation</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">dilation_factor</span><span class="p">))</span>
+
+<div class="viewcode-block" id="Dilated1D.forward"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_speed_prediction.MTGNN.html#libcity.model.traffic_speed_prediction.MTGNN.Dilated1D.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">tconv</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">x</span></div></div>
+
+
+<div class="viewcode-block" id="DilatedInception"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_speed_prediction.MTGNN.html#libcity.model.traffic_speed_prediction.MTGNN.DilatedInception">[docs]</a><span class="k">class</span> <span class="nc">DilatedInception</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cin</span><span class="p">,</span> <span class="n">cout</span><span class="p">,</span> <span class="n">dilation_factor</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">DilatedInception</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tconv</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">ModuleList</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">kernel_set</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">]</span>
+        <span class="n">cout</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">cout</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">kernel_set</span><span class="p">))</span>
+        <span class="k">for</span> <span class="n">kern</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">kernel_set</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">tconv</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="n">cin</span><span class="p">,</span> <span class="n">cout</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">kern</span><span class="p">),</span> <span class="n">dilation</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">dilation_factor</span><span class="p">)))</span>
+
+<div class="viewcode-block" id="DilatedInception.forward"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_speed_prediction.MTGNN.html#libcity.model.traffic_speed_prediction.MTGNN.DilatedInception.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">kernel_set</span><span class="p">)):</span>
+            <span class="n">x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tconv</span><span class="p">[</span><span class="n">i</span><span class="p">](</span><span class="nb">input</span><span class="p">))</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">kernel_set</span><span class="p">)):</span>
+            <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="o">...</span><span class="p">,</span> <span class="o">-</span><span class="n">x</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">3</span><span class="p">):]</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">x</span></div></div>
+
+
+<div class="viewcode-block" id="GraphConstructor"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_speed_prediction.MTGNN.html#libcity.model.traffic_speed_prediction.MTGNN.GraphConstructor">[docs]</a><span class="k">class</span> <span class="nc">GraphConstructor</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nnodes</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">dim</span><span class="p">,</span> <span class="n">device</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">static_feat</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">GraphConstructor</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nnodes</span> <span class="o">=</span> <span class="n">nnodes</span>
+        <span class="k">if</span> <span class="n">static_feat</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">xd</span> <span class="o">=</span> <span class="n">static_feat</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">lin1</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">xd</span><span class="p">,</span> <span class="n">dim</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">lin2</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">xd</span><span class="p">,</span> <span class="n">dim</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">emb1</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Embedding</span><span class="p">(</span><span class="n">nnodes</span><span class="p">,</span> <span class="n">dim</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">emb2</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Embedding</span><span class="p">(</span><span class="n">nnodes</span><span class="p">,</span> <span class="n">dim</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">lin1</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">dim</span><span class="p">,</span> <span class="n">dim</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">lin2</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">dim</span><span class="p">,</span> <span class="n">dim</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">device</span> <span class="o">=</span> <span class="n">device</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">k</span> <span class="o">=</span> <span class="n">k</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dim</span> <span class="o">=</span> <span class="n">dim</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">alpha</span> <span class="o">=</span> <span class="n">alpha</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">static_feat</span> <span class="o">=</span> <span class="n">static_feat</span>
+
+<div class="viewcode-block" id="GraphConstructor.forward"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_speed_prediction.MTGNN.html#libcity.model.traffic_speed_prediction.MTGNN.GraphConstructor.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">static_feat</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">nodevec1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">emb1</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span>
+            <span class="n">nodevec2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">emb2</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">nodevec1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">static_feat</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span> <span class="p">:]</span>
+            <span class="n">nodevec2</span> <span class="o">=</span> <span class="n">nodevec1</span>
+
+        <span class="n">nodevec1</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tanh</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">alpha</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">lin1</span><span class="p">(</span><span class="n">nodevec1</span><span class="p">))</span>
+        <span class="n">nodevec2</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tanh</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">alpha</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">lin2</span><span class="p">(</span><span class="n">nodevec2</span><span class="p">))</span>
+
+        <span class="n">a</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">mm</span><span class="p">(</span><span class="n">nodevec1</span><span class="p">,</span> <span class="n">nodevec2</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span><span class="o">-</span><span class="n">torch</span><span class="o">.</span><span class="n">mm</span><span class="p">(</span><span class="n">nodevec2</span><span class="p">,</span> <span class="n">nodevec1</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+        <span class="n">adj</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">tanh</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">alpha</span><span class="o">*</span><span class="n">a</span><span class="p">))</span>
+        <span class="n">mask</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">idx</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">idx</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+        <span class="n">mask</span><span class="o">.</span><span class="n">fill_</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="s1">&#39;0&#39;</span><span class="p">))</span>
+        <span class="n">s1</span><span class="p">,</span> <span class="n">t1</span> <span class="o">=</span> <span class="n">adj</span><span class="o">.</span><span class="n">topk</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">k</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">mask</span><span class="o">.</span><span class="n">scatter_</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">t1</span><span class="p">,</span> <span class="n">s1</span><span class="o">.</span><span class="n">fill_</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+        <span class="n">adj</span> <span class="o">=</span> <span class="n">adj</span><span class="o">*</span><span class="n">mask</span>
+        <span class="k">return</span> <span class="n">adj</span></div>
+
+<div class="viewcode-block" id="GraphConstructor.fulla"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_speed_prediction.MTGNN.html#libcity.model.traffic_speed_prediction.MTGNN.GraphConstructor.fulla">[docs]</a>    <span class="k">def</span> <span class="nf">fulla</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">static_feat</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">nodevec1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">emb1</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span>
+            <span class="n">nodevec2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">emb2</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">nodevec1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">static_feat</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span> <span class="p">:]</span>
+            <span class="n">nodevec2</span> <span class="o">=</span> <span class="n">nodevec1</span>
+
+        <span class="n">nodevec1</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tanh</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">alpha</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">lin1</span><span class="p">(</span><span class="n">nodevec1</span><span class="p">))</span>
+        <span class="n">nodevec2</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tanh</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">alpha</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">lin2</span><span class="p">(</span><span class="n">nodevec2</span><span class="p">))</span>
+
+        <span class="n">a</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">mm</span><span class="p">(</span><span class="n">nodevec1</span><span class="p">,</span> <span class="n">nodevec2</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span><span class="o">-</span><span class="n">torch</span><span class="o">.</span><span class="n">mm</span><span class="p">(</span><span class="n">nodevec2</span><span class="p">,</span> <span class="n">nodevec1</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+        <span class="n">adj</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">tanh</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">alpha</span><span class="o">*</span><span class="n">a</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">adj</span></div></div>
+
+
+<div class="viewcode-block" id="GraphGlobal"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_speed_prediction.MTGNN.html#libcity.model.traffic_speed_prediction.MTGNN.GraphGlobal">[docs]</a><span class="k">class</span> <span class="nc">GraphGlobal</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nnodes</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">dim</span><span class="p">,</span> <span class="n">device</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">static_feat</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">GraphGlobal</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nnodes</span> <span class="o">=</span> <span class="n">nnodes</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">A</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">nnodes</span><span class="p">,</span> <span class="n">nnodes</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">),</span> <span class="n">requires_grad</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+
+<div class="viewcode-block" id="GraphGlobal.forward"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_speed_prediction.MTGNN.html#libcity.model.traffic_speed_prediction.MTGNN.GraphGlobal.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">F</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">A</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="GraphUndirected"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_speed_prediction.MTGNN.html#libcity.model.traffic_speed_prediction.MTGNN.GraphUndirected">[docs]</a><span class="k">class</span> <span class="nc">GraphUndirected</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nnodes</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">dim</span><span class="p">,</span> <span class="n">device</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">static_feat</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">GraphUndirected</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nnodes</span> <span class="o">=</span> <span class="n">nnodes</span>
+        <span class="k">if</span> <span class="n">static_feat</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">xd</span> <span class="o">=</span> <span class="n">static_feat</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">lin1</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">xd</span><span class="p">,</span> <span class="n">dim</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">emb1</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Embedding</span><span class="p">(</span><span class="n">nnodes</span><span class="p">,</span> <span class="n">dim</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">lin1</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">dim</span><span class="p">,</span> <span class="n">dim</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">device</span> <span class="o">=</span> <span class="n">device</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">k</span> <span class="o">=</span> <span class="n">k</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dim</span> <span class="o">=</span> <span class="n">dim</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">alpha</span> <span class="o">=</span> <span class="n">alpha</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">static_feat</span> <span class="o">=</span> <span class="n">static_feat</span>
+
+<div class="viewcode-block" id="GraphUndirected.forward"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_speed_prediction.MTGNN.html#libcity.model.traffic_speed_prediction.MTGNN.GraphUndirected.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">static_feat</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">nodevec1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">emb1</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span>
+            <span class="n">nodevec2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">emb1</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">nodevec1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">static_feat</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span> <span class="p">:]</span>
+            <span class="n">nodevec2</span> <span class="o">=</span> <span class="n">nodevec1</span>
+
+        <span class="n">nodevec1</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tanh</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">alpha</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">lin1</span><span class="p">(</span><span class="n">nodevec1</span><span class="p">))</span>
+        <span class="n">nodevec2</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tanh</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">alpha</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">lin1</span><span class="p">(</span><span class="n">nodevec2</span><span class="p">))</span>
+
+        <span class="n">a</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">mm</span><span class="p">(</span><span class="n">nodevec1</span><span class="p">,</span> <span class="n">nodevec2</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+        <span class="n">adj</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">tanh</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">alpha</span><span class="o">*</span><span class="n">a</span><span class="p">))</span>
+        <span class="n">mask</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">idx</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">idx</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+        <span class="n">mask</span><span class="o">.</span><span class="n">fill_</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="s1">&#39;0&#39;</span><span class="p">))</span>
+        <span class="n">s1</span><span class="p">,</span> <span class="n">t1</span> <span class="o">=</span> <span class="n">adj</span><span class="o">.</span><span class="n">topk</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">k</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">mask</span><span class="o">.</span><span class="n">scatter_</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">t1</span><span class="p">,</span> <span class="n">s1</span><span class="o">.</span><span class="n">fill_</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+        <span class="n">adj</span> <span class="o">=</span> <span class="n">adj</span><span class="o">*</span><span class="n">mask</span>
+        <span class="k">return</span> <span class="n">adj</span></div></div>
+
+
+<div class="viewcode-block" id="GraphDirected"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_speed_prediction.MTGNN.html#libcity.model.traffic_speed_prediction.MTGNN.GraphDirected">[docs]</a><span class="k">class</span> <span class="nc">GraphDirected</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nnodes</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">dim</span><span class="p">,</span> <span class="n">device</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">static_feat</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">GraphDirected</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nnodes</span> <span class="o">=</span> <span class="n">nnodes</span>
+        <span class="k">if</span> <span class="n">static_feat</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">xd</span> <span class="o">=</span> <span class="n">static_feat</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">lin1</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">xd</span><span class="p">,</span> <span class="n">dim</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">lin2</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">xd</span><span class="p">,</span> <span class="n">dim</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">emb1</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Embedding</span><span class="p">(</span><span class="n">nnodes</span><span class="p">,</span> <span class="n">dim</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">emb2</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Embedding</span><span class="p">(</span><span class="n">nnodes</span><span class="p">,</span> <span class="n">dim</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">lin1</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">dim</span><span class="p">,</span> <span class="n">dim</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">lin2</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">dim</span><span class="p">,</span> <span class="n">dim</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">device</span> <span class="o">=</span> <span class="n">device</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">k</span> <span class="o">=</span> <span class="n">k</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dim</span> <span class="o">=</span> <span class="n">dim</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">alpha</span> <span class="o">=</span> <span class="n">alpha</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">static_feat</span> <span class="o">=</span> <span class="n">static_feat</span>
+
+<div class="viewcode-block" id="GraphDirected.forward"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_speed_prediction.MTGNN.html#libcity.model.traffic_speed_prediction.MTGNN.GraphDirected.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">static_feat</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">nodevec1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">emb1</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span>
+            <span class="n">nodevec2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">emb2</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">nodevec1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">static_feat</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span> <span class="p">:]</span>
+            <span class="n">nodevec2</span> <span class="o">=</span> <span class="n">nodevec1</span>
+
+        <span class="n">nodevec1</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tanh</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">alpha</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">lin1</span><span class="p">(</span><span class="n">nodevec1</span><span class="p">))</span>
+        <span class="n">nodevec2</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tanh</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">alpha</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">lin2</span><span class="p">(</span><span class="n">nodevec2</span><span class="p">))</span>
+
+        <span class="n">a</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">mm</span><span class="p">(</span><span class="n">nodevec1</span><span class="p">,</span> <span class="n">nodevec2</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+        <span class="n">adj</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">tanh</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">alpha</span><span class="o">*</span><span class="n">a</span><span class="p">))</span>
+        <span class="n">mask</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">idx</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">idx</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+        <span class="n">mask</span><span class="o">.</span><span class="n">fill_</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="s1">&#39;0&#39;</span><span class="p">))</span>
+        <span class="n">s1</span><span class="p">,</span> <span class="n">t1</span> <span class="o">=</span> <span class="n">adj</span><span class="o">.</span><span class="n">topk</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">k</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">mask</span><span class="o">.</span><span class="n">scatter_</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">t1</span><span class="p">,</span> <span class="n">s1</span><span class="o">.</span><span class="n">fill_</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+        <span class="n">adj</span> <span class="o">=</span> <span class="n">adj</span><span class="o">*</span><span class="n">mask</span>
+        <span class="k">return</span> <span class="n">adj</span></div></div>
+
+
+<div class="viewcode-block" id="LayerNorm"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_speed_prediction.MTGNN.html#libcity.model.traffic_speed_prediction.MTGNN.LayerNorm">[docs]</a><span class="k">class</span> <span class="nc">LayerNorm</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="n">__constants__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;normalized_shape&#39;</span><span class="p">,</span> <span class="s1">&#39;weight&#39;</span><span class="p">,</span> <span class="s1">&#39;bias&#39;</span><span class="p">,</span> <span class="s1">&#39;eps&#39;</span><span class="p">,</span> <span class="s1">&#39;elementwise_affine&#39;</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">normalized_shape</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="mf">1e-5</span><span class="p">,</span> <span class="n">elementwise_affine</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">LayerNorm</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">normalized_shape</span><span class="p">,</span> <span class="n">numbers</span><span class="o">.</span><span class="n">Integral</span><span class="p">):</span>
+            <span class="n">normalized_shape</span> <span class="o">=</span> <span class="p">(</span><span class="n">normalized_shape</span><span class="p">,)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">normalized_shape</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">normalized_shape</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">eps</span> <span class="o">=</span> <span class="n">eps</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">elementwise_affine</span> <span class="o">=</span> <span class="n">elementwise_affine</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">elementwise_affine</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">weight</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="o">*</span><span class="n">normalized_shape</span><span class="p">))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">bias</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="o">*</span><span class="n">normalized_shape</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">register_parameter</span><span class="p">(</span><span class="s1">&#39;weight&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">register_parameter</span><span class="p">(</span><span class="s1">&#39;bias&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">reset_parameters</span><span class="p">()</span>
+
+<div class="viewcode-block" id="LayerNorm.reset_parameters"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_speed_prediction.MTGNN.html#libcity.model.traffic_speed_prediction.MTGNN.LayerNorm.reset_parameters">[docs]</a>    <span class="k">def</span> <span class="nf">reset_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">elementwise_affine</span><span class="p">:</span>
+            <span class="n">init</span><span class="o">.</span><span class="n">ones_</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">weight</span><span class="p">)</span>
+            <span class="n">init</span><span class="o">.</span><span class="n">zeros_</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bias</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="LayerNorm.forward"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_speed_prediction.MTGNN.html#libcity.model.traffic_speed_prediction.MTGNN.LayerNorm.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">idx</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">elementwise_affine</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">F</span><span class="o">.</span><span class="n">layer_norm</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">inputs</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">:]),</span>
+                                <span class="bp">self</span><span class="o">.</span><span class="n">weight</span><span class="p">[:,</span> <span class="n">idx</span><span class="p">,</span> <span class="p">:],</span> <span class="bp">self</span><span class="o">.</span><span class="n">bias</span><span class="p">[:,</span> <span class="n">idx</span><span class="p">,</span> <span class="p">:],</span> <span class="bp">self</span><span class="o">.</span><span class="n">eps</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">F</span><span class="o">.</span><span class="n">layer_norm</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">inputs</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">:]),</span>
+                                <span class="bp">self</span><span class="o">.</span><span class="n">weight</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">bias</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">eps</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="LayerNorm.extra_repr"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_speed_prediction.MTGNN.html#libcity.model.traffic_speed_prediction.MTGNN.LayerNorm.extra_repr">[docs]</a>    <span class="k">def</span> <span class="nf">extra_repr</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s1">&#39;</span><span class="si">{normalized_shape}</span><span class="s1">, eps=</span><span class="si">{eps}</span><span class="s1">, &#39;</span> \
+            <span class="s1">&#39;elementwise_affine=</span><span class="si">{elementwise_affine}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="MTGNN"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_speed_prediction.MTGNN.html#libcity.model.traffic_speed_prediction.MTGNN.MTGNN">[docs]</a><span class="k">class</span> <span class="nc">MTGNN</span><span class="p">(</span><span class="n">AbstractTrafficStateModel</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">data_feature</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="n">data_feature</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">adj_mx</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_feature</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;adj_mx&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">num_nodes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_feature</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;num_nodes&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">feature_dim</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_feature</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;feature_dim&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">num_batches</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_feature</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;num_batches&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span> <span class="o">=</span> <span class="n">getLogger</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_scaler</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_feature</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;scaler&#39;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">input_window</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;input_window&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">output_window</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;output_window&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">output_dim</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;output_dim&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">device</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;device&#39;</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">&#39;cpu&#39;</span><span class="p">))</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">gcn_true</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;gcn_true&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">buildA_true</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;buildA_true&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">gcn_depth</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;gcn_depth&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dropout</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;dropout&#39;</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">subgraph_size</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;subgraph_size&#39;</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">node_dim</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;node_dim&#39;</span><span class="p">,</span> <span class="mi">40</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dilation_exponential</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;dilation_exponential&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">conv_channels</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;conv_channels&#39;</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">residual_channels</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;residual_channels&#39;</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">skip_channels</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;skip_channels&#39;</span><span class="p">,</span> <span class="mi">64</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">end_channels</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;end_channels&#39;</span><span class="p">,</span> <span class="mi">128</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">layers</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;layers&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">propalpha</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;propalpha&#39;</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tanhalpha</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;tanhalpha&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">layer_norm_affline</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;layer_norm_affline&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">use_curriculum_learning</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;use_curriculum_learning&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">step_size</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;step_size1&#39;</span><span class="p">,</span> <span class="mi">2500</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">max_epoch</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;max_epoch&#39;</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_epoch</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_batches</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">step_size</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_window</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s1">&#39;Parameter `step_size1` is too big with </span><span class="si">{}</span><span class="s1"> epochs and &#39;</span>
+                                 <span class="s1">&#39;the model cannot be trained for all time steps.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">max_epoch</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">task_level</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;task_level&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">idx</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">num_nodes</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">predefined_A</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">adj_mx</span><span class="p">)</span> <span class="o">-</span> <span class="n">torch</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">num_nodes</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">predefined_A</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">predefined_A</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">static_feat</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">filter_convs</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">ModuleList</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">gate_convs</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">ModuleList</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">residual_convs</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">ModuleList</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">skip_convs</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">ModuleList</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">gconv1</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">ModuleList</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">gconv2</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">ModuleList</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">norm</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">ModuleList</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">start_conv</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="n">in_channels</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">feature_dim</span><span class="p">,</span>
+                                    <span class="n">out_channels</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">residual_channels</span><span class="p">,</span>
+                                    <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">gc</span> <span class="o">=</span> <span class="n">GraphConstructor</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">num_nodes</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">subgraph_size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">node_dim</span><span class="p">,</span>
+                                   <span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">tanhalpha</span><span class="p">,</span> <span class="n">static_feat</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">static_feat</span><span class="p">)</span>
+
+        <span class="n">kernel_size</span> <span class="o">=</span> <span class="mi">7</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">dilation_exponential</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">receptive_field</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">output_dim</span> <span class="o">+</span> <span class="p">(</span><span class="n">kernel_size</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dilation_exponential</span><span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">layers</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+                                       <span class="o">/</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dilation_exponential</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">receptive_field</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">layers</span> <span class="o">*</span> <span class="p">(</span><span class="n">kernel_size</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_dim</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">):</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">dilation_exponential</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">rf_size_i</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">i</span> <span class="o">*</span> <span class="p">(</span><span class="n">kernel_size</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dilation_exponential</span><span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">layers</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+                                <span class="o">/</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dilation_exponential</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">rf_size_i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">layers</span> <span class="o">*</span> <span class="p">(</span><span class="n">kernel_size</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+            <span class="n">new_dilation</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">layers</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">dilation_exponential</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+                    <span class="n">rf_size_j</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">rf_size_i</span> <span class="o">+</span> <span class="p">(</span><span class="n">kernel_size</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dilation_exponential</span><span class="o">**</span><span class="n">j</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+                                    <span class="o">/</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dilation_exponential</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">rf_size_j</span> <span class="o">=</span> <span class="n">rf_size_i</span><span class="o">+</span><span class="n">j</span><span class="o">*</span><span class="p">(</span><span class="n">kernel_size</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+                <span class="bp">self</span><span class="o">.</span><span class="n">filter_convs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">DilatedInception</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">residual_channels</span><span class="p">,</span>
+                                                          <span class="bp">self</span><span class="o">.</span><span class="n">conv_channels</span><span class="p">,</span> <span class="n">dilation_factor</span><span class="o">=</span><span class="n">new_dilation</span><span class="p">))</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">gate_convs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">DilatedInception</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">residual_channels</span><span class="p">,</span>
+                                                        <span class="bp">self</span><span class="o">.</span><span class="n">conv_channels</span><span class="p">,</span> <span class="n">dilation_factor</span><span class="o">=</span><span class="n">new_dilation</span><span class="p">))</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">residual_convs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="n">in_channels</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">conv_channels</span><span class="p">,</span>
+                                                     <span class="n">out_channels</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">residual_channels</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)))</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">input_window</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">receptive_field</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">skip_convs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="n">in_channels</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">conv_channels</span><span class="p">,</span> <span class="n">out_channels</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">skip_channels</span><span class="p">,</span>
+                                                     <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">input_window</span><span class="o">-</span><span class="n">rf_size_j</span><span class="o">+</span><span class="mi">1</span><span class="p">)))</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">skip_convs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="n">in_channels</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">conv_channels</span><span class="p">,</span> <span class="n">out_channels</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">skip_channels</span><span class="p">,</span>
+                                                     <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">receptive_field</span><span class="o">-</span><span class="n">rf_size_j</span><span class="o">+</span><span class="mi">1</span><span class="p">)))</span>
+
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">gcn_true</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">gconv1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">MixProp</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">conv_channels</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">residual_channels</span><span class="p">,</span>
+                                               <span class="bp">self</span><span class="o">.</span><span class="n">gcn_depth</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dropout</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">propalpha</span><span class="p">))</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">gconv2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">MixProp</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">conv_channels</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">residual_channels</span><span class="p">,</span>
+                                               <span class="bp">self</span><span class="o">.</span><span class="n">gcn_depth</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dropout</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">propalpha</span><span class="p">))</span>
+
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">input_window</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">receptive_field</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">LayerNorm</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">residual_channels</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_nodes</span><span class="p">,</span>
+                                                <span class="bp">self</span><span class="o">.</span><span class="n">input_window</span> <span class="o">-</span> <span class="n">rf_size_j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span>
+                                               <span class="n">elementwise_affine</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">layer_norm_affline</span><span class="p">))</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">LayerNorm</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">residual_channels</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_nodes</span><span class="p">,</span>
+                                                <span class="bp">self</span><span class="o">.</span><span class="n">receptive_field</span> <span class="o">-</span> <span class="n">rf_size_j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span>
+                                               <span class="n">elementwise_affine</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">layer_norm_affline</span><span class="p">))</span>
+
+                <span class="n">new_dilation</span> <span class="o">*=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dilation_exponential</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">end_conv_1</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="n">in_channels</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">skip_channels</span><span class="p">,</span>
+                                    <span class="n">out_channels</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">end_channels</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">bias</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">end_conv_2</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="n">in_channels</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">end_channels</span><span class="p">,</span>
+                                    <span class="n">out_channels</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">output_window</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">bias</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">input_window</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">receptive_field</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">skip0</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="n">in_channels</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">feature_dim</span><span class="p">,</span>
+                                   <span class="n">out_channels</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">skip_channels</span><span class="p">,</span>
+                                   <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">input_window</span><span class="p">),</span> <span class="n">bias</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">skipE</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="n">in_channels</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">residual_channels</span><span class="p">,</span>
+                                   <span class="n">out_channels</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">skip_channels</span><span class="p">,</span>
+                                   <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">input_window</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">receptive_field</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span> <span class="n">bias</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">skip0</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="n">in_channels</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">feature_dim</span><span class="p">,</span>
+                                   <span class="n">out_channels</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">skip_channels</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">receptive_field</span><span class="p">),</span> <span class="n">bias</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">skipE</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="n">in_channels</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">residual_channels</span><span class="p">,</span>
+                                   <span class="n">out_channels</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">skip_channels</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">bias</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;receptive_field: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">receptive_field</span><span class="p">))</span>
+
+<div class="viewcode-block" id="MTGNN.forward"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_speed_prediction.MTGNN.html#libcity.model.traffic_speed_prediction.MTGNN.MTGNN.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">batch</span><span class="p">,</span> <span class="n">idx</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="n">inputs</span> <span class="o">=</span> <span class="n">batch</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">]</span>  <span class="c1"># (batch_size, input_window, num_nodes, feature_dim)</span>
+        <span class="n">inputs</span> <span class="o">=</span> <span class="n">inputs</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>  <span class="c1"># (batch_size, feature_dim, num_nodes, input_window)</span>
+        <span class="k">assert</span> <span class="n">inputs</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">input_window</span><span class="p">,</span> <span class="s1">&#39;input sequence length not equal to preset sequence length&#39;</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">input_window</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">receptive_field</span><span class="p">:</span>
+            <span class="n">inputs</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">functional</span><span class="o">.</span><span class="n">pad</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">receptive_field</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">input_window</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">gcn_true</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">buildA_true</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">idx</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="n">adp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">gc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">idx</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">adp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">gc</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">adp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">predefined_A</span>
+
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">start_conv</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
+        <span class="n">skip</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">skip0</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">dropout</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dropout</span><span class="p">,</span> <span class="n">training</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">training</span><span class="p">))</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">layers</span><span class="p">):</span>
+            <span class="n">residual</span> <span class="o">=</span> <span class="n">x</span>
+            <span class="n">filters</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">filter_convs</span><span class="p">[</span><span class="n">i</span><span class="p">](</span><span class="n">x</span><span class="p">)</span>
+            <span class="n">filters</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tanh</span><span class="p">(</span><span class="n">filters</span><span class="p">)</span>
+            <span class="n">gate</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">gate_convs</span><span class="p">[</span><span class="n">i</span><span class="p">](</span><span class="n">x</span><span class="p">)</span>
+            <span class="n">gate</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">sigmoid</span><span class="p">(</span><span class="n">gate</span><span class="p">)</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="n">filters</span> <span class="o">*</span> <span class="n">gate</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">dropout</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dropout</span><span class="p">,</span> <span class="n">training</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">training</span><span class="p">)</span>
+            <span class="n">s</span> <span class="o">=</span> <span class="n">x</span>
+            <span class="n">s</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">skip_convs</span><span class="p">[</span><span class="n">i</span><span class="p">](</span><span class="n">s</span><span class="p">)</span>
+            <span class="n">skip</span> <span class="o">=</span> <span class="n">s</span> <span class="o">+</span> <span class="n">skip</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">gcn_true</span><span class="p">:</span>
+                <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">gconv1</span><span class="p">[</span><span class="n">i</span><span class="p">](</span><span class="n">x</span><span class="p">,</span> <span class="n">adp</span><span class="p">)</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">gconv2</span><span class="p">[</span><span class="n">i</span><span class="p">](</span><span class="n">x</span><span class="p">,</span> <span class="n">adp</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">residual_convs</span><span class="p">[</span><span class="n">i</span><span class="p">](</span><span class="n">x</span><span class="p">)</span>
+
+            <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">residual</span><span class="p">[:,</span> <span class="p">:,</span> <span class="p">:,</span> <span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">3</span><span class="p">):]</span>
+            <span class="k">if</span> <span class="n">idx</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">norm</span><span class="p">[</span><span class="n">i</span><span class="p">](</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">idx</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">norm</span><span class="p">[</span><span class="n">i</span><span class="p">](</span><span class="n">x</span><span class="p">,</span> <span class="n">idx</span><span class="p">)</span>
+
+        <span class="n">skip</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">skipE</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="n">skip</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="n">skip</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">end_conv_1</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">end_conv_2</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">x</span></div>
+
+<div class="viewcode-block" id="MTGNN.calculate_loss"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_speed_prediction.MTGNN.html#libcity.model.traffic_speed_prediction.MTGNN.MTGNN.calculate_loss">[docs]</a>    <span class="k">def</span> <span class="nf">calculate_loss</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">batch</span><span class="p">,</span> <span class="n">idx</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">batches_seen</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">idx</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">idx</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+            <span class="n">tx</span> <span class="o">=</span> <span class="n">batch</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">][:,</span> <span class="p">:,</span> <span class="n">idx</span><span class="p">,</span> <span class="p">:]</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>  <span class="c1"># 避免batch[X]被修改 下一次idx索引就不对了</span>
+            <span class="n">y_true</span> <span class="o">=</span> <span class="n">batch</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">][:,</span> <span class="p">:,</span> <span class="n">idx</span><span class="p">,</span> <span class="p">:]</span>
+            <span class="n">batch_new</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;X&#39;</span><span class="p">:</span> <span class="n">tx</span><span class="p">}</span>
+            <span class="n">y_predicted</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">batch_new</span><span class="p">,</span> <span class="n">idx</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">y_true</span> <span class="o">=</span> <span class="n">batch</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span>
+            <span class="n">y_predicted</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">batch</span><span class="p">)</span>
+        <span class="c1"># print(&#39;y_true&#39;, y_true.shape)</span>
+        <span class="c1"># print(&#39;y_predicted&#39;, y_predicted.shape)</span>
+        <span class="n">y_true</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_scaler</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">y_true</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">output_dim</span><span class="p">])</span>
+        <span class="n">y_predicted</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_scaler</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">y_predicted</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">output_dim</span><span class="p">])</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">training</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">batches_seen</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">step_size</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">task_level</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_window</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">task_level</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Training: task_level increase from </span><span class="si">{}</span><span class="s1"> to </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">task_level</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">task_level</span><span class="p">))</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Current batches_seen is </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">batches_seen</span><span class="p">))</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">use_curriculum_learning</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">loss</span><span class="o">.</span><span class="n">masked_mae_torch</span><span class="p">(</span><span class="n">y_predicted</span><span class="p">[:,</span> <span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">task_level</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:],</span>
+                                             <span class="n">y_true</span><span class="p">[:,</span> <span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">task_level</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:],</span> <span class="mi">0</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">loss</span><span class="o">.</span><span class="n">masked_mae_torch</span><span class="p">(</span><span class="n">y_predicted</span><span class="p">,</span> <span class="n">y_true</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">loss</span><span class="o">.</span><span class="n">masked_mae_torch</span><span class="p">(</span><span class="n">y_predicted</span><span class="p">,</span> <span class="n">y_true</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MTGNN.predict"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_speed_prediction.MTGNN.html#libcity.model.traffic_speed_prediction.MTGNN.MTGNN.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">batch</span><span class="p">,</span> <span class="n">idx</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">batch</span><span class="p">,</span> <span class="n">idx</span><span class="p">)</span></div></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, aptx1231
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

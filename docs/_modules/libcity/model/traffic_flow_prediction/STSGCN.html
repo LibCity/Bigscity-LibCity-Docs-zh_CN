@@ -1,0 +1,615 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>libcity.model.traffic_flow_prediction.STSGCN &mdash; Bigscity-LibCity  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home" alt="Documentation Home"> Bigscity-LibCity
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">起步</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../get_started/introduction.html">介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../get_started/install.html">安装LibCity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../get_started/quick_start.html">快速入门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../get_started/directory_structure.html">目录结构</a></li>
+</ul>
+<p class="caption"><span class="caption-text">用户指导</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user_guide/config_settings.html">参数设置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user_guide/data.html">数据说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user_guide/model.html">复现模型列表</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user_guide/evaluator.html">评估模块简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user_guide/executor.html">执行模块简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user_guide/usage.html">使用示例</a></li>
+</ul>
+<p class="caption"><span class="caption-text">开发者指导</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../developer_guide/code_style.html">代码风格</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../developer_guide/implemented_datasets.html">自定义Dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../developer_guide/implemented_models.html">自定义Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../developer_guide/implemented_executors.html">自定义Executor</a></li>
+</ul>
+<p class="caption"><span class="caption-text">入门教程</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorial/install_quick_start.html">安装和快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorial/run_model.html">运行LibCity中已复现的模型</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorial/add_model.html">在LibCity中添加新模型</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorial/hyper_tune.html">使用自动化工具调参</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API文档</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../libcity/libcity.config.html">libcity.config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../libcity/libcity.data.html">libcity.data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../libcity/libcity.evaluator.html">libcity.evaluator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../libcity/libcity.executor.html">libcity.executor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../libcity/libcity.model.html">libcity.model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../libcity/libcity.pipeline.html">libcity.pipeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../libcity/libcity.utils.html">libcity.utils</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">Bigscity-LibCity</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../../index.html">Module code</a> &raquo;</li>
+        
+      <li>libcity.model.traffic_flow_prediction.STSGCN</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for libcity.model.traffic_flow_prediction.STSGCN</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
+<span class="kn">from</span> <span class="nn">torch.nn.init</span> <span class="kn">import</span> <span class="n">xavier_uniform</span>
+<span class="kn">from</span> <span class="nn">libcity.model.abstract_traffic_state_model</span> <span class="kn">import</span> <span class="n">AbstractTrafficStateModel</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">logging</span> <span class="kn">import</span> <span class="n">getLogger</span>
+<span class="kn">from</span> <span class="nn">libcity.model</span> <span class="kn">import</span> <span class="n">loss</span>
+
+
+<span class="c1"># 时空嵌入矩阵，真正的时空特征的嵌入表示</span>
+<div class="viewcode-block" id="PositionEmbedding"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_flow_prediction.STSGCN.html#libcity.model.traffic_flow_prediction.STSGCN.PositionEmbedding">[docs]</a><span class="k">class</span> <span class="nc">PositionEmbedding</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_length</span><span class="p">,</span> <span class="n">num_of_vertices</span><span class="p">,</span> <span class="n">embedding_size</span><span class="p">,</span> <span class="n">temporal</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">spatial</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">PositionEmbedding</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">input_length</span> <span class="o">=</span> <span class="n">input_length</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">num_of_vertices</span> <span class="o">=</span> <span class="n">num_of_vertices</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">embedding_size</span> <span class="o">=</span> <span class="n">embedding_size</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">temporal</span> <span class="o">=</span> <span class="n">temporal</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">spatial</span> <span class="o">=</span> <span class="n">spatial</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">temporal_emb</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="n">input_length</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">embedding_size</span><span class="p">))</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;device&#39;</span><span class="p">]))</span>
+        <span class="c1"># shape is (1, T, 1, C)</span>
+        <span class="n">xavier_uniform</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">temporal_emb</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">spatial_emb</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">num_of_vertices</span><span class="p">,</span> <span class="n">embedding_size</span><span class="p">))</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;device&#39;</span><span class="p">]))</span>
+        <span class="c1"># shape is (1, 1, N, C)</span>
+        <span class="n">xavier_uniform</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">spatial_emb</span><span class="p">)</span>
+
+<div class="viewcode-block" id="PositionEmbedding.forward"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_flow_prediction.STSGCN.html#libcity.model.traffic_flow_prediction.STSGCN.PositionEmbedding.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">temporal</span><span class="p">:</span>
+            <span class="n">data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">temporal_emb</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">spatial</span><span class="p">:</span>
+            <span class="n">data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">spatial_emb</span>
+        <span class="k">return</span> <span class="n">data</span></div></div>
+
+
+<span class="c1"># 图卷积，没啥好说的</span>
+<div class="viewcode-block" id="GcnOperation"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_flow_prediction.STSGCN.html#libcity.model.traffic_flow_prediction.STSGCN.GcnOperation">[docs]</a><span class="k">class</span> <span class="nc">GcnOperation</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_of_filter</span><span class="p">,</span> <span class="n">num_of_features</span><span class="p">,</span> <span class="n">num_of_vertices</span><span class="p">,</span> <span class="n">activation</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="k">assert</span> <span class="n">activation</span> <span class="ow">in</span> <span class="p">{</span><span class="s1">&#39;GLU&#39;</span><span class="p">,</span> <span class="s1">&#39;relu&#39;</span><span class="p">}</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">num_of_filter</span> <span class="o">=</span> <span class="n">num_of_filter</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">num_of_features</span> <span class="o">=</span> <span class="n">num_of_features</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">num_of_vertices</span> <span class="o">=</span> <span class="n">num_of_vertices</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">activation</span> <span class="o">=</span> <span class="n">activation</span>
+        <span class="k">if</span> <span class="n">activation</span> <span class="o">==</span> <span class="s2">&quot;GLU&quot;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">layer</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">num_of_features</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">num_of_filter</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">activation</span> <span class="o">==</span> <span class="s2">&quot;relu&quot;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">layer</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">num_of_features</span><span class="p">,</span> <span class="n">num_of_filter</span><span class="p">)</span>
+
+<div class="viewcode-block" id="GcnOperation.forward"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_flow_prediction.STSGCN.html#libcity.model.traffic_flow_prediction.STSGCN.GcnOperation.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">adj</span><span class="p">):</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">adj</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">activation</span> <span class="o">==</span> <span class="s2">&quot;GLU&quot;</span><span class="p">:</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">layer</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+            <span class="n">lhs</span><span class="p">,</span> <span class="n">rhs</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">num_of_filter</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">lhs</span> <span class="o">*</span> <span class="n">torch</span><span class="o">.</span><span class="n">sigmoid</span><span class="p">(</span><span class="n">rhs</span><span class="p">)</span>
+
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">activation</span> <span class="o">==</span> <span class="s2">&quot;relu&quot;</span><span class="p">:</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">layer</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
+
+        <span class="k">return</span> <span class="n">data</span></div></div>
+
+
+<span class="c1"># 同步时空卷积模块，捕获连续 3 个时间片的时空特征</span>
+<div class="viewcode-block" id="Stsgcm"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_flow_prediction.STSGCN.html#libcity.model.traffic_flow_prediction.STSGCN.Stsgcm">[docs]</a><span class="k">class</span> <span class="nc">Stsgcm</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filters</span><span class="p">,</span> <span class="n">num_of_features</span><span class="p">,</span> <span class="n">num_of_vertices</span><span class="p">,</span> <span class="n">activation</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">filters</span> <span class="o">=</span> <span class="n">filters</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">num_of_features</span> <span class="o">=</span> <span class="n">num_of_features</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">num_of_vertices</span> <span class="o">=</span> <span class="n">num_of_vertices</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">activation</span> <span class="o">=</span> <span class="n">activation</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">layers</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">ModuleList</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">filters</span><span class="p">)):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">GcnOperation</span><span class="p">(</span><span class="n">filters</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">num_of_features</span><span class="p">,</span> <span class="n">num_of_vertices</span><span class="p">,</span> <span class="n">activation</span><span class="p">))</span>
+            <span class="n">num_of_features</span> <span class="o">=</span> <span class="n">filters</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+
+<div class="viewcode-block" id="Stsgcm.forward"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_flow_prediction.STSGCN.html#libcity.model.traffic_flow_prediction.STSGCN.Stsgcm.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">adj</span><span class="p">):</span>
+        <span class="c1"># 多个卷积层叠加，</span>
+        <span class="n">need_concat</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">layers</span><span class="p">)):</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="n">i</span><span class="p">](</span><span class="n">data</span><span class="p">,</span> <span class="n">adj</span><span class="p">)</span>
+            <span class="n">need_concat</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+
+        <span class="c1"># 且每个卷积层的输出都以类似残差网络的形式输入聚合层</span>
+        <span class="n">need_concat</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="n">torch</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span>
+                <span class="n">i</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">num_of_vertices</span><span class="p">:</span><span class="mi">2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_of_vertices</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:],</span>
+                <span class="n">dim</span><span class="o">=</span><span class="mi">0</span>
+            <span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">need_concat</span>
+        <span class="p">]</span>
+
+        <span class="c1"># 聚合使用最大池化</span>
+        <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">(</span><span class="n">need_concat</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span> <span class="n">dim</span><span class="o">=</span><span class="mi">0</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span></div></div>
+
+
+<div class="viewcode-block" id="STSGCL"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_flow_prediction.STSGCN.html#libcity.model.traffic_flow_prediction.STSGCN.STSGCL">[docs]</a><span class="k">class</span> <span class="nc">STSGCL</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">num_of_vertices</span><span class="p">,</span> <span class="n">num_of_features</span><span class="p">,</span> <span class="n">filters</span><span class="p">,</span> <span class="n">module_type</span><span class="p">,</span> <span class="n">activation</span><span class="p">,</span> <span class="n">temporal_emb</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                 <span class="n">spatial_emb</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="k">assert</span> <span class="n">module_type</span> <span class="ow">in</span> <span class="p">{</span><span class="s1">&#39;sharing&#39;</span><span class="p">,</span> <span class="s1">&#39;individual&#39;</span><span class="p">}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">T</span> <span class="o">=</span> <span class="n">t</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">num_of_vertices</span> <span class="o">=</span> <span class="n">num_of_vertices</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">num_of_features</span> <span class="o">=</span> <span class="n">num_of_features</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">filters</span> <span class="o">=</span> <span class="n">filters</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">module_type</span> <span class="o">=</span> <span class="n">module_type</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">activation</span> <span class="o">=</span> <span class="n">activation</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">temporal_emb</span> <span class="o">=</span> <span class="n">temporal_emb</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">spatial_emb</span> <span class="o">=</span> <span class="n">spatial_emb</span>
+
+        <span class="k">if</span> <span class="n">module_type</span> <span class="o">==</span> <span class="s1">&#39;individual&#39;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">layer</span> <span class="o">=</span> <span class="n">STSGCNLayerIndividual</span><span class="p">(</span>
+                <span class="n">t</span><span class="p">,</span> <span class="n">num_of_vertices</span><span class="p">,</span> <span class="n">num_of_features</span><span class="p">,</span> <span class="n">filters</span><span class="p">,</span>
+                <span class="n">activation</span><span class="p">,</span> <span class="n">temporal_emb</span><span class="p">,</span> <span class="n">spatial_emb</span><span class="p">,</span> <span class="n">config</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">layer</span> <span class="o">=</span> <span class="n">STSGCNLayerSharing</span><span class="p">(</span>
+                <span class="n">t</span><span class="p">,</span> <span class="n">num_of_vertices</span><span class="p">,</span> <span class="n">num_of_features</span><span class="p">,</span> <span class="n">filters</span><span class="p">,</span>
+                <span class="n">activation</span><span class="p">,</span> <span class="n">temporal_emb</span><span class="p">,</span> <span class="n">spatial_emb</span><span class="p">,</span> <span class="n">config</span>
+            <span class="p">)</span>
+
+<div class="viewcode-block" id="STSGCL.forward"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_flow_prediction.STSGCN.html#libcity.model.traffic_flow_prediction.STSGCN.STSGCL.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">adj</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">layer</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">adj</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="STSGCNLayerIndividual"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_flow_prediction.STSGCN.html#libcity.model.traffic_flow_prediction.STSGCN.STSGCNLayerIndividual">[docs]</a><span class="k">class</span> <span class="nc">STSGCNLayerIndividual</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">num_of_vertices</span><span class="p">,</span> <span class="n">num_of_features</span><span class="p">,</span> <span class="n">filters</span><span class="p">,</span>
+                 <span class="n">activation</span><span class="p">,</span> <span class="n">temporal_emb</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">spatial_emb</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">T</span> <span class="o">=</span> <span class="n">t</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">num_of_vertices</span> <span class="o">=</span> <span class="n">num_of_vertices</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">num_of_features</span> <span class="o">=</span> <span class="n">num_of_features</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">filters</span> <span class="o">=</span> <span class="n">filters</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">activation</span> <span class="o">=</span> <span class="n">activation</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">temporal_emb</span> <span class="o">=</span> <span class="n">temporal_emb</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">spatial_emb</span> <span class="o">=</span> <span class="n">spatial_emb</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">position_embedding</span> <span class="o">=</span> <span class="n">PositionEmbedding</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">num_of_vertices</span><span class="p">,</span> <span class="n">num_of_features</span><span class="p">,</span>
+                                                    <span class="n">temporal_emb</span><span class="p">,</span> <span class="n">spatial_emb</span><span class="p">,</span> <span class="n">config</span><span class="p">)</span>
+
+        <span class="c1"># 一个 GCM 模块可以捕获连续 3 个时间片的时空特征</span>
+        <span class="c1"># T 个时间片，每 3 个一捕获，即 T - 2 次，对应 T - 2 个 GCM 模块</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">gcms</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">ModuleList</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">T</span> <span class="o">-</span> <span class="mi">2</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">gcms</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Stsgcm</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">filters</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_of_features</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_of_vertices</span><span class="p">,</span>
+                                    <span class="n">activation</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">activation</span><span class="p">))</span>
+
+<div class="viewcode-block" id="STSGCNLayerIndividual.forward"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_flow_prediction.STSGCN.html#libcity.model.traffic_flow_prediction.STSGCN.STSGCNLayerIndividual.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">adj</span><span class="p">):</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">position_embedding</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        <span class="n">need_concat</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">T</span> <span class="o">-</span> <span class="mi">2</span><span class="p">):</span>
+            <span class="n">t</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:,</span> <span class="n">i</span><span class="p">:</span><span class="n">i</span> <span class="o">+</span> <span class="mi">3</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:]</span>
+            <span class="c1"># shape is (B, 3, N, C)</span>
+
+            <span class="n">t</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_of_vertices</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_of_features</span><span class="p">))</span>
+            <span class="c1"># shape is (B, 3N, C)</span>
+
+            <span class="n">t</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">gcms</span><span class="p">[</span><span class="n">i</span><span class="p">](</span><span class="n">t</span><span class="p">,</span> <span class="n">adj</span><span class="p">)</span>
+            <span class="c1"># shape is (N, B, C&#39;)</span>
+
+            <span class="n">t</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="c1"># shape is (B, N, C&#39;)</span>
+
+            <span class="n">need_concat</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+            <span class="c1"># shape is (B, 1, N, C&#39;)</span>
+
+        <span class="c1"># 拼接各个 GCM 模块的输出</span>
+        <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">(</span><span class="n">need_concat</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span></div></div>
+        <span class="c1"># shape is (B, T-2, N, C&#39;)</span>
+
+
+<span class="c1"># 论文作者消融实验使用，与 Sthgcn_layer_individual 的区别在于，共用一个 stsgcm 模块</span>
+<div class="viewcode-block" id="STSGCNLayerSharing"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_flow_prediction.STSGCN.html#libcity.model.traffic_flow_prediction.STSGCN.STSGCNLayerSharing">[docs]</a><span class="k">class</span> <span class="nc">STSGCNLayerSharing</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">num_of_vertices</span><span class="p">,</span> <span class="n">num_of_features</span><span class="p">,</span> <span class="n">filters</span><span class="p">,</span>
+                 <span class="n">activation</span><span class="p">,</span> <span class="n">temporal_emb</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">spatial_emb</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">T</span> <span class="o">=</span> <span class="n">t</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">num_of_vertices</span> <span class="o">=</span> <span class="n">num_of_vertices</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">num_of_features</span> <span class="o">=</span> <span class="n">num_of_features</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">filters</span> <span class="o">=</span> <span class="n">filters</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">activation</span> <span class="o">=</span> <span class="n">activation</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">temporal_emb</span> <span class="o">=</span> <span class="n">temporal_emb</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">spatial_emb</span> <span class="o">=</span> <span class="n">spatial_emb</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">position_embedding</span> <span class="o">=</span> <span class="n">PositionEmbedding</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">num_of_vertices</span><span class="p">,</span> <span class="n">num_of_features</span><span class="p">,</span>
+                                                    <span class="n">temporal_emb</span><span class="p">,</span> <span class="n">spatial_emb</span><span class="p">,</span> <span class="n">config</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">gcm</span> <span class="o">=</span> <span class="n">Stsgcm</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">filters</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_of_features</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_of_vertices</span><span class="p">,</span>
+                          <span class="n">activation</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">activation</span><span class="p">)</span>
+
+<div class="viewcode-block" id="STSGCNLayerSharing.forward"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_flow_prediction.STSGCN.html#libcity.model.traffic_flow_prediction.STSGCN.STSGCNLayerSharing.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">adj</span><span class="p">):</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">position_embedding</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+        <span class="n">need_concat</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">T</span> <span class="o">-</span> <span class="mi">2</span><span class="p">):</span>
+            <span class="n">t</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:,</span> <span class="n">i</span><span class="p">:</span><span class="n">i</span> <span class="o">+</span> <span class="mi">3</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:]</span>
+            <span class="c1"># shape is (B, 3, N, C)</span>
+
+            <span class="n">t</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_of_vertices</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_of_features</span><span class="p">))</span>
+            <span class="c1"># shape is (B, 3N, C)</span>
+
+            <span class="n">need_concat</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+            <span class="c1"># shape is (B, 3N, C)</span>
+
+        <span class="n">t</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">(</span><span class="n">need_concat</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="c1"># shape is ((T-2)*B, 3N, C)</span>
+
+        <span class="n">t</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">gcm</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">adj</span><span class="p">)</span>
+        <span class="c1"># shape is (N, (T-2)*B, C&#39;)</span>
+
+        <span class="n">t</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">num_of_vertices</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">T</span> <span class="o">-</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">filters</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
+        <span class="c1"># shape is (N, T - 2, B, C)</span>
+
+        <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span></div></div>
+        <span class="c1"># shape is (B, T - 2, N, C)</span>
+
+
+<div class="viewcode-block" id="OutputLayer"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_flow_prediction.STSGCN.html#libcity.model.traffic_flow_prediction.STSGCN.OutputLayer">[docs]</a><span class="k">class</span> <span class="nc">OutputLayer</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_of_vertices</span><span class="p">,</span> <span class="n">input_length</span><span class="p">,</span> <span class="n">num_of_features</span><span class="p">,</span>
+                 <span class="n">num_of_filters</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span> <span class="n">predict_length</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">output_dim</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">num_of_vertices</span> <span class="o">=</span> <span class="n">num_of_vertices</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">input_length</span> <span class="o">=</span> <span class="n">input_length</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">num_of_features</span> <span class="o">=</span> <span class="n">num_of_features</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">num_of_filters</span> <span class="o">=</span> <span class="n">num_of_filters</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">predict_length</span> <span class="o">=</span> <span class="n">predict_length</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">output_dim</span> <span class="o">=</span> <span class="n">output_dim</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hidden_layer</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">input_length</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_of_features</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_of_filters</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ouput_layer</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">num_of_filters</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict_length</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_dim</span><span class="p">)</span>
+
+<div class="viewcode-block" id="OutputLayer.forward"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_flow_prediction.STSGCN.html#libcity.model.traffic_flow_prediction.STSGCN.OutputLayer.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+        <span class="c1"># (B, N, T * C)</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span>
+            <span class="n">data</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_of_vertices</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">input_length</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_of_features</span><span class="p">)</span>
+        <span class="p">)</span>
+
+        <span class="c1"># (B, N, C&#39;)</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">hidden_layer</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
+
+        <span class="c1"># (B, N, T&#39; * C_out) -&gt; (B, N, T&#39;, C_out)</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ouput_layer</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span>
+            <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_of_vertices</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict_length</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_dim</span><span class="p">)</span>
+        <span class="p">)</span>
+
+        <span class="c1"># (B, T&#39;, N, C_out)</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">permute</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">data</span></div></div>
+
+
+<div class="viewcode-block" id="construct_adj"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_flow_prediction.STSGCN.html#libcity.model.traffic_flow_prediction.STSGCN.construct_adj">[docs]</a><span class="k">def</span> <span class="nf">construct_adj</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">steps</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    构造局部时空图</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    a: np.ndarray, shape： (N, N), 原图邻接矩阵</span>
+
+<span class="sd">    steps: 时间步长度，原论文是 3 个一合</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    ----------</span>
+<span class="sd">    局部时空图矩阵 shape：(N * steps, N * steps)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+    <span class="n">adj</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="n">n</span> <span class="o">*</span> <span class="n">steps</span><span class="p">]</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">steps</span><span class="p">):</span>
+        <span class="n">adj</span><span class="p">[</span><span class="n">i</span> <span class="o">*</span> <span class="n">n</span><span class="p">:</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">n</span><span class="p">,</span> <span class="n">i</span> <span class="o">*</span> <span class="n">n</span><span class="p">:</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span>
+
+    <span class="c1"># 实际就是加了相邻两个时间步节点到自身的边</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">steps</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="n">adj</span><span class="p">[</span><span class="n">k</span> <span class="o">*</span> <span class="n">n</span> <span class="o">+</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">k</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">n</span> <span class="o">+</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="n">adj</span><span class="p">[(</span><span class="n">k</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">n</span> <span class="o">+</span> <span class="n">i</span><span class="p">,</span> <span class="n">k</span> <span class="o">*</span> <span class="n">n</span> <span class="o">+</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">adj</span><span class="p">)):</span>
+        <span class="n">adj</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+
+    <span class="k">return</span> <span class="n">adj</span></div>
+
+
+<div class="viewcode-block" id="STSGCN"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_flow_prediction.STSGCN.html#libcity.model.traffic_flow_prediction.STSGCN.STSGCN">[docs]</a><span class="k">class</span> <span class="nc">STSGCN</span><span class="p">(</span><span class="n">AbstractTrafficStateModel</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">data_feature</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="n">data_feature</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">num_nodes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_feature</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;num_nodes&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_scaler</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_feature</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;scaler&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">feature_dim</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_feature</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;feature_dim&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">output_dim</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_feature</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;output_dim&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ext_dim</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_feature</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;ext_dim&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span> <span class="o">=</span> <span class="n">getLogger</span><span class="p">()</span>
+
+        <span class="c1"># 加载配置信息</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">module_type</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;module_type&#39;</span><span class="p">,</span> <span class="s1">&#39;individual&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">activation</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;act_type&#39;</span><span class="p">,</span> <span class="s1">&#39;GLU&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">temporal_emb</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;temporal_emb&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">spatial_emb</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;spatial_emb&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">use_mask</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;use_mask&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">device</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;device&#39;</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">&#39;cpu&#39;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">input_window</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;input_window&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">output_window</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;output_window&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rho</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;rho&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">num_of_vertices</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_nodes</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">input_length</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">input_window</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">predict_length</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_window</span>
+
+        <span class="c1"># 构造局部时空图</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">adj</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_feature</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;adj_mx&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">adj</span> <span class="o">=</span> <span class="n">construct_adj</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">adj</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">adj</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">adj</span><span class="p">,</span> <span class="n">requires_grad</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">use_mask</span><span class="p">:</span>
+            <span class="c1"># 初始化遮罩矩阵</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s1">&#39;You use mask matrix, please make sure you set &#39;</span>
+                                 <span class="s1">&#39;`loss.backward(retain_graph=True)` to replace the &#39;</span>
+                                 <span class="s1">&#39;`loss.backward()` in traffic_state_executor.py!&#39;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">mask</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">adj</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.0</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">adj</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mask</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">adj</span>
+
+        <span class="c1"># 输入嵌入层，增加特征数量，提升表示能力</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">embedding_dim</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">feature_dim</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">num_of_features</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">feature_dim</span>
+        <span class="n">first_layer_embedding_size</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;first_layer_embedding_size&quot;</span><span class="p">,</span> <span class="mi">64</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">first_layer_embedding_size</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">first_layer_embedding</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">num_of_features</span><span class="p">,</span> <span class="n">first_layer_embedding_size</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">num_of_features</span> <span class="o">=</span> <span class="n">first_layer_embedding_size</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">first_layer_embedding</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="c1"># 时空同步卷积层组</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">filter_list</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;filters&quot;</span><span class="p">,</span> <span class="p">[[</span><span class="mi">64</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">64</span><span class="p">],</span> <span class="p">[</span><span class="mi">64</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">64</span><span class="p">],</span> <span class="p">[</span><span class="mi">64</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">64</span><span class="p">],</span> <span class="p">[</span><span class="mi">64</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">64</span><span class="p">]])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stsgcl_layers</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">ModuleList</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">filters</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">filter_list</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">stsgcl_layers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">STSGCL</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">input_length</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_of_vertices</span><span class="p">,</span>
+                                             <span class="bp">self</span><span class="o">.</span><span class="n">num_of_features</span><span class="p">,</span> <span class="n">filters</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">module_type</span><span class="p">,</span>
+                                             <span class="n">activation</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">activation</span><span class="p">,</span>
+                                             <span class="n">temporal_emb</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">temporal_emb</span><span class="p">,</span>
+                                             <span class="n">spatial_emb</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">spatial_emb</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">input_length</span> <span class="o">-=</span> <span class="mi">2</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">num_of_features</span> <span class="o">=</span> <span class="n">filters</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+        <span class="c1"># 输出层，每个预测时间步一个全连接层</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">outputs</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">ModuleList</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">predict_length</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">outputs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">OutputLayer</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">num_of_vertices</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">input_length</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_of_features</span><span class="p">,</span>
+                                            <span class="n">num_of_filters</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span> <span class="n">predict_length</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">output_dim</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">output_dim</span><span class="p">))</span>
+
+        <span class="c1"># Huber Loss 损失函数</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">loss</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">SmoothL1Loss</span><span class="p">(</span><span class="n">beta</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">rho</span><span class="p">)</span>
+
+<div class="viewcode-block" id="STSGCN.forward"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_flow_prediction.STSGCN.html#libcity.model.traffic_flow_prediction.STSGCN.STSGCN.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">batch</span><span class="p">):</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">batch</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">]</span>
+        <span class="c1"># data.shape = (B:batch_size, T:input_length, N:vertical_num, C:feature_num)</span>
+        <span class="k">if</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">embedding_dim</span><span class="p">:</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:,</span> <span class="p">:,</span> <span class="p">:,</span> <span class="mi">0</span><span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">embedding_dim</span><span class="p">]</span>
+
+        <span class="c1"># data.shape = (B, T, N, C:embedding_feature_num)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">first_layer_embedding</span><span class="p">:</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">first_layer_embedding</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
+
+        <span class="k">for</span> <span class="n">stsgcl_layer</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">stsgcl_layers</span><span class="p">:</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">stsgcl_layer</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">adj</span><span class="p">)</span>
+
+        <span class="n">need_concat</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">output_layer</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">outputs</span><span class="p">:</span>
+            <span class="n">need_concat</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">output_layer</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
+
+        <span class="n">data</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">(</span><span class="n">need_concat</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">data</span></div>
+
+<div class="viewcode-block" id="STSGCN.calculate_loss"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_flow_prediction.STSGCN.html#libcity.model.traffic_flow_prediction.STSGCN.STSGCN.calculate_loss">[docs]</a>    <span class="k">def</span> <span class="nf">calculate_loss</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">batch</span><span class="p">):</span>
+        <span class="n">y_true</span> <span class="o">=</span> <span class="n">batch</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span>
+        <span class="n">y_predicted</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">batch</span><span class="p">)</span>
+        <span class="c1"># print(&#39;y_true&#39;, y_true.shape)</span>
+        <span class="c1"># print(&#39;y_predicted&#39;, y_predicted.shape)</span>
+        <span class="n">y_true</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_scaler</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">y_true</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">output_dim</span><span class="p">])</span>
+        <span class="n">y_predicted</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_scaler</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">y_predicted</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">output_dim</span><span class="p">])</span>
+        <span class="k">return</span> <span class="n">loss</span><span class="o">.</span><span class="n">huber_loss</span><span class="p">(</span><span class="n">y_predicted</span><span class="p">,</span> <span class="n">y_true</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="STSGCN.predict"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_flow_prediction.STSGCN.html#libcity.model.traffic_flow_prediction.STSGCN.STSGCN.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">batch</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">batch</span><span class="p">)</span></div></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, aptx1231
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

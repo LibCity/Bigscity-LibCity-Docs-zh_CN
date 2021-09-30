@@ -1,0 +1,335 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>安装和快速上手 &mdash; Bigscity-LibCity  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="运行LibCity中已复现的模型" href="run_model.html" />
+    <link rel="prev" title="自定义Executor" href="../developer_guide/implemented_executors.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> Bigscity-LibCity
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">起步</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/introduction.html">介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/install.html">安装LibCity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/quick_start.html">快速入门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/directory_structure.html">目录结构</a></li>
+</ul>
+<p class="caption"><span class="caption-text">用户指导</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/config_settings.html">参数设置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/data.html">数据说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/model.html">复现模型列表</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/evaluator.html">评估模块简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/executor.html">执行模块简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/usage.html">使用示例</a></li>
+</ul>
+<p class="caption"><span class="caption-text">开发者指导</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/code_style.html">代码风格</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_datasets.html">自定义Dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_models.html">自定义Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_executors.html">自定义Executor</a></li>
+</ul>
+<p class="caption"><span class="caption-text">入门教程</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">安装和快速上手</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#libcity">安装LibCity</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">从源代码安装</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">配置依赖</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">快速上手</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id5">下载一个数据集</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">运行模型流水线</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="run_model.html">运行LibCity中已复现的模型</a></li>
+<li class="toctree-l1"><a class="reference internal" href="add_model.html">在LibCity中添加新模型</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hyper_tune.html">使用自动化工具调参</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API文档</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../libcity/libcity.config.html">libcity.config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../libcity/libcity.data.html">libcity.data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../libcity/libcity.evaluator.html">libcity.evaluator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../libcity/libcity.executor.html">libcity.executor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../libcity/libcity.model.html">libcity.model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../libcity/libcity.pipeline.html">libcity.pipeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../libcity/libcity.utils.html">libcity.utils</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Bigscity-LibCity</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>安装和快速上手</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/tutorial/install_quick_start.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>安装和快速上手<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="libcity">
+<h2>安装LibCity<a class="headerlink" href="#libcity" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id2">
+<h3>从源代码安装<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p>LibCity目前可以从源代码安装。</p>
+<p>请执行下列命令来获得源代码。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">LibCity</span><span class="o">/</span><span class="n">Bigscity</span><span class="o">-</span><span class="n">LibCity</span><span class="o">.</span><span class="n">git</span>
+<span class="n">cd</span> <span class="n">Bigscity</span><span class="o">-</span><span class="n">LibCity</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h3>配置依赖<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>在获得了源代码后，我们可以配置环境。</p>
+<p>我们的代码是基于Python 3.7版本和PyTorch 1.7.1版本。您可以点击<a class="reference external" href="https://pytorch.org/get-started/previous-versions/#v171">这里</a>来了解如何安装PyTorch。例如，您的CUDA版本是10.2，您可以使用下列指令安装PyTorch。</p>
+<p>Pip:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">torch</span><span class="o">==</span><span class="mf">1.7</span><span class="o">.</span><span class="mi">1</span> <span class="n">torchvision</span><span class="o">==</span><span class="mf">0.8</span><span class="o">.</span><span class="mi">2</span> <span class="n">torchaudio</span><span class="o">==</span><span class="mf">0.7</span><span class="o">.</span><span class="mi">2</span>
+</pre></div>
+</div>
+<p>Conda:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="n">pytorch</span><span class="o">==</span><span class="mf">1.7</span><span class="o">.</span><span class="mi">1</span> <span class="n">torchvision</span><span class="o">==</span><span class="mf">0.8</span><span class="o">.</span><span class="mi">2</span> <span class="n">torchaudio</span><span class="o">==</span><span class="mf">0.7</span><span class="o">.</span><span class="mi">2</span> <span class="n">cudatoolkit</span><span class="o">=</span><span class="mf">10.2</span> <span class="o">-</span><span class="n">c</span> <span class="n">pytorch</span>
+</pre></div>
+</div>
+<p>在安装PyTorch后，我们可以通过pip使用下列命令安装<code class="docutils literal notranslate"><span class="pre">LibCity</span></code>的所有依赖。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<p>现在，我们就可以使用<code class="docutils literal notranslate"><span class="pre">LibCity</span></code>了，更多的细节可以看<code class="docutils literal notranslate"><span class="pre">Quick</span> <span class="pre">Start</span></code>一节。</p>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>快速上手<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id5">
+<h3>下载一个数据集<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<p>LibCity中使用的数据集是以一种统一的<a class="reference internal" href="../user_guide/data/atomic_files.html"><span class="doc">原子文件</span></a>格式存储的。</p>
+<p>为了直接在<code class="docutils literal notranslate"><span class="pre">LibCity</span></code>中使用<a class="reference internal" href="../user_guide/data/raw_data.html"><span class="doc">原始数据集</span></a>，我们已经将所有这些数据集转换成了原子文件的格式，并提供了<a class="reference external" href="https://github.com/LibCity/Bigscity-LibCity-Datasets">转换工具</a>。</p>
+<p>您可以直接下载我们处理好的数据集。数据集链接是<a class="reference external" href="https://pan.baidu.com/s/1qEfcXBO-QwZfiT0G3IYMpQ">百度网盘</a>（提取码：1231）或<a class="reference external" href="https://drive.google.com/drive/folders/1g5v2Gq1tkOq8XO0HDCZ9nOTtRpB6-gPe?usp=sharing">Google Drive</a>。</p>
+<p>在运行<code class="docutils literal notranslate"><span class="pre">LibCity</span></code>的模型前，请确保您至少下载了一个数据集，并把它放在了<code class="docutils literal notranslate"><span class="pre">Bigscity-LibCity/raw_data/dataset_name/*</span></code>目录下。</p>
+<p>例如，如果您下载了METR_LA数据集，目录结构如下所示：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Bigscity-LibCity/raw_data/METR_LA/METR_LA.geo</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Bigscity-LibCity/raw_data/METR_LA/METR_LA.rel</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Bigscity-LibCity/raw_data/METR_LA/METR_LA.dyna</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Bigscity-LibCity/raw_data/METR_LA/config.json</span></code></p></li>
+</ul>
+</div>
+<div class="section" id="id6">
+<h3>运行模型流水线<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<p>用于训练和评测一个模型的脚本<code class="docutils literal notranslate"><span class="pre">run_model.py</span></code>位于项目根目录中，它提供了一系列命令行参数，使用户可以调整运行参数配置。</p>
+<p>当运行<code class="docutils literal notranslate"><span class="pre">run_model.py</span></code>时，您必须声明三个参数，分别是<code class="docutils literal notranslate"><span class="pre">task</span></code>、<code class="docutils literal notranslate"><span class="pre">dataset</span></code>和<code class="docutils literal notranslate"><span class="pre">model</span></code>。例如：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">run_model</span><span class="o">.</span><span class="n">py</span> <span class="o">--</span><span class="n">task</span> <span class="n">traffic_state_pred</span> <span class="o">--</span><span class="n">model</span> <span class="n">GRU</span> <span class="o">--</span><span class="n">dataset</span> <span class="n">METR_LA</span>
+</pre></div>
+</div>
+<p>这个脚本会在默认参数配置下，在METR_LA数据集上运行GRU模型，执行交通状态预测任务。</p>
+<p>此外，这个脚本还支持输入下面的这些命令行参数，用于调整流水线的参数设置。</p>
+<p>支持的参数有：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">task</span></code>：要执行的任务名，包括<code class="docutils literal notranslate"><span class="pre">traffic_state_pred</span></code>和<code class="docutils literal notranslate"><span class="pre">traj_loc_pred</span></code>。默认为<code class="docutils literal notranslate"><span class="pre">traffic_state_pred</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">model</span></code>：要执行的模型名。默认为<code class="docutils literal notranslate"><span class="pre">GRU</span></code>。（<a class="reference internal" href="../user_guide/model.html"><span class="doc">支持的模型</span></a>）</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dataset</span></code>：要执行的数据集。默认为<code class="docutils literal notranslate"><span class="pre">METR_LA</span></code>。（<a class="reference internal" href="../user_guide/data/raw_data.html"><span class="doc">支持的数据集</span></a>）</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">config_file</span></code>：用户自定义的配置文件名。默认为<code class="docutils literal notranslate"><span class="pre">None</span></code>。（<a class="reference internal" href="../user_guide/config_settings.html"><span class="doc">了解更多</span></a>）</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">saved_model</span></code>：是否保存训练好的模型。默认为<code class="docutils literal notranslate"><span class="pre">True</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">train</span></code>：如果模型已经预训练过了，是否要重新训练模型。默认为<code class="docutils literal notranslate"><span class="pre">True</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">batch_size</span></code>：训练集和验证集的批次大小。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">train_rate</span></code>：训练集在整个数据集中所占的比例。（划分的顺序是训练集、验证集、测试集）</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">eval_rate</span></code>：验证集在整个数据集中所占的比例。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">learning_rate</span></code>：学习率。不同的模型默认的学习率可能是不同的，请参考相关的配置文件了解更多细节。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">max_epoch</span></code>：最大的训练轮数。默认值随模型变化而变化。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">gpu</span></code>：是否使用GPU。默认为<code class="docutils literal notranslate"><span class="pre">True</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">gpu_id</span></code>：使用的GPU的ID。默认为<code class="docutils literal notranslate"><span class="pre">0</span></code>。</p></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="run_model.html" class="btn btn-neutral float-right" title="运行LibCity中已复现的模型" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../developer_guide/implemented_executors.html" class="btn btn-neutral float-left" title="自定义Executor" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, aptx1231
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

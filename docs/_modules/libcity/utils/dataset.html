@@ -1,0 +1,389 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>libcity.utils.dataset &mdash; Bigscity-LibCity  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> Bigscity-LibCity
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">起步</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../get_started/introduction.html">介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../get_started/install.html">安装LibCity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../get_started/quick_start.html">快速入门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../get_started/directory_structure.html">目录结构</a></li>
+</ul>
+<p class="caption"><span class="caption-text">用户指导</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../user_guide/config_settings.html">参数设置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../user_guide/data.html">数据说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../user_guide/model.html">复现模型列表</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../user_guide/evaluator.html">评估模块简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../user_guide/executor.html">执行模块简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../user_guide/usage.html">使用示例</a></li>
+</ul>
+<p class="caption"><span class="caption-text">开发者指导</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer_guide/code_style.html">代码风格</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer_guide/implemented_datasets.html">自定义Dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer_guide/implemented_models.html">自定义Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer_guide/implemented_executors.html">自定义Executor</a></li>
+</ul>
+<p class="caption"><span class="caption-text">入门教程</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorial/install_quick_start.html">安装和快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorial/run_model.html">运行LibCity中已复现的模型</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorial/add_model.html">在LibCity中添加新模型</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorial/hyper_tune.html">使用自动化工具调参</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API文档</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../libcity/libcity.config.html">libcity.config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../libcity/libcity.data.html">libcity.data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../libcity/libcity.evaluator.html">libcity.evaluator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../libcity/libcity.executor.html">libcity.executor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../libcity/libcity.model.html">libcity.model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../libcity/libcity.pipeline.html">libcity.pipeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../libcity/libcity.utils.html">libcity.utils</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Bigscity-LibCity</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>libcity.utils.dataset</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for libcity.utils.dataset</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">数据预处理阶段相关的工具函数</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timedelta</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span>
+
+
+<div class="viewcode-block" id="parse_time"><a class="viewcode-back" href="../../../libcity/libcity.utils.dataset.html#libcity.utils.dataset.parse_time">[docs]</a><span class="k">def</span> <span class="nf">parse_time</span><span class="p">(</span><span class="n">time_in</span><span class="p">,</span> <span class="n">timezone_offset_in_minute</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    将 json 中 time_format 格式的 time 转化为 local datatime</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">date</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">time_in</span><span class="p">,</span> <span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">T%H:%M:%SZ&#39;</span><span class="p">)</span>  <span class="c1"># 这是 UTC 时间</span>
+    <span class="k">return</span> <span class="n">date</span> <span class="o">+</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">minutes</span><span class="o">=</span><span class="n">timezone_offset_in_minute</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="cal_basetime"><a class="viewcode-back" href="../../../libcity/libcity.utils.dataset.html#libcity.utils.dataset.cal_basetime">[docs]</a><span class="k">def</span> <span class="nf">cal_basetime</span><span class="p">(</span><span class="n">start_time</span><span class="p">,</span> <span class="n">base_zero</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    用于切分轨迹成一个 session，</span>
+<span class="sd">    思路为：给定一个 start_time 找到一个基准时间 base_time，</span>
+<span class="sd">    在该 base_time 到 base_time + time_length 区间的点划分到一个 session 内，</span>
+<span class="sd">    选取 base_time 来做的理由是：这样可以保证同一个小时段总是被 encode 成同一个数</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">base_zero</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">start_time</span> <span class="o">-</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">hours</span><span class="o">=</span><span class="n">start_time</span><span class="o">.</span><span class="n">hour</span><span class="p">,</span>
+                                      <span class="n">minutes</span><span class="o">=</span><span class="n">start_time</span><span class="o">.</span><span class="n">minute</span><span class="p">,</span>
+                                      <span class="n">seconds</span><span class="o">=</span><span class="n">start_time</span><span class="o">.</span><span class="n">second</span><span class="p">,</span>
+                                      <span class="n">microseconds</span><span class="o">=</span><span class="n">start_time</span><span class="o">.</span><span class="n">microsecond</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># time length = 12</span>
+        <span class="k">if</span> <span class="n">start_time</span><span class="o">.</span><span class="n">hour</span> <span class="o">&lt;</span> <span class="mi">12</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">start_time</span> <span class="o">-</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">hours</span><span class="o">=</span><span class="n">start_time</span><span class="o">.</span><span class="n">hour</span><span class="p">,</span>
+                                          <span class="n">minutes</span><span class="o">=</span><span class="n">start_time</span><span class="o">.</span><span class="n">minute</span><span class="p">,</span>
+                                          <span class="n">seconds</span><span class="o">=</span><span class="n">start_time</span><span class="o">.</span><span class="n">second</span><span class="p">,</span>
+                                          <span class="n">microseconds</span><span class="o">=</span><span class="n">start_time</span><span class="o">.</span><span class="n">microsecond</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">start_time</span> <span class="o">-</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">hours</span><span class="o">=</span><span class="n">start_time</span><span class="o">.</span><span class="n">hour</span> <span class="o">-</span> <span class="mi">12</span><span class="p">,</span>
+                                          <span class="n">minutes</span><span class="o">=</span><span class="n">start_time</span><span class="o">.</span><span class="n">minute</span><span class="p">,</span>
+                                          <span class="n">seconds</span><span class="o">=</span><span class="n">start_time</span><span class="o">.</span><span class="n">second</span><span class="p">,</span>
+                                          <span class="n">microseconds</span><span class="o">=</span><span class="n">start_time</span><span class="o">.</span><span class="n">microsecond</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="cal_timeoff"><a class="viewcode-back" href="../../../libcity/libcity.utils.dataset.html#libcity.utils.dataset.cal_timeoff">[docs]</a><span class="k">def</span> <span class="nf">cal_timeoff</span><span class="p">(</span><span class="n">now_time</span><span class="p">,</span> <span class="n">base_time</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    计算两个时间之间的差值，返回值以小时为单位</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># 先将 now 按小时对齐</span>
+    <span class="n">delta</span> <span class="o">=</span> <span class="n">now_time</span> <span class="o">-</span> <span class="n">base_time</span>
+    <span class="k">return</span> <span class="n">delta</span><span class="o">.</span><span class="n">days</span> <span class="o">*</span> <span class="mi">24</span> <span class="o">+</span> <span class="n">delta</span><span class="o">.</span><span class="n">seconds</span> <span class="o">/</span> <span class="mi">3600</span></div>
+
+
+<div class="viewcode-block" id="caculate_time_sim"><a class="viewcode-back" href="../../../libcity/libcity.utils.dataset.html#libcity.utils.dataset.caculate_time_sim">[docs]</a><span class="k">def</span> <span class="nf">caculate_time_sim</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+    <span class="n">time_checkin_set</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">set</span><span class="p">)</span>
+    <span class="n">tim_size</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;tim_size&#39;</span><span class="p">]</span>
+    <span class="n">data_neural</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">uid</span> <span class="ow">in</span> <span class="n">data_neural</span><span class="p">:</span>
+        <span class="n">uid_sessions</span> <span class="o">=</span> <span class="n">data_neural</span><span class="p">[</span><span class="n">uid</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">session</span> <span class="ow">in</span> <span class="n">uid_sessions</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">checkin</span> <span class="ow">in</span> <span class="n">session</span><span class="p">:</span>
+                <span class="n">timid</span> <span class="o">=</span> <span class="n">checkin</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+                <span class="n">locid</span> <span class="o">=</span> <span class="n">checkin</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="k">if</span> <span class="n">timid</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">time_checkin_set</span><span class="p">:</span>
+                    <span class="n">time_checkin_set</span><span class="p">[</span><span class="n">timid</span><span class="p">]</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+                <span class="n">time_checkin_set</span><span class="p">[</span><span class="n">timid</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">locid</span><span class="p">)</span>
+    <span class="n">sim_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">tim_size</span><span class="p">,</span> <span class="n">tim_size</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">tim_size</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">tim_size</span><span class="p">):</span>
+            <span class="n">set_i</span> <span class="o">=</span> <span class="n">time_checkin_set</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            <span class="n">set_j</span> <span class="o">=</span> <span class="n">time_checkin_set</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">set_i</span> <span class="o">|</span> <span class="n">set_j</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">jaccard_ij</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">set_i</span> <span class="o">&amp;</span> <span class="n">set_j</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">set_i</span> <span class="o">|</span> <span class="n">set_j</span><span class="p">)</span>
+                <span class="n">sim_matrix</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">jaccard_ij</span>
+    <span class="k">return</span> <span class="n">sim_matrix</span></div>
+
+
+<div class="viewcode-block" id="parse_coordinate"><a class="viewcode-back" href="../../../libcity/libcity.utils.dataset.html#libcity.utils.dataset.parse_coordinate">[docs]</a><span class="k">def</span> <span class="nf">parse_coordinate</span><span class="p">(</span><span class="n">coordinate</span><span class="p">):</span>
+    <span class="n">items</span> <span class="o">=</span> <span class="n">coordinate</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">items</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="nb">float</span><span class="p">(</span><span class="n">items</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span></div>
+
+
+<div class="viewcode-block" id="string2timestamp"><a class="viewcode-back" href="../../../libcity/libcity.utils.dataset.html#libcity.utils.dataset.string2timestamp">[docs]</a><span class="k">def</span> <span class="nf">string2timestamp</span><span class="p">(</span><span class="n">strings</span><span class="p">,</span> <span class="n">offset_frame</span><span class="p">):</span>
+    <span class="n">ts</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">strings</span><span class="p">:</span>
+        <span class="n">dtstr</span> <span class="o">=</span> <span class="s1">&#39;-&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">t</span><span class="p">[:</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">decode</span><span class="p">(),</span> <span class="n">t</span><span class="p">[</span><span class="mi">4</span><span class="p">:</span><span class="mi">6</span><span class="p">]</span><span class="o">.</span><span class="n">decode</span><span class="p">(),</span> <span class="n">t</span><span class="p">[</span><span class="mi">6</span><span class="p">:</span><span class="mi">8</span><span class="p">]</span><span class="o">.</span><span class="n">decode</span><span class="p">()])</span>
+        <span class="n">slot</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="mi">8</span><span class="p">:])</span> <span class="o">-</span> <span class="mi">1</span>
+        <span class="n">ts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">datetime64</span><span class="p">(</span><span class="n">dtstr</span><span class="p">,</span> <span class="s1">&#39;m&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="n">slot</span> <span class="o">*</span> <span class="n">offset_frame</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">ts</span>  <span class="c1"># [numpy.datetime64(&#39;2014-01-01T00:00&#39;), ...]</span></div>
+
+
+<div class="viewcode-block" id="timestamp2array"><a class="viewcode-back" href="../../../libcity/libcity.utils.dataset.html#libcity.utils.dataset.timestamp2array">[docs]</a><span class="k">def</span> <span class="nf">timestamp2array</span><span class="p">(</span><span class="n">timestamps</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    把时间戳的序列中的每一个时间戳转成特征数组，考虑了星期和小时，</span>
+<span class="sd">    时间戳: numpy.datetime64(&#39;2013-07-01T00:00:00.000000000&#39;)</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        timestamps: 时间戳序列</span>
+<span class="sd">        t: 一天有多少个时间步</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        np.ndarray: 特征数组，shape: (len(timestamps), ext_dim)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">vec_wday</span> <span class="o">=</span> <span class="p">[</span><span class="n">time</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span>
+        <span class="nb">str</span><span class="p">(</span><span class="n">t</span><span class="p">)[:</span><span class="mi">10</span><span class="p">],</span> <span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">tm_wday</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">timestamps</span><span class="p">]</span>
+    <span class="n">vec_hour</span> <span class="o">=</span> <span class="p">[</span><span class="n">time</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">t</span><span class="p">)[</span><span class="mi">11</span><span class="p">:</span><span class="mi">13</span><span class="p">],</span> <span class="s1">&#39;%H&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">tm_hour</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">timestamps</span><span class="p">]</span>
+    <span class="n">vec_minu</span> <span class="o">=</span> <span class="p">[</span><span class="n">time</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">t</span><span class="p">)[</span><span class="mi">14</span><span class="p">:</span><span class="mi">16</span><span class="p">],</span> <span class="s1">&#39;%M&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">tm_min</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">timestamps</span><span class="p">]</span>
+    <span class="n">ret</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">wday</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">vec_wday</span><span class="p">):</span>
+        <span class="c1"># day</span>
+        <span class="n">v</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">)]</span>
+        <span class="n">v</span><span class="p">[</span><span class="n">wday</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="n">wday</span> <span class="o">&gt;=</span> <span class="mi">5</span><span class="p">:</span>  <span class="c1"># 0是周一, 6是周日</span>
+            <span class="n">v</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># weekend</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">v</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># weekday len(v)=8</span>
+        <span class="c1"># hour</span>
+        <span class="n">v</span> <span class="o">+=</span> <span class="p">[</span><span class="mi">0</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">t</span><span class="p">)]</span>  <span class="c1"># len(v)=8+T</span>
+        <span class="n">hour</span> <span class="o">=</span> <span class="n">vec_hour</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+        <span class="n">minu</span> <span class="o">=</span> <span class="n">vec_minu</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+        <span class="c1"># 24*60/T 表示一个时间步是多少分钟</span>
+        <span class="c1"># hour * 60 + minu 是从0:0开始到现在是多少分钟，相除计算是第几个时间步</span>
+        <span class="c1"># print(hour, minu, T, (hour * 60 + minu) / (24 * 60 / T))</span>
+        <span class="n">v</span><span class="p">[</span><span class="nb">int</span><span class="p">((</span><span class="n">hour</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">+</span> <span class="n">minu</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">24</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">/</span> <span class="n">t</span><span class="p">))]</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="c1"># +8是因为v前边有表示星期的8位</span>
+        <span class="k">if</span> <span class="n">hour</span> <span class="o">&gt;=</span> <span class="mi">18</span> <span class="ow">or</span> <span class="n">hour</span> <span class="o">&lt;</span> <span class="mi">6</span><span class="p">:</span>
+            <span class="n">v</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># night</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">v</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># day</span>
+        <span class="n">ret</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>  <span class="c1"># len(v)=7+1+T+1=T+9</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">ret</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="timestamp2vec_origin"><a class="viewcode-back" href="../../../libcity/libcity.utils.dataset.html#libcity.utils.dataset.timestamp2vec_origin">[docs]</a><span class="k">def</span> <span class="nf">timestamp2vec_origin</span><span class="p">(</span><span class="n">timestamps</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    把时间戳的序列中的每一个时间戳转成特征数组，只考虑星期，</span>
+<span class="sd">    时间戳: numpy.datetime64(&#39;2013-07-01T00:00:00.000000000&#39;)</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        timestamps: 时间戳序列</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        np.ndarray: 特征数组，shape: (len(timestamps), 8)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">vec</span> <span class="o">=</span> <span class="p">[</span><span class="n">time</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">t</span><span class="p">)[:</span><span class="mi">10</span><span class="p">],</span> <span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">tm_wday</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">timestamps</span><span class="p">]</span>
+    <span class="n">ret</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">vec</span><span class="p">:</span>
+        <span class="n">v</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">)]</span>
+        <span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">5</span><span class="p">:</span>
+            <span class="n">v</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># weekend</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">v</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># weekday</span>
+        <span class="n">ret</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">ret</span><span class="p">)</span></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, aptx1231
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

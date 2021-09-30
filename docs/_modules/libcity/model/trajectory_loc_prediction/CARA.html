@@ -1,0 +1,639 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>libcity.model.trajectory_loc_prediction.CARA &mdash; Bigscity-LibCity  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home" alt="Documentation Home"> Bigscity-LibCity
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">起步</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../get_started/introduction.html">介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../get_started/install.html">安装LibCity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../get_started/quick_start.html">快速入门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../get_started/directory_structure.html">目录结构</a></li>
+</ul>
+<p class="caption"><span class="caption-text">用户指导</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user_guide/config_settings.html">参数设置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user_guide/data.html">数据说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user_guide/model.html">复现模型列表</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user_guide/evaluator.html">评估模块简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user_guide/executor.html">执行模块简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user_guide/usage.html">使用示例</a></li>
+</ul>
+<p class="caption"><span class="caption-text">开发者指导</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../developer_guide/code_style.html">代码风格</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../developer_guide/implemented_datasets.html">自定义Dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../developer_guide/implemented_models.html">自定义Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../developer_guide/implemented_executors.html">自定义Executor</a></li>
+</ul>
+<p class="caption"><span class="caption-text">入门教程</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorial/install_quick_start.html">安装和快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorial/run_model.html">运行LibCity中已复现的模型</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorial/add_model.html">在LibCity中添加新模型</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorial/hyper_tune.html">使用自动化工具调参</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API文档</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../libcity/libcity.config.html">libcity.config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../libcity/libcity.data.html">libcity.data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../libcity/libcity.evaluator.html">libcity.evaluator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../libcity/libcity.executor.html">libcity.executor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../libcity/libcity.model.html">libcity.model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../libcity/libcity.pipeline.html">libcity.pipeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../libcity/libcity.utils.html">libcity.utils</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">Bigscity-LibCity</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../../index.html">Module code</a> &raquo;</li>
+        
+      <li>libcity.model.trajectory_loc_prediction.CARA</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for libcity.model.trajectory_loc_prediction.CARA</h1><div class="highlight"><pre>
+<span></span><span class="c1"># coding: utf-8</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">division</span>
+
+<span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
+<span class="kn">import</span> <span class="nn">torch.nn.functional</span> <span class="k">as</span> <span class="nn">F</span>
+
+<span class="kn">from</span> <span class="nn">libcity.model.abstract_model</span> <span class="kn">import</span> <span class="n">AbstractModel</span>
+<span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sin</span><span class="p">,</span> <span class="n">cos</span><span class="p">,</span> <span class="n">sqrt</span><span class="p">,</span> <span class="n">atan2</span><span class="p">,</span> <span class="n">radians</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+
+<div class="viewcode-block" id="identity_loss"><a class="viewcode-back" href="../../../../libcity/libcity.model.trajectory_loc_prediction.CARA.html#libcity.model.trajectory_loc_prediction.CARA.identity_loss">[docs]</a><span class="k">def</span> <span class="nf">identity_loss</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">y_pred</span> <span class="o">-</span> <span class="mi">0</span> <span class="o">*</span> <span class="n">y_true</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="CARA1"><a class="viewcode-back" href="../../../../libcity/libcity.model.trajectory_loc_prediction.CARA.html#libcity.model.trajectory_loc_prediction.CARA.CARA1">[docs]</a><span class="k">class</span> <span class="nc">CARA1</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+
+<div class="viewcode-block" id="CARA1.hard_sigmoid"><a class="viewcode-back" href="../../../../libcity/libcity.model.trajectory_loc_prediction.CARA.html#libcity.model.trajectory_loc_prediction.CARA.CARA1.hard_sigmoid">[docs]</a>    <span class="k">def</span> <span class="nf">hard_sigmoid</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">x</span> <span class="o">/</span> <span class="mi">6</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">threshold</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">threshold</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">x</span></div>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">output_dim</span><span class="p">,</span> <span class="n">input_dim</span><span class="p">,</span>
+                 <span class="n">init</span><span class="o">=</span><span class="s1">&#39;glorot_uniform&#39;</span><span class="p">,</span> <span class="n">inner_init</span><span class="o">=</span><span class="s1">&#39;orthogonal&#39;</span><span class="p">,</span>
+                 <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">CARA1</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">output_dim</span> <span class="o">=</span> <span class="n">output_dim</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">init</span> <span class="o">=</span> <span class="n">init</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">inner_init</span> <span class="o">=</span> <span class="n">inner_init</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">activation</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">hard_sigmoid</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">inner_activation</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Tanh</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="n">input_dim</span><span class="p">)</span>
+
+<div class="viewcode-block" id="CARA1.add_weight"><a class="viewcode-back" href="../../../../libcity/libcity.model.trajectory_loc_prediction.CARA.html#libcity.model.trajectory_loc_prediction.CARA.CARA1.add_weight">[docs]</a>    <span class="k">def</span> <span class="nf">add_weight</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">shape</span><span class="p">,</span> <span class="n">initializer</span><span class="p">):</span>
+        <span class="n">ts</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">initializer</span> <span class="o">==</span> <span class="s1">&#39;glorot_uniform&#39;</span><span class="p">:</span>
+            <span class="n">ts</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">init</span><span class="o">.</span><span class="n">xavier_normal_</span><span class="p">(</span><span class="n">ts</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">initializer</span> <span class="o">==</span> <span class="s1">&#39;orthogonal&#39;</span><span class="p">:</span>
+            <span class="n">ts</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">init</span><span class="o">.</span><span class="n">orthogonal_</span><span class="p">(</span><span class="n">ts</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">nn</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="n">ts</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CARA1.build"><a class="viewcode-back" href="../../../../libcity/libcity.model.trajectory_loc_prediction.CARA.html#libcity.model.trajectory_loc_prediction.CARA.CARA1.build">[docs]</a>    <span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_shape</span><span class="p">):</span>
+        <span class="c1"># self.input_spec = [InputSpec(shape=input_shape)]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">input_dim</span> <span class="o">=</span> <span class="n">input_shape</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">W_z</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_weight</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">input_dim</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_dim</span><span class="p">),</span>
+                                   <span class="n">initializer</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">init</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">U_z</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_weight</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">output_dim</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_dim</span><span class="p">),</span>
+                                   <span class="n">initializer</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">init</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">b_z</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_weight</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">output_dim</span><span class="p">,),</span>
+                                   <span class="n">initializer</span><span class="o">=</span><span class="s1">&#39;zero&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">W_r</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_weight</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">input_dim</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_dim</span><span class="p">),</span>
+                                   <span class="n">initializer</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">init</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">U_r</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_weight</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">output_dim</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_dim</span><span class="p">),</span>
+                                   <span class="n">initializer</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">init</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">b_r</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_weight</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">output_dim</span><span class="p">,),</span>
+                                   <span class="n">initializer</span><span class="o">=</span><span class="s1">&#39;zero&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">W_h</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_weight</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">input_dim</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_dim</span><span class="p">),</span>
+                                   <span class="n">initializer</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">init</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">U_h</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_weight</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">output_dim</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_dim</span><span class="p">),</span>
+                                   <span class="n">initializer</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">init</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">b_h</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_weight</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">output_dim</span><span class="p">,),</span>
+                                   <span class="n">initializer</span><span class="o">=</span><span class="s1">&#39;zero&#39;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">A_h</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_weight</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">output_dim</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_dim</span><span class="p">),</span>
+                                   <span class="n">initializer</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">init</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">A_u</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_weight</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">output_dim</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_dim</span><span class="p">),</span>
+                                   <span class="n">initializer</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">init</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">b_a_h</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_weight</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">output_dim</span><span class="p">,),</span>
+                                     <span class="n">initializer</span><span class="o">=</span><span class="s1">&#39;zero&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">b_a_u</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_weight</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">output_dim</span><span class="p">,),</span>
+                                     <span class="n">initializer</span><span class="o">=</span><span class="s1">&#39;zero&#39;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">W_t</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_weight</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">input_dim</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_dim</span><span class="p">),</span>
+                                   <span class="n">initializer</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">init</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">U_t</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_weight</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_dim</span><span class="p">),</span>
+                                   <span class="n">initializer</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">init</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">b_t</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_weight</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">output_dim</span><span class="p">,),</span>
+                                   <span class="n">initializer</span><span class="o">=</span><span class="s1">&#39;zero&#39;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">W_g</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_weight</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">input_dim</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_dim</span><span class="p">),</span>
+                                   <span class="n">initializer</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">init</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">U_g</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_weight</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_dim</span><span class="p">),</span>
+                                   <span class="n">initializer</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">init</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">b_g</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_weight</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">output_dim</span><span class="p">,),</span>
+                                   <span class="n">initializer</span><span class="o">=</span><span class="s1">&#39;zero&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CARA1.preprocess_input"><a class="viewcode-back" href="../../../../libcity/libcity.model.trajectory_loc_prediction.CARA.html#libcity.model.trajectory_loc_prediction.CARA.CARA1.preprocess_input">[docs]</a>    <span class="k">def</span> <span class="nf">preprocess_input</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">x</span></div>
+
+<div class="viewcode-block" id="CARA1.forward"><a class="viewcode-back" href="../../../../libcity/libcity.model.trajectory_loc_prediction.CARA.html#libcity.model.trajectory_loc_prediction.CARA.CARA1.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        X : batch * timeLen * dims(有拓展)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">tlen</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_dim</span><span class="p">))</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">tlen</span><span class="p">):</span>
+            <span class="n">output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">x</span><span class="p">[:,</span> <span class="n">i</span><span class="p">,</span> <span class="p">:],</span> <span class="n">output</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">output</span></div>
+
+<div class="viewcode-block" id="CARA1.step"><a class="viewcode-back" href="../../../../libcity/libcity.model.trajectory_loc_prediction.CARA.html#libcity.model.trajectory_loc_prediction.CARA.CARA1.step">[docs]</a>    <span class="k">def</span> <span class="nf">step</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">states</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        用于多批次同一时间</span>
+<span class="sd">        states为上一次多批次统一时间数据</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">h_tm1</span> <span class="o">=</span> <span class="n">states</span>
+
+        <span class="c1"># phi_t</span>
+        <span class="n">u</span> <span class="o">=</span> <span class="n">x</span><span class="p">[:,</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_dim</span><span class="p">:</span> <span class="mi">2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_dim</span><span class="p">]</span>
+        <span class="c1"># delta_t</span>
+        <span class="n">t</span> <span class="o">=</span> <span class="n">x</span><span class="p">[:,</span> <span class="mi">2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_dim</span><span class="p">:</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_dim</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+        <span class="c1"># delta_g</span>
+        <span class="n">g</span> <span class="o">=</span> <span class="n">x</span><span class="p">[:,</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_dim</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">:]</span>
+        <span class="c1"># phi_v</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="p">[:,</span> <span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">output_dim</span><span class="p">]</span>
+
+        <span class="n">t</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">inner_activation</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">U_t</span><span class="p">))</span>
+        <span class="n">g</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">inner_activation</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">U_g</span><span class="p">))</span>
+        <span class="c1">#       Time-based gate</span>
+        <span class="n">t1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">inner_activation</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">W_t</span><span class="p">)</span> <span class="o">+</span> <span class="n">t</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">b_t</span><span class="p">)</span>
+        <span class="c1">#       Geo-based gate</span>
+        <span class="n">g1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">inner_activation</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">W_g</span><span class="p">)</span> <span class="o">+</span> <span class="n">g</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">b_g</span><span class="p">)</span>
+
+        <span class="c1">#       Contextual Attention Gate</span>
+        <span class="n">a</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">inner_activation</span><span class="p">(</span>
+            <span class="n">torch</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">h_tm1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">A_h</span><span class="p">)</span> <span class="o">+</span> <span class="n">torch</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">A_u</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">b_a_h</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">b_a_u</span><span class="p">)</span>
+
+        <span class="n">x_z</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">W_z</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">b_z</span>
+        <span class="n">x_r</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">W_r</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">b_r</span>
+        <span class="n">x_h</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">W_h</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">b_h</span>
+
+        <span class="n">u_z_</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">matmul</span><span class="p">((</span><span class="mi">1</span> <span class="o">-</span> <span class="n">a</span><span class="p">)</span> <span class="o">*</span> <span class="n">u</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">W_z</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">b_z</span>
+        <span class="n">u_r_</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">matmul</span><span class="p">((</span><span class="mi">1</span> <span class="o">-</span> <span class="n">a</span><span class="p">)</span> <span class="o">*</span> <span class="n">u</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">W_r</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">b_r</span>
+        <span class="n">u_h_</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">matmul</span><span class="p">((</span><span class="mi">1</span> <span class="o">-</span> <span class="n">a</span><span class="p">)</span> <span class="o">*</span> <span class="n">u</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">W_h</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">b_h</span>
+
+        <span class="n">u_z</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">a</span> <span class="o">*</span> <span class="n">u</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">W_z</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">b_z</span>
+        <span class="n">u_r</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">a</span> <span class="o">*</span> <span class="n">u</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">W_r</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">b_r</span>
+        <span class="n">u_h</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">a</span> <span class="o">*</span> <span class="n">u</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">W_h</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">b_h</span>
+
+        <span class="c1">#       update gate</span>
+        <span class="n">z</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">inner_activation</span><span class="p">(</span><span class="n">x_z</span> <span class="o">+</span> <span class="n">torch</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">h_tm1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">U_z</span><span class="p">)</span> <span class="o">+</span> <span class="n">u_z</span><span class="p">)</span>
+        <span class="c1">#       reset gate</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">inner_activation</span><span class="p">(</span><span class="n">x_r</span> <span class="o">+</span> <span class="n">torch</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">h_tm1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">U_r</span><span class="p">)</span> <span class="o">+</span> <span class="n">u_r</span><span class="p">)</span>
+        <span class="c1">#       hidden state</span>
+        <span class="n">hh</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">activation</span><span class="p">(</span><span class="n">x_h</span> <span class="o">+</span> <span class="n">torch</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">r</span> <span class="o">*</span> <span class="n">t1</span> <span class="o">*</span> <span class="n">g1</span> <span class="o">*</span> <span class="n">h_tm1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">U_h</span><span class="p">)</span> <span class="o">+</span> <span class="n">u_h</span><span class="p">)</span>
+
+        <span class="n">h</span> <span class="o">=</span> <span class="n">z</span> <span class="o">*</span> <span class="n">h_tm1</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">z</span><span class="p">)</span> <span class="o">*</span> <span class="n">hh</span>
+        <span class="n">h</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">u_z_</span> <span class="o">+</span> <span class="n">u_r_</span> <span class="o">+</span> <span class="n">u_h_</span><span class="p">)</span> <span class="o">*</span> <span class="n">h</span>
+        <span class="k">return</span> <span class="n">h</span></div></div>
+        <span class="c1"># return h</span>
+
+
+<div class="viewcode-block" id="bpr_triplet_loss"><a class="viewcode-back" href="../../../../libcity/libcity.model.trajectory_loc_prediction.CARA.html#libcity.model.trajectory_loc_prediction.CARA.bpr_triplet_loss">[docs]</a><span class="k">def</span> <span class="nf">bpr_triplet_loss</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="n">positive_item_latent</span><span class="p">,</span> <span class="n">negative_item_latent</span> <span class="o">=</span> <span class="n">x</span>
+
+    <span class="n">reg</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="n">loss</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">torch</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">sigmoid</span><span class="p">(</span>
+        <span class="n">torch</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">positive_item_latent</span><span class="p">,</span> <span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">keepdim</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="o">-</span>
+        <span class="n">torch</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">negative_item_latent</span><span class="p">,</span> <span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">keepdim</span><span class="o">=</span><span class="kc">True</span><span class="p">)))</span> <span class="o">-</span> <span class="n">reg</span>
+
+    <span class="k">return</span> <span class="n">loss</span></div>
+
+
+<div class="viewcode-block" id="Recommender"><a class="viewcode-back" href="../../../../libcity/libcity.model.trajectory_loc_prediction.CARA.html#libcity.model.trajectory_loc_prediction.CARA.Recommender">[docs]</a><span class="k">class</span> <span class="nc">Recommender</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_users</span><span class="p">,</span> <span class="n">num_items</span><span class="p">,</span> <span class="n">num_times</span><span class="p">,</span> <span class="n">latent_dim</span><span class="p">,</span> <span class="n">maxvenue</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Recommender</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">maxVenue</span> <span class="o">=</span> <span class="n">maxvenue</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">latent_dim</span> <span class="o">=</span> <span class="n">latent_dim</span>
+        <span class="c1"># num * maxVenue * dim</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">U_Embedding</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Embedding</span><span class="p">(</span><span class="n">num_users</span><span class="p">,</span> <span class="n">latent_dim</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">V_Embedding</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Embedding</span><span class="p">(</span><span class="n">num_items</span><span class="p">,</span> <span class="n">latent_dim</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">T_Embedding</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Embedding</span><span class="p">(</span><span class="n">num_times</span><span class="p">,</span> <span class="n">latent_dim</span><span class="p">)</span>
+        <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">init</span><span class="o">.</span><span class="n">uniform_</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">U_Embedding</span><span class="o">.</span><span class="n">weight</span><span class="p">)</span>
+        <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">init</span><span class="o">.</span><span class="n">uniform_</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">V_Embedding</span><span class="o">.</span><span class="n">weight</span><span class="p">)</span>
+        <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">init</span><span class="o">.</span><span class="n">uniform_</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">T_Embedding</span><span class="o">.</span><span class="n">weight</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rnn</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+            <span class="n">CARA1</span><span class="p">(</span><span class="n">latent_dim</span><span class="p">,</span> <span class="n">latent_dim</span><span class="p">,</span> <span class="n">input_shape</span><span class="o">=</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">maxVenue</span><span class="p">,</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">latent_dim</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="mi">2</span><span class="p">,),</span> <span class="n">unroll</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+        <span class="c1">#       latent_dim * 2 + 2 = v_embedding + t_embedding + time_gap + distance</span>
+
+<div class="viewcode-block" id="Recommender.forward"><a class="viewcode-back" href="../../../../libcity/libcity.model.trajectory_loc_prediction.CARA.html#libcity.model.trajectory_loc_prediction.CARA.Recommender.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="c1"># INPUT = [self.user_input, self.time_input, self.gap_time_input, self.pos_distance_input,</span>
+        <span class="c1">#          self.neg_distance_input, self.checkins_input,</span>
+        <span class="c1">#          self.neg_checkins_input]</span>
+        <span class="c1"># pass</span>
+        <span class="c1">#       User latent factor</span>
+        <span class="n">user_input</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">time_input</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+        <span class="n">gap_time_input</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+        <span class="n">pos_distance_input</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+        <span class="n">neg_distance_input</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+        <span class="n">checkins_input</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">5</span><span class="p">])</span>
+        <span class="n">neg_checkins_input</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">6</span><span class="p">])</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">u_latent</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">U_Embedding</span><span class="p">(</span><span class="n">user_input</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">t_latent</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">T_Embedding</span><span class="p">(</span><span class="n">time_input</span><span class="p">)</span>
+
+        <span class="n">h</span><span class="p">,</span> <span class="n">w</span> <span class="o">=</span> <span class="n">gap_time_input</span><span class="o">.</span><span class="n">shape</span>
+        <span class="n">gap_time_input</span> <span class="o">=</span> <span class="n">gap_time_input</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">rnn_input</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">V_Embedding</span><span class="p">(</span><span class="n">checkins_input</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">T_Embedding</span><span class="p">(</span><span class="n">time_input</span><span class="p">),</span> <span class="n">gap_time_input</span><span class="p">],</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">neg_rnn_input</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">V_Embedding</span><span class="p">(</span><span class="n">neg_checkins_input</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">T_Embedding</span><span class="p">(</span><span class="n">time_input</span><span class="p">),</span> <span class="n">gap_time_input</span><span class="p">],</span>
+                                  <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">h</span><span class="p">,</span> <span class="n">w</span> <span class="o">=</span> <span class="n">pos_distance_input</span><span class="o">.</span><span class="n">shape</span>
+        <span class="n">pos_distance_input</span> <span class="o">=</span> <span class="n">pos_distance_input</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">h</span><span class="p">,</span> <span class="n">w</span> <span class="o">=</span> <span class="n">neg_distance_input</span><span class="o">.</span><span class="n">shape</span>
+        <span class="n">neg_distance_input</span> <span class="o">=</span> <span class="n">neg_distance_input</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">rnn_input</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">([</span><span class="n">rnn_input</span><span class="p">,</span> <span class="n">pos_distance_input</span><span class="p">],</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">neg_rnn_input</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">([</span><span class="n">neg_rnn_input</span><span class="p">,</span> <span class="n">neg_distance_input</span><span class="p">],</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">checkins_emb</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rnn</span><span class="p">(</span><span class="n">rnn_input</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">neg_checkins_emb</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rnn</span><span class="p">(</span><span class="n">neg_rnn_input</span><span class="p">)</span>
+
+        <span class="n">pred</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">checkins_emb</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">u_latent</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">neg_pred</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">neg_checkins_emb</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">u_latent</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">bpr_triplet_loss</span><span class="p">([</span><span class="n">pred</span><span class="p">,</span> <span class="n">neg_pred</span><span class="p">])</span></div>
+
+<div class="viewcode-block" id="Recommender.rank"><a class="viewcode-back" href="../../../../libcity/libcity.model.trajectory_loc_prediction.CARA.html#libcity.model.trajectory_loc_prediction.CARA.Recommender.rank">[docs]</a>    <span class="k">def</span> <span class="nf">rank</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">uid</span><span class="p">,</span> <span class="n">hist_venues</span><span class="p">,</span> <span class="n">hist_times</span><span class="p">,</span> <span class="n">hist_time_gap</span><span class="p">,</span> <span class="n">hist_distances</span><span class="p">):</span>
+        <span class="c1">#         hist_venues = hist_venues + [candidate_venue]</span>
+        <span class="c1">#         hist_times = hist_times + [time]</span>
+        <span class="c1">#         hist_time_gap = hist_time_gap + [time_gap]</span>
+        <span class="c1">#         hist_distances = hist_distances + [distance]</span>
+
+        <span class="c1"># u_latent = self.U_Embedding(torch.tensor(uid))</span>
+        <span class="c1"># v_latent = self.V_Embedding(torch.tensor(hist_venues))</span>
+        <span class="c1"># t_latent = self.T_Embedding(torch.tensor(hist_times))</span>
+        <span class="n">u_latent</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">U_Embedding</span><span class="o">.</span><span class="n">weight</span><span class="p">[</span><span class="n">uid</span><span class="p">]</span>
+        <span class="n">v_latent</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">V_Embedding</span><span class="o">.</span><span class="n">weight</span><span class="p">[</span><span class="n">hist_venues</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)]</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">hist_venues</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">hist_venues</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">t_latent</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">T_Embedding</span><span class="o">.</span><span class="n">weight</span><span class="p">[</span><span class="n">hist_times</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)]</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">hist_times</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">hist_times</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="n">h</span><span class="p">,</span> <span class="n">w</span> <span class="o">=</span> <span class="n">hist_time_gap</span><span class="o">.</span><span class="n">shape</span>
+        <span class="n">hist_time_gap</span> <span class="o">=</span> <span class="n">hist_time_gap</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">h</span><span class="p">,</span> <span class="n">w</span> <span class="o">=</span> <span class="n">hist_distances</span><span class="o">.</span><span class="n">shape</span>
+        <span class="n">hist_distances</span> <span class="o">=</span> <span class="n">hist_distances</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">rnn_input</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">([</span><span class="n">t_latent</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">hist_time_gap</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">)],</span> <span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">rnn_input</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">([</span><span class="n">rnn_input</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">hist_distances</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">)],</span> <span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="n">rnn_input</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">([</span><span class="n">v_latent</span><span class="p">,</span> <span class="n">rnn_input</span><span class="p">],</span> <span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="n">dynamic_latent</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rnn</span><span class="p">(</span><span class="n">rnn_input</span><span class="p">)</span>
+        <span class="n">scores</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">mul</span><span class="p">(</span><span class="n">dynamic_latent</span><span class="p">,</span> <span class="n">u_latent</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="c1"># scores = np.dot(dynamic_latent, u_latent)</span>
+        <span class="k">return</span> <span class="n">scores</span></div></div>
+
+
+<div class="viewcode-block" id="CARA"><a class="viewcode-back" href="../../../../libcity/libcity.model.trajectory_loc_prediction.CARA.html#libcity.model.trajectory_loc_prediction.CARA.CARA">[docs]</a><span class="k">class</span> <span class="nc">CARA</span><span class="p">(</span><span class="n">AbstractModel</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;rnn model with long-term history attention&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">data_feature</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">CARA</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="n">data_feature</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">loc_size</span> <span class="o">=</span> <span class="n">data_feature</span><span class="p">[</span><span class="s1">&#39;loc_size&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tim_size</span> <span class="o">=</span> <span class="n">data_feature</span><span class="p">[</span><span class="s1">&#39;tim_size&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">uid_size</span> <span class="o">=</span> <span class="n">data_feature</span><span class="p">[</span><span class="s1">&#39;uid_size&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">poi_profile</span> <span class="o">=</span> <span class="n">data_feature</span><span class="p">[</span><span class="s1">&#39;poi_profile&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">id2locid</span> <span class="o">=</span> <span class="n">data_feature</span><span class="p">[</span><span class="s1">&#39;id2locid&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">id2loc</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">loc_size</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">id2loc</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">id2locid</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">id2loc</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">loc_size</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">id2loc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">id2loc</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">coor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">poi_profile</span><span class="p">[</span><span class="s1">&#39;coordinates&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="nb">eval</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rec</span> <span class="o">=</span> <span class="n">Recommender</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">uid_size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">loc_size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">tim_size</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+
+<div class="viewcode-block" id="CARA.get_time_interval"><a class="viewcode-back" href="../../../../libcity/libcity.model.trajectory_loc_prediction.CARA.html#libcity.model.trajectory_loc_prediction.CARA.CARA.get_time_interval">[docs]</a>    <span class="k">def</span> <span class="nf">get_time_interval</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">x</span><span class="p">[:,</span> <span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">x</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">,</span> <span class="kc">None</span><span class="p">],</span> <span class="n">y</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">x</span> <span class="o">-</span> <span class="n">y</span></div>
+
+<div class="viewcode-block" id="CARA.get_time_interval2"><a class="viewcode-back" href="../../../../libcity/libcity.model.trajectory_loc_prediction.CARA.html#libcity.model.trajectory_loc_prediction.CARA.CARA.get_time_interval2">[docs]</a>    <span class="k">def</span> <span class="nf">get_time_interval2</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">x</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="kc">None</span><span class="p">],</span> <span class="n">y</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">x</span> <span class="o">-</span> <span class="n">y</span></div>
+
+<div class="viewcode-block" id="CARA.get_pos_distance"><a class="viewcode-back" href="../../../../libcity/libcity.model.trajectory_loc_prediction.CARA.html#libcity.model.trajectory_loc_prediction.CARA.CARA.get_pos_distance">[docs]</a>    <span class="k">def</span> <span class="nf">get_pos_distance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">x</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="p">:],</span> <span class="n">x</span><span class="p">[:,</span> <span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="mf">6373.0</span>
+        <span class="n">rx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">ry</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+
+        <span class="n">d</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="n">y</span>
+        <span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">d</span><span class="p">[:,</span> <span class="p">:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">rx</span><span class="p">[:,</span> <span class="p">:,</span> <span class="mi">0</span><span class="p">])</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">ry</span><span class="p">[:,</span> <span class="p">:,</span> <span class="mi">0</span><span class="p">])</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">d</span><span class="p">[:,</span> <span class="p">:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
+        <span class="n">c</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">arctan2</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">a</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">a</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">r</span> <span class="o">*</span> <span class="n">c</span></div>
+
+<div class="viewcode-block" id="CARA.get_pos_distance2"><a class="viewcode-back" href="../../../../libcity/libcity.model.trajectory_loc_prediction.CARA.html#libcity.model.trajectory_loc_prediction.CARA.CARA.get_pos_distance2">[docs]</a>    <span class="k">def</span> <span class="nf">get_pos_distance2</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="p">:],</span> <span class="n">x</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="mf">6373.0</span>
+        <span class="n">rx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">ry</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+
+        <span class="n">d</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="n">y</span>
+        <span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">d</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">rx</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">])</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">ry</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">])</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">d</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
+        <span class="n">c</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">arctan2</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">a</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">a</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">r</span> <span class="o">*</span> <span class="n">c</span></div>
+
+<div class="viewcode-block" id="CARA.get_distance"><a class="viewcode-back" href="../../../../libcity/libcity.model.trajectory_loc_prediction.CARA.html#libcity.model.trajectory_loc_prediction.CARA.CARA.get_distance">[docs]</a>    <span class="k">def</span> <span class="nf">get_distance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lat1</span><span class="p">,</span> <span class="n">lng1</span><span class="p">,</span> <span class="n">lat2</span><span class="p">,</span> <span class="n">lng2</span><span class="p">):</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="mf">6373.0</span>
+
+        <span class="n">lat1</span> <span class="o">=</span> <span class="n">radians</span><span class="p">(</span><span class="n">lat1</span><span class="p">)</span>
+        <span class="n">lon1</span> <span class="o">=</span> <span class="n">radians</span><span class="p">(</span><span class="n">lng1</span><span class="p">)</span>
+        <span class="n">lat2</span> <span class="o">=</span> <span class="n">radians</span><span class="p">(</span><span class="n">lat2</span><span class="p">)</span>
+        <span class="n">lon2</span> <span class="o">=</span> <span class="n">radians</span><span class="p">(</span><span class="n">lng2</span><span class="p">)</span>
+
+        <span class="n">dlon</span> <span class="o">=</span> <span class="n">lon2</span> <span class="o">-</span> <span class="n">lon1</span>
+        <span class="n">dlat</span> <span class="o">=</span> <span class="n">lat2</span> <span class="o">-</span> <span class="n">lat1</span>
+
+        <span class="n">a</span> <span class="o">=</span> <span class="n">sin</span><span class="p">(</span><span class="n">dlat</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">cos</span><span class="p">(</span><span class="n">lat1</span><span class="p">)</span> <span class="o">*</span> <span class="n">cos</span><span class="p">(</span><span class="n">lat2</span><span class="p">)</span> <span class="o">*</span> <span class="n">sin</span><span class="p">(</span><span class="n">dlon</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
+        <span class="n">c</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">atan2</span><span class="p">(</span><span class="n">sqrt</span><span class="p">(</span><span class="n">a</span><span class="p">),</span> <span class="n">sqrt</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">a</span><span class="p">))</span>
+
+        <span class="n">distance</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">r</span> <span class="o">*</span> <span class="n">c</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">distance</span></div>
+
+<div class="viewcode-block" id="CARA.get_neg_checkins"><a class="viewcode-back" href="../../../../libcity/libcity.model.trajectory_loc_prediction.CARA.html#libcity.model.trajectory_loc_prediction.CARA.CARA.get_neg_checkins">[docs]</a>    <span class="k">def</span> <span class="nf">get_neg_checkins</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vis</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="n">len1</span><span class="p">,</span> <span class="n">len2</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span>
+        <span class="n">x_res</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">x_res_distance</span> <span class="o">=</span> <span class="n">y</span><span class="p">[:]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">len1</span><span class="p">):</span>
+            <span class="n">visits</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            <span class="n">j</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">loc_size</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="k">while</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">vis</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>
+                <span class="n">j</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">loc_size</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="n">tmp</span> <span class="o">=</span> <span class="n">visits</span><span class="p">[:]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+            <span class="n">tmp</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">j</span>
+            <span class="n">x_res</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span>
+            <span class="n">j1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">coor</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">id2loc</span><span class="p">[</span><span class="n">visits</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]]]</span>
+            <span class="n">j</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">coor</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">id2loc</span><span class="p">[</span><span class="n">j</span><span class="p">]]</span>
+            <span class="n">x_res_distance</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_distance</span><span class="p">(</span><span class="n">j1</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">j1</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">j</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">j</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+        <span class="k">return</span> <span class="n">x_res</span><span class="p">,</span> <span class="n">x_res_distance</span></div>
+
+<div class="viewcode-block" id="CARA.forward"><a class="viewcode-back" href="../../../../libcity/libcity.model.trajectory_loc_prediction.CARA.html#libcity.model.trajectory_loc_prediction.CARA.CARA.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">batch</span><span class="p">):</span>
+        <span class="n">hloc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">batch</span><span class="p">[</span><span class="s1">&#39;current_loc&#39;</span><span class="p">])[:,</span> <span class="p">:</span><span class="mi">5</span><span class="p">]</span>
+        <span class="n">target</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">batch</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">])</span>
+        <span class="n">h</span> <span class="o">=</span> <span class="n">target</span><span class="o">.</span><span class="n">shape</span>
+        <span class="n">target</span> <span class="o">=</span> <span class="n">target</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="o">*</span><span class="n">h</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+        <span class="n">hloc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">hloc</span><span class="p">,</span> <span class="n">target</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">hloc1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">id2loc</span><span class="p">[</span><span class="n">hloc</span><span class="p">]</span>
+        <span class="n">tloc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">batch</span><span class="p">[</span><span class="s1">&#39;current_tim&#39;</span><span class="p">])[:,</span> <span class="p">:</span><span class="mi">5</span><span class="p">]</span>
+        <span class="n">target_tim</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">batch</span><span class="p">[</span><span class="s1">&#39;target_tim&#39;</span><span class="p">])</span>
+        <span class="n">h</span> <span class="o">=</span> <span class="n">target_tim</span><span class="o">.</span><span class="n">shape</span>
+        <span class="n">target_tim</span> <span class="o">=</span> <span class="n">target_tim</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="o">*</span><span class="n">h</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+        <span class="n">tloc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">tloc</span><span class="p">,</span> <span class="n">target_tim</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">x_users</span> <span class="o">=</span> <span class="n">batch</span><span class="p">[</span><span class="s1">&#39;uid&#39;</span><span class="p">]</span>
+        <span class="n">t_interval</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_time_interval</span><span class="p">(</span><span class="n">tloc</span><span class="p">)</span>
+
+        <span class="n">titude</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">coor</span><span class="p">[</span><span class="n">hloc1</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">hloc</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+        <span class="n">pos_distance</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_pos_distance</span><span class="p">(</span><span class="n">titude</span><span class="p">)</span>
+        <span class="n">x_neg_checkins</span><span class="p">,</span> <span class="n">x_neg_distance</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_neg_checkins</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">batch</span><span class="p">[</span><span class="s1">&#39;current_loc&#39;</span><span class="p">]),</span> <span class="n">hloc</span><span class="p">,</span> <span class="n">pos_distance</span><span class="p">)</span>
+
+        <span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">x_users</span><span class="p">),</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">tloc</span><span class="p">),</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">t_interval</span><span class="p">),</span>
+             <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">pos_distance</span><span class="p">),</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">x_neg_distance</span><span class="p">),</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">hloc</span><span class="p">),</span>
+             <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">x_neg_checkins</span><span class="p">)]</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">rec</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CARA.predict"><a class="viewcode-back" href="../../../../libcity/libcity.model.trajectory_loc_prediction.CARA.html#libcity.model.trajectory_loc_prediction.CARA.CARA.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">batch</span><span class="p">):</span>
+        <span class="n">hloc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">batch</span><span class="p">[</span><span class="s1">&#39;current_loc&#39;</span><span class="p">])[:,</span> <span class="p">:</span><span class="mi">5</span><span class="p">]</span>
+        <span class="n">tloc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">batch</span><span class="p">[</span><span class="s1">&#39;current_tim&#39;</span><span class="p">])[:,</span> <span class="p">:</span><span class="mi">5</span><span class="p">]</span>
+        <span class="n">x_users</span> <span class="o">=</span> <span class="n">batch</span><span class="p">[</span><span class="s1">&#39;uid&#39;</span><span class="p">]</span>
+        <span class="n">my_true</span> <span class="o">=</span> <span class="n">batch</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">]</span>
+        <span class="n">my_true_tim</span> <span class="o">=</span> <span class="n">batch</span><span class="p">[</span><span class="s1">&#39;target_tim&#39;</span><span class="p">]</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="nb">id</span><span class="p">,</span> <span class="n">mloc</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">hloc</span><span class="p">):</span>
+            <span class="n">hlocs</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="n">tlocs</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="n">users</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="n">t_intervals</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="n">distances</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="n">target</span> <span class="o">=</span> <span class="n">my_true</span><span class="p">[</span><span class="nb">id</span><span class="p">]</span>
+            <span class="n">target_tim</span> <span class="o">=</span> <span class="n">my_true_tim</span><span class="p">[</span><span class="nb">id</span><span class="p">]</span>
+            <span class="n">mu</span> <span class="o">=</span> <span class="n">x_users</span><span class="p">[</span><span class="nb">id</span><span class="p">]</span>
+            <span class="n">mh</span><span class="p">,</span> <span class="n">mt</span> <span class="o">=</span> <span class="n">hloc</span><span class="p">[</span><span class="nb">id</span><span class="p">],</span> <span class="n">tloc</span><span class="p">[</span><span class="nb">id</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+            <span class="n">mt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mt</span><span class="p">,</span> <span class="n">target_tim</span><span class="p">)</span>
+            <span class="n">mi</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_time_interval2</span><span class="p">(</span><span class="n">mt</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">101</span><span class="p">):</span>
+                <span class="n">mh</span> <span class="o">=</span> <span class="n">hloc</span><span class="p">[</span><span class="nb">id</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+                <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="n">mh</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mh</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span>
+                    <span class="n">tmh</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">id2loc</span><span class="p">[</span><span class="n">mh</span><span class="p">]</span>
+                    <span class="n">mtt</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">coor</span><span class="p">[</span><span class="n">tmh</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">tmh</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+                    <span class="n">md</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_pos_distance2</span><span class="p">(</span><span class="n">mtt</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">j</span> <span class="o">=</span> <span class="n">target</span>
+                    <span class="k">while</span> <span class="n">j</span> <span class="o">==</span> <span class="n">target</span><span class="p">:</span>
+                        <span class="n">j</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">loc_size</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+                    <span class="n">mh</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mh</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span>
+                    <span class="n">tmh</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">id2loc</span><span class="p">[</span><span class="n">mh</span><span class="p">]</span>
+                    <span class="n">mtt</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">coor</span><span class="p">[</span><span class="n">tmh</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">tmh</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+                    <span class="n">md</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_pos_distance2</span><span class="p">(</span><span class="n">mtt</span><span class="p">)</span>
+
+                <span class="n">hlocs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mh</span><span class="p">)</span>
+                <span class="n">tlocs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mt</span><span class="p">)</span>
+                <span class="n">users</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mu</span><span class="p">)</span>
+                <span class="n">t_intervals</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mi</span><span class="p">)</span>
+                <span class="n">distances</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">md</span><span class="p">)</span>
+            <span class="n">output</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rec</span><span class="o">.</span><span class="n">rank</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">users</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">hlocs</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">tlocs</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">t_intervals</span><span class="p">),</span>
+                                        <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">distances</span><span class="p">))</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">())</span>
+        <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">output</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CARA.calculate_loss"><a class="viewcode-back" href="../../../../libcity/libcity.model.trajectory_loc_prediction.CARA.html#libcity.model.trajectory_loc_prediction.CARA.CARA.calculate_loss">[docs]</a>    <span class="k">def</span> <span class="nf">calculate_loss</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">batch</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">batch</span><span class="p">))</span></div></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, aptx1231
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

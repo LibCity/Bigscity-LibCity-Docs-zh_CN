@@ -1,0 +1,373 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>libcity.data.dataset.trajectory_encoder.standard_trajectory_encoder &mdash; Bigscity-LibCity  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../../" src="../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../_static/jquery.js"></script>
+        <script src="../../../../../_static/underscore.js"></script>
+        <script src="../../../../../_static/doctools.js"></script>
+        <script src="../../../../../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../../index.html" class="icon icon-home" alt="Documentation Home"> Bigscity-LibCity
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">起步</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../get_started/introduction.html">介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../get_started/install.html">安装LibCity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../get_started/quick_start.html">快速入门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../get_started/directory_structure.html">目录结构</a></li>
+</ul>
+<p class="caption"><span class="caption-text">用户指导</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../user_guide/config_settings.html">参数设置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../user_guide/data.html">数据说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../user_guide/model.html">复现模型列表</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../user_guide/evaluator.html">评估模块简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../user_guide/executor.html">执行模块简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../user_guide/usage.html">使用示例</a></li>
+</ul>
+<p class="caption"><span class="caption-text">开发者指导</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../developer_guide/code_style.html">代码风格</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../developer_guide/implemented_datasets.html">自定义Dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../developer_guide/implemented_models.html">自定义Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../developer_guide/implemented_executors.html">自定义Executor</a></li>
+</ul>
+<p class="caption"><span class="caption-text">入门教程</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../tutorial/install_quick_start.html">安装和快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../tutorial/run_model.html">运行LibCity中已复现的模型</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../tutorial/add_model.html">在LibCity中添加新模型</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../tutorial/hyper_tune.html">使用自动化工具调参</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API文档</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../libcity/libcity.config.html">libcity.config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../libcity/libcity.data.html">libcity.data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../libcity/libcity.evaluator.html">libcity.evaluator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../libcity/libcity.executor.html">libcity.executor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../libcity/libcity.model.html">libcity.model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../libcity/libcity.pipeline.html">libcity.pipeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../libcity/libcity.utils.html">libcity.utils</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../index.html">Bigscity-LibCity</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../../../index.html">Module code</a> &raquo;</li>
+        
+      <li>libcity.data.dataset.trajectory_encoder.standard_trajectory_encoder</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for libcity.data.dataset.trajectory_encoder.standard_trajectory_encoder</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">os</span>
+
+<span class="kn">from</span> <span class="nn">libcity.data.dataset.trajectory_encoder.abstract_trajectory_encoder</span> <span class="kn">import</span> <span class="n">AbstractTrajectoryEncoder</span>
+<span class="kn">from</span> <span class="nn">libcity.utils</span> <span class="kn">import</span> <span class="n">parse_time</span>
+
+<span class="n">parameter_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;dataset&#39;</span><span class="p">,</span> <span class="s1">&#39;min_session_len&#39;</span><span class="p">,</span> <span class="s1">&#39;min_sessions&#39;</span><span class="p">,</span> <span class="s1">&#39;traj_encoder&#39;</span><span class="p">,</span> <span class="s1">&#39;cut_method&#39;</span><span class="p">,</span>
+                  <span class="s1">&#39;window_size&#39;</span><span class="p">,</span> <span class="s1">&#39;history_type&#39;</span><span class="p">,</span> <span class="s1">&#39;min_checkins&#39;</span><span class="p">,</span> <span class="s1">&#39;max_session_len&#39;</span><span class="p">]</span>
+
+
+<div class="viewcode-block" id="StandardTrajectoryEncoder"><a class="viewcode-back" href="../../../../../libcity/libcity.data.dataset.trajectory_encoder.standard_trajectory_encoder.html#libcity.data.dataset.trajectory_encoder.standard_trajectory_encoder.StandardTrajectoryEncoder">[docs]</a><span class="k">class</span> <span class="nc">StandardTrajectoryEncoder</span><span class="p">(</span><span class="n">AbstractTrajectoryEncoder</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">uid</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">location2id</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c1"># 因为原始数据集中的部分 loc id 不会被使用到因此这里需要重新编码一下</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">loc_id</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tim_max</span> <span class="o">=</span> <span class="mi">47</span>  <span class="c1"># 时间编码方式得改变</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">history_type</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;history_type&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">feature_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;history_loc&#39;</span><span class="p">:</span> <span class="s1">&#39;int&#39;</span><span class="p">,</span> <span class="s1">&#39;history_tim&#39;</span><span class="p">:</span> <span class="s1">&#39;int&#39;</span><span class="p">,</span>
+                             <span class="s1">&#39;current_loc&#39;</span><span class="p">:</span> <span class="s1">&#39;int&#39;</span><span class="p">,</span> <span class="s1">&#39;current_tim&#39;</span><span class="p">:</span> <span class="s1">&#39;int&#39;</span><span class="p">,</span>
+                             <span class="s1">&#39;target&#39;</span><span class="p">:</span> <span class="s1">&#39;int&#39;</span><span class="p">,</span> <span class="s1">&#39;target_tim&#39;</span><span class="p">:</span> <span class="s1">&#39;int&#39;</span><span class="p">,</span> <span class="s1">&#39;uid&#39;</span><span class="p">:</span> <span class="s1">&#39;int&#39;</span>
+                             <span class="p">}</span>
+        <span class="k">if</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;evaluate_method&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;sample&#39;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">feature_dict</span><span class="p">[</span><span class="s1">&#39;neg_loc&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;int&#39;</span>
+            <span class="n">parameter_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;neg_samples&#39;</span><span class="p">)</span>
+        <span class="n">parameters_str</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">parameter_list</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">:</span>
+                <span class="n">parameters_str</span> <span class="o">+=</span> <span class="s1">&#39;_&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="n">key</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cache_file_name</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+            <span class="s1">&#39;./libcity/cache/dataset_cache/&#39;</span><span class="p">,</span> <span class="s1">&#39;trajectory_</span><span class="si">{}</span><span class="s1">.json&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">parameters_str</span><span class="p">))</span>
+        <span class="c1"># 对于这种 history 模式没办法做到 batch</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">history_type</span> <span class="o">==</span> <span class="s1">&#39;cut_off&#39;</span><span class="p">:</span>
+            <span class="c1"># self.config[&#39;batch_size&#39;] = 1</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">feature_dict</span><span class="p">[</span><span class="s1">&#39;history_loc&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;array of int&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">feature_dict</span><span class="p">[</span><span class="s1">&#39;history_tim&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;array of int&#39;</span>
+
+<div class="viewcode-block" id="StandardTrajectoryEncoder.encode"><a class="viewcode-back" href="../../../../../libcity/libcity.data.dataset.trajectory_encoder.standard_trajectory_encoder.html#libcity.data.dataset.trajectory_encoder.standard_trajectory_encoder.StandardTrajectoryEncoder.encode">[docs]</a>    <span class="k">def</span> <span class="nf">encode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">uid</span><span class="p">,</span> <span class="n">trajectories</span><span class="p">,</span> <span class="n">negative_sample</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;standard encoder use the same method as DeepMove</span>
+
+<span class="sd">        Recode poi id. Encode timestamp with its hour.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            uid ([type]): same as AbstractTrajectoryEncoder</span>
+<span class="sd">            trajectories ([type]): same as AbstractTrajectoryEncoder</span>
+<span class="sd">                trajectory1 = [</span>
+<span class="sd">                    (location ID, timestamp, timezone_offset_in_minutes),</span>
+<span class="sd">                    (location ID, timestamp, timezone_offset_in_minutes),</span>
+<span class="sd">                    .....</span>
+<span class="sd">                ]</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># 直接对 uid 进行重编码</span>
+        <span class="n">uid</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">uid</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">uid</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">encoded_trajectories</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">history_loc</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">history_tim</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">traj</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">trajectories</span><span class="p">):</span>
+            <span class="n">current_loc</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="n">current_tim</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">point</span> <span class="ow">in</span> <span class="n">traj</span><span class="p">:</span>
+                <span class="n">loc</span> <span class="o">=</span> <span class="n">point</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
+                <span class="n">now_time</span> <span class="o">=</span> <span class="n">parse_time</span><span class="p">(</span><span class="n">point</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+                <span class="k">if</span> <span class="n">loc</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">location2id</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">location2id</span><span class="p">[</span><span class="n">loc</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">loc_id</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">loc_id</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="n">current_loc</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">location2id</span><span class="p">[</span><span class="n">loc</span><span class="p">])</span>
+                <span class="c1"># 采用工作日编码到0-23，休息日编码到24-47</span>
+                <span class="n">time_code</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_time_encode</span><span class="p">(</span><span class="n">now_time</span><span class="p">)</span>
+                <span class="n">current_tim</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">time_code</span><span class="p">)</span>
+            <span class="c1"># 完成当前轨迹的编码，下面进行输入的形成</span>
+            <span class="k">if</span> <span class="n">index</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="c1"># 因为要历史轨迹特征，所以第一条轨迹是不能构成模型输入的</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">history_type</span> <span class="o">==</span> <span class="s1">&#39;splice&#39;</span><span class="p">:</span>
+                    <span class="n">history_loc</span> <span class="o">+=</span> <span class="n">current_loc</span>
+                    <span class="n">history_tim</span> <span class="o">+=</span> <span class="n">current_tim</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">history_loc</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">current_loc</span><span class="p">)</span>
+                    <span class="n">history_tim</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">current_tim</span><span class="p">)</span>
+                <span class="k">continue</span>
+            <span class="c1"># 一条轨迹可以产生多条训练数据，根据第一个点预测第二个点，前两个点预测第三个点....</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">current_loc</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+                <span class="n">trace</span> <span class="o">=</span> <span class="p">[]</span>
+                <span class="n">target</span> <span class="o">=</span> <span class="n">current_loc</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+                <span class="n">target_tim</span> <span class="o">=</span> <span class="n">current_tim</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+                <span class="n">trace</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">history_loc</span><span class="o">.</span><span class="n">copy</span><span class="p">())</span>
+                <span class="n">trace</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">history_tim</span><span class="o">.</span><span class="n">copy</span><span class="p">())</span>
+                <span class="n">trace</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">current_loc</span><span class="p">[:</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span>
+                <span class="n">trace</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">current_tim</span><span class="p">[:</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span>
+                <span class="n">trace</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
+                <span class="n">trace</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">target_tim</span><span class="p">)</span>
+                <span class="n">trace</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">uid</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">negative_sample</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="n">neg_loc</span> <span class="o">=</span> <span class="p">[]</span>
+                    <span class="k">for</span> <span class="n">neg</span> <span class="ow">in</span> <span class="n">negative_sample</span><span class="p">[</span><span class="n">index</span><span class="p">]:</span>
+                        <span class="k">if</span> <span class="n">neg</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">location2id</span><span class="p">:</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">location2id</span><span class="p">[</span><span class="n">neg</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">loc_id</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">loc_id</span> <span class="o">+=</span> <span class="mi">1</span>
+                        <span class="n">neg_loc</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">location2id</span><span class="p">[</span><span class="n">neg</span><span class="p">])</span>
+                    <span class="n">trace</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">neg_loc</span><span class="p">)</span>
+                <span class="n">encoded_trajectories</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">trace</span><span class="p">)</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">history_type</span> <span class="o">==</span> <span class="s1">&#39;splice&#39;</span><span class="p">:</span>
+                <span class="n">history_loc</span> <span class="o">+=</span> <span class="n">current_loc</span>
+                <span class="n">history_tim</span> <span class="o">+=</span> <span class="n">current_tim</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">history_loc</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">current_loc</span><span class="p">)</span>
+                <span class="n">history_tim</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">current_tim</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">encoded_trajectories</span></div>
+
+<div class="viewcode-block" id="StandardTrajectoryEncoder.gen_data_feature"><a class="viewcode-back" href="../../../../../libcity/libcity.data.dataset.trajectory_encoder.standard_trajectory_encoder.html#libcity.data.dataset.trajectory_encoder.standard_trajectory_encoder.StandardTrajectoryEncoder.gen_data_feature">[docs]</a>    <span class="k">def</span> <span class="nf">gen_data_feature</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">loc_pad</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">loc_id</span>
+        <span class="n">tim_pad</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">tim_max</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">history_type</span> <span class="o">==</span> <span class="s1">&#39;cut_off&#39;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">pad_item</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s1">&#39;current_loc&#39;</span><span class="p">:</span> <span class="n">loc_pad</span><span class="p">,</span>
+                <span class="s1">&#39;current_tim&#39;</span><span class="p">:</span> <span class="n">tim_pad</span>
+            <span class="p">}</span>
+            <span class="c1"># 这种情况下不对 history_loc history_tim 做补齐</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">pad_item</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s1">&#39;current_loc&#39;</span><span class="p">:</span> <span class="n">loc_pad</span><span class="p">,</span>
+                <span class="s1">&#39;history_loc&#39;</span><span class="p">:</span> <span class="n">loc_pad</span><span class="p">,</span>
+                <span class="s1">&#39;current_tim&#39;</span><span class="p">:</span> <span class="n">tim_pad</span><span class="p">,</span>
+                <span class="s1">&#39;history_tim&#39;</span><span class="p">:</span> <span class="n">tim_pad</span>
+            <span class="p">}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data_feature</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;loc_size&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">loc_id</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s1">&#39;tim_size&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">tim_max</span> <span class="o">+</span> <span class="mi">2</span><span class="p">,</span>
+            <span class="s1">&#39;uid_size&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">uid</span><span class="p">,</span>
+            <span class="s1">&#39;loc_pad&#39;</span><span class="p">:</span> <span class="n">loc_pad</span><span class="p">,</span>
+            <span class="s1">&#39;tim_pad&#39;</span><span class="p">:</span> <span class="n">tim_pad</span>
+        <span class="p">}</span></div>
+
+    <span class="k">def</span> <span class="nf">_time_encode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">time</span><span class="o">.</span><span class="n">weekday</span><span class="p">()</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]:</span>
+            <span class="k">return</span> <span class="n">time</span><span class="o">.</span><span class="n">hour</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">time</span><span class="o">.</span><span class="n">hour</span> <span class="o">+</span> <span class="mi">24</span></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, aptx1231
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

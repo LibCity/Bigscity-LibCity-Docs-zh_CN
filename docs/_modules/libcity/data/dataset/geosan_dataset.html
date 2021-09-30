@@ -1,0 +1,788 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>libcity.data.dataset.geosan_dataset &mdash; Bigscity-LibCity  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home" alt="Documentation Home"> Bigscity-LibCity
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">起步</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../get_started/introduction.html">介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../get_started/install.html">安装LibCity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../get_started/quick_start.html">快速入门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../get_started/directory_structure.html">目录结构</a></li>
+</ul>
+<p class="caption"><span class="caption-text">用户指导</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user_guide/config_settings.html">参数设置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user_guide/data.html">数据说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user_guide/model.html">复现模型列表</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user_guide/evaluator.html">评估模块简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user_guide/executor.html">执行模块简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user_guide/usage.html">使用示例</a></li>
+</ul>
+<p class="caption"><span class="caption-text">开发者指导</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../developer_guide/code_style.html">代码风格</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../developer_guide/implemented_datasets.html">自定义Dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../developer_guide/implemented_models.html">自定义Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../developer_guide/implemented_executors.html">自定义Executor</a></li>
+</ul>
+<p class="caption"><span class="caption-text">入门教程</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorial/install_quick_start.html">安装和快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorial/run_model.html">运行LibCity中已复现的模型</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorial/add_model.html">在LibCity中添加新模型</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorial/hyper_tune.html">使用自动化工具调参</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API文档</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../libcity/libcity.config.html">libcity.config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../libcity/libcity.data.html">libcity.data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../libcity/libcity.evaluator.html">libcity.evaluator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../libcity/libcity.executor.html">libcity.executor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../libcity/libcity.model.html">libcity.model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../libcity/libcity.pipeline.html">libcity.pipeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../libcity/libcity.utils.html">libcity.utils</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">Bigscity-LibCity</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../../index.html">Module code</a> &raquo;</li>
+        
+      <li>libcity.data.dataset.geosan_dataset</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for libcity.data.dataset.geosan_dataset</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">copy</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span>
+<span class="kn">from</span> <span class="nn">torchtext.data</span> <span class="kn">import</span> <span class="n">Field</span>
+<span class="kn">from</span> <span class="nn">nltk</span> <span class="kn">import</span> <span class="n">ngrams</span>
+<span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
+<span class="kn">from</span> <span class="nn">libcity.data.dataset</span> <span class="kn">import</span> <span class="n">AbstractDataset</span>
+<span class="kn">from</span> <span class="nn">torch.utils.data</span> <span class="kn">import</span> <span class="n">DataLoader</span>
+<span class="kn">from</span> <span class="nn">torch.utils.data</span> <span class="kn">import</span> <span class="n">Sampler</span>
+<span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">from</span> <span class="nn">torch.nn.utils.rnn</span> <span class="kn">import</span> <span class="n">pad_sequence</span>
+<span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
+<span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="kn">import</span> <span class="n">BallTree</span>
+
+
+<div class="viewcode-block" id="GeoSANDataset"><a class="viewcode-back" href="../../../../libcity/libcity.data.dataset.geosan_dataset.html#libcity.data.dataset.geosan_dataset.GeoSANDataset">[docs]</a><span class="k">class</span> <span class="nc">GeoSANDataset</span><span class="p">(</span><span class="n">AbstractDataset</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">LOD</span> <span class="o">=</span> <span class="mi">17</span>
+        <span class="n">dataset_name</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;dataset&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">config</span> <span class="o">=</span> <span class="n">config</span>
+        <span class="n">raw_dir</span> <span class="o">=</span> <span class="s2">&quot;./raw_data&quot;</span>
+        <span class="n">dyna</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">raw_dir</span><span class="p">,</span> <span class="n">dataset_name</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">dataset_name</span><span class="si">}</span><span class="s2">.dyna&quot;</span><span class="p">)</span>
+        <span class="n">geo</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">raw_dir</span><span class="p">,</span> <span class="n">dataset_name</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">dataset_name</span><span class="si">}</span><span class="s2">.geo&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dyna</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">dyna</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">geo</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">geo</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s1">&#39;geo_id&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">loc2gps</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;&lt;pad&gt;&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">loc2count</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_loc</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">loc2idx</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;&lt;pad&gt;&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">idx2loc</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="s1">&#39;&lt;pad&gt;&#39;</span><span class="p">}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">idx2gps</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)}</span>  <span class="c1"># (latitude, longitude) tuple</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">build_vocab</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">n_loc</span><span class="si">}</span><span class="s1"> locations&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">user_seq</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">user2idx</span><span class="p">,</span> \
+            <span class="bp">self</span><span class="o">.</span><span class="n">region2idx</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_user</span><span class="p">,</span> \
+            <span class="bp">self</span><span class="o">.</span><span class="n">n_region</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">region2loc</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_time</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">processing</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">user_seq</span><span class="p">)</span><span class="si">}</span><span class="s1"> users&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">region2idx</span><span class="p">)</span><span class="si">}</span><span class="s1"> regions&#39;</span><span class="p">)</span>
+
+<div class="viewcode-block" id="GeoSANDataset.get_data"><a class="viewcode-back" href="../../../../libcity/libcity.data.dataset.geosan_dataset.html#libcity.data.dataset.geosan_dataset.GeoSANDataset.get_data">[docs]</a>    <span class="k">def</span> <span class="nf">get_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        返回数据的DataLoader，包括训练数据、测试数据(事实上不提供)、验证数据</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            tuple: tuple contains:</span>
+<span class="sd">                train_dataloader: Dataloader composed of Batch (class) \n</span>
+<span class="sd">                eval_dataloader: None(no valid step) \n</span>
+<span class="sd">                test_dataloader: Dataloader composed of Batch (class)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;executor_config&#39;</span><span class="p">][</span><span class="s2">&quot;train&quot;</span><span class="p">][</span><span class="s2">&quot;negative_sampler&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;KNNSampler&quot;</span>
+        <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;executor_config&#39;</span><span class="p">][</span><span class="s2">&quot;test&quot;</span><span class="p">][</span><span class="s2">&quot;negative_sampler&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;KNNSampler&quot;</span>
+        <span class="n">user_visited_locs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_visited_locs</span><span class="p">()</span>
+
+        <span class="n">train_dataset</span><span class="p">,</span> <span class="n">test_dataset</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+        <span class="n">batch_size</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;executor_config&#39;</span><span class="p">][</span><span class="s1">&#39;train&#39;</span><span class="p">][</span><span class="s1">&#39;batch_size&#39;</span><span class="p">])</span>
+        <span class="n">num_workers</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;executor_config&#39;</span><span class="p">][</span><span class="s1">&#39;train&#39;</span><span class="p">][</span><span class="s1">&#39;num_workers&#39;</span><span class="p">])</span>
+        <span class="n">num_neg</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;executor_config&#39;</span><span class="p">][</span><span class="s1">&#39;train&#39;</span><span class="p">][</span><span class="s1">&#39;num_negative_samples&#39;</span><span class="p">])</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;num_neg: </span><span class="si">{</span><span class="n">num_neg</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;build LocQuerySystem...&quot;</span><span class="p">)</span>
+        <span class="n">loc_query_sys</span> <span class="o">=</span> <span class="n">LocQuerySystem</span><span class="p">()</span>
+        <span class="n">loc_query_sys</span><span class="o">.</span><span class="n">build_tree</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="c1"># wrap with Dataloader here</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;get train_loader...&quot;</span><span class="p">)</span>
+        <span class="n">sampler</span> <span class="o">=</span> <span class="n">KNNSampler</span><span class="p">(</span>
+            <span class="n">query_sys</span><span class="o">=</span><span class="n">loc_query_sys</span><span class="p">,</span>
+            <span class="n">user_visited_locs</span><span class="o">=</span><span class="n">user_visited_locs</span><span class="p">,</span>
+            <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;executor_config&#39;</span><span class="p">][</span><span class="s2">&quot;train&quot;</span><span class="p">][</span><span class="s2">&quot;negative_sampler_config&quot;</span><span class="p">]</span>
+        <span class="p">)</span>
+        <span class="n">train_loader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">train_dataset</span><span class="p">,</span> <span class="n">sampler</span><span class="o">=</span><span class="n">LadderSampler</span><span class="p">(</span><span class="n">train_dataset</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">),</span>
+                                  <span class="n">num_workers</span><span class="o">=</span><span class="n">num_workers</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span>
+                                  <span class="n">collate_fn</span><span class="o">=</span><span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="n">GeoSANDataset</span><span class="o">.</span><span class="n">collect_fn_quadkey</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">train_dataset</span><span class="p">,</span>
+                                                                                        <span class="n">sampler</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">QUADKEY</span><span class="p">,</span>
+                                                                                        <span class="bp">self</span><span class="o">.</span><span class="n">loc2quadkey</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="n">num_neg</span><span class="p">))</span>
+
+        <span class="n">test_sampler</span> <span class="o">=</span> <span class="n">KNNSampler</span><span class="p">(</span>
+            <span class="n">query_sys</span><span class="o">=</span><span class="n">loc_query_sys</span><span class="p">,</span>
+            <span class="n">user_visited_locs</span><span class="o">=</span><span class="n">user_visited_locs</span><span class="p">,</span>
+            <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;executor_config&#39;</span><span class="p">][</span><span class="s2">&quot;test&quot;</span><span class="p">][</span><span class="s2">&quot;negative_sampler_config&quot;</span><span class="p">]</span>
+        <span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;get test_loader...&quot;</span><span class="p">)</span>
+        <span class="n">num_neg_test</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;executor_config&#39;</span><span class="p">][</span><span class="s1">&#39;test&#39;</span><span class="p">][</span><span class="s1">&#39;num_negative_samples&#39;</span><span class="p">])</span>
+        <span class="n">test_loader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">test_dataset</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span>
+                                 <span class="n">collate_fn</span><span class="o">=</span><span class="k">lambda</span> <span class="n">e</span><span class="p">:</span>
+                                 <span class="n">GeoSANDataset</span><span class="o">.</span><span class="n">collect_fn_quadkey</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">test_dataset</span><span class="p">,</span>
+                                                                  <span class="n">test_sampler</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">QUADKEY</span><span class="p">,</span>
+                                                                  <span class="bp">self</span><span class="o">.</span><span class="n">loc2quadkey</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="n">num_neg_test</span><span class="p">))</span>
+
+        <span class="k">return</span> <span class="n">train_loader</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">test_loader</span></div>
+
+<div class="viewcode-block" id="GeoSANDataset.get_data_feature"><a class="viewcode-back" href="../../../../libcity/libcity.data.dataset.geosan_dataset.html#libcity.data.dataset.geosan_dataset.GeoSANDataset.get_data_feature">[docs]</a>    <span class="k">def</span> <span class="nf">get_data_feature</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        返回一个 dict，包含数据集的相关特征</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            dict: 包含数据集的相关特征的字典</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">tmp</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;nuser&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_user</span><span class="p">,</span>
+            <span class="s1">&#39;nloc&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_loc</span><span class="p">,</span>
+            <span class="s1">&#39;ntime&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_time</span><span class="p">,</span>
+            <span class="s1">&#39;nquadkey&#39;</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">QUADKEY</span><span class="o">.</span><span class="n">vocab</span><span class="o">.</span><span class="n">itos</span><span class="p">)</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">tmp</span></div>
+
+<div class="viewcode-block" id="GeoSANDataset.collect_fn_quadkey"><a class="viewcode-back" href="../../../../libcity/libcity.data.dataset.geosan_dataset.html#libcity.data.dataset.geosan_dataset.GeoSANDataset.collect_fn_quadkey">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">collect_fn_quadkey</span><span class="p">(</span><span class="n">batch</span><span class="p">,</span> <span class="n">data_source</span><span class="p">,</span> <span class="n">sampler</span><span class="p">,</span> <span class="n">region_processer</span><span class="p">,</span> <span class="n">loc2quadkey</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">with_trg_quadkey</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="n">src</span><span class="p">,</span> <span class="n">trg</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">batch</span><span class="p">)</span>
+        <span class="n">user</span><span class="p">,</span> <span class="n">loc</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">region</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[],</span> <span class="p">[],</span> <span class="p">[]</span>
+        <span class="n">data_size</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">trg_</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">trg_probs_</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">src</span><span class="p">:</span>
+            <span class="n">u_</span><span class="p">,</span> <span class="n">l_</span><span class="p">,</span> <span class="n">t_</span><span class="p">,</span> <span class="n">r_</span><span class="p">,</span> <span class="n">b_</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">e</span><span class="p">)</span>
+            <span class="n">data_size</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">u_</span><span class="p">))</span>
+            <span class="n">user</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">u_</span><span class="p">))</span>
+            <span class="n">loc</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">l_</span><span class="p">))</span>
+            <span class="n">time</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">t_</span><span class="p">))</span>
+            <span class="n">r_</span> <span class="o">=</span> <span class="n">region_processer</span><span class="o">.</span><span class="n">numericalize</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">r_</span><span class="p">))</span>  <span class="c1"># (L, LEN_QUADKEY)</span>
+            <span class="n">region</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">r_</span><span class="p">)</span>
+        <span class="n">user_</span> <span class="o">=</span> <span class="n">pad_sequence</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">batch_first</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># (N,T) 下同，返回时通过.t()变为(T,N)</span>
+        <span class="n">loc_</span> <span class="o">=</span> <span class="n">pad_sequence</span><span class="p">(</span><span class="n">loc</span><span class="p">,</span> <span class="n">batch_first</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">time_</span> <span class="o">=</span> <span class="n">pad_sequence</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">batch_first</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="c1"># (T, N, LEN_QUADKEY)</span>
+        <span class="n">region_</span> <span class="o">=</span> <span class="n">pad_sequence</span><span class="p">(</span><span class="n">region</span><span class="p">,</span> <span class="n">batch_first</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">with_trg_quadkey</span><span class="p">:</span>
+            <span class="n">batch_trg_regs</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">seq</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">trg</span><span class="p">):</span>
+                <span class="n">pos</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="n">e</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">seq</span><span class="p">])</span>
+                <span class="n">neg</span><span class="p">,</span> <span class="n">probs</span> <span class="o">=</span> <span class="n">sampler</span><span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">user</span><span class="o">=</span><span class="n">seq</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+                <span class="c1"># (L, k+1), k即为负采样的k</span>
+                <span class="n">trg_seq</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">([</span><span class="n">pos</span><span class="p">,</span> <span class="n">neg</span><span class="p">],</span> <span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+                <span class="n">trg_</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">trg_seq</span><span class="p">)</span>
+                <span class="n">trg_regs</span> <span class="o">=</span> <span class="p">[]</span>
+                <span class="k">for</span> <span class="n">trg_seq_idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">trg_seq</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">)):</span>
+                    <span class="n">regs</span> <span class="o">=</span> <span class="p">[]</span>
+                    <span class="k">for</span> <span class="n">loc</span> <span class="ow">in</span> <span class="n">trg_seq</span><span class="p">[</span><span class="n">trg_seq_idx</span><span class="p">]:</span>
+                        <span class="n">regs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">loc2quadkey</span><span class="p">[</span><span class="n">loc</span><span class="p">])</span>
+                    <span class="n">trg_regs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">region_processer</span><span class="o">.</span><span class="n">numericalize</span><span class="p">(</span><span class="n">regs</span><span class="p">))</span>
+                <span class="n">batch_trg_regs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">trg_regs</span><span class="p">))</span>
+                <span class="n">trg_probs_</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">probs</span><span class="p">)</span>
+            <span class="c1"># (N, T, k+1, LEN_QUADKEY)</span>
+            <span class="n">batch_trg_regs</span> <span class="o">=</span> <span class="n">pad_sequence</span><span class="p">(</span><span class="n">batch_trg_regs</span><span class="p">,</span> <span class="n">batch_first</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="c1"># [(1+k) * T, N, LEN_QUADKEY)</span>
+            <span class="n">batch_trg_regs</span> <span class="o">=</span> <span class="n">batch_trg_regs</span><span class="o">.</span><span class="n">permute</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span>
+                                                    <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">contiguous</span><span class="p">()</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+                                                                            <span class="n">batch_trg_regs</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span>
+                                                                            <span class="n">batch_trg_regs</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+            <span class="n">trg_</span> <span class="o">=</span> <span class="n">pad_sequence</span><span class="p">(</span><span class="n">trg_</span><span class="p">,</span> <span class="n">batch_first</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="n">trg_probs_</span> <span class="o">=</span> <span class="n">pad_sequence</span><span class="p">(</span><span class="n">trg_probs_</span><span class="p">,</span> <span class="n">batch_first</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">padding_value</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+            <span class="n">trg_</span> <span class="o">=</span> <span class="n">trg_</span><span class="o">.</span><span class="n">permute</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">contiguous</span><span class="p">()</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">trg_</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+            <span class="n">trg_nov_</span> <span class="o">=</span> <span class="p">[[</span><span class="ow">not</span> <span class="n">e</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">seq</span><span class="p">]</span> <span class="k">for</span> <span class="n">seq</span> <span class="ow">in</span> <span class="n">trg</span><span class="p">]</span>
+            <span class="k">return</span> <span class="n">user_</span><span class="o">.</span><span class="n">t</span><span class="p">(),</span> <span class="n">loc_</span><span class="o">.</span><span class="n">t</span><span class="p">(),</span> <span class="n">time_</span><span class="o">.</span><span class="n">t</span><span class="p">(),</span> <span class="n">region_</span><span class="p">,</span> <span class="n">trg_</span><span class="p">,</span> <span class="n">batch_trg_regs</span><span class="p">,</span> <span class="n">trg_nov_</span><span class="p">,</span> <span class="n">trg_probs_</span><span class="p">,</span> <span class="n">data_size</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">seq</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">trg</span><span class="p">):</span>
+                <span class="n">pos</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="n">e</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">seq</span><span class="p">])</span>
+                <span class="n">neg</span><span class="p">,</span> <span class="n">probs</span> <span class="o">=</span> <span class="n">sampler</span><span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">user</span><span class="o">=</span><span class="n">seq</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+                <span class="n">trg_</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">([</span><span class="n">pos</span><span class="p">,</span> <span class="n">neg</span><span class="p">],</span> <span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">))</span>
+                <span class="n">trg_probs_</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">probs</span><span class="p">)</span>
+            <span class="n">trg_</span> <span class="o">=</span> <span class="n">pad_sequence</span><span class="p">(</span><span class="n">trg_</span><span class="p">,</span> <span class="n">batch_first</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="n">trg_probs_</span> <span class="o">=</span> <span class="n">pad_sequence</span><span class="p">(</span><span class="n">trg_probs_</span><span class="p">,</span> <span class="n">batch_first</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">padding_value</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+            <span class="n">trg_</span> <span class="o">=</span> <span class="n">trg_</span><span class="o">.</span><span class="n">permute</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">contiguous</span><span class="p">()</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">trg_</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+            <span class="n">trg_nov_</span> <span class="o">=</span> <span class="p">[[</span><span class="ow">not</span> <span class="n">e</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">seq</span><span class="p">]</span> <span class="k">for</span> <span class="n">seq</span> <span class="ow">in</span> <span class="n">trg</span><span class="p">]</span>
+            <span class="k">return</span> <span class="n">user_</span><span class="o">.</span><span class="n">t</span><span class="p">(),</span> <span class="n">loc_</span><span class="o">.</span><span class="n">t</span><span class="p">(),</span> <span class="n">time_</span><span class="o">.</span><span class="n">t</span><span class="p">(),</span> <span class="n">region_</span><span class="p">,</span> <span class="n">trg_</span><span class="p">,</span> <span class="n">trg_nov_</span><span class="p">,</span> <span class="n">trg_probs_</span><span class="p">,</span> <span class="n">data_size</span></div>
+
+<div class="viewcode-block" id="GeoSANDataset.region_stats"><a class="viewcode-back" href="../../../../libcity/libcity.data.dataset.geosan_dataset.html#libcity.data.dataset.geosan_dataset.GeoSANDataset.region_stats">[docs]</a>    <span class="k">def</span> <span class="nf">region_stats</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        统计并打印数据集的一些基本信息</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">num_reg_locs</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">reg</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">region2loc</span><span class="p">:</span>
+            <span class="n">num_reg_locs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">region2loc</span><span class="p">[</span><span class="n">reg</span><span class="p">]))</span>
+        <span class="n">num_reg_locs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">num_reg_locs</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;min #loc/region: </span><span class="si">{:d}</span><span class="s2">, with </span><span class="si">{:d}</span><span class="s2"> regions&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">num_reg_locs</span><span class="p">),</span>
+                                                                <span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">num_reg_locs</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;max #loc/region:&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">num_reg_locs</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;avg #loc/region: </span><span class="si">{:.4f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">num_reg_locs</span><span class="p">)))</span>
+        <span class="n">hist</span><span class="p">,</span> <span class="n">bin_edges</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">num_reg_locs</span><span class="p">,</span>
+                                       <span class="n">bins</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">num_reg_locs</span><span class="p">)])</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">bin_edges</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;#loc in [</span><span class="si">{}</span><span class="s2">, </span><span class="si">{}</span><span class="s2">]: </span><span class="si">{:d}</span><span class="s2"> regions&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">bin_edges</span><span class="p">[</span><span class="n">i</span><span class="p">]),</span>
+                                                          <span class="n">math</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">bin_edges</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">),</span> <span class="n">hist</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span></div>
+
+<div class="viewcode-block" id="GeoSANDataset.get_visited_locs"><a class="viewcode-back" href="../../../../libcity/libcity.data.dataset.geosan_dataset.html#libcity.data.dataset.geosan_dataset.GeoSANDataset.get_visited_locs">[docs]</a>    <span class="k">def</span> <span class="nf">get_visited_locs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;get_visited_locs...&quot;</span><span class="p">)</span>
+        <span class="n">user_visited_locs</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">u</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">user_seq</span><span class="p">)):</span>
+            <span class="n">seq</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">user_seq</span><span class="p">[</span><span class="n">u</span><span class="p">]</span>
+            <span class="n">user</span> <span class="o">=</span> <span class="n">seq</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">user_visited_locs</span><span class="p">[</span><span class="n">user</span><span class="p">]</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">seq</span><span class="p">))):</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">seq</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">4</span><span class="p">]:</span>
+                    <span class="k">break</span>
+            <span class="n">user_visited_locs</span><span class="p">[</span><span class="n">user</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">seq</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
+            <span class="n">seq</span> <span class="o">=</span> <span class="n">seq</span><span class="p">[:</span><span class="n">i</span><span class="p">]</span>
+            <span class="k">for</span> <span class="n">check_in</span> <span class="ow">in</span> <span class="n">seq</span><span class="p">:</span>
+                <span class="n">user_visited_locs</span><span class="p">[</span><span class="n">user</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">check_in</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+        <span class="k">return</span> <span class="n">user_visited_locs</span></div>
+
+<div class="viewcode-block" id="GeoSANDataset.build_vocab"><a class="viewcode-back" href="../../../../libcity/libcity.data.dataset.geosan_dataset.html#libcity.data.dataset.geosan_dataset.GeoSANDataset.build_vocab">[docs]</a>    <span class="k">def</span> <span class="nf">build_vocab</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">min_freq</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dyna</span><span class="o">.</span><span class="n">itertuples</span><span class="p">(),</span> <span class="n">desc</span><span class="o">=</span><span class="s2">&quot;build_vocab&quot;</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">total</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dyna</span><span class="p">)):</span>
+            <span class="n">loc</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="s1">&#39;location&#39;</span><span class="p">)</span>
+            <span class="n">coordinate</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__get_lat_lon__</span><span class="p">(</span><span class="n">loc</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">add_location</span><span class="p">(</span><span class="n">loc</span><span class="p">,</span> <span class="n">coordinate</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">min_freq</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">n_loc</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">loc2idx</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;&lt;pad&gt;&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">idx2loc</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="s1">&#39;&lt;pad&gt;&#39;</span><span class="p">}</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">idx2gps</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)}</span>
+            <span class="k">for</span> <span class="n">loc</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">loc2count</span><span class="p">:</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">loc2count</span><span class="p">[</span><span class="n">loc</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">min_freq</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">add_location</span><span class="p">(</span><span class="n">loc</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">loc2gps</span><span class="p">[</span><span class="n">loc</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">locidx2freq</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n_loc</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">loc</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">idx2loc</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">idx</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">locidx2freq</span><span class="p">[</span><span class="n">idx</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">loc2count</span><span class="p">[</span><span class="n">loc</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="GeoSANDataset.processing"><a class="viewcode-back" href="../../../../libcity/libcity.data.dataset.geosan_dataset.html#libcity.data.dataset.geosan_dataset.GeoSANDataset.processing">[docs]</a>    <span class="k">def</span> <span class="nf">processing</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">min_freq</span><span class="o">=</span><span class="mi">20</span><span class="p">):</span>
+        <span class="c1"># 构建user_seq, 每个user对应一个列表，</span>
+        <span class="c1"># 列表中元素组成：[loc_idx, time_idx, region_idx, region, time]</span>
+        <span class="n">user_seq</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">region2idx</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">idx2region</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">regidx2loc</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">set</span><span class="p">)</span>
+        <span class="n">n_region</span> <span class="o">=</span> <span class="mi">1</span>
+
+        <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dyna</span><span class="o">.</span><span class="n">itertuples</span><span class="p">(),</span> <span class="n">desc</span><span class="o">=</span><span class="s2">&quot;processing&quot;</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">total</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dyna</span><span class="p">)):</span>
+            <span class="n">user</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="s1">&#39;entity_id&#39;</span><span class="p">)</span>
+            <span class="n">loc</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="s1">&#39;location&#39;</span><span class="p">)</span>
+            <span class="n">lat</span><span class="p">,</span> <span class="n">lon</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__get_lat_lon__</span><span class="p">(</span><span class="n">loc</span><span class="p">)</span>
+            <span class="n">time</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="s1">&#39;time&#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">loc</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">loc2idx</span><span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="n">time</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">T%H:%M:%SZ&#39;</span><span class="p">)</span>
+            <span class="c1"># time = datetime.strptime(time, &quot;%Y-%m-%d %H:%M:%S+00:00&quot;)</span>
+            <span class="n">time_idx</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">weekday</span><span class="p">()</span> <span class="o">*</span> <span class="mi">24</span> <span class="o">+</span> <span class="n">time</span><span class="o">.</span><span class="n">hour</span> <span class="o">+</span> <span class="mi">1</span>
+            <span class="n">loc_idx</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">loc2idx</span><span class="p">[</span><span class="n">loc</span><span class="p">]</span>
+            <span class="n">region</span> <span class="o">=</span> <span class="n">latlon2quadkey</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">lat</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">lon</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">LOD</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">region</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">region2idx</span><span class="p">:</span>
+                <span class="n">region2idx</span><span class="p">[</span><span class="n">region</span><span class="p">]</span> <span class="o">=</span> <span class="n">n_region</span>
+                <span class="n">idx2region</span><span class="p">[</span><span class="n">n_region</span><span class="p">]</span> <span class="o">=</span> <span class="n">region</span>
+                <span class="n">n_region</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">region_idx</span> <span class="o">=</span> <span class="n">region2idx</span><span class="p">[</span><span class="n">region</span><span class="p">]</span>
+            <span class="n">regidx2loc</span><span class="p">[</span><span class="n">region_idx</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">loc_idx</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">user</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">user_seq</span><span class="p">:</span>
+                <span class="n">user_seq</span><span class="p">[</span><span class="n">user</span><span class="p">]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+            <span class="n">user_seq</span><span class="p">[</span><span class="n">user</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">loc_idx</span><span class="p">,</span> <span class="n">time_idx</span><span class="p">,</span> <span class="n">region_idx</span><span class="p">,</span> <span class="n">region</span><span class="p">,</span> <span class="n">time</span><span class="p">])</span>
+
+        <span class="c1"># 构建user_seq_array, 每个user对应一个列表</span>
+        <span class="c1"># 列表中元素组成：[user_idx, loc_idx, time_idx, region, is_new_loc]</span>
+        <span class="c1"># 只有loc数大于min_freq, 且有超过min_freq/2个new_loc时，才会加入到user_seq_array中</span>
+        <span class="c1"># user2idx：顺序映射原user中加入到user_seq_array的user编号</span>
+        <span class="n">user_seq_array</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+        <span class="n">user2idx</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">n_users</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">for</span> <span class="n">user</span><span class="p">,</span> <span class="n">seq</span> <span class="ow">in</span> <span class="n">user_seq</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">min_freq</span><span class="p">:</span>
+                <span class="n">user2idx</span><span class="p">[</span><span class="n">user</span><span class="p">]</span> <span class="o">=</span> <span class="n">n_users</span>
+                <span class="n">user_idx</span> <span class="o">=</span> <span class="n">n_users</span>
+                <span class="n">seq_new</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+                <span class="n">tmp_set</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+                <span class="n">cnt</span> <span class="o">=</span> <span class="mi">0</span>
+                <span class="k">for</span> <span class="n">loc</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">region_quadkey</span><span class="p">,</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="n">e</span><span class="p">[</span><span class="mi">4</span><span class="p">]):</span>
+                    <span class="k">if</span> <span class="n">loc</span> <span class="ow">in</span> <span class="n">tmp_set</span><span class="p">:</span>
+                        <span class="n">seq_new</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">user_idx</span><span class="p">,</span> <span class="n">loc</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">region_quadkey</span><span class="p">,</span> <span class="kc">True</span><span class="p">))</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">seq_new</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">user_idx</span><span class="p">,</span> <span class="n">loc</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">region_quadkey</span><span class="p">,</span> <span class="kc">False</span><span class="p">))</span>
+                        <span class="n">tmp_set</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">loc</span><span class="p">)</span>
+                        <span class="n">cnt</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="k">if</span> <span class="n">cnt</span> <span class="o">&gt;</span> <span class="n">min_freq</span> <span class="o">/</span> <span class="mi">2</span><span class="p">:</span>
+                    <span class="n">n_users</span> <span class="o">+=</span> <span class="mi">1</span>
+                    <span class="n">user_seq_array</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">seq_new</span><span class="p">)</span>
+
+        <span class="c1"># 将原region_quadkey替换为按照ngrams=6切分后的quadkey列表</span>
+        <span class="c1"># 同时添加入all_quadkeys中</span>
+        <span class="n">all_quadkeys</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">u</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">user_seq_array</span><span class="p">)):</span>
+            <span class="n">seq</span> <span class="o">=</span> <span class="n">user_seq_array</span><span class="p">[</span><span class="n">u</span><span class="p">]</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">seq</span><span class="p">)):</span>
+                <span class="n">check_in</span> <span class="o">=</span> <span class="n">seq</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+                <span class="n">region_quadkey</span> <span class="o">=</span> <span class="n">check_in</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+                <span class="n">region_quadkey_bigram</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">ngrams</span><span class="p">(</span><span class="n">region_quadkey</span><span class="p">,</span> <span class="mi">6</span><span class="p">)])</span>
+                <span class="n">region_quadkey_bigram</span> <span class="o">=</span> <span class="n">region_quadkey_bigram</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+                <span class="n">all_quadkeys</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">region_quadkey_bigram</span><span class="p">)</span>
+                <span class="n">user_seq_array</span><span class="p">[</span><span class="n">u</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">check_in</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">check_in</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">check_in</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">region_quadkey_bigram</span><span class="p">,</span> <span class="n">check_in</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span>
+
+        <span class="c1"># 再把所有的loc对应的quadkey添加到loc2quadkey与all_quadkeys中</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">loc2quadkey</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;NULL&#39;</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">loc_idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_loc</span><span class="p">):</span>
+            <span class="n">lat</span><span class="p">,</span> <span class="n">lon</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">idx2gps</span><span class="p">[</span><span class="n">loc_idx</span><span class="p">]</span>
+            <span class="n">quadkey</span> <span class="o">=</span> <span class="n">latlon2quadkey</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">lat</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">lon</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">LOD</span><span class="p">)</span>
+            <span class="n">quadkey_bigram</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">ngrams</span><span class="p">(</span><span class="n">quadkey</span><span class="p">,</span> <span class="mi">6</span><span class="p">)])</span>
+            <span class="n">quadkey_bigram</span> <span class="o">=</span> <span class="n">quadkey_bigram</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">loc2quadkey</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">quadkey_bigram</span><span class="p">)</span>
+            <span class="n">all_quadkeys</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">quadkey_bigram</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">QUADKEY</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span>
+            <span class="n">sequential</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">use_vocab</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">batch_first</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">unk_token</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="n">preprocessing</span><span class="o">=</span><span class="nb">str</span><span class="o">.</span><span class="n">split</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">QUADKEY</span><span class="o">.</span><span class="n">build_vocab</span><span class="p">(</span><span class="n">all_quadkeys</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">user_seq_array</span><span class="p">,</span> <span class="n">user2idx</span><span class="p">,</span> <span class="n">region2idx</span><span class="p">,</span> <span class="n">n_users</span><span class="p">,</span> <span class="n">n_region</span><span class="p">,</span> <span class="n">regidx2loc</span><span class="p">,</span> <span class="mi">169</span></div>
+
+    <span class="k">def</span> <span class="nf">__get_lat_lon__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">loc</span><span class="p">):</span>
+        <span class="n">coor</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">geo</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">loc</span><span class="p">][</span><span class="s1">&#39;coordinates&#39;</span><span class="p">])</span>
+        <span class="k">return</span> <span class="n">coor</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">coor</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+<div class="viewcode-block" id="GeoSANDataset.add_location"><a class="viewcode-back" href="../../../../libcity/libcity.data.dataset.geosan_dataset.html#libcity.data.dataset.geosan_dataset.GeoSANDataset.add_location">[docs]</a>    <span class="k">def</span> <span class="nf">add_location</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">loc</span><span class="p">,</span> <span class="n">coordinate</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">loc</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">loc2idx</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">loc2idx</span><span class="p">[</span><span class="n">loc</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_loc</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">loc2gps</span><span class="p">[</span><span class="n">loc</span><span class="p">]</span> <span class="o">=</span> <span class="n">coordinate</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">idx2loc</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">n_loc</span><span class="p">]</span> <span class="o">=</span> <span class="n">loc</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">idx2gps</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">n_loc</span><span class="p">]</span> <span class="o">=</span> <span class="n">coordinate</span>
+            <span class="k">if</span> <span class="n">loc</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">loc2count</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">loc2count</span><span class="p">[</span><span class="n">loc</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">n_loc</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">loc2count</span><span class="p">[</span><span class="n">loc</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span></div>
+
+    <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">user_seq</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">user_seq</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+
+<div class="viewcode-block" id="GeoSANDataset.split"><a class="viewcode-back" href="../../../../libcity/libcity.data.dataset.geosan_dataset.html#libcity.data.dataset.geosan_dataset.GeoSANDataset.split">[docs]</a>    <span class="k">def</span> <span class="nf">split</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">max_len</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;split dataset...&quot;</span><span class="p">)</span>
+        <span class="n">train_</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="n">test_</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="c1"># 训练数据由(src, trg)组成, src/trg含有的元素(位置信息)均不超过max_len=100</span>
+        <span class="c1"># 每个元素的格式为[user_idx, loc_idx, time_idx, region, is_new_loc]</span>
+        <span class="c1"># 其中region为按照ngrams=6切分后的quadkey列表</span>
+        <span class="n">train_seq</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+        <span class="n">test_seq</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">u</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">)):</span>
+            <span class="n">seq</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="n">u</span><span class="p">]</span>
+            <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="c1"># 找到最后一个不曾访问过的loc的索引i</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">seq</span><span class="p">))):</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">seq</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">4</span><span class="p">]:</span>
+                    <span class="k">break</span>
+            <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">floor</span><span class="p">((</span><span class="n">i</span> <span class="o">+</span> <span class="n">max_len</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">//</span> <span class="n">max_len</span><span class="p">)):</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">-</span> <span class="n">b</span> <span class="o">*</span> <span class="n">max_len</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">max_len</span><span class="o">*</span><span class="mf">1.1</span><span class="p">:</span>
+                    <span class="n">trg</span> <span class="o">=</span> <span class="n">seq</span><span class="p">[(</span><span class="n">i</span> <span class="o">-</span> <span class="p">(</span><span class="n">b</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">max_len</span><span class="p">):</span> <span class="p">(</span><span class="n">i</span> <span class="o">-</span> <span class="n">b</span> <span class="o">*</span> <span class="n">max_len</span><span class="p">)]</span>
+                    <span class="n">src</span> <span class="o">=</span> <span class="n">seq</span><span class="p">[(</span><span class="n">i</span> <span class="o">-</span> <span class="p">(</span><span class="n">b</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">max_len</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span> <span class="p">(</span><span class="n">i</span> <span class="o">-</span> <span class="n">b</span> <span class="o">*</span> <span class="n">max_len</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)]</span>
+                    <span class="n">train_seq</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">src</span><span class="p">,</span> <span class="n">trg</span><span class="p">))</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">trg</span> <span class="o">=</span> <span class="n">seq</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span> <span class="p">(</span><span class="n">i</span> <span class="o">-</span> <span class="n">b</span> <span class="o">*</span> <span class="n">max_len</span><span class="p">)]</span>
+                    <span class="n">src</span> <span class="o">=</span> <span class="n">seq</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span> <span class="p">(</span><span class="n">i</span> <span class="o">-</span> <span class="n">b</span> <span class="o">*</span> <span class="n">max_len</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)]</span>
+                    <span class="n">train_seq</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">src</span><span class="p">,</span> <span class="n">trg</span><span class="p">))</span>
+                    <span class="k">break</span>
+            <span class="c1"># test_seq的src的长度为min(i,max_len), 为到i之前的元素；</span>
+            <span class="c1"># trg的长度为1, 即索引i对应的元素</span>
+            <span class="n">test_seq</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">seq</span><span class="p">[</span><span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="n">max_len</span><span class="o">+</span><span class="n">i</span><span class="p">):</span><span class="n">i</span><span class="p">],</span> <span class="n">seq</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]))</span>
+        <span class="n">train_</span><span class="o">.</span><span class="n">user_seq</span> <span class="o">=</span> <span class="n">train_seq</span>
+        <span class="n">test_</span><span class="o">.</span><span class="n">user_seq</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">test_seq</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">e</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+        <span class="k">return</span> <span class="n">train_</span><span class="p">,</span> <span class="n">test_</span></div></div>
+
+<span class="c1"># utils for dataset</span>
+
+
+<div class="viewcode-block" id="LocQuerySystem"><a class="viewcode-back" href="../../../../libcity/libcity.data.dataset.geosan_dataset.html#libcity.data.dataset.geosan_dataset.LocQuerySystem">[docs]</a><span class="k">class</span> <span class="nc">LocQuerySystem</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tree</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">knn</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">knn_results</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">radius</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">radius_results</span> <span class="o">=</span> <span class="kc">None</span>
+
+<div class="viewcode-block" id="LocQuerySystem.build_tree"><a class="viewcode-back" href="../../../../libcity/libcity.data.dataset.geosan_dataset.html#libcity.data.dataset.geosan_dataset.LocQuerySystem.build_tree">[docs]</a>    <span class="k">def</span> <span class="nf">build_tree</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dataset</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        构建KNN(基于BallTree实现)，用于sampler中的采样操作</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">idx2gps</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="p">(</span><span class="n">lat</span><span class="p">,</span> <span class="n">lon</span><span class="p">)</span> <span class="ow">in</span> <span class="n">dataset</span><span class="o">.</span><span class="n">idx2gps</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">idx</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span><span class="p">[</span><span class="n">idx</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">lat</span><span class="p">,</span> <span class="n">lon</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tree</span> <span class="o">=</span> <span class="n">BallTree</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span><span class="p">,</span>
+            <span class="n">leaf_size</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+            <span class="n">metric</span><span class="o">=</span><span class="s1">&#39;haversine&#39;</span>
+        <span class="p">)</span></div>
+
+<div class="viewcode-block" id="LocQuerySystem.prefetch_knn"><a class="viewcode-back" href="../../../../libcity/libcity.data.dataset.geosan_dataset.html#libcity.data.dataset.geosan_dataset.LocQuerySystem.prefetch_knn">[docs]</a>    <span class="k">def</span> <span class="nf">prefetch_knn</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">knn</span> <span class="o">=</span> <span class="n">k</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">knn_results</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">k</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">gps</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span><span class="p">),</span> <span class="n">total</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span><span class="p">),</span> <span class="n">leave</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+            <span class="n">trg_gps</span> <span class="o">=</span> <span class="n">gps</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">_</span><span class="p">,</span> <span class="n">knn_locs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">tree</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">trg_gps</span><span class="p">,</span> <span class="n">k</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="n">knn_locs</span> <span class="o">=</span> <span class="n">knn_locs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">:]</span>
+            <span class="n">knn_locs</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">knn_results</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">knn_locs</span></div>
+
+<div class="viewcode-block" id="LocQuerySystem.prefetch_radius"><a class="viewcode-back" href="../../../../libcity/libcity.data.dataset.geosan_dataset.html#libcity.data.dataset.geosan_dataset.LocQuerySystem.prefetch_radius">[docs]</a>    <span class="k">def</span> <span class="nf">prefetch_radius</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="mf">10.0</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">radius</span> <span class="o">=</span> <span class="n">radius</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">radius_results</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">radius</span> <span class="o">/=</span> <span class="mi">6371000</span><span class="o">/</span><span class="mi">1000</span>
+        <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">gps</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span><span class="p">),</span> <span class="n">total</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span><span class="p">),</span> <span class="n">leave</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+            <span class="n">trg_gps</span> <span class="o">=</span> <span class="n">gps</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">nearby_locs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">tree</span><span class="o">.</span><span class="n">query_radius</span><span class="p">(</span><span class="n">trg_gps</span><span class="p">,</span> <span class="n">r</span><span class="o">=</span><span class="n">radius</span><span class="p">)</span>
+            <span class="n">nearby_locs</span> <span class="o">=</span> <span class="n">nearby_locs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">nearby_locs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">nearby_locs</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">nearby_locs</span> <span class="o">==</span> <span class="n">idx</span><span class="p">))</span>
+            <span class="n">nearby_locs</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">radius_results</span><span class="p">[</span><span class="n">idx</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">nearby_locs</span></div>
+
+<div class="viewcode-block" id="LocQuerySystem.get_knn"><a class="viewcode-back" href="../../../../libcity/libcity.data.dataset.geosan_dataset.html#libcity.data.dataset.geosan_dataset.LocQuerySystem.get_knn">[docs]</a>    <span class="k">def</span> <span class="nf">get_knn</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">trg_loc</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">knn</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">k</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">knn</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">knn_results</span><span class="p">[</span><span class="n">trg_loc</span> <span class="o">-</span> <span class="mi">1</span><span class="p">][:</span><span class="n">k</span><span class="p">]</span>
+        <span class="n">trg_gps</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span><span class="p">[</span><span class="n">trg_loc</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">_</span><span class="p">,</span> <span class="n">knn_locs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">tree</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">trg_gps</span><span class="p">,</span> <span class="n">k</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">knn_locs</span> <span class="o">=</span> <span class="n">knn_locs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">:]</span>
+        <span class="n">knn_locs</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="n">knn_locs</span></div>
+
+<div class="viewcode-block" id="LocQuerySystem.get_radius"><a class="viewcode-back" href="../../../../libcity/libcity.data.dataset.geosan_dataset.html#libcity.data.dataset.geosan_dataset.LocQuerySystem.get_radius">[docs]</a>    <span class="k">def</span> <span class="nf">get_radius</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">trg_loc</span><span class="p">,</span> <span class="n">r</span><span class="o">=</span><span class="mf">10.0</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">r</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">radius</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">radius_results</span><span class="p">[</span><span class="n">trg_loc</span><span class="p">]</span>
+        <span class="n">r</span> <span class="o">/=</span> <span class="mi">6371000</span><span class="o">/</span><span class="mi">1000</span>
+        <span class="n">trg_gps</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span><span class="p">[</span><span class="n">trg_loc</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">nearby_locs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">tree</span><span class="o">.</span><span class="n">query_radius</span><span class="p">(</span><span class="n">trg_gps</span><span class="p">,</span> <span class="n">r</span><span class="o">=</span><span class="n">r</span><span class="p">)</span>
+        <span class="n">nearby_locs</span> <span class="o">=</span> <span class="n">nearby_locs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">nearby_locs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">nearby_locs</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">nearby_locs</span> <span class="o">==</span> <span class="n">trg_loc</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+        <span class="n">nearby_locs</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="n">nearby_locs</span></div>
+
+<div class="viewcode-block" id="LocQuerySystem.radius_stats"><a class="viewcode-back" href="../../../../libcity/libcity.data.dataset.geosan_dataset.html#libcity.data.dataset.geosan_dataset.LocQuerySystem.radius_stats">[docs]</a>    <span class="k">def</span> <span class="nf">radius_stats</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
+        <span class="n">radius</span> <span class="o">/=</span> <span class="mi">6371000</span><span class="o">/</span><span class="mi">1000</span>
+        <span class="n">num_nearby_locs</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">gps</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span><span class="p">,</span> <span class="n">total</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span><span class="p">),</span> <span class="n">leave</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+            <span class="n">trg_gps</span> <span class="o">=</span> <span class="n">gps</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">count</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">tree</span><span class="o">.</span><span class="n">query_radius</span><span class="p">(</span><span class="n">trg_gps</span><span class="p">,</span> <span class="n">r</span><span class="o">=</span><span class="n">radius</span><span class="p">,</span> <span class="n">count_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">num_nearby_locs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">count</span><span class="p">)</span>
+        <span class="n">num_nearby_locs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">num_nearby_locs</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
+        <span class="n">max_loc_idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="o">-</span><span class="n">num_nearby_locs</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;max #nearby_locs: </span><span class="si">{:d}</span><span class="s2">, at loc </span><span class="si">{:d}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">num_nearby_locs</span><span class="p">[</span><span class="n">max_loc_idx</span><span class="p">],</span> <span class="n">max_loc_idx</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span></div></div>
+
+
+<div class="viewcode-block" id="KNNSampler"><a class="viewcode-back" href="../../../../libcity/libcity.data.dataset.geosan_dataset.html#libcity.data.dataset.geosan_dataset.KNNSampler">[docs]</a><span class="k">class</span> <span class="nc">KNNSampler</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query_sys</span><span class="p">,</span> <span class="n">user_visited_locs</span><span class="p">,</span> <span class="n">num_nearest</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">exclude_visited</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">query_sys</span> <span class="o">=</span> <span class="n">query_sys</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">num_nearest</span> <span class="o">=</span> <span class="n">num_nearest</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">user_visited_locs</span> <span class="o">=</span> <span class="n">user_visited_locs</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">exclude_visited</span> <span class="o">=</span> <span class="n">exclude_visited</span>
+
+<div class="viewcode-block" id="KNNSampler.forward"><a class="viewcode-back" href="../../../../libcity/libcity.data.dataset.geosan_dataset.html#libcity.data.dataset.geosan_dataset.KNNSampler.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">trg_seq</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">user</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">            基于query_sys从候选集中随机采样k个作为负样例</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">neg_samples</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">check_in</span> <span class="ow">in</span> <span class="n">trg_seq</span><span class="p">:</span>
+            <span class="n">trg_loc</span> <span class="o">=</span> <span class="n">check_in</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">nearby_locs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">query_sys</span><span class="o">.</span><span class="n">get_knn</span><span class="p">(</span><span class="n">trg_loc</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">num_nearest</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">exclude_visited</span><span class="p">:</span>
+                <span class="n">samples</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">nearby_locs</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">k</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">samples</span> <span class="o">=</span> <span class="p">[]</span>
+                <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">k</span><span class="p">):</span>
+                    <span class="n">sample</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">nearby_locs</span><span class="p">)</span>
+                    <span class="k">while</span> <span class="n">sample</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">user_visited_locs</span><span class="p">[</span><span class="n">user</span><span class="p">]:</span>
+                        <span class="n">sample</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">nearby_locs</span><span class="p">)</span>
+                    <span class="n">samples</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sample</span><span class="p">)</span>
+            <span class="n">neg_samples</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">samples</span><span class="p">)</span>
+        <span class="n">neg_samples</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">neg_samples</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">long</span><span class="p">)</span>
+        <span class="n">probs</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">neg_samples</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">neg_samples</span><span class="p">,</span> <span class="n">probs</span></div></div>
+
+
+<span class="n">EarthRadius</span> <span class="o">=</span> <span class="mi">6378137</span>
+<span class="n">MinLatitude</span> <span class="o">=</span> <span class="o">-</span><span class="mf">85.05112878</span>
+<span class="n">MaxLatitude</span> <span class="o">=</span> <span class="mf">85.05112878</span>
+<span class="n">MinLongitude</span> <span class="o">=</span> <span class="o">-</span><span class="mi">180</span>
+<span class="n">MaxLongitude</span> <span class="o">=</span> <span class="mi">180</span>
+
+
+<div class="viewcode-block" id="clip"><a class="viewcode-back" href="../../../../libcity/libcity.data.dataset.geosan_dataset.html#libcity.data.dataset.geosan_dataset.clip">[docs]</a><span class="k">def</span> <span class="nf">clip</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">min_value</span><span class="p">,</span> <span class="n">max_value</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">min</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">min_value</span><span class="p">),</span> <span class="n">max_value</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="map_size"><a class="viewcode-back" href="../../../../libcity/libcity.data.dataset.geosan_dataset.html#libcity.data.dataset.geosan_dataset.map_size">[docs]</a><span class="k">def</span> <span class="nf">map_size</span><span class="p">(</span><span class="n">level_of_detail</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mi">256</span> <span class="o">&lt;&lt;</span> <span class="n">level_of_detail</span></div>
+
+
+<div class="viewcode-block" id="latlon2pxy"><a class="viewcode-back" href="../../../../libcity/libcity.data.dataset.geosan_dataset.html#libcity.data.dataset.geosan_dataset.latlon2pxy">[docs]</a><span class="k">def</span> <span class="nf">latlon2pxy</span><span class="p">(</span><span class="n">latitude</span><span class="p">,</span> <span class="n">longitude</span><span class="p">,</span> <span class="n">level_of_detail</span><span class="p">):</span>
+    <span class="n">latitude</span> <span class="o">=</span> <span class="n">clip</span><span class="p">(</span><span class="n">latitude</span><span class="p">,</span> <span class="n">MinLatitude</span><span class="p">,</span> <span class="n">MaxLatitude</span><span class="p">)</span>
+    <span class="n">longitude</span> <span class="o">=</span> <span class="n">clip</span><span class="p">(</span><span class="n">longitude</span><span class="p">,</span> <span class="n">MinLongitude</span><span class="p">,</span> <span class="n">MaxLongitude</span><span class="p">)</span>
+
+    <span class="n">x</span> <span class="o">=</span> <span class="p">(</span><span class="n">longitude</span> <span class="o">+</span> <span class="mi">180</span><span class="p">)</span> <span class="o">/</span> <span class="mi">360</span>
+    <span class="n">sin_latitude</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">latitude</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">180</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">-</span> <span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">((</span><span class="mi">1</span> <span class="o">+</span> <span class="n">sin_latitude</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">sin_latitude</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="mi">4</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
+
+    <span class="n">size</span> <span class="o">=</span> <span class="n">map_size</span><span class="p">(</span><span class="n">level_of_detail</span><span class="p">)</span>
+    <span class="n">pixel_x</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">clip</span><span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="n">size</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">size</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="n">pixel_y</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">clip</span><span class="p">(</span><span class="n">y</span> <span class="o">*</span> <span class="n">size</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">size</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">pixel_x</span><span class="p">,</span> <span class="n">pixel_y</span></div>
+
+
+<div class="viewcode-block" id="txy2quadkey"><a class="viewcode-back" href="../../../../libcity/libcity.data.dataset.geosan_dataset.html#libcity.data.dataset.geosan_dataset.txy2quadkey">[docs]</a><span class="k">def</span> <span class="nf">txy2quadkey</span><span class="p">(</span><span class="n">tile_x</span><span class="p">,</span> <span class="n">tile_y</span><span class="p">,</span> <span class="n">level_of_detail</span><span class="p">):</span>
+    <span class="n">quadkey</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">level_of_detail</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">digit</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">mask</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">tile_x</span> <span class="o">&amp;</span> <span class="n">mask</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">digit</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">tile_y</span> <span class="o">&amp;</span> <span class="n">mask</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">digit</span> <span class="o">+=</span> <span class="mi">2</span>
+        <span class="n">quadkey</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">digit</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">quadkey</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="pxy2txy"><a class="viewcode-back" href="../../../../libcity/libcity.data.dataset.geosan_dataset.html#libcity.data.dataset.geosan_dataset.pxy2txy">[docs]</a><span class="k">def</span> <span class="nf">pxy2txy</span><span class="p">(</span><span class="n">pixel_x</span><span class="p">,</span> <span class="n">pixel_y</span><span class="p">):</span>
+    <span class="n">tile_x</span> <span class="o">=</span> <span class="n">pixel_x</span> <span class="o">//</span> <span class="mi">256</span>
+    <span class="n">tile_y</span> <span class="o">=</span> <span class="n">pixel_y</span> <span class="o">//</span> <span class="mi">256</span>
+    <span class="k">return</span> <span class="n">tile_x</span><span class="p">,</span> <span class="n">tile_y</span></div>
+
+
+<div class="viewcode-block" id="latlon2quadkey"><a class="viewcode-back" href="../../../../libcity/libcity.data.dataset.geosan_dataset.html#libcity.data.dataset.geosan_dataset.latlon2quadkey">[docs]</a><span class="k">def</span> <span class="nf">latlon2quadkey</span><span class="p">(</span><span class="n">lat</span><span class="p">,</span> <span class="n">lon</span><span class="p">,</span> <span class="n">level</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    经纬度 to quadkey 转换函数</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">pixel_x</span><span class="p">,</span> <span class="n">pixel_y</span> <span class="o">=</span> <span class="n">latlon2pxy</span><span class="p">(</span><span class="n">lat</span><span class="p">,</span> <span class="n">lon</span><span class="p">,</span> <span class="n">level</span><span class="p">)</span>
+    <span class="n">tile_x</span><span class="p">,</span> <span class="n">tile_y</span> <span class="o">=</span> <span class="n">pxy2txy</span><span class="p">(</span><span class="n">pixel_x</span><span class="p">,</span> <span class="n">pixel_y</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">txy2quadkey</span><span class="p">(</span><span class="n">tile_x</span><span class="p">,</span> <span class="n">tile_y</span><span class="p">,</span> <span class="n">level</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="LadderSampler"><a class="viewcode-back" href="../../../../libcity/libcity.data.dataset.geosan_dataset.html#libcity.data.dataset.geosan_dataset.LadderSampler">[docs]</a><span class="k">class</span> <span class="nc">LadderSampler</span><span class="p">(</span><span class="n">Sampler</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_source</span><span class="p">,</span> <span class="n">batch_sz</span><span class="p">,</span> <span class="n">fix_order</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">LadderSampler</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">data_source</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">e</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">data_source</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">batch_size</span> <span class="o">=</span> <span class="n">batch_sz</span> <span class="o">*</span> <span class="mi">100</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fix_order</span> <span class="o">=</span> <span class="n">fix_order</span>
+
+    <span class="k">def</span> <span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">fix_order</span><span class="p">:</span>
+            <span class="n">d</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)),</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">d</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">permutation</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)),</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)))</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="p">(</span><span class="n">e</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">//</span> <span class="bp">self</span><span class="o">.</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">e</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">iter</span><span class="p">(</span><span class="n">e</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">d</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, aptx1231
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

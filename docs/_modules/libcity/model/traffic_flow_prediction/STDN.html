@@ -1,0 +1,550 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>libcity.model.traffic_flow_prediction.STDN &mdash; Bigscity-LibCity  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home" alt="Documentation Home"> Bigscity-LibCity
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">起步</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../get_started/introduction.html">介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../get_started/install.html">安装LibCity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../get_started/quick_start.html">快速入门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../get_started/directory_structure.html">目录结构</a></li>
+</ul>
+<p class="caption"><span class="caption-text">用户指导</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user_guide/config_settings.html">参数设置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user_guide/data.html">数据说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user_guide/model.html">复现模型列表</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user_guide/evaluator.html">评估模块简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user_guide/executor.html">执行模块简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user_guide/usage.html">使用示例</a></li>
+</ul>
+<p class="caption"><span class="caption-text">开发者指导</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../developer_guide/code_style.html">代码风格</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../developer_guide/implemented_datasets.html">自定义Dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../developer_guide/implemented_models.html">自定义Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../developer_guide/implemented_executors.html">自定义Executor</a></li>
+</ul>
+<p class="caption"><span class="caption-text">入门教程</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorial/install_quick_start.html">安装和快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorial/run_model.html">运行LibCity中已复现的模型</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorial/add_model.html">在LibCity中添加新模型</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorial/hyper_tune.html">使用自动化工具调参</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API文档</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../libcity/libcity.config.html">libcity.config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../libcity/libcity.data.html">libcity.data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../libcity/libcity.evaluator.html">libcity.evaluator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../libcity/libcity.executor.html">libcity.executor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../libcity/libcity.model.html">libcity.model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../libcity/libcity.pipeline.html">libcity.pipeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../libcity/libcity.utils.html">libcity.utils</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">Bigscity-LibCity</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../../index.html">Module code</a> &raquo;</li>
+        
+      <li>libcity.model.traffic_flow_prediction.STDN</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for libcity.model.traffic_flow_prediction.STDN</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">logging</span> <span class="kn">import</span> <span class="n">getLogger</span>
+<span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">from</span> <span class="nn">torch</span> <span class="kn">import</span> <span class="n">nn</span>
+<span class="kn">from</span> <span class="nn">torch.nn</span> <span class="kn">import</span> <span class="n">init</span>
+<span class="kn">from</span> <span class="nn">libcity.model</span> <span class="kn">import</span> <span class="n">loss</span>
+<span class="kn">from</span> <span class="nn">libcity.model.abstract_traffic_state_model</span> <span class="kn">import</span> <span class="n">AbstractTrafficStateModel</span>
+
+
+<div class="viewcode-block" id="modify_input"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_flow_prediction.STDN.html#libcity.model.traffic_flow_prediction.STDN.modify_input">[docs]</a><span class="k">def</span> <span class="nf">modify_input</span><span class="p">(</span><span class="nb">input</span><span class="p">):</span>
+    <span class="n">output</span> <span class="o">=</span> <span class="nb">input</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">*</span><span class="nb">input</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">4</span><span class="p">:])</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">output</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">output</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])]</span></div>
+
+
+<div class="viewcode-block" id="CBAAttention"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_flow_prediction.STDN.html#libcity.model.traffic_flow_prediction.STDN.CBAAttention">[docs]</a><span class="k">class</span> <span class="nc">CBAAttention</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">device</span><span class="p">,</span> <span class="n">att_size</span><span class="p">,</span> <span class="n">query_dim</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">CBAAttention</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">att_size</span> <span class="o">=</span> <span class="n">att_size</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">query_dim</span> <span class="o">=</span> <span class="n">query_dim</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Wq</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">query_dim</span><span class="p">,</span> <span class="n">att_size</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Wh</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">att_size</span><span class="p">,</span> <span class="n">att_size</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">v</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">att_size</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tanh</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Tanh</span><span class="p">()</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">softmax</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Softmax</span><span class="p">(</span><span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_glorot_init</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">_glorot_init</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">modules</span><span class="p">():</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">):</span>
+                <span class="n">init</span><span class="o">.</span><span class="n">xavier_uniform_</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">weight</span><span class="p">,</span> <span class="n">init</span><span class="o">.</span><span class="n">calculate_gain</span><span class="p">(</span><span class="s1">&#39;tanh&#39;</span><span class="p">))</span>
+
+<div class="viewcode-block" id="CBAAttention.forward"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_flow_prediction.STDN.html#libcity.model.traffic_flow_prediction.STDN.CBAAttention.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">):</span>
+        <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="nb">list</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span> <span class="ow">and</span> \
+               <span class="n">inputs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">att_size</span> <span class="ow">and</span> <span class="n">inputs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">query_dim</span>
+        <span class="n">memory</span><span class="p">,</span> <span class="n">query</span> <span class="o">=</span> <span class="n">inputs</span>
+        <span class="n">n_memory</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Wh</span><span class="p">(</span><span class="n">memory</span><span class="p">)</span>
+        <span class="n">n_query</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Wq</span><span class="p">(</span><span class="n">query</span><span class="p">)</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">hidden</span> <span class="o">=</span> <span class="n">n_memory</span> <span class="o">+</span> <span class="n">n_query</span>
+        <span class="n">hidden</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">tanh</span><span class="p">(</span><span class="n">hidden</span><span class="p">)</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="p">(</span><span class="n">hidden</span><span class="p">)</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">memory</span> <span class="o">*</span> <span class="n">s</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="STDN"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_flow_prediction.STDN.html#libcity.model.traffic_flow_prediction.STDN.STDN">[docs]</a><span class="k">class</span> <span class="nc">STDN</span><span class="p">(</span><span class="n">AbstractTrafficStateModel</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">data_feature</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">STDN</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="n">data_feature</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lstm_seq_len</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;input_window&#39;</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">feature_vec_len</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_feature</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;feature_vec_len&#39;</span><span class="p">,</span> <span class="mi">160</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">len_row</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_feature</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;len_row&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">len_column</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_feature</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;len_column&#39;</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">output_dim</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_feature</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;output_dim&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nbhd_size</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;cnn_nbhd_size&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nbhd_type</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_feature</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;nbhd_type&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span> <span class="o">=</span> <span class="n">getLogger</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">device</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;device&#39;</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">&#39;cpu&#39;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">output_window</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;output_window&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">att_lstm_num</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;att_lstm_num&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">att_lstm_seq_len</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;att_lstm_seq_len&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cnn_flat_size</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;cnn_flat_size&#39;</span><span class="p">,</span> <span class="mi">128</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lstm_out_size</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;lstm_out_size&#39;</span><span class="p">,</span> <span class="mi">128</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">max_x_num</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;max_x_num&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">max_y_num</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;max_y_num&#39;</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">flow_type</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;flow_type&#39;</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_scaler</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_feature</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;scaler&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_init_model</span><span class="p">()</span>
+
+<div class="viewcode-block" id="STDN._init_model"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_flow_prediction.STDN.html#libcity.model.traffic_flow_prediction.STDN.STDN._init_model">[docs]</a>    <span class="k">def</span> <span class="nf">_init_model</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        input:</span>
+<span class="sd">            flatten_att_nbhd_inputs: shape=[att_lstm_num * att_lstm_seq_len, (batch_size, nbhd_size, nbhd_size, nbhd_type)]</span>
+<span class="sd">                -&gt; att_nbhd_inputs: shape=[att_lstm_num, att_lstm_seq_len, (batch_size, nbhd_size, nbhd_size, nbhd_type)]</span>
+<span class="sd">            flatten_att_flow_inputs: shape=[att_lstm_num * att_lstm_seq_len, (batch_size, nbhd_size, nbhd_size, flow_type)]</span>
+<span class="sd">                -&gt; att_flow_inputs: shape=[att_lstm_num, att_lstm_seq_len, (batch_size, nbhd_size, nbhd_size, flow_type)]</span>
+<span class="sd">            att_lstm_inputs: shape=[att_lstm_num, (batch_size, att_lstm_seq_len, feature_vec_len)]</span>
+<span class="sd">            nbhd_inputs: shaoe=[lstm_seq_len, (batch_size, nbhd_size, nbhd_size, nbhd_type)]</span>
+<span class="sd">            flow_inputs: shape=[lstm_seq_len, (batch_size, nbhd_size, nbhd_size, flow_type)]</span>
+<span class="sd">            lstm_inputs: shape=(batch_size, lstm_seq_len, feature_vec_len)</span>
+
+<span class="sd">        remark:</span>
+<span class="sd">            tensor part should have shape of (batch_size, input_channel, H, W), use permute</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="c1"># 1st level gate</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nbhd_cnns_1st</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">ModuleList</span><span class="p">([</span><span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="n">in_channels</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">nbhd_type</span><span class="p">,</span> <span class="n">out_channels</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">padding</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">()</span>
+        <span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lstm_seq_len</span><span class="p">)])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">flow_cnns_1st</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">ModuleList</span><span class="p">([</span><span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="n">in_channels</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">flow_type</span><span class="p">,</span> <span class="n">out_channels</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">padding</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Sigmoid</span><span class="p">()</span>
+        <span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lstm_seq_len</span><span class="p">)])</span>
+        <span class="c1"># [nbhd * flow] shape=[lstm_seq_len, (batch_size, 64, nbhd_size, nbhd_size)]</span>
+
+        <span class="c1"># 2nd level gate</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nbhd_cnns_2nd</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">ModuleList</span><span class="p">([</span><span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="n">in_channels</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">out_channels</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">padding</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">()</span>
+        <span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lstm_seq_len</span><span class="p">)])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">flow_cnns_2nd</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">ModuleList</span><span class="p">([</span><span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="n">in_channels</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">flow_type</span><span class="p">,</span> <span class="n">out_channels</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">padding</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Sigmoid</span><span class="p">()</span>
+        <span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lstm_seq_len</span><span class="p">)])</span>
+        <span class="c1"># [nbhd * flow] shape=[lstm_seq_len, (batch_size, 64, nbhd_size, nbhd_size)]</span>
+
+        <span class="c1"># 3rd level gate</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nbhd_cnns_3rd</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">ModuleList</span><span class="p">([</span><span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="n">in_channels</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">out_channels</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">padding</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">()</span>
+        <span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lstm_seq_len</span><span class="p">)])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">flow_cnns_3rd</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">ModuleList</span><span class="p">([</span><span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="n">in_channels</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">flow_type</span><span class="p">,</span> <span class="n">out_channels</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">padding</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Sigmoid</span><span class="p">()</span>
+        <span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lstm_seq_len</span><span class="p">)])</span>
+        <span class="c1"># [nbhd * flow] shape=[lstm_seq_len, (batch_size, 64, nbhd_size, nbhd_size)]</span>
+
+        <span class="c1"># dense part</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nbhd_vecs</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">ModuleList</span><span class="p">([</span><span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Flatten</span><span class="p">(),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">64</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">nbhd_size</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">nbhd_size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">cnn_flat_size</span><span class="p">),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">()</span>
+        <span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lstm_seq_len</span><span class="p">)])</span>  <span class="c1"># shape=[lstm_seq_len, (batch_size, cnn_flat_size)]</span>
+
+        <span class="c1"># feature concatenate</span>
+        <span class="c1"># torch.cat(list, dim=-1), shape=(batch_size, cnn_flat_size * lstm_seq_len)</span>
+        <span class="c1"># torch.reshape(tensor, (tensor.shape[0], lstm_seq_len, cnn_flat_size))</span>
+        <span class="c1"># torch.cat(list, dim=-1), shape=(batch_size, lstm_seq_len, feature_vec_len + cnn_flat_size)</span>
+
+        <span class="c1"># lstm</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lstm</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">LSTM</span><span class="p">(</span><span class="n">input_size</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">feature_vec_len</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">cnn_flat_size</span><span class="p">,</span> <span class="n">hidden_size</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">lstm_out_size</span><span class="p">,</span>
+                            <span class="n">batch_first</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">dropout</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+        <span class="c1"># result shape=(batch_size, lstm_seq_len, lstm_out_size)</span>
+        <span class="c1"># result, (hn, cn) = lstm -&gt; hn[-1] shape=(batch, lstm_out_size)</span>
+
+        <span class="c1"># attention part</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">att_nbhd_cnns_1st</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">ModuleList</span><span class="p">([</span><span class="n">nn</span><span class="o">.</span><span class="n">ModuleList</span><span class="p">([</span><span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="n">in_channels</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">nbhd_type</span><span class="p">,</span> <span class="n">out_channels</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">padding</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">()</span>
+        <span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">)</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">att_lstm_seq_len</span><span class="p">)])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">att_lstm_num</span><span class="p">)])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">att_flow_cnns_1st</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">ModuleList</span><span class="p">([</span><span class="n">nn</span><span class="o">.</span><span class="n">ModuleList</span><span class="p">([</span><span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="n">in_channels</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">flow_type</span><span class="p">,</span> <span class="n">out_channels</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">padding</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">()</span>
+        <span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">)</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">att_lstm_seq_len</span><span class="p">)])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">att_lstm_num</span><span class="p">)])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">att_flow_gate_1st</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">ModuleList</span><span class="p">(</span>
+            <span class="p">[</span><span class="n">nn</span><span class="o">.</span><span class="n">ModuleList</span><span class="p">([</span><span class="n">nn</span><span class="o">.</span><span class="n">Sigmoid</span><span class="p">()</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">)</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">att_lstm_seq_len</span><span class="p">)])</span>
+             <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">att_lstm_num</span><span class="p">)])</span>
+        <span class="c1"># [[nbhd * flow]] shape=[att_lstm_num, att_lstm_seq_len, (batch_size, 64, nbhd_size, nbhd_size)]</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">att_nbhd_cnns_2nd</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">ModuleList</span><span class="p">([</span><span class="n">nn</span><span class="o">.</span><span class="n">ModuleList</span><span class="p">([</span><span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="n">in_channels</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">out_channels</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">padding</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">()</span>
+        <span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">)</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">att_lstm_seq_len</span><span class="p">)])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">att_lstm_num</span><span class="p">)])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">att_flow_cnns_2nd</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">ModuleList</span><span class="p">([</span><span class="n">nn</span><span class="o">.</span><span class="n">ModuleList</span><span class="p">([</span><span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="n">in_channels</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">out_channels</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">padding</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">()</span>
+        <span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">)</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">att_lstm_seq_len</span><span class="p">)])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">att_lstm_num</span><span class="p">)])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">att_flow_gate_2nd</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">ModuleList</span><span class="p">(</span>
+            <span class="p">[</span><span class="n">nn</span><span class="o">.</span><span class="n">ModuleList</span><span class="p">([</span><span class="n">nn</span><span class="o">.</span><span class="n">Sigmoid</span><span class="p">()</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">)</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">att_lstm_seq_len</span><span class="p">)])</span>
+             <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">att_lstm_num</span><span class="p">)])</span>
+        <span class="c1"># [[nbhd * flow]] shape=[att_lstm_num, att_lstm_seq_len, (batch_size, 64, nbhd_size, nbhd_size)]</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">att_nbhd_cnns_3rd</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">ModuleList</span><span class="p">([</span><span class="n">nn</span><span class="o">.</span><span class="n">ModuleList</span><span class="p">([</span><span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="n">in_channels</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">out_channels</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">padding</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">()</span>
+        <span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">)</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">att_lstm_seq_len</span><span class="p">)])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">att_lstm_num</span><span class="p">)])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">att_flow_cnns_3rd</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">ModuleList</span><span class="p">([</span><span class="n">nn</span><span class="o">.</span><span class="n">ModuleList</span><span class="p">([</span><span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="n">in_channels</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">out_channels</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">padding</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">()</span>
+        <span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">)</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">att_lstm_seq_len</span><span class="p">)])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">att_lstm_num</span><span class="p">)])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">att_flow_gate_3rd</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">ModuleList</span><span class="p">(</span>
+            <span class="p">[</span><span class="n">nn</span><span class="o">.</span><span class="n">ModuleList</span><span class="p">([</span><span class="n">nn</span><span class="o">.</span><span class="n">Sigmoid</span><span class="p">()</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">)</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">att_lstm_seq_len</span><span class="p">)])</span>
+             <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">att_lstm_num</span><span class="p">)])</span>
+        <span class="c1"># [[nbhd * flow]] shape=[att_lstm_num, att_lstm_seq_len, (batch_size, 64, nbhd_size, nbhd_size)]</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">att_nbhd_vecs</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">ModuleList</span><span class="p">([</span><span class="n">nn</span><span class="o">.</span><span class="n">ModuleList</span><span class="p">([</span><span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Flatten</span><span class="p">(),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">64</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">nbhd_size</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">nbhd_size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">cnn_flat_size</span><span class="p">),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">()</span>
+        <span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">)</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">att_lstm_seq_len</span><span class="p">)])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">att_lstm_num</span><span class="p">)])</span>
+        <span class="c1"># shape=[att_lstm_num, att_lstm_seq_len, (batch_size, cnn_flat_size)]</span>
+
+        <span class="c1"># [torch.cat(list, dim=-1)], shape=[att_lstm_num, (batch_size, cnn_flat_size * att_lstm_seq_len)]</span>
+        <span class="c1"># [torch.reshape(tensor, (tensor.shape[0], att_lstm_seq_len, cnn_flat_size))]</span>
+        <span class="c1"># [torch.cat(list, dim=-1)], shape=[att_lstm_num, (batch_size, att_lstm_seq_len, feature_vec_len + cnn_flat_size)]</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">att_lstms</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">ModuleList</span><span class="p">(</span>
+            <span class="p">[</span><span class="n">nn</span><span class="o">.</span><span class="n">LSTM</span><span class="p">(</span><span class="n">input_size</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">feature_vec_len</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">cnn_flat_size</span><span class="p">,</span> <span class="n">hidden_size</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">lstm_out_size</span><span class="p">,</span>
+                     <span class="n">batch_first</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">dropout</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">att_lstm_num</span><span class="p">)])</span>
+        <span class="c1"># [result] shape=[att_lstm_num, (batch_size, lstm_seq_len, lstm_out_size)]</span>
+        <span class="c1"># [result, (hn, cn) = lstm -&gt; result] [att_lstm_num, (batch_size, lstm_seq_len, lstm_out_size)]</span>
+
+        <span class="c1"># compare</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">att_low_level</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">ModuleList</span><span class="p">([</span><span class="n">CBAAttention</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">lstm_out_size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">lstm_out_size</span><span class="p">)</span>
+                                            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">att_lstm_num</span><span class="p">)])</span>
+        <span class="c1"># shape=[att_lstm_num, (batch_size, lstm_out_size)]</span>
+        <span class="c1"># torch.cat(list, dim=-1), shape=(batch_size, lstm_out_size * att_lstm_num)</span>
+        <span class="c1"># torch.reshape(tensor, (tensor.shape[0], att_lstm_num, lstm_out_size))</span>
+        <span class="c1"># shape=(batch_size, att_lstm_num, lstm_out_size)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">att_high_level</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">LSTM</span><span class="p">(</span><span class="n">input_size</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">lstm_out_size</span><span class="p">,</span> <span class="n">hidden_size</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">lstm_out_size</span><span class="p">,</span>
+                                      <span class="n">batch_first</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">dropout</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+        <span class="c1"># result shape=(batch_size, att_lstm_num, lstm_out_size)</span>
+        <span class="c1"># result, (hn, cn) = lstm -&gt; hn[-1] shape=(batch_size, lstm_out_size)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">lstm_all</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lstm_out_size</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">lstm_out_size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_dim</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pred_volume</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Tanh</span><span class="p">()</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="STDN.forward"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_flow_prediction.STDN.html#libcity.model.traffic_flow_prediction.STDN.STDN.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">batch</span><span class="p">):</span>
+        <span class="n">flatten_att_nbhd_inputs</span> <span class="o">=</span> <span class="n">modify_input</span><span class="p">(</span><span class="n">batch</span><span class="p">[</span><span class="s1">&#39;flatten_att_nbhd_inputs&#39;</span><span class="p">])</span>
+        <span class="n">flatten_att_flow_inputs</span> <span class="o">=</span> <span class="n">modify_input</span><span class="p">(</span><span class="n">batch</span><span class="p">[</span><span class="s1">&#39;flatten_att_flow_inputs&#39;</span><span class="p">])</span>
+        <span class="n">att_lstm_inputs</span> <span class="o">=</span> <span class="n">modify_input</span><span class="p">(</span><span class="n">batch</span><span class="p">[</span><span class="s1">&#39;att_lstm_inputs&#39;</span><span class="p">])</span>
+        <span class="n">nbhd_inputs</span> <span class="o">=</span> <span class="n">modify_input</span><span class="p">(</span><span class="n">batch</span><span class="p">[</span><span class="s1">&#39;nbhd_inputs&#39;</span><span class="p">])</span>
+        <span class="n">flow_inputs</span> <span class="o">=</span> <span class="n">modify_input</span><span class="p">(</span><span class="n">batch</span><span class="p">[</span><span class="s1">&#39;flow_inputs&#39;</span><span class="p">])</span>
+        <span class="n">lstm_inputs</span> <span class="o">=</span> <span class="n">batch</span><span class="p">[</span><span class="s1">&#39;lstm_inputs&#39;</span><span class="p">]</span>
+        <span class="n">lstm_inputs</span> <span class="o">=</span> <span class="n">lstm_inputs</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">*</span><span class="n">lstm_inputs</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">4</span><span class="p">:])</span>
+
+        <span class="n">att_nbhd_inputs</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">att_flow_inputs</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">att</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">att_lstm_num</span><span class="p">):</span>
+            <span class="n">att_nbhd_inputs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">flatten_att_nbhd_inputs</span><span class="p">[</span><span class="n">att</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">att_lstm_seq_len</span><span class="p">:</span>
+                                                           <span class="p">(</span><span class="n">att</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">att_lstm_seq_len</span><span class="p">])</span>
+            <span class="n">att_flow_inputs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">flatten_att_flow_inputs</span><span class="p">[</span><span class="n">att</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">att_lstm_seq_len</span><span class="p">:</span>
+                                                           <span class="p">(</span><span class="n">att</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">att_lstm_seq_len</span><span class="p">])</span>
+
+        <span class="n">nbhd_inputs</span> <span class="o">=</span> <span class="p">[</span><span class="n">nbhd_inputs</span><span class="p">[</span><span class="n">ts</span><span class="p">]</span><span class="o">.</span><span class="n">permute</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="k">for</span> <span class="n">ts</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lstm_seq_len</span><span class="p">)]</span>
+        <span class="n">flow_inputs</span> <span class="o">=</span> <span class="p">[</span><span class="n">flow_inputs</span><span class="p">[</span><span class="n">ts</span><span class="p">]</span><span class="o">.</span><span class="n">permute</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="k">for</span> <span class="n">ts</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lstm_seq_len</span><span class="p">)]</span>
+
+        <span class="n">nbhd_convs</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">nbhd_cnns_1st</span><span class="p">[</span><span class="n">ts</span><span class="p">](</span><span class="n">nbhd_inputs</span><span class="p">[</span><span class="n">ts</span><span class="p">])</span> <span class="k">for</span> <span class="n">ts</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lstm_seq_len</span><span class="p">)]</span>
+        <span class="n">flow_convs</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">flow_cnns_1st</span><span class="p">[</span><span class="n">ts</span><span class="p">](</span><span class="n">flow_inputs</span><span class="p">[</span><span class="n">ts</span><span class="p">])</span> <span class="k">for</span> <span class="n">ts</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lstm_seq_len</span><span class="p">)]</span>
+
+        <span class="n">nbhd_convs</span> <span class="o">=</span> <span class="p">[</span><span class="n">nbhd_convs</span><span class="p">[</span><span class="n">ts</span><span class="p">]</span> <span class="o">*</span> <span class="n">flow_convs</span><span class="p">[</span><span class="n">ts</span><span class="p">]</span> <span class="k">for</span> <span class="n">ts</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lstm_seq_len</span><span class="p">)]</span>
+
+        <span class="n">nbhd_convs</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">nbhd_cnns_2nd</span><span class="p">[</span><span class="n">ts</span><span class="p">](</span><span class="n">nbhd_convs</span><span class="p">[</span><span class="n">ts</span><span class="p">])</span> <span class="k">for</span> <span class="n">ts</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lstm_seq_len</span><span class="p">)]</span>
+        <span class="n">flow_convs</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">flow_cnns_2nd</span><span class="p">[</span><span class="n">ts</span><span class="p">](</span><span class="n">flow_inputs</span><span class="p">[</span><span class="n">ts</span><span class="p">])</span> <span class="k">for</span> <span class="n">ts</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lstm_seq_len</span><span class="p">)]</span>
+
+        <span class="n">nbhd_convs</span> <span class="o">=</span> <span class="p">[</span><span class="n">nbhd_convs</span><span class="p">[</span><span class="n">ts</span><span class="p">]</span> <span class="o">*</span> <span class="n">flow_convs</span><span class="p">[</span><span class="n">ts</span><span class="p">]</span> <span class="k">for</span> <span class="n">ts</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lstm_seq_len</span><span class="p">)]</span>
+
+        <span class="n">nbhd_convs</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">nbhd_cnns_3rd</span><span class="p">[</span><span class="n">ts</span><span class="p">](</span><span class="n">nbhd_convs</span><span class="p">[</span><span class="n">ts</span><span class="p">])</span> <span class="k">for</span> <span class="n">ts</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lstm_seq_len</span><span class="p">)]</span>
+        <span class="n">flow_convs</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">flow_cnns_3rd</span><span class="p">[</span><span class="n">ts</span><span class="p">](</span><span class="n">flow_inputs</span><span class="p">[</span><span class="n">ts</span><span class="p">])</span> <span class="k">for</span> <span class="n">ts</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lstm_seq_len</span><span class="p">)]</span>
+
+        <span class="n">nbhd_convs</span> <span class="o">=</span> <span class="p">[</span><span class="n">nbhd_convs</span><span class="p">[</span><span class="n">ts</span><span class="p">]</span> <span class="o">*</span> <span class="n">flow_convs</span><span class="p">[</span><span class="n">ts</span><span class="p">]</span> <span class="k">for</span> <span class="n">ts</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lstm_seq_len</span><span class="p">)]</span>
+
+        <span class="n">nbhd_vecs</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">nbhd_vecs</span><span class="p">[</span><span class="n">ts</span><span class="p">](</span><span class="n">nbhd_convs</span><span class="p">[</span><span class="n">ts</span><span class="p">])</span> <span class="k">for</span> <span class="n">ts</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lstm_seq_len</span><span class="p">)]</span>
+
+        <span class="n">nbhd_vec</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">nbhd_vecs</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">lstm_input</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">([</span><span class="n">lstm_inputs</span><span class="p">,</span> <span class="n">nbhd_vec</span><span class="p">],</span> <span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">result</span><span class="p">,</span> <span class="p">(</span><span class="n">hn</span><span class="p">,</span> <span class="n">cn</span><span class="p">)</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lstm</span><span class="p">(</span><span class="n">lstm_input</span><span class="p">)</span>
+
+        <span class="n">lstm</span> <span class="o">=</span> <span class="n">hn</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+        <span class="n">att_nbhd_inputs</span> <span class="o">=</span> <span class="p">[[</span><span class="n">att_nbhd_inputs</span><span class="p">[</span><span class="n">att</span><span class="p">][</span><span class="n">ts</span><span class="p">]</span><span class="o">.</span><span class="n">permute</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="k">for</span> <span class="n">ts</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">att_lstm_seq_len</span><span class="p">)]</span>
+                           <span class="k">for</span> <span class="n">att</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">att_lstm_num</span><span class="p">)]</span>
+        <span class="n">att_flow_inputs</span> <span class="o">=</span> <span class="p">[[</span><span class="n">att_flow_inputs</span><span class="p">[</span><span class="n">att</span><span class="p">][</span><span class="n">ts</span><span class="p">]</span><span class="o">.</span><span class="n">permute</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="k">for</span> <span class="n">ts</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">att_lstm_seq_len</span><span class="p">)]</span>
+                           <span class="k">for</span> <span class="n">att</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">att_lstm_num</span><span class="p">)]</span>
+
+        <span class="n">att_nbhd_convs</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">self</span><span class="o">.</span><span class="n">att_nbhd_cnns_1st</span><span class="p">[</span><span class="n">att</span><span class="p">][</span><span class="n">ts</span><span class="p">](</span><span class="n">att_nbhd_inputs</span><span class="p">[</span><span class="n">att</span><span class="p">][</span><span class="n">ts</span><span class="p">])</span>
+                           <span class="k">for</span> <span class="n">ts</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">att_lstm_seq_len</span><span class="p">)]</span> <span class="k">for</span> <span class="n">att</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">att_lstm_num</span><span class="p">)]</span>
+        <span class="n">att_flow_convs</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">self</span><span class="o">.</span><span class="n">att_flow_cnns_1st</span><span class="p">[</span><span class="n">att</span><span class="p">][</span><span class="n">ts</span><span class="p">](</span><span class="n">att_flow_inputs</span><span class="p">[</span><span class="n">att</span><span class="p">][</span><span class="n">ts</span><span class="p">])</span>
+                           <span class="k">for</span> <span class="n">ts</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">att_lstm_seq_len</span><span class="p">)]</span> <span class="k">for</span> <span class="n">att</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">att_lstm_num</span><span class="p">)]</span>
+        <span class="n">att_flow_gates</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">self</span><span class="o">.</span><span class="n">att_flow_gate_1st</span><span class="p">[</span><span class="n">att</span><span class="p">][</span><span class="n">ts</span><span class="p">](</span><span class="n">att_flow_convs</span><span class="p">[</span><span class="n">att</span><span class="p">][</span><span class="n">ts</span><span class="p">])</span>
+                           <span class="k">for</span> <span class="n">ts</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">att_lstm_seq_len</span><span class="p">)]</span> <span class="k">for</span> <span class="n">att</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">att_lstm_num</span><span class="p">)]</span>
+        <span class="n">att_nbhd_convs</span> <span class="o">=</span> <span class="p">[[</span><span class="n">att_nbhd_convs</span><span class="p">[</span><span class="n">att</span><span class="p">][</span><span class="n">ts</span><span class="p">]</span> <span class="o">*</span> <span class="n">att_flow_gates</span><span class="p">[</span><span class="n">att</span><span class="p">][</span><span class="n">ts</span><span class="p">]</span>
+                           <span class="k">for</span> <span class="n">ts</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">att_lstm_seq_len</span><span class="p">)]</span> <span class="k">for</span> <span class="n">att</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">att_lstm_num</span><span class="p">)]</span>
+
+        <span class="n">att_nbhd_convs</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">self</span><span class="o">.</span><span class="n">att_nbhd_cnns_2nd</span><span class="p">[</span><span class="n">att</span><span class="p">][</span><span class="n">ts</span><span class="p">](</span><span class="n">att_nbhd_convs</span><span class="p">[</span><span class="n">att</span><span class="p">][</span><span class="n">ts</span><span class="p">])</span>
+                           <span class="k">for</span> <span class="n">ts</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">att_lstm_seq_len</span><span class="p">)]</span> <span class="k">for</span> <span class="n">att</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">att_lstm_num</span><span class="p">)]</span>
+        <span class="n">att_flow_convs</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">self</span><span class="o">.</span><span class="n">att_flow_cnns_2nd</span><span class="p">[</span><span class="n">att</span><span class="p">][</span><span class="n">ts</span><span class="p">](</span><span class="n">att_flow_convs</span><span class="p">[</span><span class="n">att</span><span class="p">][</span><span class="n">ts</span><span class="p">])</span>
+                           <span class="k">for</span> <span class="n">ts</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">att_lstm_seq_len</span><span class="p">)]</span> <span class="k">for</span> <span class="n">att</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">att_lstm_num</span><span class="p">)]</span>
+        <span class="n">att_flow_gates</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">self</span><span class="o">.</span><span class="n">att_flow_gate_2nd</span><span class="p">[</span><span class="n">att</span><span class="p">][</span><span class="n">ts</span><span class="p">](</span><span class="n">att_flow_convs</span><span class="p">[</span><span class="n">att</span><span class="p">][</span><span class="n">ts</span><span class="p">])</span>
+                           <span class="k">for</span> <span class="n">ts</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">att_lstm_seq_len</span><span class="p">)]</span> <span class="k">for</span> <span class="n">att</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">att_lstm_num</span><span class="p">)]</span>
+        <span class="n">att_nbhd_convs</span> <span class="o">=</span> <span class="p">[[</span><span class="n">att_nbhd_convs</span><span class="p">[</span><span class="n">att</span><span class="p">][</span><span class="n">ts</span><span class="p">]</span> <span class="o">*</span> <span class="n">att_flow_gates</span><span class="p">[</span><span class="n">att</span><span class="p">][</span><span class="n">ts</span><span class="p">]</span>
+                           <span class="k">for</span> <span class="n">ts</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">att_lstm_seq_len</span><span class="p">)]</span> <span class="k">for</span> <span class="n">att</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">att_lstm_num</span><span class="p">)]</span>
+
+        <span class="n">att_nbhd_convs</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">self</span><span class="o">.</span><span class="n">att_nbhd_cnns_3rd</span><span class="p">[</span><span class="n">att</span><span class="p">][</span><span class="n">ts</span><span class="p">](</span><span class="n">att_nbhd_convs</span><span class="p">[</span><span class="n">att</span><span class="p">][</span><span class="n">ts</span><span class="p">])</span>
+                           <span class="k">for</span> <span class="n">ts</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">att_lstm_seq_len</span><span class="p">)]</span> <span class="k">for</span> <span class="n">att</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">att_lstm_num</span><span class="p">)]</span>
+        <span class="n">att_flow_convs</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">self</span><span class="o">.</span><span class="n">att_flow_cnns_3rd</span><span class="p">[</span><span class="n">att</span><span class="p">][</span><span class="n">ts</span><span class="p">](</span><span class="n">att_flow_convs</span><span class="p">[</span><span class="n">att</span><span class="p">][</span><span class="n">ts</span><span class="p">])</span>
+                           <span class="k">for</span> <span class="n">ts</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">att_lstm_seq_len</span><span class="p">)]</span> <span class="k">for</span> <span class="n">att</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">att_lstm_num</span><span class="p">)]</span>
+        <span class="n">att_flow_gates</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">self</span><span class="o">.</span><span class="n">att_flow_gate_3rd</span><span class="p">[</span><span class="n">att</span><span class="p">][</span><span class="n">ts</span><span class="p">](</span><span class="n">att_flow_convs</span><span class="p">[</span><span class="n">att</span><span class="p">][</span><span class="n">ts</span><span class="p">])</span>
+                           <span class="k">for</span> <span class="n">ts</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">att_lstm_seq_len</span><span class="p">)]</span> <span class="k">for</span> <span class="n">att</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">att_lstm_num</span><span class="p">)]</span>
+        <span class="n">att_nbhd_convs</span> <span class="o">=</span> <span class="p">[[</span><span class="n">att_nbhd_convs</span><span class="p">[</span><span class="n">att</span><span class="p">][</span><span class="n">ts</span><span class="p">]</span> <span class="o">*</span> <span class="n">att_flow_gates</span><span class="p">[</span><span class="n">att</span><span class="p">][</span><span class="n">ts</span><span class="p">]</span>
+                           <span class="k">for</span> <span class="n">ts</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">att_lstm_seq_len</span><span class="p">)]</span> <span class="k">for</span> <span class="n">att</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">att_lstm_num</span><span class="p">)]</span>
+
+        <span class="n">att_nbhd_vecs</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">self</span><span class="o">.</span><span class="n">att_nbhd_vecs</span><span class="p">[</span><span class="n">att</span><span class="p">][</span><span class="n">ts</span><span class="p">](</span><span class="n">att_nbhd_convs</span><span class="p">[</span><span class="n">att</span><span class="p">][</span><span class="n">ts</span><span class="p">])</span>
+                          <span class="k">for</span> <span class="n">ts</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">att_lstm_seq_len</span><span class="p">)]</span> <span class="k">for</span> <span class="n">att</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">att_lstm_num</span><span class="p">)]</span>
+        <span class="c1"># shape=[att_lstm_num, att_lstm_seq_len, (batch_size, cnn_flat_size)]</span>
+
+        <span class="n">att_nbhd_vec</span> <span class="o">=</span> <span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">att_nbhd_vecs</span><span class="p">[</span><span class="n">att</span><span class="p">],</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">att</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">att_lstm_num</span><span class="p">)]</span>
+        <span class="n">att_lstm_input</span> <span class="o">=</span> <span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">([</span><span class="n">att_lstm_inputs</span><span class="p">[</span><span class="n">att</span><span class="p">],</span> <span class="n">att_nbhd_vec</span><span class="p">[</span><span class="n">att</span><span class="p">]],</span> <span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+                          <span class="k">for</span> <span class="n">att</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">att_lstm_num</span><span class="p">)]</span>
+        <span class="n">att_lstms</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">att_lstms</span><span class="p">[</span><span class="n">att</span><span class="p">](</span><span class="n">att_lstm_input</span><span class="p">[</span><span class="n">att</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">att</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">att_lstm_num</span><span class="p">)]</span>
+        <span class="c1"># shape=[att_lstm_num, (batch_size, lstm_out_size)]</span>
+
+        <span class="n">att_low_level</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">att_low_level</span><span class="p">[</span><span class="n">att</span><span class="p">]([</span><span class="n">att_lstms</span><span class="p">[</span><span class="n">att</span><span class="p">],</span> <span class="n">lstm</span><span class="p">])</span> <span class="k">for</span> <span class="n">att</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">att_lstm_num</span><span class="p">)]</span>
+        <span class="n">att_low_level</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">att_low_level</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="c1"># shape=(batch_size, att_lstm_num, lstm_out_size)</span>
+
+        <span class="n">result</span><span class="p">,</span> <span class="p">(</span><span class="n">hn</span><span class="p">,</span> <span class="n">cn</span><span class="p">)</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">att_high_level</span><span class="p">(</span><span class="n">att_low_level</span><span class="p">)</span>
+        <span class="n">att_high_level</span> <span class="o">=</span> <span class="n">hn</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="c1"># shape = (batch_size, lstm_out_size)</span>
+
+        <span class="n">lstm_all</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">([</span><span class="n">att_high_level</span><span class="p">,</span> <span class="n">lstm</span><span class="p">],</span> <span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">lstm_all</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lstm_all</span><span class="p">(</span><span class="n">lstm_all</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">pred_volume</span><span class="p">(</span><span class="n">lstm_all</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="STDN.calculate_loss"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_flow_prediction.STDN.html#libcity.model.traffic_flow_prediction.STDN.STDN.calculate_loss">[docs]</a>    <span class="k">def</span> <span class="nf">calculate_loss</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">batch</span><span class="p">):</span>
+        <span class="n">y_true</span> <span class="o">=</span> <span class="n">batch</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span>
+        <span class="n">y_predicted</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">batch</span><span class="p">)</span>
+        <span class="n">y_true</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_scaler</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">y_true</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">output_dim</span><span class="p">])</span>
+        <span class="n">y_predicted</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_scaler</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">y_predicted</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">output_dim</span><span class="p">])</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="n">loss</span><span class="o">.</span><span class="n">masked_mse_torch</span><span class="p">(</span><span class="n">y_predicted</span><span class="p">,</span> <span class="n">y_true</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">res</span></div>
+
+<div class="viewcode-block" id="STDN.predict"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_flow_prediction.STDN.html#libcity.model.traffic_flow_prediction.STDN.STDN.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">batch</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">batch</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_window</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">len_row</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">len_column</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_dim</span><span class="p">)</span></div></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, aptx1231
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Args for Data &mdash; Bigscity-TrafficDL  documentation</title>
+  <title>数据模块参数 &mdash; Bigscity-LibCity  documentation</title>
   
 
   
@@ -37,7 +37,7 @@
     
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Model Introduction" href="../model.html" />
+    <link rel="next" title="数据集适用的任务" href="dataset_for_task.html" />
     <link rel="prev" title="Batch" href="batch.html" /> 
 </head>
 
@@ -52,7 +52,7 @@
           
 
           
-            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> Bigscity-TrafficDL
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> Bigscity-LibCity
           
 
           
@@ -83,51 +83,57 @@
               
             
             
-              <p class="caption"><span class="caption-text">Get Started</span></p>
+              <p class="caption"><span class="caption-text">起步</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../get_started/introduction.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../get_started/install.html">Install</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../get_started/quick_start.html">Quick Start</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../get_started/directory_structure.html">Directory Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../get_started/introduction.html">介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../get_started/install.html">安装LibCity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../get_started/quick_start.html">快速入门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../get_started/directory_structure.html">目录结构</a></li>
 </ul>
-<p class="caption"><span class="caption-text">User Guide</span></p>
+<p class="caption"><span class="caption-text">用户指导</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../config_settings.html">Config Settings</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../data.html">Data Introduction</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="data_flow.html">Data Flow</a></li>
-<li class="toctree-l2"><a class="reference internal" href="raw_data.html">Raw Data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="atmoic_files.html">Atomic Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../config_settings.html">参数设置</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../data.html">数据说明</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="data_flow.html">数据流</a></li>
+<li class="toctree-l2"><a class="reference internal" href="raw_data.html">原始数据</a></li>
+<li class="toctree-l2"><a class="reference internal" href="atomic_files.html">原子文件</a></li>
 <li class="toctree-l2"><a class="reference internal" href="batch.html">Batch</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Args for Data</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#traffic-state-prediction-dataset">Traffic State Prediction DataSet</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#trajectory-location-prediction-dataset">Trajectory Location Prediction DataSet</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">数据模块参数</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">交通状况预测数据模块</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">轨迹下一跳预测数据模块</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="dataset_for_task.html">数据集适用的任务</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../model.html">Model Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../evaluator.html">Evaluator Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../executor.html">Executor Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model.html">复现模型列表</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../evaluator.html">评估模块简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../executor.html">执行模块简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">使用示例</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Developer Guide</span></p>
+<p class="caption"><span class="caption-text">开发者指导</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../developer_guide/code_style.html">Code Style</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../developer_guide/implemented_datasets.html">Customize Dataset</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../developer_guide/implemented_models.html">Customize Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../developer_guide/implemented_evaluators.html">Customize Evaluators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../developer_guide/implemented_executors.html">Customize Executors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../developer_guide/implemented_logger.html">Logger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer_guide/code_style.html">代码风格</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer_guide/implemented_datasets.html">自定义Dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer_guide/implemented_models.html">自定义Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer_guide/implemented_executors.html">自定义Executor</a></li>
 </ul>
-<p class="caption"><span class="caption-text">API REFERENCE</span></p>
+<p class="caption"><span class="caption-text">入门教程</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../trafficdl/trafficdl.config.html">trafficdl.config</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../trafficdl/trafficdl.data.html">trafficdl.data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../trafficdl/trafficdl.evaluator.html">trafficdl.evaluator</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../trafficdl/trafficdl.executor.html">trafficdl.executor</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../trafficdl/trafficdl.model.html">trafficdl.model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../trafficdl/trafficdl.pipeline.html">trafficdl.pipeline</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../trafficdl/trafficdl.utils.html">trafficdl.utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial/install_quick_start.html">安装和快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial/run_model.html">运行LibCity中已复现的模型</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial/add_model.html">在LibCity中添加新模型</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial/hyper_tune.html">使用自动化工具调参</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API文档</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../libcity/libcity.config.html">libcity.config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../libcity/libcity.data.html">libcity.data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../libcity/libcity.evaluator.html">libcity.evaluator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../libcity/libcity.executor.html">libcity.executor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../libcity/libcity.model.html">libcity.model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../libcity/libcity.pipeline.html">libcity.pipeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../libcity/libcity.utils.html">libcity.utils</a></li>
 </ul>
 
             
@@ -143,7 +149,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../index.html">Bigscity-TrafficDL</a>
+          <a href="../../index.html">Bigscity-LibCity</a>
         
       </nav>
 
@@ -174,9 +180,9 @@
     
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
         
-          <li><a href="../data.html">Data Introduction</a> &raquo;</li>
+          <li><a href="../data.html">数据说明</a> &raquo;</li>
         
-      <li>Args for Data</li>
+      <li>数据模块参数</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -195,67 +201,92 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="args-for-data">
-<h1>Args for Data<a class="headerlink" href="#args-for-data" title="Permalink to this headline">¶</a></h1>
-<p>下边介绍数据集涉及的相关参数。</p>
-<div class="section" id="traffic-state-prediction-dataset">
-<h2>Traffic State Prediction DataSet<a class="headerlink" href="#traffic-state-prediction-dataset" title="Permalink to this headline">¶</a></h2>
-<p>下述参数为交通状态预测任务中所用到的全部参数：</p>
+  <div class="section" id="id1">
+<h1>数据模块参数<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p>下文描述数据模块中涉及的相关参数。</p>
+<div class="section" id="id2">
+<h2>交通状况预测数据模块<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>以下参数是在流量状态预测任务中用到的所有参数。</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">batch_size</span></code>：批次大小</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">cache_dataset</span></code>：是否保存经过<code class="docutils literal notranslate"><span class="pre">Dataset</span></code>类处理好的数据集，<strong>默认True</strong></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">num_workers</span></code>： <code class="docutils literal notranslate"><span class="pre">Dataloader</span></code>类的参数，<strong>这个参数用本地CPU跑，应该设为0</strong></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pad_with_last_sample</span></code>：总样本数跟<code class="docutils literal notranslate"><span class="pre">batch_size</span></code>除不尽的时候，是否用最后一个元素补齐最后一个batch，<strong>默认True</strong></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">train_rate</span></code>：训练集所占比例</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">eval_rate</span></code>：验证集所占比例，划分顺序是【训练集，验证集，测试集】，从前到后的顺序按比例划分</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">input_window</span></code>：预测使用的过去时间步的长度，<strong>交通预测一般使用过去一段时间（即多个时间步的数据对未来数据进行预测）</strong></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">output_window</span></code>：预测未来的时间步的长度，<strong>交通预测一般是多步预测，即预测未来多个时间步的交通状况</strong></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">load_external</span></code>：是否加载外部数据（如天气数据），<strong>默认False</strong></p>
+<li><p><code class="docutils literal notranslate"><span class="pre">batch_size</span></code>： 培训和测试批次大小。默认为 <code class="docutils literal notranslate"><span class="pre">64</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cache_dataset</span></code>： 是否保存处理后的数据集。默认为 <code class="docutils literal notranslate"><span class="pre">True</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">num_workers</span></code>： <a class="reference external" href="https://pytorch.org/docs/stable/data.html?highlight=dataloader#torch.utils.data.DataLoader">Dataloader</a> 的参数。默认为 <code class="docutils literal notranslate"><span class="pre">0</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pad_with_last_sample</span></code>： 当样本总数不能被 <code class="docutils literal notranslate"><span class="pre">batch_size</span></code> 整除时， 是否用最后一个元素填充最后一批。默认为<code class="docutils literal notranslate"><span class="pre">True</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">train_rate</span></code>： 训练集占全部数据集的比例。默认为 <code class="docutils literal notranslate"><span class="pre">0.7</span></code>。 （数据集划分顺序为训练集、测试集、验证集）</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">eval_rate</span></code>： 验证集的比例。默认为 <code class="docutils literal notranslate"><span class="pre">0.1</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">input_window</span></code>： 用于预测的前一批时间步的数目。流量预测通常使用过去多个时间步长的数据来预测未来的数据。默认为<code class="docutils literal notranslate"><span class="pre">12</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">output_window</span></code>： 预测的时间步的数目。具体来说，使用在 <code class="docutils literal notranslate"><span class="pre">input_window</span></code> 中的数据来预测 <code class="docutils literal notranslate"><span class="pre">output_window</span></code> 中的数据。 默认为 <code class="docutils literal notranslate"><span class="pre">12</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">load_external</span></code>： 是否加载外部数据(如天气数据)。默认为 <code class="docutils literal notranslate"><span class="pre">False</span></code>。</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">normal_external</span></code>：是否对外部数据进行归一化处理，<strong>默认False</strong></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">add_time_in_day</span></code>：时间参数，增加时间片属于一天中的哪个时刻的辅助信息，<strong>默认False</strong>，依赖于参数<code class="docutils literal notranslate"><span class="pre">load_external=True</span></code>。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">add_day_in_week</span></code>：时间参数，增加时间片属于一周中的哪一天的辅助信息，<strong>默认False</strong>，依赖于参数<code class="docutils literal notranslate"><span class="pre">load_external=True</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">normal_external</span></code>： 是否规范化外部数据。默认为 <code class="docutils literal notranslate"><span class="pre">False</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ext_scaler</span></code>: 指定规范化方法，对外部数据进行规范化，需要在外部指定。 取值为 [<code class="docutils literal notranslate"><span class="pre">normal</span></code>, <code class="docutils literal notranslate"><span class="pre">standard</span></code>, <code class="docutils literal notranslate"><span class="pre">minmax01</span></code>, <code class="docutils literal notranslate"><span class="pre">minmax11</span></code>, <code class="docutils literal notranslate"><span class="pre">none</span></code>]。 默认为 <code class="docutils literal notranslate"><span class="pre">none</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">add_time_in_day</span></code>： 时间参数，添加一天中时间的辅助信息。默认为 <code class="docutils literal notranslate"><span class="pre">False</span></code>。 该参数依赖于参数 <code class="docutils literal notranslate"><span class="pre">load_external=True</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">add_day_in_week</span></code>： 时间参数，增加星期的辅助信息，默认为 <code class="docutils literal notranslate"><span class="pre">False</span></code>。 该参数依赖于参数 <code class="docutils literal notranslate"><span class="pre">load_external=True</span></code>。</p></li>
 </ul>
 </li>
-<li><p>从<code class="docutils literal notranslate"><span class="pre">Dataset</span></code>类的<code class="docutils literal notranslate"><span class="pre">get_feature()</span></code>函数中获取的部分参数：</p>
+<li><p>一些参数从 <code class="docutils literal notranslate"><span class="pre">Dataset</span></code> 类的 <code class="docutils literal notranslate"><span class="pre">get_feature()</span></code> 方法获取：</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">scaler</span></code>：指定归一化方法，<strong>需要从外部指定</strong>，目前支持<code class="docutils literal notranslate"><span class="pre">normal</span></code>、<code class="docutils literal notranslate"><span class="pre">standard</span></code>、<code class="docutils literal notranslate"><span class="pre">minmax01</span></code>、<code class="docutils literal notranslate"><span class="pre">minmax11</span></code>、<code class="docutils literal notranslate"><span class="pre">none</span></code>，默认<code class="docutils literal notranslate"><span class="pre">none</span></code>。</p>
+<li><p><code class="docutils literal notranslate"><span class="pre">scaler</span></code>： 指定规范化方式， <strong>需要在外部指定</strong>。 在 [<code class="docutils literal notranslate"><span class="pre">normal</span></code>, <code class="docutils literal notranslate"><span class="pre">standard</span></code>, <code class="docutils literal notranslate"><span class="pre">minmax01</span></code>, <code class="docutils literal notranslate"><span class="pre">minmax11</span></code>, <code class="docutils literal notranslate"><span class="pre">none</span></code>]当中取值。默认为 <code class="docutils literal notranslate"><span class="pre">none</span></code>。</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">normal</span></code>：除以最大值</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">standard</span></code>：Z-score归一化</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">minmax01</span></code>：MinMax归一化 结果区间[0, 1]</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">minmax11</span></code>：MinMax归一化 结果区间[-1, 1]</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">none</span></code>：不归一化</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">normal</span></code>： 除以最大值来进行规范化。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">standard</span></code>： Z-score 规范化。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">minmax01</span></code>： MinMax 规范化， 结果区间为 [0, 1]。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">minmax11</span></code>： MinMax 规范化， 结果区间为 [-1, 1]。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">none</span></code>： 不进行规范化。</p></li>
 </ul>
 </li>
-<li><p><code class="docutils literal notranslate"><span class="pre">feature_dim*</span></code>：交通数据特征维度的大小，<strong>不能从外部指定</strong>，而是根据不同数据集自动计算得到的，外部数据的存在和其他的一些参数也可能会影响这个维度的大小。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">adj_mx*</span></code>：交通数据构建的邻接矩阵，<strong>不能从外部指定</strong>，从<code class="docutils literal notranslate"><span class="pre">.rel</span></code>文件中计算出来的。与<code class="docutils literal notranslate"><span class="pre">.rel</span></code>文件相关的参数设置请参见<a class="reference internal" href="atmoic_files.html"><span class="doc">原子文件</span></a>一节。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">num_nodes*</span></code>：交通数据实体的个数，例如传感器的数目、网格的数目，<strong>不能从外部指定</strong>，而是根据不同数据集自动计算得到的。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">len_row*</span></code>：网格数据的网格行数，<strong>不能从外部指定</strong>，而是根据不同数据集自动计算得到的。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">len_column*</span></code>：网格数据的网格列数，<strong>不能从外部指定</strong>，而是根据不同数据集自动计算得到的。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">output_dim*</span></code>：交通预测模型输出的预测结果的特征维度的大小，<strong>需要从外部指定</strong>，即预测模型的预测目标。一般不等于<code class="docutils literal notranslate"><span class="pre">feature_dim</span></code>，因为输入数据可能包含了外部特征，但是模型输出的结果一般只包含有效的交通状况信息，而不包含外部信息。该参数由数据集原子文件中的config文件所指定，请参见<a class="reference internal" href="atmoic_files.html"><span class="doc">原子文件</span></a>一节。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">feature_dim*</span></code>： 交通数据特征维的大小，<strong>不能在外部指定</strong>，而是根据不同的数据集自动计算 。 外部数据和其他一些参数也可能影响这个维度的大小。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">adj_mx*</span></code>： 由流量数据构造的邻接矩阵，<strong>不能从外部指定</strong>，而是由 <code class="docutils literal notranslate"><span class="pre">.rel</span></code> 文件自动计算。 有关 <code class="docutils literal notranslate"><span class="pre">.rel</span></code> 文件的参数设置， 请查阅 <a class="reference internal" href="atomic_files.html"><span class="doc">原子文件</span></a> 小节。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">num_nodes*</span></code>： 交通数据实体的数量，如传感器的数量、网格的数量等，<strong>不能从外部指定</strong>，而是根据不同的数据集自动计算。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">len_row*</span></code>： 网格数据的网格行数，<strong>不能从外部指定</strong>，而是根据不同的数据集自动计算。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">len_column*</span></code>： 网格数据的网格列数，<strong>不能从外部指定</strong>，而是根据不同的数据集自动计算。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">output_dim*</span></code>： 流量预测模型输出结果的特征维的大小，<strong>需要在外部指定</strong>。 其通常不等于 <code class="docutils literal notranslate"><span class="pre">feature_dim</span></code>， 因为输入数据可能包含外部特征，但模型的输出结果通常只包含有效的交通信息，而不含外部信息。
+该参数通过数据集的 atomic file 设置， 请查阅 <a class="reference internal" href="atomic_files.html"><span class="doc">原子文件</span></a> 小节。</p></li>
 </ul>
 </li>
-<li><p>其他不通用的参数</p>
-<p>注：部分交通预测模型通过对接近度(closeness)/周期(period)/趋势(trend)进行建模实现交通预测，默认使用<code class="docutils literal notranslate"><span class="pre">len_closeness</span></code>/<code class="docutils literal notranslate"><span class="pre">len_period</span></code>/<code class="docutils literal notranslate"><span class="pre">len_trend</span></code>的数据作为历史数据进行预测，取代了上文中的参数<code class="docutils literal notranslate"><span class="pre">input_window</span></code>和<code class="docutils literal notranslate"><span class="pre">output_window</span></code>，因此多出了下述若干参数：</p>
+<li><p>其他非常用参数</p>
+<p>注： 一些交通预测模型通过接近度(closeness)/周期(period)/趋势(trend)进行建模来实现预测， 并使用 <code class="docutils literal notranslate"><span class="pre">len_closeness</span></code>/<code class="docutils literal notranslate"><span class="pre">len_period</span></code>/<code class="docutils literal notranslate"><span class="pre">len_trend</span></code>
+数据作为历史数据进行预测，而不是上述 <code class="docutils literal notranslate"><span class="pre">input_window</span></code> 和 <code class="docutils literal notranslate"><span class="pre">output_window</span></code>， 所以有以下额外参数 are added：</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">points_per_hour</span></code>：一小时有几个时间步，例如数据集是5min一个时间步，则为12</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">len_closeness</span></code>：closeness时间片序列的长度</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">len_period</span></code>：period时间片序列的长度</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">len_trend</span></code>：trend时间片序列的长度</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pad_forward_period</span></code>：period对应位置的时间片向前扩展多少时间片</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pad_back_period</span></code>：period对应位置的时间片向后扩展多少时间片</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pad_forward_trend</span></code>：trend对应位置的时间片向前扩展多少时间片</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pad_back_trend</span></code>：trend对应位置的时间片向后扩展多少时间片</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">interval_period</span></code>：period时间间隔的长度，一般为1，表示间隔一天</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">interval_trend</span></code>：trend时间间隔的长度，一般为7，表示间隔一周</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">len_closeness</span></code>： closeness 时间片序列的长度。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">len_period</span></code>： period 时间片序列的长度。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">len_trend</span></code>： trend 时间片序列的长度。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pad_forward_period</span></code>： period 对应位置的时间片向前扩展多少时间片。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pad_back_period</span></code>： period 对应位置的时间片向后扩展多少时间片。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pad_forward_trend</span></code>： trend 对应位置的时间片向前扩展多少时间片。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pad_back_trend</span></code>： trend 对应位置的时间片向后扩展多少时间片。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">interval_period</span></code>： period 时间间隔的长度，一般为1，表示间隔一天。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">interval_trend</span></code>： trend时间间隔的长度，一般为7，表示间隔一周。</p></li>
 </ul>
-<p>注：从<code class="docutils literal notranslate"><span class="pre">Dataset</span></code>类的<code class="docutils literal notranslate"><span class="pre">get_feature()</span></code>函数中获取到的<code class="docutils literal notranslate"><span class="pre">len_closeness</span></code>/<code class="docutils literal notranslate"><span class="pre">len_period</span></code>/<code class="docutils literal notranslate"><span class="pre">len_trend</span></code>表示这三段数据的实际长度，因为返回的输入结果<code class="docutils literal notranslate"><span class="pre">batch[‘X’]</span></code>中将这三段数据按顺序拼接到了一起，根据长度可以获取逐段对应的数据。</p>
 </li>
 </ul>
+<blockquote>
+<div><p>注： 从 <code class="docutils literal notranslate"><span class="pre">Dataset</span></code>类的<code class="docutils literal notranslate"><span class="pre">get_feature()</span></code> 方法当中获取的 <code class="docutils literal notranslate"><span class="pre">len_closeness</span></code>/<code class="docutils literal notranslate"><span class="pre">len_period</span></code>/<code class="docutils literal notranslate"><span class="pre">len_trend</span></code> 表示<strong>这三段数据的实际长度</strong>。 在返回值 <code class="docutils literal notranslate"><span class="pre">batch['X']</span></code> 中， 这三段数据按顺序拼接在一起。因此根据长度可以获得每一组数据。</p>
+</div></blockquote>
 </div>
-<div class="section" id="trajectory-location-prediction-dataset">
-<h2>Trajectory Location Prediction DataSet<a class="headerlink" href="#trajectory-location-prediction-dataset" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id3">
+<h2>轨迹下一跳预测数据模块<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>以下参数均为标准轨迹下一跳预测数据集使用的参数：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">batch_size</span></code>：训练和测试批量大小。默认为<code class="docutils literal notranslate"><span class="pre">64</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cache_dataset</span></code>：是否保存处理后的数据集。默认为<code class="docutils literal notranslate"><span class="pre">真</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">num_workers</span></code>：<a class="reference external" href="https://pytorch.org/docs/stable/data.html?highlight=dataloader#torch.utils.data.DataLoader">Dataloader</a>的参数。默认为<code class="docutils literal notranslate"><span class="pre">0</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">train_rate</span></code>：训练集占总数据集的比例。默认为<code class="docutils literal notranslate"><span class="pre">0.7</span></code>。 （划分顺序为训练集、验证集、测试集）</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">eval_rate</span></code>：验证集的比例。默认为<code class="docutils literal notranslate"><span class="pre">0.1</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">min_session_len</span></code>：从用户签到记录中切割的轨迹的最小长度。默认为<code class="docutils literal notranslate"><span class="pre">5</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">max_session_len</span></code>：从用户签到记录中切割的轨迹的最大长度。默认为<code class="docutils literal notranslate"><span class="pre">50</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">min_sessions</span></code>：用户拥有的子轨迹的最小数量。如果用户拥有的子轨迹数小于该值，则该用户将被过滤掉。默认为<code class="docutils literal notranslate"><span class="pre">2</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">min_checkins</span></code>：POI 被访问的最小次数。如果次数小于该值，POI 将被过滤掉。默认为<code class="docutils literal notranslate"><span class="pre">3</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">window_size</span></code>：剪切窗口的大小。 Dataset 将使用此窗口来剪切用户的签到记录。默认为<code class="docutils literal notranslate"><span class="pre">12</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cut_method</span></code> : 如何使用窗口来剪切用户的签到记录。</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">time_interval</span></code>：默认方法。如果两个相邻的签到记录之间的时间间隔小于窗口大小，则认为它们属于同一轨迹，否则不属于。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">same_date</span></code>：数据集会将同一天的签到记录视为轨迹。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fixed_length</span></code>：数据集将按照固定长度切割轨迹。即如果当前轨迹的长度等于window_size，则下一条签到记录将被视为新轨迹的起点。</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">traj_encoder</span></code>：数据集使用的轨迹编码器类。默认为<code class="docutils literal notranslate"><span class="pre">StandardTrajectoryEncoder</span></code>。编码器负责根据签到记录对模型输入进行编码。</p></li>
+</ul>
 </div>
 </div>
 
@@ -267,7 +298,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../model.html" class="btn btn-neutral float-right" title="Model Introduction" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="dataset_for_task.html" class="btn btn-neutral float-right" title="数据集适用的任务" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="batch.html" class="btn btn-neutral float-left" title="Batch" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

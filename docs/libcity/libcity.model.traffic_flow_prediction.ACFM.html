@@ -1,0 +1,568 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>libcity.model.traffic_flow_prediction.ACFM &mdash; Bigscity-LibCity  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="libcity.model.traffic_flow_prediction.ACFMCommon" href="libcity.model.traffic_flow_prediction.ACFMCommon.html" />
+    <link rel="prev" title="libcity.model.traffic_flow_prediction" href="libcity.model.traffic_flow_prediction.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> Bigscity-LibCity
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">起步</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/introduction.html">介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/install.html">安装LibCity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/quick_start.html">快速入门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/directory_structure.html">目录结构</a></li>
+</ul>
+<p class="caption"><span class="caption-text">用户指导</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/config_settings.html">参数设置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/data.html">数据说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/model.html">复现模型列表</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/evaluator.html">评估模块简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/executor.html">执行模块简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/usage.html">使用示例</a></li>
+</ul>
+<p class="caption"><span class="caption-text">开发者指导</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/code_style.html">代码风格</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_datasets.html">自定义Dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_models.html">自定义Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_executors.html">自定义Executor</a></li>
+</ul>
+<p class="caption"><span class="caption-text">入门教程</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/install_quick_start.html">安装和快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/run_model.html">运行LibCity中已复现的模型</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/add_model.html">在LibCity中添加新模型</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/hyper_tune.html">使用自动化工具调参</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API文档</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="libcity.config.html">libcity.config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="libcity.data.html">libcity.data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="libcity.evaluator.html">libcity.evaluator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="libcity.executor.html">libcity.executor</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="libcity.model.html">libcity.model</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="libcity.model.map_matching.html">libcity.model.map_matching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.model.traffic_demand_prediction.html">libcity.model.traffic_demand_prediction</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="libcity.model.traffic_flow_prediction.html">libcity.model.traffic_flow_prediction</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">libcity.model.traffic_flow_prediction.ACFM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libcity.model.traffic_flow_prediction.ACFMCommon.html">libcity.model.traffic_flow_prediction.ACFMCommon</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libcity.model.traffic_flow_prediction.AGCRN.html">libcity.model.traffic_flow_prediction.AGCRN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libcity.model.traffic_flow_prediction.ASTGCN.html">libcity.model.traffic_flow_prediction.ASTGCN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libcity.model.traffic_flow_prediction.ASTGCNCommon.html">libcity.model.traffic_flow_prediction.ASTGCNCommon</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libcity.model.traffic_flow_prediction.CONVGCN.html">libcity.model.traffic_flow_prediction.CONVGCN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libcity.model.traffic_flow_prediction.CONVGCNCommon.html">libcity.model.traffic_flow_prediction.CONVGCNCommon</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libcity.model.traffic_flow_prediction.CRANN.html">libcity.model.traffic_flow_prediction.CRANN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libcity.model.traffic_flow_prediction.DGCN.html">libcity.model.traffic_flow_prediction.DGCN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libcity.model.traffic_flow_prediction.DSAN.html">libcity.model.traffic_flow_prediction.DSAN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libcity.model.traffic_flow_prediction.MSTGCN.html">libcity.model.traffic_flow_prediction.MSTGCN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libcity.model.traffic_flow_prediction.MSTGCNCommon.html">libcity.model.traffic_flow_prediction.MSTGCNCommon</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libcity.model.traffic_flow_prediction.MultiSTGCnet.html">libcity.model.traffic_flow_prediction.MultiSTGCnet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libcity.model.traffic_flow_prediction.MultiSTGCnetCommon.html">libcity.model.traffic_flow_prediction.MultiSTGCnetCommon</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libcity.model.traffic_flow_prediction.ResLSTM.html">libcity.model.traffic_flow_prediction.ResLSTM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libcity.model.traffic_flow_prediction.STDN.html">libcity.model.traffic_flow_prediction.STDN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libcity.model.traffic_flow_prediction.STNN.html">libcity.model.traffic_flow_prediction.STNN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libcity.model.traffic_flow_prediction.STResNet.html">libcity.model.traffic_flow_prediction.STResNet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libcity.model.traffic_flow_prediction.STResNetCommon.html">libcity.model.traffic_flow_prediction.STResNetCommon</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libcity.model.traffic_flow_prediction.STSGCN.html">libcity.model.traffic_flow_prediction.STSGCN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libcity.model.traffic_flow_prediction.ToGCN.html">libcity.model.traffic_flow_prediction.ToGCN</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.model.traffic_od_prediction.html">libcity.model.traffic_od_prediction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.model.traffic_speed_prediction.html">libcity.model.traffic_speed_prediction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.model.trajectory_loc_prediction.html">libcity.model.trajectory_loc_prediction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.model.abstract_model.html">libcity.model.abstract_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.model.abstract_traffic_state_model.html">libcity.model.abstract_traffic_state_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.model.abstract_traffic_tradition_model.html">libcity.model.abstract_traffic_tradition_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.model.loss.html">libcity.model.loss</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="libcity.pipeline.html">libcity.pipeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="libcity.utils.html">libcity.utils</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Bigscity-LibCity</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="libcity.model.html">libcity.model</a> &raquo;</li>
+        
+          <li><a href="libcity.model.traffic_flow_prediction.html">libcity.model.traffic_flow_prediction</a> &raquo;</li>
+        
+      <li>libcity.model.traffic_flow_prediction.ACFM</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/libcity/libcity.model.traffic_flow_prediction.ACFM.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-libcity.model.traffic_flow_prediction.ACFM">
+<span id="libcity-model-traffic-flow-prediction-acfm"></span><h1>libcity.model.traffic_flow_prediction.ACFM<a class="headerlink" href="#module-libcity.model.traffic_flow_prediction.ACFM" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt id="libcity.model.traffic_flow_prediction.ACFM.ACFM">
+<em class="property">class </em><code class="sig-prename descclassname">libcity.model.traffic_flow_prediction.ACFM.</code><code class="sig-name descname">ACFM</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">config</span></em>, <em class="sig-param"><span class="n">data_feature</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/traffic_flow_prediction/ACFM.html#ACFM"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.traffic_flow_prediction.ACFM.ACFM" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="libcity.model.abstract_traffic_state_model.html#libcity.model.abstract_traffic_state_model.AbstractTrafficStateModel" title="libcity.model.abstract_traffic_state_model.AbstractTrafficStateModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">libcity.model.abstract_traffic_state_model.AbstractTrafficStateModel</span></code></a></p>
+<dl class="py method">
+<dt id="libcity.model.traffic_flow_prediction.ACFM.ACFM.calculate_loss">
+<code class="sig-name descname">calculate_loss</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">batch</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/traffic_flow_prediction/ACFM.html#ACFM.calculate_loss"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.traffic_flow_prediction.ACFM.ACFM.calculate_loss" title="Permalink to this definition">¶</a></dt>
+<dd><p>输入一个batch的数据，返回训练过程的loss，也就是需要定义一个loss函数</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>batch</strong> (<a class="reference internal" href="libcity.data.batch.html#libcity.data.batch.Batch" title="libcity.data.batch.Batch"><em>Batch</em></a>) – a batch of input</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>return training loss</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>torch.tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="libcity.model.traffic_flow_prediction.ACFM.ACFM.forward">
+<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">batch</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/traffic_flow_prediction/ACFM.html#ACFM.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.traffic_flow_prediction.ACFM.ACFM.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Defines the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="libcity.model.traffic_flow_prediction.ACFM.ACFM.predict">
+<code class="sig-name descname">predict</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">batch</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/traffic_flow_prediction/ACFM.html#ACFM.predict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.traffic_flow_prediction.ACFM.ACFM.predict" title="Permalink to this definition">¶</a></dt>
+<dd><p>输入一个batch的数据，返回对应的预测值，一般应该是**多步预测**的结果，一般会调用nn.Moudle的forward()方法</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>batch</strong> (<a class="reference internal" href="libcity.data.batch.html#libcity.data.batch.Batch" title="libcity.data.batch.Batch"><em>Batch</em></a>) – a batch of input</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>predict result of this batch</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>torch.tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="libcity.model.traffic_flow_prediction.ACFM.ACFM.training">
+<code class="sig-name descname">training</code><em class="property">: bool</em><a class="headerlink" href="#libcity.model.traffic_flow_prediction.ACFM.ACFM.training" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="libcity.model.traffic_flow_prediction.ACFM.ConcatConv">
+<em class="property">class </em><code class="sig-prename descclassname">libcity.model.traffic_flow_prediction.ACFM.</code><code class="sig-name descname">ConcatConv</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">in_channels1</span></em>, <em class="sig-param"><span class="n">in_channels2</span></em>, <em class="sig-param"><span class="n">out_channels</span></em>, <em class="sig-param"><span class="n">inter_channels</span></em>, <em class="sig-param"><span class="n">relu_conv</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">seq_len</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/traffic_flow_prediction/ACFM.html#ConcatConv"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.traffic_flow_prediction.ACFM.ConcatConv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<dl class="py method">
+<dt id="libcity.model.traffic_flow_prediction.ACFM.ConcatConv.forward">
+<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">y</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/traffic_flow_prediction/ACFM.html#ConcatConv.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.traffic_flow_prediction.ACFM.ConcatConv.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Defines the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="libcity.model.traffic_flow_prediction.ACFM.ConcatConv.training">
+<code class="sig-name descname">training</code><em class="property">: bool</em><a class="headerlink" href="#libcity.model.traffic_flow_prediction.ACFM.ConcatConv.training" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="libcity.model.traffic_flow_prediction.ACFM.ConvGRUCell">
+<em class="property">class </em><code class="sig-prename descclassname">libcity.model.traffic_flow_prediction.ACFM.</code><code class="sig-name descname">ConvGRUCell</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">in_channels</span></em>, <em class="sig-param"><span class="n">height</span></em>, <em class="sig-param"><span class="n">width</span></em>, <em class="sig-param"><span class="n">lstm_channels</span><span class="o">=</span><span class="default_value">16</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/traffic_flow_prediction/ACFM.html#ConvGRUCell"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.traffic_flow_prediction.ACFM.ConvGRUCell" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<dl class="py method">
+<dt id="libcity.model.traffic_flow_prediction.ACFM.ConvGRUCell.forward">
+<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">input</span></em>, <em class="sig-param"><span class="n">state</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/traffic_flow_prediction/ACFM.html#ConvGRUCell.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.traffic_flow_prediction.ACFM.ConvGRUCell.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Defines the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="libcity.model.traffic_flow_prediction.ACFM.ConvGRUCell.training">
+<code class="sig-name descname">training</code><em class="property">: bool</em><a class="headerlink" href="#libcity.model.traffic_flow_prediction.ACFM.ConvGRUCell.training" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="libcity.model.traffic_flow_prediction.ACFM.ConvGate">
+<em class="property">class </em><code class="sig-prename descclassname">libcity.model.traffic_flow_prediction.ACFM.</code><code class="sig-name descname">ConvGate</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">in_channels</span></em>, <em class="sig-param"><span class="n">height</span></em>, <em class="sig-param"><span class="n">width</span></em>, <em class="sig-param"><span class="n">lstm_channels</span><span class="o">=</span><span class="default_value">16</span></em>, <em class="sig-param"><span class="n">peephole_conn</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/traffic_flow_prediction/ACFM.html#ConvGate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.traffic_flow_prediction.ACFM.ConvGate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<dl class="py method">
+<dt id="libcity.model.traffic_flow_prediction.ACFM.ConvGate.forward">
+<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">input</span></em>, <em class="sig-param"><span class="n">state</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/traffic_flow_prediction/ACFM.html#ConvGate.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.traffic_flow_prediction.ACFM.ConvGate.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Defines the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="libcity.model.traffic_flow_prediction.ACFM.ConvGate.training">
+<code class="sig-name descname">training</code><em class="property">: bool</em><a class="headerlink" href="#libcity.model.traffic_flow_prediction.ACFM.ConvGate.training" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="libcity.model.traffic_flow_prediction.ACFM.ConvLSTM">
+<em class="property">class </em><code class="sig-prename descclassname">libcity.model.traffic_flow_prediction.ACFM.</code><code class="sig-name descname">ConvLSTM</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">in_channels</span></em>, <em class="sig-param"><span class="n">height</span></em>, <em class="sig-param"><span class="n">width</span></em>, <em class="sig-param"><span class="n">lstm_channels</span><span class="o">=</span><span class="default_value">16</span></em>, <em class="sig-param"><span class="n">all_hidden</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">mode</span><span class="o">=</span><span class="default_value">'merge'</span></em>, <em class="sig-param"><span class="n">cpt</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">dropout_rate</span><span class="o">=</span><span class="default_value">0.5</span></em>, <em class="sig-param"><span class="n">last_conv</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">conv_channels</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">gru</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/traffic_flow_prediction/ACFM.html#ConvLSTM"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.traffic_flow_prediction.ACFM.ConvLSTM" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<dl class="py method">
+<dt id="libcity.model.traffic_flow_prediction.ACFM.ConvLSTM.forward">
+<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">inputs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/traffic_flow_prediction/ACFM.html#ConvLSTM.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.traffic_flow_prediction.ACFM.ConvLSTM.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Defines the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="libcity.model.traffic_flow_prediction.ACFM.ConvLSTM.lstm_layer">
+<code class="sig-name descname">lstm_layer</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">inputs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/traffic_flow_prediction/ACFM.html#ConvLSTM.lstm_layer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.traffic_flow_prediction.ACFM.ConvLSTM.lstm_layer" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="libcity.model.traffic_flow_prediction.ACFM.ConvLSTM.training">
+<code class="sig-name descname">training</code><em class="property">: bool</em><a class="headerlink" href="#libcity.model.traffic_flow_prediction.ACFM.ConvLSTM.training" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="libcity.model.traffic_flow_prediction.ACFM.ConvLSTMCell">
+<em class="property">class </em><code class="sig-prename descclassname">libcity.model.traffic_flow_prediction.ACFM.</code><code class="sig-name descname">ConvLSTMCell</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">in_channels</span></em>, <em class="sig-param"><span class="n">height</span></em>, <em class="sig-param"><span class="n">width</span></em>, <em class="sig-param"><span class="n">lstm_channels</span><span class="o">=</span><span class="default_value">16</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/traffic_flow_prediction/ACFM.html#ConvLSTMCell"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.traffic_flow_prediction.ACFM.ConvLSTMCell" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<dl class="py method">
+<dt id="libcity.model.traffic_flow_prediction.ACFM.ConvLSTMCell.forward">
+<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">input</span></em>, <em class="sig-param"><span class="n">state</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/traffic_flow_prediction/ACFM.html#ConvLSTMCell.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.traffic_flow_prediction.ACFM.ConvLSTMCell.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Defines the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="libcity.model.traffic_flow_prediction.ACFM.ConvLSTMCell.training">
+<code class="sig-name descname">training</code><em class="property">: bool</em><a class="headerlink" href="#libcity.model.traffic_flow_prediction.ACFM.ConvLSTMCell.training" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="libcity.model.traffic_flow_prediction.ACFM.ExtNN">
+<em class="property">class </em><code class="sig-prename descclassname">libcity.model.traffic_flow_prediction.ACFM.</code><code class="sig-name descname">ExtNN</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">in_features</span></em>, <em class="sig-param"><span class="n">out_height</span></em>, <em class="sig-param"><span class="n">out_width</span></em>, <em class="sig-param"><span class="n">out_channels</span></em>, <em class="sig-param"><span class="n">inter_features</span><span class="o">=</span><span class="default_value">10</span></em>, <em class="sig-param"><span class="n">map</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">relu</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">mode</span><span class="o">=</span><span class="default_value">'inter'</span></em>, <em class="sig-param"><span class="n">dropout_rate</span><span class="o">=</span><span class="default_value">0</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/traffic_flow_prediction/ACFM.html#ExtNN"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.traffic_flow_prediction.ACFM.ExtNN" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<dl class="py method">
+<dt id="libcity.model.traffic_flow_prediction.ACFM.ExtNN.external_block">
+<code class="sig-name descname">external_block</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/traffic_flow_prediction/ACFM.html#ExtNN.external_block"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.traffic_flow_prediction.ACFM.ExtNN.external_block" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="libcity.model.traffic_flow_prediction.ACFM.ExtNN.forward">
+<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/traffic_flow_prediction/ACFM.html#ExtNN.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.traffic_flow_prediction.ACFM.ExtNN.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Defines the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="libcity.model.traffic_flow_prediction.ACFM.ExtNN.training">
+<code class="sig-name descname">training</code><em class="property">: bool</em><a class="headerlink" href="#libcity.model.traffic_flow_prediction.ACFM.ExtNN.training" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="libcity.model.traffic_flow_prediction.ACFM.ResNN">
+<em class="property">class </em><code class="sig-prename descclassname">libcity.model.traffic_flow_prediction.ACFM.</code><code class="sig-name descname">ResNN</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">in_channels</span></em>, <em class="sig-param"><span class="n">out_channels</span></em>, <em class="sig-param"><span class="n">inter_channels</span></em>, <em class="sig-param"><span class="n">repetation</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="n">bnmode</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">splitmode</span><span class="o">=</span><span class="default_value">'split'</span></em>, <em class="sig-param"><span class="n">cpt</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/traffic_flow_prediction/ACFM.html#ResNN"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.traffic_flow_prediction.ACFM.ResNN" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<dl class="py method">
+<dt id="libcity.model.traffic_flow_prediction.ACFM.ResNN.forward">
+<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/traffic_flow_prediction/ACFM.html#ResNN.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.traffic_flow_prediction.ACFM.ResNN.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Defines the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="libcity.model.traffic_flow_prediction.ACFM.ResNN.residual_block">
+<code class="sig-name descname">residual_block</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">in_channels</span></em>, <em class="sig-param"><span class="n">out_channels</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/traffic_flow_prediction/ACFM.html#ResNN.residual_block"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.traffic_flow_prediction.ACFM.ResNN.residual_block" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="libcity.model.traffic_flow_prediction.ACFM.ResNN.training">
+<code class="sig-name descname">training</code><em class="property">: bool</em><a class="headerlink" href="#libcity.model.traffic_flow_prediction.ACFM.ResNN.training" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="libcity.model.traffic_flow_prediction.ACFM.ResUnit">
+<em class="property">class </em><code class="sig-prename descclassname">libcity.model.traffic_flow_prediction.ACFM.</code><code class="sig-name descname">ResUnit</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filters</span></em>, <em class="sig-param"><span class="n">bnmode</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/traffic_flow_prediction/ACFM.html#ResUnit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.traffic_flow_prediction.ACFM.ResUnit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<dl class="py method">
+<dt id="libcity.model.traffic_flow_prediction.ACFM.ResUnit.forward">
+<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/traffic_flow_prediction/ACFM.html#ResUnit.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.traffic_flow_prediction.ACFM.ResUnit.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Defines the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="libcity.model.traffic_flow_prediction.ACFM.ResUnit.training">
+<code class="sig-name descname">training</code><em class="property">: bool</em><a class="headerlink" href="#libcity.model.traffic_flow_prediction.ACFM.ResUnit.training" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt id="libcity.model.traffic_flow_prediction.ACFM.split_cpt">
+<code class="sig-prename descclassname">libcity.model.traffic_flow_prediction.ACFM.</code><code class="sig-name descname">split_cpt</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span></em>, <em class="sig-param"><span class="n">cpt</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/traffic_flow_prediction/ACFM.html#split_cpt"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.traffic_flow_prediction.ACFM.split_cpt" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="libcity.model.traffic_flow_prediction.ACFMCommon.html" class="btn btn-neutral float-right" title="libcity.model.traffic_flow_prediction.ACFMCommon" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="libcity.model.traffic_flow_prediction.html" class="btn btn-neutral float-left" title="libcity.model.traffic_flow_prediction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, aptx1231
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

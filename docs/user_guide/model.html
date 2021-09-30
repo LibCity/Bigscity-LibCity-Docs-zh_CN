@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Model Introduction &mdash; Bigscity-TrafficDL  documentation</title>
+  <title>复现模型列表 &mdash; Bigscity-LibCity  documentation</title>
   
 
   
@@ -37,8 +37,8 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="AGCRN" href="model/Traffic_Flow_Prediction/AGCRN.html" />
-    <link rel="prev" title="Args for Data" href="data/args_for_data.html" /> 
+    <link rel="next" title="评估模块简介" href="evaluator.html" />
+    <link rel="prev" title="数据集适用的任务" href="data/dataset_for_task.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -52,7 +52,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> Bigscity-TrafficDL
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> Bigscity-LibCity
           
 
           
@@ -83,68 +83,51 @@
               
             
             
-              <p class="caption"><span class="caption-text">Get Started</span></p>
+              <p class="caption"><span class="caption-text">起步</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../get_started/introduction.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../get_started/install.html">Install</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../get_started/quick_start.html">Quick Start</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../get_started/directory_structure.html">Directory Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/introduction.html">介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/install.html">安装LibCity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/quick_start.html">快速入门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/directory_structure.html">目录结构</a></li>
 </ul>
-<p class="caption"><span class="caption-text">User Guide</span></p>
+<p class="caption"><span class="caption-text">用户指导</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="config_settings.html">Config Settings</a></li>
-<li class="toctree-l1"><a class="reference internal" href="data.html">Data Introduction</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Model Introduction</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#traffic-flow-prediction">Traffic Flow Prediction</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="model/Traffic_Flow_Prediction/AGCRN.html">AGCRN</a></li>
-<li class="toctree-l3"><a class="reference internal" href="model/Traffic_Flow_Prediction/ASTGCN.html">ASTGCN</a></li>
-<li class="toctree-l3"><a class="reference internal" href="model/Traffic_Flow_Prediction/MSTGCN.html">MSTGCN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="config_settings.html">参数设置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.html">数据说明</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">复现模型列表</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">交通流量预测</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">交通速度预测</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">交通需求量预测</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">轨迹下一跳预测</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#traffic-speed-prediction">Traffic Speed Prediction</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="model/Traffic_Speed_Prediction/DCRNN.html">DCRNN</a></li>
-<li class="toctree-l3"><a class="reference internal" href="model/Traffic_Speed_Prediction/STGCN.html">STGCN</a></li>
-<li class="toctree-l3"><a class="reference internal" href="model/Traffic_Speed_Prediction/GraphWaveNet.html">GraphWaveNet</a></li>
-<li class="toctree-l3"><a class="reference internal" href="model/Traffic_Speed_Prediction/TGCN.html">TGCN</a></li>
-<li class="toctree-l3"><a class="reference internal" href="model/Traffic_Speed_Prediction/TGCLSTM.html">TGCLSTM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="evaluator.html">评估模块简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="executor.html">执行模块简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">使用示例</a></li>
 </ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#on-demand-service-predition">On-Demand Service predition</a><ul class="simple">
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#trajectory-location-prediction">Trajectory Location Prediction</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="model/Trajectory_Location_Prediction/DeepMove.html">DeepMove</a></li>
-<li class="toctree-l3"><a class="reference internal" href="model/Trajectory_Location_Prediction/FPMC.html">FPMC</a></li>
-<li class="toctree-l3"><a class="reference internal" href="model/Trajectory_Location_Prediction/LSTPM.html">LSTPM</a></li>
-<li class="toctree-l3"><a class="reference internal" href="model/Trajectory_Location_Prediction/RNN.html">RNN</a></li>
-<li class="toctree-l3"><a class="reference internal" href="model/Trajectory_Location_Prediction/SERM.html">SERM</a></li>
-<li class="toctree-l3"><a class="reference internal" href="model/Trajectory_Location_Prediction/STRNN.html">STRNN</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="evaluator.html">Evaluator Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="executor.html">Executor Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
-</ul>
-<p class="caption"><span class="caption-text">Developer Guide</span></p>
+<p class="caption"><span class="caption-text">开发者指导</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../developer_guide/code_style.html">Code Style</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_datasets.html">Customize Dataset</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_models.html">Customize Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_evaluators.html">Customize Evaluators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_executors.html">Customize Executors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_logger.html">Logger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/code_style.html">代码风格</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_datasets.html">自定义Dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_models.html">自定义Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_executors.html">自定义Executor</a></li>
 </ul>
-<p class="caption"><span class="caption-text">API REFERENCE</span></p>
+<p class="caption"><span class="caption-text">入门教程</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../trafficdl/trafficdl.config.html">trafficdl.config</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../trafficdl/trafficdl.data.html">trafficdl.data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../trafficdl/trafficdl.evaluator.html">trafficdl.evaluator</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../trafficdl/trafficdl.executor.html">trafficdl.executor</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../trafficdl/trafficdl.model.html">trafficdl.model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../trafficdl/trafficdl.pipeline.html">trafficdl.pipeline</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../trafficdl/trafficdl.utils.html">trafficdl.utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/install_quick_start.html">安装和快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/run_model.html">运行LibCity中已复现的模型</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/add_model.html">在LibCity中添加新模型</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/hyper_tune.html">使用自动化工具调参</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API文档</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../libcity/libcity.config.html">libcity.config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../libcity/libcity.data.html">libcity.data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../libcity/libcity.evaluator.html">libcity.evaluator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../libcity/libcity.executor.html">libcity.executor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../libcity/libcity.model.html">libcity.model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../libcity/libcity.pipeline.html">libcity.pipeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../libcity/libcity.utils.html">libcity.utils</a></li>
 </ul>
 
             
@@ -160,7 +143,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">Bigscity-TrafficDL</a>
+          <a href="../index.html">Bigscity-LibCity</a>
         
       </nav>
 
@@ -191,13 +174,13 @@
     
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>Model Introduction</li>
+      <li>复现模型列表</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/user_guide/model.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/user_guide/model.md.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -210,53 +193,345 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="model-introduction">
-<h1>Model Introduction<a class="headerlink" href="#model-introduction" title="Permalink to this headline">¶</a></h1>
-<p>针对以下6类任务，我们实现了x种模型，下边是对这些模型的简要介绍。</p>
+  <div class="section" id="id1">
+<h1>复现模型列表<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id2">
+<h2>交通流量预测<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>Traffic Flow Prediction</p></li>
-<li><p>Traffic Speed Prediction</p></li>
-<li><p>On-Demand Service Predition</p></li>
-<li><p>Trajectory Location Prediction</p></li>
+<li><p><strong>AutoEncoder</strong></p></li>
 </ul>
-<div class="section" id="traffic-flow-prediction">
-<h2>Traffic Flow Prediction<a class="headerlink" href="#traffic-flow-prediction" title="Permalink to this headline">¶</a></h2>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="model/Traffic_Flow_Prediction/AGCRN.html">AGCRN</a></li>
-<li class="toctree-l1"><a class="reference internal" href="model/Traffic_Flow_Prediction/ASTGCN.html">ASTGCN</a></li>
-<li class="toctree-l1"><a class="reference internal" href="model/Traffic_Flow_Prediction/MSTGCN.html">MSTGCN</a></li>
+<p>本基线模型由我们实现，采用编码器从数据中学习嵌入向量后用解码器预测未来交通状况。</p>
+<ul class="simple">
+<li><p><strong>RNN（FC-RNN）</strong></p></li>
 </ul>
-</div>
-</div>
-<div class="section" id="traffic-speed-prediction">
-<h2>Traffic Speed Prediction<a class="headerlink" href="#traffic-speed-prediction" title="Permalink to this headline">¶</a></h2>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="model/Traffic_Speed_Prediction/DCRNN.html">DCRNN</a></li>
-<li class="toctree-l1"><a class="reference internal" href="model/Traffic_Speed_Prediction/STGCN.html">STGCN</a></li>
-<li class="toctree-l1"><a class="reference internal" href="model/Traffic_Speed_Prediction/GraphWaveNet.html">GraphWaveNet</a></li>
-<li class="toctree-l1"><a class="reference internal" href="model/Traffic_Speed_Prediction/TGCN.html">TGCN</a></li>
-<li class="toctree-l1"><a class="reference internal" href="model/Traffic_Speed_Prediction/TGCLSTM.html">TGCLSTM</a></li>
+<p>本基线模型由我们实现，预测交通状态，基于 RNN。</p>
+<ul class="simple">
+<li><p><strong>Seq2Seq</strong></p></li>
 </ul>
-</div>
-</div>
-<div class="section" id="on-demand-service-predition">
-<h2>On-Demand Service predition<a class="headerlink" href="#on-demand-service-predition" title="Permalink to this headline">¶</a></h2>
-<div class="toctree-wrapper compound">
-</div>
-</div>
-<div class="section" id="trajectory-location-prediction">
-<h2>Trajectory Location Prediction<a class="headerlink" href="#trajectory-location-prediction" title="Permalink to this headline">¶</a></h2>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="model/Trajectory_Location_Prediction/DeepMove.html">DeepMove</a></li>
-<li class="toctree-l1"><a class="reference internal" href="model/Trajectory_Location_Prediction/FPMC.html">FPMC</a></li>
-<li class="toctree-l1"><a class="reference internal" href="model/Trajectory_Location_Prediction/LSTPM.html">LSTPM</a></li>
-<li class="toctree-l1"><a class="reference internal" href="model/Trajectory_Location_Prediction/RNN.html">RNN</a></li>
-<li class="toctree-l1"><a class="reference internal" href="model/Trajectory_Location_Prediction/SERM.html">SERM</a></li>
-<li class="toctree-l1"><a class="reference internal" href="model/Trajectory_Location_Prediction/STRNN.html">STRNN</a></li>
+<p>本基线模型由我们实现，基于编码器-解码器架构，预测交通状态。采用基于门控循环单元的编码器-解码器框架，进行多步预测。</p>
+<ul class="simple">
+<li><p><strong>ST-ResNet</strong></p></li>
 </ul>
+<p>时空残差网络，广泛用于基于网格的流量预测任务，以残差单元建模时空关联。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&gt; Junbo Zhang, Yu Zheng, and Dekang Qi. 2017. Deep Spatio-Temporal Residual Networks for Citywide Crowd Flows Prediction. In AAAI. AAAI Press, 1655–1661.
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>ACFM</strong></p></li>
+</ul>
+<p>注意力人群流量机，能推断人群流量，通过注意力机制学习随时间变化数据的动态表示。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&gt; Lingbo Liu, Ruimao Zhang, Jiefeng Peng, Guanbin Li, Bowen Du, and Liang Lin.2018. Attentive Crowd Flow Machines. In ACM Multimedia. ACM, 1553–1561.
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>ASTGCN</strong></p></li>
+</ul>
+<p>基于注意力的时空图卷积网络，融合时空注意力机制与时空卷积捕捉动态时空特征。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&gt; Shengnan Guo, Youfang Lin, Ning Feng, Chao Song, and Huaiyu Wan. 2019.Attention Based Spatial-Temporal Graph Convolutional Networks for Traffic Flow Forecasting. In AAAI. AAAI Press, 922–929.
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>MSTGCN</strong></p></li>
+</ul>
+<p>降级版的ASTGCN，称为多组件时空图卷积网络，去掉了原模型的时空注意力机制。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&gt; Shengnan Guo, Youfang Lin, Ning Feng, Chao Song, and Huaiyu Wan. 2019.Attention Based Spatial-Temporal Graph Convolutional Networks for Traffic Flow Forecasting. In AAAI. AAAI Press, 922–929.
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>AGCRN</strong></p></li>
+</ul>
+<p>自适应图卷积循环网络，通过自适应模块增强传统图卷积，并组合成循环神经网络，以捕捉细粒度时空关联。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">Lei</span> <span class="n">Bai</span><span class="p">,</span> <span class="n">Lina</span> <span class="n">Yao</span><span class="p">,</span> <span class="n">Can</span> <span class="n">Li</span><span class="p">,</span> <span class="n">Xianzhi</span> <span class="n">Wang</span><span class="p">,</span> <span class="ow">and</span> <span class="n">Can</span> <span class="n">Wang</span><span class="o">.</span> <span class="mf">2020.</span> <span class="n">Adaptive</span> <span class="n">Graph</span> <span class="n">Convolutional</span> <span class="n">Recurrent</span> <span class="n">Network</span> <span class="k">for</span> <span class="n">Traffic</span> <span class="n">Forecasting</span><span class="o">.</span> <span class="n">In</span> <span class="n">NeurIPS</span><span class="o">.</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>CONVGCN</strong></p></li>
+</ul>
+<p>Conv-GCN 组合图卷积网络（GCN）与三维卷积神经网络（3D CNN）。三维卷积神经网络创新性地应用在集成入流与出流信息，以及提取入流/出流模式间与距离远近不同站点间的高层次关联两方面。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&gt; Jinlei Zhang, Feng Chen, Yinan Guo, and Xiaohong Li. 2020. Multi-graph convolutional network for short-term passenger flow forecasting in urban rail transit. IET Intell. Trans. Syst.14, 10 (2020), 1210–1217.
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>STDN</strong></p></li>
+</ul>
+<p>时空动态网络（STDN）引入流门控机制以学习位置间的动态相似性，以及设计了周期轮换变动的注意力机制来把握长期、周期性的随时间的变换。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&gt; Huaxiu Yao, Xianfeng Tang, Hua Wei, Guanjie Zheng, and Zhenhui Li. 2019.Revisiting Spatial-Temporal Similarity: A Deep Learning Framework for Traffic Prediction. In AAAI. AAAI Press, 5668–5675.
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>STSGCN</strong></p></li>
+</ul>
+<p>时空同步图卷积网络（STSGCN），致力于时空网络数据预测。通过精心设计的时空同步建模机制，该模型能够有效地提取复杂、局部化的时空关联。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&gt; Chao Song, Youfang Lin, Shengnan Guo, and Huaiyu Wan. 2020. Spatial-Temporal Synchronous Graph Convolutional Networks: A New Framework for Spatial-Temporal Network Data Forecasting. In AAAI. AAAI Press, 914–921.
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>ToGCN</strong></p></li>
+</ul>
+<p>拓扑图卷积网络（ToGCN）后跟序列到序列（Seq2Seq）网络，以时间关联预测未来的交通流量与密度。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">Han</span> <span class="n">Qiu</span><span class="p">,</span> <span class="n">Qinkai</span> <span class="n">Zheng</span><span class="p">,</span> <span class="n">Mounira</span> <span class="n">Msahli</span><span class="p">,</span> <span class="n">Gerard</span> <span class="n">Memmi</span><span class="p">,</span> <span class="n">Meikang</span> <span class="n">Qiu</span><span class="p">,</span> <span class="ow">and</span> <span class="n">Jialiang</span> <span class="n">Lu</span><span class="o">.</span> <span class="mf">2020.</span> <span class="n">Topological</span> <span class="n">Graph</span> <span class="n">Convolutional</span> <span class="n">Network</span><span class="o">-</span><span class="n">Based</span> <span class="n">Urban</span> <span class="n">Traffic</span> <span class="n">Flow</span> <span class="ow">and</span> <span class="n">Density</span> <span class="n">Prediction</span><span class="o">.</span> <span class="n">IEEE</span> <span class="n">Trans</span><span class="o">.</span> <span class="n">Intell</span><span class="o">.</span> <span class="n">Transp</span><span class="o">.</span> <span class="n">Syst</span><span class="o">.</span><span class="p">(</span><span class="mi">2020</span><span class="p">)</span><span class="o">.</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>ResLSTM</strong></p></li>
+</ul>
+<p>ResLSTM是合并残差网络（ResNet），图卷积网络（GCN）和长短期记忆内存（LSTM）的深度学习架构，在交通网尺度预测城市轨道交通短期客流。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">Jinlei</span> <span class="n">Zhang</span><span class="p">,</span> <span class="n">Feng</span> <span class="n">Chen</span><span class="p">,</span> <span class="n">Zhiyong</span> <span class="n">Cui</span><span class="p">,</span> <span class="n">Yinan</span> <span class="n">Guo</span><span class="p">,</span> <span class="ow">and</span> <span class="n">Yadi</span> <span class="n">Zhu</span><span class="o">.</span> <span class="mf">2020.</span>  <span class="n">Deep</span> <span class="n">learning</span> <span class="n">architecture</span> <span class="k">for</span> <span class="n">short</span><span class="o">-</span><span class="n">term</span> <span class="n">passenger</span> <span class="n">flow</span> <span class="n">forecasting</span> <span class="ow">in</span> <span class="n">urban</span> <span class="n">rail</span> <span class="n">transit</span><span class="o">.</span> <span class="n">IEEE</span> <span class="n">Trans</span><span class="o">.</span> <span class="n">Intell</span><span class="o">.</span> <span class="n">Transp</span><span class="o">.</span> <span class="n">Syst</span><span class="o">.</span><span class="p">(</span><span class="mi">2020</span><span class="p">)</span><span class="o">.</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>CRANN</strong></p></li>
+</ul>
+<p>CRANN是可解释的、基于注意力的神经网络，其中多个模块组合以捕捉关键的时空时间序列部分。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">Rodrigo</span>  <span class="n">de</span>  <span class="n">Medrano</span>  <span class="ow">and</span>  <span class="n">José</span>  <span class="n">Luis</span>  <span class="n">Aznarte</span><span class="o">.</span>  <span class="mf">2020.</span>   <span class="n">A</span>  <span class="n">Spatio</span><span class="o">-</span><span class="n">Temporal</span>  <span class="n">Spot</span><span class="o">-</span><span class="n">Forecasting</span> <span class="n">Framework</span> <span class="n">forUrban</span> <span class="n">Traffic</span> <span class="n">Prediction</span><span class="o">.</span> <span class="n">CoRR</span> <span class="nb">abs</span><span class="o">/</span><span class="mf">2003.13977</span> <span class="p">(</span><span class="mi">2020</span><span class="p">)</span><span class="o">.</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>Multi-STGCnet</strong></p></li>
+</ul>
+<p>Multi-STGCnet含有三个作为时间组件的基于长短期记忆内存（LSTM）的模块和作为空间组件的三个用于提取目标站点空间关联的空间矩阵。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&gt; Jiexia Ye, Juanjuan Zhao, Kejiang Ye, and Chengzhong Xu. 2020. Multi-STGCnet:A Graph Convolution Based Spatial-Temporal Framework for Subway PassengerFlow Forecasting. In IJCNN. IEEE, 1–8.
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>DGCN</strong></p></li>
+</ul>
+<p>DGCN是用于交通预测的创新性的图卷积网络，其中引入了潜在网络以提取时空特征，为了适应性地建构动态路网图矩阵。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">Kan</span> <span class="n">Guo</span><span class="p">,</span> <span class="n">Yongli</span> <span class="n">Hu</span><span class="p">,</span> <span class="n">Zhen</span> <span class="n">Qian</span><span class="p">,</span> <span class="n">Yanfeng</span> <span class="n">Sun</span><span class="p">,</span> <span class="n">Junbin</span> <span class="n">Gao</span><span class="p">,</span> <span class="ow">and</span> <span class="n">Baocai</span> <span class="n">Yin</span><span class="o">.</span> <span class="mf">2020.</span><span class="n">Dynamic</span> <span class="n">Graph</span> <span class="n">Convolution</span> <span class="n">Network</span> <span class="k">for</span> <span class="n">Traffic</span> <span class="n">Forecasting</span> <span class="n">Based</span> <span class="n">on</span> <span class="n">Latent</span> <span class="n">Network</span> <span class="n">of</span> <span class="n">Laplace</span> <span class="n">Matrix</span> <span class="n">Estimation</span><span class="o">.</span> <span class="n">IEEE</span> <span class="n">Trans</span><span class="o">.</span> <span class="n">Intell</span><span class="o">.</span> <span class="n">Transp</span><span class="o">.</span> <span class="n">Syst</span><span class="o">.</span><span class="p">(</span><span class="mi">2020</span><span class="p">)</span><span class="o">.</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>DSAN</strong></p></li>
+</ul>
+<p>动态切换注意力网络（DSAN）含有创新性的多空间注意力机制（MSA），通过在带噪声的输入上应用自注意力动态提取有价值的信息，再将各输出直接拼接。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&gt; Haoxing Lin, Rufan Bai, Weijia Jia, Xinyu Yang, and Yongjian You. 2020. Preserving Dynamic Attention for Long-Term Spatial-Temporal Prediction. In KDD. ACM,36–46.
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>STNN</strong></p></li>
+</ul>
+<p>STNN通过结构化隐动态组件学习这些依赖，然后一个解码器从隐表示中得到观测值。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">Ali</span> <span class="n">Ziat</span><span class="p">,</span> <span class="n">Edouard</span> <span class="n">Delasalles</span><span class="p">,</span> <span class="n">Ludovic</span> <span class="n">Denoyer</span><span class="p">,</span> <span class="ow">and</span> <span class="n">Patrick</span> <span class="n">Gallinari</span><span class="o">.</span> <span class="mf">2018.</span> <span class="n">Spatio</span><span class="o">-</span><span class="n">Temporal</span> <span class="n">Neural</span> <span class="n">Networks</span> <span class="k">for</span> <span class="n">Space</span><span class="o">-</span><span class="n">Time</span> <span class="n">Series</span> <span class="n">Forecasting</span> <span class="ow">and</span> <span class="n">Relations</span> <span class="n">Discovery</span><span class="o">.</span> <span class="n">CoRRabs</span><span class="o">/</span><span class="mf">1804.08562</span> <span class="p">(</span><span class="mi">2018</span><span class="p">)</span><span class="o">.</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>交通速度预测<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>AutoEncoder</strong></p></li>
+</ul>
+<p>本基线模型由我们实现，采用编码器从数据中学习嵌入向量后用解码器预测未来交通状况。</p>
+<ul class="simple">
+<li><p><strong>RNN（FC-RNN）</strong></p></li>
+</ul>
+<p>本基线模型由我们实现，预测交通状态，基于 RNN。</p>
+<ul class="simple">
+<li><p><strong>Seq2Seq</strong></p></li>
+</ul>
+<p>本基线模型由我们实现，基于编码器-解码器架构，预测交通状态。采用基于门控循环单元的编码器-解码器框架，进行多步预测。</p>
+<ul class="simple">
+<li><p><strong>DCRNN</strong></p></li>
+</ul>
+<p>扩散卷积循环神经网络，用由扩散过程形式化的图卷积捕捉时间依赖，并用编码器-解码器框架捕捉空间依赖。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">Yaguang</span> <span class="n">Li</span><span class="p">,</span> <span class="n">Rose</span> <span class="n">Yu</span><span class="p">,</span> <span class="n">Cyrus</span> <span class="n">Shahabi</span><span class="p">,</span> <span class="ow">and</span> <span class="n">Yan</span> <span class="n">Liu</span><span class="o">.</span> <span class="mf">2018.</span> <span class="n">Diffusion</span> <span class="n">Convolutional</span> <span class="n">Recurrent</span> <span class="n">Neural</span> <span class="n">Network</span><span class="p">:</span> <span class="n">Data</span><span class="o">-</span><span class="n">Driven</span> <span class="n">Traffic</span> <span class="n">Forecasting</span><span class="o">.</span> <span class="n">In</span> <span class="n">ICLR</span> <span class="p">(</span><span class="n">Poster</span><span class="p">)</span><span class="o">.</span><span class="n">OpenReview</span><span class="o">.</span><span class="n">net</span><span class="o">.</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>STGCN</strong></p></li>
+</ul>
+<p>时空图卷积网络，综合图卷积和门控时间卷积捕捉时空关联。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&gt; Bing Yu, Haoteng Yin, and Zhanxing Zhu. 2018. Spatio-Temporal Graph Convolutional Networks: A Deep Learning Framework for Traffic Forecasting. In IJCAI. ijcai.org, 3634–3640.
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>GWNET</strong></p></li>
+</ul>
+<p>图波浪网络，集成扩散卷积与一维空洞因果卷积捕捉时空依赖的时空图卷积网络。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&gt; Zonghan Wu, Shirui Pan, Guodong Long, Jing Jiang, and Chengqi Zhang. 2019.Graph Wave Net for Deep Spatial-Temporal Graph Modeling. In IJCAI. ijcai.org,1907–1913.
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>MTGNN</strong></p></li>
+</ul>
+<p>专门为多变量时间序列数据设计的图神经网络框架，组合图卷积网络与混跳传播层、空洞复合卷积层捕捉时空依赖。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&gt; Zonghan Wu, Shirui Pan, Guodong Long, Jing Jiang, Xiaojun Chang, and Chengqi Zhang. 2020.  Connecting the Dots: Multivariate Time Series Forecasting with Graph Neural Networks. In KDD. ACM, 753–763.
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>TGCN</strong></p></li>
+</ul>
+<p>时间图卷积模型，混合图卷积网络和门控循环单元捕捉时空关联。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&gt; Ling Zhao, Yujiao Song, Chao Zhang, Yu Liu, Pu Wang, Tao Lin, Min Deng, and Haifeng Li. 2020. T-GCN: A Temporal Graph Convolutional Network for Traffic Prediction. IEEE Trans. Intell. Transp. Syst.21, 9 (2020), 3848–385.
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>TGCLSTM</strong></p></li>
+</ul>
+<p>交通图卷积长短期记忆内存神经网络（TGC-LSTM），能学习交通网络中路段之间的交互，以及预测全网络的交通状态。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&gt; Zhiyong Cui, Kristian Henrickson, Ruimin Ke, and Yinhai Wang. 2020.  Traffic Graph Convolutional Recurrent Neural Network: A Deep Learning Frame work for Network-Scale Traffic Learning and Forecasting. IEEE Trans. Intell. Transp.Syst.21, 11 (2020), 4883–4894.
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>ATDM</strong></p></li>
+</ul>
+<p>ATDM是使用先验空间知识的模型。它是基于卷积、用于回归的神经网络，也有对应的空间不敏感版本。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">Rodrigo</span> <span class="n">de</span> <span class="n">Medrano</span> <span class="ow">and</span> <span class="n">José</span> <span class="n">Luis</span> <span class="n">Aznarte</span><span class="o">.</span> <span class="mf">2020.</span>  <span class="n">On</span> <span class="n">the</span> <span class="n">Inclusion</span> <span class="n">of</span> <span class="n">Spatial</span> <span class="n">Information</span> <span class="k">for</span> <span class="n">Spatio</span><span class="o">-</span><span class="n">Temporal</span> <span class="n">Neural</span> <span class="n">Networks</span><span class="o">.</span> <span class="n">CoRR</span> <span class="nb">abs</span><span class="o">/</span><span class="mf">2007.07559</span> <span class="p">(</span><span class="mi">2020</span><span class="p">)</span><span class="o">.</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>GMAN</strong></p></li>
+</ul>
+<p>GMAN采用编码器-解码器架构，编码器和解码器都由多个时空注意力块组成，来建模时空因素对交通状况的影响。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&gt; Chuanpan Zheng, Xiaoliang Fan, Cheng Wang, and Jianzhong Qi. 2020. GMAN:A Graph Multi-Attention Network for Traffic Prediction. In AAAI. AAAI Press,1234–1241.
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>GTS</strong></p></li>
+</ul>
+<p>GTS是节点图未知时能够用GNN同时学习的模型，也是在图概率分布上优化期望性能的图概率模型。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">Chao</span> <span class="n">Shang</span><span class="p">,</span> <span class="n">Jie</span> <span class="n">Chen</span><span class="p">,</span> <span class="ow">and</span> <span class="n">Jinbo</span> <span class="n">Bi</span><span class="o">.</span> <span class="mf">2021.</span> <span class="n">Discrete</span> <span class="n">Graph</span> <span class="n">Structure</span> <span class="n">Learning</span> <span class="n">forForecasting</span> <span class="n">Multiple</span> <span class="n">Time</span> <span class="n">Series</span><span class="o">.</span> <span class="n">CoRR</span> <span class="nb">abs</span><span class="o">/</span><span class="mf">2101.06861</span> <span class="p">(</span><span class="mi">2021</span><span class="p">)</span><span class="o">.</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>STAGGCN</strong></p></li>
+</ul>
+<p>STAGGCN利用城市交通流量的时空关联，通过寻找道路节点的空间与语义邻居构建动态带权图。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&gt; Bin Lu, Xiaoying Gan, Haiming Jin, Luoyi Fu, and Haisong Zhang. 2020.  Spa-tiotemporal Adaptive Gated Graph Convolution Network for Urban Traffic FlowForecasting. In CIKM. ACM, 1025–1034.
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>HGCN</strong></p></li>
+</ul>
+<p>结构化图卷积网络（HGCN）致力于交通预测，同时在宏观和微观交通图上进行。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">Kan</span> <span class="n">Guo</span><span class="p">,</span> <span class="n">Yongli</span> <span class="n">Hu</span><span class="p">,</span> <span class="n">Yanfeng</span> <span class="n">Sun</span><span class="p">,</span> <span class="n">Sean</span> <span class="n">Qian</span><span class="p">,</span> <span class="n">Junbin</span> <span class="n">Gao</span><span class="p">,</span> <span class="ow">and</span> <span class="n">Baocai</span> <span class="n">Yin</span><span class="o">.</span> <span class="mf">2021.</span><span class="n">Hierarchical</span> <span class="n">Graph</span> <span class="n">Convolution</span> <span class="n">Networks</span> <span class="k">for</span> <span class="n">Traffic</span> <span class="n">Forecasting</span><span class="o">.</span> <span class="p">(</span><span class="mi">2021</span><span class="p">)</span><span class="o">.</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>ST-MGAT</strong></p></li>
+</ul>
+<p>时空多头图注意力机制网络（ST-MGAT），在图上直接建构卷积的同时，考虑邻居节点的特征和边权，生成新的节点表示。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&gt; Kelang Tian, Jingjie Guo, Kejiang Ye, and Cheng-Zhong Xu. 2020.  ST-MGAT:Spatial-Temporal Multi-Head Graph Attention Networks for Traffic Forecasting. In ICTAI. IEEE, 714–721.
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>DKFN</strong></p></li>
+</ul>
+<p>深度卡曼滤波网络（DKFN）通过对自依赖和邻居依赖分别按照两序列进行建模，二者预测在统计学理论下融合，并经过卡曼滤波网络优化，来预测网络级别的交通状态。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&gt; Fanglan Chen, Zhiqian Chen, Subhodip Biswas, Shuo Lei, Naren Ramakrishnan,and Chang-Tien Lu. 2020. Graph Convolutional Networks with Kalman Filtering for Traffic Prediction. In SIGSPATIAL/GIS. ACM, 135–138.
+</pre></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>交通需求量预测<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>AutoEncoder</strong></p></li>
+</ul>
+<p>本基线模型由我们实现，采用编码器从数据中学习嵌入向量后用解码器预测未来交通状况。</p>
+<ul class="simple">
+<li><p><strong>RNN（FC-RNN）</strong></p></li>
+</ul>
+<p>本基线模型由我们实现，预测交通状态，基于 RNN。</p>
+<ul class="simple">
+<li><p><strong>Seq2Seq</strong></p></li>
+</ul>
+<p>本基线模型由我们实现，基于编码器-解码器架构，预测交通状态。采用基于门控循环单元的编码器-解码器框架，进行多步预测。</p>
+<ul class="simple">
+<li><p><strong>DMVSTNET</strong></p></li>
+</ul>
+<p>深度多视角时空网络（DVMST-Net）框架对时空关系进行建模。它由三个视角组成：时间视角、空间视角、语义视角。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">Huaxiu</span> <span class="n">Yao</span><span class="p">,</span> <span class="n">Fei</span> <span class="n">Wu</span><span class="p">,</span> <span class="n">Jintao</span> <span class="n">Ke</span><span class="p">,</span> <span class="n">Xianfeng</span> <span class="n">Tang</span><span class="p">,</span> <span class="n">Yitian</span> <span class="n">Jia</span><span class="p">,</span> <span class="n">Siyu</span> <span class="n">Lu</span><span class="p">,</span> <span class="n">Pinghua</span> <span class="n">Gong</span><span class="p">,</span> <span class="n">Jieping</span> <span class="n">Ye</span><span class="p">,</span> <span class="ow">and</span> <span class="n">Zhenhui</span> <span class="n">Li</span><span class="o">.</span> <span class="mf">2018.</span> <span class="n">Deep</span> <span class="n">Multi</span><span class="o">-</span><span class="n">View</span> <span class="n">Spatial</span><span class="o">-</span><span class="n">Temporal</span> <span class="n">Network</span> <span class="k">for</span> <span class="n">Taxi</span> <span class="n">Demand</span> <span class="n">Prediction</span><span class="o">.</span> <span class="n">In</span> <span class="n">AAAI</span><span class="o">.</span> <span class="n">AAAI</span> <span class="n">Press</span><span class="p">,</span> <span class="mf">2588.</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>STG2Seq</strong></p></li>
+</ul>
+<p>STG2Seq是基于图的多步城市客流量预测模型，使用层次化图卷积的网络结构同时捕捉时空关联。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">Lei</span> <span class="n">Bai</span><span class="p">,</span> <span class="n">Lina</span> <span class="n">Yao</span><span class="p">,</span> <span class="n">Salil</span> <span class="n">S</span><span class="o">.</span> <span class="n">Kanhere</span><span class="p">,</span> <span class="n">Xianzhi</span> <span class="n">Wang</span><span class="p">,</span> <span class="ow">and</span> <span class="n">Quan</span> <span class="n">Z</span><span class="o">.</span> <span class="n">Sheng</span><span class="o">.</span> <span class="mf">2019.</span> <span class="n">STG2Seq</span><span class="p">:</span> <span class="n">Spatial</span><span class="o">-</span><span class="n">Temporal</span> <span class="n">Graph</span> <span class="n">to</span> <span class="n">Sequence</span> <span class="n">Model</span> <span class="k">for</span> <span class="n">Multi</span><span class="o">-</span><span class="n">step</span> <span class="n">Passenger</span> <span class="n">Demand</span> <span class="n">Forecasting</span><span class="o">.</span> <span class="n">In</span> <span class="n">IJCAI</span><span class="o">.</span> <span class="n">ijcai</span><span class="o">.</span><span class="n">org</span><span class="p">,</span> <span class="mi">1981</span><span class="o">-</span><span class="mf">1987.</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>CCRNN</strong></p></li>
+</ul>
+<p>CCRNN是捕捉多级别空间依赖的模型。CGC中的依赖矩阵是自学习的，每个层都有变化。应用按层的耦合机制桥接上层与下层的图结构。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&gt; Junchen Ye, Leilei Sun, Bowen Du, Yanjie Fu, and Hui Xiong. 2021.  Coupled Layer-wise Graph Convolution for Transportation Demand Prediction. In AAAI. AAAI Press, 4617–4625.
+</pre></div>
+</div>
+</div>
+<div class="section" id="id5">
+<h2>轨迹下一跳预测<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>FPMC</strong></p></li>
+</ul>
+<p>经典下一跳预测基线模型。在下一跳预测领域研究早期，该模型经常作为基线模型使用。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&gt; Steffen Rendle, Christoph Freudenthaler, and Lars Schmidt-Thieme. 2010. Factorizing personalized Markov chains for next-basket recommendation. In WWW ACM, 811–820.
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>RNN</strong></p></li>
+</ul>
+<p>该基线模型由我们实现。</p>
+<ul class="simple">
+<li><p><strong>ST-RNN</strong></p></li>
+</ul>
+<p>该模型聚焦于在RNN隐藏层引入时空转移特性。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&gt; Qiang Liu, Shu Wu, Liang Wang, and Tieniu Tan. 2016. Predicting the Next Location: A Recurrent Model with Spatial and Temporal Contexts. In AAAI. AAAI Press, 194–200.
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>ATST-LSTM</strong></p></li>
+</ul>
+<p>该模型将轨迹点间的时间与距离差引入LSTM，并使用注意力机制。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">Liwei</span> <span class="n">Huang</span><span class="p">,</span> <span class="n">Yutao</span> <span class="n">Ma</span><span class="p">,</span> <span class="n">Shibo</span> <span class="n">Wang</span><span class="p">,</span> <span class="ow">and</span> <span class="n">Yanbo</span> <span class="n">Liu</span><span class="o">.</span> <span class="mf">2019.</span> <span class="n">An</span> <span class="n">attention</span><span class="o">-</span><span class="n">based</span> <span class="n">spatiotemporal</span> <span class="n">lstm</span> <span class="n">network</span> <span class="k">for</span> <span class="nb">next</span> <span class="n">poi</span> <span class="n">recommendation</span><span class="o">.</span> <span class="n">IEEE</span> <span class="n">Transactions</span> <span class="n">on</span> <span class="n">Services</span> <span class="n">Computing</span><span class="p">(</span><span class="mi">2019</span><span class="p">)</span><span class="o">.</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>SERM</strong></p></li>
+</ul>
+<p>该模型在网络中引入轨迹的语义信息。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&gt; Di Yao, Chao Zhang, Jian-Hui Huang, and Jingping Bi. 2017. SERM: A Recurrent Model for Next Location Prediction in Semantic Trajectories. In CIKM. ACM,2411–24.
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>DeepMove</strong></p></li>
+</ul>
+<p>该模型混合历史和当前的轨迹进行预测，在这方面第一次采用注意力机制。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&gt; Jie Feng, Yong Li, Chao Zhang, Funing Sun, Fanchao Meng, Ang Guo, and Depeng Jin. 2018. DeepMove: Predicting Human Mobility with Attentional Recurrent Networks. In WWW. ACM, 1459–1468.
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>HST-LSTM</strong></p></li>
+</ul>
+<p>该模型也将时空转移因子引入LSTM，并采用编码器-解码器架构进行预测。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&gt; Dejiang Kong and Fei Wu. 2018.  HST-LSTM: A Hierarchical Spatial-Temporal Long-Short Term Memory Network for Location Prediction. In IJCAI. ijcai.org,2341–2347.
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>LSTPM</strong></p></li>
+</ul>
+<p>该模型使用两个特别设计的LSTM捕捉用户长短期移动偏好，以联合二者预测下一位置。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">Ke</span> <span class="n">Sun</span><span class="p">,</span> <span class="n">Tieyun</span> <span class="n">Qian</span><span class="p">,</span> <span class="n">Tong</span> <span class="n">Chen</span><span class="p">,</span> <span class="n">Yile</span> <span class="n">Liang</span><span class="p">,</span> <span class="n">Quoc</span> <span class="n">Viet</span> <span class="n">Hung</span> <span class="n">Nguyen</span><span class="p">,</span> <span class="ow">and</span> <span class="n">HongzhiYin</span><span class="o">.</span> <span class="mf">2020.</span> <span class="n">Where</span> <span class="n">to</span> <span class="n">Go</span> <span class="n">Next</span><span class="p">:</span> <span class="n">Modeling</span> <span class="n">Long</span><span class="o">-</span> <span class="ow">and</span> <span class="n">Short</span><span class="o">-</span><span class="n">Term</span> <span class="n">User</span> <span class="n">Preferences</span> <span class="k">for</span> <span class="n">Point</span><span class="o">-</span><span class="n">of</span><span class="o">-</span><span class="n">Interest</span> <span class="n">Recommendation</span><span class="o">.</span> <span class="n">In</span> <span class="n">AAAI</span><span class="o">.</span> <span class="n">AAAI</span> <span class="n">Press</span><span class="p">,</span> <span class="mi">214</span><span class="o">-</span><span class="mf">221.</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>GeoSAN</strong></p></li>
+</ul>
+<p>该模型使用自注意力机制实现某个关键点的表示学习，进而做到基于表征的预测。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&gt; Defu Lian, Yongji Wu, Yong Ge, Xing Xie, and Enhong Chen. 2020. Geography-Aware Sequential Location Recommendation. In KDD. ACM, 2009–2019.
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>STAN</strong></p></li>
+</ul>
+<p>该模型采用自注意力机制捕捉时空信息来直接预测。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">Yingtao</span> <span class="n">Luo</span><span class="p">,</span> <span class="n">Qiang</span> <span class="n">Liu</span><span class="p">,</span> <span class="ow">and</span> <span class="n">Zhaocheng</span> <span class="n">Liu</span><span class="o">.</span> <span class="mf">2021.</span> <span class="n">STAN</span><span class="p">:</span> <span class="n">Spatio</span><span class="o">-</span><span class="n">Temporal</span> <span class="n">Attention</span> <span class="n">Network</span> <span class="k">for</span> <span class="n">Next</span> <span class="n">Location</span> <span class="n">Recommendation</span><span class="o">.</span> <span class="n">CoRR</span> <span class="nb">abs</span><span class="o">/</span><span class="mf">2102.04095</span> <span class="p">(</span><span class="mi">2021</span><span class="p">)</span><span class="o">.</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>CARA</strong></p></li>
+</ul>
+<p>该模型聚焦使用注意力机制提取轨迹间上下文信息来预测。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&gt; Jarana Manotumruksa, Craig Macdonald, and Iadh Ounis. 2018.  A Contextual Attention Recurrent Architecture for Context-Aware Venue Recommendation. In SIGIR. ACM, 555–564.
+</pre></div>
 </div>
 </div>
 </div>
@@ -269,10 +544,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="model/Traffic_Flow_Prediction/AGCRN.html" class="btn btn-neutral float-right" title="AGCRN" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="evaluator.html" class="btn btn-neutral float-right" title="评估模块简介" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="data/args_for_data.html" class="btn btn-neutral float-left" title="Args for Data" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="data/dataset_for_task.html" class="btn btn-neutral float-left" title="数据集适用的任务" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

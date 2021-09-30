@@ -1,0 +1,520 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>libcity.model.traffic_speed_prediction.STGCN &mdash; Bigscity-LibCity  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home" alt="Documentation Home"> Bigscity-LibCity
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">起步</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../get_started/introduction.html">介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../get_started/install.html">安装LibCity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../get_started/quick_start.html">快速入门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../get_started/directory_structure.html">目录结构</a></li>
+</ul>
+<p class="caption"><span class="caption-text">用户指导</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user_guide/config_settings.html">参数设置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user_guide/data.html">数据说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user_guide/model.html">复现模型列表</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user_guide/evaluator.html">评估模块简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user_guide/executor.html">执行模块简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user_guide/usage.html">使用示例</a></li>
+</ul>
+<p class="caption"><span class="caption-text">开发者指导</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../developer_guide/code_style.html">代码风格</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../developer_guide/implemented_datasets.html">自定义Dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../developer_guide/implemented_models.html">自定义Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../developer_guide/implemented_executors.html">自定义Executor</a></li>
+</ul>
+<p class="caption"><span class="caption-text">入门教程</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorial/install_quick_start.html">安装和快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorial/run_model.html">运行LibCity中已复现的模型</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorial/add_model.html">在LibCity中添加新模型</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorial/hyper_tune.html">使用自动化工具调参</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API文档</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../libcity/libcity.config.html">libcity.config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../libcity/libcity.data.html">libcity.data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../libcity/libcity.evaluator.html">libcity.evaluator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../libcity/libcity.executor.html">libcity.executor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../libcity/libcity.model.html">libcity.model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../libcity/libcity.pipeline.html">libcity.pipeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../libcity/libcity.utils.html">libcity.utils</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">Bigscity-LibCity</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../../index.html">Module code</a> &raquo;</li>
+        
+      <li>libcity.model.traffic_speed_prediction.STGCN</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for libcity.model.traffic_speed_prediction.STGCN</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">logging</span> <span class="kn">import</span> <span class="n">getLogger</span>
+<span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
+<span class="kn">import</span> <span class="nn">torch.nn.init</span> <span class="k">as</span> <span class="nn">init</span>
+<span class="kn">import</span> <span class="nn">torch.nn.functional</span> <span class="k">as</span> <span class="nn">F</span>
+<span class="kn">from</span> <span class="nn">libcity.model</span> <span class="kn">import</span> <span class="n">loss</span>
+<span class="kn">from</span> <span class="nn">libcity.model.abstract_traffic_state_model</span> <span class="kn">import</span> <span class="n">AbstractTrafficStateModel</span>
+
+
+<div class="viewcode-block" id="calculate_scaled_laplacian"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_speed_prediction.STGCN.html#libcity.model.traffic_speed_prediction.STGCN.calculate_scaled_laplacian">[docs]</a><span class="k">def</span> <span class="nf">calculate_scaled_laplacian</span><span class="p">(</span><span class="n">adj</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    L = D^-1/2 (D-A) D^-1/2 = I - D^-1/2 A D^-1/2</span>
+<span class="sd">    L&#39; = 2L/lambda - I</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        adj: adj_matrix</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        np.ndarray: L&#39;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">adj</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">adj</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># D</span>
+    <span class="n">lap</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="o">-</span> <span class="n">adj</span>     <span class="c1"># L=D-A</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">d</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">d</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">lap</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">/=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">d</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
+    <span class="n">lap</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">isinf</span><span class="p">(</span><span class="n">lap</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">lap</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">lap</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">lam</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eigvals</span><span class="p">(</span><span class="n">lap</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">.</span><span class="n">real</span>
+    <span class="k">return</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">lap</span> <span class="o">/</span> <span class="n">lam</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">n</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="calculate_cheb_poly"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_speed_prediction.STGCN.html#libcity.model.traffic_speed_prediction.STGCN.calculate_cheb_poly">[docs]</a><span class="k">def</span> <span class="nf">calculate_cheb_poly</span><span class="p">(</span><span class="n">lap</span><span class="p">,</span> <span class="n">ks</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    k-order Chebyshev polynomials : T0(L)~Tk(L)</span>
+<span class="sd">    T0(L)=I/1 T1(L)=L Tk(L)=2LTk-1(L)-Tk-2(L)</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        lap: scaled laplacian matrix</span>
+<span class="sd">        ks: k-order</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        np.ndarray: T0(L)~Tk(L)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">lap</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">lap_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">n</span><span class="p">),</span> <span class="n">lap</span><span class="p">[:]]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">ks</span><span class="p">):</span>
+        <span class="n">lap_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">lap</span><span class="p">,</span> <span class="n">lap_list</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="o">-</span> <span class="n">lap_list</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">])</span>
+    <span class="k">if</span> <span class="n">ks</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Ks must bigger than 0!&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">ks</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">lap_list</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="p">])</span>  <span class="c1"># 1*n*n</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">lap_list</span><span class="p">)</span>       <span class="c1"># Ks*n*n</span></div>
+
+
+<div class="viewcode-block" id="calculate_first_approx"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_speed_prediction.STGCN.html#libcity.model.traffic_speed_prediction.STGCN.calculate_first_approx">[docs]</a><span class="k">def</span> <span class="nf">calculate_first_approx</span><span class="p">(</span><span class="n">weight</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    1st-order approximation function.</span>
+<span class="sd">    :param W: weighted adjacency matrix of G. Not laplacian matrix.</span>
+<span class="sd">    :return: np.ndarray</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="c1"># TODO: 如果W对角线本来就是全1？</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">weight</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">adj</span> <span class="o">=</span> <span class="n">weight</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">identity</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">adj</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="c1"># sinvd = np.sqrt(np.mat(np.diag(d)).I)</span>
+    <span class="c1"># return np.array(sinvd * A * sinvd)</span>
+    <span class="n">sinvd</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">d</span><span class="p">)))</span>
+    <span class="n">lap</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">sinvd</span><span class="p">,</span> <span class="n">adj</span><span class="p">),</span> <span class="n">sinvd</span><span class="p">)</span>  <span class="c1"># n*n</span>
+    <span class="n">lap</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="n">lap</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>              <span class="c1"># 1*n*n</span>
+    <span class="k">return</span> <span class="n">lap</span></div>
+
+
+<div class="viewcode-block" id="Align"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_speed_prediction.STGCN.html#libcity.model.traffic_speed_prediction.STGCN.Align">[docs]</a><span class="k">class</span> <span class="nc">Align</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">c_in</span><span class="p">,</span> <span class="n">c_out</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Align</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">c_in</span> <span class="o">=</span> <span class="n">c_in</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">c_out</span> <span class="o">=</span> <span class="n">c_out</span>
+        <span class="k">if</span> <span class="n">c_in</span> <span class="o">&gt;</span> <span class="n">c_out</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">conv1x1</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="n">c_in</span><span class="p">,</span> <span class="n">c_out</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># filter=(1,1)</span>
+
+<div class="viewcode-block" id="Align.forward"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_speed_prediction.STGCN.html#libcity.model.traffic_speed_prediction.STGCN.Align.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>  <span class="c1"># x: (batch_size, feature_dim(c_in), input_length, num_nodes)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">c_in</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">c_out</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">conv1x1</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">c_in</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">c_out</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">F</span><span class="o">.</span><span class="n">pad</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">c_out</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">c_in</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+        <span class="k">return</span> <span class="n">x</span>  <span class="c1"># return: (batch_size, c_out, input_length-1+1, num_nodes-1+1)</span></div></div>
+
+
+<div class="viewcode-block" id="TemporalConvLayer"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_speed_prediction.STGCN.html#libcity.model.traffic_speed_prediction.STGCN.TemporalConvLayer">[docs]</a><span class="k">class</span> <span class="nc">TemporalConvLayer</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">kt</span><span class="p">,</span> <span class="n">c_in</span><span class="p">,</span> <span class="n">c_out</span><span class="p">,</span> <span class="n">act</span><span class="o">=</span><span class="s2">&quot;relu&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">TemporalConvLayer</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">kt</span> <span class="o">=</span> <span class="n">kt</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">act</span> <span class="o">=</span> <span class="n">act</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">c_out</span> <span class="o">=</span> <span class="n">c_out</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">align</span> <span class="o">=</span> <span class="n">Align</span><span class="p">(</span><span class="n">c_in</span><span class="p">,</span> <span class="n">c_out</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">act</span> <span class="o">==</span> <span class="s2">&quot;GLU&quot;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">conv</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="n">c_in</span><span class="p">,</span> <span class="n">c_out</span> <span class="o">*</span> <span class="mi">2</span><span class="p">,</span> <span class="p">(</span><span class="n">kt</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">conv</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="n">c_in</span><span class="p">,</span> <span class="n">c_out</span><span class="p">,</span> <span class="p">(</span><span class="n">kt</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
+
+<div class="viewcode-block" id="TemporalConvLayer.forward"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_speed_prediction.STGCN.html#libcity.model.traffic_speed_prediction.STGCN.TemporalConvLayer.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        :param x: (batch_size, feature_dim(c_in), input_length, num_nodes)</span>
+<span class="sd">        :return: (batch_size, c_out, input_length-kt+1, num_nodes)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">x_in</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">align</span><span class="p">(</span><span class="n">x</span><span class="p">)[:,</span> <span class="p">:,</span> <span class="bp">self</span><span class="o">.</span><span class="n">kt</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:,</span> <span class="p">:]</span>  <span class="c1"># (batch_size, c_out, input_length-kt+1, num_nodes)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">act</span> <span class="o">==</span> <span class="s2">&quot;GLU&quot;</span><span class="p">:</span>
+            <span class="c1"># x: (batch_size, c_in, input_length, num_nodes)</span>
+            <span class="n">x_conv</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">conv</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+            <span class="c1"># x_conv: (batch_size, c_out * 2, input_length-kt+1, num_nodes)  [P Q]</span>
+            <span class="k">return</span> <span class="p">(</span><span class="n">x_conv</span><span class="p">[:,</span> <span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">c_out</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:]</span> <span class="o">+</span> <span class="n">x_in</span><span class="p">)</span> <span class="o">*</span> <span class="n">torch</span><span class="o">.</span><span class="n">sigmoid</span><span class="p">(</span><span class="n">x_conv</span><span class="p">[:,</span> <span class="bp">self</span><span class="o">.</span><span class="n">c_out</span><span class="p">:,</span> <span class="p">:,</span> <span class="p">:])</span>
+            <span class="c1"># return P * sigmoid(Q) shape: (batch_size, c_out, input_length-kt+1, num_nodes)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">act</span> <span class="o">==</span> <span class="s2">&quot;sigmoid&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">sigmoid</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">conv</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="n">x_in</span><span class="p">)</span>  <span class="c1"># residual connection</span>
+        <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">conv</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="n">x_in</span><span class="p">)</span>  <span class="c1"># residual connection</span></div></div>
+
+
+<div class="viewcode-block" id="SpatioConvLayer"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_speed_prediction.STGCN.html#libcity.model.traffic_speed_prediction.STGCN.SpatioConvLayer">[docs]</a><span class="k">class</span> <span class="nc">SpatioConvLayer</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ks</span><span class="p">,</span> <span class="n">c_in</span><span class="p">,</span> <span class="n">c_out</span><span class="p">,</span> <span class="n">lk</span><span class="p">,</span> <span class="n">device</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">SpatioConvLayer</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Lk</span> <span class="o">=</span> <span class="n">lk</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">theta</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span><span class="p">(</span><span class="n">c_in</span><span class="p">,</span> <span class="n">c_out</span><span class="p">,</span> <span class="n">ks</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">))</span>  <span class="c1"># kernel: C_in*C_out*ks</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">b</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">c_out</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">align</span> <span class="o">=</span> <span class="n">Align</span><span class="p">(</span><span class="n">c_in</span><span class="p">,</span> <span class="n">c_out</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">reset_parameters</span><span class="p">()</span>
+
+<div class="viewcode-block" id="SpatioConvLayer.reset_parameters"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_speed_prediction.STGCN.html#libcity.model.traffic_speed_prediction.STGCN.SpatioConvLayer.reset_parameters">[docs]</a>    <span class="k">def</span> <span class="nf">reset_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">init</span><span class="o">.</span><span class="n">kaiming_uniform_</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">theta</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+        <span class="n">fan_in</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">init</span><span class="o">.</span><span class="n">_calculate_fan_in_and_fan_out</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">theta</span><span class="p">)</span>
+        <span class="n">bound</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">fan_in</span><span class="p">)</span>
+        <span class="n">init</span><span class="o">.</span><span class="n">uniform_</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">b</span><span class="p">,</span> <span class="o">-</span><span class="n">bound</span><span class="p">,</span> <span class="n">bound</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SpatioConvLayer.forward"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_speed_prediction.STGCN.html#libcity.model.traffic_speed_prediction.STGCN.SpatioConvLayer.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="c1"># Lk: (Ks, num_nodes, num_nodes)</span>
+        <span class="c1"># x:  (batch_size, c_in, input_length, num_nodes)</span>
+        <span class="c1"># x_c: (batch_size, c_in, input_length, Ks, num_nodes)</span>
+        <span class="c1"># theta: (c_in, c_out, Ks)</span>
+        <span class="c1"># x_gc: (batch_size, c_out, input_length, num_nodes)</span>
+        <span class="n">x_c</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">einsum</span><span class="p">(</span><span class="s2">&quot;knm,bitm-&gt;bitkn&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">Lk</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>  <span class="c1"># delete num_nodes(n)</span>
+        <span class="n">x_gc</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">einsum</span><span class="p">(</span><span class="s2">&quot;iok,bitkn-&gt;botn&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">theta</span><span class="p">,</span> <span class="n">x_c</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">b</span>  <span class="c1"># delete Ks(k) c_in(i)</span>
+        <span class="n">x_in</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">align</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>  <span class="c1"># (batch_size, c_out, input_length, num_nodes)</span>
+        <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="n">x_gc</span> <span class="o">+</span> <span class="n">x_in</span><span class="p">)</span>  <span class="c1"># residual connection</span></div></div>
+
+
+<div class="viewcode-block" id="STConvBlock"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_speed_prediction.STGCN.html#libcity.model.traffic_speed_prediction.STGCN.STConvBlock">[docs]</a><span class="k">class</span> <span class="nc">STConvBlock</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ks</span><span class="p">,</span> <span class="n">kt</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">lk</span><span class="p">,</span> <span class="n">device</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">STConvBlock</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tconv1</span> <span class="o">=</span> <span class="n">TemporalConvLayer</span><span class="p">(</span><span class="n">kt</span><span class="p">,</span> <span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">c</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="s2">&quot;GLU&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sconv</span> <span class="o">=</span> <span class="n">SpatioConvLayer</span><span class="p">(</span><span class="n">ks</span><span class="p">,</span> <span class="n">c</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">lk</span><span class="p">,</span> <span class="n">device</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tconv2</span> <span class="o">=</span> <span class="n">TemporalConvLayer</span><span class="p">(</span><span class="n">kt</span><span class="p">,</span> <span class="n">c</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ln</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">LayerNorm</span><span class="p">([</span><span class="n">n</span><span class="p">,</span> <span class="n">c</span><span class="p">[</span><span class="mi">2</span><span class="p">]])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dropout</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+
+<div class="viewcode-block" id="STConvBlock.forward"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_speed_prediction.STGCN.html#libcity.model.traffic_speed_prediction.STGCN.STConvBlock.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>  <span class="c1"># x: (batch_size, feature_dim/c[0], input_length, num_nodes)</span>
+        <span class="n">x_t1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">tconv1</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>    <span class="c1"># (batch_size, c[1], input_length-kt+1, num_nodes)</span>
+        <span class="n">x_s</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sconv</span><span class="p">(</span><span class="n">x_t1</span><span class="p">)</span>   <span class="c1"># (batch_size, c[1], input_length-kt+1, num_nodes)</span>
+        <span class="n">x_t2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">tconv2</span><span class="p">(</span><span class="n">x_s</span><span class="p">)</span>  <span class="c1"># (batch_size, c[2], input_length-kt+1-kt+1, num_nodes)</span>
+        <span class="n">x_ln</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ln</span><span class="p">(</span><span class="n">x_t2</span><span class="o">.</span><span class="n">permute</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">permute</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">dropout</span><span class="p">(</span><span class="n">x_ln</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="FullyConvLayer"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_speed_prediction.STGCN.html#libcity.model.traffic_speed_prediction.STGCN.FullyConvLayer">[docs]</a><span class="k">class</span> <span class="nc">FullyConvLayer</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">out_dim</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">FullyConvLayer</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">conv</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">out_dim</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># c,self.output_dim,1</span>
+
+<div class="viewcode-block" id="FullyConvLayer.forward"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_speed_prediction.STGCN.html#libcity.model.traffic_speed_prediction.STGCN.FullyConvLayer.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">conv</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="OutputLayer"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_speed_prediction.STGCN.html#libcity.model.traffic_speed_prediction.STGCN.OutputLayer">[docs]</a><span class="k">class</span> <span class="nc">OutputLayer</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">out_dim</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">OutputLayer</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tconv1</span> <span class="o">=</span> <span class="n">TemporalConvLayer</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="s2">&quot;GLU&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ln</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">LayerNorm</span><span class="p">([</span><span class="n">n</span><span class="p">,</span> <span class="n">c</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tconv2</span> <span class="o">=</span> <span class="n">TemporalConvLayer</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="s2">&quot;sigmoid&quot;</span><span class="p">)</span>  <span class="c1"># kernel=1*1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fc</span> <span class="o">=</span> <span class="n">FullyConvLayer</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">out_dim</span><span class="p">)</span>
+
+<div class="viewcode-block" id="OutputLayer.forward"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_speed_prediction.STGCN.html#libcity.model.traffic_speed_prediction.STGCN.OutputLayer.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="c1"># (batch_size, input_dim(c), T, num_nodes)</span>
+        <span class="n">x_t1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">tconv1</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="c1"># (batch_size, input_dim(c), 1, num_nodes)</span>
+        <span class="n">x_ln</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ln</span><span class="p">(</span><span class="n">x_t1</span><span class="o">.</span><span class="n">permute</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">permute</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="c1"># (batch_size, input_dim(c), 1, num_nodes)</span>
+        <span class="n">x_t2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">tconv2</span><span class="p">(</span><span class="n">x_ln</span><span class="p">)</span>
+        <span class="c1"># (batch_size, input_dim(c), 1, num_nodes)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">fc</span><span class="p">(</span><span class="n">x_t2</span><span class="p">)</span></div></div>
+        <span class="c1"># (batch_size, output_dim, 1, num_nodes)</span>
+
+
+<div class="viewcode-block" id="STGCN"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_speed_prediction.STGCN.html#libcity.model.traffic_speed_prediction.STGCN.STGCN">[docs]</a><span class="k">class</span> <span class="nc">STGCN</span><span class="p">(</span><span class="n">AbstractTrafficStateModel</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">data_feature</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="n">data_feature</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">num_nodes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_feature</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;num_nodes&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">feature_dim</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_feature</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;feature_dim&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">output_dim</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_feature</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;output_dim&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_scaler</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_feature</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;scaler&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span> <span class="o">=</span> <span class="n">getLogger</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">Ks</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;Ks&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Kt</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;Kt&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">blocks</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;blocks&#39;</span><span class="p">,</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">64</span><span class="p">],</span> <span class="p">[</span><span class="mi">64</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">128</span><span class="p">]])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">input_window</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;input_window&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">output_window</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;output_window&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">drop_prob</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;dropout&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">train_mode</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;stgcn_train_mode&#39;</span><span class="p">,</span> <span class="s1">&#39;quick&#39;</span><span class="p">)</span>  <span class="c1"># or full</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">train_mode</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;quick&#39;</span><span class="p">,</span> <span class="s1">&#39;full&#39;</span><span class="p">]:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;STGCN_train_mode must be `quick` or `full`.&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;You select </span><span class="si">{}</span><span class="s1"> mode to train STGCN model.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">train_mode</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">blocks</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">feature_dim</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">input_window</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">blocks</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Kt</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Input_window must bigger than 4*(Kt-1) for 2 STConvBlock&#39;</span>
+                             <span class="s1">&#39; have 4 kt-kernel convolutional layer.&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">device</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;device&#39;</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">&#39;cpu&#39;</span><span class="p">))</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">graph_conv_type</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;graph_conv_type&#39;</span><span class="p">,</span> <span class="s1">&#39;chebconv&#39;</span><span class="p">)</span>
+        <span class="n">adj_mx</span> <span class="o">=</span> <span class="n">data_feature</span><span class="p">[</span><span class="s1">&#39;adj_mx&#39;</span><span class="p">]</span>  <span class="c1"># ndarray</span>
+        <span class="c1"># 计算GCN邻接矩阵的归一化拉普拉斯矩阵和对应的切比雪夫多项式或一阶近似</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">graph_conv_type</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;chebconv&#39;</span><span class="p">:</span>
+            <span class="n">laplacian_mx</span> <span class="o">=</span> <span class="n">calculate_scaled_laplacian</span><span class="p">(</span><span class="n">adj_mx</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">Lk</span> <span class="o">=</span> <span class="n">calculate_cheb_poly</span><span class="p">(</span><span class="n">laplacian_mx</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">Ks</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Chebyshev_polynomial_Lk shape: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Lk</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">Lk</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Lk</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">graph_conv_type</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;gcnconv&#39;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">Lk</span> <span class="o">=</span> <span class="n">calculate_first_approx</span><span class="p">(</span><span class="n">adj_mx</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;First_approximation_Lk shape: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Lk</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">Lk</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Lk</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">Ks</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># 一阶近似保留到K0和K1，但是不是数组形式，只有一个n*n矩阵，所以是1（本质上是2）</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Error graph_conv_type, must be chebconv or gcnconv.&#39;</span><span class="p">)</span>
+
+        <span class="c1"># 模型结构</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">st_conv1</span> <span class="o">=</span> <span class="n">STConvBlock</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Ks</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">Kt</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_nodes</span><span class="p">,</span>
+                                    <span class="bp">self</span><span class="o">.</span><span class="n">blocks</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">drop_prob</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">Lk</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">st_conv2</span> <span class="o">=</span> <span class="n">STConvBlock</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Ks</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">Kt</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_nodes</span><span class="p">,</span>
+                                    <span class="bp">self</span><span class="o">.</span><span class="n">blocks</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">drop_prob</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">Lk</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">output</span> <span class="o">=</span> <span class="n">OutputLayer</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">blocks</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">2</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">input_window</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">blocks</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2</span>
+                                  <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Kt</span> <span class="o">-</span> <span class="mi">1</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_nodes</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_dim</span><span class="p">)</span>
+
+<div class="viewcode-block" id="STGCN.forward"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_speed_prediction.STGCN.html#libcity.model.traffic_speed_prediction.STGCN.STGCN.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">batch</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">batch</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">]</span>  <span class="c1"># (batch_size, input_length, num_nodes, feature_dim)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">permute</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>  <span class="c1"># (batch_size, feature_dim, input_length, num_nodes)</span>
+        <span class="n">x_st1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">st_conv1</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>   <span class="c1"># (batch_size, c[2](64), input_length-kt+1-kt+1, num_nodes)</span>
+        <span class="n">x_st2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">st_conv2</span><span class="p">(</span><span class="n">x_st1</span><span class="p">)</span>  <span class="c1"># (batch_size, c[2](128), input_length-kt+1-kt+1-kt+1-kt+1, num_nodes)</span>
+        <span class="n">outputs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="n">x_st2</span><span class="p">)</span>  <span class="c1"># (batch_size, output_dim(1), output_length(1), num_nodes)</span>
+        <span class="n">outputs</span> <span class="o">=</span> <span class="n">outputs</span><span class="o">.</span><span class="n">permute</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># (batch_size, output_length(1), num_nodes, output_dim)</span>
+        <span class="k">return</span> <span class="n">outputs</span></div>
+
+<div class="viewcode-block" id="STGCN.calculate_loss"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_speed_prediction.STGCN.html#libcity.model.traffic_speed_prediction.STGCN.STGCN.calculate_loss">[docs]</a>    <span class="k">def</span> <span class="nf">calculate_loss</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">batch</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">train_mode</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;quick&#39;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">training</span><span class="p">:</span>  <span class="c1"># 训练使用t+1时间步的loss</span>
+                <span class="n">y_true</span> <span class="o">=</span> <span class="n">batch</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">][:,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:]</span>  <span class="c1"># (batch_size, 1, num_nodes, feature_dim)</span>
+                <span class="n">y_predicted</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">batch</span><span class="p">)</span>  <span class="c1"># (batch_size, 1, num_nodes, output_dim)</span>
+            <span class="k">else</span><span class="p">:</span>  <span class="c1"># 其他情况使用全部时间步的loss</span>
+                <span class="n">y_true</span> <span class="o">=</span> <span class="n">batch</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span>  <span class="c1"># (batch_size, output_length, num_nodes, feature_dim)</span>
+                <span class="n">y_predicted</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">batch</span><span class="p">)</span>  <span class="c1"># (batch_size, output_length, num_nodes, output_dim)</span>
+        <span class="k">else</span><span class="p">:</span>   <span class="c1"># &#39;full&#39;</span>
+            <span class="n">y_true</span> <span class="o">=</span> <span class="n">batch</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span>  <span class="c1"># (batch_size, output_length, num_nodes, feature_dim)</span>
+            <span class="n">y_predicted</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">batch</span><span class="p">)</span>  <span class="c1"># (batch_size, output_length, num_nodes, output_dim)</span>
+        <span class="n">y_true</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_scaler</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">y_true</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">output_dim</span><span class="p">])</span>
+        <span class="n">y_predicted</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_scaler</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">y_predicted</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">output_dim</span><span class="p">])</span>
+        <span class="k">return</span> <span class="n">loss</span><span class="o">.</span><span class="n">masked_mse_torch</span><span class="p">(</span><span class="n">y_predicted</span><span class="p">,</span> <span class="n">y_true</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="STGCN.predict"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_speed_prediction.STGCN.html#libcity.model.traffic_speed_prediction.STGCN.STGCN.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">batch</span><span class="p">):</span>
+        <span class="c1"># 多步预测</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">batch</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">]</span>  <span class="c1"># (batch_size, input_length, num_nodes, feature_dim)</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">batch</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span>  <span class="c1"># (batch_size, output_length, num_nodes, feature_dim)</span>
+        <span class="n">y_preds</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">x_</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">output_window</span><span class="p">):</span>
+            <span class="n">batch_tmp</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;X&#39;</span><span class="p">:</span> <span class="n">x_</span><span class="p">}</span>
+            <span class="n">y_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">batch_tmp</span><span class="p">)</span>  <span class="c1"># (batch_size, 1, num_nodes, output_dim)</span>
+            <span class="n">y_preds</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">y_</span><span class="o">.</span><span class="n">clone</span><span class="p">())</span>
+            <span class="k">if</span> <span class="n">y_</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">x_</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>  <span class="c1"># output_dim &lt; feature_dim</span>
+                <span class="n">y_</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">([</span><span class="n">y_</span><span class="p">,</span> <span class="n">y</span><span class="p">[:,</span> <span class="n">i</span><span class="p">:</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="p">:,</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_dim</span><span class="p">:]],</span> <span class="n">dim</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+            <span class="n">x_</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">([</span><span class="n">x_</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:,</span> <span class="p">:,</span> <span class="p">:],</span> <span class="n">y_</span><span class="p">],</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">y_preds</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">(</span><span class="n">y_preds</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># (batch_size, output_length, num_nodes, output_dim)</span>
+        <span class="k">return</span> <span class="n">y_preds</span></div></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, aptx1231
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

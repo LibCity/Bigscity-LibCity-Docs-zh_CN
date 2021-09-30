@@ -1,0 +1,385 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>数据集适用的任务 &mdash; Bigscity-LibCity  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="复现模型列表" href="../model.html" />
+    <link rel="prev" title="数据模块参数" href="args_for_data.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> Bigscity-LibCity
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">起步</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../get_started/introduction.html">介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../get_started/install.html">安装LibCity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../get_started/quick_start.html">快速入门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../get_started/directory_structure.html">目录结构</a></li>
+</ul>
+<p class="caption"><span class="caption-text">用户指导</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../config_settings.html">参数设置</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../data.html">数据说明</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="data_flow.html">数据流</a></li>
+<li class="toctree-l2"><a class="reference internal" href="raw_data.html">原始数据</a></li>
+<li class="toctree-l2"><a class="reference internal" href="atomic_files.html">原子文件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="batch.html">Batch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="args_for_data.html">数据模块参数</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">数据集适用的任务</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#note">Note</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../model.html">复现模型列表</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../evaluator.html">评估模块简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../executor.html">执行模块简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">使用示例</a></li>
+</ul>
+<p class="caption"><span class="caption-text">开发者指导</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../developer_guide/code_style.html">代码风格</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer_guide/implemented_datasets.html">自定义Dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer_guide/implemented_models.html">自定义Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer_guide/implemented_executors.html">自定义Executor</a></li>
+</ul>
+<p class="caption"><span class="caption-text">入门教程</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial/install_quick_start.html">安装和快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial/run_model.html">运行LibCity中已复现的模型</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial/add_model.html">在LibCity中添加新模型</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial/hyper_tune.html">使用自动化工具调参</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API文档</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../libcity/libcity.config.html">libcity.config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../libcity/libcity.data.html">libcity.data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../libcity/libcity.evaluator.html">libcity.evaluator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../libcity/libcity.executor.html">libcity.executor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../libcity/libcity.model.html">libcity.model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../libcity/libcity.pipeline.html">libcity.pipeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../libcity/libcity.utils.html">libcity.utils</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Bigscity-LibCity</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../data.html">数据说明</a> &raquo;</li>
+        
+      <li>数据集适用的任务</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/user_guide/data/dataset_for_task.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>数据集适用的任务<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p>在本节中，我们向您介绍我们提供的<a class="reference external" href="https://drive.google.com/drive/folders/1g5v2Gq1tkOq8XO0HDCZ9nOTtRpB6-gPe?usp=sharing">标准数据集</a>和任务之间的对应关系。 值得注意的是，某些数据集只能支持某个任务中的某些模型。</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>任务</th>
+<th>数据集</th>
+<th>支持的模型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>交通流量预测</td>
+<td><strong>TAXIBJ</strong>, PORTO, NYCTAXI_GRID, NYCBIKE, AUSTINRIDE, BIKEDC, BIKECHI, <strong>NYCBike20140409</strong>, <strong>NYCBike20160708</strong>, <strong>NYCBike20160809</strong>, <strong>NYCTaxi20140112</strong>, <strong>NYCTaxi20150103</strong>, <strong>NYCTaxi20160102</strong>, <strong>T_DRIVE20150206</strong>, T_DRIVE_SMALL</td>
+<td>ACFM, STResNet, DSAN, ACFMCommon, STResNetCommon</td>
+<td>基于网格的数据</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>PEMSD3</strong>, <strong>PeMSD4</strong>, <strong>PeMSD7</strong>, <strong>PeMSD8</strong>, BEIJING_SUBWAY, M_DENSE, SHMETRO, HZMETRO, NYCTAXI_DYNA</td>
+<td>AGCRN, ASTGCNCommon, MSTGCNCommon, STSGCN, CONVGCNCommon, ToGCN, MultiSTGCnetCommon, STNN, ASTGCN, MSTGCN, CONVGCN, DGCN, ResLSTM, MultiSTGCnet</td>
+<td>基于传感器点的数据</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>TAXIBJ</strong>, PORTO, NYCTAXI_GRID, NYCBIKE, AUSTINRIDE, BIKEDC, BIKECHI, <strong>NYCBike20140409</strong>, <strong>NYCBike20160708</strong>, <strong>NYCBike20160809</strong>, <strong>NYCTaxi20140112</strong>, <strong>NYCTaxi20150103</strong>, <strong>NYCTaxi20160102</strong>, <strong>T_DRIVE20150206</strong>, T_DRIVE_SMALL</td>
+<td>AGCRN, ASTGCNCommon, MSTGCNCommon, STSGCN, CONVGCNCommon, ToGCN, MultiSTGCnetCommon, STNN, ASTGCN, MSTGCN, CONVGCN, DGCN, ResLSTM, MultiSTGCnet</td>
+<td>需要简单的修改以用于网格数据， <strong>见 Note 3.</strong></td>
+</tr>
+<tr>
+<td></td>
+<td><strong>M_DENSE</strong></td>
+<td>CRANN</td>
+<td>需要<code>.ext</code> 文件</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>NYCBike20160708</strong>, <strong>NYCTaxi20150103</strong></td>
+<td>STDN</td>
+<td>需要<code>.gridod</code> 文件</td>
+</tr>
+<tr>
+<td>交通速度预测</td>
+<td><strong>METR_LA</strong>, <strong>LOS_LOOP</strong>, <strong>PeMSD4</strong>, <strong>PeMSD8</strong>, <strong>PEMSD7(M)</strong>, <strong>PEMS_BAY</strong>, LOS_LOOP_SMALL, SZ_TAXI, LOOP_SEATTLE, Q_TRAFFIC, ROTTERDAM</td>
+<td>DCRNN, STGCN, GWNET, MTGNN, STMGAT, TGCN, ATDM, HGCN, DKFN, STTN, GTS, GMAN, STAGGCN, TGCLSTM</td>
+<td>基于传感器点的数据</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>LOOP_SEATTLE</strong></td>
+<td>TGCLSTM</td>
+<td><strong>见Note 2.</strong></td>
+</tr>
+<tr>
+<td>交通需求预测</td>
+<td><strong>TAXIBJ</strong>, PORTO, NYCTAXI_GRID, NYCBIKE, AUSTINRIDE, BIKEDC, BIKECHI, <strong>NYCBike20140409</strong>, <strong>NYCBike20160708</strong>, <strong>NYCBike20160809</strong>, <strong>NYCTaxi20140112</strong>, <strong>NYCTaxi20150103</strong>, <strong>NYCTaxi20160102</strong>, <strong>T_DRIVE20150206</strong>, T_DRIVE_SMALL</td>
+<td>DMVSTNet</td>
+<td>基于网格的数据</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>PEMSD3</strong>, <strong>PeMSD4</strong>, <strong>PeMSD7</strong>, <strong>PeMSD8</strong>, BEIJING_SUBWAY, M_DENSE, SHMETRO, HZMETRO, NYCTAXI_DYNA</td>
+<td>CCRNN, STG2Seq</td>
+<td>基于传感器点的数据</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>TAXIBJ</strong>, PORTO, NYCTAXI_GRID, NYCBIKE, AUSTINRIDE, BIKEDC, BIKECHI, <strong>NYCBike20140409</strong>, <strong>NYCBike20160708</strong>, <strong>NYCBike20160809</strong>, <strong>NYCTaxi20140112</strong>, <strong>NYCTaxi20150103</strong>, <strong>NYCTaxi20160102</strong>, <strong>T_DRIVE20150206</strong>, T_DRIVE_SMALL</td>
+<td>CCRNN, STG2Seq</td>
+<td>Need <strong>simple modification</strong>   for grid based dataset. <strong>See Note 3.</strong></td>
+</tr>
+<tr>
+<td>OD矩阵预测</td>
+<td><strong>NYCTAXI_OD</strong></td>
+<td>GEML</td>
+<td>基于OD的数据</td>
+</tr>
+<tr>
+<td>轨迹下一跳预测</td>
+<td><strong>Gowalla</strong>, BrightKite</td>
+<td>FPMC, RNN, ST-RNN, ATST-LSTM, DeepMove, HST-LSTM, LSTPM, STAN</td>
+<td>轨迹数据</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>Fousquare</strong>, Instagram</td>
+<td>FPMC, RNN, ST-RNN, ATST-LSTM, DeepMove, HST-LSTM, LSTPM, GeoSAN, STAN, SERM, CARA</td>
+<td>轨迹数据</td>
+</tr>
+<tr>
+<td>路网匹配</td>
+<td><strong>Seattle</strong>, global</td>
+<td>STMatching, IVMM</td>
+<td>轨迹数据</td>
+</tr>
+</tbody>
+</table><div class="section" id="note">
+<h2>Note<a class="headerlink" href="#note" title="Permalink to this headline">¶</a></h2>
+<p>1.加粗的数据集是我们推荐的数据集。</p>
+<p>2.对于<code class="docutils literal notranslate"><span class="pre">TGCLSTM</span></code>，需要将<code class="docutils literal notranslate"><span class="pre">dataset_class</span></code>设置为<code class="docutils literal notranslate"><span class="pre">TrafficStatePointDataset</span></code>。 否则，默认的<code class="docutils literal notranslate"><span class="pre">dataset_class=TGCLSTMDataset</span></code> 只适用于数据集<code class="docutils literal notranslate"><span class="pre">LOOP_SEATTLE</span></code>。</p>
+<p>3.以下是如何将用于基于点的数据的模型推广到基于网格的数据。</p>
+<p>（1）如果模型使用的数据集类是<code class="docutils literal notranslate"><span class="pre">TrafficStatePointDataset</span></code>，如<code class="docutils literal notranslate"><span class="pre">AGCRN</span></code>、<code class="docutils literal notranslate"><span class="pre">ASTGCNCommon</span></code>、<code class="docutils literal notranslate"><span class="pre">CCRNN</span></code>等，可以直接在<code class="docutils literal notranslate"><span class="pre">task_file.json</span></code>中将<code class="docutils literal notranslate"><span class="pre">dataset_class</span></code>设为<code class="docutils literal notranslate"><span class="pre">TrafficStateGridDataset</span></code>或通过自定义配置文件（<code class="docutils literal notranslate"><span class="pre">--config_file</span></code>）设置。 然后将 <code class="docutils literal notranslate"><span class="pre">TrafficStateGridDataset</span></code> 的参数 <code class="docutils literal notranslate"><span class="pre">use_row_column</span></code> 设置为 <code class="docutils literal notranslate"><span class="pre">False</span></code>。</p>
+<p>（2）如果模型使用的数据集类是<code class="docutils literal notranslate"><span class="pre">TrafficStatePointDataset</span></code>的子类，如<code class="docutils literal notranslate"><span class="pre">ASTGCNDataset</span></code>、<code class="docutils literal notranslate"><span class="pre">CONVGCNDataset</span></code>、<code class="docutils literal notranslate"><span class="pre">STG2SeqDataset</span></code>等，可以修改数据集类的文件，使其继承<code class="docutils literal notranslate"><span class="pre">TrafficStateGridDataset</span></code> 取代当前的<code class="docutils literal notranslate"><span class="pre">TrafficStatePointDataset</span></code>。 然后将函数<code class="docutils literal notranslate"><span class="pre">__init__()</span></code>中的参数<code class="docutils literal notranslate"><span class="pre">use_row_column</span></code>设置为<code class="docutils literal notranslate"><span class="pre">False</span></code>。</p>
+<p>样例：</p>
+<p>修改前：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">libcity.data.dataset</span> <span class="kn">import</span> <span class="n">TrafficStatePointDataset</span>
+<span class="k">class</span> <span class="nc">STG2SeqDataset</span><span class="p">(</span><span class="n">TrafficStatePointDataset</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+        <span class="k">pass</span>
+</pre></div>
+</div>
+<p>修改后：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">libcity.data.dataset</span> <span class="kn">import</span> <span class="n">TrafficStateGridDataset</span>
+<span class="k">class</span> <span class="nc">STG2SeqDataset</span><span class="p">(</span><span class="n">TrafficStateGridDataset</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">use_row_column</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">pass</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../model.html" class="btn btn-neutral float-right" title="复现模型列表" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="args_for_data.html" class="btn btn-neutral float-left" title="数据模块参数" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, aptx1231
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

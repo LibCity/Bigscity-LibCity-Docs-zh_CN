@@ -1,0 +1,415 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>运行LibCity中已复现的模型 &mdash; Bigscity-LibCity  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="在LibCity中添加新模型" href="add_model.html" />
+    <link rel="prev" title="安装和快速上手" href="install_quick_start.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> Bigscity-LibCity
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">起步</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/introduction.html">介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/install.html">安装LibCity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/quick_start.html">快速入门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/directory_structure.html">目录结构</a></li>
+</ul>
+<p class="caption"><span class="caption-text">用户指导</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/config_settings.html">参数设置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/data.html">数据说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/model.html">复现模型列表</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/evaluator.html">评估模块简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/executor.html">执行模块简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/usage.html">使用示例</a></li>
+</ul>
+<p class="caption"><span class="caption-text">开发者指导</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/code_style.html">代码风格</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_datasets.html">自定义Dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_models.html">自定义Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_executors.html">自定义Executor</a></li>
+</ul>
+<p class="caption"><span class="caption-text">入门教程</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="install_quick_start.html">安装和快速上手</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">运行LibCity中已复现的模型</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">下载数据集</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">设置参数</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">参数优先级</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">LibCity默认参数配置文件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">用户自定义的参数配置文件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">命令行参数</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id7">运行模型</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="add_model.html">在LibCity中添加新模型</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hyper_tune.html">使用自动化工具调参</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API文档</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../libcity/libcity.config.html">libcity.config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../libcity/libcity.data.html">libcity.data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../libcity/libcity.evaluator.html">libcity.evaluator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../libcity/libcity.executor.html">libcity.executor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../libcity/libcity.model.html">libcity.model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../libcity/libcity.pipeline.html">libcity.pipeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../libcity/libcity.utils.html">libcity.utils</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Bigscity-LibCity</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>运行LibCity中已复现的模型</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/tutorial/run_model.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="libcity">
+<h1>运行LibCity中已复现的模型<a class="headerlink" href="#libcity" title="Permalink to this headline">¶</a></h1>
+<p>这里，我们将展示如何运行<code class="docutils literal notranslate"><span class="pre">LibCity</span></code>中一个已复现的模型。</p>
+<div class="section" id="id1">
+<h2>下载数据集<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">LibCity</span></code>提供了29个交通数据集，并在<a class="reference external" href="https://libcity.github.io/Bigscity-LibCity-Website/#/data">网站</a>和<a class="reference internal" href="../user_guide/data/raw_data.html"><span class="doc">文档</span></a>上展示了其基本信息。为了格式化各种交通数据，我们设计并实现了6种原子文件格式，它们可以描述不同交通预测任务大部分的输入数据。更多细节可见<a class="reference internal" href="../user_guide/data/atomic_files.html"><span class="doc">文档</span></a>的相关内容。</p>
+<p>我们已经将处理好的数据集的原子文件上传至<a class="reference external" href="https://pan.baidu.com/s/1qEfcXBO-QwZfiT0G3IYMpQ#list/path=%2F">百度网盘</a>（提取码：1231）和<a class="reference external" href="https://drive.google.com/drive/folders/1g5v2Gq1tkOq8XO0HDCZ9nOTtRpB6-gPe">Google Drive</a>，用户可以直接进行下载。</p>
+<p>以METR_LA数据集为例，下载成功后，我们会得到一个名为<code class="docutils literal notranslate"><span class="pre">METR_LA</span></code>的文件夹。</p>
+<blockquote>
+<div><p>如果您还没有安装<code class="docutils literal notranslate"><span class="pre">LibCity</span></code>，您可以在<a class="reference internal" href="install_quick_start.html"><span class="doc">这里</span></a>找到安装教程。</p>
+</div></blockquote>
+<p>如果<code class="docutils literal notranslate"><span class="pre">LibCity</span></code>安装成功后，我们会得到一个名为<code class="docutils literal notranslate"><span class="pre">Bigscity-LibCity</span></code>的文件夹。我们需要在项目根目录下创建一个名为<code class="docutils literal notranslate"><span class="pre">raw_data</span></code>的文件夹，用来存放处理好的数据集原子文件。然后，我们需要将之前下载好的<code class="docutils literal notranslate"><span class="pre">METR_LA</span></code>文件夹移动到<code class="docutils literal notranslate"><span class="pre">raw_data</span></code>文件夹下。此时<code class="docutils literal notranslate"><span class="pre">raw_data</span></code>文件夹下有一个<code class="docutils literal notranslate"><span class="pre">METR_LA</span></code>文件夹，而在<code class="docutils literal notranslate"><span class="pre">METR_LA</span></code>文件夹下有4个原子文件。</p>
+</div>
+<div class="section" id="id2">
+<h2>设置参数<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">LibCity</span></code>运行时的参数由三部分决定：命令行参数、用户自定义的参数配置文件、<code class="docutils literal notranslate"><span class="pre">LibCity</span></code>默认参数配置文件。其中，<code class="docutils literal notranslate"><span class="pre">LibCity</span></code>默认的参数配置文件包括数据模块、执行模块、评测模型、模型模块的参数配置文件。</p>
+<div class="section" id="id3">
+<h3>参数优先级<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>命令行参数 &gt; 用户自定义的参数 &gt; 模型模块的默认参数 &gt; 数据模块、执行模块、测评模块的默认参数</p>
+</div>
+<div class="section" id="id4">
+<h3>LibCity默认参数配置文件<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">LibCity</span></code>对于数据模块、执行模块、测评模块、模型模块的默认参数文件分别位于以下四个目录中：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">libcity/config/data</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">libcity/config/executor</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">libcity/config/evaluator</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">libcity/config/model</span></code></p></li>
+</ul>
+<p>我们以GRU模型为例，来看看其在<code class="docutils literal notranslate"><span class="pre">LibCity</span></code>中的默认参数配置。首先打开<code class="docutils literal notranslate"><span class="pre">libcity/config/task_config.json</span></code>，该文件记录了不同的任务支持的模型和数据集，以及各个模型在LibCity中使用的数据集类、执行器、评测器。</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span>{
+    &quot;traffic_state_pred&quot;: {
+        &quot;allowed_model&quot;: [
+            ..., &quot;GRU&quot;, ...
+        ],
+        &quot;allowed_dataset&quot;: [
+        	&quot;METR_LA&quot;, ...    
+        ],
+        ...
+        &quot;GRU&quot;: {
+            &quot;dataset_class&quot;: &quot;TrafficStatePointDataset&quot;,
+            &quot;executor&quot;: &quot;TrafficStateExecutor&quot;,
+            &quot;evaluator&quot;: &quot;TrafficStateEvaluator&quot;
+        },
+        ...
+    }
+}
+</pre></div>
+</div>
+<p>我们可以看到GRU采用的数据集类是<code class="docutils literal notranslate"><span class="pre">TrafficStatePointDataset</span></code>、执行器是<code class="docutils literal notranslate"><span class="pre">DCRNNExecutor</span></code>、评测器是<code class="docutils literal notranslate"><span class="pre">TrafficStateEvaluator</span></code>。</p>
+<p>因此，我们可以在<code class="docutils literal notranslate"><span class="pre">libcity/config/data/TrafficStatePointDataset.json</span></code>中看到数据模块的默认参数。</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;batch_size&quot;</span><span class="p">:</span> <span class="mi">64</span><span class="p">,</span>
+  <span class="nt">&quot;cache_dataset&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="nt">&quot;num_workers&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="nt">&quot;pad_with_last_sample&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="nt">&quot;train_rate&quot;</span><span class="p">:</span> <span class="mf">0.7</span><span class="p">,</span>
+  <span class="nt">&quot;eval_rate&quot;</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span>
+  <span class="nt">&quot;scaler&quot;</span><span class="p">:</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;load_external&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+  <span class="nt">&quot;normal_external&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+  <span class="nt">&quot;ext_scaler&quot;</span><span class="p">:</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;input_window&quot;</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span>
+  <span class="nt">&quot;output_window&quot;</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span>
+  <span class="nt">&quot;add_time_in_day&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+  <span class="nt">&quot;add_day_in_week&quot;</span><span class="p">:</span> <span class="kc">false</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>执行模块的默认参数位于<code class="docutils literal notranslate"><span class="pre">libcity/config/executor/TrafficStateExecutor.json</span></code>。</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span>{
+  &quot;gpu&quot;: true,
+  &quot;gpu_id&quot;: 0,
+  &quot;max_epoch&quot;: 100,
+  &quot;train_loss&quot;: &quot;none&quot;,
+  &quot;epoch&quot;: 0,
+  &quot;learner&quot;: &quot;adam&quot;,
+  &quot;learning_rate&quot;: 0.01,
+  &quot;weight_decay&quot;: 0,
+  &quot;lr_epsilon&quot;: 1e-8,
+  ...
+}
+</pre></div>
+</div>
+<p>也可以在<code class="docutils literal notranslate"><span class="pre">libcity/config/evaluator/TrafficStateEvaluator.json</span></code>中看到评测模块的默认参数。</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;metrics&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;MAE&quot;</span><span class="p">,</span> <span class="s2">&quot;MAPE&quot;</span><span class="p">,</span> <span class="s2">&quot;MSE&quot;</span><span class="p">,</span> <span class="s2">&quot;RMSE&quot;</span><span class="p">,</span> <span class="s2">&quot;masked_MAE&quot;</span><span class="p">,</span> <span class="s2">&quot;masked_MAPE&quot;</span><span class="p">,</span> <span class="s2">&quot;masked_MSE&quot;</span><span class="p">,</span> <span class="s2">&quot;masked_RMSE&quot;</span><span class="p">,</span> <span class="s2">&quot;R2&quot;</span><span class="p">,</span> <span class="s2">&quot;EVAR&quot;</span><span class="p">],</span>
+  <span class="nt">&quot;mode&quot;</span><span class="p">:</span> <span class="s2">&quot;single&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>而模型模块的默认参数则位于<code class="docutils literal notranslate"><span class="pre">libcity/config/model/traffic_state_pred/RNN.json</span></code>中，它的优先级要高于其他三个模块的默认参数。以<code class="docutils literal notranslate"><span class="pre">scalar</span></code>参数为例，它在模型模块默认参数配置文件中的值是<code class="docutils literal notranslate"><span class="pre">standard</span></code>，在数据模块默认参数配置文件中的值是<code class="docutils literal notranslate"><span class="pre">none</span></code>，则<code class="docutils literal notranslate"><span class="pre">scalar</span></code>参数在<code class="docutils literal notranslate"><span class="pre">LibCity</span></code>中最终的默认值是<code class="docutils literal notranslate"><span class="pre">standard</span></code>。</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span>{
+  &quot;hidden_size&quot;: 64,
+  &quot;num_layers&quot;: 1,
+  &quot;dropout&quot;: 0,
+  &quot;bidirectional&quot;: false,
+  &quot;teacher_forcing_ratio&quot;: 0,
+
+  &quot;scaler&quot;: &quot;standard&quot;,
+  &quot;load_external&quot;: true,
+  &quot;normal_external&quot;: false,
+  &quot;ext_scaler&quot;: &quot;none&quot;,
+  &quot;add_time_in_day&quot;: true,
+  &quot;add_day_in_week&quot;: false,
+  ...
+}
+</pre></div>
+</div>
+</div>
+<div class="section" id="id5">
+<h3>用户自定义的参数配置文件<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">LibCity</span></code>允许用户使用自定义的参数配置文件，且其优先级高于默认参数配置文件，方便用户进行模型调试。用户自定义的参数配置文件需要满足以下要求：</p>
+<ol class="simple">
+<li><p>用户自定义的参数配置文件必须是一个JSON文件；</p></li>
+<li><p>JSON文件应该存储一个字典，它的key应该是参数名，value是要设定的参数值；</p></li>
+<li><p>文件应该放在项目的根目录下，并在用命令行执行时以<code class="docutils literal notranslate"><span class="pre">--config_file</span></code>参数的形式传递进去。</p></li>
+</ol>
+<p>例如，我们可以在根目录下创建一个<code class="docutils literal notranslate"><span class="pre">GRU_METR_LA.json</span></code>文件，内容如下：</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;learner&quot;</span><span class="p">:</span> <span class="s2">&quot;sgd&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id6">
+<h3>命令行参数<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<p>项目根目录中的<code class="docutils literal notranslate"><span class="pre">run_model.py</span></code>是<code class="docutils literal notranslate"><span class="pre">LibCity</span></code>提供给用户进行模型训练和测评的脚本，它也支持以命令行参数的形式供用户来调整运行时的参数。</p>
+<p>当我们运行<code class="docutils literal notranslate"><span class="pre">run_model.py</span></code>时，必须要声明三个参数是<code class="docutils literal notranslate"><span class="pre">task</span></code>、<code class="docutils literal notranslate"><span class="pre">dataset</span></code>和<code class="docutils literal notranslate"><span class="pre">model</span></code>，分别表示要执行的任务、使用的数据集和使用的模型。例如，如果我们想要在METR_LA数据集上用DCRNN模型执行交通状态预测任务，就应该执行如下的命令：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">run_model</span><span class="o">.</span><span class="n">py</span> <span class="o">--</span><span class="n">task</span> <span class="n">traffic_state_pred</span> <span class="o">--</span><span class="n">dataset</span> <span class="n">METR_LA</span> <span class="o">--</span><span class="n">model</span> <span class="n">GRU</span>
+</pre></div>
+</div>
+<p>用户也可以使用<code class="docutils literal notranslate"><span class="pre">-h</span></code>获取帮助信息：</p>
+</div>
+</div>
+<div class="section" id="id7">
+<h2>运行模型<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<p>如果您已经下载并放置好了数据集，那么只需要一行指令，这个模型就可以运行起来了。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">run_model</span><span class="o">.</span><span class="n">py</span> <span class="o">--</span><span class="n">task</span> <span class="n">traffic_state_pred</span> <span class="o">--</span><span class="n">dataset</span> <span class="n">METR_LA</span> <span class="o">--</span><span class="n">model</span> <span class="n">GRU</span>
+</pre></div>
+</div>
+<p>如果您想通过命令行和自定义参数配置文件传递参数，您可以运行如下指令：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">run_model</span><span class="o">.</span><span class="n">py</span> <span class="o">--</span><span class="n">task</span> <span class="n">traffic_state_pred</span> <span class="o">--</span><span class="n">dataset</span> <span class="n">METR_LA</span> <span class="o">--</span><span class="n">model</span> <span class="n">GRU</span> <span class="o">--</span><span class="n">learning_rate</span> <span class="mf">0.02</span> <span class="o">--</span><span class="n">config_file</span> <span class="n">GRU_METR_LA</span>
+</pre></div>
+</div>
+<p>在运行的过程中，记录模块会输出运行信息。</p>
+<p>首先，记录模块提示模型运行的记录会保存在<code class="docutils literal notranslate"><span class="pre">libcity/log</span></code>文件夹下的相应文件中，并开始模型训练的流水线。</p>
+<p><img alt="../_images/run_model1.png" src="../_images/run_model1.png" /></p>
+<p>然后，执行模块会加载原子文件，创建数据集，划分训练集、验证集、测试集，并将划分好的数据集保存在<code class="docutils literal notranslate"><span class="pre">libcity/cache/dataset_cache</span></code>下。下次在相同参数的数据集上运行模型时，不需要重新进行数据预处理操作。</p>
+<p><img alt="../_images/run_model2.png" src="../_images/run_model2.png" /></p>
+<p>记录模块还会输出模型的结构和参数量、优化器和学习率调整机制。我们可以发现，优化器已经变成了我们在自定义配置文件<code class="docutils literal notranslate"><span class="pre">GRU_METR_LA.json</span></code>中设置的<code class="docutils literal notranslate"><span class="pre">sgd</span></code>。</p>
+<p><img alt="../_images/run_model3.png" src="../_images/run_model3.png" /></p>
+<p>接下来，执行模块就开始训练模型了。结束一个epoch的训练，记录模块会输出模型在训练集和验证集上的误差、学习率、训练时间。我们可以发现，学习率已经变成了我们通过命令行传递进去的<code class="docutils literal notranslate"><span class="pre">0.02</span></code>。</p>
+<p><img alt="../_images/run_model4.png" src="../_images/run_model4.png" /></p>
+<p>最终，模型训练结束后，执行模块会在测试集上评测模型的性能，并将训练好的模型和评测结果分别保存在<code class="docutils literal notranslate"><span class="pre">libcity/cache/model_cache/</span></code>和<code class="docutils literal notranslate"><span class="pre">libcity/cache/evaluate_cache/</span></code>下。</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="add_model.html" class="btn btn-neutral float-right" title="在LibCity中添加新模型" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="install_quick_start.html" class="btn btn-neutral float-left" title="安装和快速上手" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, aptx1231
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

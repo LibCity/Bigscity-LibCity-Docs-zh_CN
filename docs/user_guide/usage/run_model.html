@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Use run_model &mdash; Bigscity-TrafficDL  documentation</title>
+  <title>使用 run_model &mdash; Bigscity-LibCity  documentation</title>
   
 
   
@@ -38,7 +38,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="标准赛道" href="standard_track.html" />
-    <link rel="prev" title="Usage" href="../usage.html" /> 
+    <link rel="prev" title="使用示例" href="../usage.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -52,7 +52,7 @@
           
 
           
-            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> Bigscity-TrafficDL
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> Bigscity-LibCity
           
 
           
@@ -83,44 +83,51 @@
               
             
             
-              <p class="caption"><span class="caption-text">Get Started</span></p>
+              <p class="caption"><span class="caption-text">起步</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../get_started/introduction.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../get_started/install.html">Install</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../get_started/quick_start.html">Quick Start</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../get_started/directory_structure.html">Directory Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../get_started/introduction.html">介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../get_started/install.html">安装LibCity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../get_started/quick_start.html">快速入门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../get_started/directory_structure.html">目录结构</a></li>
 </ul>
-<p class="caption"><span class="caption-text">User Guide</span></p>
+<p class="caption"><span class="caption-text">用户指导</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../config_settings.html">Config Settings</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../data.html">Data Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../model.html">Model Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../evaluator.html">Evaluator Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../executor.html">Executor Introduction</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../usage.html">Usage</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Use run_model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../config_settings.html">参数设置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data.html">数据说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model.html">复现模型列表</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../evaluator.html">评估模块简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../executor.html">执行模块简介</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../usage.html">使用示例</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">使用 run_model</a></li>
 <li class="toctree-l2"><a class="reference internal" href="standard_track.html">标准赛道</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parameter_tuning.html">参数调整</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logger.html">使用 logger</a></li>
 </ul>
 </li>
 </ul>
-<p class="caption"><span class="caption-text">Developer Guide</span></p>
+<p class="caption"><span class="caption-text">开发者指导</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../developer_guide/code_style.html">Code Style</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../developer_guide/implemented_datasets.html">Customize Dataset</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../developer_guide/implemented_models.html">Customize Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../developer_guide/implemented_evaluators.html">Customize Evaluators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../developer_guide/implemented_executors.html">Customize Executors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../developer_guide/implemented_logger.html">Logger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer_guide/code_style.html">代码风格</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer_guide/implemented_datasets.html">自定义Dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer_guide/implemented_models.html">自定义Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer_guide/implemented_executors.html">自定义Executor</a></li>
 </ul>
-<p class="caption"><span class="caption-text">API REFERENCE</span></p>
+<p class="caption"><span class="caption-text">入门教程</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../trafficdl/trafficdl.config.html">trafficdl.config</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../trafficdl/trafficdl.data.html">trafficdl.data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../trafficdl/trafficdl.evaluator.html">trafficdl.evaluator</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../trafficdl/trafficdl.executor.html">trafficdl.executor</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../trafficdl/trafficdl.model.html">trafficdl.model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../trafficdl/trafficdl.pipeline.html">trafficdl.pipeline</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../trafficdl/trafficdl.utils.html">trafficdl.utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial/install_quick_start.html">安装和快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial/run_model.html">运行LibCity中已复现的模型</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial/add_model.html">在LibCity中添加新模型</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial/hyper_tune.html">使用自动化工具调参</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API文档</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../libcity/libcity.config.html">libcity.config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../libcity/libcity.data.html">libcity.data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../libcity/libcity.evaluator.html">libcity.evaluator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../libcity/libcity.executor.html">libcity.executor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../libcity/libcity.model.html">libcity.model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../libcity/libcity.pipeline.html">libcity.pipeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../libcity/libcity.utils.html">libcity.utils</a></li>
 </ul>
 
             
@@ -136,7 +143,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../index.html">Bigscity-TrafficDL</a>
+          <a href="../../index.html">Bigscity-LibCity</a>
         
       </nav>
 
@@ -167,9 +174,9 @@
     
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
         
-          <li><a href="../usage.html">Usage</a> &raquo;</li>
+          <li><a href="../usage.html">使用示例</a> &raquo;</li>
         
-      <li>Use run_model</li>
+      <li>使用 run_model</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -188,27 +195,29 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="use-run-model">
-<h1>Use run_model<a class="headerlink" href="#use-run-model" title="Permalink to this headline">¶</a></h1>
-<p>本项目将训练评估单个模型封装实现为本脚本文件。通过命令行即可运行，示例如下：</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>python run_model.py --task traj_loc_pred --model DeepMove --dataset foursquare_tky
+  <div class="section" id="run-model">
+<h1>使用 run_model<a class="headerlink" href="#run-model" title="Permalink to this headline">¶</a></h1>
+<p>框架的根目录中提供了用于训练和评估单个模型的脚本<code class="docutils literal notranslate"><span class="pre">run_model.py</span></code> ，并提供了一系列命令行参数，允许用户调整运行参数配置。</p>
+<p>运行<code class="docutils literal notranslate"><span class="pre">run_model.py</span></code>时，必须指定以下三个参数，即<code class="docutils literal notranslate"><span class="pre">task</span></code>、<code class="docutils literal notranslate"><span class="pre">dataset</span></code>和<code class="docutils literal notranslate"><span class="pre">model</span></code>。也就是:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>python run_model.py --task<span class="o">=[</span>task_name<span class="o">]</span> --model<span class="o">=[</span>model_name<span class="o">]</span> --dataset<span class="o">=[</span>dataset_name<span class="o">]</span>
 </pre></div>
 </div>
-<p>本脚本所支持的命令行参数：</p>
+<p>此外，该脚本支持输入以下命令行参数来调整流水线的参数设置。</p>
+<p>支持参数:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">task</span></code>：所要执行的任务名，包括<code class="docutils literal notranslate"><span class="pre">traj_loc_pred</span></code>和<code class="docutils literal notranslate"><span class="pre">traffic_state_pred</span></code>，默认为<code class="docutils literal notranslate"><span class="pre">traj_loc_pred</span></code>。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">model</span></code>：所要运行的模型名，应是<code class="docutils literal notranslate"><span class="pre">trafficdl/model/</span></code>目录下各Model类名中的一个，默认为<code class="docutils literal notranslate"><span class="pre">DeepMove</span></code>。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">dataset</span></code>：所要运行的数据集，默认为 <code class="docutils literal notranslate"><span class="pre">foursquare_tky</span></code>。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">config_file</span></code>：用户指定 config 文件名，默认为 <code class="docutils literal notranslate"><span class="pre">None</span></code>。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">saved_model</span></code>：是否保存训练的模型结果，默认为 <code class="docutils literal notranslate"><span class="pre">True</span></code>。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">train</span></code>：当模型已被训练时是否要重新训练，默认为 <code class="docutils literal notranslate"><span class="pre">True</span></code>。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">batch_size</span></code>：单次输入的 Batch 大小。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">train_rate</span></code>：训练集所占比例，如<code class="docutils literal notranslate"><span class="pre">0.6</span></code>，划分顺序是【训练集，验证集，测试集】。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">eval_rate</span></code>：验证集所占比例，如<code class="docutils literal notranslate"><span class="pre">0.2</span></code>，划分顺序是【训练集，验证集，测试集】。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">learning_rate</span></code>：优化器的学习率。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">max_epoch</span></code>：训练的最大轮次。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">gpu</span></code>：是否是用GPU，默认为 <code class="docutils literal notranslate"><span class="pre">True</span></code>。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">gpu_id</span></code>：指定使用的GPU的id，默认为<code class="docutils literal notranslate"><span class="pre">0</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">task</span></code>：要执行的任务的名称，包括<code class="docutils literal notranslate"><span class="pre">traffic_state_pred</span></code> 和<code class="docutils literal notranslate"><span class="pre">traj_loc_pred</span></code>。默认为 <code class="docutils literal notranslate"><span class="pre">traffic_state_pred</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">model</span></code>：要执行的模型的名称。默认为 <code class="docutils literal notranslate"><span class="pre">GRU</span></code>。(<a class="reference internal" href="../model.html"><span class="doc">支持的模型</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dataset</span></code>：要执行的数据集。默认为 <code class="docutils literal notranslate"><span class="pre">METR_LA</span></code>。（<a class="reference internal" href="../data/raw_data.html"><span class="doc">支持的数据集</span></a>）</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">config_file</span></code>：用户定义配置文件的名称。默认为 <code class="docutils literal notranslate"><span class="pre">None</span></code>。(<a class="reference internal" href="../config_settings.html"><span class="doc">查看更多</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">saved_model</span></code>：是否保存训练好的模型。默认为 <code class="docutils literal notranslate"><span class="pre">True</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">train</span></code>：如果模型已经过预训练，是否对模型进行再训练。默认为 <code class="docutils literal notranslate"><span class="pre">True</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">batch_size</span></code>：训练和评估的批次大小。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">train_rate</span></code>：训练集占总数据集的比例。(划分顺序为训练集、验证集、测试集)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">eval_rate</span></code>：验证集的比例。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">learning_rate</span></code>：学习率。默认值因模型而异。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">max_epoch</span></code>：最大训练轮次。默认值因模型而异。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">gpu</span></code>：是否使用 GPU. 默认为 <code class="docutils literal notranslate"><span class="pre">True</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">gpu_id</span></code>：所使用GPU的id。默认为<code class="docutils literal notranslate"><span class="pre">0</span></code>。</p></li>
 </ul>
 </div>
 
@@ -223,7 +232,7 @@
         <a href="standard_track.html" class="btn btn-neutral float-right" title="标准赛道" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../usage.html" class="btn btn-neutral float-left" title="Usage" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../usage.html" class="btn btn-neutral float-left" title="使用示例" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
