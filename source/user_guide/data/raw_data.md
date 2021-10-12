@@ -10,7 +10,7 @@
 
 **描述：** 由环路探测器在高速公路上收集，包含来自 207 个传感器的交通速度数据。
 
-### Los\_loop
+### LOS_LOOP
 
 **地点：** Los Angeles County, USA
 
@@ -32,7 +32,7 @@
 
 ### LOOP\_SEATTLE
 
-**地点：** Greater Seattle Area, China
+**地点：** Greater Seattle Area, USA
 
 **时期：** 2015 全年
 
@@ -40,7 +40,7 @@
 
 **描述：** Loop Seattle 数据集由部署在西雅图地区高速公路(I-5、I-405、I-90和SR-520)上的感应环路探测器收集，包含来自323个传感器站的交通状态数据。
 
-### Q-TRAFFIC
+### Q_TRAFFIC
 
 **地点：** Beijing, China
 
@@ -60,7 +60,7 @@
 
 **描述：** PEMS 记录加利福尼亚高速公路的速度数据，包括时间小时，平均时间，车道点。
 
-### PeMSD3
+### PEMSD3
 
 **地点：** District 3 of California, USA
 
@@ -70,7 +70,7 @@
 
 **描述：** PeMSD3 数据集包括 358 个传感器和流量信息。
 
-### PeMSD4
+### PEMSD4
 
 **地点：** San Francisco Bay Area, USA
 
@@ -90,7 +90,7 @@
 
 **描述：** PeMSD7 数据集包含883个传感器站的交通流量信息。
 
-### PeMSD8
+### PEMSD8
 
 **地点：** San Bernardino Area, USA
 
@@ -110,7 +110,7 @@
 
 **描述：** PeMSD7(M) 数据集描述了加州第7区228个站点的高速公路速度信息。
 
-### PEMS-BAY
+### PEMS_BAY
 
 **地点：** San Francisco Bay Area, USA
 
@@ -170,7 +170,7 @@
 
 **描述：**  该数据集是根据 2019 年 1 月收集的杭州地铁系统交易记录创建的。该系统拥有 80 个运营站点和 248 个边，每天有 235 万乘客。
 
-### TaxiBJ
+### TAXIBJ
 
 **地点：** Beijing, China
 

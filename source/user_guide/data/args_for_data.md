@@ -83,9 +83,9 @@
 以下参数均为标准轨迹下一跳预测数据集使用的参数：
 
 * `batch_size`：训练和测试批量大小。默认为`64`。
-* `cache_dataset`：是否保存处理后的数据集。默认为`真`。
+* `cache_dataset`：是否保存处理后的数据集。默认为`True`。
 * `num_workers`：[Dataloader](https://pytorch.org/docs/stable/data.html?highlight=dataloader#torch.utils.data.DataLoader)的参数。默认为`0`。
-* `train_rate`：训练集占总数据集的比例。默认为`0.7`。 （划分顺序为训练集、验证集、测试集）
+* `train_rate`：训练集占总数据集的比例。默认为`0.7`。 （划分顺序为训练集、验证集、测试集）.
 * `eval_rate`：验证集的比例。默认为`0.1`。
 
 * `min_session_len`：从用户签到记录中切割的轨迹的最小长度。默认为`5`。
@@ -96,5 +96,5 @@
 * `cut_method` : 如何使用窗口来剪切用户的签到记录。
     * `time_interval`：默认方法。如果两个相邻的签到记录之间的时间间隔小于窗口大小，则认为它们属于同一轨迹，否则不属于。
     * `same_date`：数据集会将同一天的签到记录视为轨迹。
-    * `fixed_length`：数据集将按照固定长度切割轨迹。即如果当前轨迹的长度等于window_size，则下一条签到记录将被视为新轨迹的起点。
+    * `fixed_length`：数据集将按照固定长度切割轨迹。即如果当前轨迹的长度等于`window_size`，则下一条签到记录将被视为新轨迹的起点。
 * `traj_encoder`：数据集使用的轨迹编码器类。默认为`StandardTrajectoryEncoder`。编码器负责根据签到记录对模型输入进行编码。

@@ -33,14 +33,14 @@ python run_model.py --task traffic_state_pred --model GRU --dataset METR_LA
 
 支持的参数有：
 
-- `task`：要执行的任务名，包括`traffic_state_pred`和`traj_loc_pred`。默认为`traffic_state_pred`。
+- `task`：要执行的任务名，包括`traffic_state_pred`，`traj_loc_pred`，`map_matching`，`road_representation`。默认为`traffic_state_pred`。
 - `model`：要执行的模型名。默认为`GRU`。（[支持的模型](https://bigscity-libcity-docs.readthedocs.io/zh/latest/user_guide/model.html)）
 - `dataset`：要执行的数据集。默认为`METR_LA`。（[支持的数据集](https://bigscity-libcity-docs.readthedocs.io/zh/latest/user_guide/data/raw_data.html)）
 - `config_file`：用户自定义的配置文件名。默认为`None`。（[了解更多](https://bigscity-libcity-docs.readthedocs.io/zh/latest/user_guide/config_settings.html)）
 - `saved_model`：是否保存训练好的模型。默认为`True`。
 - `train`：如果模型已经预训练过了，是否要重新训练模型。默认为`True`。
 - `batch_size`：训练集和验证集的批次大小。
-- `train_rate`：训练集在整个数据集中所占的比例。（划分的顺序是训练集、验证集、测试集）
+- `train_rate`：训练集在整个数据集中所占的比例。（划分的顺序是训练集、验证集、测试集）。
 - `eval_rate`：验证集在整个数据集中所占的比例。
 - `learning_rate`：学习率。默认值因模型而异。
 - `max_epoch`：最大的训练轮数。默认值因模型而异。

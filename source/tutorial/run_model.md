@@ -53,7 +53,7 @@
 }
 ```
 
-我们可以看到GRU采用的数据集类是`TrafficStatePointDataset`、执行器是`DCRNNExecutor`、评测器是`TrafficStateEvaluator`。
+我们可以看到GRU采用的数据集类是`TrafficStatePointDataset`、执行器是`TrafficStateExecutor`、评测器是`TrafficStateEvaluator`。
 
 因此，我们可以在`libcity/config/data/TrafficStatePointDataset.json`中看到数据模块的默认参数。
 
