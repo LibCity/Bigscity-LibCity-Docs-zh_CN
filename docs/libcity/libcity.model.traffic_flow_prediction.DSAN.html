@@ -1,0 +1,656 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>libcity.model.traffic_flow_prediction.DSAN &mdash; Bigscity-LibCity  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="libcity.model.traffic_flow_prediction.MSTGCN" href="libcity.model.traffic_flow_prediction.MSTGCN.html" />
+    <link rel="prev" title="libcity.model.traffic_flow_prediction.DGCN" href="libcity.model.traffic_flow_prediction.DGCN.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> Bigscity-LibCity
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">起步</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/introduction.html">介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/install.html">安装LibCity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/quick_start.html">快速入门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/directory_structure.html">目录结构</a></li>
+</ul>
+<p class="caption"><span class="caption-text">用户指导</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/config_settings.html">参数设置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/data.html">数据说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/model.html">复现模型列表</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/evaluator.html">评估模块简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/executor.html">执行模块简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/usage.html">使用示例</a></li>
+</ul>
+<p class="caption"><span class="caption-text">开发者指导</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/code_style.html">代码风格</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_datasets.html">自定义Dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_models.html">自定义Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_executors.html">自定义Executor</a></li>
+</ul>
+<p class="caption"><span class="caption-text">入门教程</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/install_quick_start.html">安装和快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/run_model.html">运行LibCity中已复现的模型</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/add_model.html">在LibCity中添加新模型</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/hyper_tune.html">使用自动化工具调参</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API文档</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="libcity.config.html">libcity.config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="libcity.data.html">libcity.data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="libcity.evaluator.html">libcity.evaluator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="libcity.executor.html">libcity.executor</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="libcity.model.html">libcity.model</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="libcity.model.map_matching.html">libcity.model.map_matching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.model.traffic_demand_prediction.html">libcity.model.traffic_demand_prediction</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="libcity.model.traffic_flow_prediction.html">libcity.model.traffic_flow_prediction</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="libcity.model.traffic_flow_prediction.ACFM.html">libcity.model.traffic_flow_prediction.ACFM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libcity.model.traffic_flow_prediction.ACFMCommon.html">libcity.model.traffic_flow_prediction.ACFMCommon</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libcity.model.traffic_flow_prediction.AGCRN.html">libcity.model.traffic_flow_prediction.AGCRN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libcity.model.traffic_flow_prediction.ASTGCN.html">libcity.model.traffic_flow_prediction.ASTGCN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libcity.model.traffic_flow_prediction.ASTGCNCommon.html">libcity.model.traffic_flow_prediction.ASTGCNCommon</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libcity.model.traffic_flow_prediction.CONVGCN.html">libcity.model.traffic_flow_prediction.CONVGCN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libcity.model.traffic_flow_prediction.CONVGCNCommon.html">libcity.model.traffic_flow_prediction.CONVGCNCommon</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libcity.model.traffic_flow_prediction.CRANN.html">libcity.model.traffic_flow_prediction.CRANN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libcity.model.traffic_flow_prediction.DGCN.html">libcity.model.traffic_flow_prediction.DGCN</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">libcity.model.traffic_flow_prediction.DSAN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libcity.model.traffic_flow_prediction.MSTGCN.html">libcity.model.traffic_flow_prediction.MSTGCN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libcity.model.traffic_flow_prediction.MSTGCNCommon.html">libcity.model.traffic_flow_prediction.MSTGCNCommon</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libcity.model.traffic_flow_prediction.MultiSTGCnet.html">libcity.model.traffic_flow_prediction.MultiSTGCnet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libcity.model.traffic_flow_prediction.MultiSTGCnetCommon.html">libcity.model.traffic_flow_prediction.MultiSTGCnetCommon</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libcity.model.traffic_flow_prediction.ResLSTM.html">libcity.model.traffic_flow_prediction.ResLSTM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libcity.model.traffic_flow_prediction.STDN.html">libcity.model.traffic_flow_prediction.STDN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libcity.model.traffic_flow_prediction.STNN.html">libcity.model.traffic_flow_prediction.STNN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libcity.model.traffic_flow_prediction.STResNet.html">libcity.model.traffic_flow_prediction.STResNet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libcity.model.traffic_flow_prediction.STResNetCommon.html">libcity.model.traffic_flow_prediction.STResNetCommon</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libcity.model.traffic_flow_prediction.STSGCN.html">libcity.model.traffic_flow_prediction.STSGCN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libcity.model.traffic_flow_prediction.ToGCN.html">libcity.model.traffic_flow_prediction.ToGCN</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.model.traffic_od_prediction.html">libcity.model.traffic_od_prediction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.model.traffic_speed_prediction.html">libcity.model.traffic_speed_prediction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.model.trajectory_loc_prediction.html">libcity.model.trajectory_loc_prediction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.model.abstract_model.html">libcity.model.abstract_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.model.abstract_traffic_state_model.html">libcity.model.abstract_traffic_state_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.model.abstract_traffic_tradition_model.html">libcity.model.abstract_traffic_tradition_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.model.loss.html">libcity.model.loss</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="libcity.pipeline.html">libcity.pipeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="libcity.utils.html">libcity.utils</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Bigscity-LibCity</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="libcity.model.html">libcity.model</a> &raquo;</li>
+        
+          <li><a href="libcity.model.traffic_flow_prediction.html">libcity.model.traffic_flow_prediction</a> &raquo;</li>
+        
+      <li>libcity.model.traffic_flow_prediction.DSAN</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/libcity/libcity.model.traffic_flow_prediction.DSAN.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-libcity.model.traffic_flow_prediction.DSAN">
+<span id="libcity-model-traffic-flow-prediction-dsan"></span><h1>libcity.model.traffic_flow_prediction.DSAN<a class="headerlink" href="#module-libcity.model.traffic_flow_prediction.DSAN" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt id="libcity.model.traffic_flow_prediction.DSAN.Convs">
+<em class="property">class </em><code class="sig-prename descclassname">libcity.model.traffic_flow_prediction.DSAN.</code><code class="sig-name descname">Convs</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">n_layer</span></em>, <em class="sig-param"><span class="n">n_filter</span></em>, <em class="sig-param"><span class="n">input_window</span></em>, <em class="sig-param"><span class="n">input_dim</span></em>, <em class="sig-param"><span class="n">r_d</span><span class="o">=</span><span class="default_value">0.1</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/traffic_flow_prediction/DSAN.html#Convs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.traffic_flow_prediction.DSAN.Convs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<p>Conv layers for input, to form a d-dimension representation</p>
+<dl class="py method">
+<dt id="libcity.model.traffic_flow_prediction.DSAN.Convs.forward">
+<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">inps</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/traffic_flow_prediction/DSAN.html#Convs.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.traffic_flow_prediction.DSAN.Convs.forward" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>inps</strong> – with shape [batch_size, input_window, row, column, N_d, input_dim]
+or [batch_size, input_window, row, column, input_dim]</p>
+</dd>
+</dl>
+<p>Returns:</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="libcity.model.traffic_flow_prediction.DSAN.Convs.training">
+<code class="sig-name descname">training</code><em class="property">: bool</em><a class="headerlink" href="#libcity.model.traffic_flow_prediction.DSAN.Convs.training" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="libcity.model.traffic_flow_prediction.DSAN.DAE">
+<em class="property">class </em><code class="sig-prename descclassname">libcity.model.traffic_flow_prediction.DSAN.</code><code class="sig-name descname">DAE</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">L</span></em>, <em class="sig-param"><span class="n">d</span></em>, <em class="sig-param"><span class="n">n_h</span></em>, <em class="sig-param"><span class="n">num_hid</span></em>, <em class="sig-param"><span class="n">conv_layer</span></em>, <em class="sig-param"><span class="n">input_window</span></em>, <em class="sig-param"><span class="n">input_dim</span></em>, <em class="sig-param"><span class="n">ext_dim</span></em>, <em class="sig-param"><span class="n">r_d</span><span class="o">=</span><span class="default_value">0.1</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/traffic_flow_prediction/DSAN.html#DAE"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.traffic_flow_prediction.DSAN.DAE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<p>DAE Dynamic Attention Encoder</p>
+<dl class="py method">
+<dt id="libcity.model.traffic_flow_prediction.DSAN.DAE.forward">
+<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x_d</span></em>, <em class="sig-param"><span class="n">x_g</span></em>, <em class="sig-param"><span class="n">ex</span></em>, <em class="sig-param"><span class="n">cors_d</span></em>, <em class="sig-param"><span class="n">cors_g</span></em>, <em class="sig-param"><span class="n">threshold_mask_d</span></em>, <em class="sig-param"><span class="n">threshold_mask_g</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/traffic_flow_prediction/DSAN.html#DAE.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.traffic_flow_prediction.DSAN.DAE.forward" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x_d</strong> – a subset of 𝑿 that contains the closest neighbors that share strong correlations
+with v_i within a local block.(X_d in figure 4)</p></li>
+<li><p><strong>x_g</strong> – all the training data (X in figure 4)</p></li>
+<li><p><strong>ex</strong> – time-related features for Temporal Positional Encoding</p></li>
+<li><p><strong>cors_d</strong> – Spatial Positional Encoding of x_d</p></li>
+<li><p><strong>cors_g</strong> – Spatial Positional Encoding of x_g</p></li>
+<li><p><strong>threshold_mask_d</strong> – </p></li>
+<li><p><strong>threshold_mask_g</strong> – </p></li>
+</ul>
+</dd>
+</dl>
+<p>Returns:</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="libcity.model.traffic_flow_prediction.DSAN.DAE.training">
+<code class="sig-name descname">training</code><em class="property">: bool</em><a class="headerlink" href="#libcity.model.traffic_flow_prediction.DSAN.DAE.training" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="libcity.model.traffic_flow_prediction.DSAN.DSAN">
+<em class="property">class </em><code class="sig-prename descclassname">libcity.model.traffic_flow_prediction.DSAN.</code><code class="sig-name descname">DSAN</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">config</span></em>, <em class="sig-param"><span class="n">data_feature</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/traffic_flow_prediction/DSAN.html#DSAN"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.traffic_flow_prediction.DSAN.DSAN" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="libcity.model.abstract_traffic_state_model.html#libcity.model.abstract_traffic_state_model.AbstractTrafficStateModel" title="libcity.model.abstract_traffic_state_model.AbstractTrafficStateModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">libcity.model.abstract_traffic_state_model.AbstractTrafficStateModel</span></code></a></p>
+<dl class="py method">
+<dt id="libcity.model.traffic_flow_prediction.DSAN.DSAN.calculate_loss">
+<code class="sig-name descname">calculate_loss</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">batch</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/traffic_flow_prediction/DSAN.html#DSAN.calculate_loss"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.traffic_flow_prediction.DSAN.DSAN.calculate_loss" title="Permalink to this definition">¶</a></dt>
+<dd><p>输入一个batch的数据，返回训练过程的loss，也就是需要定义一个loss函数</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>batch</strong> (<a class="reference internal" href="libcity.data.batch.html#libcity.data.batch.Batch" title="libcity.data.batch.Batch"><em>Batch</em></a>) – a batch of input</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>return training loss</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>torch.tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="libcity.model.traffic_flow_prediction.DSAN.DSAN.generate_x">
+<code class="sig-name descname">generate_x</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">batch</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/traffic_flow_prediction/DSAN.html#DSAN.generate_x"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.traffic_flow_prediction.DSAN.DSAN.generate_x" title="Permalink to this definition">¶</a></dt>
+<dd><p>from batch[‘X’] to
+:param batch: batch[‘X’].shape == [batch_size, input_window, row, column, feature_dim]</p>
+<blockquote>
+<div><p>batch[‘y’].shape == [batch_size, output_window, row, column, output_dim]</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><p>X in figure(2) shape == [batch_size, input_window, row, column, output_dim]
+dae_inp: X_d in figure(2) shape == [batch_size, input_window, row, column, L_D, L_D output_dim]</p>
+<blockquote>
+<div><p>N_D = L_d * L_d ,L_d = 2 * l_d + 1</p>
+</div></blockquote>
+<p>dae_inp_ex: external data for TPE shape == [batch_size, input_window, N, external_dim]
+sad_inp: x in figure(2) shape == [batch_size, output_window, N, output_dim]
+sad_inp_ex: external data for TPE shape == [batch_size, input_window, N, external_dim]
+cors: for SPE,shape == [1, 1, N_d, d]
+cors_g: for SPE, shape == [1, N, d]
+y:</p>
+</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>dae_inp_g</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="libcity.model.traffic_flow_prediction.DSAN.DSAN.predict">
+<code class="sig-name descname">predict</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">batch</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/traffic_flow_prediction/DSAN.html#DSAN.predict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.traffic_flow_prediction.DSAN.DSAN.predict" title="Permalink to this definition">¶</a></dt>
+<dd><p>输入一个batch的数据，返回对应的预测值，一般应该是**多步预测**的结果，一般会调用nn.Moudle的forward()方法</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>batch</strong> (<a class="reference internal" href="libcity.data.batch.html#libcity.data.batch.Batch" title="libcity.data.batch.Batch"><em>Batch</em></a>) – a batch of input</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>predict result of this batch</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>torch.tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="libcity.model.traffic_flow_prediction.DSAN.DSAN.training">
+<code class="sig-name descname">training</code><em class="property">: bool</em><a class="headerlink" href="#libcity.model.traffic_flow_prediction.DSAN.DSAN.training" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="libcity.model.traffic_flow_prediction.DSAN.DecoderLayer">
+<em class="property">class </em><code class="sig-prename descclassname">libcity.model.traffic_flow_prediction.DSAN.</code><code class="sig-name descname">DecoderLayer</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">d</span></em>, <em class="sig-param"><span class="n">n_h</span></em>, <em class="sig-param"><span class="n">num_hid</span></em>, <em class="sig-param"><span class="n">r_d</span><span class="o">=</span><span class="default_value">0.1</span></em>, <em class="sig-param"><span class="n">revert_q</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/traffic_flow_prediction/DSAN.html#DecoderLayer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.traffic_flow_prediction.DSAN.DecoderLayer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<p>Enc-D / Dec-S / Dec-T implementation</p>
+<dl class="py method">
+<dt id="libcity.model.traffic_flow_prediction.DSAN.DecoderLayer.forward">
+<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">kv</span></em>, <em class="sig-param"><span class="n">look_ahead_mask</span></em>, <em class="sig-param"><span class="n">threshold_mask</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/traffic_flow_prediction/DSAN.html#DecoderLayer.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.traffic_flow_prediction.DSAN.DecoderLayer.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Defines the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="libcity.model.traffic_flow_prediction.DSAN.DecoderLayer.training">
+<code class="sig-name descname">training</code><em class="property">: bool</em><a class="headerlink" href="#libcity.model.traffic_flow_prediction.DSAN.DecoderLayer.training" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="libcity.model.traffic_flow_prediction.DSAN.DsanUse">
+<em class="property">class </em><code class="sig-prename descclassname">libcity.model.traffic_flow_prediction.DSAN.</code><code class="sig-name descname">DsanUse</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">L</span></em>, <em class="sig-param"><span class="n">d</span></em>, <em class="sig-param"><span class="n">n_h</span></em>, <em class="sig-param"><span class="n">row</span></em>, <em class="sig-param"><span class="n">column</span></em>, <em class="sig-param"><span class="n">num_hid</span></em>, <em class="sig-param"><span class="n">conv_layer</span></em>, <em class="sig-param"><span class="n">input_window</span></em>, <em class="sig-param"><span class="n">output_window</span></em>, <em class="sig-param"><span class="n">input_dim</span></em>, <em class="sig-param"><span class="n">ext_dim</span></em>, <em class="sig-param"><span class="n">device</span></em>, <em class="sig-param"><span class="n">r_d</span><span class="o">=</span><span class="default_value">0.1</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/traffic_flow_prediction/DSAN.html#DsanUse"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.traffic_flow_prediction.DSAN.DsanUse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<p>DSAN use</p>
+<dl class="py method">
+<dt id="libcity.model.traffic_flow_prediction.DSAN.DsanUse.forward">
+<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dae_inp_g</span></em>, <em class="sig-param"><span class="n">dae_inp</span></em>, <em class="sig-param"><span class="n">dae_inp_ex</span></em>, <em class="sig-param"><span class="n">sad_inp</span></em>, <em class="sig-param"><span class="n">sad_inp_ex</span></em>, <em class="sig-param"><span class="n">cors</span></em>, <em class="sig-param"><span class="n">cors_g</span></em>, <em class="sig-param"><span class="n">threshold_mask</span></em>, <em class="sig-param"><span class="n">threshold_mask_g</span></em>, <em class="sig-param"><span class="n">look_ahead_mask</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/traffic_flow_prediction/DSAN.html#DsanUse.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.traffic_flow_prediction.DSAN.DsanUse.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Defines the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="libcity.model.traffic_flow_prediction.DSAN.DsanUse.training">
+<code class="sig-name descname">training</code><em class="property">: bool</em><a class="headerlink" href="#libcity.model.traffic_flow_prediction.DSAN.DsanUse.training" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="libcity.model.traffic_flow_prediction.DSAN.EncoderLayer">
+<em class="property">class </em><code class="sig-prename descclassname">libcity.model.traffic_flow_prediction.DSAN.</code><code class="sig-name descname">EncoderLayer</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">d</span></em>, <em class="sig-param"><span class="n">n_h</span></em>, <em class="sig-param"><span class="n">num_hid</span></em>, <em class="sig-param"><span class="n">r_d</span><span class="o">=</span><span class="default_value">0.1</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/traffic_flow_prediction/DSAN.html#EncoderLayer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.traffic_flow_prediction.DSAN.EncoderLayer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<p>Enc-G implementation</p>
+<dl class="py method">
+<dt id="libcity.model.traffic_flow_prediction.DSAN.EncoderLayer.forward">
+<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">mask</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/traffic_flow_prediction/DSAN.html#EncoderLayer.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.traffic_flow_prediction.DSAN.EncoderLayer.forward" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> – shape == [batch_size, input_window, N, d]</p></li>
+<li><p><strong>mask</strong> – </p></li>
+</ul>
+</dd>
+</dl>
+<p>Returns:</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="libcity.model.traffic_flow_prediction.DSAN.EncoderLayer.training">
+<code class="sig-name descname">training</code><em class="property">: bool</em><a class="headerlink" href="#libcity.model.traffic_flow_prediction.DSAN.EncoderLayer.training" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="libcity.model.traffic_flow_prediction.DSAN.MSA">
+<em class="property">class </em><code class="sig-prename descclassname">libcity.model.traffic_flow_prediction.DSAN.</code><code class="sig-name descname">MSA</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">d</span></em>, <em class="sig-param"><span class="n">n_h</span></em>, <em class="sig-param"><span class="n">self_att</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/traffic_flow_prediction/DSAN.html#MSA"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.traffic_flow_prediction.DSAN.MSA" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<p>Multi-space attention</p>
+<dl class="py method">
+<dt id="libcity.model.traffic_flow_prediction.DSAN.MSA.forward">
+<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">V</span></em>, <em class="sig-param"><span class="n">K</span></em>, <em class="sig-param"><span class="n">Q</span></em>, <em class="sig-param"><span class="n">M</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/traffic_flow_prediction/DSAN.html#MSA.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.traffic_flow_prediction.DSAN.MSA.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Defines the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="libcity.model.traffic_flow_prediction.DSAN.MSA.split_heads">
+<code class="sig-name descname">split_heads</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/traffic_flow_prediction/DSAN.html#MSA.split_heads"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.traffic_flow_prediction.DSAN.MSA.split_heads" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>x</strong> – shape == [batch_size, input_window, N, d]</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>shape == [batch_size, input_window, n_h, N, d_h]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="libcity.model.traffic_flow_prediction.DSAN.MSA.training">
+<code class="sig-name descname">training</code><em class="property">: bool</em><a class="headerlink" href="#libcity.model.traffic_flow_prediction.DSAN.MSA.training" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="libcity.model.traffic_flow_prediction.DSAN.SAD">
+<em class="property">class </em><code class="sig-prename descclassname">libcity.model.traffic_flow_prediction.DSAN.</code><code class="sig-name descname">SAD</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">L</span></em>, <em class="sig-param"><span class="n">d</span></em>, <em class="sig-param"><span class="n">n_h</span></em>, <em class="sig-param"><span class="n">num_hid</span></em>, <em class="sig-param"><span class="n">conv_layer</span></em>, <em class="sig-param"><span class="n">ext_dim</span></em>, <em class="sig-param"><span class="n">input_window</span></em>, <em class="sig-param"><span class="n">output_window</span></em>, <em class="sig-param"><span class="n">device</span></em>, <em class="sig-param"><span class="n">r_d</span><span class="o">=</span><span class="default_value">0.1</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/traffic_flow_prediction/DSAN.html#SAD"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.traffic_flow_prediction.DSAN.SAD" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<dl class="py method">
+<dt id="libcity.model.traffic_flow_prediction.DSAN.SAD.forward">
+<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">ex</span></em>, <em class="sig-param"><span class="n">dae_output</span></em>, <em class="sig-param"><span class="n">look_ahead_mask</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/traffic_flow_prediction/DSAN.html#SAD.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.traffic_flow_prediction.DSAN.SAD.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Defines the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="libcity.model.traffic_flow_prediction.DSAN.SAD.training">
+<code class="sig-name descname">training</code><em class="property">: bool</em><a class="headerlink" href="#libcity.model.traffic_flow_prediction.DSAN.SAD.training" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt id="libcity.model.traffic_flow_prediction.DSAN.cal_attention">
+<code class="sig-prename descclassname">libcity.model.traffic_flow_prediction.DSAN.</code><code class="sig-name descname">cal_attention</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">Q</span></em>, <em class="sig-param"><span class="n">K</span></em>, <em class="sig-param"><span class="n">V</span></em>, <em class="sig-param"><span class="n">M</span></em>, <em class="sig-param"><span class="n">n_h</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/traffic_flow_prediction/DSAN.html#cal_attention"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.traffic_flow_prediction.DSAN.cal_attention" title="Permalink to this definition">¶</a></dt>
+<dd><p>equ (3), calculate the attention mechanism performed by the i-th attention head
+:param Q: query, shape (N, h, L_q, d)
+:param K: key, shape (N, h, L_k, d)
+:param V: value, shape (N, h, L_k, d)
+:param M: mask, shape (N, h, L_q, L_k)
+:param n_h: number of attention head</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>shape # (N, h, L_q, d)</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Att</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="libcity.model.traffic_flow_prediction.DSAN.create_look_ahead_mask">
+<code class="sig-prename descclassname">libcity.model.traffic_flow_prediction.DSAN.</code><code class="sig-name descname">create_look_ahead_mask</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">size</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/traffic_flow_prediction/DSAN.html#create_look_ahead_mask"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.traffic_flow_prediction.DSAN.create_look_ahead_mask" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="libcity.model.traffic_flow_prediction.DSAN.create_masks">
+<code class="sig-prename descclassname">libcity.model.traffic_flow_prediction.DSAN.</code><code class="sig-name descname">create_masks</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">inp_g</span></em>, <em class="sig-param"><span class="n">inp_l</span></em>, <em class="sig-param"><span class="n">tar</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/traffic_flow_prediction/DSAN.html#create_masks"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.traffic_flow_prediction.DSAN.create_masks" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>inp_g</strong> – shape == [batch_size, input_window, column, row, input_dim]</p></li>
+<li><p><strong>inp_l</strong> – shape == [batch_size, input_window, column, row, l_d, l_d, input_dim] torch.Size([64, 12, 192, 49, 2])</p></li>
+<li><p><strong>tar</strong> – shape == [batch_size, input_window, N, ext_dim] torch.Size([64, 12, 192, 8])</p></li>
+</ul>
+</dd>
+</dl>
+<p>Returns:</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="libcity.model.traffic_flow_prediction.DSAN.create_threshold_mask">
+<code class="sig-prename descclassname">libcity.model.traffic_flow_prediction.DSAN.</code><code class="sig-name descname">create_threshold_mask</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">inp</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/traffic_flow_prediction/DSAN.html#create_threshold_mask"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.traffic_flow_prediction.DSAN.create_threshold_mask" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>inp</strong> – [batch_size, input_window, column, row, input_dim]</p>
+</dd>
+</dl>
+<p>Returns:</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="libcity.model.traffic_flow_prediction.DSAN.create_threshold_mask_tar">
+<code class="sig-prename descclassname">libcity.model.traffic_flow_prediction.DSAN.</code><code class="sig-name descname">create_threshold_mask_tar</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">inp</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/traffic_flow_prediction/DSAN.html#create_threshold_mask_tar"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.traffic_flow_prediction.DSAN.create_threshold_mask_tar" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="libcity.model.traffic_flow_prediction.DSAN.ex_encoding">
+<code class="sig-prename descclassname">libcity.model.traffic_flow_prediction.DSAN.</code><code class="sig-name descname">ex_encoding</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">d</span></em>, <em class="sig-param"><span class="n">num_hid</span></em>, <em class="sig-param"><span class="n">input_dim</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/traffic_flow_prediction/DSAN.html#ex_encoding"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.traffic_flow_prediction.DSAN.ex_encoding" title="Permalink to this definition">¶</a></dt>
+<dd><p>implementation of TPE
+:param d: d-dimension representations
+:param num_hid: hidden layer size
+:param input_dim: input feature dimension</p>
+<p>Returns:</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="libcity.model.traffic_flow_prediction.DSAN.get_angles">
+<code class="sig-prename descclassname">libcity.model.traffic_flow_prediction.DSAN.</code><code class="sig-name descname">get_angles</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">pos</span></em>, <em class="sig-param"><span class="n">l</span></em>, <em class="sig-param"><span class="n">d</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/traffic_flow_prediction/DSAN.html#get_angles"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.traffic_flow_prediction.DSAN.get_angles" title="Permalink to this definition">¶</a></dt>
+<dd><p>equ (5)
+:param pos: row(r) / column(c) in equ (5)
+:param l: the l-th dimension, with shape (1, d)
+:param d: d dimension in total</p>
+<p>Returns: angles with shape (1, d)</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="libcity.model.traffic_flow_prediction.DSAN.spatial_posenc">
+<code class="sig-prename descclassname">libcity.model.traffic_flow_prediction.DSAN.</code><code class="sig-name descname">spatial_posenc</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">r</span></em>, <em class="sig-param"><span class="n">c</span></em>, <em class="sig-param"><span class="n">d</span></em>, <em class="sig-param"><span class="n">device</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/traffic_flow_prediction/DSAN.html#spatial_posenc"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.traffic_flow_prediction.DSAN.spatial_posenc" title="Permalink to this definition">¶</a></dt>
+<dd><p>get SPE
+:param r: row of the spatial position
+:param c: column of the spatial position
+:param d: d dimension in total</p>
+<p>Returns:</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="libcity.model.traffic_flow_prediction.DSAN.two_layer_ffn">
+<code class="sig-prename descclassname">libcity.model.traffic_flow_prediction.DSAN.</code><code class="sig-name descname">two_layer_ffn</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">d</span></em>, <em class="sig-param"><span class="n">num_hid</span></em>, <em class="sig-param"><span class="n">input_dim</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/traffic_flow_prediction/DSAN.html#two_layer_ffn"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.traffic_flow_prediction.DSAN.two_layer_ffn" title="Permalink to this definition">¶</a></dt>
+<dd><p>implementation of two-layer feed-forward network
+:param d: d-dimension representations
+:param num_hid: hidden layer size
+:param input_dim: input feature dimension</p>
+<p>Returns:</p>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="libcity.model.traffic_flow_prediction.MSTGCN.html" class="btn btn-neutral float-right" title="libcity.model.traffic_flow_prediction.MSTGCN" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="libcity.model.traffic_flow_prediction.DGCN.html" class="btn btn-neutral float-left" title="libcity.model.traffic_flow_prediction.DGCN" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, aptx1231
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

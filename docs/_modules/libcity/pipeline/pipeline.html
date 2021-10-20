@@ -1,0 +1,462 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>libcity.pipeline.pipeline &mdash; Bigscity-LibCity  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> Bigscity-LibCity
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">起步</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../get_started/introduction.html">介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../get_started/install.html">安装LibCity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../get_started/quick_start.html">快速入门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../get_started/directory_structure.html">目录结构</a></li>
+</ul>
+<p class="caption"><span class="caption-text">用户指导</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../user_guide/config_settings.html">参数设置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../user_guide/data.html">数据说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../user_guide/model.html">复现模型列表</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../user_guide/evaluator.html">评估模块简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../user_guide/executor.html">执行模块简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../user_guide/usage.html">使用示例</a></li>
+</ul>
+<p class="caption"><span class="caption-text">开发者指导</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer_guide/code_style.html">代码风格</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer_guide/implemented_datasets.html">自定义Dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer_guide/implemented_models.html">自定义Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer_guide/implemented_executors.html">自定义Executor</a></li>
+</ul>
+<p class="caption"><span class="caption-text">入门教程</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorial/install_quick_start.html">安装和快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorial/run_model.html">运行LibCity中已复现的模型</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorial/add_model.html">在LibCity中添加新模型</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorial/hyper_tune.html">使用自动化工具调参</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API文档</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../libcity/libcity.config.html">libcity.config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../libcity/libcity.data.html">libcity.data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../libcity/libcity.evaluator.html">libcity.evaluator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../libcity/libcity.executor.html">libcity.executor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../libcity/libcity.model.html">libcity.model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../libcity/libcity.pipeline.html">libcity.pipeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../libcity/libcity.utils.html">libcity.utils</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Bigscity-LibCity</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>libcity.pipeline.pipeline</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for libcity.pipeline.pipeline</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">ray</span> <span class="kn">import</span> <span class="n">tune</span>
+<span class="kn">from</span> <span class="nn">ray.tune.suggest.hyperopt</span> <span class="kn">import</span> <span class="n">HyperOptSearch</span>
+<span class="kn">from</span> <span class="nn">ray.tune.suggest.bayesopt</span> <span class="kn">import</span> <span class="n">BayesOptSearch</span>
+<span class="kn">from</span> <span class="nn">ray.tune.suggest.basic_variant</span> <span class="kn">import</span> <span class="n">BasicVariantGenerator</span>
+<span class="kn">from</span> <span class="nn">ray.tune.schedulers</span> <span class="kn">import</span> <span class="n">FIFOScheduler</span><span class="p">,</span> <span class="n">ASHAScheduler</span><span class="p">,</span> <span class="n">MedianStoppingRule</span>
+<span class="kn">from</span> <span class="nn">ray.tune.suggest</span> <span class="kn">import</span> <span class="n">ConcurrencyLimiter</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">torch</span>
+
+<span class="kn">from</span> <span class="nn">libcity.config</span> <span class="kn">import</span> <span class="n">ConfigParser</span>
+<span class="kn">from</span> <span class="nn">libcity.data</span> <span class="kn">import</span> <span class="n">get_dataset</span>
+<span class="kn">from</span> <span class="nn">libcity.utils</span> <span class="kn">import</span> <span class="n">get_executor</span><span class="p">,</span> <span class="n">get_model</span><span class="p">,</span> <span class="n">get_logger</span><span class="p">,</span> <span class="n">ensure_dir</span>
+
+
+<div class="viewcode-block" id="run_model"><a class="viewcode-back" href="../../../libcity/libcity.pipeline.pipeline.html#libcity.pipeline.pipeline.run_model">[docs]</a><span class="k">def</span> <span class="nf">run_model</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">model_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dataset_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">config_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+              <span class="n">saved_model</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">train</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">other_args</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Args:</span>
+<span class="sd">        task(str): task name</span>
+<span class="sd">        model_name(str): model name</span>
+<span class="sd">        dataset_name(str): dataset name</span>
+<span class="sd">        config_file(str): config filename used to modify the pipeline&#39;s</span>
+<span class="sd">            settings. the config file should be json.</span>
+<span class="sd">        saved_model(bool): whether to save the model</span>
+<span class="sd">        train(bool): whether to train the model</span>
+<span class="sd">        other_args(dict): the rest parameter args, which will be pass to the Config</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># load config</span>
+    <span class="n">config</span> <span class="o">=</span> <span class="n">ConfigParser</span><span class="p">(</span><span class="n">task</span><span class="p">,</span> <span class="n">model_name</span><span class="p">,</span> <span class="n">dataset_name</span><span class="p">,</span>
+                          <span class="n">config_file</span><span class="p">,</span> <span class="n">saved_model</span><span class="p">,</span> <span class="n">train</span><span class="p">,</span> <span class="n">other_args</span><span class="p">)</span>
+    <span class="c1"># logger</span>
+    <span class="n">logger</span> <span class="o">=</span> <span class="n">get_logger</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Begin pipeline, task=</span><span class="si">{}</span><span class="s1">, model_name=</span><span class="si">{}</span><span class="s1">, dataset_name=</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span>
+                <span class="nb">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">task</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">model_name</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">dataset_name</span><span class="p">)))</span>
+    <span class="c1"># 加载数据集</span>
+    <span class="n">dataset</span> <span class="o">=</span> <span class="n">get_dataset</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+    <span class="c1"># 转换数据，并划分数据集</span>
+    <span class="n">train_data</span><span class="p">,</span> <span class="n">valid_data</span><span class="p">,</span> <span class="n">test_data</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">get_data</span><span class="p">()</span>
+    <span class="n">data_feature</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">get_data_feature</span><span class="p">()</span>
+    <span class="c1"># 加载执行器</span>
+    <span class="n">model_cache_file</span> <span class="o">=</span> <span class="s1">&#39;./libcity/cache/model_cache/</span><span class="si">{}</span><span class="s1">_</span><span class="si">{}</span><span class="s1">.m&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+        <span class="n">model_name</span><span class="p">,</span> <span class="n">dataset_name</span><span class="p">)</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">get_model</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="n">data_feature</span><span class="p">)</span>
+    <span class="n">executor</span> <span class="o">=</span> <span class="n">get_executor</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="n">model</span><span class="p">)</span>
+    <span class="c1"># 训练</span>
+    <span class="k">if</span> <span class="n">train</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">model_cache_file</span><span class="p">):</span>
+        <span class="n">executor</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">train_data</span><span class="p">,</span> <span class="n">valid_data</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">saved_model</span><span class="p">:</span>
+            <span class="n">executor</span><span class="o">.</span><span class="n">save_model</span><span class="p">(</span><span class="n">model_cache_file</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">executor</span><span class="o">.</span><span class="n">load_model</span><span class="p">(</span><span class="n">model_cache_file</span><span class="p">)</span>
+    <span class="c1"># 评估，评估结果将会放在 cache/evaluate_cache 下</span>
+    <span class="n">executor</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">test_data</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="parse_search_space"><a class="viewcode-back" href="../../../libcity/libcity.pipeline.pipeline.html#libcity.pipeline.pipeline.parse_search_space">[docs]</a><span class="k">def</span> <span class="nf">parse_search_space</span><span class="p">(</span><span class="n">space_file</span><span class="p">):</span>
+    <span class="n">search_space</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s1">&#39;./</span><span class="si">{}</span><span class="s1">.json&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">space_file</span><span class="p">)):</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;./</span><span class="si">{}</span><span class="s1">.json&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">space_file</span><span class="p">),</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">paras_dict</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">paras_dict</span><span class="p">:</span>
+                <span class="n">paras_type</span> <span class="o">=</span> <span class="n">paras_dict</span><span class="p">[</span><span class="n">name</span><span class="p">][</span><span class="s1">&#39;type&#39;</span><span class="p">]</span>
+                <span class="k">if</span> <span class="n">paras_type</span> <span class="o">==</span> <span class="s1">&#39;uniform&#39;</span><span class="p">:</span>
+                    <span class="c1"># name type low up</span>
+                    <span class="k">try</span><span class="p">:</span>
+                        <span class="n">search_space</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">tune</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">paras_dict</span><span class="p">[</span><span class="n">name</span><span class="p">][</span><span class="s1">&#39;lower&#39;</span><span class="p">],</span> <span class="n">paras_dict</span><span class="p">[</span><span class="n">name</span><span class="p">][</span><span class="s1">&#39;upper&#39;</span><span class="p">])</span>
+                    <span class="k">except</span><span class="p">:</span>
+                        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;The space file does not meet the format requirements,</span><span class="se">\</span>
+<span class="s1">                            when parsing uniform type.&#39;</span><span class="p">)</span>
+                <span class="k">elif</span> <span class="n">paras_type</span> <span class="o">==</span> <span class="s1">&#39;randn&#39;</span><span class="p">:</span>
+                    <span class="c1"># name type mean sd</span>
+                    <span class="k">try</span><span class="p">:</span>
+                        <span class="n">search_space</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">tune</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">paras_dict</span><span class="p">[</span><span class="n">name</span><span class="p">][</span><span class="s1">&#39;mean&#39;</span><span class="p">],</span> <span class="n">paras_dict</span><span class="p">[</span><span class="n">name</span><span class="p">][</span><span class="s1">&#39;sd&#39;</span><span class="p">])</span>
+                    <span class="k">except</span><span class="p">:</span>
+                        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;The space file does not meet the format requirements,</span><span class="se">\</span>
+<span class="s1">                            when parsing randn type.&#39;</span><span class="p">)</span>
+                <span class="k">elif</span> <span class="n">paras_type</span> <span class="o">==</span> <span class="s1">&#39;randint&#39;</span><span class="p">:</span>
+                    <span class="c1"># name type lower upper</span>
+                    <span class="k">try</span><span class="p">:</span>
+                        <span class="k">if</span> <span class="s1">&#39;lower&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">paras_dict</span><span class="p">[</span><span class="n">name</span><span class="p">]:</span>
+                            <span class="n">search_space</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">tune</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="n">paras_dict</span><span class="p">[</span><span class="n">name</span><span class="p">][</span><span class="s1">&#39;upper&#39;</span><span class="p">])</span>
+                        <span class="k">else</span><span class="p">:</span>
+                            <span class="n">search_space</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">tune</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="n">paras_dict</span><span class="p">[</span><span class="n">name</span><span class="p">][</span><span class="s1">&#39;lower&#39;</span><span class="p">],</span> <span class="n">paras_dict</span><span class="p">[</span><span class="n">name</span><span class="p">][</span><span class="s1">&#39;upper&#39;</span><span class="p">])</span>
+                    <span class="k">except</span><span class="p">:</span>
+                        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;The space file does not meet the format requirements,</span><span class="se">\</span>
+<span class="s1">                            when parsing randint type.&#39;</span><span class="p">)</span>
+                <span class="k">elif</span> <span class="n">paras_type</span> <span class="o">==</span> <span class="s1">&#39;choice&#39;</span><span class="p">:</span>
+                    <span class="c1"># name type list</span>
+                    <span class="k">try</span><span class="p">:</span>
+                        <span class="n">search_space</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">tune</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">paras_dict</span><span class="p">[</span><span class="n">name</span><span class="p">][</span><span class="s1">&#39;list&#39;</span><span class="p">])</span>
+                    <span class="k">except</span><span class="p">:</span>
+                        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;The space file does not meet the format requirements,</span><span class="se">\</span>
+<span class="s1">                            when parsing choice type.&#39;</span><span class="p">)</span>
+                <span class="k">elif</span> <span class="n">paras_type</span> <span class="o">==</span> <span class="s1">&#39;grid_search&#39;</span><span class="p">:</span>
+                    <span class="c1"># name type list</span>
+                    <span class="k">try</span><span class="p">:</span>
+                        <span class="n">search_space</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">tune</span><span class="o">.</span><span class="n">grid_search</span><span class="p">(</span><span class="n">paras_dict</span><span class="p">[</span><span class="n">name</span><span class="p">][</span><span class="s1">&#39;list&#39;</span><span class="p">])</span>
+                    <span class="k">except</span><span class="p">:</span>
+                        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;The space file does not meet the format requirements,</span><span class="se">\</span>
+<span class="s1">                            when parsing grid_search type.&#39;</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;The space file does not meet the format requirements,</span><span class="se">\</span>
+<span class="s1">                            when parsing an undefined type.&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">FileNotFoundError</span><span class="p">(</span><span class="s1">&#39;The space file </span><span class="si">{}</span><span class="s1">.json is not found. Please ensure </span><span class="se">\</span>
+<span class="s1">            the config file is in the root dir and is a txt.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">space_file</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">search_space</span></div>
+
+
+<div class="viewcode-block" id="hyper_parameter"><a class="viewcode-back" href="../../../libcity/libcity.pipeline.pipeline.html#libcity.pipeline.pipeline.hyper_parameter">[docs]</a><span class="k">def</span> <span class="nf">hyper_parameter</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">model_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dataset_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">config_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">space_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                    <span class="n">scheduler</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">search_alg</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">other_args</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">num_samples</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">max_concurrent</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                    <span class="n">cpu_per_trial</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">gpu_per_trial</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Use Ray tune to hyper parameter tune</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        task(str): task name</span>
+<span class="sd">        model_name(str): model name</span>
+<span class="sd">        dataset_name(str): dataset name</span>
+<span class="sd">        config_file(str): config filename used to modify the pipeline&#39;s</span>
+<span class="sd">            settings. the config file should be json.</span>
+<span class="sd">        space_file(str): the file which specifies the parameter search space</span>
+<span class="sd">        scheduler(str): the trial sheduler which will be used in ray.tune.run</span>
+<span class="sd">        search_alg(str): the search algorithm</span>
+<span class="sd">        other_args(dict): the rest parameter args, which will be pass to the Config</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># load config</span>
+    <span class="n">experiment_config</span> <span class="o">=</span> <span class="n">ConfigParser</span><span class="p">(</span><span class="n">task</span><span class="p">,</span> <span class="n">model_name</span><span class="p">,</span> <span class="n">dataset_name</span><span class="p">,</span> <span class="n">config_file</span><span class="o">=</span><span class="n">config_file</span><span class="p">,</span>
+                                     <span class="n">other_args</span><span class="o">=</span><span class="n">other_args</span><span class="p">)</span>
+    <span class="c1"># logger</span>
+    <span class="n">logger</span> <span class="o">=</span> <span class="n">get_logger</span><span class="p">(</span><span class="n">experiment_config</span><span class="p">)</span>
+    <span class="c1"># check space_file</span>
+    <span class="k">if</span> <span class="n">space_file</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s1">&#39;the space_file should not be None when hyperparameter tune.&#39;</span><span class="p">)</span>
+        <span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="c1"># parse space_file</span>
+    <span class="n">search_sapce</span> <span class="o">=</span> <span class="n">parse_search_space</span><span class="p">(</span><span class="n">space_file</span><span class="p">)</span>
+    <span class="c1"># load dataset</span>
+    <span class="n">dataset</span> <span class="o">=</span> <span class="n">get_dataset</span><span class="p">(</span><span class="n">experiment_config</span><span class="p">)</span>
+    <span class="c1"># get train valid test data</span>
+    <span class="n">train_data</span><span class="p">,</span> <span class="n">valid_data</span><span class="p">,</span> <span class="n">test_data</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">get_data</span><span class="p">()</span>
+    <span class="n">data_feature</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">get_data_feature</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">train</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="n">checkpoint_dir</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">experiment_config</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+              <span class="n">train_data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">valid_data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">data_feature</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;trainable function which meets ray tune API</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            config (dict): A dict of hyperparameter.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># modify experiment_config</span>
+        <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">config</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">experiment_config</span><span class="p">:</span>
+                <span class="n">experiment_config</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+        <span class="n">experiment_config</span><span class="p">[</span><span class="s1">&#39;hyper_tune&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">logger</span> <span class="o">=</span> <span class="n">get_logger</span><span class="p">(</span><span class="n">experiment_config</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Begin pipeline, task=</span><span class="si">{}</span><span class="s1">, model_name=</span><span class="si">{}</span><span class="s1">, dataset_name=</span><span class="si">{}</span><span class="s1">&#39;</span>
+                    <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">task</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">model_name</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">dataset_name</span><span class="p">)))</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;running parameters: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">config</span><span class="p">))</span>
+        <span class="c1"># load model</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">get_model</span><span class="p">(</span><span class="n">experiment_config</span><span class="p">,</span> <span class="n">data_feature</span><span class="p">)</span>
+        <span class="c1"># load executor</span>
+        <span class="n">executor</span> <span class="o">=</span> <span class="n">get_executor</span><span class="p">(</span><span class="n">experiment_config</span><span class="p">,</span> <span class="n">model</span><span class="p">)</span>
+        <span class="c1"># checkpoint by ray tune</span>
+        <span class="k">if</span> <span class="n">checkpoint_dir</span><span class="p">:</span>
+            <span class="n">checkpoint</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">checkpoint_dir</span><span class="p">,</span> <span class="s1">&#39;checkpoint&#39;</span><span class="p">)</span>
+            <span class="n">executor</span><span class="o">.</span><span class="n">load_model</span><span class="p">(</span><span class="n">checkpoint</span><span class="p">)</span>
+        <span class="c1"># train</span>
+        <span class="n">executor</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">train_data</span><span class="p">,</span> <span class="n">valid_data</span><span class="p">)</span>
+
+    <span class="c1"># init search algorithm and scheduler</span>
+    <span class="k">if</span> <span class="n">search_alg</span> <span class="o">==</span> <span class="s1">&#39;BasicSearch&#39;</span><span class="p">:</span>
+        <span class="n">algorithm</span> <span class="o">=</span> <span class="n">BasicVariantGenerator</span><span class="p">()</span>
+    <span class="k">elif</span> <span class="n">search_alg</span> <span class="o">==</span> <span class="s1">&#39;BayesOptSearch&#39;</span><span class="p">:</span>
+        <span class="n">algorithm</span> <span class="o">=</span> <span class="n">BayesOptSearch</span><span class="p">(</span><span class="n">metric</span><span class="o">=</span><span class="s1">&#39;loss&#39;</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;min&#39;</span><span class="p">)</span>
+        <span class="c1"># add concurrency limit</span>
+        <span class="n">algorithm</span> <span class="o">=</span> <span class="n">ConcurrencyLimiter</span><span class="p">(</span><span class="n">algorithm</span><span class="p">,</span> <span class="n">max_concurrent</span><span class="o">=</span><span class="n">max_concurrent</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">search_alg</span> <span class="o">==</span> <span class="s1">&#39;HyperOpt&#39;</span><span class="p">:</span>
+        <span class="n">algorithm</span> <span class="o">=</span> <span class="n">HyperOptSearch</span><span class="p">(</span><span class="n">metric</span><span class="o">=</span><span class="s1">&#39;loss&#39;</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;min&#39;</span><span class="p">)</span>
+        <span class="c1"># add concurrency limit</span>
+        <span class="n">algorithm</span> <span class="o">=</span> <span class="n">ConcurrencyLimiter</span><span class="p">(</span><span class="n">algorithm</span><span class="p">,</span> <span class="n">max_concurrent</span><span class="o">=</span><span class="n">max_concurrent</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;the search_alg is illegal.&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">scheduler</span> <span class="o">==</span> <span class="s1">&#39;FIFO&#39;</span><span class="p">:</span>
+        <span class="n">tune_scheduler</span> <span class="o">=</span> <span class="n">FIFOScheduler</span><span class="p">()</span>
+    <span class="k">elif</span> <span class="n">scheduler</span> <span class="o">==</span> <span class="s1">&#39;ASHA&#39;</span><span class="p">:</span>
+        <span class="n">tune_scheduler</span> <span class="o">=</span> <span class="n">ASHAScheduler</span><span class="p">()</span>
+    <span class="k">elif</span> <span class="n">scheduler</span> <span class="o">==</span> <span class="s1">&#39;MedianStoppingRule&#39;</span><span class="p">:</span>
+        <span class="n">tune_scheduler</span> <span class="o">=</span> <span class="n">MedianStoppingRule</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;the scheduler is illegal&#39;</span><span class="p">)</span>
+    <span class="c1"># ray tune run</span>
+    <span class="n">ensure_dir</span><span class="p">(</span><span class="s1">&#39;./libcity/cache/hyper_tune&#39;</span><span class="p">)</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">tune</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">tune</span><span class="o">.</span><span class="n">with_parameters</span><span class="p">(</span><span class="n">train</span><span class="p">,</span> <span class="n">experiment_config</span><span class="o">=</span><span class="n">experiment_config</span><span class="p">,</span> <span class="n">train_data</span><span class="o">=</span><span class="n">train_data</span><span class="p">,</span>
+                      <span class="n">valid_data</span><span class="o">=</span><span class="n">valid_data</span><span class="p">,</span> <span class="n">data_feature</span><span class="o">=</span><span class="n">data_feature</span><span class="p">),</span>
+                      <span class="n">resources_per_trial</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;cpu&#39;</span><span class="p">:</span> <span class="n">cpu_per_trial</span><span class="p">,</span> <span class="s1">&#39;gpu&#39;</span><span class="p">:</span> <span class="n">gpu_per_trial</span><span class="p">},</span> <span class="n">config</span><span class="o">=</span><span class="n">search_sapce</span><span class="p">,</span>
+                      <span class="n">metric</span><span class="o">=</span><span class="s1">&#39;loss&#39;</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;min&#39;</span><span class="p">,</span> <span class="n">scheduler</span><span class="o">=</span><span class="n">tune_scheduler</span><span class="p">,</span> <span class="n">search_alg</span><span class="o">=</span><span class="n">algorithm</span><span class="p">,</span>
+                      <span class="n">local_dir</span><span class="o">=</span><span class="s1">&#39;./libcity/cache/hyper_tune&#39;</span><span class="p">,</span> <span class="n">num_samples</span><span class="o">=</span><span class="n">num_samples</span><span class="p">)</span>
+    <span class="n">best_trial</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">get_best_trial</span><span class="p">(</span><span class="s2">&quot;loss&quot;</span><span class="p">,</span> <span class="s2">&quot;min&quot;</span><span class="p">,</span> <span class="s2">&quot;last&quot;</span><span class="p">)</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Best trial config: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">best_trial</span><span class="o">.</span><span class="n">config</span><span class="p">))</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Best trial final validation loss: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">best_trial</span><span class="o">.</span><span class="n">last_result</span><span class="p">[</span><span class="s2">&quot;loss&quot;</span><span class="p">]))</span>
+    <span class="c1"># save best</span>
+    <span class="n">best_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">best_trial</span><span class="o">.</span><span class="n">checkpoint</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="s2">&quot;checkpoint&quot;</span><span class="p">)</span>
+    <span class="n">model_state</span><span class="p">,</span> <span class="n">optimizer_state</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">best_path</span><span class="p">)</span>
+    <span class="n">model_cache_file</span> <span class="o">=</span> <span class="s1">&#39;./libcity/cache/model_cache/</span><span class="si">{}</span><span class="s1">_</span><span class="si">{}</span><span class="s1">.m&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+        <span class="n">model_name</span><span class="p">,</span> <span class="n">dataset_name</span><span class="p">)</span>
+    <span class="n">ensure_dir</span><span class="p">(</span><span class="s1">&#39;./libcity/cache/model_cache&#39;</span><span class="p">)</span>
+    <span class="n">torch</span><span class="o">.</span><span class="n">save</span><span class="p">((</span><span class="n">model_state</span><span class="p">,</span> <span class="n">optimizer_state</span><span class="p">),</span> <span class="n">model_cache_file</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="objective_function"><a class="viewcode-back" href="../../../libcity/libcity.pipeline.pipeline.html#libcity.pipeline.pipeline.objective_function">[docs]</a><span class="k">def</span> <span class="nf">objective_function</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">model_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dataset_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">config_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                       <span class="n">saved_model</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">train</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">other_args</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">hyper_config_dict</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="n">config</span> <span class="o">=</span> <span class="n">ConfigParser</span><span class="p">(</span><span class="n">task</span><span class="p">,</span> <span class="n">model_name</span><span class="p">,</span> <span class="n">dataset_name</span><span class="p">,</span>
+                          <span class="n">config_file</span><span class="p">,</span> <span class="n">saved_model</span><span class="p">,</span> <span class="n">train</span><span class="p">,</span> <span class="n">other_args</span><span class="p">,</span> <span class="n">hyper_config_dict</span><span class="p">)</span>
+    <span class="n">dataset</span> <span class="o">=</span> <span class="n">get_dataset</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+    <span class="n">train_data</span><span class="p">,</span> <span class="n">valid_data</span><span class="p">,</span> <span class="n">test_data</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">get_data</span><span class="p">()</span>
+    <span class="n">data_feature</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">get_data_feature</span><span class="p">()</span>
+
+    <span class="n">model</span> <span class="o">=</span> <span class="n">get_model</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="n">data_feature</span><span class="p">)</span>
+    <span class="n">executor</span> <span class="o">=</span> <span class="n">get_executor</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="n">model</span><span class="p">)</span>
+    <span class="n">best_valid_score</span> <span class="o">=</span> <span class="n">executor</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">train_data</span><span class="p">,</span> <span class="n">valid_data</span><span class="p">)</span>
+    <span class="n">test_result</span> <span class="o">=</span> <span class="n">executor</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">test_data</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s1">&#39;best_valid_score&#39;</span><span class="p">:</span> <span class="n">best_valid_score</span><span class="p">,</span>
+        <span class="s1">&#39;test_result&#39;</span><span class="p">:</span> <span class="n">test_result</span>
+    <span class="p">}</span></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, aptx1231
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

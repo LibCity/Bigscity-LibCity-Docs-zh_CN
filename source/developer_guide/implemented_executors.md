@@ -1,6 +1,6 @@
 # 自定义Executor
 
-本文档将介绍如何在`LibTraffic`中开发一个新的执行器。
+本文档将介绍如何在`LibCity`中开发一个新的执行器。
 
 当一个新添加的模型训练方法复杂，现有的执行器不能用于训练和评估，我们就需要开发一个新的执行器。
 
@@ -8,10 +8,10 @@
 
 首先，我们创建的执行器应该继承自`AbstractExecutoror`。
 
-例如，如下代码可用于开发一个名为`NewExecutor`的交通状态预测执行器，代码被写入`libtraffic/executor/`目录下的`newexecutor.py`。
+例如，如下代码可用于开发一个名为`NewExecutor`的交通状态预测执行器，代码被写入`libcity/executor/`目录下的`newexecutor.py`。
 
 ```python
-from libtraffic.executor.abstract_executor import AbstractExecutor
+from libcity.executor.abstract_executor import AbstractExecutor
 
 class NewExecutor(AbstractExecutor):
     def __init__(self, config, model):
@@ -30,7 +30,7 @@ class NewExecutor(AbstractExecutor):
 如果开发的模型需要更复杂的训练或评估方法，那么你可以重写上述接口。
 
 ```python
-from libtraffic.executor.abstract_executor import AbstractExecutor
+from libcity.executor.abstract_executor import AbstractExecutor
 
 class NewExecutor(AbstractExecutor):
     def __init__(self, config, model):

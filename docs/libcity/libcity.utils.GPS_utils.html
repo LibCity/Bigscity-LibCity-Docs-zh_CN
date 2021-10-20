@@ -1,0 +1,351 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>libcity.utils.GPS_utils &mdash; Bigscity-LibCity  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="libcity.utils.argument_list" href="libcity.utils.argument_list.html" />
+    <link rel="prev" title="libcity.utils" href="libcity.utils.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> Bigscity-LibCity
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">起步</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/introduction.html">介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/install.html">安装LibCity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/quick_start.html">快速入门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/directory_structure.html">目录结构</a></li>
+</ul>
+<p class="caption"><span class="caption-text">用户指导</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/config_settings.html">参数设置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/data.html">数据说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/model.html">复现模型列表</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/evaluator.html">评估模块简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/executor.html">执行模块简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/usage.html">使用示例</a></li>
+</ul>
+<p class="caption"><span class="caption-text">开发者指导</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/code_style.html">代码风格</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_datasets.html">自定义Dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_models.html">自定义Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_executors.html">自定义Executor</a></li>
+</ul>
+<p class="caption"><span class="caption-text">入门教程</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/install_quick_start.html">安装和快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/run_model.html">运行LibCity中已复现的模型</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/add_model.html">在LibCity中添加新模型</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/hyper_tune.html">使用自动化工具调参</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API文档</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="libcity.config.html">libcity.config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="libcity.data.html">libcity.data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="libcity.evaluator.html">libcity.evaluator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="libcity.executor.html">libcity.executor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="libcity.model.html">libcity.model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="libcity.pipeline.html">libcity.pipeline</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="libcity.utils.html">libcity.utils</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">libcity.utils.GPS_utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.utils.argument_list.html">libcity.utils.argument_list</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.utils.dataset.html">libcity.utils.dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.utils.normalization.html">libcity.utils.normalization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.utils.utils.html">libcity.utils.utils</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Bigscity-LibCity</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="libcity.utils.html">libcity.utils</a> &raquo;</li>
+        
+      <li>libcity.utils.GPS_utils</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/libcity/libcity.utils.GPS_utils.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-libcity.utils.GPS_utils">
+<span id="libcity-utils-gps-utils"></span><h1>libcity.utils.GPS_utils<a class="headerlink" href="#module-libcity.utils.GPS_utils" title="Permalink to this headline">¶</a></h1>
+<dl class="py function">
+<dt id="libcity.utils.GPS_utils.angle2radian">
+<code class="sig-prename descclassname">libcity.utils.GPS_utils.</code><code class="sig-name descname">angle2radian</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">angle</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/utils/GPS_utils.html#angle2radian"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.utils.GPS_utils.angle2radian" title="Permalink to this definition">¶</a></dt>
+<dd><p>convert from an angle to a radian
+:param angle: (float)
+:return: radian (float)</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="libcity.utils.GPS_utils.angular_dist">
+<code class="sig-prename descclassname">libcity.utils.GPS_utils.</code><code class="sig-name descname">angular_dist</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">phi1</span></em>, <em class="sig-param"><span class="n">lambda1</span></em>, <em class="sig-param"><span class="n">phi2</span></em>, <em class="sig-param"><span class="n">lambda2</span></em>, <em class="sig-param"><span class="n">method</span><span class="o">=</span><span class="default_value">'hav'</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/utils/GPS_utils.html#angular_dist"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.utils.GPS_utils.angular_dist" title="Permalink to this definition">¶</a></dt>
+<dd><p>calculate angular great circle distance with given latitude and longitude
+:return: angle</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="libcity.utils.GPS_utils.destination">
+<code class="sig-prename descclassname">libcity.utils.GPS_utils.</code><code class="sig-name descname">destination</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">phi1</span></em>, <em class="sig-param"><span class="n">lambda1</span></em>, <em class="sig-param"><span class="n">brng</span></em>, <em class="sig-param"><span class="n">distance</span></em>, <em class="sig-param"><span class="n">r</span><span class="o">=</span><span class="default_value">6371000</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/utils/GPS_utils.html#destination"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.utils.GPS_utils.destination" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>phi1</strong> – </p></li>
+<li><p><strong>lambda1</strong> – </p></li>
+<li><p><strong>brng</strong> – </p></li>
+<li><p><strong>distance</strong> – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="libcity.utils.GPS_utils.dist">
+<code class="sig-prename descclassname">libcity.utils.GPS_utils.</code><code class="sig-name descname">dist</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">phi1</span></em>, <em class="sig-param"><span class="n">lambda1</span></em>, <em class="sig-param"><span class="n">phi2</span></em>, <em class="sig-param"><span class="n">lambda2</span></em>, <em class="sig-param"><span class="n">r</span><span class="o">=</span><span class="default_value">6371000</span></em>, <em class="sig-param"><span class="n">method</span><span class="o">=</span><span class="default_value">'hav'</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/utils/GPS_utils.html#dist"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.utils.GPS_utils.dist" title="Permalink to this definition">¶</a></dt>
+<dd><p>calculate great circle distance with given latitude and longitude,
+:param phi1: point one’s latitude in angle
+:param lambda1: point one’s longitude in angle
+:param phi2: point two’s latitude in angle
+:param lambda2: point two’s longitude in angle
+:param r: earth radius(m)
+:param method:  ‘hav’ means haversine,</p>
+<blockquote>
+<div><p>‘LoC’ means Spherical Law of Cosines,
+‘approx’ means Pythagoras’ theorem performed on an equirectangular projection</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>distance (m)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="libcity.utils.GPS_utils.equirectangular_approximation">
+<code class="sig-prename descclassname">libcity.utils.GPS_utils.</code><code class="sig-name descname">equirectangular_approximation</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">phi1</span></em>, <em class="sig-param"><span class="n">lambda1</span></em>, <em class="sig-param"><span class="n">phi2</span></em>, <em class="sig-param"><span class="n">lambda2</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/utils/GPS_utils.html#equirectangular_approximation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.utils.GPS_utils.equirectangular_approximation" title="Permalink to this definition">¶</a></dt>
+<dd><p>calculate angular great circle distance with Pythagoras’ theorem performed on an equirectangular projection
+see parameters in spherical_law_of_cosines</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="libcity.utils.GPS_utils.haversine">
+<code class="sig-prename descclassname">libcity.utils.GPS_utils.</code><code class="sig-name descname">haversine</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">phi1</span></em>, <em class="sig-param"><span class="n">lambda1</span></em>, <em class="sig-param"><span class="n">phi2</span></em>, <em class="sig-param"><span class="n">lambda2</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/utils/GPS_utils.html#haversine"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.utils.GPS_utils.haversine" title="Permalink to this definition">¶</a></dt>
+<dd><p>calculate angular great circle distance with haversine formula
+see parameters in spherical_law_of_cosines</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="libcity.utils.GPS_utils.init_bearing">
+<code class="sig-prename descclassname">libcity.utils.GPS_utils.</code><code class="sig-name descname">init_bearing</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">phi1</span></em>, <em class="sig-param"><span class="n">lambda1</span></em>, <em class="sig-param"><span class="n">phi2</span></em>, <em class="sig-param"><span class="n">lambda2</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/utils/GPS_utils.html#init_bearing"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.utils.GPS_utils.init_bearing" title="Permalink to this definition">¶</a></dt>
+<dd><p>initial bearing of a great circle route
+:return: 0~360</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="libcity.utils.GPS_utils.radian2angle">
+<code class="sig-prename descclassname">libcity.utils.GPS_utils.</code><code class="sig-name descname">radian2angle</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">radian</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/utils/GPS_utils.html#radian2angle"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.utils.GPS_utils.radian2angle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="libcity.utils.GPS_utils.spherical_law_of_cosines">
+<code class="sig-prename descclassname">libcity.utils.GPS_utils.</code><code class="sig-name descname">spherical_law_of_cosines</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">phi1</span></em>, <em class="sig-param"><span class="n">lambda1</span></em>, <em class="sig-param"><span class="n">phi2</span></em>, <em class="sig-param"><span class="n">lambda2</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/utils/GPS_utils.html#spherical_law_of_cosines"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.utils.GPS_utils.spherical_law_of_cosines" title="Permalink to this definition">¶</a></dt>
+<dd><p>calculate great circle distance with spherical law of cosines
+phi/lambda for latitude/longitude in radians
+:param phi1: point one’s latitude in radians
+:param lambda1: point one’s longitude in radians
+:param phi2: point two’s latitude in radians
+:param lambda2: point two’s longitude in radians
+:return:</p>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="libcity.utils.argument_list.html" class="btn btn-neutral float-right" title="libcity.utils.argument_list" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="libcity.utils.html" class="btn btn-neutral float-left" title="libcity.utils" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, aptx1231
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Customize Dataset &mdash; Bigscity-TrafficDL  documentation</title>
+  <title>自定义Dataset &mdash; Bigscity-LibCity  documentation</title>
   
 
   
@@ -37,8 +37,8 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Customize Models" href="implemented_models.html" />
-    <link rel="prev" title="Code Style" href="code_style.html" /> 
+    <link rel="next" title="自定义Model" href="implemented_models.html" />
+    <link rel="prev" title="代码风格" href="code_style.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -52,7 +52,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> Bigscity-TrafficDL
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> Bigscity-LibCity
           
 
           
@@ -83,40 +83,55 @@
               
             
             
-              <p class="caption"><span class="caption-text">Get Started</span></p>
+              <p class="caption"><span class="caption-text">起步</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../get_started/introduction.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../get_started/install.html">Install</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../get_started/quick_start.html">Quick Start</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../get_started/directory_structure.html">Directory Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/introduction.html">介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/install.html">安装LibCity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/quick_start.html">快速入门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/directory_structure.html">目录结构</a></li>
 </ul>
-<p class="caption"><span class="caption-text">User Guide</span></p>
+<p class="caption"><span class="caption-text">用户指导</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/config_settings.html">Config Settings</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/data.html">Data Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/model.html">Model Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/evaluator.html">Evaluator Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/executor.html">Executor Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/config_settings.html">参数设置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/data.html">数据说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/model.html">复现模型列表</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/evaluator.html">评估模块简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/executor.html">执行模块简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/usage.html">使用示例</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Developer Guide</span></p>
+<p class="caption"><span class="caption-text">开发者指导</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="code_style.html">Code Style</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Customize Dataset</a></li>
-<li class="toctree-l1"><a class="reference internal" href="implemented_models.html">Customize Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="implemented_evaluators.html">Customize Evaluators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="implemented_executors.html">Customize Executors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="implemented_logger.html">Logger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="code_style.html">代码风格</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">自定义Dataset</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">已实现的Dataset类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">创建新的Dataset类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">重写对应方法</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id4">样例 1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">样例 2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">样例 3</a></li>
 </ul>
-<p class="caption"><span class="caption-text">API REFERENCE</span></p>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="implemented_models.html">自定义Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="implemented_executors.html">自定义Executor</a></li>
+</ul>
+<p class="caption"><span class="caption-text">入门教程</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../trafficdl/trafficdl.config.html">trafficdl.config</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../trafficdl/trafficdl.data.html">trafficdl.data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../trafficdl/trafficdl.evaluator.html">trafficdl.evaluator</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../trafficdl/trafficdl.executor.html">trafficdl.executor</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../trafficdl/trafficdl.model.html">trafficdl.model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../trafficdl/trafficdl.pipeline.html">trafficdl.pipeline</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../trafficdl/trafficdl.utils.html">trafficdl.utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/install_quick_start.html">安装和快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/run_model.html">运行LibCity中已复现的模型</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/add_model.html">在LibCity中添加新模型</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/hyper_tune.html">使用自动化工具调参</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API文档</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../libcity/libcity.config.html">libcity.config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../libcity/libcity.data.html">libcity.data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../libcity/libcity.evaluator.html">libcity.evaluator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../libcity/libcity.executor.html">libcity.executor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../libcity/libcity.model.html">libcity.model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../libcity/libcity.pipeline.html">libcity.pipeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../libcity/libcity.utils.html">libcity.utils</a></li>
 </ul>
 
             
@@ -132,7 +147,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">Bigscity-TrafficDL</a>
+          <a href="../index.html">Bigscity-LibCity</a>
         
       </nav>
 
@@ -163,7 +178,7 @@
     
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>Customize Dataset</li>
+      <li>自定义Dataset</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -182,45 +197,133 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="customize-dataset">
-<h1>Customize Dataset<a class="headerlink" href="#customize-dataset" title="Permalink to this headline">¶</a></h1>
-<p>本文档用于介绍如何在<code class="docutils literal notranslate"><span class="pre">TrafficDL</span></code>下开发一个新的数据集类。</p>
-<p>我们已经为以下几个任务开发了标准的Evaluator：</p>
-<ul class="simple">
-<li><p>Traffic Location Prediction</p></li>
-<li><p>Traffic Flow Prediction</p></li>
-<li><p>Traffic Speed Prediction</p></li>
-<li><p>On-Demand Service predition</p></li>
-<li><p>Travel Time prediction</p></li>
-<li><p>Traffic Accident prediction</p></li>
+  <div class="section" id="dataset">
+<h1>自定义Dataset<a class="headerlink" href="#dataset" title="Permalink to this headline">¶</a></h1>
+<p>本文档用于介绍如何在<code class="docutils literal notranslate"><span class="pre">LibCity</span></code>中开发一个新的数据集。</p>
+<div class="section" id="id1">
+<h2>已实现的Dataset类<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>已实现的Dataset类的功能介绍如下</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">AbstractDataset</span></code></p>
+<p>所有数据集的基类。<strong>注意这是抽象类，不能直接使用</strong></p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TrajectoryDataset</span></code></p>
+<p>所有轨迹位置预测任务的基类。</p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TrafficStateDataset</span></code></p>
+<p>用于交通状态预测任务的基类之一。<strong>注意这是抽象类，不能直接使用</strong>。默认情况下，<code class="docutils literal notranslate"><span class="pre">input_window</span></code>的数据被用来预测<code class="docutils literal notranslate"><span class="pre">output_window</span></code>对应的数据。此类生成的<a class="reference internal" href="../user_guide/data/batch.html"><span class="doc">Batch</span></a> 对象包含两个键，分别是<code class="docutils literal notranslate"><span class="pre">X</span></code>和<code class="docutils literal notranslate"><span class="pre">y</span></code>。此处的<code class="docutils literal notranslate"><span class="pre">input_window</span></code>和<code class="docutils literal notranslate"><span class="pre">output_window</span></code>是data的参数，点击<a class="reference internal" href="../user_guide/data/args_for_data.html"><span class="doc">此处</span></a>查看细节。</p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TrafficStateCPTDataset</span></code></p>
+<p>用于交通状态预测任务的另一个基类。<strong>注意这是抽象类，不能直接使用</strong>。一些交通预测模型通过对接近度/周期/趋势的建模来实现预测。默认情况下，<code class="docutils literal notranslate"><span class="pre">len_closeness</span></code>/<code class="docutils literal notranslate"><span class="pre">len_period</span></code>/<code class="docutils literal notranslate"><span class="pre">len_trend</span></code> 的数据被用来预测当前时刻的数据（单步预测）。此类生成的<a class="reference internal" href="../user_guide/data/batch.html"><span class="doc">Batch</span></a>对象包含4个键，分别是<code class="docutils literal notranslate"><span class="pre">X</span></code>，<code class="docutils literal notranslate"><span class="pre">y</span></code>，<code class="docutils literal notranslate"><span class="pre">X_ext</span></code>和<code class="docutils literal notranslate"><span class="pre">y_ext</span></code> 。此处的 <code class="docutils literal notranslate"><span class="pre">len_closeness</span></code>/<code class="docutils literal notranslate"><span class="pre">len_period</span></code>/<code class="docutils literal notranslate"><span class="pre">len_trend</span></code> 是data的参数, 点击<a class="reference internal" href="../user_guide/data/args_for_data.html"><span class="doc">此处</span></a>查看细节。</p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TrafficStatePointDataset</span></code></p>
+<p>一个继承了<code class="docutils literal notranslate"><span class="pre">TrafficStateDataset</span></code>的类，用于交通状态预测。只要这个数据集的空间维度是一维的，就可以用于基于点/基于段/基于区域的数据集。该类生成的<a class="reference internal" href="../user_guide/data/batch.html"><span class="doc">Batch</span></a>对象中的张量形状是3维的，即<code class="docutils literal notranslate"><span class="pre">space_dim</span></code>, <code class="docutils literal notranslate"><span class="pre">time_dim</span></code>, <code class="docutils literal notranslate"><span class="pre">feature_dim</span></code>（空间维度、时间维度、特征维度）。</p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TrafficStateGridDataset</span></code></p>
+<p>一个继承了<code class="docutils literal notranslate"><span class="pre">TrafficStateDataset</span></code>的类，用于交通状态预测。该数据集适用于基于网格的数据集。这个类生成的<a class="reference internal" href="../user_guide/data/batch.html"><span class="doc">Batch</span></a>对象中的张量形状是3维还是4维取决于参数<code class="docutils literal notranslate"><span class="pre">use_row_column</span></code>。如果设置<code class="docutils literal notranslate"><span class="pre">use_row_column=True</span></code>，那么4个维度是<code class="docutils literal notranslate"><span class="pre">grid_row_dim</span></code>, <code class="docutils literal notranslate"><span class="pre">grid_column_dim</span></code>, <code class="docutils literal notranslate"><span class="pre">time_dim</span></code>, <code class="docutils literal notranslate"><span class="pre">feature_dim</span></code>（网格行数、网格列数、时间维度、特征维度）。否则，3个维度是<code class="docutils literal notranslate"><span class="pre">space_dim</span></code>、<code class="docutils literal notranslate"><span class="pre">time_dim</span></code>、<code class="docutils literal notranslate"><span class="pre">feature_dim</span></code>（空间维度、时间维度、特征维度），在这种情况下，网格被重新编号为一个维度。</p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TrafficStateGridOdDataset</span></code></p>
+<p>一个继承了<code class="docutils literal notranslate"><span class="pre">TrafficStateDataset</span></code>的类，用于交通状态预测。该数据集用于基于网格的od数据集。这个类生成的<a class="reference internal" href="../user_guide/data/batch.html"><span class="doc">Batch</span></a>对象中的张量形状是4维或6维，取决于参数<code class="docutils literal notranslate"><span class="pre">use_row_column</span></code>。如果设置<code class="docutils literal notranslate"><span class="pre">use_row_column=True</span></code>，那么张量拥有6个维度，分别是<code class="docutils literal notranslate"><span class="pre">origin_grid_row_dim</span></code>, <code class="docutils literal notranslate"><span class="pre">origin_grid_column_dim</span></code>, <code class="docutils literal notranslate"><span class="pre">destination_grid_row_dim</span></code>, <code class="docutils literal notranslate"><span class="pre">destination_grid_column_dim</span></code>, <code class="docutils literal notranslate"><span class="pre">time_dim</span></code>, <code class="docutils literal notranslate"><span class="pre">feature_dim</span></code>（起点网格行数、起点网格列数、终点网格行数、终点网格列数、时间维度、特征维度）。否则，张量拥有4个维度，分别是<code class="docutils literal notranslate"><span class="pre">origin_dim</span></code>, <code class="docutils literal notranslate"><span class="pre">destination_dim</span></code>, <code class="docutils literal notranslate"><span class="pre">time_dim</span></code>, <code class="docutils literal notranslate"><span class="pre">feature_dim</span></code>（起点空间维度、终点空间维度、时间维度、特征维度），在这种情况下，二维网格被重新编号为一个维度。</p>
+</li>
 </ul>
-<p><code class="docutils literal notranslate"><span class="pre">AbstractDataset</span></code>类是所有数据集的基类，实现数据集类时，请继承此类。</p>
-<p><code class="docutils literal notranslate"><span class="pre">AbstractDataset</span></code>类中接口：</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">get_data()</span></code>用于获取划分好的train_dataloader/eval_dataloader/test_dataloader，</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">get_data_feature()</span></code>用于返回一些数据集的特征供模型和调度器使用。</p></li>
-</ul>
-<p>约定：</p>
-<ul class="simple">
-<li><p>Dataset类，负责加载原子文件并进行一些数据预处理操作，以及切分训练集、验证集、测试集。</p></li>
-<li><p>处理好的数据集缓存到<code class="docutils literal notranslate"><span class="pre">cache/dataset_cache/</span></code>。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">utils.generate_dataloader()</span></code>是实现好的切分数据集并返回dataloader，<code class="docutils literal notranslate"><span class="pre">get_data()</span></code>应该调用此函数。</p></li>
-</ul>
-<p>所以可以这样实现<code class="docutils literal notranslate"><span class="pre">newdataset.py</span></code>：</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">trafficdl.data.dataset</span> <span class="kn">import</span> <span class="n">AbstractDataset</span>
+<p>对于一个新的模型，如果没有合适的已实现数据集供使用，则需要设计一个新的数据集。</p>
+</div>
+<div class="section" id="id2">
+<h2>创建新的Dataset类<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>首先，我们创建的数据集应该继承自<code class="docutils literal notranslate"><span class="pre">AbstractDataset</span></code>或它的子类。</p>
+<p>例如，若想为交通状态预测任务开发一个名为<code class="docutils literal notranslate"><span class="pre">NewDataset</span></code>的数据集，需要将代码写入<code class="docutils literal notranslate"><span class="pre">libcity/data/dataset/</span></code>目录下的<code class="docutils literal notranslate"><span class="pre">newdataset.py</span></code>文件中。</p>
+<p>在如下代码中，我们的<code class="docutils literal notranslate"><span class="pre">NewDataset</span></code>继承了<code class="docutils literal notranslate"><span class="pre">AbstractDataset</span></code>类的子类<code class="docutils literal notranslate"><span class="pre">TrafficStatePointDataset</span></code>。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">libcity.data.dataset</span> <span class="kn">import</span> <span class="n">TrafficStatePointDataset</span>
+
+<span class="k">class</span> <span class="nc">NewDatasets</span><span class="p">(</span><span class="n">TrafficStatePointDataset</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+        <span class="k">pass</span>
+</pre></div>
+</div>
+<p>或者可以直接继承<code class="docutils literal notranslate"><span class="pre">AbstractDataset</span></code> 类，代码如下。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">libcity.data.dataset</span> <span class="kn">import</span> <span class="n">AbstractDataset</span>
+
+<span class="k">class</span> <span class="nc">NewDatasets</span><span class="p">(</span><span class="n">AbstractDataset</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">):</span>
+        <span class="k">pass</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>重写对应方法<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">AbstractDataset</span></code>中的函数<code class="docutils literal notranslate"><span class="pre">get_data()</span></code>被用来分割数据，并获取3个数据加载器<code class="docutils literal notranslate"><span class="pre">train_dataloader</span></code>、<code class="docutils literal notranslate"><span class="pre">eval_dataloader</span></code>和<code class="docutils literal notranslate"><span class="pre">test_dataloader</span></code>。若想要获取数据加载器，需要调用函数<code class="docutils literal notranslate"><span class="pre">libcity.data.utils.generate_dataloader</span></code>来从输入数据的列表中获取，其中生成的数据加载器包含<a class="reference internal" href="../user_guide/data/batch.html"><span class="doc">Batch</span></a>对象。</p>
+<p><code class="docutils literal notranslate"><span class="pre">AbstractDataset</span></code>中的函数<code class="docutils literal notranslate"><span class="pre">get_data_feature()</span></code>被用来返回一些数据集的特征，这些特征将被模型和执行器使用。</p>
+<p>在<code class="docutils literal notranslate"><span class="pre">AbstractDataset</span></code>的子类中定义的其他接口将不在此描述。</p>
+<p>如果没有合适的数据集类，那么你可以重写上面提到的相应接口。</p>
+<div class="section" id="id4">
+<h3>样例 1<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p>样例1用来演示如何直接继承<code class="docutils literal notranslate"><span class="pre">AbstractDataset</span></code>并重写函数<code class="docutils literal notranslate"><span class="pre">get_data_feature()</span></code>以返回我们想要的一些值。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">libcity.data.dataset</span> <span class="kn">import</span> <span class="n">AbstractDataset</span>
 
 <span class="k">class</span> <span class="nc">NewDatasets</span><span class="p">(</span><span class="n">AbstractDataset</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">):</span>
         <span class="k">pass</span>
     
-    <span class="k">def</span> <span class="nf">get_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">pass</span>
-    
     <span class="k">def</span> <span class="nf">get_data_feature</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">pass</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;scaler&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">scaler</span><span class="p">,</span> <span class="s2">&quot;adj_mx&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">adj_mx</span><span class="p">,</span>
+                <span class="s2">&quot;num_nodes&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_nodes</span><span class="p">,</span> <span class="s2">&quot;feature_dim&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">feature_dim</span><span class="p">,</span>
+                <span class="s2">&quot;output_dim&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_dim</span><span class="p">}</span>
 </pre></div>
 </div>
-<p>接下来，只需要重写全部的接口即可。</p>
+</div>
+<div class="section" id="id5">
+<h3>样例 2<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<p>样例2用来演示如何继承<code class="docutils literal notranslate"><span class="pre">AbstractDataset</span></code>的子类并重写其中的一个方法（<code class="docutils literal notranslate"><span class="pre">_load_rel</span></code>）。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">libcity.data.dataset</span> <span class="kn">import</span> <span class="n">TrafficStatePointDataset</span>
+
+<span class="k">class</span> <span class="nc">NewDatasets</span><span class="p">(</span><span class="n">TrafficStatePointDataset</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+        <span class="k">pass</span>
+    
+    <span class="c1"># We will rewrite this method which is used to calculate `self.adj_mx` based on the atmoic file `rel_file.rel`.</span>
+    <span class="k">def</span> <span class="nf">_load_rel</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">relfile</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data_path</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">rel_file</span> <span class="o">+</span> <span class="s1">&#39;.rel&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">adj_mx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">geo_ids</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">geo_ids</span><span class="p">)))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">adj_mx</span><span class="p">[:]</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># set all one</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id6">
+<h3>样例 3<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<p>样例3用来解释如何继承<code class="docutils literal notranslate"><span class="pre">AbstractDataset</span></code>的子类，并返回从原始数据文件转化而来的，含有不同键的<code class="docutils literal notranslate"><span class="pre">Batch</span></code>。具体来说，我们打算返回三个键值对，其中键包括：<code class="docutils literal notranslate"><span class="pre">X</span></code>，<code class="docutils literal notranslate"><span class="pre">Y</span></code>和<code class="docutils literal notranslate"><span class="pre">Z</span></code>。这只是一个例子，更多的细节，你可以参考<code class="docutils literal notranslate"><span class="pre">TrafficStateCPTDataset</span></code>，它有四个键的<code class="docutils literal notranslate"><span class="pre">Batch</span></code>。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">libcity.data.dataset</span> <span class="kn">import</span> <span class="n">TrafficStateDataset</span>
+
+<span class="k">class</span> <span class="nc">NewDatasets</span><span class="p">(</span><span class="n">TrafficStateDataset</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+        <span class="c1"># the origin code</span>
+        <span class="c1"># self.feature_name = {&#39;X&#39;: &#39;float&#39;, &#39;y&#39;: &#39;float&#39;}</span>
+        <span class="c1"># the modified code</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">feature_name</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;X&#39;</span><span class="p">:</span> <span class="s1">&#39;float&#39;</span><span class="p">,</span> <span class="s1">&#39;Y&#39;</span><span class="p">:</span> <span class="s1">&#39;float&#39;</span><span class="p">,</span> <span class="s1">&#39;Z&#39;</span><span class="p">:</span> <span class="s1">&#39;int&#39;</span><span class="p">}</span>
+        <span class="k">pass</span>
+    
+    <span class="k">def</span> <span class="nf">get_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># Load datset for the keys x,y,z, generate [x|y|z]_[train|val|test].</span>
+        <span class="c1"># ... (implement it yourself)</span>
+        <span class="c1"># Data normalization using self.scaler.</span>
+        <span class="c1"># ... (implement it yourself)</span>
+        <span class="c1"># Aggregate X, Y, Z into a list.</span>
+        <span class="c1"># The i-th element in train_data(a list) is a tuple, consists of x_train[i], y_train[i] and z_train[i].</span>
+        <span class="n">train_data</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">z_train</span><span class="p">))</span>
+        <span class="n">eval_data</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">x_val</span><span class="p">,</span> <span class="n">y_val</span><span class="p">,</span> <span class="n">z_val</span><span class="p">))</span>
+        <span class="n">test_data</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">z_test</span><span class="p">))</span>
+        <span class="c1"># Get dataloader by libcity.data.utils.generate_dataloader.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">train_dataloader</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">eval_dataloader</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">test_dataloader</span> <span class="o">=</span> \
+            <span class="n">generate_dataloader</span><span class="p">(</span><span class="n">train_data</span><span class="p">,</span> <span class="n">eval_data</span><span class="p">,</span> <span class="n">test_data</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">feature_name</span><span class="p">,</span>
+                                <span class="bp">self</span><span class="o">.</span><span class="n">batch_size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_workers</span><span class="p">)</span>
+        <span class="c1"># Return the dataloader</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">train_dataloader</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">eval_dataloader</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">test_dataloader</span>
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 
 
@@ -231,10 +334,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="implemented_models.html" class="btn btn-neutral float-right" title="Customize Models" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="implemented_models.html" class="btn btn-neutral float-right" title="自定义Model" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="code_style.html" class="btn btn-neutral float-left" title="Code Style" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="code_style.html" class="btn btn-neutral float-left" title="代码风格" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

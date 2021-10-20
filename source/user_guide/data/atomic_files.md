@@ -9,6 +9,7 @@
 | xxx.rel     | 存储实体间的关系信息，如路网。 | rel_id, type, origin_id, destination_id     |
 | xxx.dyna    | 存储交通状态信息。             | dyna_id, type, time, entity_id, location_id |
 | xxx.ext     | 存储外部信息，如天气、温度等。 | ext_id, time, properties                    |
+| xxx.route   | 存储路网匹配的真实路径         | rel_id                                      |
 | config.json | 用于补充描述各表信息。         |                                             |
 
 注：对于不同的交通预测任务，可能用到不同的原子文件，同一个数据集不一定包含全部六种原子文件。
@@ -37,7 +38,6 @@ Geo 表中一个元素由以下四部分组成：
 > *   LineString： \[ \[102.0, 0.0\], \[103.0, 1.0\], \[104.0, 0.0\], \[105.0, 1.0\] \]
 >
 > *   Polygon： \[\[ \[100.0, 0.0\], \[101.0, 0.0\], \[101.0, 1.0\], \[100.0, 1.0\], \[100.0, 0.0\] \]\]
->
 
 ## Usr 表
 
@@ -97,6 +97,13 @@ Dyna 表中一个元素由以下五部分组成：
 
 *   properties： 描述该条记录的属性信息，若有多个属性，可以使用不同的列名定义为多列数据，比如既有速度数据、又有流量数据。
 
+## Route 表
+
+Route 表中一个元素仅由一个部分组成：
+
+**rel_id**
+
+*  rel_id：`rel`的编号。`rel_id`的顺序显示了真实的路径。
 
 ## Ext 表
 
@@ -168,7 +175,7 @@ Config 文件用以补充描述上述五个表自身的信息， 以 `json` 形�
 
         * `calculate_weight_adj`： 从 `.rel` 文件获取的邻接矩阵的权重是否需要进一步进行计算， **默认为 `False`**。 部分邻接矩阵在原始数据的基础上，进行了一些计算。目前的计算方法是带有阈值的高斯核方法： $$  w_{ij} = \exp \left(- \frac{d_{ij}^{2}}{\sigma^{2}}\right)$$
 
-        * `weight_adj_epsilon`： 高斯核的阈值。 经过计算的权重如果小于该阈值，则变成0，即 $$  w_{ij}[w_{ij}<\epsilon]=0​$$ 此参数依赖于参数 `calculate_weight_adj=True` 。
+        * `weight_adj_epsilon`： 高斯核的阈值。 经过计算的权重如果小于该阈值，则变成0，即 $$  w_{ij}[w_{ij}<\epsilon]=0$$ 此参数依赖于参数 `calculate_weight_adj=True` 。
 
     *   **对于轨迹下一跳预测任务：**
 

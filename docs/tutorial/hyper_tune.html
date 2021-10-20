@@ -1,0 +1,324 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>使用自动化工具调参 &mdash; Bigscity-LibCity  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="libcity.config" href="../libcity/libcity.config.html" />
+    <link rel="prev" title="在LibCity中添加新模型" href="add_model.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> Bigscity-LibCity
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">起步</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/introduction.html">介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/install.html">安装LibCity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/quick_start.html">快速入门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/directory_structure.html">目录结构</a></li>
+</ul>
+<p class="caption"><span class="caption-text">用户指导</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/config_settings.html">参数设置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/data.html">数据说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/model.html">复现模型列表</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/evaluator.html">评估模块简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/executor.html">执行模块简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/usage.html">使用示例</a></li>
+</ul>
+<p class="caption"><span class="caption-text">开发者指导</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/code_style.html">代码风格</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_datasets.html">自定义Dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_models.html">自定义Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_executors.html">自定义Executor</a></li>
+</ul>
+<p class="caption"><span class="caption-text">入门教程</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="install_quick_start.html">安装和快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="run_model.html">运行LibCity中已复现的模型</a></li>
+<li class="toctree-l1"><a class="reference internal" href="add_model.html">在LibCity中添加新模型</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">使用自动化工具调参</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">查看相关参数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">编写调参配置文件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#hyper-tune-py">执行 hyper_tune.py</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">API文档</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../libcity/libcity.config.html">libcity.config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../libcity/libcity.data.html">libcity.data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../libcity/libcity.evaluator.html">libcity.evaluator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../libcity/libcity.executor.html">libcity.executor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../libcity/libcity.model.html">libcity.model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../libcity/libcity.pipeline.html">libcity.pipeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../libcity/libcity.utils.html">libcity.utils</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Bigscity-LibCity</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>使用自动化工具调参</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/tutorial/hyper_tune.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>使用自动化工具调参<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p>这里我们以 GRU 为例，使用 LibCity 中提供的自动化调参工具（<code class="docutils literal notranslate"><span class="pre">hyper_tune.py</span></code>）优化其在 METR_LA 数据集上的交通速度预测性能。</p>
+<p>首先，我们可以查看 GRU 在交通速度预测任务中可能会使用到的超参数，以决定要对哪些参数进行调整。</p>
+<div class="section" id="id2">
+<h2>查看相关参数<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>根据 <code class="docutils literal notranslate"><span class="pre">/libcity/config/task_config.json</span></code> 查看 GRU 在交通速度预测任务下使用到的各个模块。</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span>&quot;GRU&quot;: {
+	&quot;dataset_class&quot;: &quot;TrafficStatePointDataset&quot;,
+	&quot;executor&quot;: &quot;TrafficStateExecutor&quot;,
+	&quot;evaluator&quot;: &quot;TrafficStateEvaluator&quot;
+}
+</pre></div>
+</div>
+<p>根据配置文件可知，GRU 所使用的数据模块类为 <code class="docutils literal notranslate"><span class="pre">TrafficStatePointDataset</span></code>，执行模块类为 <code class="docutils literal notranslate"><span class="pre">TrafficStateExecutor</span></code>，评估模块类为 <code class="docutils literal notranslate"><span class="pre">TrafficStateEvaluator</span></code>。我们可以根据查找到的模块类名去 <code class="docutils literal notranslate"><span class="pre">/libcity/config/</span></code> 具体模块配置的文件夹下，找到对应模块的详细超参数配置。</p>
+<p>这里，我们认为对模型性能影响较大的是执行模块与模型本身的超参数。因此，我们查看了 <code class="docutils literal notranslate"><span class="pre">/config/executor/TrafficStateExecutor.json</span></code> 与 <code class="docutils literal notranslate"><span class="pre">/config/model/traffic_state_pred/GRU.json</span></code>两个配置文件。在查看过后，我们决定对学习率 <code class="docutils literal notranslate"><span class="pre">learning_rate</span></code>，最大训练轮次 <code class="docutils literal notranslate"><span class="pre">max_epoch</span></code>，隐藏层维度 <code class="docutils literal notranslate"><span class="pre">hidden_size</span></code>，Dropout 率 <code class="docutils literal notranslate"><span class="pre">dropout</span></code> 四个超参数进行调整。</p>
+</div>
+<div class="section" id="id3">
+<h2>编写调参配置文件<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">hyper_tune.py</span></code> 脚本需要用户编写一个调参配置文件，以指定所要调整的超参数与对应的搜索空间。根据所要调整参数的意义，我们将搜索空间设定为：</p>
+<ul class="simple">
+<li><p>对于学习率参数，一般应该是 <code class="docutils literal notranslate"><span class="pre">0.01</span></code> 或者 <code class="docutils literal notranslate"><span class="pre">0.05</span></code> 这种以 1 或 5 结尾的值。因此，其对应的搜索空间应该是离散的类别变量集合，以<code class="docutils literal notranslate"><span class="pre">[0.01,</span> <span class="pre">0.005,</span> <span class="pre">0.001]</span></code> 为例。</p></li>
+<li><p>对于最大训练轮次，其值应该是一个整数。因此，其对应的搜索空间可以设置为服从 <code class="docutils literal notranslate"><span class="pre">U(2,</span> <span class="pre">10)</span></code> 均匀分布的整数空间。</p></li>
+<li><p>对于隐藏层维度参数，其需要是整数而且一般是能够被 10 整除的值。因此，其对应的搜索空间应该与学习率参数一样，以 <code class="docutils literal notranslate"><span class="pre">[50,</span> <span class="pre">100,</span> <span class="pre">200,</span> <span class="pre">500]</span></code> 为例。</p></li>
+<li><p>对于 Dropout 率，其应该是 <code class="docutils literal notranslate"><span class="pre">[0,1)</span></code> 之间的浮点数。因此，其对应的搜索空间可以为服从 <code class="docutils literal notranslate"><span class="pre">U(0.1,</span> <span class="pre">0.6)</span></code> 均匀分布的实数空间。</p></li>
+</ul>
+<p>根据上述设计，我们可以撰写如下的配置文件 <code class="docutils literal notranslate"><span class="pre">sample_space_file.json</span></code>：</p>
+<blockquote>
+<div><p>（该文件应存放于项目根目录，与 <code class="docutils literal notranslate"><span class="pre">hyper_tune.py</span></code> 同级）</p>
+<p>更多的参数空间信息可以参考<a class="reference internal" href="../user_guide/usage/parameter_tuning.html"><span class="doc">文档</span></a>。</p>
+</div></blockquote>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;learning_rate&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;choice&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;list&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.005</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">]</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;max_epoch&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;randint&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;lower&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="nt">&quot;upper&quot;</span><span class="p">:</span> <span class="mi">10</span>
+    <span class="p">}</span>
+    <span class="s2">&quot;hidden_size&quot;</span><span class="p">:</span> <span class="p">{</span>
+    	<span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;choice&quot;</span><span class="p">,</span>
+    	<span class="nt">&quot;list&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">500</span><span class="p">]</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;dropout&quot;</span><span class="p">:</span> <span class="p">{</span>
+    	<span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;uniform&quot;</span><span class="p">,</span>
+    	<span class="nt">&quot;lower&quot;</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span>
+    	<span class="nt">&quot;upper&quot;</span><span class="p">:</span> <span class="mf">0.6</span>
+    <span class="p">}</span>
+<span class="p">}</span> 
+</pre></div>
+</div>
+</div>
+<div class="section" id="hyper-tune-py">
+<h2>执行 hyper_tune.py<a class="headerlink" href="#hyper-tune-py" title="Permalink to this headline">¶</a></h2>
+<p>在确保 <code class="docutils literal notranslate"><span class="pre">sample_space_file.json</span></code> 被正确放置于项目根目录后，我们便可以运行如下脚本进行自动调参了：</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>python hyper_tune.py --task traffc_state_pred --model GRU --dataset METR_LA --space_file sample_space_file
+</pre></div>
+</div>
+<p>运行以下指令后，脚本会自行从搜索空间中采样对应的参数值，并进行模型的训练与验证，并在搜索采样组合验证完成之后，在终端输出最好的参数组合。</p>
+<blockquote>
+<div><p>（目前脚本只支持以模型在验证集上的 loss 作为性能评估标准）</p>
+<p>关于脚本的更多命令行参数，可以参见<a class="reference internal" href="../user_guide/usage/parameter_tuning.html"><span class="doc">文档</span></a>。</p>
+</div></blockquote>
+<p>下图为运行过程的截图：</p>
+<p><img alt="../_images/hyper_tune1.png" src="../_images/hyper_tune1.png" /></p>
+<p>程序会将所采样到的参数组合输出至终端，并显示各线程的运行状态。</p>
+<p><img alt="../_images/hyper_tune2.png" src="../_images/hyper_tune2.png" /></p>
+<p>程序会将最好的参数组合输出至终端。</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../libcity/libcity.config.html" class="btn btn-neutral float-right" title="libcity.config" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="add_model.html" class="btn btn-neutral float-left" title="在LibCity中添加新模型" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, aptx1231
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

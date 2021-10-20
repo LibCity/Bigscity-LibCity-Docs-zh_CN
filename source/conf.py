@@ -17,9 +17,9 @@ import sphinx_rtd_theme
 from recommonmark.parser import CommonMarkParser
 # -- Project information -----------------------------------------------------
 
-project = 'Bigscity-LibTraffic'
+project = 'Bigscity-LibCity'
 copyright = '2020, aptx1231'
-author = 'aptx1231, WenMellors'
+author = 'aptx1231'
 
 
 # -- General configuration ---------------------------------------------------

@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Executor Introduction &mdash; Bigscity-TrafficDL  documentation</title>
+  <title>执行模块简介 &mdash; Bigscity-LibCity  documentation</title>
   
 
   
@@ -37,8 +37,8 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Traffic State Prediction Executor" href="executor/traffic_state_pred.html" />
-    <link rel="prev" title="Trajectory Location Prediction Evaluator" href="evaluator/traj_loc_pred.html" /> 
+    <link rel="next" title="交通状态预测调度模块" href="executor/traffic_state_pred.html" />
+    <link rel="prev" title="交通轨迹预测评估模块" href="evaluator/traj_loc_pred.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -52,7 +52,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> Bigscity-TrafficDL
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> Bigscity-LibCity
           
 
           
@@ -83,44 +83,49 @@
               
             
             
-              <p class="caption"><span class="caption-text">Get Started</span></p>
+              <p class="caption"><span class="caption-text">起步</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../get_started/introduction.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../get_started/install.html">Install</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../get_started/quick_start.html">Quick Start</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../get_started/directory_structure.html">Directory Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/introduction.html">介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/install.html">安装LibCity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/quick_start.html">快速入门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/directory_structure.html">目录结构</a></li>
 </ul>
-<p class="caption"><span class="caption-text">User Guide</span></p>
+<p class="caption"><span class="caption-text">用户指导</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="config_settings.html">Config Settings</a></li>
-<li class="toctree-l1"><a class="reference internal" href="data.html">Data Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="model.html">Model Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="evaluator.html">Evaluator Introduction</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Executor Introduction</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="executor/traffic_state_pred.html">Traffic State Prediction Executor</a></li>
-<li class="toctree-l2"><a class="reference internal" href="executor/traj_loc_pred.html">Trajectory Location Prediction Executor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="config_settings.html">参数设置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.html">数据说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model.html">复现模型列表</a></li>
+<li class="toctree-l1"><a class="reference internal" href="evaluator.html">评估模块简介</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">执行模块简介</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="executor/traffic_state_pred.html">交通状态预测调度模块</a></li>
+<li class="toctree-l2"><a class="reference internal" href="executor/traj_loc_pred.html">交通轨迹预测调度模块</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">使用示例</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Developer Guide</span></p>
+<p class="caption"><span class="caption-text">开发者指导</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../developer_guide/code_style.html">Code Style</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_datasets.html">Customize Dataset</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_models.html">Customize Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_evaluators.html">Customize Evaluators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_executors.html">Customize Executors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_logger.html">Logger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/code_style.html">代码风格</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_datasets.html">自定义Dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_models.html">自定义Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_executors.html">自定义Executor</a></li>
 </ul>
-<p class="caption"><span class="caption-text">API REFERENCE</span></p>
+<p class="caption"><span class="caption-text">入门教程</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../trafficdl/trafficdl.config.html">trafficdl.config</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../trafficdl/trafficdl.data.html">trafficdl.data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../trafficdl/trafficdl.evaluator.html">trafficdl.evaluator</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../trafficdl/trafficdl.executor.html">trafficdl.executor</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../trafficdl/trafficdl.model.html">trafficdl.model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../trafficdl/trafficdl.pipeline.html">trafficdl.pipeline</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../trafficdl/trafficdl.utils.html">trafficdl.utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/install_quick_start.html">安装和快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/run_model.html">运行LibCity中已复现的模型</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/add_model.html">在LibCity中添加新模型</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/hyper_tune.html">使用自动化工具调参</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API文档</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../libcity/libcity.config.html">libcity.config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../libcity/libcity.data.html">libcity.data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../libcity/libcity.evaluator.html">libcity.evaluator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../libcity/libcity.executor.html">libcity.executor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../libcity/libcity.model.html">libcity.model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../libcity/libcity.pipeline.html">libcity.pipeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../libcity/libcity.utils.html">libcity.utils</a></li>
 </ul>
 
             
@@ -136,7 +141,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">Bigscity-TrafficDL</a>
+          <a href="../index.html">Bigscity-LibCity</a>
         
       </nav>
 
@@ -167,7 +172,7 @@
     
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>Executor Introduction</li>
+      <li>执行模块简介</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -186,15 +191,14 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="executor-introduction">
-<h1>Executor Introduction<a class="headerlink" href="#executor-introduction" title="Permalink to this headline">¶</a></h1>
-<p>我们为每个任务提供一个标准的Executor，用来负责模型的训练、验证与评估。</p>
-<p>如何你的模型不能够满足使用标准的Executor，你也可以为他设计单独的Executor。</p>
-<p>用户可以通过修改执行器的参数设置，来调整训练的效果。</p>
+  <div class="section" id="id1">
+<h1>执行模块简介<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p>我们为每个任务提供一个标准的调度器（执行器），负责模型的训练、验证和评估，用户可以通过修改执行器的参数设置来调整训练的效果。</p>
+<p>如果您的模型对现有的标准执行器不满意，您还可以为其设计一个新的执行器，详情请参考 <a class="reference internal" href="../developer_guide/implemented_executors.html"><span class="doc">自定义Executor</span></a>。</p>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="executor/traffic_state_pred.html">Traffic State Prediction Executor</a></li>
-<li class="toctree-l1"><a class="reference internal" href="executor/traj_loc_pred.html">Trajectory Location Prediction Executor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="executor/traffic_state_pred.html">交通状态预测调度模块</a></li>
+<li class="toctree-l1"><a class="reference internal" href="executor/traj_loc_pred.html">交通轨迹预测调度模块</a></li>
 </ul>
 </div>
 </div>
@@ -207,10 +211,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="executor/traffic_state_pred.html" class="btn btn-neutral float-right" title="Traffic State Prediction Executor" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="executor/traffic_state_pred.html" class="btn btn-neutral float-right" title="交通状态预测调度模块" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="evaluator/traj_loc_pred.html" class="btn btn-neutral float-left" title="Trajectory Location Prediction Evaluator" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="evaluator/traj_loc_pred.html" class="btn btn-neutral float-left" title="交通轨迹预测评估模块" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

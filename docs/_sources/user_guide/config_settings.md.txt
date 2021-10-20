@@ -1,34 +1,26 @@
-# Config Settings
+# 参数设置
 
-本框架通过三种方式确定实验的最终配置：用户命令行传参、用户自定义 config 文件、各模块默认参数配置。用户可以通过前两种方式灵活地调整实验的参数配置。
+实验参数配置由三方面决定：命令行传入的参数、用户定义的配置文件和框架默认的配置文件。由此，用户可以灵活地通过前两种方式调整实验的参数配置。
 
-其优先级为：命令行参数>用户自定义配置文件>模型模块的默认参数>其余模块的默认参数，**高优先级的参数会覆盖低优先级的同名参数**。
+### 参数优先级
 
-## 命令行传参
+命令行参数>用户定义配置文件>模型所在模块默认参数>其它模块默认参数
 
-当用户运行项目根目录下的脚本文件时，可以通过命令行指定修改一些参数，如：
+**高优先级的参数会覆盖低优先级的同名参数。**
+
+考虑到不同模型的最优训练参数并不一致，执行器默认训练参数也只能是固定值，我们做了将模型的最优训练参数存放在其默认配置文件、模型所在模块默认参数的优先级高于其它模块这两个决定，来解决该问题。
+
+### 命令行参数
+
+当用户在项目根目录运行脚本文件时，有些参数可以在命令行指定并修改。例如：
 
 ```shell
 python run_model.py --task traj_loc_pred --model DeepMove --dataset foursquare_tky --gpu false --batch_size 15
 ```
 
-**具体所允许传入的参数因不同脚本而异**，可以参见 [Usage](./usage.md) 中详细的介绍了项目根目录下可执行的脚本文件，对于脚本`run_model.py`所支持的全部命令行参数如下：
+不同的脚本文件允许传递不同的参数。更多细节参见[用法](./usage/run_model.md)。
 
-- `task`：任务名，包括`traj_loc_pred`和`traffic_state_pred`
-- `model`：模型名，应是`trafficdl/model/`目录下各Model类名中的一个
-- `dataset`：数据集名
-- `config_file`：自定义config文件名，参见下文
-- `saved_model`：是否保存训练过程中的model
-- `train`：如果模型被训练过，是否重新训练，**默认True**
-- `batch_size`：批次大小
-- `train_rate`：训练集所占比例，划分顺序是【训练集，验证集，测试集】
-- `eval_rate`：验证集所占比例，划分顺序是【训练集，验证集，测试集】
-- `learning_rate`：学习率
-- `max_epoch`：训练总轮数
-- `gpu`：是否是用GPU，**默认True**
-- `gpu_id`：指定使用的GPU的id，**默认0**
-
-也可以使用 `-h` 以获取帮助信息，例如：
+也可使用`-h`选项得到帮助信息。例如：
 
 ```sh
 > python run_model.py -h
@@ -58,15 +50,15 @@ optional arguments:
   --gpu_id GPU_ID
 ```
 
-## 自定义 config 文件
+### 用户定义配置文件
 
-命令行允许传递的参数多为实验中常见通过的参数，如 `batch_size`。但为了使得用户能够随意修改各模块的默认参数，框架还提供通过命令行指定 config 文件名的方式，从用户自定义的配置文件中读入参数配置。用户自定义的 config 文件应满足如下格式要求：
+大多数命令行接受的参数是实验中经常传入的参数，比如`batch_size`。进一步来说，为了让用户能自如地修改各模块默认参数，本框架允许用户在命令行中传入用户定义配置文件的文件名，然后从该文件中读入参数配置。该文件应满足以下格式要求：
 
-1. 用户自定义 config 文件应为 **JSON** 文件。
-2. JSON 文件中存放一个字典，其键为**参数名**，值为所要修改的**参数值**。
-3. **该文件应放置在项目根目录，并通过`--config_file`的方式指定其文件名。**
+1. 用户定义配置文件应为**JSON**格式。
+2. 该JSON文件应存储一个字典，其中键为**参数名**，值为应修改的**参数值**。
+3. 文件应存放在**项目根目录**，文件名应由`--config_file`命令行参数指定。
 
-示例：
+例如：
 
 ```json
 {
@@ -75,35 +67,43 @@ optional arguments:
 }
 ```
 
-用户可以通过自定义 config 文件修改任意模块的默认参数，具体的参数名可以前往各模块的章节了解更多信息。
+用户可通过自定义配置文件修改任何模块的默认配置。对修改具体的参数名而言，可参见每个模块的用户手册以获取更多信息。
 
-## 默认参数
+### 默认配置
 
-### 模块默认参数
+#### 模块默认配置
 
-所有四个模块都具有默认参数，数据模块、执行模块、评估模块、模型模块的默认配置分别位于以下四个目录
+数据模块、执行器模块、评估模块和模型所在模块的配置分别位于以下目录中：
 
-- `trafficdl/config/data`
-- `trafficdl/config/executor`
-- `trafficdl/config/evaluator`
-- `trafficdl/config/model`
+- `/libcity/config/data`
+- `/libcity/config/executor`
+- `/libcity/config/evaluator`
+- `/libcity/config/model`
 
-每个目录下文件命名规则为`类名.json`，例如对于交通状态预测的执行模块，其默认的配置参数文件为`TrafficStateExecutor.json`。
+各目录中文件命名规则均为`类名.json`。例如，对交通状态预测的执行模块而言，默认参数文件名为`TrafficStateExecutor.json`。
 
-### 数据集默认参数
+#### 数据集配置文件
 
-数据集的默认参数位于目录`raw_data/DataSet_Name/config.json`，其具体内容请参考[原子文件](./data/atmoic_files.md) 章节。
+我们在数据集配置文件中存储了一些辅助信息，其存储路径为`/raw_data/数据集名字/config.json`。参见[原子文件](./data/atomic_files.md)一节获取更多信息。
 
-**上述默认参数中，模型模块的优先级最高！**
+#### 任务配置文件
 
-### 任务默认参数
+任务配置文件用来记录各任务支持的模型与数据集列表，以及其下各模型默认的数据模块、执行器模块和评估模块类名，它们的存储路径为`/libcity/config/task_config.json`。
 
-各任务的默认参数位于`trafficdl/config/task_config.json`文件中，此文件记录各类任务所能支持的全部模型和全部数据集的范围，以及各模型的以下三个参数：
+此处为任务配置文件一例：
+```json
+{
+  "traffic_state_pred": {
+    "allowed_model": ["DCRNN"],
+    "allowed_dataset": ["METR_LA", "PEMS_BAY", "PEMSD3"],
+    "DCRNN": {
+        "dataset_class": "TrafficStatePointDataset",
+        "executor": "DCRNNExecutor",
+        "evaluator": "TrafficStateEvaluator"
+    },
+}
+```
 
-- `dataset_class`：数据集类的类名，应是`trafficdl/data/dataset`目录下各Dataset类名中的一个
-- `executor`：调度类的类名，应是`trafficdl/executor/`目录下各Executor类名中的一个
-- `evaluator`：评估类的类名，应是`trafficdl/evaluator/`目录下各Evaluator类名中的一个
+**增加新模块时，需要修改`libcity/config/task_config.json`。**
 
-这样一来，可以完成不同模型所使用的不同Dataset类、Executor类、Evaluator类的默认配置。
-
-**增加模型时需要修改`trafficdl/config/task_config.json`文件。**
+由以上配置文件，`DCRNN`使用的数据模块类为`TrafficStatePointDataset`，执行器模块为`DCRNNExecutor`，评估模块类为`TrafficStateEvaluator`。

@@ -1,4 +1,4 @@
-## 基于[Sphinx](http://sphinx-doc.org/)的[项目文档](https://bigscity-libtraffic-docs.readthedocs.io/en/latest/)
+## 基于[Sphinx](http://sphinx-doc.org/)的[项目文档](https://bigscity-libcity-docs.readthedocs.io/en/latest/)
 
 两种部署的方式：
 
@@ -48,17 +48,17 @@ make html   # 生成html
 
 修改方式
 
-首先从Github拉取代码，目录为`Bigscity-LibTraffic-Docs/`。
+首先从Github拉取代码，目录为`Bigscity-LibCity-Docs/`。
 
 需要修改的文件位于`source/`，编译输出的文件位于`build/`。
 
-主页面文件是`source/index.rst`，此文件引用了`get_started/`，`user_guide/`，`developer_guide/`，`libtraffic/`四个目录下的内容，其中前三个目录分别放置Markdown文件。
+主页面文件是`source/index.rst`，此文件引用了`get_started/`，`user_guide/`，`developer_guide/`，`libcity/`四个目录下的内容，其中前三个目录分别放置Markdown文件。
 
 `source/index.rst`的每一行例如`user_guide/config_settings`在网站的目录中显示为一行。
 
 修改对应的Markdown文件以及主文件即可完成修改。
 
-第四个目录`libtraffic/`则是代码API文档的目录，详见后文。
+第四个目录`libcity/`则是代码API文档的目录，详见后文。
 
 ## 代码API文档自动生成
 
@@ -66,18 +66,18 @@ make html   # 生成html
 
 此方法在本地完成编译，不需要将项目代码提交到项目文档仓库。
 
-（1）保证文档目录`Bigscity-LibTraffic-Docs/`跟代码目录`Bigscity-LibTraffic/`处于平级目录
+（1）保证文档目录`Bigscity-LibCity-Docs/`跟代码目录`Bigscity-LibCity/`处于平级目录
 
 （2）设置conf.py
 
 ```python
-sys.path.insert(0, os.path.abspath('../../Bigscity-LibTraffic/'))
+sys.path.insert(0, os.path.abspath('../../Bigscity-LibCity/'))
 ```
 
-（3）在`Bigscity-LibTraffic-Docs/`目录下执行如下命令：
+（3）在`Bigscity-LibCity-Docs/`目录下执行如下命令：
 
 ```shell
-sphinx-apidoc -o source/libtraffic/ -e -f ../Bigscity-LibTraffic/libtraffic/
+sphinx-apidoc -o source/libcity/ -e -f ../Bigscity-LibCity/libcity/
 python source/clear.py
 make html
 ```
@@ -90,7 +90,7 @@ make html
 
 ### 使用Read the Docs的部署方式
 
-此方法在远程完成编译，需要将项目代码提交到项目文档仓库，因此在目录`Bigscity-LibTraffic-Docs/libtraffic`中存储项目代码。
+此方法在远程完成编译，需要将项目代码提交到项目文档仓库，因此在目录`Bigscity-LibCity-Docs/libcity`中存储项目代码。
 
 （1）设置conf.py
 
@@ -98,10 +98,10 @@ make html
 sys.path.insert(0, os.path.abspath('../'))
 ```
 
-（2）在`Bigscity-LibTraffic-Docs/`目录下执行如下命令：
+（2）在`Bigscity-LibCity-Docs/`目录下执行如下命令：
 
 ```shell
-sphinx-apidoc -o source/libtraffic/ -e -f ./libtraffic/
+sphinx-apidoc -o source/libcity/ -e -f ./libcity/
 python source/clear.py
 ```
 

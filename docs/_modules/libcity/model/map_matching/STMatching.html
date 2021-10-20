@@ -1,0 +1,619 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>libcity.model.map_matching.STMatching &mdash; Bigscity-LibCity  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home" alt="Documentation Home"> Bigscity-LibCity
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">起步</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../get_started/introduction.html">介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../get_started/install.html">安装LibCity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../get_started/quick_start.html">快速入门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../get_started/directory_structure.html">目录结构</a></li>
+</ul>
+<p class="caption"><span class="caption-text">用户指导</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user_guide/config_settings.html">参数设置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user_guide/data.html">数据说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user_guide/model.html">复现模型列表</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user_guide/evaluator.html">评估模块简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user_guide/executor.html">执行模块简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user_guide/usage.html">使用示例</a></li>
+</ul>
+<p class="caption"><span class="caption-text">开发者指导</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../developer_guide/code_style.html">代码风格</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../developer_guide/implemented_datasets.html">自定义Dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../developer_guide/implemented_models.html">自定义Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../developer_guide/implemented_executors.html">自定义Executor</a></li>
+</ul>
+<p class="caption"><span class="caption-text">入门教程</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorial/install_quick_start.html">安装和快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorial/run_model.html">运行LibCity中已复现的模型</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorial/add_model.html">在LibCity中添加新模型</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorial/hyper_tune.html">使用自动化工具调参</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API文档</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../libcity/libcity.config.html">libcity.config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../libcity/libcity.data.html">libcity.data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../libcity/libcity.evaluator.html">libcity.evaluator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../libcity/libcity.executor.html">libcity.executor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../libcity/libcity.model.html">libcity.model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../libcity/libcity.pipeline.html">libcity.pipeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../libcity/libcity.utils.html">libcity.utils</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">Bigscity-LibCity</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../../index.html">Module code</a> &raquo;</li>
+        
+      <li>libcity.model.map_matching.STMatching</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for libcity.model.map_matching.STMatching</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">from</span> <span class="nn">logging</span> <span class="kn">import</span> <span class="n">getLogger</span>
+<span class="kn">from</span> <span class="nn">libcity.model.abstract_traffic_tradition_model</span> <span class="kn">import</span> <span class="n">AbstractTraditionModel</span>
+<span class="kn">from</span> <span class="nn">libcity.utils.GPS_utils</span> <span class="kn">import</span> <span class="n">radian2angle</span><span class="p">,</span> <span class="n">R_EARTH</span><span class="p">,</span> <span class="n">angle2radian</span><span class="p">,</span> <span class="n">dist</span><span class="p">,</span> <span class="n">init_bearing</span>
+
+
+<div class="viewcode-block" id="STMatching"><a class="viewcode-back" href="../../../../libcity/libcity.model.map_matching.STMatching.html#libcity.model.map_matching.STMatching">[docs]</a><span class="k">class</span> <span class="nc">STMatching</span><span class="p">(</span><span class="n">AbstractTraditionModel</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    ST-Matching</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">data_feature</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="n">data_feature</span><span class="p">)</span>
+
+        <span class="c1"># logger</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span> <span class="o">=</span> <span class="n">getLogger</span><span class="p">()</span>
+
+        <span class="c1"># model param</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">k</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>  <span class="c1"># maximum number of candidates of any sampling points</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">r</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>  <span class="c1"># radius of road segment candidate</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mu</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;mu&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sigma</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;sigma&#39;</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">window_size</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;window_size&#39;</span><span class="p">,</span> <span class="mi">40</span><span class="p">)</span>
+
+        <span class="c1"># data param</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">with_time</span> <span class="o">=</span> <span class="n">data_feature</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;with_time&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">with_rd_speed</span> <span class="o">=</span> <span class="n">data_feature</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;with_rd_speed&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">delta_time</span> <span class="o">=</span> <span class="n">data_feature</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;delta_time&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+
+        <span class="c1"># data cache</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rd_nwk</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tra_id</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">trajectory</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">candidates</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">res_dct</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+
+        <span class="c1"># To facilitate the search of candidate points, the road network is indexed using a grid.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lon_r</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lat_r</span> <span class="o">=</span> <span class="kc">None</span>
+
+<div class="viewcode-block" id="STMatching.run"><a class="viewcode-back" href="../../../../libcity/libcity.model.map_matching.STMatching.html#libcity.model.map_matching.STMatching.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="c1"># road network &amp; trajectory</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rd_nwk</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;rd_nwk&#39;</span><span class="p">]</span>
+        <span class="n">trajectory</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;trajectory&#39;</span><span class="p">]</span>
+
+        <span class="c1"># set lon_radius and lat_radius based on the first Node of rd_nwk</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_set_lon_lat_radius</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">rd_nwk</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rd_nwk</span><span class="o">.</span><span class="n">nodes</span><span class="p">)[</span><span class="mi">0</span><span class="p">]][</span><span class="s1">&#39;lon&#39;</span><span class="p">],</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">rd_nwk</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rd_nwk</span><span class="o">.</span><span class="n">nodes</span><span class="p">)[</span><span class="mi">0</span><span class="p">]][</span><span class="s1">&#39;lat&#39;</span><span class="p">]</span>
+        <span class="p">)</span>
+
+        <span class="c1"># deal with every trajectories</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">trajectory</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;begin to map trajectory with id:</span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">key</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">tra_id</span> <span class="o">=</span> <span class="n">key</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">trajectory</span> <span class="o">=</span> <span class="n">value</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_run_one_tra</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;finish mapping trajectory with id:</span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">key</span><span class="p">)</span>
+
+        <span class="c1"># res generated by res_dct</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">lst</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">res_dct</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">tra_lst</span> <span class="o">=</span> <span class="n">trajectory</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">lst</span><span class="p">)):</span>
+                <span class="n">res</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">tra_lst</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">lst</span><span class="p">[</span><span class="n">i</span><span class="p">]])</span>
+        <span class="k">return</span> <span class="n">res</span></div>
+
+<div class="viewcode-block" id="STMatching._run_one_tra"><a class="viewcode-back" href="../../../../libcity/libcity.model.map_matching.STMatching.html#libcity.model.map_matching.STMatching._run_one_tra">[docs]</a>    <span class="k">def</span> <span class="nf">_run_one_tra</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        run ST-Matching for one trajectory</span>
+<span class="sd">        self.trajectory self.rd_nwk</span>
+<span class="sd">        Returns:</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_get_candidates</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;finish getting candidates&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_observation_probability</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;finish calculating observation probability&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_transmission_probability</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;finish calculating transmission probability&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">with_rd_speed</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">with_time</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_temporal_analysis</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;finish spatial analysis&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_find_matched_sequence</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;finish finding matched sequence&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="STMatching._set_lon_lat_radius"><a class="viewcode-back" href="../../../../libcity/libcity.model.map_matching.STMatching.html#libcity.model.map_matching.STMatching._set_lon_lat_radius">[docs]</a>    <span class="k">def</span> <span class="nf">_set_lon_lat_radius</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        get longitude range &amp; latitude range (because radius is actually achieved by a grid search)</span>
+<span class="sd">        Args:</span>
+<span class="sd">            lon: longitude local</span>
+<span class="sd">            lat: latitude local</span>
+<span class="sd">            self.r</span>
+<span class="sd">        Returns:</span>
+<span class="sd">            self.lon_r</span>
+<span class="sd">            self.lat_r</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># lat_r</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lat_r</span> <span class="o">=</span> <span class="n">radian2angle</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">r</span> <span class="o">/</span> <span class="n">R_EARTH</span><span class="p">)</span>
+
+        <span class="c1"># lon_r</span>
+        <span class="n">r_prime</span> <span class="o">=</span> <span class="n">R_EARTH</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">angle2radian</span><span class="p">(</span><span class="n">lat</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lon_r</span> <span class="o">=</span> <span class="n">radian2angle</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">r</span> <span class="o">/</span> <span class="n">r_prime</span><span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="nf">_point_edge_dist</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">edge</span><span class="p">):</span>
+        <span class="n">lat_origin</span> <span class="o">=</span> <span class="n">angle2radian</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rd_nwk</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">edge</span><span class="p">[</span><span class="mi">0</span><span class="p">]][</span><span class="s1">&#39;lat&#39;</span><span class="p">])</span>
+        <span class="n">lon_origin</span> <span class="o">=</span> <span class="n">angle2radian</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rd_nwk</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">edge</span><span class="p">[</span><span class="mi">0</span><span class="p">]][</span><span class="s1">&#39;lon&#39;</span><span class="p">])</span>
+        <span class="n">lat_dest</span> <span class="o">=</span> <span class="n">angle2radian</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rd_nwk</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">edge</span><span class="p">[</span><span class="mi">1</span><span class="p">]][</span><span class="s1">&#39;lat&#39;</span><span class="p">])</span>
+        <span class="n">lon_dest</span> <span class="o">=</span> <span class="n">angle2radian</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rd_nwk</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">edge</span><span class="p">[</span><span class="mi">1</span><span class="p">]][</span><span class="s1">&#39;lon&#39;</span><span class="p">])</span>
+
+        <span class="n">a</span> <span class="o">=</span> <span class="n">dist</span><span class="p">(</span><span class="n">angle2radian</span><span class="p">(</span><span class="n">lat</span><span class="p">),</span> <span class="n">angle2radian</span><span class="p">(</span><span class="n">lon</span><span class="p">),</span> <span class="n">lat_origin</span><span class="p">,</span> <span class="n">lon_origin</span><span class="p">)</span>
+        <span class="n">b</span> <span class="o">=</span> <span class="n">dist</span><span class="p">(</span><span class="n">angle2radian</span><span class="p">(</span><span class="n">lat</span><span class="p">),</span> <span class="n">angle2radian</span><span class="p">(</span><span class="n">lon</span><span class="p">),</span> <span class="n">lat_dest</span><span class="p">,</span> <span class="n">lon_dest</span><span class="p">)</span>
+        <span class="n">c</span> <span class="o">=</span> <span class="n">dist</span><span class="p">(</span><span class="n">lat_origin</span><span class="p">,</span> <span class="n">lon_origin</span><span class="p">,</span> <span class="n">lat_dest</span><span class="p">,</span> <span class="n">lon_dest</span><span class="p">)</span>
+
+        <span class="c1"># if origin point is the closest</span>
+        <span class="k">if</span> <span class="n">b</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">&gt;</span> <span class="n">a</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">c</span> <span class="o">**</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">a</span><span class="p">,</span> <span class="n">edge</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># distance, point</span>
+
+        <span class="c1"># if destination point is the closest</span>
+        <span class="k">elif</span> <span class="n">a</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">&gt;</span> <span class="n">b</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">c</span> <span class="o">**</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">b</span><span class="p">,</span> <span class="n">edge</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="n">c</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">a</span><span class="p">,</span> <span class="n">edge</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="c1"># otherwise, calculate the Vertical length</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span> <span class="o">+</span> <span class="n">c</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">p</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">fabs</span><span class="p">(</span><span class="n">p</span> <span class="o">-</span> <span class="n">a</span><span class="p">)</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">fabs</span><span class="p">(</span><span class="n">p</span> <span class="o">-</span> <span class="n">b</span><span class="p">)</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">fabs</span><span class="p">(</span><span class="n">p</span> <span class="o">-</span> <span class="n">c</span><span class="p">))</span>
+        <span class="k">return</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">s</span> <span class="o">/</span> <span class="n">c</span><span class="p">,</span> <span class="kc">None</span>
+
+<div class="viewcode-block" id="STMatching._get_candidates"><a class="viewcode-back" href="../../../../libcity/libcity.model.map_matching.STMatching.html#libcity.model.map_matching.STMatching._get_candidates">[docs]</a>    <span class="k">def</span> <span class="nf">_get_candidates</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        get candidates of each GPS sample with given road network</span>
+<span class="sd">        Returns:</span>
+<span class="sd">            self.candidates: a list of list.</span>
+<span class="sd">                In each list are tuples (edge, distance, node)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># get trajectory without time</span>
+        <span class="n">traj_lon_lat</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">trajectory</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
+        <span class="k">assert</span> <span class="n">traj_lon_lat</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2</span>
+
+        <span class="c1"># for every GPS sample</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">traj_lon_lat</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+
+            <span class="n">candidate_i</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+            <span class="n">lon</span><span class="p">,</span> <span class="n">lat</span> <span class="o">=</span> <span class="n">traj_lon_lat</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:]</span>
+
+            <span class="c1"># for every edge</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">rd_nwk</span><span class="o">.</span><span class="n">edges</span><span class="p">:</span>
+                <span class="n">origin</span><span class="p">,</span> <span class="n">dest</span> <span class="o">=</span> <span class="n">j</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span>
+                <span class="n">lat_origin</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rd_nwk</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">origin</span><span class="p">][</span><span class="s1">&#39;lat&#39;</span><span class="p">]</span>
+                <span class="n">lon_origin</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rd_nwk</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">origin</span><span class="p">][</span><span class="s1">&#39;lon&#39;</span><span class="p">]</span>
+                <span class="n">lat_dest</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rd_nwk</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">dest</span><span class="p">][</span><span class="s1">&#39;lat&#39;</span><span class="p">]</span>
+                <span class="n">lon_dest</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rd_nwk</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">dest</span><span class="p">][</span><span class="s1">&#39;lon&#39;</span><span class="p">]</span>
+                <span class="k">if</span> <span class="n">lat</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">lat_r</span> <span class="o">&lt;=</span> <span class="n">lat_origin</span> <span class="o">&lt;=</span> <span class="n">lat</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">lat_r</span> \
+                        <span class="ow">and</span> <span class="n">lon</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">lon_r</span> <span class="o">&lt;=</span> <span class="n">lon_origin</span> <span class="o">&lt;=</span> <span class="n">lon</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">lon_r</span> \
+                        <span class="ow">or</span> <span class="n">lat</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">lat_r</span> <span class="o">&lt;=</span> <span class="n">lat_dest</span> <span class="o">&lt;=</span> <span class="n">lat</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">lat_r</span> \
+                        <span class="ow">and</span> <span class="n">lon</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">lon_r</span> <span class="o">&lt;=</span> <span class="n">lon_dest</span> <span class="o">&lt;=</span> <span class="n">lon</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">lon_r</span><span class="p">:</span>
+                    <span class="n">candidate_i</span><span class="o">.</span><span class="n">add</span><span class="p">((</span><span class="n">origin</span><span class="p">,</span> <span class="n">dest</span><span class="p">))</span>
+                <span class="k">elif</span> <span class="n">lat</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">lat_r</span> <span class="o">&lt;=</span> <span class="n">lat_origin</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">lat_dest</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">&lt;=</span> <span class="n">lat</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">lat_r</span> \
+                        <span class="ow">and</span> <span class="n">lon</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">lon_r</span> <span class="o">&lt;=</span> <span class="n">lon_origin</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">lon_dest</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">&lt;=</span> <span class="n">lon</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">lon_r</span><span class="p">:</span>
+                    <span class="n">candidate_i</span><span class="o">.</span><span class="n">add</span><span class="p">((</span><span class="n">origin</span><span class="p">,</span> <span class="n">dest</span><span class="p">))</span>
+            <span class="n">candidate_i_m</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>  <span class="c1"># (edge, distance, point)</span>
+            <span class="k">for</span> <span class="n">edge</span> <span class="ow">in</span> <span class="n">candidate_i</span><span class="p">:</span>
+                <span class="n">distance</span><span class="p">,</span> <span class="n">node</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_point_edge_dist</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">edge</span><span class="p">)</span>
+                <span class="n">candidate_i_m</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">edge</span><span class="p">,</span> <span class="n">distance</span><span class="p">,</span> <span class="n">node</span><span class="p">))</span>
+            <span class="n">candidate_i_m</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">a</span><span class="p">:</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>  <span class="c1"># asc</span>
+            <span class="n">candidate_i_m</span> <span class="o">=</span> <span class="n">candidate_i_m</span><span class="p">[:</span><span class="nb">min</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">k</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">candidate_i_m</span><span class="p">))]</span>
+            <span class="n">candidate_i_k</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+            <span class="k">for</span> <span class="n">edge</span><span class="p">,</span> <span class="n">distance</span><span class="p">,</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">candidate_i_m</span><span class="p">:</span>
+                <span class="n">candidate_i_k</span><span class="p">[</span><span class="n">edge</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;distance&#39;</span><span class="p">:</span> <span class="n">distance</span><span class="p">,</span> <span class="s1">&#39;node&#39;</span><span class="p">:</span> <span class="n">node</span><span class="p">}</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">candidates</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">candidate_i_k</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="STMatching._observation_probability"><a class="viewcode-back" href="../../../../libcity/libcity.model.map_matching.STMatching.html#libcity.model.map_matching.STMatching._observation_probability">[docs]</a>    <span class="k">def</span> <span class="nf">_observation_probability</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># for candidates of every node</span>
+        <span class="k">for</span> <span class="n">candidate_i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">candidates</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">edge</span><span class="p">,</span> <span class="n">dct</span> <span class="ow">in</span> <span class="n">candidate_i</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="n">candidate_i</span><span class="p">[</span><span class="n">edge</span><span class="p">][</span><span class="s1">&#39;N&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">sigma</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span>
+                    <span class="o">-</span> <span class="p">(</span><span class="n">dct</span><span class="p">[</span><span class="s1">&#39;distance&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">mu</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">sigma</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)))</span></div>
+
+<div class="viewcode-block" id="STMatching._transmission_probability"><a class="viewcode-back" href="../../../../libcity/libcity.model.map_matching.STMatching.html#libcity.model.map_matching.STMatching._transmission_probability">[docs]</a>    <span class="k">def</span> <span class="nf">_transmission_probability</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">candidates</span><span class="p">):</span>
+            <span class="c1"># j and k</span>
+            <span class="n">j</span> <span class="o">=</span> <span class="n">i</span> <span class="o">-</span> <span class="mi">1</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">candidates</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">k</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+                <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">candidates</span><span class="p">[</span><span class="n">k</span><span class="p">])</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">k</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">candidates</span><span class="p">):</span>
+                    <span class="n">k</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="k">if</span> <span class="n">k</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">candidates</span><span class="p">):</span>
+                    <span class="k">break</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">k</span> <span class="o">=</span> <span class="n">i</span>
+            <span class="n">d</span> <span class="o">=</span> <span class="n">dist</span><span class="p">(</span>
+                <span class="n">angle2radian</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">trajectory</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="mi">2</span><span class="p">]),</span>
+                <span class="n">angle2radian</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">trajectory</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="mi">1</span><span class="p">]),</span>
+                <span class="n">angle2radian</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">trajectory</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="mi">2</span><span class="p">]),</span>
+                <span class="n">angle2radian</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">trajectory</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
+            <span class="p">)</span>
+            <span class="k">for</span> <span class="n">edge_j</span><span class="p">,</span> <span class="n">dct_j</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">candidates</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="k">for</span> <span class="n">edge_k</span><span class="p">,</span> <span class="n">dct_k</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">candidates</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                    <span class="n">brng_jk</span> <span class="o">=</span> <span class="n">init_bearing</span><span class="p">(</span>
+                        <span class="n">angle2radian</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">trajectory</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="mi">2</span><span class="p">]),</span>
+                        <span class="n">angle2radian</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">trajectory</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="mi">1</span><span class="p">]),</span>
+                        <span class="n">angle2radian</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">trajectory</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="mi">2</span><span class="p">]),</span>
+                        <span class="n">angle2radian</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">trajectory</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
+                    <span class="p">)</span>
+                    <span class="n">brng_edge_j</span> <span class="o">=</span> <span class="n">init_bearing</span><span class="p">(</span>
+                        <span class="n">angle2radian</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rd_nwk</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">edge_j</span><span class="p">[</span><span class="mi">0</span><span class="p">]][</span><span class="s1">&#39;lat&#39;</span><span class="p">]),</span>
+                        <span class="n">angle2radian</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rd_nwk</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">edge_j</span><span class="p">[</span><span class="mi">0</span><span class="p">]][</span><span class="s1">&#39;lon&#39;</span><span class="p">]),</span>
+                        <span class="n">angle2radian</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rd_nwk</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">edge_j</span><span class="p">[</span><span class="mi">1</span><span class="p">]][</span><span class="s1">&#39;lat&#39;</span><span class="p">]),</span>
+                        <span class="n">angle2radian</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rd_nwk</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">edge_j</span><span class="p">[</span><span class="mi">1</span><span class="p">]][</span><span class="s1">&#39;lon&#39;</span><span class="p">]),</span>
+                    <span class="p">)</span>
+                    <span class="k">try</span><span class="p">:</span>
+                        <span class="k">if</span> <span class="n">dct_j</span><span class="p">[</span><span class="s1">&#39;node&#39;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">dct_k</span><span class="p">[</span><span class="s1">&#39;node&#39;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                            <span class="n">result</span> <span class="o">=</span> <span class="n">d</span> <span class="o">/</span> <span class="n">nx</span><span class="o">.</span><span class="n">astar_path_length</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rd_nwk</span><span class="p">,</span> <span class="n">dct_j</span><span class="p">[</span><span class="s1">&#39;node&#39;</span><span class="p">],</span> <span class="n">dct_k</span><span class="p">[</span><span class="s1">&#39;node&#39;</span><span class="p">],</span>
+                                                              <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;distance&#39;</span><span class="p">)</span>
+                        <span class="k">elif</span> <span class="n">dct_j</span><span class="p">[</span><span class="s1">&#39;node&#39;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                            <span class="n">nd2_origin</span> <span class="o">=</span> <span class="n">edge_k</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                            <span class="n">lon</span><span class="p">,</span> <span class="n">lat</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rd_nwk</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">nd2_origin</span><span class="p">][</span><span class="s1">&#39;lon&#39;</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">rd_nwk</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">nd2_origin</span><span class="p">][</span><span class="s1">&#39;lat&#39;</span><span class="p">]</span>
+                            <span class="n">path_len</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">astar_path_length</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rd_nwk</span><span class="p">,</span> <span class="n">dct_j</span><span class="p">[</span><span class="s1">&#39;node&#39;</span><span class="p">],</span> <span class="n">nd2_origin</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;distance&#39;</span><span class="p">)</span>
+                            <span class="n">path_len</span> <span class="o">+=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span>
+                                <span class="n">math</span><span class="o">.</span><span class="n">fabs</span><span class="p">(</span>
+                                    <span class="n">dist</span><span class="p">(</span>
+                                        <span class="n">angle2radian</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">trajectory</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="mi">2</span><span class="p">]),</span>
+                                        <span class="n">angle2radian</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">trajectory</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="mi">1</span><span class="p">]),</span>
+                                        <span class="n">angle2radian</span><span class="p">(</span><span class="n">lat</span><span class="p">),</span>
+                                        <span class="n">angle2radian</span><span class="p">(</span><span class="n">lon</span><span class="p">)</span>
+                                    <span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">-</span> <span class="n">dct_k</span><span class="p">[</span><span class="s1">&#39;distance&#39;</span><span class="p">]</span> <span class="o">**</span> <span class="mi">2</span>
+                                <span class="p">)</span>
+                            <span class="p">)</span>
+                            <span class="k">if</span> <span class="n">edge_j</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">dct_j</span><span class="p">[</span><span class="s1">&#39;edge&#39;</span><span class="p">]:</span>
+                                <span class="n">path_len</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rd_nwk</span><span class="p">[</span><span class="n">edge_j</span><span class="p">[</span><span class="mi">0</span><span class="p">]][</span><span class="n">edge_j</span><span class="p">[</span><span class="mi">1</span><span class="p">]][</span><span class="s1">&#39;distance&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">2</span>
+                            <span class="n">result</span> <span class="o">=</span> <span class="n">d</span> <span class="o">/</span> <span class="n">path_len</span>
+
+                        <span class="k">elif</span> <span class="n">dct_k</span><span class="p">[</span><span class="s1">&#39;node&#39;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                            <span class="n">nd1_destination</span> <span class="o">=</span> <span class="n">edge_j</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+                            <span class="n">lon</span><span class="p">,</span> <span class="n">lat</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rd_nwk</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">nd1_destination</span><span class="p">][</span><span class="s1">&#39;lon&#39;</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">rd_nwk</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">nd1_destination</span><span class="p">][</span>
+                                <span class="s1">&#39;lat&#39;</span><span class="p">]</span>
+                            <span class="n">path_len</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">astar_path_length</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rd_nwk</span><span class="p">,</span> <span class="n">nd1_destination</span><span class="p">,</span> <span class="n">dct_k</span><span class="p">[</span><span class="s1">&#39;node&#39;</span><span class="p">],</span>
+                                                            <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;distance&#39;</span><span class="p">)</span>
+                            <span class="n">path_len</span> <span class="o">+=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span>
+                                            <span class="n">math</span><span class="o">.</span><span class="n">fabs</span><span class="p">(</span>
+                                                <span class="n">dist</span><span class="p">(</span>
+                                                    <span class="n">angle2radian</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">trajectory</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="mi">2</span><span class="p">]),</span>
+                                                    <span class="n">angle2radian</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">trajectory</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="mi">1</span><span class="p">]),</span>
+                                                    <span class="n">angle2radian</span><span class="p">(</span><span class="n">lat</span><span class="p">),</span>
+                                                    <span class="n">angle2radian</span><span class="p">(</span><span class="n">lon</span><span class="p">)</span>
+                                                <span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">-</span> <span class="n">dct_j</span><span class="p">[</span><span class="s1">&#39;distance&#39;</span><span class="p">]</span> <span class="o">**</span> <span class="mi">2</span>
+                                            <span class="p">)</span>
+                                        <span class="p">)</span>
+                            <span class="k">if</span> <span class="n">edge_k</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">dct_k</span><span class="p">[</span><span class="s1">&#39;node&#39;</span><span class="p">]:</span>
+                                <span class="n">path_len</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rd_nwk</span><span class="p">[</span><span class="n">edge_k</span><span class="p">[</span><span class="mi">0</span><span class="p">]][</span><span class="n">edge_k</span><span class="p">[</span><span class="mi">1</span><span class="p">]][</span><span class="s1">&#39;distance&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">2</span>
+                            <span class="n">result</span> <span class="o">=</span> <span class="n">d</span> <span class="o">/</span> <span class="n">path_len</span>
+                        <span class="k">else</span><span class="p">:</span>
+                            <span class="k">if</span> <span class="n">edge_j</span> <span class="o">==</span> <span class="n">edge_k</span> <span class="ow">and</span> <span class="n">math</span><span class="o">.</span><span class="n">fabs</span><span class="p">(</span><span class="n">brng_edge_j</span><span class="o">-</span><span class="n">brng_jk</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">90</span><span class="p">:</span>
+                                <span class="n">result</span> <span class="o">=</span> <span class="mi">1</span>
+                            <span class="k">else</span><span class="p">:</span>
+                                <span class="n">nd1_destination</span> <span class="o">=</span> <span class="n">edge_j</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+                                <span class="n">lon1</span><span class="p">,</span> <span class="n">lat1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rd_nwk</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">nd1_destination</span><span class="p">][</span><span class="s1">&#39;lon&#39;</span><span class="p">],</span> \
+                                    <span class="bp">self</span><span class="o">.</span><span class="n">rd_nwk</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">nd1_destination</span><span class="p">][</span><span class="s1">&#39;lat&#39;</span><span class="p">]</span>
+                                <span class="n">nd2_origin</span> <span class="o">=</span> <span class="n">edge_k</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                                <span class="n">lon2</span><span class="p">,</span> <span class="n">lat2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rd_nwk</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">nd2_origin</span><span class="p">][</span><span class="s1">&#39;lon&#39;</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">rd_nwk</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">nd2_origin</span><span class="p">][</span><span class="s1">&#39;lat&#39;</span><span class="p">]</span>
+                                <span class="n">result</span> <span class="o">=</span> <span class="n">d</span> <span class="o">/</span> <span class="p">(</span>
+                                        <span class="n">nx</span><span class="o">.</span><span class="n">astar_path_length</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rd_nwk</span><span class="p">,</span> <span class="n">nd1_destination</span><span class="p">,</span> <span class="n">nd2_origin</span><span class="p">,</span>
+                                                             <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;distance&#39;</span><span class="p">)</span>
+                                        <span class="o">+</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span>
+                                            <span class="n">math</span><span class="o">.</span><span class="n">fabs</span><span class="p">(</span>
+                                                <span class="n">dist</span><span class="p">(</span>
+                                                    <span class="n">angle2radian</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">trajectory</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="mi">2</span><span class="p">]),</span>
+                                                    <span class="n">angle2radian</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">trajectory</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="mi">1</span><span class="p">]),</span>
+                                                    <span class="n">angle2radian</span><span class="p">(</span><span class="n">lat1</span><span class="p">),</span>
+                                                    <span class="n">angle2radian</span><span class="p">(</span><span class="n">lon1</span><span class="p">)</span>
+                                                <span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">-</span> <span class="n">dct_j</span><span class="p">[</span><span class="s1">&#39;distance&#39;</span><span class="p">]</span> <span class="o">**</span> <span class="mi">2</span>
+                                            <span class="p">)</span>
+                                        <span class="p">)</span>
+                                        <span class="o">+</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span>
+                                            <span class="n">math</span><span class="o">.</span><span class="n">fabs</span><span class="p">(</span>
+                                                <span class="n">dist</span><span class="p">(</span>
+                                                    <span class="n">angle2radian</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">trajectory</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="mi">2</span><span class="p">]),</span>
+                                                    <span class="n">angle2radian</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">trajectory</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="mi">1</span><span class="p">]),</span>
+                                                    <span class="n">angle2radian</span><span class="p">(</span><span class="n">lat2</span><span class="p">),</span>
+                                                    <span class="n">angle2radian</span><span class="p">(</span><span class="n">lon2</span><span class="p">)</span>
+                                                <span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">-</span> <span class="n">dct_k</span><span class="p">[</span><span class="s1">&#39;distance&#39;</span><span class="p">]</span> <span class="o">**</span> <span class="mi">2</span>
+                                            <span class="p">)</span>
+                                        <span class="p">)</span>
+                                <span class="p">)</span>
+                        <span class="k">if</span> <span class="s1">&#39;V&#39;</span> <span class="ow">in</span> <span class="n">dct_j</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+                            <span class="n">dct_j</span><span class="p">[</span><span class="s1">&#39;V&#39;</span><span class="p">][</span><span class="n">edge_k</span><span class="p">]</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+                        <span class="k">else</span><span class="p">:</span>
+                            <span class="n">dct_j</span><span class="p">[</span><span class="s1">&#39;V&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="n">edge_k</span><span class="p">:</span> <span class="nb">min</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="mi">1</span><span class="p">)}</span>
+                    <span class="k">except</span><span class="p">:</span>
+                        <span class="k">if</span> <span class="s1">&#39;V&#39;</span> <span class="ow">in</span> <span class="n">dct_j</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+                            <span class="n">dct_j</span><span class="p">[</span><span class="s1">&#39;V&#39;</span><span class="p">][</span><span class="n">edge_k</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+                        <span class="k">else</span><span class="p">:</span>
+                            <span class="n">dct_j</span><span class="p">[</span><span class="s1">&#39;V&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="n">edge_k</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
+            <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span></div>
+
+<div class="viewcode-block" id="STMatching._temporal_analysis"><a class="viewcode-back" href="../../../../libcity/libcity.model.map_matching.STMatching.html#libcity.model.map_matching.STMatching._temporal_analysis">[docs]</a>    <span class="k">def</span> <span class="nf">_temporal_analysis</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">        &quot;&quot;&quot;</span></div>
+        <span class="c1"># TODO</span>
+
+<div class="viewcode-block" id="STMatching._find_matched_sequence"><a class="viewcode-back" href="../../../../libcity/libcity.model.map_matching.STMatching.html#libcity.model.map_matching.STMatching._find_matched_sequence">[docs]</a>    <span class="k">def</span> <span class="nf">_find_matched_sequence</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">pre</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+        <span class="c1"># for every GPS sample</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">candidates</span><span class="p">)):</span>
+            <span class="c1"># current candidates: self.candidates[i]</span>
+            <span class="c1"># prev candidates: self.candidates[j]</span>
+            <span class="n">pre_i</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+            <span class="c1"># no current candidates</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">candidates</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">pre</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+                <span class="k">continue</span>
+            <span class="c1"># if there are current candidates, find prev index j</span>
+            <span class="n">j</span> <span class="o">=</span> <span class="n">i</span> <span class="o">-</span> <span class="mi">1</span>
+            <span class="k">while</span> <span class="n">j</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">candidates</span><span class="p">[</span><span class="n">j</span><span class="p">])</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">j</span> <span class="o">-=</span> <span class="mi">1</span>
+            <span class="c1"># if j &lt; 0, then i is the first valid index with candidates, score = N</span>
+            <span class="k">if</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">nodes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">candidates</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+                <span class="k">for</span> <span class="n">edge</span><span class="p">,</span> <span class="n">dct</span> <span class="ow">in</span> <span class="n">nodes</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                    <span class="n">dct</span><span class="p">[</span><span class="s1">&#39;score&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dct</span><span class="p">[</span><span class="s1">&#39;N&#39;</span><span class="p">]</span>
+                    <span class="n">pre_i</span><span class="p">[</span><span class="n">edge</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+                <span class="n">pre</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pre_i</span><span class="p">)</span>
+                <span class="k">continue</span>
+            <span class="c1"># j &gt;= 0, calculate score of candidates of GPS sample i</span>
+            <span class="k">for</span> <span class="n">edge</span><span class="p">,</span> <span class="n">dct</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">candidates</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="n">max_score</span> <span class="o">=</span> <span class="o">-</span><span class="nb">float</span><span class="p">(</span><span class="s2">&quot;inf&quot;</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">edge_pre</span><span class="p">,</span> <span class="n">dct_pre</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">candidates</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                    <span class="n">tmp</span> <span class="o">=</span> <span class="n">dct_pre</span><span class="p">[</span><span class="s1">&#39;score&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">dct</span><span class="p">[</span><span class="s1">&#39;N&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">dct_pre</span><span class="p">[</span><span class="s1">&#39;V&#39;</span><span class="p">][</span><span class="n">edge</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span>
+                        <span class="mi">1</span> <span class="k">if</span> <span class="s1">&#39;T&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">dct_pre</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="k">else</span> <span class="n">dct_pre</span><span class="p">[</span><span class="s1">&#39;T&#39;</span><span class="p">][</span><span class="n">edge</span><span class="p">])</span>
+                    <span class="k">if</span> <span class="n">tmp</span> <span class="o">&gt;</span> <span class="n">max_score</span><span class="p">:</span>
+                        <span class="n">max_score</span> <span class="o">=</span> <span class="n">tmp</span>
+                        <span class="n">pre_i</span><span class="p">[</span><span class="n">edge</span><span class="p">]</span> <span class="o">=</span> <span class="n">edge_pre</span>
+                <span class="n">dct</span><span class="p">[</span><span class="s1">&#39;score&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">max_score</span>
+            <span class="n">pre</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pre_i</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">pre</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">trajectory</span><span class="p">)</span>
+
+        <span class="n">res_lst</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">e</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">pre</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+
+            <span class="k">if</span> <span class="n">e</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">pre</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="c1"># if there&#39;s not e, and current i have candidates, init e.</span>
+                    <span class="n">e</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">candidates</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">k</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">candidates</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">k</span><span class="p">][</span><span class="s1">&#39;score&#39;</span><span class="p">])</span>
+                    <span class="n">res_lst</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="c1"># if there&#39;s not e, and current i have no candidates, result is None</span>
+                    <span class="n">res_lst</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">pre</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="c1"># if there&#39;s an e, and current i+1 have candidates, do the &#39;pre&#39; thing</span>
+                    <span class="n">e</span> <span class="o">=</span> <span class="n">pre</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">][</span><span class="n">e</span><span class="p">]</span>
+                    <span class="n">res_lst</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="c1"># if there&#39;s an e, and current i+1 have no candidates, result is None</span>
+                    <span class="n">res_lst</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+
+        <span class="n">res_lst</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">res_dct</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">tra_id</span><span class="p">]</span> <span class="o">=</span> \
+            <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">rd_nwk</span><span class="o">.</span><span class="n">edges</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="s1">&#39;rel_id&#39;</span><span class="p">]</span> <span class="k">if</span> <span class="n">x</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span> <span class="n">res_lst</span><span class="p">))</span></div></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, aptx1231
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,508 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>libcity.model.traffic_speed_prediction.STAGGCN &mdash; Bigscity-LibCity  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> Bigscity-LibCity
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">起步</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/introduction.html">介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/install.html">安装LibCity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/quick_start.html">快速入门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/directory_structure.html">目录结构</a></li>
+</ul>
+<p class="caption"><span class="caption-text">用户指导</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/config_settings.html">参数设置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/data.html">数据说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/model.html">复现模型列表</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/evaluator.html">评估模块简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/executor.html">执行模块简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/usage.html">使用示例</a></li>
+</ul>
+<p class="caption"><span class="caption-text">开发者指导</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/code_style.html">代码风格</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_datasets.html">自定义Dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_models.html">自定义Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_executors.html">自定义Executor</a></li>
+</ul>
+<p class="caption"><span class="caption-text">入门教程</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/install_quick_start.html">安装和快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/run_model.html">运行LibCity中已复现的模型</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/add_model.html">在LibCity中添加新模型</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/hyper_tune.html">使用自动化工具调参</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API文档</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="libcity.config.html">libcity.config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="libcity.data.html">libcity.data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="libcity.evaluator.html">libcity.evaluator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="libcity.executor.html">libcity.executor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="libcity.model.html">libcity.model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="libcity.pipeline.html">libcity.pipeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="libcity.utils.html">libcity.utils</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Bigscity-LibCity</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>libcity.model.traffic_speed_prediction.STAGGCN</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/libcity/libcity.model.traffic_speed_prediction.STAGGCN.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-libcity.model.traffic_speed_prediction.STAGGCN">
+<span id="libcity-model-traffic-speed-prediction-staggcn"></span><h1>libcity.model.traffic_speed_prediction.STAGGCN<a class="headerlink" href="#module-libcity.model.traffic_speed_prediction.STAGGCN" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt id="libcity.model.traffic_speed_prediction.STAGGCN.Chomp1d">
+<em class="property">class </em><code class="sig-prename descclassname">libcity.model.traffic_speed_prediction.STAGGCN.</code><code class="sig-name descname">Chomp1d</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">chomp_size</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/traffic_speed_prediction/STAGGCN.html#Chomp1d"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.traffic_speed_prediction.STAGGCN.Chomp1d" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<dl class="py method">
+<dt id="libcity.model.traffic_speed_prediction.STAGGCN.Chomp1d.forward">
+<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/traffic_speed_prediction/STAGGCN.html#Chomp1d.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.traffic_speed_prediction.STAGGCN.Chomp1d.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Defines the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="libcity.model.traffic_speed_prediction.STAGGCN.Chomp1d.training">
+<code class="sig-name descname">training</code><em class="property">: bool</em><a class="headerlink" href="#libcity.model.traffic_speed_prediction.STAGGCN.Chomp1d.training" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="libcity.model.traffic_speed_prediction.STAGGCN.GATConv">
+<em class="property">class </em><code class="sig-prename descclassname">libcity.model.traffic_speed_prediction.STAGGCN.</code><code class="sig-name descname">GATConv</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">in_channels</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">out_channels</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">heads</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">1</span></em>, <em class="sig-param"><span class="n">concat</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">True</span></em>, <em class="sig-param"><span class="n">negative_slope</span><span class="p">:</span> <span class="n">float</span> <span class="o">=</span> <span class="default_value">0.2</span></em>, <em class="sig-param"><span class="n">dropout</span><span class="p">:</span> <span class="n">float</span> <span class="o">=</span> <span class="default_value">0.0</span></em>, <em class="sig-param"><span class="n">add_self_loops</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">True</span></em>, <em class="sig-param"><span class="n">bias</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">True</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/traffic_speed_prediction/STAGGCN.html#GATConv"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.traffic_speed_prediction.STAGGCN.GATConv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<dl class="py method">
+<dt id="libcity.model.traffic_speed_prediction.STAGGCN.GATConv.forward">
+<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span><span class="p">:</span> <span class="n">torch.Tensor</span></em>, <em class="sig-param"><span class="n">edge_index</span><span class="p">:</span> <span class="n">torch.Tensor</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/traffic_speed_prediction/STAGGCN.html#GATConv.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.traffic_speed_prediction.STAGGCN.GATConv.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Defines the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="libcity.model.traffic_speed_prediction.STAGGCN.GATConv.init_weights">
+<code class="sig-name descname">init_weights</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/traffic_speed_prediction/STAGGCN.html#GATConv.init_weights"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.traffic_speed_prediction.STAGGCN.GATConv.init_weights" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="libcity.model.traffic_speed_prediction.STAGGCN.GATConv.training">
+<code class="sig-name descname">training</code><em class="property">: bool</em><a class="headerlink" href="#libcity.model.traffic_speed_prediction.STAGGCN.GATConv.training" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="libcity.model.traffic_speed_prediction.STAGGCN.LearnedGCN">
+<em class="property">class </em><code class="sig-prename descclassname">libcity.model.traffic_speed_prediction.STAGGCN.</code><code class="sig-name descname">LearnedGCN</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">node_num</span></em>, <em class="sig-param"><span class="n">in_feature</span></em>, <em class="sig-param"><span class="n">out_feature</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/traffic_speed_prediction/STAGGCN.html#LearnedGCN"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.traffic_speed_prediction.STAGGCN.LearnedGCN" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<dl class="py method">
+<dt id="libcity.model.traffic_speed_prediction.STAGGCN.LearnedGCN.forward">
+<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">input</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/traffic_speed_prediction/STAGGCN.html#LearnedGCN.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.traffic_speed_prediction.STAGGCN.LearnedGCN.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Defines the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="libcity.model.traffic_speed_prediction.STAGGCN.LearnedGCN.reset_parameters">
+<code class="sig-name descname">reset_parameters</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/traffic_speed_prediction/STAGGCN.html#LearnedGCN.reset_parameters"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.traffic_speed_prediction.STAGGCN.LearnedGCN.reset_parameters" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="libcity.model.traffic_speed_prediction.STAGGCN.LearnedGCN.training">
+<code class="sig-name descname">training</code><em class="property">: bool</em><a class="headerlink" href="#libcity.model.traffic_speed_prediction.STAGGCN.LearnedGCN.training" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="libcity.model.traffic_speed_prediction.STAGGCN.STAGGCN">
+<em class="property">class </em><code class="sig-prename descclassname">libcity.model.traffic_speed_prediction.STAGGCN.</code><code class="sig-name descname">STAGGCN</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">config</span></em>, <em class="sig-param"><span class="n">data_feature</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/traffic_speed_prediction/STAGGCN.html#STAGGCN"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.traffic_speed_prediction.STAGGCN.STAGGCN" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="libcity.model.abstract_traffic_state_model.html#libcity.model.abstract_traffic_state_model.AbstractTrafficStateModel" title="libcity.model.abstract_traffic_state_model.AbstractTrafficStateModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">libcity.model.abstract_traffic_state_model.AbstractTrafficStateModel</span></code></a></p>
+<dl class="py method">
+<dt id="libcity.model.traffic_speed_prediction.STAGGCN.STAGGCN.calculate_loss">
+<code class="sig-name descname">calculate_loss</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">batch</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/traffic_speed_prediction/STAGGCN.html#STAGGCN.calculate_loss"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.traffic_speed_prediction.STAGGCN.STAGGCN.calculate_loss" title="Permalink to this definition">¶</a></dt>
+<dd><p>输入一个batch的数据，返回训练过程的loss，也就是需要定义一个loss函数</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>batch</strong> (<a class="reference internal" href="libcity.data.batch.html#libcity.data.batch.Batch" title="libcity.data.batch.Batch"><em>Batch</em></a>) – a batch of input</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>return training loss</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>torch.tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="libcity.model.traffic_speed_prediction.STAGGCN.STAGGCN.forward">
+<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">batch</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/traffic_speed_prediction/STAGGCN.html#STAGGCN.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.traffic_speed_prediction.STAGGCN.STAGGCN.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Defines the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="libcity.model.traffic_speed_prediction.STAGGCN.STAGGCN.predict">
+<code class="sig-name descname">predict</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">batch</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/traffic_speed_prediction/STAGGCN.html#STAGGCN.predict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.traffic_speed_prediction.STAGGCN.STAGGCN.predict" title="Permalink to this definition">¶</a></dt>
+<dd><p>输入一个batch的数据，返回对应的预测值，一般应该是**多步预测**的结果，一般会调用nn.Moudle的forward()方法</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>batch</strong> (<a class="reference internal" href="libcity.data.batch.html#libcity.data.batch.Batch" title="libcity.data.batch.Batch"><em>Batch</em></a>) – a batch of input</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>predict result of this batch</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>torch.tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="libcity.model.traffic_speed_prediction.STAGGCN.STAGGCN.training">
+<code class="sig-name descname">training</code><em class="property">: bool</em><a class="headerlink" href="#libcity.model.traffic_speed_prediction.STAGGCN.STAGGCN.training" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="libcity.model.traffic_speed_prediction.STAGGCN.STAGGCNModel">
+<em class="property">class </em><code class="sig-prename descclassname">libcity.model.traffic_speed_prediction.STAGGCN.</code><code class="sig-name descname">STAGGCNModel</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">input_dim</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="n">output_dim</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="n">node_num</span><span class="o">=</span><span class="default_value">325</span></em>, <em class="sig-param"><span class="n">seq_len</span><span class="o">=</span><span class="default_value">12</span></em>, <em class="sig-param"><span class="n">pred_len</span><span class="o">=</span><span class="default_value">6</span></em>, <em class="sig-param"><span class="n">graph_dim</span><span class="o">=</span><span class="default_value">32</span></em>, <em class="sig-param"><span class="n">tcn_dim</span><span class="o">=</span><span class="default_value">[10]</span></em>, <em class="sig-param"><span class="n">attn_head</span><span class="o">=</span><span class="default_value">4</span></em>, <em class="sig-param"><span class="n">choice</span><span class="o">=</span><span class="default_value">[1, 1, 1]</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/traffic_speed_prediction/STAGGCN.html#STAGGCNModel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.traffic_speed_prediction.STAGGCN.STAGGCNModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<dl class="py method">
+<dt id="libcity.model.traffic_speed_prediction.STAGGCN.STAGGCNModel.forward">
+<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">edge_index</span></em>, <em class="sig-param"><span class="n">dtw_edge_index</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/traffic_speed_prediction/STAGGCN.html#STAGGCNModel.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.traffic_speed_prediction.STAGGCN.STAGGCNModel.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Defines the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="libcity.model.traffic_speed_prediction.STAGGCN.STAGGCNModel.training">
+<code class="sig-name descname">training</code><em class="property">: bool</em><a class="headerlink" href="#libcity.model.traffic_speed_prediction.STAGGCN.STAGGCNModel.training" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="libcity.model.traffic_speed_prediction.STAGGCN.STCell">
+<em class="property">class </em><code class="sig-prename descclassname">libcity.model.traffic_speed_prediction.STAGGCN.</code><code class="sig-name descname">STCell</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">node_num</span><span class="o">=</span><span class="default_value">524</span></em>, <em class="sig-param"><span class="n">seq_len</span><span class="o">=</span><span class="default_value">12</span></em>, <em class="sig-param"><span class="n">graph_dim</span><span class="o">=</span><span class="default_value">16</span></em>, <em class="sig-param"><span class="n">tcn_dim</span><span class="o">=</span><span class="default_value">[10]</span></em>, <em class="sig-param"><span class="n">choice</span><span class="o">=</span><span class="default_value">[1, 1, 1]</span></em>, <em class="sig-param"><span class="n">attn_head</span><span class="o">=</span><span class="default_value">2</span></em>, <em class="sig-param"><span class="n">input_dim</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="n">output_dim</span><span class="o">=</span><span class="default_value">1</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/traffic_speed_prediction/STAGGCN.html#STCell"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.traffic_speed_prediction.STAGGCN.STCell" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<dl class="py method">
+<dt id="libcity.model.traffic_speed_prediction.STAGGCN.STCell.forward">
+<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">edge_index</span></em>, <em class="sig-param"><span class="n">dtw_edge_index</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/traffic_speed_prediction/STAGGCN.html#STCell.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.traffic_speed_prediction.STAGGCN.STCell.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Defines the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="libcity.model.traffic_speed_prediction.STAGGCN.STCell.training">
+<code class="sig-name descname">training</code><em class="property">: bool</em><a class="headerlink" href="#libcity.model.traffic_speed_prediction.STAGGCN.STCell.training" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="libcity.model.traffic_speed_prediction.STAGGCN.TemporalBlock">
+<em class="property">class </em><code class="sig-prename descclassname">libcity.model.traffic_speed_prediction.STAGGCN.</code><code class="sig-name descname">TemporalBlock</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">n_inputs</span></em>, <em class="sig-param"><span class="n">n_outputs</span></em>, <em class="sig-param"><span class="n">kernel_size</span></em>, <em class="sig-param"><span class="n">stride</span></em>, <em class="sig-param"><span class="n">dilation</span></em>, <em class="sig-param"><span class="n">padding</span></em>, <em class="sig-param"><span class="n">dropout</span><span class="o">=</span><span class="default_value">0.2</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/traffic_speed_prediction/STAGGCN.html#TemporalBlock"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.traffic_speed_prediction.STAGGCN.TemporalBlock" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<dl class="py method">
+<dt id="libcity.model.traffic_speed_prediction.STAGGCN.TemporalBlock.forward">
+<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/traffic_speed_prediction/STAGGCN.html#TemporalBlock.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.traffic_speed_prediction.STAGGCN.TemporalBlock.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Defines the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="libcity.model.traffic_speed_prediction.STAGGCN.TemporalBlock.init_weights">
+<code class="sig-name descname">init_weights</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/traffic_speed_prediction/STAGGCN.html#TemporalBlock.init_weights"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.traffic_speed_prediction.STAGGCN.TemporalBlock.init_weights" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="libcity.model.traffic_speed_prediction.STAGGCN.TemporalBlock.training">
+<code class="sig-name descname">training</code><em class="property">: bool</em><a class="headerlink" href="#libcity.model.traffic_speed_prediction.STAGGCN.TemporalBlock.training" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="libcity.model.traffic_speed_prediction.STAGGCN.TemporalConvNet">
+<em class="property">class </em><code class="sig-prename descclassname">libcity.model.traffic_speed_prediction.STAGGCN.</code><code class="sig-name descname">TemporalConvNet</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">num_inputs</span></em>, <em class="sig-param"><span class="n">num_channels</span></em>, <em class="sig-param"><span class="n">kernel_size</span><span class="o">=</span><span class="default_value">2</span></em>, <em class="sig-param"><span class="n">dropout</span><span class="o">=</span><span class="default_value">0.2</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/traffic_speed_prediction/STAGGCN.html#TemporalConvNet"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.traffic_speed_prediction.STAGGCN.TemporalConvNet" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<dl class="py method">
+<dt id="libcity.model.traffic_speed_prediction.STAGGCN.TemporalConvNet.forward">
+<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/traffic_speed_prediction/STAGGCN.html#TemporalConvNet.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.traffic_speed_prediction.STAGGCN.TemporalConvNet.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Defines the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="libcity.model.traffic_speed_prediction.STAGGCN.TemporalConvNet.training">
+<code class="sig-name descname">training</code><em class="property">: bool</em><a class="headerlink" href="#libcity.model.traffic_speed_prediction.STAGGCN.TemporalConvNet.training" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt id="libcity.model.traffic_speed_prediction.STAGGCN.add_self_loops">
+<code class="sig-prename descclassname">libcity.model.traffic_speed_prediction.STAGGCN.</code><code class="sig-name descname">add_self_loops</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">edge_index</span><span class="p">:</span> <span class="n">torch.Tensor</span></em>, <em class="sig-param"><span class="n">num_nodes</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>int<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/traffic_speed_prediction/STAGGCN.html#add_self_loops"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.traffic_speed_prediction.STAGGCN.add_self_loops" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="libcity.model.traffic_speed_prediction.STAGGCN.maybe_num_nodes">
+<code class="sig-prename descclassname">libcity.model.traffic_speed_prediction.STAGGCN.</code><code class="sig-name descname">maybe_num_nodes</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">edge_index</span><span class="p">:</span> <span class="n">torch.Tensor</span></em>, <em class="sig-param"><span class="n">num_nodes</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>int<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/traffic_speed_prediction/STAGGCN.html#maybe_num_nodes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.traffic_speed_prediction.STAGGCN.maybe_num_nodes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="libcity.model.traffic_speed_prediction.STAGGCN.remove_self_loops">
+<code class="sig-prename descclassname">libcity.model.traffic_speed_prediction.STAGGCN.</code><code class="sig-name descname">remove_self_loops</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">edge_index</span><span class="p">:</span> <span class="n">torch.Tensor</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/traffic_speed_prediction/STAGGCN.html#remove_self_loops"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.traffic_speed_prediction.STAGGCN.remove_self_loops" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="libcity.model.traffic_speed_prediction.STAGGCN.softmax">
+<code class="sig-prename descclassname">libcity.model.traffic_speed_prediction.STAGGCN.</code><code class="sig-name descname">softmax</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span><span class="p">:</span> <span class="n">torch.Tensor</span></em>, <em class="sig-param"><span class="n">index</span><span class="p">:</span> <span class="n">torch.Tensor</span></em>, <em class="sig-param"><span class="n">num_nodes</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>int<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">dim</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">0</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/traffic_speed_prediction/STAGGCN.html#softmax"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.traffic_speed_prediction.STAGGCN.softmax" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, aptx1231
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

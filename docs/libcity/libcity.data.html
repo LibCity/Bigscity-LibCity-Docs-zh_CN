@@ -1,0 +1,309 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>libcity.data &mdash; Bigscity-LibCity  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="libcity.data.dataset" href="libcity.data.dataset.html" />
+    <link rel="prev" title="libcity.config.config_parser" href="libcity.config.config_parser.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> Bigscity-LibCity
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">起步</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/introduction.html">介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/install.html">安装LibCity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/quick_start.html">快速入门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/directory_structure.html">目录结构</a></li>
+</ul>
+<p class="caption"><span class="caption-text">用户指导</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/config_settings.html">参数设置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/data.html">数据说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/model.html">复现模型列表</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/evaluator.html">评估模块简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/executor.html">执行模块简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/usage.html">使用示例</a></li>
+</ul>
+<p class="caption"><span class="caption-text">开发者指导</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/code_style.html">代码风格</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_datasets.html">自定义Dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_models.html">自定义Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_executors.html">自定义Executor</a></li>
+</ul>
+<p class="caption"><span class="caption-text">入门教程</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/install_quick_start.html">安装和快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/run_model.html">运行LibCity中已复现的模型</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/add_model.html">在LibCity中添加新模型</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/hyper_tune.html">使用自动化工具调参</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API文档</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="libcity.config.html">libcity.config</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">libcity.data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="libcity.data.dataset.html">libcity.data.dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.data.batch.html">libcity.data.batch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.data.list_dataset.html">libcity.data.list_dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.data.utils.html">libcity.data.utils</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="libcity.evaluator.html">libcity.evaluator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="libcity.executor.html">libcity.executor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="libcity.model.html">libcity.model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="libcity.pipeline.html">libcity.pipeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="libcity.utils.html">libcity.utils</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Bigscity-LibCity</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>libcity.data</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/libcity/libcity.data.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="libcity-data">
+<h1>libcity.data<a class="headerlink" href="#libcity-data" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="libcity.data.dataset.html">libcity.data.dataset</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="libcity.data.dataset.trajectory_encoder.html">libcity.data.dataset.trajectory_encoder</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="libcity.data.dataset.trajectory_encoder.abstract_trajectory_encoder.html">libcity.data.dataset.trajectory_encoder.abstract_trajectory_encoder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libcity.data.dataset.trajectory_encoder.atstlstm_encoder.html">libcity.data.dataset.trajectory_encoder.atstlstm_encoder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libcity.data.dataset.trajectory_encoder.cara_encoder.html">libcity.data.dataset.trajectory_encoder.cara_encoder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libcity.data.dataset.trajectory_encoder.hstlstm_encoder.html">libcity.data.dataset.trajectory_encoder.hstlstm_encoder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libcity.data.dataset.trajectory_encoder.lstpm_encoder.html">libcity.data.dataset.trajectory_encoder.lstpm_encoder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libcity.data.dataset.trajectory_encoder.serm_encoder.html">libcity.data.dataset.trajectory_encoder.serm_encoder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libcity.data.dataset.trajectory_encoder.stan_encoder.html">libcity.data.dataset.trajectory_encoder.stan_encoder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libcity.data.dataset.trajectory_encoder.standard_trajectory_encoder.html">libcity.data.dataset.trajectory_encoder.standard_trajectory_encoder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libcity.data.dataset.trajectory_encoder.strnn_encoder.html">libcity.data.dataset.trajectory_encoder.strnn_encoder</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.data.dataset.abstract_dataset.html">libcity.data.dataset.abstract_dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.data.dataset.acfm_dataset.html">libcity.data.dataset.acfm_dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.data.dataset.astgcn_dataset.html">libcity.data.dataset.astgcn_dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.data.dataset.ccrnn_dataset.html">libcity.data.dataset.ccrnn_dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.data.dataset.convgcn_dataset.html">libcity.data.dataset.convgcn_dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.data.dataset.crann_dataset.html">libcity.data.dataset.crann_dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.data.dataset.dmvstnet_dataset.html">libcity.data.dataset.dmvstnet_dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.data.dataset.geosan_dataset.html">libcity.data.dataset.geosan_dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.data.dataset.gman_dataset.html">libcity.data.dataset.gman_dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.data.dataset.gts_dataset.html">libcity.data.dataset.gts_dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.data.dataset.hgcn_dataset.html">libcity.data.dataset.hgcn_dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.data.dataset.map_matching_dataset.html">libcity.data.dataset.map_matching_dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.data.dataset.multi_stgcnet_dataset.html">libcity.data.dataset.multi_stgcnet_dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.data.dataset.pbs_trajectory_dataset.html">libcity.data.dataset.pbs_trajectory_dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.data.dataset.reslstm_dataset.html">libcity.data.dataset.reslstm_dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.data.dataset.staggcn_dataset.html">libcity.data.dataset.staggcn_dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.data.dataset.stdn_dataset.html">libcity.data.dataset.stdn_dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.data.dataset.stg2seq_dataset.html">libcity.data.dataset.stg2seq_dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.data.dataset.stresnet_dataset.html">libcity.data.dataset.stresnet_dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.data.dataset.tgclstm_dataset.html">libcity.data.dataset.tgclstm_dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.data.dataset.traffic_state_cpt_dataset.html">libcity.data.dataset.traffic_state_cpt_dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.data.dataset.traffic_state_datatset.html">libcity.data.dataset.traffic_state_datatset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.data.dataset.traffic_state_grid_dataset.html">libcity.data.dataset.traffic_state_grid_dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.data.dataset.traffic_state_grid_od_dataset.html">libcity.data.dataset.traffic_state_grid_od_dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.data.dataset.traffic_state_od_dataset.html">libcity.data.dataset.traffic_state_od_dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.data.dataset.traffic_state_point_dataset.html">libcity.data.dataset.traffic_state_point_dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.data.dataset.trajectory_dataset.html">libcity.data.dataset.trajectory_dataset</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="libcity.data.batch.html">libcity.data.batch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="libcity.data.list_dataset.html">libcity.data.list_dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="libcity.data.utils.html">libcity.data.utils</a></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="libcity.data.dataset.html" class="btn btn-neutral float-right" title="libcity.data.dataset" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="libcity.config.config_parser.html" class="btn btn-neutral float-left" title="libcity.config.config_parser" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, aptx1231
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

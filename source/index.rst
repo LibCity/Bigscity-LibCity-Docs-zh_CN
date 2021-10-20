@@ -1,9 +1,9 @@
-.. Bigscity-LibTraffic documentation master file, created by
+.. Bigscity-LibCity documentation master file, created by
    sphinx-quickstart on Sat Dec 26 22:20:09 2020.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-欢迎来到 Bigscity-LibTraffic 的文档页!
+欢迎来到 Bigscity-LibCity 的文档页!
 =================================================
    
 .. toctree::
@@ -49,13 +49,13 @@
    :maxdepth: 1
    :caption: API文档
 
-   libtraffic/libtraffic.config
-   libtraffic/libtraffic.data
-   libtraffic/libtraffic.evaluator
-   libtraffic/libtraffic.executor
-   libtraffic/libtraffic.model
-   libtraffic/libtraffic.pipeline
-   libtraffic/libtraffic.utils
+   libcity/libcity.config
+   libcity/libcity.data
+   libcity/libcity.evaluator
+   libcity/libcity.executor
+   libcity/libcity.model
+   libcity/libcity.pipeline
+   libcity/libcity.utils
 
 索引
 ==================

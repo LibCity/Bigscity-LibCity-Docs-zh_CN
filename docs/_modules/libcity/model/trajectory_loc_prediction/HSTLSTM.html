@@ -1,0 +1,597 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>libcity.model.trajectory_loc_prediction.HSTLSTM &mdash; Bigscity-LibCity  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home" alt="Documentation Home"> Bigscity-LibCity
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">起步</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../get_started/introduction.html">介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../get_started/install.html">安装LibCity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../get_started/quick_start.html">快速入门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../get_started/directory_structure.html">目录结构</a></li>
+</ul>
+<p class="caption"><span class="caption-text">用户指导</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user_guide/config_settings.html">参数设置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user_guide/data.html">数据说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user_guide/model.html">复现模型列表</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user_guide/evaluator.html">评估模块简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user_guide/executor.html">执行模块简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user_guide/usage.html">使用示例</a></li>
+</ul>
+<p class="caption"><span class="caption-text">开发者指导</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../developer_guide/code_style.html">代码风格</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../developer_guide/implemented_datasets.html">自定义Dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../developer_guide/implemented_models.html">自定义Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../developer_guide/implemented_executors.html">自定义Executor</a></li>
+</ul>
+<p class="caption"><span class="caption-text">入门教程</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorial/install_quick_start.html">安装和快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorial/run_model.html">运行LibCity中已复现的模型</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorial/add_model.html">在LibCity中添加新模型</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorial/hyper_tune.html">使用自动化工具调参</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API文档</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../libcity/libcity.config.html">libcity.config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../libcity/libcity.data.html">libcity.data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../libcity/libcity.evaluator.html">libcity.evaluator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../libcity/libcity.executor.html">libcity.executor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../libcity/libcity.model.html">libcity.model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../libcity/libcity.pipeline.html">libcity.pipeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../libcity/libcity.utils.html">libcity.utils</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">Bigscity-LibCity</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../../index.html">Module code</a> &raquo;</li>
+        
+      <li>libcity.model.trajectory_loc_prediction.HSTLSTM</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for libcity.model.trajectory_loc_prediction.HSTLSTM</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">torch.nn.functional</span> <span class="k">as</span> <span class="nn">F</span>
+<span class="kn">from</span> <span class="nn">torch.nn</span> <span class="kn">import</span> <span class="n">init</span>
+<span class="kn">from</span> <span class="nn">torch.nn.parameter</span> <span class="kn">import</span> <span class="n">Parameter</span>
+<span class="kn">from</span> <span class="nn">bisect</span> <span class="kn">import</span> <span class="n">bisect</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">torch</span> <span class="kn">import</span> <span class="n">nn</span>
+
+<span class="kn">from</span> <span class="nn">libcity.model.abstract_model</span> <span class="kn">import</span> <span class="n">AbstractModel</span>
+
+
+<div class="viewcode-block" id="STLSTMCell"><a class="viewcode-back" href="../../../../libcity/libcity.model.trajectory_loc_prediction.HSTLSTM.html#libcity.model.trajectory_loc_prediction.HSTLSTM.STLSTMCell">[docs]</a><span class="k">class</span> <span class="nc">STLSTMCell</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A Spatial-Temporal Long Short Term Memory (ST-LSTM) cell.</span>
+<span class="sd">    Kong D, Wu F. HST-LSTM: A Hierarchical Spatial-Temporal Long-Short Term Memory Network</span>
+<span class="sd">    for Location Prediction[C]//IJCAI. 2018: 2341-2347.</span>
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; st_lstm = STLSTMCell(10, 20)</span>
+<span class="sd">        &gt;&gt;&gt; input_l = torch.randn(6, 3, 10)</span>
+<span class="sd">        &gt;&gt;&gt; input_s = torch.randn(6, 3, 10)</span>
+<span class="sd">        &gt;&gt;&gt; input_q = torch.randn(6, 3, 10)</span>
+<span class="sd">        &gt;&gt;&gt; hc = (torch.randn(3, 20), torch.randn(3, 20))</span>
+<span class="sd">        &gt;&gt;&gt; output = []</span>
+<span class="sd">        &gt;&gt;&gt; for i in range(6):</span>
+<span class="sd">        &gt;&gt;&gt;     hc = st_lstm(input_l[i], input_s[i], input_q[i], hc)</span>
+<span class="sd">        &gt;&gt;&gt;     output.append(hc[0])</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_size</span><span class="p">,</span> <span class="n">hidden_size</span><span class="p">,</span> <span class="n">bias</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :param input_size: The number of expected features in the input `x`</span>
+<span class="sd">        :param hidden_size: The number of features in the hidden state `h`</span>
+<span class="sd">        :param bias: If ``False``, then the layer does not use bias weights `b_ih` and `b_hh`. Default: ``True``</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">STLSTMCell</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">input_size</span> <span class="o">=</span> <span class="n">input_size</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hidden_size</span> <span class="o">=</span> <span class="n">hidden_size</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bias</span> <span class="o">=</span> <span class="n">bias</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">w_ih</span> <span class="o">=</span> <span class="n">Parameter</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="mi">4</span> <span class="o">*</span> <span class="n">hidden_size</span><span class="p">,</span> <span class="n">input_size</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">w_hh</span> <span class="o">=</span> <span class="n">Parameter</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="mi">4</span> <span class="o">*</span> <span class="n">hidden_size</span><span class="p">,</span> <span class="n">hidden_size</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">w_s</span> <span class="o">=</span> <span class="n">Parameter</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="mi">3</span> <span class="o">*</span> <span class="n">hidden_size</span><span class="p">,</span> <span class="n">input_size</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">w_q</span> <span class="o">=</span> <span class="n">Parameter</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="mi">3</span> <span class="o">*</span> <span class="n">hidden_size</span><span class="p">,</span> <span class="n">input_size</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">bias</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">b_ih</span> <span class="o">=</span> <span class="n">Parameter</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="mi">4</span> <span class="o">*</span> <span class="n">hidden_size</span><span class="p">))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">b_hh</span> <span class="o">=</span> <span class="n">Parameter</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="mi">4</span> <span class="o">*</span> <span class="n">hidden_size</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">register_parameter</span><span class="p">(</span><span class="s1">&#39;b_ih&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">register_parameter</span><span class="p">(</span><span class="s1">&#39;b_hh&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">reset_parameters</span><span class="p">()</span>
+
+<div class="viewcode-block" id="STLSTMCell.check_forward_input"><a class="viewcode-back" href="../../../../libcity/libcity.model.trajectory_loc_prediction.HSTLSTM.html#libcity.model.trajectory_loc_prediction.HSTLSTM.STLSTMCell.check_forward_input">[docs]</a>    <span class="k">def</span> <span class="nf">check_forward_input</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">input</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">input_size</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span>
+                <span class="s2">&quot;input has inconsistent input_size: got </span><span class="si">{}</span><span class="s2">, expected </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                    <span class="nb">input</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">input_size</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="STLSTMCell.check_forward_hidden"><a class="viewcode-back" href="../../../../libcity/libcity.model.trajectory_loc_prediction.HSTLSTM.html#libcity.model.trajectory_loc_prediction.HSTLSTM.STLSTMCell.check_forward_hidden">[docs]</a>    <span class="k">def</span> <span class="nf">check_forward_hidden</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">,</span> <span class="n">hx</span><span class="p">,</span> <span class="n">hidden_label</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
+        <span class="c1"># type: (Tensor, Tensor, str) -&gt; None</span>
+        <span class="k">if</span> <span class="nb">input</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">!=</span> <span class="n">hx</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span>
+                <span class="s2">&quot;Input batch size </span><span class="si">{}</span><span class="s2"> doesn&#39;t match hidden</span><span class="si">{}</span><span class="s2"> batch size </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                    <span class="nb">input</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">hidden_label</span><span class="p">,</span> <span class="n">hx</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">)))</span>
+
+        <span class="k">if</span> <span class="n">hx</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">hidden_size</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span>
+                <span class="s2">&quot;hidden</span><span class="si">{}</span><span class="s2"> has inconsistent hidden_size: got </span><span class="si">{}</span><span class="s2">, expected </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                    <span class="n">hidden_label</span><span class="p">,</span> <span class="n">hx</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">hidden_size</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="STLSTMCell.reset_parameters"><a class="viewcode-back" href="../../../../libcity/libcity.model.trajectory_loc_prediction.HSTLSTM.html#libcity.model.trajectory_loc_prediction.HSTLSTM.STLSTMCell.reset_parameters">[docs]</a>    <span class="k">def</span> <span class="nf">reset_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">stdv</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">hidden_size</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">weight</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="p">():</span>
+            <span class="n">init</span><span class="o">.</span><span class="n">uniform_</span><span class="p">(</span><span class="n">weight</span><span class="p">,</span> <span class="o">-</span><span class="n">stdv</span><span class="p">,</span> <span class="n">stdv</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="STLSTMCell.st_lstm_cell_cal"><a class="viewcode-back" href="../../../../libcity/libcity.model.trajectory_loc_prediction.HSTLSTM.html#libcity.model.trajectory_loc_prediction.HSTLSTM.STLSTMCell.st_lstm_cell_cal">[docs]</a>    <span class="k">def</span> <span class="nf">st_lstm_cell_cal</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_l</span><span class="p">,</span> <span class="n">input_s</span><span class="p">,</span> <span class="n">input_q</span><span class="p">,</span> <span class="n">hidden</span><span class="p">,</span> <span class="n">cell</span><span class="p">,</span> <span class="n">w_ih</span><span class="p">,</span> <span class="n">w_hh</span><span class="p">,</span> <span class="n">w_s</span><span class="p">,</span> <span class="n">w_q</span><span class="p">,</span> <span class="n">b_ih</span><span class="p">,</span> <span class="n">b_hh</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Proceed calculation of one step of STLSTM.</span>
+<span class="sd">        :param input_l: input of location embedding, shape (batch_size, input_size)</span>
+<span class="sd">        :param input_s: input of spatial embedding, shape (batch_size, input_size)</span>
+<span class="sd">        :param input_q: input of temporal embedding, shape (batch_size, input_size)</span>
+<span class="sd">        :param hidden: hidden state from previous step, shape (batch_size, hidden_size)</span>
+<span class="sd">        :param cell: cell state from previous step, shape (batch_size, hidden_size)</span>
+<span class="sd">        :param w_ih: chunk of weights for process input tensor, shape (4 * hidden_size, input_size)</span>
+<span class="sd">        :param w_hh: chunk of weights for process hidden state tensor, shape (4 * hidden_size, hidden_size)</span>
+<span class="sd">        :param w_s: chunk of weights for process input of spatial embedding, shape (3 * hidden_size, input_size)</span>
+<span class="sd">        :param w_q: chunk of weights for process input of temporal embedding, shape (3 * hidden_size, input_size)</span>
+<span class="sd">        :param b_ih: chunk of biases for process input tensor, shape (4 * hidden_size)</span>
+<span class="sd">        :param b_hh: chunk of biases for process hidden state tensor, shape (4 * hidden_size)</span>
+<span class="sd">        :return: hidden state and cell state of this step.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Shape (batch_size, 4 * hidden_size)</span>
+        <span class="n">gates</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">mm</span><span class="p">(</span><span class="n">input_l</span><span class="p">,</span> <span class="n">w_ih</span><span class="o">.</span><span class="n">t</span><span class="p">())</span> <span class="o">+</span> <span class="n">torch</span><span class="o">.</span><span class="n">mm</span><span class="p">(</span><span class="n">hidden</span><span class="p">,</span> <span class="n">w_hh</span><span class="o">.</span><span class="n">t</span><span class="p">())</span> <span class="o">+</span> <span class="n">b_ih</span> <span class="o">+</span> <span class="n">b_hh</span>
+        <span class="n">in_gate</span><span class="p">,</span> <span class="n">forget_gate</span><span class="p">,</span> <span class="n">cell_gate</span><span class="p">,</span> <span class="n">out_gate</span> <span class="o">=</span> <span class="n">gates</span><span class="o">.</span><span class="n">chunk</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+        <span class="n">ifo_gates</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">((</span><span class="n">in_gate</span><span class="p">,</span> <span class="n">forget_gate</span><span class="p">,</span> <span class="n">out_gate</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># shape (batch_size, 3 * hidden_size)</span>
+        <span class="n">ifo_gates</span> <span class="o">+=</span> <span class="n">torch</span><span class="o">.</span><span class="n">mm</span><span class="p">(</span><span class="n">input_s</span><span class="p">,</span> <span class="n">w_s</span><span class="o">.</span><span class="n">t</span><span class="p">())</span> <span class="o">+</span> <span class="n">torch</span><span class="o">.</span><span class="n">mm</span><span class="p">(</span><span class="n">input_q</span><span class="p">,</span> <span class="n">w_q</span><span class="o">.</span><span class="n">t</span><span class="p">())</span>
+        <span class="n">in_gate</span><span class="p">,</span> <span class="n">forget_gate</span><span class="p">,</span> <span class="n">out_gate</span> <span class="o">=</span> <span class="n">ifo_gates</span><span class="o">.</span><span class="n">chunk</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+        <span class="n">in_gate</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">sigmoid</span><span class="p">(</span><span class="n">in_gate</span><span class="p">)</span>
+        <span class="n">forget_gate</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">sigmoid</span><span class="p">(</span><span class="n">forget_gate</span><span class="p">)</span>
+        <span class="n">cell_gate</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tanh</span><span class="p">(</span><span class="n">cell_gate</span><span class="p">)</span>
+        <span class="n">out_gate</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">sigmoid</span><span class="p">(</span><span class="n">out_gate</span><span class="p">)</span>
+
+        <span class="n">next_cell</span> <span class="o">=</span> <span class="p">(</span><span class="n">forget_gate</span> <span class="o">*</span> <span class="n">cell</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">in_gate</span> <span class="o">*</span> <span class="n">cell_gate</span><span class="p">)</span>
+        <span class="n">next_hidden</span> <span class="o">=</span> <span class="n">out_gate</span> <span class="o">*</span> <span class="n">torch</span><span class="o">.</span><span class="n">tanh</span><span class="p">(</span><span class="n">cell_gate</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">next_hidden</span><span class="p">,</span> <span class="n">next_cell</span></div>
+
+<div class="viewcode-block" id="STLSTMCell.forward"><a class="viewcode-back" href="../../../../libcity/libcity.model.trajectory_loc_prediction.HSTLSTM.html#libcity.model.trajectory_loc_prediction.HSTLSTM.STLSTMCell.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_l</span><span class="p">,</span> <span class="n">input_s</span><span class="p">,</span> <span class="n">input_q</span><span class="p">,</span> <span class="n">hc</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Proceed one step forward propagation of ST-LSTM.</span>
+<span class="sd">        :param input_l: input of location embedding vector, shape (batch_size, input_size)</span>
+<span class="sd">        :param input_s: input of spatial embedding vector, shape (batch_size, input_size)</span>
+<span class="sd">        :param input_q: input of temporal embedding vector, shape (batch_size, input_size)</span>
+<span class="sd">        :param hc: tuple containing hidden state and cell state of previous step.</span>
+<span class="sd">        :return: hidden state and cell state of this step.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">check_forward_input</span><span class="p">(</span><span class="n">input_l</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">check_forward_input</span><span class="p">(</span><span class="n">input_s</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">check_forward_input</span><span class="p">(</span><span class="n">input_q</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">hc</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">zeros</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">input_l</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">hidden_size</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">input_l</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">input_l</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+            <span class="n">hc</span> <span class="o">=</span> <span class="p">(</span><span class="n">zeros</span><span class="p">,</span> <span class="n">zeros</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">check_forward_hidden</span><span class="p">(</span><span class="n">input_l</span><span class="p">,</span> <span class="n">hc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;[0]&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">check_forward_hidden</span><span class="p">(</span><span class="n">input_l</span><span class="p">,</span> <span class="n">hc</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;[0]&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">check_forward_hidden</span><span class="p">(</span><span class="n">input_s</span><span class="p">,</span> <span class="n">hc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;[0]&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">check_forward_hidden</span><span class="p">(</span><span class="n">input_s</span><span class="p">,</span> <span class="n">hc</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;[0]&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">check_forward_hidden</span><span class="p">(</span><span class="n">input_q</span><span class="p">,</span> <span class="n">hc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;[0]&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">check_forward_hidden</span><span class="p">(</span><span class="n">input_q</span><span class="p">,</span> <span class="n">hc</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;[0]&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">st_lstm_cell_cal</span><span class="p">(</span><span class="n">input_l</span><span class="o">=</span><span class="n">input_l</span><span class="p">,</span> <span class="n">input_s</span><span class="o">=</span><span class="n">input_s</span><span class="p">,</span> <span class="n">input_q</span><span class="o">=</span><span class="n">input_q</span><span class="p">,</span>
+                                     <span class="n">hidden</span><span class="o">=</span><span class="n">hc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">cell</span><span class="o">=</span><span class="n">hc</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+                                     <span class="n">w_ih</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">w_ih</span><span class="p">,</span> <span class="n">w_hh</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">w_hh</span><span class="p">,</span> <span class="n">w_s</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">w_s</span><span class="p">,</span> <span class="n">w_q</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">w_q</span><span class="p">,</span>
+                                     <span class="n">b_ih</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">b_ih</span><span class="p">,</span> <span class="n">b_hh</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">b_hh</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="cal_slot_distance"><a class="viewcode-back" href="../../../../libcity/libcity.model.trajectory_loc_prediction.HSTLSTM.html#libcity.model.trajectory_loc_prediction.HSTLSTM.cal_slot_distance">[docs]</a><span class="k">def</span> <span class="nf">cal_slot_distance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">slots</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculate a value&#39;s distance with nearest lower bound and higher bound in slots.</span>
+<span class="sd">    :param value: The value to be calculated.</span>
+<span class="sd">    :param slots: values of slots, needed to be sorted.</span>
+<span class="sd">    :return: normalized distance with lower bound and higher bound,</span>
+<span class="sd">        and index of lower bound and higher bound.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">higher_bound</span> <span class="o">=</span> <span class="n">bisect</span><span class="p">(</span><span class="n">slots</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+    <span class="n">lower_bound</span> <span class="o">=</span> <span class="n">higher_bound</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="k">if</span> <span class="n">higher_bound</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">slots</span><span class="p">):</span>
+        <span class="k">return</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="n">lower_bound</span><span class="p">,</span> <span class="n">lower_bound</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">lower_value</span> <span class="o">=</span> <span class="n">slots</span><span class="p">[</span><span class="n">lower_bound</span><span class="p">]</span>
+        <span class="n">higher_value</span> <span class="o">=</span> <span class="n">slots</span><span class="p">[</span><span class="n">higher_bound</span><span class="p">]</span>
+        <span class="n">total_distance</span> <span class="o">=</span> <span class="n">higher_value</span> <span class="o">-</span> <span class="n">lower_value</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">value</span> <span class="o">-</span> <span class="n">lower_value</span><span class="p">)</span> <span class="o">/</span> <span class="n">total_distance</span><span class="p">,</span> <span class="p">(</span><span class="n">higher_value</span> <span class="o">-</span>
+                                                        <span class="n">value</span><span class="p">)</span> <span class="o">/</span> <span class="n">total_distance</span><span class="p">,</span> <span class="n">lower_bound</span><span class="p">,</span> <span class="n">higher_bound</span></div>
+
+
+<div class="viewcode-block" id="cal_slot_distance_batch"><a class="viewcode-back" href="../../../../libcity/libcity.model.trajectory_loc_prediction.HSTLSTM.html#libcity.model.trajectory_loc_prediction.HSTLSTM.cal_slot_distance_batch">[docs]</a><span class="k">def</span> <span class="nf">cal_slot_distance_batch</span><span class="p">(</span><span class="n">batch_value</span><span class="p">,</span> <span class="n">slots</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Proceed `cal_slot_distance` on a batch of data.</span>
+<span class="sd">    :param batch_value: a batch of value, size (batch_size, step)</span>
+<span class="sd">    :param slots: values of slots, needed to be sorted.</span>
+<span class="sd">    :return: batch of distances and indexes. All with shape (batch_size, step).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Lower bound distance, higher bound distance, lower bound, higher bound.</span>
+    <span class="n">ld</span><span class="p">,</span> <span class="n">hd</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[],</span> <span class="p">[],</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">batch</span> <span class="ow">in</span> <span class="n">batch_value</span><span class="p">:</span>
+        <span class="n">ld_row</span><span class="p">,</span> <span class="n">hd_row</span><span class="p">,</span> <span class="n">l_row</span><span class="p">,</span> <span class="n">h_row</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[],</span> <span class="p">[],</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">step</span> <span class="ow">in</span> <span class="n">batch</span><span class="p">:</span>
+            <span class="n">ld_one</span><span class="p">,</span> <span class="n">hd_one</span><span class="p">,</span> <span class="n">l_one</span><span class="p">,</span> <span class="n">h_one</span> <span class="o">=</span> <span class="n">cal_slot_distance</span><span class="p">(</span><span class="n">step</span><span class="p">,</span> <span class="n">slots</span><span class="p">)</span>
+            <span class="n">ld_row</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ld_one</span><span class="p">)</span>
+            <span class="n">hd_row</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">hd_one</span><span class="p">)</span>
+            <span class="n">l_row</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">l_one</span><span class="p">)</span>
+            <span class="n">h_row</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">h_one</span><span class="p">)</span>
+        <span class="n">ld</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ld_row</span><span class="p">)</span>
+        <span class="n">hd</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">hd_row</span><span class="p">)</span>
+        <span class="n">l</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">l_row</span><span class="p">)</span>
+        <span class="n">h</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">h_row</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">ld</span><span class="p">,</span> <span class="n">hd</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">h</span></div>
+
+
+<div class="viewcode-block" id="construct_slots"><a class="viewcode-back" href="../../../../libcity/libcity.model.trajectory_loc_prediction.HSTLSTM.html#libcity.model.trajectory_loc_prediction.HSTLSTM.construct_slots">[docs]</a><span class="k">def</span> <span class="nf">construct_slots</span><span class="p">(</span><span class="n">min_value</span><span class="p">,</span> <span class="n">max_value</span><span class="p">,</span> <span class="n">num_slots</span><span class="p">,</span> <span class="nb">type</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Construct values of slots given min value and max value.</span>
+<span class="sd">    :param min_value: minimum value.</span>
+<span class="sd">    :param max_value: maximum value.</span>
+<span class="sd">    :param num_slots: number of slots to construct.</span>
+<span class="sd">    :param type: type of slots to construct, &#39;linear&#39; or &#39;exp&#39;.</span>
+<span class="sd">    :return: values of slots.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">type</span> <span class="o">==</span> <span class="s1">&#39;exp&#39;</span><span class="p">:</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="p">(</span><span class="n">max_value</span> <span class="o">-</span> <span class="n">min_value</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">num_slots</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">n</span> <span class="o">*</span> <span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">min_value</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_slots</span><span class="p">)]</span>
+    <span class="k">elif</span> <span class="nb">type</span> <span class="o">==</span> <span class="s1">&#39;linear&#39;</span><span class="p">:</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="p">(</span><span class="n">max_value</span> <span class="o">-</span> <span class="n">min_value</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">num_slots</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">n</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="n">min_value</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_slots</span><span class="p">)]</span></div>
+
+
+<div class="viewcode-block" id="STLSTM"><a class="viewcode-back" href="../../../../libcity/libcity.model.trajectory_loc_prediction.HSTLSTM.html#libcity.model.trajectory_loc_prediction.HSTLSTM.STLSTM">[docs]</a><span class="k">class</span> <span class="nc">STLSTM</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    One layer, batch-first Spatial-Temporal LSTM network.</span>
+<span class="sd">    Kong D, Wu F. HST-LSTM: A Hierarchical Spatial-Temporal Long-Short Term Memory Network</span>
+<span class="sd">    for Location Prediction[C]//IJCAI. 2018: 2341-2347.</span>
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; st_lstm = STLSTM(10, 20)</span>
+<span class="sd">        &gt;&gt;&gt; input_l = torch.randn(6, 3, 10)</span>
+<span class="sd">        &gt;&gt;&gt; input_s = torch.randn(6, 3, 10)</span>
+<span class="sd">        &gt;&gt;&gt; input_q = torch.randn(6, 3, 10)</span>
+<span class="sd">        &gt;&gt;&gt; hidden_out, cell_out = st_lstm(input_l, input_s, input_q)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_size</span><span class="p">,</span> <span class="n">hidden_size</span><span class="p">,</span> <span class="n">bias</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :param input_size: The number of expected features in the input `x`</span>
+<span class="sd">        :param hidden_size: The number of features in the hidden state `h`</span>
+<span class="sd">        :param bias: If ``False``, then the layer does not use bias weights `b_ih` and `b_hh`. Default: ``True``</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">STLSTM</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">input_size</span> <span class="o">=</span> <span class="n">input_size</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hidden_size</span> <span class="o">=</span> <span class="n">hidden_size</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bias</span> <span class="o">=</span> <span class="n">bias</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cell</span> <span class="o">=</span> <span class="n">STLSTMCell</span><span class="p">(</span><span class="n">input_size</span><span class="p">,</span> <span class="n">hidden_size</span><span class="p">,</span> <span class="n">bias</span><span class="p">)</span>
+
+<div class="viewcode-block" id="STLSTM.check_forward_input"><a class="viewcode-back" href="../../../../libcity/libcity.model.trajectory_loc_prediction.HSTLSTM.html#libcity.model.trajectory_loc_prediction.HSTLSTM.STLSTM.check_forward_input">[docs]</a>    <span class="k">def</span> <span class="nf">check_forward_input</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_l</span><span class="p">,</span> <span class="n">input_s</span><span class="p">,</span> <span class="n">input_q</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">input_l</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="n">input_s</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="n">input_q</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">1</span><span class="p">)):</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span>
+                <span class="s2">&quot;input has inconsistent input_size: got </span><span class="si">{}</span><span class="s2">, expected </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                    <span class="nb">input</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">input_size</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="STLSTM.forward"><a class="viewcode-back" href="../../../../libcity/libcity.model.trajectory_loc_prediction.HSTLSTM.html#libcity.model.trajectory_loc_prediction.HSTLSTM.STLSTM.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_l</span><span class="p">,</span> <span class="n">input_s</span><span class="p">,</span> <span class="n">input_q</span><span class="p">,</span> <span class="n">hc</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Proceed forward propagation of ST-LSTM network.</span>
+<span class="sd">        :param input_l: input of location embedding vector, shape (batch_size, step, input_size)</span>
+<span class="sd">        :param input_s: input of spatial embedding vector, shape (batch_size, step, input_size)</span>
+<span class="sd">        :param input_q: input of temporal embedding vector, shape (batch_size, step, input_size)</span>
+<span class="sd">        :param hc: tuple containing initial hidden state and cell state, optional.</span>
+<span class="sd">        :return: hidden states and cell states produced by iterate through the steps.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">output_hidden</span><span class="p">,</span> <span class="n">output_cell</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">check_forward_input</span><span class="p">(</span><span class="n">input_l</span><span class="p">,</span> <span class="n">input_s</span><span class="p">,</span> <span class="n">input_q</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">step</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">input_l</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">1</span><span class="p">)):</span>
+            <span class="n">hc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cell</span><span class="p">(</span><span class="n">input_l</span><span class="p">[:,</span> <span class="n">step</span><span class="p">,</span> <span class="p">:],</span> <span class="n">input_s</span><span class="p">[:,</span> <span class="n">step</span><span class="p">,</span> <span class="p">:],</span> <span class="n">input_q</span><span class="p">[:,</span> <span class="n">step</span><span class="p">,</span> <span class="p">:],</span> <span class="n">hc</span><span class="p">)</span>
+            <span class="n">output_hidden</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">hc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+            <span class="n">output_cell</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">hc</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+        <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">output_hidden</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">output_cell</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="HSTLSTM"><a class="viewcode-back" href="../../../../libcity/libcity.model.trajectory_loc_prediction.HSTLSTM.html#libcity.model.trajectory_loc_prediction.HSTLSTM.HSTLSTM">[docs]</a><span class="k">class</span> <span class="nc">HSTLSTM</span><span class="p">(</span><span class="n">AbstractModel</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    RNN classifier using ST-LSTM as its core.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">data_feature</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">HSTLSTM</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="n">data_feature</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tim_slot_max</span> <span class="o">=</span> <span class="n">data_feature</span><span class="p">[</span><span class="s1">&#39;tim_slot_max&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dis_slot_max</span> <span class="o">=</span> <span class="n">data_feature</span><span class="p">[</span><span class="s1">&#39;dis_slot_max&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tim_slot_len</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;tim_slot_len&#39;</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">tim_slot_max</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dis_slot_len</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;dis_slot_len&#39;</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">dis_slot_max</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tim_slots</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">tim_slot_max</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">tim_slot_len</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dis_slots</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dis_slot_max</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dis_slot_len</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">embed_size</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s2">&quot;embed_size&quot;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hidden_size</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;hidden_size&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">loc_size</span> <span class="o">=</span> <span class="n">data_feature</span><span class="p">[</span><span class="s1">&#39;loc_size&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">device</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;device&#39;</span><span class="p">]</span>
+        <span class="c1"># Initialization of network parameters.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">st_lstm</span> <span class="o">=</span> <span class="n">STLSTM</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">embed_size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">hidden_size</span><span class="p">)</span>
+        <span class="c1"># output layer</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">linear</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">hidden_size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">loc_size</span><span class="p">)</span>
+
+        <span class="c1"># Embedding matrix for every temporal and spatial slots.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">embed_s</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Embedding</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tim_slot_len</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">embed_size</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">embed_s</span><span class="o">.</span><span class="n">weight</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">normal_</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">embed_q</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Embedding</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dis_slot_len</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">embed_size</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">embed_q</span><span class="o">.</span><span class="n">weight</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">normal_</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">embed_l</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Embedding</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">loc_size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">embed_size</span><span class="p">)</span>
+
+        <span class="c1"># Initialization of network components.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">loss_func</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">NLLLoss</span><span class="p">()</span>
+
+<div class="viewcode-block" id="HSTLSTM.place_parameters"><a class="viewcode-back" href="../../../../libcity/libcity.model.trajectory_loc_prediction.HSTLSTM.html#libcity.model.trajectory_loc_prediction.HSTLSTM.HSTLSTM.place_parameters">[docs]</a>    <span class="k">def</span> <span class="nf">place_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ld</span><span class="p">,</span> <span class="n">hd</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">h</span><span class="p">):</span>
+        <span class="n">ld</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span><span class="p">(</span><span class="n">ld</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+        <span class="n">hd</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span><span class="p">(</span><span class="n">hd</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+        <span class="n">l</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">LongTensor</span><span class="p">(</span><span class="n">l</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+        <span class="n">h</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">LongTensor</span><span class="p">(</span><span class="n">h</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">ld</span><span class="p">,</span> <span class="n">hd</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">h</span></div>
+
+<div class="viewcode-block" id="HSTLSTM.cal_inter"><a class="viewcode-back" href="../../../../libcity/libcity.model.trajectory_loc_prediction.HSTLSTM.html#libcity.model.trajectory_loc_prediction.HSTLSTM.HSTLSTM.cal_inter">[docs]</a>    <span class="k">def</span> <span class="nf">cal_inter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ld</span><span class="p">,</span> <span class="n">hd</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">embed</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Calculate a linear interpolation.</span>
+<span class="sd">        :param ld: Distances to lower bound, shape (batch_size, step)</span>
+<span class="sd">        :param hd: Distances to higher bound, shape (batch_size, step)</span>
+<span class="sd">        :param l: Lower bound indexes, shape (batch_size, step)</span>
+<span class="sd">        :param h: Higher bound indexes, shape (batch_size, step)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Fetch the embed of higher and lower bound.</span>
+        <span class="c1"># Each result shape (batch_size, step, input_size)</span>
+        <span class="n">l_embed</span> <span class="o">=</span> <span class="n">embed</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>
+        <span class="n">h_embed</span> <span class="o">=</span> <span class="n">embed</span><span class="p">(</span><span class="n">h</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">hd</span><span class="p">],</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">l_embed</span> <span class="o">+</span> <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">ld</span><span class="p">],</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">h_embed</span></div>
+
+<div class="viewcode-block" id="HSTLSTM.forward"><a class="viewcode-back" href="../../../../libcity/libcity.model.trajectory_loc_prediction.HSTLSTM.html#libcity.model.trajectory_loc_prediction.HSTLSTM.HSTLSTM.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">batch_l</span><span class="p">,</span> <span class="n">batch_t</span><span class="p">,</span> <span class="n">batch_d</span><span class="p">,</span> <span class="n">origin_len</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Process forward propagation of ST-LSTM classifier.</span>
+<span class="sd">        :param batch_l: batch of input location sequences,</span>
+<span class="sd">            size (batch_size, time_step, input_size)</span>
+<span class="sd">        :param batch_t: batch of temporal interval value, size (batch_size, step)</span>
+<span class="sd">        :param batch_d: batch of spatial distance value, size (batch_size, step)</span>
+<span class="sd">        :return: prediction result of this batch, size (batch_size, output_size, step).</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">t_ld</span><span class="p">,</span> <span class="n">t_hd</span><span class="p">,</span> <span class="n">t_l</span><span class="p">,</span> <span class="n">t_h</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">place_parameters</span><span class="p">(</span><span class="o">*</span><span class="n">cal_slot_distance_batch</span><span class="p">(</span><span class="n">batch_t</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">tim_slots</span><span class="p">))</span>
+        <span class="n">d_ld</span><span class="p">,</span> <span class="n">d_hd</span><span class="p">,</span> <span class="n">d_l</span><span class="p">,</span> <span class="n">d_h</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">place_parameters</span><span class="p">(</span><span class="o">*</span><span class="n">cal_slot_distance_batch</span><span class="p">(</span><span class="n">batch_d</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">dis_slots</span><span class="p">))</span>
+
+        <span class="n">batch_s</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cal_inter</span><span class="p">(</span><span class="n">t_ld</span><span class="p">,</span> <span class="n">t_hd</span><span class="p">,</span> <span class="n">t_l</span><span class="p">,</span> <span class="n">t_h</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">embed_s</span><span class="p">)</span>
+        <span class="n">batch_q</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cal_inter</span><span class="p">(</span><span class="n">d_ld</span><span class="p">,</span> <span class="n">d_hd</span><span class="p">,</span> <span class="n">d_l</span><span class="p">,</span> <span class="n">d_h</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">embed_q</span><span class="p">)</span>
+        <span class="n">batch_l</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">embed_l</span><span class="p">(</span><span class="n">batch_l</span><span class="p">)</span>
+
+        <span class="n">hidden_out</span><span class="p">,</span> <span class="n">cell_out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">st_lstm</span><span class="p">(</span><span class="n">batch_l</span><span class="p">,</span> <span class="n">batch_s</span><span class="p">,</span> <span class="n">batch_q</span><span class="p">)</span>
+        <span class="c1"># we do padding</span>
+        <span class="c1"># 因为是补齐了的，所以需要找到真正的 out</span>
+        <span class="n">final_out_index</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">origin_len</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+        <span class="n">final_out_index</span> <span class="o">=</span> <span class="n">final_out_index</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">final_out_index</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">final_out_index</span> <span class="o">=</span> <span class="n">final_out_index</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">hidden_size</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">gather</span><span class="p">(</span><span class="n">hidden_out</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">final_out_index</span><span class="p">)</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># batch_size * hidden_size</span>
+        <span class="n">linear_out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">linear</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">F</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">linear_out</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="HSTLSTM.predict"><a class="viewcode-back" href="../../../../libcity/libcity.model.trajectory_loc_prediction.HSTLSTM.html#libcity.model.trajectory_loc_prediction.HSTLSTM.HSTLSTM.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">batch</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Predict a batch of data.</span>
+<span class="sd">        :param batch_l: batch of input location sequences,</span>
+<span class="sd">            size (batch_size, time_step, input_size)</span>
+<span class="sd">        :param batch_t: batch of temporal interval value, size (batch_size, step)</span>
+<span class="sd">        :param batch_d: batch of spatial distance value, size (batch_size, step)</span>
+<span class="sd">        :return: batch of predicted class indices, size (batch_size).</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">batch_l</span> <span class="o">=</span> <span class="n">batch</span><span class="p">[</span><span class="s1">&#39;current_loc&#39;</span><span class="p">]</span>
+        <span class="n">batch_t</span> <span class="o">=</span> <span class="n">batch</span><span class="p">[</span><span class="s1">&#39;tim_interval&#39;</span><span class="p">]</span>
+        <span class="n">batch_d</span> <span class="o">=</span> <span class="n">batch</span><span class="p">[</span><span class="s1">&#39;dis&#39;</span><span class="p">]</span>
+        <span class="n">origin_len</span> <span class="o">=</span> <span class="n">batch</span><span class="o">.</span><span class="n">get_origin_len</span><span class="p">(</span><span class="s1">&#39;current_loc&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">batch_l</span><span class="p">,</span> <span class="n">batch_t</span><span class="p">,</span> <span class="n">batch_d</span><span class="p">,</span> <span class="n">origin_len</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="HSTLSTM.calculate_loss"><a class="viewcode-back" href="../../../../libcity/libcity.model.trajectory_loc_prediction.HSTLSTM.html#libcity.model.trajectory_loc_prediction.HSTLSTM.HSTLSTM.calculate_loss">[docs]</a>    <span class="k">def</span> <span class="nf">calculate_loss</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">batch</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Train model using one batch of data and return loss value.</span>
+<span class="sd">        :param model: One instance of STLSTMClassifier.</span>
+<span class="sd">        :param batch_l: batch of input location sequences,</span>
+<span class="sd">            size (batch_size, time_step, input_size)</span>
+<span class="sd">        :param batch_t: batch of temporal interval value, size (batch_size, step)</span>
+<span class="sd">        :param batch_d: batch of spatial distance value, size (batch_size, step)</span>
+<span class="sd">        :param batch_label: batch of label, size (batch_size)</span>
+<span class="sd">        :return: loss value.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">batch_l</span> <span class="o">=</span> <span class="n">batch</span><span class="p">[</span><span class="s1">&#39;current_loc&#39;</span><span class="p">]</span>
+        <span class="n">batch_t</span> <span class="o">=</span> <span class="n">batch</span><span class="p">[</span><span class="s1">&#39;tim_interval&#39;</span><span class="p">]</span>
+        <span class="n">batch_d</span> <span class="o">=</span> <span class="n">batch</span><span class="p">[</span><span class="s1">&#39;dis&#39;</span><span class="p">]</span>
+        <span class="n">origin_len</span> <span class="o">=</span> <span class="n">batch</span><span class="o">.</span><span class="n">get_origin_len</span><span class="p">(</span><span class="s1">&#39;current_loc&#39;</span><span class="p">)</span>
+        <span class="n">prediction</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">batch_l</span><span class="p">,</span> <span class="n">batch_t</span><span class="p">,</span> <span class="n">batch_d</span><span class="p">,</span> <span class="n">origin_len</span><span class="p">)</span>
+        <span class="n">batch_label</span> <span class="o">=</span> <span class="n">batch</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">]</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">loss_func</span><span class="p">(</span><span class="n">prediction</span><span class="p">,</span> <span class="n">batch_label</span><span class="p">)</span></div></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, aptx1231
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -10,7 +10,7 @@
 
 **描述：** 由环路探测器在高速公路上收集，包含来自 207 个传感器的交通速度数据。
 
-### Los\_loop
+### LOS_LOOP
 
 **地点：** Los Angeles County, USA
 
@@ -32,7 +32,7 @@
 
 ### LOOP\_SEATTLE
 
-**地点：** Greater Seattle Area, China
+**地点：** Greater Seattle Area, USA
 
 **时期：** 2015 全年
 
@@ -40,7 +40,7 @@
 
 **描述：** Loop Seattle 数据集由部署在西雅图地区高速公路(I-5、I-405、I-90和SR-520)上的感应环路探测器收集，包含来自323个传感器站的交通状态数据。
 
-### Q-TRAFFIC
+### Q_TRAFFIC
 
 **地点：** Beijing, China
 
@@ -60,7 +60,7 @@
 
 **描述：** PEMS 记录加利福尼亚高速公路的速度数据，包括时间小时，平均时间，车道点。
 
-### PeMSD3
+### PEMSD3
 
 **地点：** District 3 of California, USA
 
@@ -70,7 +70,7 @@
 
 **描述：** PeMSD3 数据集包括 358 个传感器和流量信息。
 
-### PeMSD4
+### PEMSD4
 
 **地点：** San Francisco Bay Area, USA
 
@@ -90,7 +90,7 @@
 
 **描述：** PeMSD7 数据集包含883个传感器站的交通流量信息。
 
-### PeMSD8
+### PEMSD8
 
 **地点：** San Bernardino Area, USA
 
@@ -110,7 +110,7 @@
 
 **描述：** PeMSD7(M) 数据集描述了加州第7区228个站点的高速公路速度信息。
 
-### PEMS-BAY
+### PEMS_BAY
 
 **地点：** San Francisco Bay Area, USA
 
@@ -170,7 +170,7 @@
 
 **描述：**  该数据集是根据 2019 年 1 月收集的杭州地铁系统交易记录创建的。该系统拥有 80 个运营站点和 248 个边，每天有 235 万乘客。
 
-### TaxiBJ
+### TAXIBJ
 
 **地点：** Beijing, China
 
@@ -301,6 +301,26 @@ Apr. 10, 2016
 **链接：**  https://dmis.korea.ac.kr/cape
 
 **描述：**  该数据集最大的特点是每条签到记录不仅包含POI信息，还包含用户创建签到记录时写入的文本信息。因此，该数据集对于将轨迹语义特征纳入轨迹预测的相关研究尤为重要。
+
+### Seattle
+
+**地点：**  Seattle,WA,USA
+
+**时期：**  Jan. 17,2009 20:27:37~22:34:28
+
+**链接： ** https://www.microsoft.com/en-us/research/publication/hidden-markov-map-matching-noise-sparseness/
+
+**描述：**  这个用于地图匹配的数据集显示了在美国华盛顿州西雅图及其东部郊区开车时拍摄的GPS数据。轨迹从Marymoor公园附近开始。数据是用RoyalTek RBT-2300 GPS记录器以1HZ的频率采样的。这次驾驶发生在2009年1月17日星期六，从20:27:37 UTC（当地时间12:27:37）开始，到22:34:28 UTC（当地时间14:34:28）结束，经过的时间为02:06:51。
+
+### Global
+
+**地点：**  全世界100个地区
+
+**时期：**  —
+
+**链接：**  https://zenodo.org/record/57731#.YVwZ7WJBxnK
+
+**描述：** 这个用于地图匹配的数据集可以在世界范围内验证地图匹配的假设。由于这个数据集覆盖全球，可以提高泛化能力。
 
 ### BJ_ROADMAP
 

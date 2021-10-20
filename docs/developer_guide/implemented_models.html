@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Customize Models &mdash; Bigscity-TrafficDL  documentation</title>
+  <title>自定义Model &mdash; Bigscity-LibCity  documentation</title>
   
 
   
@@ -37,8 +37,8 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Customize Evaluators" href="implemented_evaluators.html" />
-    <link rel="prev" title="Customize Dataset" href="implemented_datasets.html" /> 
+    <link rel="next" title="自定义Executor" href="implemented_executors.html" />
+    <link rel="prev" title="自定义Dataset" href="implemented_datasets.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -52,7 +52,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> Bigscity-TrafficDL
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> Bigscity-LibCity
           
 
           
@@ -83,40 +83,53 @@
               
             
             
-              <p class="caption"><span class="caption-text">Get Started</span></p>
+              <p class="caption"><span class="caption-text">起步</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../get_started/introduction.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../get_started/install.html">Install</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../get_started/quick_start.html">Quick Start</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../get_started/directory_structure.html">Directory Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/introduction.html">介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/install.html">安装LibCity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/quick_start.html">快速入门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/directory_structure.html">目录结构</a></li>
 </ul>
-<p class="caption"><span class="caption-text">User Guide</span></p>
+<p class="caption"><span class="caption-text">用户指导</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/config_settings.html">Config Settings</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/data.html">Data Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/model.html">Model Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/evaluator.html">Evaluator Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/executor.html">Executor Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../user_guide/usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/config_settings.html">参数设置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/data.html">数据说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/model.html">复现模型列表</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/evaluator.html">评估模块简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/executor.html">执行模块简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/usage.html">使用示例</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Developer Guide</span></p>
+<p class="caption"><span class="caption-text">开发者指导</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="code_style.html">Code Style</a></li>
-<li class="toctree-l1"><a class="reference internal" href="implemented_datasets.html">Customize Dataset</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Customize Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="implemented_evaluators.html">Customize Evaluators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="implemented_executors.html">Customize Executors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="implemented_logger.html">Logger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="code_style.html">代码风格</a></li>
+<li class="toctree-l1"><a class="reference internal" href="implemented_datasets.html">自定义Dataset</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">自定义Model</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">创建新的Model类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#init">实现__init__()</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#predict">实现predict()</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#calcualte-loss">实现calcualte_loss()</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">导入模型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">加入模型参数</a></li>
 </ul>
-<p class="caption"><span class="caption-text">API REFERENCE</span></p>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="implemented_executors.html">自定义Executor</a></li>
+</ul>
+<p class="caption"><span class="caption-text">入门教程</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../trafficdl/trafficdl.config.html">trafficdl.config</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../trafficdl/trafficdl.data.html">trafficdl.data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../trafficdl/trafficdl.evaluator.html">trafficdl.evaluator</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../trafficdl/trafficdl.executor.html">trafficdl.executor</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../trafficdl/trafficdl.model.html">trafficdl.model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../trafficdl/trafficdl.pipeline.html">trafficdl.pipeline</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../trafficdl/trafficdl.utils.html">trafficdl.utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/install_quick_start.html">安装和快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/run_model.html">运行LibCity中已复现的模型</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/add_model.html">在LibCity中添加新模型</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/hyper_tune.html">使用自动化工具调参</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API文档</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../libcity/libcity.config.html">libcity.config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../libcity/libcity.data.html">libcity.data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../libcity/libcity.evaluator.html">libcity.evaluator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../libcity/libcity.executor.html">libcity.executor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../libcity/libcity.model.html">libcity.model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../libcity/libcity.pipeline.html">libcity.pipeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../libcity/libcity.utils.html">libcity.utils</a></li>
 </ul>
 
             
@@ -132,7 +145,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">Bigscity-TrafficDL</a>
+          <a href="../index.html">Bigscity-LibCity</a>
         
       </nav>
 
@@ -163,7 +176,7 @@
     
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>Customize Models</li>
+      <li>自定义Model</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -182,38 +195,169 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="customize-models">
-<h1>Customize Models<a class="headerlink" href="#customize-models" title="Permalink to this headline">¶</a></h1>
-<p>本文档用于介绍如何在<code class="docutils literal notranslate"><span class="pre">TrafficDL</span></code>下开发一个新模型。</p>
-<p>目前支持以下几个任务：</p>
-<ul class="simple">
-<li><p>Traffic Location Prediction</p></li>
-<li><p>Traffic Flow Prediction</p></li>
-<li><p>Traffic Speed Prediction</p></li>
-<li><p>On-Demand Service predition</p></li>
-<li><p>Travel Time prediction</p></li>
-<li><p>Traffic Accident prediction</p></li>
-</ul>
-<p>开发模型：</p>
-<p><code class="docutils literal notranslate"><span class="pre">AbstractModel</span></code>类是所有模型的基类，实现模型时，请继承此类。</p>
-<p><code class="docutils literal notranslate"><span class="pre">AbstractModel</span></code>类继承自<code class="docutils literal notranslate"><span class="pre">torch.nn.Module</span></code>，实现接口<code class="docutils literal notranslate"><span class="pre">forward(self,</span> <span class="pre">batch)</span></code>，也就是说所有模型都以<code class="docutils literal notranslate"><span class="pre">Batch</span></code>类对象作为输入。</p>
-<p>约定：</p>
-<ul class="simple">
-<li><p>不同任务的模型存放在不同的子文件夹下，</p></li>
-<li><p>公用的损失函数、初始化方法、常用的layer统一存放，</p></li>
-</ul>
-<p>所以可以这样实现<code class="docutils literal notranslate"><span class="pre">newmodel.py</span></code>：</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">trafficdl.model.abstract_model</span> <span class="kn">import</span> <span class="n">AbstractModel</span>
-<span class="k">class</span> <span class="nc">NewModel</span><span class="p">(</span><span class="n">AbstractModel</span><span class="p">):</span>
+  <div class="section" id="model">
+<h1>自定义Model<a class="headerlink" href="#model" title="Permalink to this headline">¶</a></h1>
+<p>本文档将介绍如何在<code class="docutils literal notranslate"><span class="pre">LibCity</span></code>中开发一个新模型。</p>
+<div class="section" id="id1">
+<h2>创建新的Model类<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>首先，我们创建的新模型应该继承<code class="docutils literal notranslate"><span class="pre">AbstractModel</span></code>或<code class="docutils literal notranslate"><span class="pre">AbstractTrafficStateModel</span></code>。注意，对于交通状态预测任务，请继承<code class="docutils literal notranslate"> <span class="pre">AbstractTrafficStateModel</span></code>类，对于轨迹位置预测任务，请继承<code class="docutils literal notranslate"><span class="pre">AbstractModel</span></code>类。</p>
+<p>这里我们以交通状态预测任务为例。如果想为交通速度预测任务开发一个名为<code class="docutils literal notranslate"><span class="pre">NewModel</span></code>的模型。</p>
+<p>首先请在<code class="docutils literal notranslate"><span class="pre">libcity/model/traffic_speed_prediction/</span></code>目录下创建一个新的文件<code class="docutils literal notranslate"><span class="pre">NewModel.py</span></code>，并在该文件中写入以下代码。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">libcity.model.abstract_traffic_state_model</span> <span class="kn">import</span> <span class="n">AbstractTrafficStateModel</span>
+
+<span class="k">class</span> <span class="nc">NewModel</span><span class="p">(</span><span class="n">AbstractTrafficStateModel</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">data_feature</span><span class="p">):</span>
         <span class="k">pass</span>
-     <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">batch</span><span class="p">):</span>
+    
+    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">batch</span><span class="p">):</span>
+        <span class="k">pass</span>
+    
+    <span class="k">def</span> <span class="nf">calculate_loss</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">batch</span><span class="p">):</span>
         <span class="k">pass</span>
 </pre></div>
 </div>
-<p>接下来需要实现<code class="docutils literal notranslate"><span class="pre">__init__()</span></code>方法：</p>
-<p>该方法是参数是<code class="docutils literal notranslate"><span class="pre">config</span></code>和<code class="docutils literal notranslate"><span class="pre">data_feature</span></code>，其中<code class="docutils literal notranslate"><span class="pre">config</span></code>是配置文件，<code class="docutils literal notranslate"><span class="pre">data_feature</span></code>是构建模型所需要的数据集的相关特征。</p>
-<p>接下来需要实现模型的核心内容以及相应的<code class="docutils literal notranslate"><span class="pre">forward</span></code>方法，注意<code class="docutils literal notranslate"><span class="pre">forward</span></code>方法以<code class="docutils literal notranslate"><span class="pre">Batch</span></code>类的对象为输入。</p>
+</div>
+<div class="section" id="init">
+<h2>实现__init__()<a class="headerlink" href="#init" title="Permalink to this headline">¶</a></h2>
+<p>然后我们需要实现<code class="docutils literal notranslate"><span class="pre">__init__()</span></code>方法，<code class="docutils literal notranslate"><span class="pre">__init__()</span></code>用于根据数据特征和配置信息来定义模型结构。</p>
+<p><code class="docutils literal notranslate"><span class="pre">__init__()</span></code>的输入参数是<code class="docutils literal notranslate"><span class="pre">config</span></code>和<code class="docutils literal notranslate"><span class="pre">data_feature</span></code>，其中<code class="docutils literal notranslate"><span class="pre">config</span></code>包含各种配置信息，包括模型参数等，<code class="docutils literal notranslate"><span class="pre">data_feature</span></code>包含建立模型的数据集的特征。</p>
+<p>这里我们以一个简单的LSTM交通预测模型为例。你可以像这样定义<code class="docutils literal notranslate"><span class="pre">__init__()</span></code>。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
+<span class="kn">from</span> <span class="nn">logging</span> <span class="kn">import</span> <span class="n">getLogger</span>
+<span class="kn">from</span> <span class="nn">libcity.model.abstract_traffic_state_model</span> <span class="kn">import</span> <span class="n">AbstractTrafficStateModel</span>
+
+
+<span class="k">class</span> <span class="nc">NewModel</span><span class="p">(</span><span class="n">AbstractTrafficStateModel</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">data_feature</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="n">data_feature</span><span class="p">)</span>
+        <span class="c1"># section 1: data_feature</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_scaler</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_feature</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;scaler&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">num_nodes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_feature</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;num_nodes&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">feature_dim</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_feature</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;feature_dim&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">output_dim</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_feature</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;output_dim&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span> <span class="o">=</span> <span class="n">getLogger</span><span class="p">()</span>
+        <span class="c1"># section 2: model config </span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">input_window</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;input_window&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">output_window</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;output_window&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">device</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;device&#39;</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">&#39;cpu&#39;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hidden_size</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;hidden_size&#39;</span><span class="p">,</span> <span class="mi">64</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">num_layers</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;num_layers&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dropout</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;dropout&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="c1"># section 3: model structure</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rnn</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">LSTM</span><span class="p">(</span><span class="n">input_size</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">num_nodes</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">feature_dim</span><span class="p">,</span> <span class="n">hidden_size</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">hidden_size</span><span class="p">,</span>
+                           <span class="n">num_layers</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">num_layers</span><span class="p">,</span> <span class="n">dropout</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dropout</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fc</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">hidden_size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_nodes</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_dim</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>在代码的第一部分，我们从<code class="docutils literal notranslate"><span class="pre">data_feature</span></code>中获取必要的参数，包括节点数（<code class="docutils literal notranslate"><span class="pre">num_nodes</span></code>）、数据输入尺寸（<code class="docutils literal notranslate"><span class="pre">feature_dim</span></code>）、输出尺寸（<code class="docutils literal notranslate"><span class="pre">output_dim</span></code>）和数据规范化对象（<code class="docutils literal notranslate"><span class="pre">scaler</span></code>），并初始化<code class="docutils literal notranslate"><span class="pre">logger</span></code>。</p>
+<p>在代码的第二部分，我们从配置中获取必要的参数，包括隐藏层尺寸（<code class="docutils literal notranslate"><span class="pre">hidden_size</span></code>）、网络层数（<code class="docutils literal notranslate"><span class="pre">num_layers</span></code>）、输入时间长度（<code class="docutils literal notranslate"><span class="pre">input_window</span></code>）、输出时间长度（<code class="docutils literal notranslate"><span class="pre">output_window</span></code>），等等。</p>
+<p>在代码的第三部分，我们定义了模型结构，包括一个LSTM层和一个全连接层。</p>
+</div>
+<div class="section" id="predict">
+<h2>实现predict()<a class="headerlink" href="#predict" title="Permalink to this headline">¶</a></h2>
+<p>然后我们定义<code class="docutils literal notranslate"><span class="pre">predict()</span></code>方法，用来获得模型的预测结果。<code class="docutils literal notranslate"><span class="pre">predict()</span></code>的输入参数是<code class="docutils literal notranslate"><span class="pre">batch</span></code>，它是一个<a class="reference internal" href="../user_guide/data/batch.html"><span class="doc">Batch</span></a>类的对象。</p>
+<p><code class="docutils literal notranslate"><span class="pre">AbstractModel</span></code>和<code class="docutils literal notranslate"><span class="pre">AbstractTrafficStateModel</span></code>两个抽象类都继承自<code class="docutils literal notranslate"><span class="pre">torch.nn.Module</span></code>类。如果你熟悉Pytorch框架，你会发现这个函数与<code class="docutils literal notranslate"><span class="pre">torch.nn.Module</span></code>中的<code class="docutils literal notranslate"><span class="pre">forward()</span></code>函数类似。在大多数情况下，你可以在这个函数里面直接调用<code class="docutils literal notranslate"><span class="pre">forward()</span></code>函数来获得模型的输出。</p>
+<p><code class="docutils literal notranslate"><span class="pre">predict()</span></code>函数可以在<code class="docutils literal notranslate"><span class="pre">forward()</span></code>函数计算的模型输出的基础上做一些额外的处理。例如，当<code class="docutils literal notranslate"><span class="pre">forward()</span></code>函数计算的是模型的单步预测结果，而你需要的是多步预测的结果时，可以使用<code class="docutils literal notranslate"><span class="pre">predict()</span></code>函数来实现。</p>
+<p>例如，你可以这样定义<code class="docutils literal notranslate"><span class="pre">predict()</span></code>：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">NewModel</span><span class="p">(</span><span class="n">AbstractTrafficStateModel</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">batch</span><span class="p">):</span>
+        <span class="n">src</span> <span class="o">=</span> <span class="n">batch</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
+        <span class="n">src</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="n">permute</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+        <span class="n">batch_size</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">src</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">input_window</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_nodes</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">feature_dim</span><span class="p">)</span>
+        <span class="n">outputs</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">output_window</span><span class="p">):</span>
+            <span class="n">out</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rnn</span><span class="p">(</span><span class="n">src</span><span class="p">)</span>
+            <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fc</span><span class="p">(</span><span class="n">out</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+            <span class="n">out</span> <span class="o">=</span> <span class="n">out</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_nodes</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_dim</span><span class="p">)</span>
+            <span class="n">outputs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">out</span><span class="o">.</span><span class="n">clone</span><span class="p">())</span>
+            <span class="n">src</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">((</span><span class="n">src</span><span class="p">[</span><span class="mi">1</span><span class="p">:,</span> <span class="p">:,</span> <span class="p">:],</span> <span class="n">out</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span>
+                <span class="n">batch_size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_nodes</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">feature_dim</span><span class="p">)</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">0</span><span class="p">)),</span> <span class="n">dim</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">outputs</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">outputs</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">outputs</span><span class="o">.</span><span class="n">permute</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">batch</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">batch</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>可以看出，<code class="docutils literal notranslate"><span class="pre">predict</span></code>函数直接调用<code class="docutils literal notranslate"><span class="pre">forward</span></code>函数，而在<code class="docutils literal notranslate"><span class="pre">forward</span></code>函数中，我们定义了模型的计算过程。这个模型使用LSTM进行多次预测，并将每次预测的输出作为下一个输入。这里我们假设输入数据维度和输出数据维度相等，即<code class="docutils literal notranslate"><span class="pre">feature_dim=output_dim</span></code>。</p>
+</div>
+<div class="section" id="calcualte-loss">
+<h2>实现calcualte_loss()<a class="headerlink" href="#calcualte-loss" title="Permalink to this headline">¶</a></h2>
+<p>最后，我们定义了<code class="docutils literal notranslate"><span class="pre">calculate_loss()</span></code>方法，<code class="docutils literal notranslate"><span class="pre">calculate_loss()</span></code>用于计算预测结果与真实值之间的<code class="docutils literal notranslate"><span class="pre">loss</span></code>。</p>
+<p><code class="docutils literal notranslate"><span class="pre">calculate_loss()</span></code>的输入参数是<code class="docutils literal notranslate"><span class="pre">batch</span></code>，它是一个<a class="reference internal" href="../user_guide/data/batch.html"><span class="doc">Batch</span></a>类的对象。该方法返回一个用于反向传播的<code class="docutils literal notranslate"><span class="pre">Torch.Tensor</span></code>。</p>
+<p>你可以自定义损失函数或者调用我们在<code class="docutils literal notranslate"><span class="pre">libcity/model/loss.py</span></code>文件中定义的损失函数。</p>
+<p>例如，你可以像这样定义<code class="docutils literal notranslate"><span class="pre">calcualte_loss()</span></code>：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">libcity.model</span> <span class="kn">import</span> <span class="n">loss</span>
+
+<span class="k">class</span> <span class="nc">NewModel</span><span class="p">(</span><span class="n">AbstractTrafficStateModel</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">calculate_loss</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">batch</span><span class="p">):</span>
+        <span class="n">y_true</span> <span class="o">=</span> <span class="n">batch</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span>
+        <span class="n">y_predicted</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">batch</span><span class="p">)</span>
+        <span class="n">y_true</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_scaler</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">y_true</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">output_dim</span><span class="p">])</span>
+        <span class="n">y_predicted</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_scaler</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">y_predicted</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">output_dim</span><span class="p">])</span>
+        <span class="k">return</span> <span class="n">loss</span><span class="o">.</span><span class="n">masked_mae_torch</span><span class="p">(</span><span class="n">y_predicted</span><span class="p">,</span> <span class="n">y_true</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>这里我们直接调用了<code class="docutils literal notranslate"><span class="pre">loss.py</span></code>中定义的<code class="docutils literal notranslate"><span class="pre">loss.masked_mae_torch</span></code>函数，其功能是计算 MAE 损失。</p>
+<p>现在我们已经完成了对模型结构的定义，还剩下一些简单的配置。</p>
+</div>
+<div class="section" id="id2">
+<h2>导入模型<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>添加模型后，你需要修改你的模型所属的任务文件夹中的<code class="docutils literal notranslate"><span class="pre">__init__.py</span></code>文件。在上面的例子中，你需要修改的文件是<code class="docutils literal notranslate"><span class="pre">libcity/model/traffic_speed_prediction/__init__.py</span></code>。</p>
+<p>请添加这样的代码：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">libcity.model.traffic_speed_prediction.NewModel</span> <span class="kn">import</span> <span class="n">NewModel</span>
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;NewModel&quot;</span><span class="p">,</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>加入模型参数<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>最后，你需要修改一些相关的<code class="docutils literal notranslate"><span class="pre">config</span></code>文件。</p>
+<ul>
+<li><p>首先，你需要修改<code class="docutils literal notranslate"><span class="pre">libcity/config/task_config.json</span></code>，它用于设置每个任务所支持的模型和数据集，并指定模型所使用的基本参数（数据模块、执行模块、评估模块）。</p>
+<p>例如，你可以添加如下代码，这意味着<code class="docutils literal notranslate"><span class="pre">NewModel</span></code>使用的数据模块类是<code class="docutils literal notranslate"><span class="pre">TrafficStatePointDataset</span></code>，执行模块类是<code class="docutils literal notranslate"><span class="pre">TrafficStateExecutor</span></code>，而评估模块类是<code class="docutils literal notranslate"><span class="pre">TrafficStateEvaluator</span></code>。</p>
+</li>
+</ul>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;traffic_state_pred&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;allowed_model&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;NewModel&quot;</span><span class="p">],</span>
+        <span class="nt">&quot;allowed_dataset&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;&quot;</span><span class="p">],</span>
+        <span class="nt">&quot;NewModel&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;dataset_class&quot;</span><span class="p">:</span> <span class="s2">&quot;TrafficStatePointDataset&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;executor&quot;</span><span class="p">:</span> <span class="s2">&quot;TrafficStateExecutor&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;evaluator&quot;</span><span class="p">:</span> <span class="s2">&quot;TrafficStateEvaluator&quot;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul>
+<li><p>其次，你需要在<code class="docutils literal notranslate"><span class="pre">libcity/config/model/</span></code>目录下添加一个文件来设置你的模型的默认参数。你也可以设置你想覆盖的其他模块的参数，因为模型模块的参数比其他模块有最高的优先级。</p>
+<p>例如，你可以添加这个文件<code class="docutils literal notranslate"><span class="pre">libcity/config/model/traffic_state_pred/NewModel.json</span></code>并添加如下代码。在代码中，除了与模型结构有关的三个参数外，我们还定义了训练轮数（<code class="docutils literal notranslate"><span class="pre">max_epoch</span></code>）、优化器（<code class="docutils literal notranslate"><span class="pre">learner</span></code>）和学习率（<code class="docutils literal notranslate"><span class="pre">learning_rate</span></code>），以涵盖默认的执行配置。</p>
+</li>
+</ul>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;hidden_size&quot;</span><span class="p">:</span> <span class="mi">64</span><span class="p">,</span>
+  <span class="nt">&quot;num_layers&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+  <span class="nt">&quot;dropout&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+
+  <span class="nt">&quot;max_epoch&quot;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
+  <span class="nt">&quot;learner&quot;</span><span class="p">:</span> <span class="s2">&quot;adam&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;learning_rate&quot;</span><span class="p">:</span> <span class="mf">0.001</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>注意：配置的文件名和<code class="docutils literal notranslate"><span class="pre">allowed_model</span></code>列表中的值必须与你添加的模型的类名相同</strong>。 就像上面的<code class="docutils literal notranslate"><span class="pre">NewModel</span></code>。</p>
+<p>现在你已经学会了如何添加一个新的模型，尝试用以下命令来运行这个模型！</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>python run_model.py --task traffic_state_pred --model NewModel --dataset METR_LA
+</pre></div>
+</div>
+</div>
 </div>
 
 
@@ -224,10 +368,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="implemented_evaluators.html" class="btn btn-neutral float-right" title="Customize Evaluators" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="implemented_executors.html" class="btn btn-neutral float-right" title="自定义Executor" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="implemented_datasets.html" class="btn btn-neutral float-left" title="Customize Dataset" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="implemented_datasets.html" class="btn btn-neutral float-left" title="自定义Dataset" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

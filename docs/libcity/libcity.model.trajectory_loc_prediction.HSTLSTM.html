@@ -1,0 +1,512 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>libcity.model.trajectory_loc_prediction.HSTLSTM &mdash; Bigscity-LibCity  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="libcity.model.trajectory_loc_prediction.LSTPM" href="libcity.model.trajectory_loc_prediction.LSTPM.html" />
+    <link rel="prev" title="libcity.model.trajectory_loc_prediction.GeoSAN" href="libcity.model.trajectory_loc_prediction.GeoSAN.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> Bigscity-LibCity
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">起步</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/introduction.html">介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/install.html">安装LibCity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/quick_start.html">快速入门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/directory_structure.html">目录结构</a></li>
+</ul>
+<p class="caption"><span class="caption-text">用户指导</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/config_settings.html">参数设置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/data.html">数据说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/model.html">复现模型列表</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/evaluator.html">评估模块简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/executor.html">执行模块简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/usage.html">使用示例</a></li>
+</ul>
+<p class="caption"><span class="caption-text">开发者指导</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/code_style.html">代码风格</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_datasets.html">自定义Dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_models.html">自定义Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_executors.html">自定义Executor</a></li>
+</ul>
+<p class="caption"><span class="caption-text">入门教程</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/install_quick_start.html">安装和快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/run_model.html">运行LibCity中已复现的模型</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/add_model.html">在LibCity中添加新模型</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/hyper_tune.html">使用自动化工具调参</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API文档</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="libcity.config.html">libcity.config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="libcity.data.html">libcity.data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="libcity.evaluator.html">libcity.evaluator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="libcity.executor.html">libcity.executor</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="libcity.model.html">libcity.model</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="libcity.model.map_matching.html">libcity.model.map_matching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.model.traffic_demand_prediction.html">libcity.model.traffic_demand_prediction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.model.traffic_flow_prediction.html">libcity.model.traffic_flow_prediction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.model.traffic_od_prediction.html">libcity.model.traffic_od_prediction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.model.traffic_speed_prediction.html">libcity.model.traffic_speed_prediction</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="libcity.model.trajectory_loc_prediction.html">libcity.model.trajectory_loc_prediction</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="libcity.model.trajectory_loc_prediction.ATSTLSTM.html">libcity.model.trajectory_loc_prediction.ATSTLSTM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libcity.model.trajectory_loc_prediction.CARA.html">libcity.model.trajectory_loc_prediction.CARA</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libcity.model.trajectory_loc_prediction.DeepMove.html">libcity.model.trajectory_loc_prediction.DeepMove</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libcity.model.trajectory_loc_prediction.FPMC.html">libcity.model.trajectory_loc_prediction.FPMC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libcity.model.trajectory_loc_prediction.GeoSAN.html">libcity.model.trajectory_loc_prediction.GeoSAN</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">libcity.model.trajectory_loc_prediction.HSTLSTM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libcity.model.trajectory_loc_prediction.LSTPM.html">libcity.model.trajectory_loc_prediction.LSTPM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libcity.model.trajectory_loc_prediction.RNN.html">libcity.model.trajectory_loc_prediction.RNN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libcity.model.trajectory_loc_prediction.SERM.html">libcity.model.trajectory_loc_prediction.SERM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libcity.model.trajectory_loc_prediction.STAN.html">libcity.model.trajectory_loc_prediction.STAN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libcity.model.trajectory_loc_prediction.STRNN.html">libcity.model.trajectory_loc_prediction.STRNN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libcity.model.trajectory_loc_prediction.TemplateTLP.html">libcity.model.trajectory_loc_prediction.TemplateTLP</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.model.abstract_model.html">libcity.model.abstract_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.model.abstract_traffic_state_model.html">libcity.model.abstract_traffic_state_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.model.abstract_traffic_tradition_model.html">libcity.model.abstract_traffic_tradition_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.model.loss.html">libcity.model.loss</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="libcity.pipeline.html">libcity.pipeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="libcity.utils.html">libcity.utils</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Bigscity-LibCity</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="libcity.model.html">libcity.model</a> &raquo;</li>
+        
+          <li><a href="libcity.model.trajectory_loc_prediction.html">libcity.model.trajectory_loc_prediction</a> &raquo;</li>
+        
+      <li>libcity.model.trajectory_loc_prediction.HSTLSTM</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/libcity/libcity.model.trajectory_loc_prediction.HSTLSTM.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-libcity.model.trajectory_loc_prediction.HSTLSTM">
+<span id="libcity-model-trajectory-loc-prediction-hstlstm"></span><h1>libcity.model.trajectory_loc_prediction.HSTLSTM<a class="headerlink" href="#module-libcity.model.trajectory_loc_prediction.HSTLSTM" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt id="libcity.model.trajectory_loc_prediction.HSTLSTM.HSTLSTM">
+<em class="property">class </em><code class="sig-prename descclassname">libcity.model.trajectory_loc_prediction.HSTLSTM.</code><code class="sig-name descname">HSTLSTM</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">config</span></em>, <em class="sig-param"><span class="n">data_feature</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/trajectory_loc_prediction/HSTLSTM.html#HSTLSTM"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.trajectory_loc_prediction.HSTLSTM.HSTLSTM" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="libcity.model.abstract_model.html#libcity.model.abstract_model.AbstractModel" title="libcity.model.abstract_model.AbstractModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">libcity.model.abstract_model.AbstractModel</span></code></a></p>
+<p>RNN classifier using ST-LSTM as its core.</p>
+<dl class="py method">
+<dt id="libcity.model.trajectory_loc_prediction.HSTLSTM.HSTLSTM.cal_inter">
+<code class="sig-name descname">cal_inter</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ld</span></em>, <em class="sig-param"><span class="n">hd</span></em>, <em class="sig-param"><span class="n">l</span></em>, <em class="sig-param"><span class="n">h</span></em>, <em class="sig-param"><span class="n">embed</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/trajectory_loc_prediction/HSTLSTM.html#HSTLSTM.cal_inter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.trajectory_loc_prediction.HSTLSTM.HSTLSTM.cal_inter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate a linear interpolation.
+:param ld: Distances to lower bound, shape (batch_size, step)
+:param hd: Distances to higher bound, shape (batch_size, step)
+:param l: Lower bound indexes, shape (batch_size, step)
+:param h: Higher bound indexes, shape (batch_size, step)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="libcity.model.trajectory_loc_prediction.HSTLSTM.HSTLSTM.calculate_loss">
+<code class="sig-name descname">calculate_loss</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">batch</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/trajectory_loc_prediction/HSTLSTM.html#HSTLSTM.calculate_loss"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.trajectory_loc_prediction.HSTLSTM.HSTLSTM.calculate_loss" title="Permalink to this definition">¶</a></dt>
+<dd><p>Train model using one batch of data and return loss value.
+:param model: One instance of STLSTMClassifier.
+:param batch_l: batch of input location sequences,</p>
+<blockquote>
+<div><p>size (batch_size, time_step, input_size)</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>batch_t</strong> – batch of temporal interval value, size (batch_size, step)</p></li>
+<li><p><strong>batch_d</strong> – batch of spatial distance value, size (batch_size, step)</p></li>
+<li><p><strong>batch_label</strong> – batch of label, size (batch_size)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>loss value.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="libcity.model.trajectory_loc_prediction.HSTLSTM.HSTLSTM.forward">
+<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">batch_l</span></em>, <em class="sig-param"><span class="n">batch_t</span></em>, <em class="sig-param"><span class="n">batch_d</span></em>, <em class="sig-param"><span class="n">origin_len</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/trajectory_loc_prediction/HSTLSTM.html#HSTLSTM.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.trajectory_loc_prediction.HSTLSTM.HSTLSTM.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Process forward propagation of ST-LSTM classifier.
+:param batch_l: batch of input location sequences,</p>
+<blockquote>
+<div><p>size (batch_size, time_step, input_size)</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>batch_t</strong> – batch of temporal interval value, size (batch_size, step)</p></li>
+<li><p><strong>batch_d</strong> – batch of spatial distance value, size (batch_size, step)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>prediction result of this batch, size (batch_size, output_size, step).</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="libcity.model.trajectory_loc_prediction.HSTLSTM.HSTLSTM.place_parameters">
+<code class="sig-name descname">place_parameters</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ld</span></em>, <em class="sig-param"><span class="n">hd</span></em>, <em class="sig-param"><span class="n">l</span></em>, <em class="sig-param"><span class="n">h</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/trajectory_loc_prediction/HSTLSTM.html#HSTLSTM.place_parameters"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.trajectory_loc_prediction.HSTLSTM.HSTLSTM.place_parameters" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="libcity.model.trajectory_loc_prediction.HSTLSTM.HSTLSTM.predict">
+<code class="sig-name descname">predict</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">batch</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/trajectory_loc_prediction/HSTLSTM.html#HSTLSTM.predict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.trajectory_loc_prediction.HSTLSTM.HSTLSTM.predict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Predict a batch of data.
+:param batch_l: batch of input location sequences,</p>
+<blockquote>
+<div><p>size (batch_size, time_step, input_size)</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>batch_t</strong> – batch of temporal interval value, size (batch_size, step)</p></li>
+<li><p><strong>batch_d</strong> – batch of spatial distance value, size (batch_size, step)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>batch of predicted class indices, size (batch_size).</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="libcity.model.trajectory_loc_prediction.HSTLSTM.HSTLSTM.training">
+<code class="sig-name descname">training</code><em class="property">: bool</em><a class="headerlink" href="#libcity.model.trajectory_loc_prediction.HSTLSTM.HSTLSTM.training" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="libcity.model.trajectory_loc_prediction.HSTLSTM.STLSTM">
+<em class="property">class </em><code class="sig-prename descclassname">libcity.model.trajectory_loc_prediction.HSTLSTM.</code><code class="sig-name descname">STLSTM</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">input_size</span></em>, <em class="sig-param"><span class="n">hidden_size</span></em>, <em class="sig-param"><span class="n">bias</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/trajectory_loc_prediction/HSTLSTM.html#STLSTM"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.trajectory_loc_prediction.HSTLSTM.STLSTM" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<p>One layer, batch-first Spatial-Temporal LSTM network.
+Kong D, Wu F. HST-LSTM: A Hierarchical Spatial-Temporal Long-Short Term Memory Network
+for Location Prediction[C]//IJCAI. 2018: 2341-2347.
+.. rubric:: Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">st_lstm</span> <span class="o">=</span> <span class="n">STLSTM</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">input_l</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">input_s</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">input_q</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hidden_out</span><span class="p">,</span> <span class="n">cell_out</span> <span class="o">=</span> <span class="n">st_lstm</span><span class="p">(</span><span class="n">input_l</span><span class="p">,</span> <span class="n">input_s</span><span class="p">,</span> <span class="n">input_q</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt id="libcity.model.trajectory_loc_prediction.HSTLSTM.STLSTM.check_forward_input">
+<code class="sig-name descname">check_forward_input</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">input_l</span></em>, <em class="sig-param"><span class="n">input_s</span></em>, <em class="sig-param"><span class="n">input_q</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/trajectory_loc_prediction/HSTLSTM.html#STLSTM.check_forward_input"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.trajectory_loc_prediction.HSTLSTM.STLSTM.check_forward_input" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="libcity.model.trajectory_loc_prediction.HSTLSTM.STLSTM.forward">
+<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">input_l</span></em>, <em class="sig-param"><span class="n">input_s</span></em>, <em class="sig-param"><span class="n">input_q</span></em>, <em class="sig-param"><span class="n">hc</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/trajectory_loc_prediction/HSTLSTM.html#STLSTM.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.trajectory_loc_prediction.HSTLSTM.STLSTM.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Proceed forward propagation of ST-LSTM network.
+:param input_l: input of location embedding vector, shape (batch_size, step, input_size)
+:param input_s: input of spatial embedding vector, shape (batch_size, step, input_size)
+:param input_q: input of temporal embedding vector, shape (batch_size, step, input_size)
+:param hc: tuple containing initial hidden state and cell state, optional.
+:return: hidden states and cell states produced by iterate through the steps.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="libcity.model.trajectory_loc_prediction.HSTLSTM.STLSTM.training">
+<code class="sig-name descname">training</code><em class="property">: bool</em><a class="headerlink" href="#libcity.model.trajectory_loc_prediction.HSTLSTM.STLSTM.training" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="libcity.model.trajectory_loc_prediction.HSTLSTM.STLSTMCell">
+<em class="property">class </em><code class="sig-prename descclassname">libcity.model.trajectory_loc_prediction.HSTLSTM.</code><code class="sig-name descname">STLSTMCell</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">input_size</span></em>, <em class="sig-param"><span class="n">hidden_size</span></em>, <em class="sig-param"><span class="n">bias</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/trajectory_loc_prediction/HSTLSTM.html#STLSTMCell"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.trajectory_loc_prediction.HSTLSTM.STLSTMCell" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<p>A Spatial-Temporal Long Short Term Memory (ST-LSTM) cell.
+Kong D, Wu F. HST-LSTM: A Hierarchical Spatial-Temporal Long-Short Term Memory Network
+for Location Prediction[C]//IJCAI. 2018: 2341-2347.
+.. rubric:: Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">st_lstm</span> <span class="o">=</span> <span class="n">STLSTMCell</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">input_l</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">input_s</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">input_q</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hc</span> <span class="o">=</span> <span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">):</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">hc</span> <span class="o">=</span> <span class="n">st_lstm</span><span class="p">(</span><span class="n">input_l</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">input_s</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">input_q</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">hc</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">output</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">hc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt id="libcity.model.trajectory_loc_prediction.HSTLSTM.STLSTMCell.check_forward_hidden">
+<code class="sig-name descname">check_forward_hidden</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">input</span><span class="p">:</span> <span class="n">Tensor</span></em>, <em class="sig-param"><span class="n">hx</span><span class="p">:</span> <span class="n">Tensor</span></em>, <em class="sig-param"><span class="n">hidden_label</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">''</span></em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="../_modules/libcity/model/trajectory_loc_prediction/HSTLSTM.html#STLSTMCell.check_forward_hidden"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.trajectory_loc_prediction.HSTLSTM.STLSTMCell.check_forward_hidden" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="libcity.model.trajectory_loc_prediction.HSTLSTM.STLSTMCell.check_forward_input">
+<code class="sig-name descname">check_forward_input</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">input</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/trajectory_loc_prediction/HSTLSTM.html#STLSTMCell.check_forward_input"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.trajectory_loc_prediction.HSTLSTM.STLSTMCell.check_forward_input" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="libcity.model.trajectory_loc_prediction.HSTLSTM.STLSTMCell.forward">
+<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">input_l</span></em>, <em class="sig-param"><span class="n">input_s</span></em>, <em class="sig-param"><span class="n">input_q</span></em>, <em class="sig-param"><span class="n">hc</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/trajectory_loc_prediction/HSTLSTM.html#STLSTMCell.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.trajectory_loc_prediction.HSTLSTM.STLSTMCell.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Proceed one step forward propagation of ST-LSTM.
+:param input_l: input of location embedding vector, shape (batch_size, input_size)
+:param input_s: input of spatial embedding vector, shape (batch_size, input_size)
+:param input_q: input of temporal embedding vector, shape (batch_size, input_size)
+:param hc: tuple containing hidden state and cell state of previous step.
+:return: hidden state and cell state of this step.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="libcity.model.trajectory_loc_prediction.HSTLSTM.STLSTMCell.reset_parameters">
+<code class="sig-name descname">reset_parameters</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/trajectory_loc_prediction/HSTLSTM.html#STLSTMCell.reset_parameters"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.trajectory_loc_prediction.HSTLSTM.STLSTMCell.reset_parameters" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="libcity.model.trajectory_loc_prediction.HSTLSTM.STLSTMCell.st_lstm_cell_cal">
+<code class="sig-name descname">st_lstm_cell_cal</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">input_l</span></em>, <em class="sig-param"><span class="n">input_s</span></em>, <em class="sig-param"><span class="n">input_q</span></em>, <em class="sig-param"><span class="n">hidden</span></em>, <em class="sig-param"><span class="n">cell</span></em>, <em class="sig-param"><span class="n">w_ih</span></em>, <em class="sig-param"><span class="n">w_hh</span></em>, <em class="sig-param"><span class="n">w_s</span></em>, <em class="sig-param"><span class="n">w_q</span></em>, <em class="sig-param"><span class="n">b_ih</span></em>, <em class="sig-param"><span class="n">b_hh</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/trajectory_loc_prediction/HSTLSTM.html#STLSTMCell.st_lstm_cell_cal"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.trajectory_loc_prediction.HSTLSTM.STLSTMCell.st_lstm_cell_cal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Proceed calculation of one step of STLSTM.
+:param input_l: input of location embedding, shape (batch_size, input_size)
+:param input_s: input of spatial embedding, shape (batch_size, input_size)
+:param input_q: input of temporal embedding, shape (batch_size, input_size)
+:param hidden: hidden state from previous step, shape (batch_size, hidden_size)
+:param cell: cell state from previous step, shape (batch_size, hidden_size)
+:param w_ih: chunk of weights for process input tensor, shape (4 * hidden_size, input_size)
+:param w_hh: chunk of weights for process hidden state tensor, shape (4 * hidden_size, hidden_size)
+:param w_s: chunk of weights for process input of spatial embedding, shape (3 * hidden_size, input_size)
+:param w_q: chunk of weights for process input of temporal embedding, shape (3 * hidden_size, input_size)
+:param b_ih: chunk of biases for process input tensor, shape (4 * hidden_size)
+:param b_hh: chunk of biases for process hidden state tensor, shape (4 * hidden_size)
+:return: hidden state and cell state of this step.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="libcity.model.trajectory_loc_prediction.HSTLSTM.STLSTMCell.training">
+<code class="sig-name descname">training</code><em class="property">: bool</em><a class="headerlink" href="#libcity.model.trajectory_loc_prediction.HSTLSTM.STLSTMCell.training" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt id="libcity.model.trajectory_loc_prediction.HSTLSTM.cal_slot_distance">
+<code class="sig-prename descclassname">libcity.model.trajectory_loc_prediction.HSTLSTM.</code><code class="sig-name descname">cal_slot_distance</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span></em>, <em class="sig-param"><span class="n">slots</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/trajectory_loc_prediction/HSTLSTM.html#cal_slot_distance"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.trajectory_loc_prediction.HSTLSTM.cal_slot_distance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate a value’s distance with nearest lower bound and higher bound in slots.
+:param value: The value to be calculated.
+:param slots: values of slots, needed to be sorted.
+:return: normalized distance with lower bound and higher bound,</p>
+<blockquote>
+<div><p>and index of lower bound and higher bound.</p>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py function">
+<dt id="libcity.model.trajectory_loc_prediction.HSTLSTM.cal_slot_distance_batch">
+<code class="sig-prename descclassname">libcity.model.trajectory_loc_prediction.HSTLSTM.</code><code class="sig-name descname">cal_slot_distance_batch</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">batch_value</span></em>, <em class="sig-param"><span class="n">slots</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/trajectory_loc_prediction/HSTLSTM.html#cal_slot_distance_batch"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.trajectory_loc_prediction.HSTLSTM.cal_slot_distance_batch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Proceed <cite>cal_slot_distance</cite> on a batch of data.
+:param batch_value: a batch of value, size (batch_size, step)
+:param slots: values of slots, needed to be sorted.
+:return: batch of distances and indexes. All with shape (batch_size, step).</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="libcity.model.trajectory_loc_prediction.HSTLSTM.construct_slots">
+<code class="sig-prename descclassname">libcity.model.trajectory_loc_prediction.HSTLSTM.</code><code class="sig-name descname">construct_slots</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">min_value</span></em>, <em class="sig-param"><span class="n">max_value</span></em>, <em class="sig-param"><span class="n">num_slots</span></em>, <em class="sig-param"><span class="n">type</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/trajectory_loc_prediction/HSTLSTM.html#construct_slots"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.trajectory_loc_prediction.HSTLSTM.construct_slots" title="Permalink to this definition">¶</a></dt>
+<dd><p>Construct values of slots given min value and max value.
+:param min_value: minimum value.
+:param max_value: maximum value.
+:param num_slots: number of slots to construct.
+:param type: type of slots to construct, ‘linear’ or ‘exp’.
+:return: values of slots.</p>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="libcity.model.trajectory_loc_prediction.LSTPM.html" class="btn btn-neutral float-right" title="libcity.model.trajectory_loc_prediction.LSTPM" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="libcity.model.trajectory_loc_prediction.GeoSAN.html" class="btn btn-neutral float-left" title="libcity.model.trajectory_loc_prediction.GeoSAN" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, aptx1231
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

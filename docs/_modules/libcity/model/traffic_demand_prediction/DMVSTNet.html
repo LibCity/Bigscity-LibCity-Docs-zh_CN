@@ -1,0 +1,589 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>libcity.model.traffic_demand_prediction.DMVSTNet &mdash; Bigscity-LibCity  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home" alt="Documentation Home"> Bigscity-LibCity
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">起步</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../get_started/introduction.html">介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../get_started/install.html">安装LibCity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../get_started/quick_start.html">快速入门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../get_started/directory_structure.html">目录结构</a></li>
+</ul>
+<p class="caption"><span class="caption-text">用户指导</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user_guide/config_settings.html">参数设置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user_guide/data.html">数据说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user_guide/model.html">复现模型列表</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user_guide/evaluator.html">评估模块简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user_guide/executor.html">执行模块简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user_guide/usage.html">使用示例</a></li>
+</ul>
+<p class="caption"><span class="caption-text">开发者指导</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../developer_guide/code_style.html">代码风格</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../developer_guide/implemented_datasets.html">自定义Dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../developer_guide/implemented_models.html">自定义Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../developer_guide/implemented_executors.html">自定义Executor</a></li>
+</ul>
+<p class="caption"><span class="caption-text">入门教程</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorial/install_quick_start.html">安装和快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorial/run_model.html">运行LibCity中已复现的模型</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorial/add_model.html">在LibCity中添加新模型</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorial/hyper_tune.html">使用自动化工具调参</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API文档</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../libcity/libcity.config.html">libcity.config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../libcity/libcity.data.html">libcity.data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../libcity/libcity.evaluator.html">libcity.evaluator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../libcity/libcity.executor.html">libcity.executor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../libcity/libcity.model.html">libcity.model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../libcity/libcity.pipeline.html">libcity.pipeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../libcity/libcity.utils.html">libcity.utils</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">Bigscity-LibCity</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../../index.html">Module code</a> &raquo;</li>
+        
+      <li>libcity.model.traffic_demand_prediction.DMVSTNet</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for libcity.model.traffic_demand_prediction.DMVSTNet</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">from</span> <span class="nn">decimal</span> <span class="kn">import</span> <span class="n">Decimal</span>
+<span class="kn">from</span> <span class="nn">logging</span> <span class="kn">import</span> <span class="n">getLogger</span>
+<span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">torch.optim</span> <span class="k">as</span> <span class="nn">optim</span>
+<span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
+<span class="kn">import</span> <span class="nn">torch.nn.functional</span> <span class="k">as</span> <span class="nn">F</span>
+<span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">trange</span>
+<span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
+
+<span class="kn">from</span> <span class="nn">libcity.model</span> <span class="kn">import</span> <span class="n">loss</span>
+<span class="kn">from</span> <span class="nn">libcity.model.abstract_traffic_state_model</span> <span class="kn">import</span> <span class="n">AbstractTrafficStateModel</span>
+
+
+<div class="viewcode-block" id="SpatialViewConv"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_demand_prediction.DMVSTNet.html#libcity.model.traffic_demand_prediction.DMVSTNet.SpatialViewConv">[docs]</a><span class="k">class</span> <span class="nc">SpatialViewConv</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inp_channel</span><span class="p">,</span> <span class="n">oup_channel</span><span class="p">,</span> <span class="n">kernel_size</span><span class="p">,</span> <span class="n">stride</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">SpatialViewConv</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">inp_channel</span> <span class="o">=</span> <span class="n">inp_channel</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">oup_channel</span> <span class="o">=</span> <span class="n">oup_channel</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">kernel_size</span> <span class="o">=</span> <span class="n">kernel_size</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stride</span> <span class="o">=</span> <span class="n">stride</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">padding</span> <span class="o">=</span> <span class="n">padding</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">conv</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="n">in_channels</span><span class="o">=</span><span class="n">inp_channel</span><span class="p">,</span> <span class="n">out_channels</span><span class="o">=</span><span class="n">oup_channel</span><span class="p">,</span>
+                              <span class="n">kernel_size</span><span class="o">=</span><span class="n">kernel_size</span><span class="p">,</span> <span class="n">stride</span><span class="o">=</span><span class="n">stride</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="n">padding</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">batch</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">BatchNorm2d</span><span class="p">(</span><span class="n">oup_channel</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">relu</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">()</span>
+
+<div class="viewcode-block" id="SpatialViewConv.forward"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_demand_prediction.DMVSTNet.html#libcity.model.traffic_demand_prediction.DMVSTNet.SpatialViewConv.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inp</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">batch</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">conv</span><span class="p">(</span><span class="n">inp</span><span class="p">)))</span></div></div>
+
+
+<div class="viewcode-block" id="TemporalView"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_demand_prediction.DMVSTNet.html#libcity.model.traffic_demand_prediction.DMVSTNet.TemporalView">[docs]</a><span class="k">class</span> <span class="nc">TemporalView</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fc_oup_dim</span><span class="p">,</span> <span class="n">lstm_oup_dim</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">TemporalView</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lstm</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">LSTM</span><span class="p">(</span><span class="n">fc_oup_dim</span><span class="p">,</span> <span class="n">lstm_oup_dim</span><span class="p">)</span>
+
+<div class="viewcode-block" id="TemporalView.forward"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_demand_prediction.DMVSTNet.html#libcity.model.traffic_demand_prediction.DMVSTNet.TemporalView.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inp</span><span class="p">):</span>
+        <span class="c1"># inp = [T, B, fc_oup_dim]</span>
+        <span class="n">lstm_res</span><span class="p">,</span> <span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lstm</span><span class="p">(</span><span class="n">inp</span><span class="p">)</span>
+        <span class="c1"># lstm_res = [T, B, lstm_oup_dim]</span>
+        <span class="c1"># h/c = [1, B, lstm_oup_dim]</span>
+        <span class="k">return</span> <span class="n">h</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># [B, lstm_oup_dim]</span></div></div>
+
+
+<div class="viewcode-block" id="VoseAlias"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_demand_prediction.DMVSTNet.html#libcity.model.traffic_demand_prediction.DMVSTNet.VoseAlias">[docs]</a><span class="k">class</span> <span class="nc">VoseAlias</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Adding a few modifs to https://github.com/asmith26/Vose-Alias-Method</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dist</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        (VoseAlias, dict) -&gt; NoneType</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dist</span> <span class="o">=</span> <span class="n">dist</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">alias_initialisation</span><span class="p">()</span>
+
+<div class="viewcode-block" id="VoseAlias.alias_initialisation"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_demand_prediction.DMVSTNet.html#libcity.model.traffic_demand_prediction.DMVSTNet.VoseAlias.alias_initialisation">[docs]</a>    <span class="k">def</span> <span class="nf">alias_initialisation</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Construct probability and alias tables for the distribution.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Initialise variables</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dist</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">table_prob</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c1"># probability table</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">table_alias</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c1"># alias table</span>
+        <span class="n">scaled_prob</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c1"># scaled probabilities</span>
+        <span class="n">small</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># stack for probabilities smaller that 1</span>
+        <span class="n">large</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># stack for probabilities greater than or equal to 1</span>
+
+        <span class="c1"># Construct and sort the scaled probabilities into their appropriate stacks</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;1/2. Building and sorting scaled probabilities for alias table...&quot;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">o</span><span class="p">,</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dist</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
+            <span class="n">scaled_prob</span><span class="p">[</span><span class="n">o</span><span class="p">]</span> <span class="o">=</span> <span class="n">Decimal</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="o">*</span> <span class="n">n</span>
+
+            <span class="k">if</span> <span class="n">scaled_prob</span><span class="p">[</span><span class="n">o</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">small</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">o</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">large</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">o</span><span class="p">)</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;2/2. Building alias table...&quot;</span><span class="p">)</span>
+        <span class="c1"># Construct the probability and alias tables</span>
+        <span class="k">while</span> <span class="n">small</span> <span class="ow">and</span> <span class="n">large</span><span class="p">:</span>
+            <span class="n">s</span> <span class="o">=</span> <span class="n">small</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+            <span class="n">l</span> <span class="o">=</span> <span class="n">large</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">table_prob</span><span class="p">[</span><span class="n">s</span><span class="p">]</span> <span class="o">=</span> <span class="n">scaled_prob</span><span class="p">[</span><span class="n">s</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">table_alias</span><span class="p">[</span><span class="n">s</span><span class="p">]</span> <span class="o">=</span> <span class="n">l</span>
+
+            <span class="n">scaled_prob</span><span class="p">[</span><span class="n">l</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">scaled_prob</span><span class="p">[</span><span class="n">l</span><span class="p">]</span> <span class="o">+</span> <span class="n">scaled_prob</span><span class="p">[</span><span class="n">s</span><span class="p">])</span> <span class="o">-</span> <span class="n">Decimal</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">scaled_prob</span><span class="p">[</span><span class="n">l</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">small</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">large</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>
+
+        <span class="c1"># The remaining outcomes (of one stack) must have probability 1</span>
+        <span class="k">while</span> <span class="n">large</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">table_prob</span><span class="p">[</span><span class="n">large</span><span class="o">.</span><span class="n">pop</span><span class="p">()]</span> <span class="o">=</span> <span class="n">Decimal</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="k">while</span> <span class="n">small</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">table_prob</span><span class="p">[</span><span class="n">small</span><span class="o">.</span><span class="n">pop</span><span class="p">()]</span> <span class="o">=</span> <span class="n">Decimal</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">listprobs</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">table_prob</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="VoseAlias.alias_generation"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_demand_prediction.DMVSTNet.html#libcity.model.traffic_demand_prediction.DMVSTNet.VoseAlias.alias_generation">[docs]</a>    <span class="k">def</span> <span class="nf">alias_generation</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Yields a random outcome from the distribution.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Determine which column of table_prob to inspect</span>
+        <span class="n">col</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">listprobs</span><span class="p">)</span>
+        <span class="c1"># Determine which outcome to pick in that column</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">table_prob</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">col</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">table_alias</span><span class="p">[</span><span class="n">col</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="VoseAlias.sample_n"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_demand_prediction.DMVSTNet.html#libcity.model.traffic_demand_prediction.DMVSTNet.VoseAlias.sample_n">[docs]</a>    <span class="k">def</span> <span class="nf">sample_n</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Yields a sample of size n from the distribution, and print the results to stdout.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">size</span><span class="p">):</span>
+            <span class="k">yield</span> <span class="bp">self</span><span class="o">.</span><span class="n">alias_generation</span><span class="p">()</span></div></div>
+
+
+<div class="viewcode-block" id="Line"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_demand_prediction.DMVSTNet.html#libcity.model.traffic_demand_prediction.DMVSTNet.Line">[docs]</a><span class="k">class</span> <span class="nc">Line</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">embed_dim</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Line</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+
+        <span class="k">assert</span> <span class="n">order</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Order should either be int(1) or int(2)&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">embed_dim</span> <span class="o">=</span> <span class="n">embed_dim</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">order</span> <span class="o">=</span> <span class="n">order</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nodes_embeddings</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Embedding</span><span class="p">(</span><span class="n">size</span><span class="p">,</span> <span class="n">embed_dim</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">order</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">contextnodes_embeddings</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Embedding</span><span class="p">(</span><span class="n">size</span><span class="p">,</span> <span class="n">embed_dim</span><span class="p">)</span>
+            <span class="c1"># Initialization</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">contextnodes_embeddings</span><span class="o">.</span><span class="n">weight</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">contextnodes_embeddings</span><span class="o">.</span><span class="n">weight</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">uniform_</span><span class="p">(</span>
+                <span class="o">-.</span><span class="mi">5</span><span class="p">,</span> <span class="o">.</span><span class="mi">5</span><span class="p">)</span> <span class="o">/</span> <span class="n">embed_dim</span>
+
+        <span class="c1"># Initialization</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nodes_embeddings</span><span class="o">.</span><span class="n">weight</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nodes_embeddings</span><span class="o">.</span><span class="n">weight</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">uniform_</span><span class="p">(</span>
+            <span class="o">-.</span><span class="mi">5</span><span class="p">,</span> <span class="o">.</span><span class="mi">5</span><span class="p">)</span> <span class="o">/</span> <span class="n">embed_dim</span>
+
+<div class="viewcode-block" id="Line.forward"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_demand_prediction.DMVSTNet.html#libcity.model.traffic_demand_prediction.DMVSTNet.Line.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">v_i</span><span class="p">,</span> <span class="n">v_j</span><span class="p">,</span> <span class="n">negsamples</span><span class="p">,</span> <span class="n">device</span><span class="p">):</span>
+
+        <span class="n">v_i</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nodes_embeddings</span><span class="p">(</span><span class="n">v_i</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">order</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="n">v_j</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">contextnodes_embeddings</span><span class="p">(</span><span class="n">v_j</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+            <span class="n">negativenodes</span> <span class="o">=</span> <span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">contextnodes_embeddings</span><span class="p">(</span><span class="n">negsamples</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">v_j</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nodes_embeddings</span><span class="p">(</span><span class="n">v_j</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+            <span class="n">negativenodes</span> <span class="o">=</span> <span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">nodes_embeddings</span><span class="p">(</span><span class="n">negsamples</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+
+        <span class="n">mulpositivebatch</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">mul</span><span class="p">(</span><span class="n">v_i</span><span class="p">,</span> <span class="n">v_j</span><span class="p">)</span>
+        <span class="n">positivebatch</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">logsigmoid</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">mulpositivebatch</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+
+        <span class="n">mulnegativebatch</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">mul</span><span class="p">(</span><span class="n">v_i</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">v_i</span><span class="p">),</span> <span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">embed_dim</span><span class="p">),</span> <span class="n">negativenodes</span><span class="p">)</span>
+        <span class="n">negativebatch</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span>
+            <span class="n">F</span><span class="o">.</span><span class="n">logsigmoid</span><span class="p">(</span>
+                <span class="n">torch</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">mulnegativebatch</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+            <span class="p">),</span>
+            <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">loss</span> <span class="o">=</span> <span class="n">positivebatch</span> <span class="o">+</span> <span class="n">negativebatch</span>
+        <span class="k">return</span> <span class="o">-</span><span class="n">torch</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">loss</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Line.get_embeddings"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_demand_prediction.DMVSTNet.html#libcity.model.traffic_demand_prediction.DMVSTNet.Line.get_embeddings">[docs]</a>    <span class="k">def</span> <span class="nf">get_embeddings</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">order</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">nodes_embeddings</span><span class="o">.</span><span class="n">weight</span><span class="o">.</span><span class="n">data</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">contextnodes_embeddings</span><span class="o">.</span><span class="n">weight</span><span class="o">.</span><span class="n">data</span></div></div>
+
+
+<div class="viewcode-block" id="negSampleBatch"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_demand_prediction.DMVSTNet.html#libcity.model.traffic_demand_prediction.DMVSTNet.negSampleBatch">[docs]</a><span class="k">def</span> <span class="nf">negSampleBatch</span><span class="p">(</span><span class="n">sourcenode</span><span class="p">,</span> <span class="n">targetnode</span><span class="p">,</span> <span class="n">negsamplesize</span><span class="p">,</span> <span class="n">weights</span><span class="p">,</span> <span class="n">nodedegrees</span><span class="p">,</span> <span class="n">nodesaliassampler</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="mf">10e-3</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    For generating negative samples.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">negsamples</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="n">negsamples</span> <span class="o">&lt;</span> <span class="n">negsamplesize</span><span class="p">:</span>
+        <span class="n">samplednode</span> <span class="o">=</span> <span class="n">nodesaliassampler</span><span class="o">.</span><span class="n">sample_n</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">samplednode</span> <span class="o">==</span> <span class="n">sourcenode</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">samplednode</span> <span class="o">==</span> <span class="n">targetnode</span><span class="p">):</span>
+            <span class="k">continue</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">negsamples</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">yield</span> <span class="n">samplednode</span></div>
+
+
+<div class="viewcode-block" id="makeData"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_demand_prediction.DMVSTNet.html#libcity.model.traffic_demand_prediction.DMVSTNet.makeData">[docs]</a><span class="k">def</span> <span class="nf">makeData</span><span class="p">(</span><span class="n">samplededges</span><span class="p">,</span> <span class="n">negsamplesize</span><span class="p">,</span> <span class="n">weights</span><span class="p">,</span> <span class="n">nodedegrees</span><span class="p">,</span> <span class="n">nodesaliassampler</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">samplededges</span><span class="p">:</span>
+        <span class="n">sourcenode</span><span class="p">,</span> <span class="n">targetnode</span> <span class="o">=</span> <span class="n">e</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">e</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">negnodes</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">negsample</span> <span class="ow">in</span> <span class="n">negSampleBatch</span><span class="p">(</span><span class="n">sourcenode</span><span class="p">,</span> <span class="n">targetnode</span><span class="p">,</span> <span class="n">negsamplesize</span><span class="p">,</span>
+                                        <span class="n">weights</span><span class="p">,</span> <span class="n">nodedegrees</span><span class="p">,</span> <span class="n">nodesaliassampler</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">negsample</span><span class="p">:</span>
+                <span class="n">negnodes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+        <span class="k">yield</span> <span class="p">[</span><span class="n">e</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">e</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="o">+</span> <span class="n">negnodes</span></div>
+
+
+<div class="viewcode-block" id="SemanticView"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_demand_prediction.DMVSTNet.html#libcity.model.traffic_demand_prediction.DMVSTNet.SemanticView">[docs]</a><span class="k">class</span> <span class="nc">SemanticView</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">data_feature</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">SemanticView</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">num_nodes</span> <span class="o">=</span> <span class="n">data_feature</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;num_nodes&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">len_row</span> <span class="o">=</span> <span class="n">data_feature</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;len_row&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># 网格行数</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">len_column</span> <span class="o">=</span> <span class="n">data_feature</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;len_column&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># 网格列数</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">embedding_dim</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;line_dimension&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">semantic_dim</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;semantic_dim&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">order</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;line_order&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">negsamplesize</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;line_negsamplesize&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">embedding_dim</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;line_dimension&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">batchsize</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;line_batchsize&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">epochs</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;line_epochs&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lr</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;line_learning_rate&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">negativepower</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;line_negativepower&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fc</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">embedding_dim</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">semantic_dim</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">device</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;device&#39;</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">&#39;cpu&#39;</span><span class="p">))</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Data Pretreatment: Line embedding...&quot;</span><span class="p">)</span>
+        <span class="p">[</span><span class="n">edgedistdict</span><span class="p">,</span> <span class="n">nodedistdict</span><span class="p">,</span> <span class="n">weights</span><span class="p">,</span> <span class="n">nodedegrees</span><span class="p">]</span> <span class="o">=</span> <span class="n">data_feature</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;dtw_graph&#39;</span><span class="p">)</span>
+
+        <span class="n">edgesaliassampler</span> <span class="o">=</span> <span class="n">VoseAlias</span><span class="p">(</span><span class="n">edgedistdict</span><span class="p">)</span>
+        <span class="n">nodesaliassampler</span> <span class="o">=</span> <span class="n">VoseAlias</span><span class="p">(</span><span class="n">nodedistdict</span><span class="p">)</span>
+        <span class="n">batchrange</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">edgedistdict</span><span class="p">)</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">batchsize</span><span class="p">)</span>
+
+        <span class="n">line</span> <span class="o">=</span> <span class="n">Line</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">num_nodes</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">embedding_dim</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">order</span><span class="p">)</span>
+        <span class="n">opt</span> <span class="o">=</span> <span class="n">optim</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">line</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">lr</span><span class="p">,</span> <span class="n">momentum</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">nesterov</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">epochs</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">trange</span><span class="p">(</span><span class="n">batchrange</span><span class="p">):</span>
+                <span class="n">samplededges</span> <span class="o">=</span> <span class="n">edgesaliassampler</span><span class="o">.</span><span class="n">sample_n</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">batchsize</span><span class="p">)</span>
+                <span class="n">batch</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">makeData</span><span class="p">(</span><span class="n">samplededges</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">negsamplesize</span><span class="p">,</span> <span class="n">weights</span><span class="p">,</span> <span class="n">nodedegrees</span><span class="p">,</span> <span class="n">nodesaliassampler</span><span class="p">))</span>
+                <span class="n">batch</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">LongTensor</span><span class="p">(</span><span class="n">batch</span><span class="p">)</span>
+                <span class="n">v_i</span> <span class="o">=</span> <span class="n">batch</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
+                <span class="n">v_j</span> <span class="o">=</span> <span class="n">batch</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
+                <span class="n">negsamples</span> <span class="o">=</span> <span class="n">batch</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">:]</span>
+                <span class="n">line</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
+                <span class="n">loss</span> <span class="o">=</span> <span class="n">line</span><span class="p">(</span><span class="n">v_i</span><span class="p">,</span> <span class="n">v_j</span><span class="p">,</span> <span class="n">negsamples</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+                <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+                <span class="n">opt</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">embedding</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">get_embeddings</span><span class="p">()</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">len_row</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">len_column</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+
+<div class="viewcode-block" id="SemanticView.forward"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_demand_prediction.DMVSTNet.html#libcity.model.traffic_demand_prediction.DMVSTNet.SemanticView.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">fc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">embedding</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="p">:])</span></div></div>
+
+
+<div class="viewcode-block" id="DMVSTNet"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_demand_prediction.DMVSTNet.html#libcity.model.traffic_demand_prediction.DMVSTNet.DMVSTNet">[docs]</a><span class="k">class</span> <span class="nc">DMVSTNet</span><span class="p">(</span><span class="n">AbstractTrafficStateModel</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">data_feature</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="n">data_feature</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_scaler</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_feature</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;scaler&#39;</span><span class="p">)</span>  <span class="c1"># 用于数据归一化</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">adj_mx</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_feature</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;adj_mx&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># 邻接矩阵</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">num_nodes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_feature</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;num_nodes&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># 网格个数</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">feature_dim</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_feature</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;feature_dim&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># 输入维度</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">output_dim</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_feature</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;output_dim&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># 输出维度</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">len_row</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_feature</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;len_row&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># 网格行数</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">len_column</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_feature</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;len_column&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># 网格列数</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span> <span class="o">=</span> <span class="n">getLogger</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">device</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;device&#39;</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">&#39;cpu&#39;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">input_window</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;input_window&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">output_window</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;output_window&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">local_image_size</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;local_image_size&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">padding_size</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">local_image_size</span> <span class="o">//</span> <span class="mi">2</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cnn_hidden_dim_first</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;cnn_hidden_dim_first&#39;</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fc_oup_dim</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;fc_oup_dim&#39;</span><span class="p">,</span> <span class="mi">64</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lstm_oup_dim</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;lstm_oup_dim&#39;</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">graph_embedding_dim</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;graph_embedding_dim&#39;</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">semantic_dim</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;semantic_dim&#39;</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">padding</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">ZeroPad2d</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">padding_size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">padding_size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">padding_size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">padding_size</span><span class="p">))</span>
+
+        <span class="c1"># 三层Local CNN</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">local_conv1</span> <span class="o">=</span> <span class="n">SpatialViewConv</span><span class="p">(</span><span class="n">inp_channel</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">feature_dim</span><span class="p">,</span> <span class="n">oup_channel</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">cnn_hidden_dim_first</span><span class="p">,</span>
+                                           <span class="n">kernel_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">stride</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">local_conv2</span> <span class="o">=</span> <span class="n">SpatialViewConv</span><span class="p">(</span><span class="n">inp_channel</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">cnn_hidden_dim_first</span><span class="p">,</span>
+                                           <span class="n">oup_channel</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">cnn_hidden_dim_first</span><span class="p">,</span>
+                                           <span class="n">kernel_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">stride</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">local_conv3</span> <span class="o">=</span> <span class="n">SpatialViewConv</span><span class="p">(</span><span class="n">inp_channel</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">cnn_hidden_dim_first</span><span class="p">,</span>
+                                           <span class="n">oup_channel</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">cnn_hidden_dim_first</span><span class="p">,</span>
+                                           <span class="n">kernel_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">stride</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="c1"># 全连接降维</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fc1</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">in_features</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">cnn_hidden_dim_first</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">local_image_size</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">local_image_size</span><span class="p">,</span>
+                             <span class="n">out_features</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">fc_oup_dim</span><span class="p">)</span>
+
+        <span class="c1"># TemporalView</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">temporalLayers</span> <span class="o">=</span> <span class="n">TemporalView</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fc_oup_dim</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">lstm_oup_dim</span><span class="p">)</span>
+
+        <span class="c1">#  SemanticView</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">semanticLayer</span> <span class="o">=</span> <span class="n">SemanticView</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_feature</span><span class="p">)</span>
+
+        <span class="c1"># 输出层</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fc2</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">in_features</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">lstm_oup_dim</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">semantic_dim</span><span class="p">,</span> <span class="n">out_features</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">output_dim</span><span class="p">)</span>
+
+<div class="viewcode-block" id="DMVSTNet.spatial_forward"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_demand_prediction.DMVSTNet.html#libcity.model.traffic_demand_prediction.DMVSTNet.DMVSTNet.spatial_forward">[docs]</a>    <span class="k">def</span> <span class="nf">spatial_forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">grid_batch</span><span class="p">):</span>
+        <span class="n">x1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">local_conv1</span><span class="p">(</span><span class="n">grid_batch</span><span class="p">)</span>
+        <span class="n">x2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">local_conv2</span><span class="p">(</span><span class="n">x1</span><span class="p">)</span>
+        <span class="n">x3</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">local_conv3</span><span class="p">(</span><span class="n">x2</span><span class="p">)</span>
+        <span class="n">x4</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fc1</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="n">x3</span><span class="p">,</span> <span class="n">start_dim</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">x4</span></div>
+
+<div class="viewcode-block" id="DMVSTNet.forward"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_demand_prediction.DMVSTNet.html#libcity.model.traffic_demand_prediction.DMVSTNet.DMVSTNet.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">batch</span><span class="p">):</span>
+        <span class="c1"># input转换为卷积运算的格式 (B, input_window, len_row, len_col, feature_dim)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">batch</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">permute</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>  <span class="c1"># (B, input_window, feature_dim, len_row, len_col)</span>
+        <span class="n">batch_size</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="n">batch_size</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">input_window</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">feature_dim</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">len_row</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">len_column</span><span class="p">))</span>
+
+        <span class="c1"># 对输入进行0填充</span>
+        <span class="n">x_padding</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">padding</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="c1"># 构造输出</span>
+        <span class="n">oup</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">batch_size</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">len_row</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">len_column</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_dim</span><span class="p">))</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+        <span class="c1"># 对每个grid进行预测</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">padding_size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">len_row</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">padding_size</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">padding_size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">len_column</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">padding_size</span><span class="p">):</span>
+                <span class="n">spatial_res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">spatial_forward</span><span class="p">(</span>
+                    <span class="n">x_padding</span><span class="p">[:,</span> <span class="p">:,</span> <span class="n">i</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">padding_size</span><span class="p">:</span><span class="n">i</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">padding_size</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span>
+                    <span class="n">j</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">padding_size</span><span class="p">:</span> <span class="n">j</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">padding_size</span> <span class="o">+</span> <span class="mi">1</span><span class="p">])</span>
+                <span class="c1"># print(&#39;spatial_res&#39;, spatial_res.shape)  # (B*T, fc_oup_dim)</span>
+                <span class="n">seq_res</span> <span class="o">=</span> <span class="n">spatial_res</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="n">batch_size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">input_window</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">fc_oup_dim</span><span class="p">))</span><span class="o">.</span><span class="n">permute</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+                <span class="c1"># print(&#39;seq_res&#39;, seq_res.shape)  # (T, B, fc_oup_dim)</span>
+                <span class="n">temporal_res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">temporalLayers</span><span class="p">(</span><span class="n">seq_res</span><span class="p">)</span>
+                <span class="c1"># print(&#39;temporal_res&#39;, temporal_res.shape)  # (B, lstm_oup_dim)</span>
+                <span class="n">emb_res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">semanticLayer</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span>
+                <span class="n">emb_res</span> <span class="o">=</span> <span class="n">emb_res</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+                <span class="n">res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fc2</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">([</span><span class="n">temporal_res</span><span class="p">,</span> <span class="n">emb_res</span><span class="p">],</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+                <span class="n">oup</span><span class="p">[:,</span> <span class="p">:,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_dim</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">oup</span></div>
+
+<div class="viewcode-block" id="DMVSTNet.calculate_loss"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_demand_prediction.DMVSTNet.html#libcity.model.traffic_demand_prediction.DMVSTNet.DMVSTNet.calculate_loss">[docs]</a>    <span class="k">def</span> <span class="nf">calculate_loss</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">batch</span><span class="p">):</span>
+        <span class="n">y_true</span> <span class="o">=</span> <span class="n">batch</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span>
+        <span class="n">y_predicted</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">batch</span><span class="p">)</span>
+        <span class="n">y_true</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_scaler</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">y_true</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">output_dim</span><span class="p">])</span>
+        <span class="n">y_predicted</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_scaler</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">y_predicted</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">output_dim</span><span class="p">])</span>
+        <span class="c1"># print(&#39;y_true&#39;, y_true.shape, y_true.device, y_true.requires_grad)</span>
+        <span class="c1"># print(&#39;y_predicted&#39;, y_predicted.shape, y_predicted.device, y_predicted.requires_grad)</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="n">loss</span><span class="o">.</span><span class="n">masked_mse_torch</span><span class="p">(</span><span class="n">y_predicted</span><span class="p">,</span> <span class="n">y_true</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">res</span></div>
+
+<div class="viewcode-block" id="DMVSTNet.predict"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_demand_prediction.DMVSTNet.html#libcity.model.traffic_demand_prediction.DMVSTNet.DMVSTNet.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">batch</span><span class="p">):</span>
+        <span class="c1"># 多步预测</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">batch</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">]</span>  <span class="c1"># (batch_size, input_window, len_row, len_column, feature_dim)</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">batch</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span>  <span class="c1"># (batch_size, input_window, len_row, len_column, feature_dim)</span>
+        <span class="n">y_preds</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">x_</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">output_window</span><span class="p">):</span>
+            <span class="n">batch_tmp</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;X&#39;</span><span class="p">:</span> <span class="n">x_</span><span class="p">}</span>
+            <span class="n">y_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">batch_tmp</span><span class="p">)</span>  <span class="c1"># (batch_size, 1, len_row, len_column, output_dim)</span>
+            <span class="n">y_preds</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">y_</span><span class="o">.</span><span class="n">clone</span><span class="p">())</span>
+            <span class="k">if</span> <span class="n">y_</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">x_</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>  <span class="c1"># output_dim &lt; feature_dim</span>
+                <span class="n">y_</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">([</span><span class="n">y_</span><span class="p">,</span> <span class="n">y</span><span class="p">[:,</span> <span class="n">i</span><span class="p">:</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:,</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_dim</span><span class="p">:]],</span> <span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">x_</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">([</span><span class="n">x_</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:,</span> <span class="p">:,</span> <span class="p">:,</span> <span class="p">:],</span> <span class="n">y_</span><span class="p">],</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">y_preds</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">(</span><span class="n">y_preds</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># (batch_size, output_length, len_row, len_column, output_dim)</span>
+        <span class="k">return</span> <span class="n">y_preds</span></div></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, aptx1231
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
