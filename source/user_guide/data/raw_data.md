@@ -308,7 +308,7 @@ Apr. 10, 2016
 
 **时期：**  Jan. 17,2009 20:27:37~22:34:28
 
-**链接： ** https://www.microsoft.com/en-us/research/publication/hidden-markov-map-matching-noise-sparseness/
+**链接：** https://www.microsoft.com/en-us/research/publication/hidden-markov-map-matching-noise-sparseness/
 
 **描述：**  这个用于地图匹配的数据集显示了在美国华盛顿州西雅图及其东部郊区开车时拍摄的GPS数据。轨迹从Marymoor公园附近开始。数据是用RoyalTek RBT-2300 GPS记录器以1HZ的频率采样的。这次驾驶发生在2009年1月17日星期六，从20:27:37 UTC（当地时间12:27:37）开始，到22:34:28 UTC（当地时间14:34:28）结束，经过的时间为02:06:51。
 
@@ -346,7 +346,7 @@ Apr. 10, 2016
 
 **地点：** Chengdu, China
 
-**时期：** -
+**时期：** Oct. 01, 2018 - Nov. 30, 2018 
 
 **链接：** 
 
@@ -356,7 +356,7 @@ Apr. 10, 2016
 
 **地点：** Xi'an, China
 
-**时期：** -
+**时期：** Oct. 01, 2018 - Nov. 30, 2018 
 
 **链接：** 
 
