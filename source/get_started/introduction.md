@@ -32,3 +32,21 @@ LibCity 目前支持以下任务：
 * **Evaluation Module**：负责通过多个指标评估模型预测结果。
 * **Execution Module**：负责模型训练和预测。
 
+#### 引用
+
+该工作已被ACM SIGSPATIAL 2021接收。如果您认为LibCity对您的科研工作有帮助，请引用我们的[论文](https://libcity.ai/#/LibCity-An-Open-Library-For-Traffic-Prediction)。
+
+```
+@proceedings{libcity,
+  editor={Jingyuan Wang and Jiawei Jiang and Wenjun Jiang and Chao Li and Wayne Xin Zhao},
+  title={LibCity: An Open Library for Traffic Prediction},
+  booktitle={{SIGSPATIAL} '21: 29th International Conference on Advances in Geographic Information Systems, Beijing, China, November 2-5, 2021 },
+  publisher={{ACM}},
+  year={2021}
+}
+```
+
+```
+Jingyuan Wang, Jiawei Jiang, Wenjun Jiang, Chao Li, and Wayne Xin Zhao. 2021. LibCity: An Open Library for Traffic Prediction. In Proceedings of the 29th ACM SIGSPATIAL International Conference on Advances in Geographic Information Systems. 
+```
+
