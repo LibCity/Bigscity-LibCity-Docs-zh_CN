@@ -34,7 +34,7 @@ LibCity 目前支持以下任务：
 
 #### 引用
 
-该工作已被ACM SIGSPATIAL 2021接收。如果您认为LibCity对您的科研工作有帮助，请引用我们的[论文](https://libcity.ai/#/LibCity-An-Open-Library-For-Traffic-Prediction)。
+该工作已被ACM SIGSPATIAL 2021接收。如果您认为LibCity对您的科研工作有帮助，请引用我们的[论文](https://libcity.ai/#/paper)。
 
 ```
 @proceedings{libcity,
