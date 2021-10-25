@@ -10,4 +10,5 @@
 
    executor/traffic_state_pred
    executor/traj_loc_pred
+   executor/map_matching
 
