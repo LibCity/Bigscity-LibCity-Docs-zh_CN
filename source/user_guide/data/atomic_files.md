@@ -9,7 +9,6 @@
 | xxx.rel     | 存储实体间的关系信息，如路网。 | rel_id, type, origin_id, destination_id     |
 | xxx.dyna    | 存储交通状态信息。             | dyna_id, type, time, entity_id, location_id |
 | xxx.ext     | 存储外部信息，如天气、温度等。 | ext_id, time, properties                    |
-| xxx.route   | 存储路网匹配的真实路径         | rel_id                                      |
 | config.json | 用于补充描述各表信息。         |                                             |
 
 注：对于不同的交通预测任务，可能用到不同的原子文件，同一个数据集不一定包含全部六种原子文件。
@@ -96,14 +95,6 @@ Dyna 表中一个元素由以下五部分组成：
         *   对于网格结合od结构的交通数据，列名为 \[**origin\_row\_id, origin\_column\_id, destination\_row\_id, destination\_column\_id**\]，文件后缀名为 `.gridod`。
 
 *   properties： 描述该条记录的属性信息，若有多个属性，可以使用不同的列名定义为多列数据，比如既有速度数据、又有流量数据。
-
-## Route 表
-
-Route 表中一个元素仅由一个部分组成：
-
-**rel_id**
-
-*  rel_id：`rel`的编号。`rel_id`的顺序显示了真实的路径。
 
 ## Ext 表
 

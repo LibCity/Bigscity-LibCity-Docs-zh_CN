@@ -33,4 +33,8 @@
 - `TrafficStateGridOdDataset`
 
   一个继承了`TrafficStateDataset`的类，用于交通状态预测，该类适用于基于网格的OD数据集。这个类生成的[Batch](../user_guide/data/batch.md)对象中的张量形状是4维或6维，取决于参数`use_row_column`。如果设置`use_row_column=True`，那么张量拥有6个维度，分别是`origin_grid_row_dim`, `origin_grid_column_dim`, `destination_grid_row_dim`, `destination_grid_column_dim`, `time_dim`, `feature_dim`（起点网格行数、起点网格列数、终点网格行数、终点网格列数、时间维度、特征维度）。否则，张量拥有4个维度，分别是`origin_dim`, `destination_dim`, `time_dim`, `feature_dim`（起点空间维度、终点空间维度、时间维度、特征维度），在这种情况下，二维网格被重新编号为一维的。
+  
+- `MapMatchingDataset`
+
+  所有地图匹配任务的基类。该类生成一个包含3个键的字典：`rd_nwk`, `trajectory`和`route`，分别代表路网、GPS样本的轨迹和真实轨迹。如果`delta_time=True`，`trajectory`将包括一个`time`列，表示轨迹时间读秒。`delta_time`是数据集的参数，详见[此处](../data/args_for_data.md)。标准数据输入的介绍见[此处](../usage/standard_track.md)。
 

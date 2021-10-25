@@ -294,3 +294,29 @@
 
 	> Jarana Manotumruksa, Craig Macdonald, and Iadh Ounis. 2018.  A Contextual Attention Recurrent Architecture for Context-Aware Venue Recommendation. In SIGIR. ACM, 555–564.
 
+#### 路网匹配
+
+* **ST-Matching**:
+
+  该模型考虑了（1）道路网络的空间几何和拓扑结构，以及（2）轨迹的时间/速度约束，并专门为低采样率的GPS轨迹设计。
+
+  ```
+  Lou Y, Zhang C, Zheng Y, Wang W, Huang Y. Map-Matching for low-sampling-rate GPS trajectories. In: Proc. of the ACM-GIS.  2009. 352−361.
+  ```
+
+* **IVMM**:
+
+  该模型不仅考虑了GPS轨迹的空间和时间信息，而且还设计了一个基于投票的策略来模拟GPS点之间的加权相互影响。
+
+  ```
+  Yuan J, Zheng Y, Zhang C, Xie X, Sun JZ. An interactive-voting based map matching algorithm. In: Proc. of the MDM. 2010.  43−52. [doi: 10.1109/MDM.2010.14]
+  ```
+
+* **HMMM**:
+
+  该模型是一种新颖的、有原则的地图匹配算法，它使用隐马尔可夫模型（HMM）来寻找最可能的道路路线，该路线由有时间戳的经/纬度对序列代表。HMM优雅地考虑了测量噪声和道路网络的布局。
+
+  ```
+  Newson P, Krumm J. Hidden Markov map matching through noise and sparseness. In: Proc. of the ACM-GIS. 2009.  336−343. [doi: 10.1145/1653771.1653818]
+  ```
+

@@ -48,13 +48,13 @@
 
 标准的数据输入格式是一个字典。这个对象的key名如下：
 
-* `trajectory`：是所有轨迹的一个字典，它的key是`usr_id`。每一个 `usr_id` 对应一个`numpy.ndarray`，表示从连续运动的对象上采样得到的按时间顺序排列的空间点序列，其列名为`columns=(index,longitude,latitude,time)`或者`columns=(index,longitude,latitude)`。轨迹的长度记为`num_sample`。
+* `trajectory`：`trajectory`的格式可以写作`{"usr_id":{"traj_id":{numpy.ndarray}}}`。也就是说，`trajectory`的key是`usr_id`。每一个 `usr_id` 对应一个key为`traj_id`的字典。每个`traj_id`对应一个`numpy.ndarray`，表示从连续运动的对象上采样得到的按时间顺序排列的空间点序列，其列名为`columns=(index,longitude,latitude,time)`或者`columns=(index,longitude,latitude)`。轨迹的长度记为`num_sample`。
 * `rd_nwk`： 一个具有类型`networkx.classes.digraph.DiGraph`的路网数据。
-* `route`：一个由`rel_id`组成的`numpy.ndarray` 对象，`shape=(num_road,)`，代表真实路径。 `num_road`是真实路径的长度。
+* `route`：`route`的格式可以写作`{"usr_id":{"traj_id":{numpy.ndarray}}}`。这和`trajectory`类似。`route`的`value`是一个由`geo_id`组成的`numpy.ndarray` 对象，`shape=(num_road,)`，代表真实路径。 `num_road`是真实路径的长度。
 
 标准的评价输入格式是一个字典。这个对象的key名如下：
 
-* `result`：一个由`rel_id` 组成的 `numpy.ndarray`对象， `shape=(num_sample,)`，代表匹配的结果。`num_sample`是轨迹数据中GPS采样点的数量。
+* `result`：`result`的格式几乎和`route`的格式相同。`result`的值是一个由`geo_id` 组成的 `numpy.ndarray`对象， `shape=(num_sample,)`，代表匹配的结果。`num_sample`是轨迹数据中GPS采样点的数量。
 
 * `route`：见标准的数据输入格式中的描述。
 

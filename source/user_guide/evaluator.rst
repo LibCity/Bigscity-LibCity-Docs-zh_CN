@@ -12,6 +12,7 @@
 交通流量预测                    MAE、MSE、RMSE、MAPE、R2、EVAR
 交通速度预测                    MAE、MSE、RMSE、MAPE、R2、EVAR
 按需服务预测                    MAE、MSE、RMSE、MAPE、R2、EVAR
+路网匹配                        RMF、AN、AL
 ============================== ==============================
 
 .. toctree::
@@ -19,3 +20,4 @@
 
    evaluator/traffic_state_pred
    evaluator/traj_loc_pred
+   evaluator/map_matching
