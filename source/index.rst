@@ -44,6 +44,7 @@
    tutorial/run_model
    tutorial/add_model
    tutorial/hyper_tune
+   tutorial/data_visualization
 
 .. toctree::
    :maxdepth: 1
