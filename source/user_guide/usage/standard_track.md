@@ -71,4 +71,4 @@
 标准评价输入格式是一个字典对象，并且这个字典有下列key名：
 
 - `y_true`：起点到终点的真实时间，`shape = (batch_size)`。
-- `y_pred`：起点到终点的真实时间，`shape = (batch_size)`。
+- `y_pred`：起点到终点的预测时间，`shape = (batch_size)`。
