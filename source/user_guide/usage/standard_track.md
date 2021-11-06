@@ -55,9 +55,20 @@
 标准的评价输入格式是一个字典。这个对象的key名如下：
 
 * `result`：`result`的格式几乎和`route`的格式相同。`result`的值是一个由`geo_id` 组成的 `numpy.ndarray`对象， `shape=(num_sample,)`，代表匹配的结果。`num_sample`是轨迹数据中GPS采样点的数量。
-
 * `route`：见标准的数据输入格式中的描述。
-
 * `rd_nwk`：见标准的数据输入格式中的描述。
 
-  
+## 到达时间估计
+
+标准数据输入格式是类字典的[Batch](../data/batch.md)对象实例。该对象的key名如下：
+
+* `current_loc/(current_longi,current_lati)`：轨迹位置信息，`shape = (batch_size, traj_len)`，`traj_len` 是轨迹的长度。
+* `uid`：每个轨迹的用户的id，`shape = (batch_size)`。
+* `timeid(weekid)`：轨迹开始的时间信息，`shape = (batch_size)`。
+* `dist`：轨迹总长度，`shape = (batch_size)`。
+* 其他信息，例如`current_dis`（从起点到当前位置的距离，`shape = (batch_size, traj_len)`）、`current_state`（是否载客，`shape = (batch_size, traj_len)`）等。（可选的）
+
+标准评价输入格式是一个字典对象，并且这个字典有下列key名：
+
+- `y_true`：起点到终点的真实时间，`shape = (batch_size)`。
+- `y_pred`：起点到终点的真实时间，`shape = (batch_size)`。
