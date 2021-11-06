@@ -320,3 +320,15 @@
   > Newson P, Krumm J. Hidden Markov map matching through noise and sparseness. In: Proc. of the ACM-GIS. 2009.  336−343. [doi: 10.1145/1653771.1653818]
   ```
 
+#### 到达时间估计
+
+* **DeepTTE**:
+
+  该模型是端到端的深度学习模型，直接预测整条路经所需的旅行时间；提出了地理卷积操作，通过将地理信息整合到传统的卷积中，用来捕捉空间相关性。
+
+  ```
+  > Wang, D., Zhang, J., Cao, W., Li, J., & Zheng, Y. (2018). When Will You Arrive? Estimating Travel Time Based on Deep Neural Networks. Proceedings of the AAAI Conference on Artificial Intelligence, 32(1).
+  ```
+
+  
+

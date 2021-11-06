@@ -104,3 +104,15 @@
 以下参数均为标准路网匹配数据集使用的参数：
 
 * `delta_time`: 如果设置为 `True`，数据集将计算出当前时间与轨迹开始时间之间的时间差，单位为秒，否则时间将以 `datetime `的形式给出。
+
+## 到达时间估计数据模块
+
+以下参数均为标准到达时间估计数据集使用的参数：
+
+* `batch_size`：训练和测试批量大小。默认为`64`。
+* `cache_dataset`：是否保存处理后的数据集。默认为`True`。
+* `num_workers`：[Dataloader](https://pytorch.org/docs/stable/data.html?highlight=dataloader#torch.utils.data.DataLoader)的参数。默认为`0`。
+* `train_rate`：训练集占总数据集的比例。默认为`0.7`。 （划分顺序为训练集、验证集、测试集）.
+* `eval_rate`：验证集的比例。默认为`0.1`。
+* `eta_encoder`：数据集使用的轨迹编码器类。没有默认参数。通常对于不同的数据集，需要使用不同的轨迹编码器类。
+
