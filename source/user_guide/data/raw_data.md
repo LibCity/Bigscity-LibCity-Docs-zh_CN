@@ -223,6 +223,14 @@ Apr. 10, 2016
 
 - NYCTAXI_GRID 是一个数据集，它使用基于网格的划分方法计算区域的流入和流出。
 
+### NYCTAXI_TOD
+
+**地点：** New York, USA
+
+**时期：**  2014
+
+**描述：** NYCTAXI_TOD 使用基于网格的划分方法计算区域的流入和流出。由 [CSTN](https://arxiv.org/pdf/1905.06335) 的论文作者通过轨迹数据集处理得到。
+
 ### NYCBIKE
 
 **地点：** New York, USA
