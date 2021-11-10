@@ -223,6 +223,14 @@ Apr. 10, 2016
 
 - NYCTAXI_GRID 是一个数据集，它使用基于网格的划分方法计算区域的流入和流出。
 
+### NYCTAXI_TOD
+
+**地点：** New York, USA
+
+**时期：**  2014
+
+**描述：** NYCTAXI_TOD 使用基于网格的划分方法计算区域的流入和流出。由 [CSTN](https://arxiv.org/pdf/1905.06335) 的论文作者通过轨迹数据集处理得到。
+
 ### NYCBIKE
 
 **地点：** New York, USA
@@ -361,3 +369,13 @@ Apr. 10, 2016
 **链接：** 
 
 **描述：** XA_TRAJ 数据集包含海量轨迹数据，每 15 天约 214 万条。 有 2 个月的数据可用。
+
+### Chengdu_Taxi_Sample1
+
+**地点：** Chengdu, China
+
+**时期：** Aug. 03, 2014 - Aug. 30, 2014
+
+**链接：** https://github.com/UrbComp/DeepTTE/tree/master/data
+
+**描述：** Chengdu_Taxi_Sample1 数据集是Chengdu_Taxi 数据集的部分样例数据集。包含1800条成都市出租车轨迹数据。

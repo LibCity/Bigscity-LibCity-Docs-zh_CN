@@ -37,4 +37,8 @@
 - `MapMatchingDataset`
 
   所有地图匹配任务的基类。该类生成一个包含3个键的字典：`rd_nwk`, `trajectory`和`route`，分别代表路网、GPS样本的轨迹和真实轨迹。如果`delta_time=True`，`trajectory`将包括一个`time`列，表示轨迹时间读秒。`delta_time`是数据集的参数，详见[此处](../data/args_for_data.md)。标准数据输入的介绍见[此处](../usage/standard_track.md)。
+  
+- `ETADataset`
+
+  所有ETA任务的基类。`_load_dyna`函数会读取轨迹信息。`_encode_traj`函数会根据设定的 `eta_encoder` 参数调用相应的轨迹时空特征编码器来对轨迹进行特征提取。提取到的特征会被分为训练集、验证集、测试集，来生成模型输入。
 
