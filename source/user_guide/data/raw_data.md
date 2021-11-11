@@ -390,4 +390,4 @@ Apr. 10, 2016
 
 **链接:** https://github.com/Echohhhhhh/GSNet
 
-**描述:** CHICAGO_RISK 数据集包含了2016年1月到9月芝加哥道路、风险和POI数据。
+**描述:** CHICAGO_RISK 数据集包含了2016年1月到9月芝加哥道路和风险数据。
