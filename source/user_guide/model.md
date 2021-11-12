@@ -340,3 +340,21 @@
   ```
   > Beibei Wang, Youfang Lin, Shengnan Guo, Huaiyu Wan. 2021. GSNet: Learning Spatial-Temporal Correlations from Geographical and Semantic Aspects for Traffic Accident Risk Forecasting. In AAAI. AAAI Press, 4402-4409. 
   ```
+
+#### OD矩阵预测
+
+* **GEML**:
+
+  该模型使用图卷积神经网络捕获空间信息，p-Skip LSTM 捕获时间信息、以及多任务学习机制，预测每对出发-到达地点间的出租车流量
+
+  ```
+  > Wang, Yuandong & Yin, Hongzhi & Chen, Hongxu & Wo, Tianyu & xu, Jiudong & Zheng, Kai. (2019). Origin-Destination Matrix Prediction via Graph Convolution: a New Perspective of Passenger Demand Modeling. In KDD. ACM. 2019. 1227-1235
+  ```
+
+* **CSTN**:
+
+  该模型使用双视图卷积神经网络，捕获出发地、目的地两个视图上节点的空间信息，并使用 ConvLSTM 捕获时间信息，最后通过卷积捕获全局相关性。
+
+  ```
+  > Liu, Lingbo & Qiu, Zhilin & Li, Guanbin & Wang, Qing & Ouyang, Wanli & Lin, Liang. (2019). Contextualized Spatial-Temporal Network for Taxi Origin-Destination Demand Prediction. In IEEE Transactions on Intelligent Transportation Systems. 2019. 3875-3887  [doi: 10.1109/TITS.2019.2915525.]
+  ```
