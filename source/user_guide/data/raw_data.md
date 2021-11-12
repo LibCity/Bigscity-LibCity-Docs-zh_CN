@@ -381,3 +381,23 @@ Apr. 10, 2016
 **链接：** https://github.com/UrbComp/DeepTTE/tree/master/data
 
 **描述：** Chengdu_Taxi_Sample1 数据集是Chengdu_Taxi 数据集的部分样例数据集。包含1800条成都市出租车轨迹数据。
+
+### NYC_RISK
+
+**地点:** New York, USA
+
+**时期:** Jan.01,2013 ~ Dec.31,2013
+
+**链接:** https://github.com/Echohhhhhh/GSNet
+
+**描述:** NYC_RISK 数据集包含了2013年纽约道路、风险和POI数据。
+
+### CHICAGO_RISK
+
+**地点:** New York, USA
+
+**时期:** Feb.01,2016 ~ Sep.30,2016
+
+**链接:** https://github.com/Echohhhhhh/GSNet
+
+**描述:** CHICAGO_RISK 数据集包含了2016年1月到9月芝加哥道路和风险数据。
