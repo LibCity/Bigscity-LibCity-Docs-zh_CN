@@ -74,7 +74,7 @@ python run_model.py --task traffic_state_pred --model GRU --dataset METR_LA
 
 支持的参数有：
 
-- `task`：要执行的任务名，包括`traffic_state_pred`，`traj_loc_pred`，`map_matching`，`road_representation`。默认为`traffic_state_pred`。
+- `task`：要执行的任务名，包括`traffic_state_pred`，`traj_loc_pred`，`eta`，`map_matching`，`road_representation`。默认为`traffic_state_pred`。
 - `model`：要执行的模型名。默认为`GRU`。（[支持的模型](../user_guide/model)）
 - `dataset`：要执行的数据集。默认为`METR_LA`。（[支持的数据集](../user_guide/data/raw_data.md)）
 - `config_file`：用户自定义的配置文件名。默认为`None`。（[了解更多](../user_guide/config_settings.md)）

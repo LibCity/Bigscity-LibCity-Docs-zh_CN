@@ -1,6 +1,8 @@
 # 数据集适用的任务
 
-在本节中，我们向您介绍我们提供的[标准数据集](https://drive.google.com/drive/folders/1g5v2Gq1tkOq8XO0HDCZ9nOTtRpB6-gPe?usp=sharing)和任务之间的对应关系。 值得注意的是，某些数据集只能支持某个任务中的某些模型。
+在本节中，我们向您介绍我们提供的[标准数据集](https://drive.google.com/drive/folders/1g5v2Gq1tkOq8XO0HDCZ9nOTtRpB6-gPe?usp=sharing)和任务、模型之间的对应关系。 值得注意的是，某些数据集只能支持某个任务中的某些模型。
+
+如果你觉得这个表格看起来不够方便，请点击[这里](https://github.com/LibCity/Bigscity-LibCity-Docs-zh_CN/blob/master/source/user_guide/data/dataset_for_task.md)在Github上查看此表格。
 
 | 任务           | 数据集                                                       | 支持的模型                                                   | 备注                                                         |
 | -------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -13,21 +15,28 @@
 |                | **LOOP_SEATTLE**                                             | TGCLSTM                                                      | **见Note 2.**                                                |
 | 交通需求预测   | **TAXIBJ**, PORTO, NYCTAXI_GRID, NYCBIKE, AUSTINRIDE, BIKEDC, BIKECHI, **NYCBike20140409**, **NYCBike20160708**, **NYCBike20160809**, **NYCTaxi20140112**, **NYCTaxi20150103**, **NYCTaxi20160102**, **T_DRIVE20150206**, T_DRIVE_SMALL | DMVSTNet                                                     | 基于网格的数据                                               |
 |                | **PEMSD3**, **PeMSD4**, **PeMSD7**, **PeMSD8**, BEIJING_SUBWAY, M_DENSE, SHMETRO, HZMETRO, NYCTAXI_DYNA | CCRNN, STG2Seq                                               | 基于传感器点的数据                                           |
-|                | **TAXIBJ**, PORTO, NYCTAXI_GRID, NYCBIKE, AUSTINRIDE, BIKEDC, BIKECHI, **NYCBike20140409**, **NYCBike20160708**, **NYCBike20160809**, **NYCTaxi20140112**, **NYCTaxi20150103**, **NYCTaxi20160102**, **T_DRIVE20150206**, T_DRIVE_SMALL | CCRNN, STG2Seq                                               | Need **simple modification**   for grid based dataset. **See Note 3.** |
-| OD矩阵预测     | **NYCTAXI_OD**                                               | GEML                                                         | 基于OD的数据                                                 |
-|               | **NYC_TOD**                                                 | CSTN                                                         |   需要 `.gridod`、`.ext` 文件                                       |
+|                | **TAXIBJ**, PORTO, NYCTAXI_GRID, NYCBIKE, AUSTINRIDE, BIKEDC, BIKECHI, **NYCBike20140409**, **NYCBike20160708**, **NYCBike20160809**, **NYCTaxi20140112**, **NYCTaxi20150103**, **NYCTaxi20160102**, **T_DRIVE20150206**, T_DRIVE_SMALL | CCRNN, STG2Seq                                               | 需要简单的修改以用于网格数据， **见 Note 3.** |
+| OD矩阵预测     | **NYCTAXI_OD**                                               | GEML                                                         | 基于点的OD的数据                                               |
+|  | **NYC_TOD** | GEML | 需要简单的修改以用于网格OD数据， **见 Note 4.** |
+|               | **NYC_TOD**                                                 | CSTN                                                         |   基于网格的OD的数据和`.ext` 文件                        |
+| 交通事故预测 | **NYC_RISK**, CHICAGO_RISK | GSNet | 基于网格的交通事故数据 |
 | 轨迹下一跳预测 | **Gowalla**, BrightKite                                      | FPMC, RNN, ST-RNN, ATST-LSTM, DeepMove, HST-LSTM, LSTPM, STAN | 轨迹数据                                                     |
 |                | **Fousquare**, Instagram                                     | FPMC, RNN, ST-RNN, ATST-LSTM, DeepMove, HST-LSTM, LSTPM, GeoSAN, STAN, SERM, CARA | 轨迹数据                                                     |
-| 路网匹配       | **Seattle**, global                                          | STMatching, IVMM                                             | 轨迹数据                                                     |
 | 到达时间估计   | **Chengdu_Taxi_Sample1**                                     | DeepTTE                                                      | 轨迹数据                                                     |
+| 路网匹配       | **Seattle**, global                                          | STMatching, IVMM, HMMM                                       | 轨迹数据                                                     |
+| 路网表征学习 | **bj_roadmap_edge** | ChebConv, LINE | 路网数据 |
 
-## Note
+**Note 1**
 
-1.加粗的数据集是我们推荐的数据集。
+加粗的数据集是我们推荐的数据集。
 
-2.对于`TGCLSTM`，需要将`dataset_class`设置为`TrafficStatePointDataset`。 否则，默认的`dataset_class=TGCLSTMDataset` 只适用于数据集`LOOP_SEATTLE`。
+**Note 2**
 
-3.以下是如何将用于基于点的数据的模型推广到基于网格的数据。
+对于`TGCLSTM`，需要将`dataset_class`设置为`TrafficStatePointDataset`。 否则，默认的`dataset_class=TGCLSTMDataset` 只适用于数据集`LOOP_SEATTLE`。
+
+**Note 3**
+
+以下是如何将用于基于点的数据的模型推广到基于网格的数据。
 
 （1）如果模型使用的数据集类是`TrafficStatePointDataset`，如`AGCRN`、`ASTGCNCommon`、`CCRNN`等，可以直接在`task_file.json`中将`dataset_class`设为`TrafficStateGridDataset`或通过自定义配置文件（`--config_file`）设置。 然后将 `TrafficStateGridDataset` 的参数 `use_row_column` 设置为 `False`。
 
@@ -56,3 +65,10 @@ class STG2SeqDataset(TrafficStateGridDataset):
         pass
 ```
 
+**Note 4**
+
+以下是如何将用于基于点的OD的数据的模型推广到基于网格的OD的数据。（跟Note 3是类似的）
+
+（1）如果模型使用的数据集类是`TrafficStateOdDataset`，如`GEML`等，可以直接在`task_file.json`中将`dataset_class`设为`TrafficStateGridOdDataset`或通过自定义配置文件（`--config_file`）设置。 然后将 `TrafficStateGridOdDataset` 的参数 `use_row_column` 设置为 `False`。
+
+（2）如果模型使用的数据集类是`TrafficStateOdDataset`的子类，可以修改数据集类的文件，使其继承`TrafficStateGridOdDataset` 取代当前的`TrafficStateOdDataset`。 然后将函数`__init__()`中的参数`use_row_column`设置为`False`。

@@ -1,6 +1,26 @@
 ## 复现模型列表
 
-#### 交通流量预测
+#### 基线模型
+
+对于时间序列预测任务：
+
+- **HA**:
+
+  历史平均值，将历史流量建模为季节性过程，然后使用前几个季节的加权平均值作为预测值。
+
+- **VAR**:
+
+  向量自回归on，这是一种常用的时间序列预测模型，用于捕捉多个变量随时间的关系。
+
+- **SVR**:
+
+  支持向量回归，它使用线性支持向量机进行回归任务。 SVR利用历史数据训练模型建立输入输出关系，然后进行预测。
+
+- **ARIMA**
+
+  带有卡尔曼滤波器的自回归综合移动平均模型。
+
+对于交通速度、流量、需求预测任务：
 
 * **AutoEncoder**
 
@@ -13,6 +33,18 @@
 * **Seq2Seq**
 
 　　本基线模型由我们实现，基于编码器-解码器架构，预测交通状态。采用基于门控循环单元的编码器-解码器框架，进行多步预测。
+
+- **FNN**
+
+  该基线模型由我们自己实现，用于基于具有两个隐藏层和 L2 正则化的前馈神经网络的交通状态预测任务。
+
+对于轨迹下一跳预测任务：
+
+* **RNN**
+
+　　该基线模型由我们实现。
+
+#### 交通流量预测
 
 * **ST-ResNet**
 
@@ -106,18 +138,6 @@
 
 #### 交通速度预测
 
-* **AutoEncoder**
-
-　　本基线模型由我们实现，采用编码器从数据中学习嵌入向量后用解码器预测未来交通状况。
-
-* **RNN（FC-RNN）**
-
-　　本基线模型由我们实现，预测交通状态，基于 RNN。
-
-* **Seq2Seq**
-
-　　本基线模型由我们实现，基于编码器-解码器架构，预测交通状态。采用基于门控循环单元的编码器-解码器框架，进行多步预测。
-
 * **DCRNN**
 
 　　扩散卷积循环神经网络，用由扩散过程形式化的图卷积捕捉时间依赖，并用编码器-解码器框架捕捉空间依赖。
@@ -196,19 +216,15 @@
 
 	> Fanglan Chen, Zhiqian Chen, Subhodip Biswas, Shuo Lei, Naren Ramakrishnan,and Chang-Tien Lu. 2020. Graph Convolutional Networks with Kalman Filtering for Traffic Prediction. In SIGSPATIAL/GIS. ACM, 135–138.
 
+- **STTN**
+
+  该模型使用时间和空间的Transformer结构进行交通预测。
+
+  ```
+  Xu, M., Dai, W., Liu, C., Gao, X., Lin, W., Qi, G. J., & Xiong, H. (2020). Spatial-temporal transformer networks for traffic flow forecasting. arXiv preprint arXiv:2001.02908.
+  ```
+
 #### 交通需求量预测
-
-* **AutoEncoder**
-
-　　本基线模型由我们实现，采用编码器从数据中学习嵌入向量后用解码器预测未来交通状况。
-
-* **RNN（FC-RNN）**
-
-　　本基线模型由我们实现，预测交通状态，基于 RNN。
-
-* **Seq2Seq**
-
-　　本基线模型由我们实现，基于编码器-解码器架构，预测交通状态。采用基于门控循环单元的编码器-解码器框架，进行多步预测。
 
 * **DMVSTNET**
 
@@ -228,6 +244,35 @@
 
 	> Junchen Ye, Leilei Sun, Bowen Du, Yanjie Fu, and Hui Xiong. 2021.  Coupled Layer-wise Graph Convolution for Transportation Demand Prediction. In AAAI. AAAI Press, 4617–4625.
 
+
+#### OD矩阵预测
+
+* **GEML**
+
+  该模型使用图卷积神经网络捕获空间信息，p-Skip LSTM 捕获时间信息、以及多任务学习机制，预测每对出发-到达地点间的出租车流量
+
+  ```
+  > Wang, Yuandong & Yin, Hongzhi & Chen, Hongxu & Wo, Tianyu & xu, Jiudong & Zheng, Kai. (2019). Origin-Destination Matrix Prediction via Graph Convolution: a New Perspective of Passenger Demand Modeling. In KDD. ACM. 2019. 1227-1235
+  ```
+
+* **CSTN**
+
+  该模型使用双视图卷积神经网络，捕获出发地、目的地两个视图上节点的空间信息，并使用 ConvLSTM 捕获时间信息，最后通过卷积捕获全局相关性。
+
+  ```
+  > Liu, Lingbo & Qiu, Zhilin & Li, Guanbin & Wang, Qing & Ouyang, Wanli & Lin, Liang. (2019). Contextualized Spatial-Temporal Network for Taxi Origin-Destination Demand Prediction. In IEEE Transactions on Intelligent Transportation Systems. 2019. 3875-3887  [doi: 10.1109/TITS.2019.2915525.]
+  ```
+
+#### 交通事故预测
+
+- **GSNet**：
+
+  该模型提出从时空地理和时空语义两个角度综合考虑交通事故风险，并设计了加权损失函数，更多关注高风险区域的样本信息，以解决零膨胀问题。
+
+  ```
+  > Beibei Wang, Youfang Lin, Shengnan Guo, Huaiyu Wan. 2021. GSNet: Learning Spatial-Temporal Correlations from Geographical and Semantic Aspects for Traffic Accident Risk Forecasting. In AAAI. AAAI Press, 4402-4409. 
+  ```
+
 #### 轨迹下一跳预测
 
 * **FPMC**
@@ -235,10 +280,6 @@
 　　经典下一跳预测基线模型。在下一跳预测领域研究早期，该模型经常作为基线模型使用。
 
 	> Steffen Rendle, Christoph Freudenthaler, and Lars Schmidt-Thieme. 2010. Factorizing personalized Markov chains for next-basket recommendation. In WWW ACM, 811–820.
-
-* **RNN**
-
-　　该基线模型由我们实现。
 
 * **ST-RNN**
 
@@ -294,35 +335,9 @@
 
 	> Jarana Manotumruksa, Craig Macdonald, and Iadh Ounis. 2018.  A Contextual Attention Recurrent Architecture for Context-Aware Venue Recommendation. In SIGIR. ACM, 555–564.
 
-#### 路网匹配
-
-* **ST-Matching**:
-
-  该模型考虑了（1）道路网络的空间几何和拓扑结构，以及（2）轨迹的时间/速度约束，并专门为低采样率的GPS轨迹设计。
-
-  ```
-  > Lou Y, Zhang C, Zheng Y, Wang W, Huang Y. Map-Matching for low-sampling-rate GPS trajectories. In: Proc. of the ACM-GIS.  2009. 352−361.
-  ```
-
-* **IVMM**:
-
-  该模型不仅考虑了GPS轨迹的空间和时间信息，而且还设计了一个基于投票的策略来模拟GPS点之间的加权相互影响。
-
-  ```
-  > Yuan J, Zheng Y, Zhang C, Xie X, Sun JZ. An interactive-voting based map matching algorithm. In: Proc. of the MDM. 2010.  43−52. [doi: 10.1109/MDM.2010.14]
-  ```
-
-* **HMMM**:
-
-  该模型是一种新颖的、有原则的地图匹配算法，它使用隐马尔可夫模型（HMM）来寻找最可能的道路路线，该路线由有时间戳的经/纬度对序列代表。HMM优雅地考虑了测量噪声和道路网络的布局。
-
-  ```
-  > Newson P, Krumm J. Hidden Markov map matching through noise and sparseness. In: Proc. of the ACM-GIS. 2009.  336−343. [doi: 10.1145/1653771.1653818]
-  ```
-
 #### 到达时间估计
 
-* **DeepTTE**:
+* **DeepTTE**
 
   该模型是端到端的深度学习模型，直接预测整条路经所需的旅行时间；提出了地理卷积操作，通过将地理信息整合到传统的卷积中，用来捕捉空间相关性。
 
@@ -330,31 +345,47 @@
   > Wang, D., Zhang, J., Cao, W., Li, J., & Zheng, Y. (2018). When Will You Arrive? Estimating Travel Time Based on Deep Neural Networks. Proceedings of the AAAI Conference on Artificial Intelligence, 32(1).
   ```
 
+#### 路网匹配
 
-#### 交通事故预测
+* **ST-Matching**
 
-- **GSNet**：
-
-  该模型提出从时空地理和时空语义两个角度综合考虑交通事故风险，并设计了加权损失函数，更多关注高风险区域的样本信息，以解决零膨胀问题。
-
-  ```
-  > Beibei Wang, Youfang Lin, Shengnan Guo, Huaiyu Wan. 2021. GSNet: Learning Spatial-Temporal Correlations from Geographical and Semantic Aspects for Traffic Accident Risk Forecasting. In AAAI. AAAI Press, 4402-4409. 
-  ```
-
-#### OD矩阵预测
-
-* **GEML**:
-
-  该模型使用图卷积神经网络捕获空间信息，p-Skip LSTM 捕获时间信息、以及多任务学习机制，预测每对出发-到达地点间的出租车流量
+  该模型考虑了（1）道路网络的空间几何和拓扑结构，以及（2）轨迹的时间/速度约束，并专门为低采样率的GPS轨迹设计。
 
   ```
-  > Wang, Yuandong & Yin, Hongzhi & Chen, Hongxu & Wo, Tianyu & xu, Jiudong & Zheng, Kai. (2019). Origin-Destination Matrix Prediction via Graph Convolution: a New Perspective of Passenger Demand Modeling. In KDD. ACM. 2019. 1227-1235
+  > Lou Y, Zhang C, Zheng Y, Wang W, Huang Y. Map-Matching for low-sampling-rate GPS trajectories. In: Proc. of the ACM-GIS.  2009. 352−361.
   ```
 
-* **CSTN**:
+* **IVMM**
 
-  该模型使用双视图卷积神经网络，捕获出发地、目的地两个视图上节点的空间信息，并使用 ConvLSTM 捕获时间信息，最后通过卷积捕获全局相关性。
+  该模型不仅考虑了GPS轨迹的空间和时间信息，而且还设计了一个基于投票的策略来模拟GPS点之间的加权相互影响。
 
   ```
-  > Liu, Lingbo & Qiu, Zhilin & Li, Guanbin & Wang, Qing & Ouyang, Wanli & Lin, Liang. (2019). Contextualized Spatial-Temporal Network for Taxi Origin-Destination Demand Prediction. In IEEE Transactions on Intelligent Transportation Systems. 2019. 3875-3887  [doi: 10.1109/TITS.2019.2915525.]
+  > Yuan J, Zheng Y, Zhang C, Xie X, Sun JZ. An interactive-voting based map matching algorithm. In: Proc. of the MDM. 2010.  43−52. [doi: 10.1109/MDM.2010.14]
   ```
+
+* **HMMM**
+
+  该模型是一种新颖的、有原则的地图匹配算法，它使用隐马尔可夫模型（HMM）来寻找最可能的道路路线，该路线由有时间戳的经/纬度对序列代表。HMM优雅地考虑了测量噪声和道路网络的布局。
+
+  ```
+  > Newson P, Krumm J. Hidden Markov map matching through noise and sparseness. In: Proc. of the ACM-GIS. 2009.  336−343. [doi: 10.1145/1653771.1653818]
+  ```
+
+#### 路网表征学习
+
+- **ChebConv**
+
+  该模型使用基于切比雪夫多项式近似的图卷积模型计算路网表征。
+
+  ```
+  > Defferrard, M., Bresson, X., & Vandergheynst, P. (2016). Convolutional neural networks on graphs with fast localized spectral filtering. Advances in neural information processing systems, 29, 3844-3852.
+  ```
+
+- **LINE**
+
+  适合大规模图结构的图嵌入模型，同时考虑一阶和二阶近似。
+
+  ```
+  > Tang, J., Qu, M., Wang, M., Zhang, M., Yan, J., & Mei, Q. (2015, May). Line: Large-scale information network embedding. In Proceedings of the 24th international conference on world wide web (pp. 1067-1077).
+  ```
+
