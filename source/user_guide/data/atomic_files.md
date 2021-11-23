@@ -75,7 +75,7 @@ Dyna 表中一个元素由以下五部分组成：
 
 *   dyna\_id： 主键，唯一标识动态表中的一条记录。
 *   type： 枚举类。一共有两种取值： `trajectory`（轨迹预测任务） 和 `state`（状态预测任务）。
-*   time： 时间信息，采用 [ISO-8601 标准](https://www.iso.org/iso-8601-date-and-time-format.html) 中的日期时间组合表示法， 如： `2020- 12-07T02:59:46Z`。
+*   time： 时间信息，采用 [ISO-8601 标准](https://www.iso.org/iso-8601-date-and-time-format.html) 中的日期时间组合表示法， 如： `2020-12-07T02:59:46Z`。
 *   entity\_id： 描述该记录是基于哪一个实体观测产生的，就是 `geo` 或 `usr`的编号。
 *   properties： 描述该条记录的属性信息，若有多个属性，可以使用不同的列名定义为多列数据，比如既有速度数据、又有流量数据。
 
