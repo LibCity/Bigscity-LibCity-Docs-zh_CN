@@ -46,3 +46,24 @@ python run_model.py --task traffic_state_pred --model GRU --dataset METR_LA
 - `max_epoch`：最大的训练轮数。默认值因模型而异。
 - `gpu`：是否使用GPU。默认为`True`。
 - `gpu_id`：使用的GPU的ID。默认为`0`。
+
+## TensorBoard Visualization
+
+在模型训练过程中，LibCity 会记录每个 epoch 的损失，并支持 tensorboard 可视化。
+
+模型运行一次后，可以使用以下命令进行可视化：
+
+```shell
+tensorboard --logdir 'libcity/cache'
+```
+
+```
+TensorFlow installation not found - running with reduced feature set.
+Serving TensorBoard on localhost; to expose to the network, use a proxy or pass --bind_all
+TensorBoard 2.4.1 at http://localhost:6006/ (Press CTRL+C to quit)
+```
+
+在浏览器中访问这个地址（http://localhost:6006/）可以看到可视化的结果。
+
+![](/_static/tensorboard.png)
+
