@@ -46,12 +46,12 @@
 
 修改前：
 
-```json
-// task_config.json
+```python
+# task_config.json
 "RNN": {
     "dataset_class": "TrafficStatePointDataset",
 },
-// TrafficStateGridDataset.json
+# TrafficStateGridDataset.json
 {
   "use_row_column": true
 }
@@ -59,12 +59,12 @@
 
 修改后：
 
-```json
-// task_config.json
+```python
+# task_config.json
 "RNN": {
     "dataset_class": "TrafficStateGridDataset",
 },
-// TrafficStateGridDataset.json
+# TrafficStateGridDataset.json
 {
   "use_row_column": false
 }

@@ -87,14 +87,23 @@ Dyna 表中一个元素由以下五部分组成：
     *   对于网格结构的交通数据，entity\_id 变成2列，列名为 \[**row\_id, column\_id**\]，文件后缀名为 `.grid`。
     *   对于基于OD结构的交通数据，entity\_id 变成2列，列名为 \[**origin\_id, destination\_id**\]，文件后缀名为 `.od`。
     *   对于网格结合OD结构的交通数据，entity\_id 变成4列，列名为 \[**origin\_row\_id, origin\_column\_id, destination\_row\_id, destination\_column\_id**\]，文件后缀名为 `.gridod`。
-*   对于轨迹下一跳预测任务：
-    *   格式为：*dyna\_id, trajectory, time, entity\_id, (traj_id), location*。其中 **entity\_id** 列的内容应该是 **usr\_id**， **traj_id** 代表同一个用户的多条轨迹编号（从0开始）且如果用户只有一条轨迹此列可以为空，**location** 列的内容为 **geo_id**，指向 geo 表，代表一个POI。
-*   对于出行时间预测任务：
-    *   如果模型接收基于GPS点的轨迹输入，格式为：*dyna_id, type, time, entity_id, (traj_id), coordinates*。其中 **entity\_id** 列的内容应该是 **usr\_id**， **traj_id** 代表同一个用户的多条轨迹编号（从0开始）且如果用户只有一条轨迹此列可以为空，**coordinates** 列的内容为轨迹点的经纬度。
-    *   如果模型接收基于路段的轨迹输入，格式为：*dyna_id, type, time, entity_id, (traj_id), location*。其中 **entity\_id** 列的内容应该是 **usr\_id**， **traj_id** 代表同一个用户的多条轨迹编号（从0开始）且如果用户只有一条轨迹此列可以为空，**location** 列的内容为 **geo_id**，指向 geo 表，代表一条路段。
-*   对于路网匹配任务：
-    *   任务输入的GPS点的轨迹序列（\*\*.dyna），格式为：*dyna_id, type, time, entity_id, (traj_id), coordinates*。其中 **entity\_id** 列的内容应该是 **usr\_id**， **traj_id** 代表同一个用户的多条轨迹编号（从0开始）且如果用户只有一条轨迹此列可以为空，**coordinates** 列的内容为轨迹点的经纬度。
-    *   任务输入的真实路段的轨迹序列（\*\*_truth.dyna）和任务输出的预测路段的轨迹序列，格式为：*dyna_id, type, time, entity_id, (traj_id), location*。其中 **entity\_id** 列的内容应该是 **usr\_id**， **traj_id** 代表同一个用户的多条轨迹编号（从0开始）且如果用户只有一条轨迹此列可以为空，**location** 列的内容为 **geo_id**，指向 geo 表，代表一条路段。
+    
+*   对于轨迹相关任务: 
+    
+    轨迹数据包括GPS点轨迹、基于路段的轨迹（路网匹配后）、用户签到轨迹（基于POI的轨迹）。
+    
+    - GPS点轨迹
+      - 格式为： ***dyna_id, type, time, entity_id, (traj_id), coordinates, properties***. 
+      - **entity\_id**列的内容应为**usr\_id**，**traj_id**表示同一用户的多条轨迹的编号（从0开始），如果用户只有一条轨迹，则该列可以为空，**coordinates**列的内容为GPS点的纬度和经度。
+    
+    *   基于路段的轨迹
+        *   格式为： ***dyna_id, type, time, entity_id, (traj_id), location, properties***. 
+        *   **entity\_id**列的内容应为**usr\_id**，**traj_id**表示同一用户的多条轨迹的编号（从0开始），如果用户只有一条轨迹，则该列可以为空，**location**列的内容是**geo\_id**，指向geo表代表一个路段。
+    *   基于POI的轨迹
+        *   格式为： ***dyna_id, type, time, entity_id, (traj_id), location, properties***. 
+        *   **entity\_id**列的内容应为**usr\_id**，**traj_id**表示同一用户的多条轨迹的编号（从0开始），如果用户只有一条轨迹，则该列可以为空，**location**列的内容是**geo\_id**，指向geo表代表一个POI。
+    
+    对于特定任务，轨迹下一个位置预测任务的输入基于POI点的轨迹，到达时间估计任务的输入为GPS点的轨迹或基于路段的轨迹，地图匹配任务的输入为GPS点的轨迹，输出的是基于路段的轨迹。
 
 ### 数据排列方式
 
