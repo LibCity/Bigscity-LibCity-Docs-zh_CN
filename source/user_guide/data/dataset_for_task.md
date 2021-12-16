@@ -42,11 +42,48 @@
 
 （2）如果模型使用的数据集类是`TrafficStatePointDataset`的子类，如`ASTGCNDataset`、`CONVGCNDataset`、`STG2SeqDataset`等，可以修改数据集类的文件，使其继承`TrafficStateGridDataset` 取代当前的`TrafficStatePointDataset`。 然后将函数`__init__()`中的参数`use_row_column`设置为`False`。
 
-样例：
+样例（1）：
+
+修改前：
+
+```json
+// task_config.json
+"RNN": {
+    "dataset_class": "TrafficStatePointDataset",
+},
+// TrafficStateGridDataset.json
+{
+  "use_row_column": true
+}
+```
+
+修改后：
+
+```json
+// task_config.json
+"RNN": {
+    "dataset_class": "TrafficStateGridDataset",
+},
+// TrafficStateGridDataset.json
+{
+  "use_row_column": false
+}
+```
+
+样例（2）：
 
 修改前：
 
 ```python
+# task_config.json
+"STG2Seq": {
+    "dataset_class": "STG2SeqDataset",
+},
+# STG2SeqDataset.json
+{
+  "use_row_column": false
+}
+# stq2seq_dataset.py
 from libcity.data.dataset import TrafficStatePointDataset
 class STG2SeqDataset(TrafficStatePointDataset):
     def __init__(self, config):
@@ -57,6 +94,15 @@ class STG2SeqDataset(TrafficStatePointDataset):
 修改后：
 
 ```python
+# task_config.json
+"STG2Seq": {
+    "dataset_class": "STG2SeqDataset",
+},
+# STG2SeqDataset.json
+{
+  "use_row_column": false
+}
+# stq2seq_dataset.py
 from libcity.data.dataset import TrafficStateGridDataset
 class STG2SeqDataset(TrafficStateGridDataset):
     def __init__(self, config):
@@ -72,3 +118,4 @@ class STG2SeqDataset(TrafficStateGridDataset):
 （1）如果模型使用的数据集类是`TrafficStateOdDataset`，如`GEML`等，可以直接在`task_file.json`中将`dataset_class`设为`TrafficStateGridOdDataset`或通过自定义配置文件（`--config_file`）设置。 然后将 `TrafficStateGridOdDataset` 的参数 `use_row_column` 设置为 `False`。
 
 （2）如果模型使用的数据集类是`TrafficStateOdDataset`的子类，可以修改数据集类的文件，使其继承`TrafficStateGridOdDataset` 取代当前的`TrafficStateOdDataset`。 然后将函数`__init__()`中的参数`use_row_column`设置为`False`。
+
