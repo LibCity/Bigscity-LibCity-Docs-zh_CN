@@ -83,7 +83,7 @@
 {
   "use_row_column": false
 }
-# stq2seq_dataset.py
+# stg2seq_dataset.py
 from libcity.data.dataset import TrafficStatePointDataset
 class STG2SeqDataset(TrafficStatePointDataset):
     def __init__(self, config):
@@ -102,7 +102,7 @@ class STG2SeqDataset(TrafficStatePointDataset):
 {
   "use_row_column": false
 }
-# stq2seq_dataset.py
+# stg2seq_dataset.py
 from libcity.data.dataset import TrafficStateGridDataset
 class STG2SeqDataset(TrafficStateGridDataset):
     def __init__(self, config):
