@@ -23,6 +23,7 @@
 | 轨迹下一跳预测 | **Gowalla**, BrightKite                                      | FPMC, RNN, ST-RNN, ATST-LSTM, DeepMove, HST-LSTM, LSTPM, STAN | 轨迹数据                                                     |
 |                | **Fousquare**, Instagram                                     | FPMC, RNN, ST-RNN, ATST-LSTM, DeepMove, HST-LSTM, LSTPM, GeoSAN, STAN, SERM, CARA | 轨迹数据                                                     |
 | 到达时间估计   | **Chengdu_Taxi_Sample1**                                     | DeepTTE                                                      | 轨迹数据                                                     |
+|  | **Beijing_Taxi_Sample** | DeepTTE, TTPNet | 轨迹数据 |
 | 路网匹配       | **Seattle**, global                                          | STMatching, IVMM, HMMM                                       | 轨迹数据                                                     |
 | 路网表征学习 | **bj_roadmap_edge** | ChebConv, LINE | 路网数据 |
 

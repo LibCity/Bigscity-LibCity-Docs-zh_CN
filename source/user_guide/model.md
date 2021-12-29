@@ -427,6 +427,14 @@
   Wang, D., Zhang, J., Cao, W., Li, J., & Zheng, Y. (2018). When Will You Arrive? Estimating Travel Time Based on Deep Neural Networks. Proceedings of the AAAI Conference on Artificial Intelligence, 32(1).
   ```
 
+* **TTPNet**
+
+  该模型基于张量分解和图接入，可以从历史轨迹有效捕捉旅行速度和路网表征，以及可以更好地预测旅行时间。
+
+  ```
+  Y. Shen, C. Jin and J. Hua, "TTPNet: A Neural Network for Travel Time Prediction Based on Tensor Decomposition and Graph Embedding," in IEEE Transactions on Knowledge and Data Engineering, doi: 10.1109/TKDE.2020.3038259.
+  ```
+
 #### 路网匹配
 
 * **ST-Matching**
