@@ -363,7 +363,7 @@
 
 * **SERM**
 
-  该模型在网络中引入轨迹的语义信息。
+  该模型在网络中引入轨迹的语义信息。SERM 模型依赖于 Glove 预训练语料库。因此在您使用该模型前，请确保从 [百度网盘 密码 1231](https://pan.baidu.com/s/1qEfcXBO-QwZfiT0G3IYMpQ) 或者 [谷歌盘](https://drive.google.com/drive/folders/1g5v2Gq1tkOq8XO0HDCZ9nOTtRpB6-gPe?usp=sharing) 下载了 `serm_glove_word_vec.zip` 并将其解压至 `raw_data` 目录下.
 
   ```
   Di Yao, Chao Zhang, Jian-Hui Huang, and Jingping Bi. 2017. SERM: A Recurrent Model for Next Location Prediction in Semantic Trajectories. In CIKM. ACM,2411–24.
