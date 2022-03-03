@@ -16,6 +16,7 @@ libcity.model.traffic\_speed\_prediction
    libcity.model.traffic_speed_prediction.HGCN
    libcity.model.traffic_speed_prediction.MTGNN
    libcity.model.traffic_speed_prediction.RNN
+   libcity.model.traffic_speed_prediction.STAGGCN
    libcity.model.traffic_speed_prediction.STGCN
    libcity.model.traffic_speed_prediction.STMGAT
    libcity.model.traffic_speed_prediction.STTN

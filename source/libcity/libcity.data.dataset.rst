@@ -5,6 +5,8 @@ libcity.data.dataset
 .. toctree::
    :maxdepth: 4
 
+   libcity.data.dataset.dataset_subclass
+   libcity.data.dataset.eta_encoder
    libcity.data.dataset.trajectory_encoder
 
 
@@ -18,6 +20,7 @@ libcity.data.dataset
    libcity.data.dataset.convgcn_dataset
    libcity.data.dataset.crann_dataset
    libcity.data.dataset.dmvstnet_dataset
+   libcity.data.dataset.eta_dataset
    libcity.data.dataset.geosan_dataset
    libcity.data.dataset.gman_dataset
    libcity.data.dataset.gts_dataset
@@ -26,6 +29,7 @@ libcity.data.dataset
    libcity.data.dataset.multi_stgcnet_dataset
    libcity.data.dataset.pbs_trajectory_dataset
    libcity.data.dataset.reslstm_dataset
+   libcity.data.dataset.roadnetwork_dataset
    libcity.data.dataset.staggcn_dataset
    libcity.data.dataset.stdn_dataset
    libcity.data.dataset.stg2seq_dataset

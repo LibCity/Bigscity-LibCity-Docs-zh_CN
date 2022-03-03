@@ -5,7 +5,10 @@ libcity.model
 .. toctree::
    :maxdepth: 4
 
+   libcity.model.eta
    libcity.model.map_matching
+   libcity.model.road_representation
+   libcity.model.traffic_accident_prediction
    libcity.model.traffic_demand_prediction
    libcity.model.traffic_flow_prediction
    libcity.model.traffic_od_prediction
@@ -20,5 +23,6 @@ libcity.model
    libcity.model.abstract_traffic_state_model
    libcity.model.abstract_traffic_tradition_model
    libcity.model.loss
+   libcity.model.utils
 
 
