@@ -382,6 +382,16 @@ Apr. 10, 2016
 
 **描述：** Chengdu_Taxi_Sample1 数据集是Chengdu_Taxi 数据集的部分样例数据集。包含1800条成都市出租车轨迹数据。
 
+### Beijing_Taxi_Sample
+
+**地点**：Beijing, China
+
+**时期**：Oct. 01, 2013 - Oct. 31, 2013
+
+**链接**：https://github.com/YibinShen/TTPNet/tree/master/data
+
+**描述**：Beijing_Taxi_Sample 数据集是Beijing_Taxi 数据集的部分样例数据集，这里每一天只提供了1000条北京市出租车轨迹数据。
+
 ### NYC_RISK
 
 **地点:** New York, USA

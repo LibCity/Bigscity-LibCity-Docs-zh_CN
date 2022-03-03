@@ -42,7 +42,7 @@
 
 * **RNN**
 
-  该基线模型由我们实现。
+  该基线模型由我们实现，使用 RNN 建模序列信息进行下一跳预测。
 
 #### 交通流量预测
 
@@ -363,7 +363,7 @@
 
 * **SERM**
 
-  该模型在网络中引入轨迹的语义信息。
+  该模型在网络中引入轨迹的语义信息。SERM 模型依赖于 Glove 预训练语料库。因此在您使用该模型前，请确保从 [百度网盘 密码 1231](https://pan.baidu.com/s/1qEfcXBO-QwZfiT0G3IYMpQ) 或者 [谷歌盘](https://drive.google.com/drive/folders/1g5v2Gq1tkOq8XO0HDCZ9nOTtRpB6-gPe?usp=sharing) 下载了 `serm_glove_word_vec.zip` 并将其解压至 `raw_data` 目录下.
 
   ```
   Di Yao, Chao Zhang, Jian-Hui Huang, and Jingping Bi. 2017. SERM: A Recurrent Model for Next Location Prediction in Semantic Trajectories. In CIKM. ACM,2411–24.
@@ -425,6 +425,14 @@
 
   ```
   Wang, D., Zhang, J., Cao, W., Li, J., & Zheng, Y. (2018). When Will You Arrive? Estimating Travel Time Based on Deep Neural Networks. Proceedings of the AAAI Conference on Artificial Intelligence, 32(1).
+  ```
+
+* **TTPNet**
+
+  该模型基于张量分解和图接入，可以从历史轨迹有效捕捉旅行速度和路网表征，以及可以更好地预测旅行时间。
+
+  ```
+  Y. Shen, C. Jin and J. Hua, "TTPNet: A Neural Network for Travel Time Prediction Based on Tensor Decomposition and Graph Embedding," in IEEE Transactions on Knowledge and Data Engineering, doi: 10.1109/TKDE.2020.3038259.
   ```
 
 #### 路网匹配
