@@ -4,8 +4,7 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
-  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>数据集适用的任务 &mdash; Bigscity-LibCity  documentation</title>
@@ -84,14 +83,14 @@
               
             
             
-              <p><span class="caption-text">起步</span></p>
+              <p class="caption"><span class="caption-text">起步</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../get_started/introduction.html">介绍</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../get_started/install.html">安装LibCity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../get_started/quick_start.html">快速入门</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../get_started/directory_structure.html">目录结构</a></li>
 </ul>
-<p><span class="caption-text">用户指导</span></p>
+<p class="caption"><span class="caption-text">用户指导</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../config_settings.html">参数设置</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../data.html">数据说明</a><ul class="current">
@@ -109,14 +108,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../executor.html">执行模块简介</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../usage.html">使用示例</a></li>
 </ul>
-<p><span class="caption-text">开发者指导</span></p>
+<p class="caption"><span class="caption-text">开发者指导</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../developer_guide/code_style.html">代码风格</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../developer_guide/implemented_datasets.html">自定义Dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../developer_guide/implemented_models.html">自定义Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../developer_guide/implemented_executors.html">自定义Executor</a></li>
 </ul>
-<p><span class="caption-text">入门教程</span></p>
+<p class="caption"><span class="caption-text">入门教程</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorial/install_quick_start.html">安装和快速上手</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorial/run_model.html">运行LibCity中已复现的模型</a></li>
@@ -124,7 +123,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../tutorial/hyper_tune.html">使用自动化工具调参</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorial/data_visualization.html">原子文件可视化</a></li>
 </ul>
-<p><span class="caption-text">API文档</span></p>
+<p class="caption"><span class="caption-text">API文档</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../libcity/libcity.config.html">libcity.config</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../libcity/libcity.data.html">libcity.data</a></li>
@@ -200,7 +199,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <section id="id1">
+  <div class="section" id="id1">
 <h1>数据集适用的任务<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <p>在本节中，我们向您介绍我们提供的<a class="reference external" href="https://drive.google.com/drive/folders/1g5v2Gq1tkOq8XO0HDCZ9nOTtRpB6-gPe?usp=sharing">标准数据集</a>和任务、模型之间的对应关系。 值得注意的是，某些数据集只能支持某个任务中的某些模型。</p>
 <p>如果你觉得这个表格看起来不够方便，请点击<a class="reference external" href="https://github.com/LibCity/Bigscity-LibCity-Docs-zh_CN/blob/master/source/user_guide/data/dataset_for_task.md">这里</a>在Github上查看此表格。</p>
@@ -406,7 +405,7 @@
 <p>以下是如何将用于基于点的OD的数据的模型推广到基于网格的OD的数据。（跟Note 3是类似的）</p>
 <p>（1）如果模型使用的数据集类是<code class="docutils literal notranslate"><span class="pre">TrafficStateOdDataset</span></code>，如<code class="docutils literal notranslate"><span class="pre">GEML</span></code>等，可以直接在<code class="docutils literal notranslate"><span class="pre">task_file.json</span></code>中将<code class="docutils literal notranslate"><span class="pre">dataset_class</span></code>设为<code class="docutils literal notranslate"><span class="pre">TrafficStateGridOdDataset</span></code>或通过自定义配置文件（<code class="docutils literal notranslate"><span class="pre">--config_file</span></code>）设置。 然后将 <code class="docutils literal notranslate"><span class="pre">TrafficStateGridOdDataset</span></code> 的参数 <code class="docutils literal notranslate"><span class="pre">use_row_column</span></code> 设置为 <code class="docutils literal notranslate"><span class="pre">False</span></code>。</p>
 <p>（2）如果模型使用的数据集类是<code class="docutils literal notranslate"><span class="pre">TrafficStateOdDataset</span></code>的子类，可以修改数据集类的文件，使其继承<code class="docutils literal notranslate"><span class="pre">TrafficStateGridOdDataset</span></code> 取代当前的<code class="docutils literal notranslate"><span class="pre">TrafficStateOdDataset</span></code>。 然后将函数<code class="docutils literal notranslate"><span class="pre">__init__()</span></code>中的参数<code class="docutils literal notranslate"><span class="pre">use_row_column</span></code>设置为<code class="docutils literal notranslate"><span class="pre">False</span></code>。</p>
-</section>
+</div>
 
 
            </div>

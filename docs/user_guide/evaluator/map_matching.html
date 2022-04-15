@@ -4,8 +4,7 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
-  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>路网匹配评估模块 &mdash; Bigscity-LibCity  documentation</title>
@@ -84,14 +83,14 @@
               
             
             
-              <p><span class="caption-text">起步</span></p>
+              <p class="caption"><span class="caption-text">起步</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../get_started/introduction.html">介绍</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../get_started/install.html">安装LibCity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../get_started/quick_start.html">快速入门</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../get_started/directory_structure.html">目录结构</a></li>
 </ul>
-<p><span class="caption-text">用户指导</span></p>
+<p class="caption"><span class="caption-text">用户指导</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../config_settings.html">参数设置</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data.html">数据说明</a></li>
@@ -110,14 +109,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../executor.html">执行模块简介</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../usage.html">使用示例</a></li>
 </ul>
-<p><span class="caption-text">开发者指导</span></p>
+<p class="caption"><span class="caption-text">开发者指导</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../developer_guide/code_style.html">代码风格</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../developer_guide/implemented_datasets.html">自定义Dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../developer_guide/implemented_models.html">自定义Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../developer_guide/implemented_executors.html">自定义Executor</a></li>
 </ul>
-<p><span class="caption-text">入门教程</span></p>
+<p class="caption"><span class="caption-text">入门教程</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorial/install_quick_start.html">安装和快速上手</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorial/run_model.html">运行LibCity中已复现的模型</a></li>
@@ -125,7 +124,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../tutorial/hyper_tune.html">使用自动化工具调参</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorial/data_visualization.html">原子文件可视化</a></li>
 </ul>
-<p><span class="caption-text">API文档</span></p>
+<p class="caption"><span class="caption-text">API文档</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../libcity/libcity.config.html">libcity.config</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../libcity/libcity.data.html">libcity.data</a></li>
@@ -201,10 +200,10 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <section id="id1">
+  <div class="section" id="id1">
 <h1>路网匹配评估模块<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <p>我们已经实现了几个评估功能，以便在同一任务下的不同模型可以在同一标准下进行比较。</p>
-<section id="id2">
+<div class="section" id="id2">
 <h2>评价指标<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>对于路网匹配的任务，本评估器实现了一系列评估指标。</p>
 <table class="docutils align-default">
@@ -241,16 +240,16 @@
 </tbody>
 </table>
 <p>其中 <span class="math notranslate nohighlight">\(d_-\)</span> 表示错误减去的长度, <span class="math notranslate nohighlight">\(d_+\)</span> 表示错误增加的长度, <span class="math notranslate nohighlight">\(Rc\)</span> 表示正确匹配的道路, <span class="math notranslate nohighlight">\(R\)</span> 表示真实路径的所有道路. <span class="math notranslate nohighlight">\(len(·)\)</span> 表示·的长度.</p>
-</section>
-<section id="id3">
+</div>
+<div class="section" id="id3">
 <h2>评估设置<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <p>下面是评估器所涉及到的一系列参数：</p>
 <p>位置： libcity/config/evaluator/MapMatchingEvaluator.json</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">metrics</span></code>: 指定评价指标数组，评估类的<code class="docutils literal notranslate"><span class="pre">allowed_metrics</span></code>表示该任务可以接受的指标类型，不能超出此范围。</p></li>
 </ul>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>

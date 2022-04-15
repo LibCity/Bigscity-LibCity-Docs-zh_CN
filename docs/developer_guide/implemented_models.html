@@ -4,8 +4,7 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
-  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>自定义Model &mdash; Bigscity-LibCity  documentation</title>
@@ -84,14 +83,14 @@
               
             
             
-              <p><span class="caption-text">起步</span></p>
+              <p class="caption"><span class="caption-text">起步</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../get_started/introduction.html">介绍</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../get_started/install.html">安装LibCity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../get_started/quick_start.html">快速入门</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../get_started/directory_structure.html">目录结构</a></li>
 </ul>
-<p><span class="caption-text">用户指导</span></p>
+<p class="caption"><span class="caption-text">用户指导</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/config_settings.html">参数设置</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/data.html">数据说明</a></li>
@@ -100,7 +99,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/executor.html">执行模块简介</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/usage.html">使用示例</a></li>
 </ul>
-<p><span class="caption-text">开发者指导</span></p>
+<p class="caption"><span class="caption-text">开发者指导</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="code_style.html">代码风格</a></li>
 <li class="toctree-l1"><a class="reference internal" href="implemented_datasets.html">自定义Dataset</a></li>
@@ -115,7 +114,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="implemented_executors.html">自定义Executor</a></li>
 </ul>
-<p><span class="caption-text">入门教程</span></p>
+<p class="caption"><span class="caption-text">入门教程</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../tutorial/install_quick_start.html">安装和快速上手</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorial/run_model.html">运行LibCity中已复现的模型</a></li>
@@ -123,7 +122,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../tutorial/hyper_tune.html">使用自动化工具调参</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorial/data_visualization.html">原子文件可视化</a></li>
 </ul>
-<p><span class="caption-text">API文档</span></p>
+<p class="caption"><span class="caption-text">API文档</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../libcity/libcity.config.html">libcity.config</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../libcity/libcity.data.html">libcity.data</a></li>
@@ -197,10 +196,10 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <section id="model">
+  <div class="section" id="model">
 <h1>自定义Model<a class="headerlink" href="#model" title="Permalink to this headline">¶</a></h1>
 <p>本文档将介绍如何在<code class="docutils literal notranslate"><span class="pre">LibCity</span></code>中开发一个新模型。</p>
-<section id="id1">
+<div class="section" id="id1">
 <h2>创建新的Model类<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>首先，我们创建的新模型应该继承<code class="docutils literal notranslate"><span class="pre">AbstractModel</span></code>或<code class="docutils literal notranslate"><span class="pre">AbstractTrafficStateModel</span></code>。注意，对于交通状态预测任务，请继承<code class="docutils literal notranslate"> <span class="pre">AbstractTrafficStateModel</span></code>类，对于轨迹位置预测任务，请继承<code class="docutils literal notranslate"><span class="pre">AbstractModel</span></code>类。</p>
 <p>这里我们以交通状态预测任务为例。如果想为交通速度预测任务开发一个名为<code class="docutils literal notranslate"><span class="pre">NewModel</span></code>的模型。</p>
@@ -218,8 +217,8 @@
         <span class="k">pass</span>
 </pre></div>
 </div>
-</section>
-<section id="init">
+</div>
+<div class="section" id="init">
 <h2>实现__init__()<a class="headerlink" href="#init" title="Permalink to this headline">¶</a></h2>
 <p>然后我们需要实现<code class="docutils literal notranslate"><span class="pre">__init__()</span></code>方法，<code class="docutils literal notranslate"><span class="pre">__init__()</span></code>用于根据数据特征和配置信息来定义模型结构。</p>
 <p><code class="docutils literal notranslate"><span class="pre">__init__()</span></code>的输入参数是<code class="docutils literal notranslate"><span class="pre">config</span></code>和<code class="docutils literal notranslate"><span class="pre">data_feature</span></code>，其中<code class="docutils literal notranslate"><span class="pre">config</span></code>包含各种配置信息，包括模型参数等，<code class="docutils literal notranslate"><span class="pre">data_feature</span></code>包含建立模型的数据集的特征。</p>
@@ -255,8 +254,8 @@
 <p>在代码的第一部分，我们从<code class="docutils literal notranslate"><span class="pre">data_feature</span></code>中获取必要的参数，包括节点数（<code class="docutils literal notranslate"><span class="pre">num_nodes</span></code>）、数据输入尺寸（<code class="docutils literal notranslate"><span class="pre">feature_dim</span></code>）、输出尺寸（<code class="docutils literal notranslate"><span class="pre">output_dim</span></code>）和数据规范化对象（<code class="docutils literal notranslate"><span class="pre">scaler</span></code>），并初始化<code class="docutils literal notranslate"><span class="pre">logger</span></code>。</p>
 <p>在代码的第二部分，我们从配置中获取必要的参数，包括隐藏层尺寸（<code class="docutils literal notranslate"><span class="pre">hidden_size</span></code>）、网络层数（<code class="docutils literal notranslate"><span class="pre">num_layers</span></code>）、输入时间长度（<code class="docutils literal notranslate"><span class="pre">input_window</span></code>）、输出时间长度（<code class="docutils literal notranslate"><span class="pre">output_window</span></code>），等等。</p>
 <p>在代码的第三部分，我们定义了模型结构，包括一个LSTM层和一个全连接层。</p>
-</section>
-<section id="predict">
+</div>
+<div class="section" id="predict">
 <h2>实现predict()<a class="headerlink" href="#predict" title="Permalink to this headline">¶</a></h2>
 <p>然后我们定义<code class="docutils literal notranslate"><span class="pre">predict()</span></code>方法，用来获得模型的预测结果。<code class="docutils literal notranslate"><span class="pre">predict()</span></code>的输入参数是<code class="docutils literal notranslate"><span class="pre">batch</span></code>，它是一个<a class="reference internal" href="../user_guide/data/batch.html"><span class="doc">Batch</span></a>类的对象。</p>
 <p><code class="docutils literal notranslate"><span class="pre">AbstractModel</span></code>和<code class="docutils literal notranslate"><span class="pre">AbstractTrafficStateModel</span></code>两个抽象类都继承自<code class="docutils literal notranslate"><span class="pre">torch.nn.Module</span></code>类。如果你熟悉Pytorch框架，你会发现这个函数与<code class="docutils literal notranslate"><span class="pre">torch.nn.Module</span></code>中的<code class="docutils literal notranslate"><span class="pre">forward()</span></code>函数类似。在大多数情况下，你可以在这个函数里面直接调用<code class="docutils literal notranslate"><span class="pre">forward()</span></code>函数来获得模型的输出。</p>
@@ -284,8 +283,8 @@
 </pre></div>
 </div>
 <p>可以看出，<code class="docutils literal notranslate"><span class="pre">predict</span></code>函数直接调用<code class="docutils literal notranslate"><span class="pre">forward</span></code>函数，而在<code class="docutils literal notranslate"><span class="pre">forward</span></code>函数中，我们定义了模型的计算过程。这个模型使用LSTM进行多次预测，并将每次预测的输出作为下一个输入。这里我们假设输入数据维度和输出数据维度相等，即<code class="docutils literal notranslate"><span class="pre">feature_dim=output_dim</span></code>。</p>
-</section>
-<section id="calcualte-loss">
+</div>
+<div class="section" id="calcualte-loss">
 <h2>实现calcualte_loss()<a class="headerlink" href="#calcualte-loss" title="Permalink to this headline">¶</a></h2>
 <p>最后，我们定义了<code class="docutils literal notranslate"><span class="pre">calculate_loss()</span></code>方法，<code class="docutils literal notranslate"><span class="pre">calculate_loss()</span></code>用于计算预测结果与真实值之间的<code class="docutils literal notranslate"><span class="pre">loss</span></code>。</p>
 <p><code class="docutils literal notranslate"><span class="pre">calculate_loss()</span></code>的输入参数是<code class="docutils literal notranslate"><span class="pre">batch</span></code>，它是一个<a class="reference internal" href="../user_guide/data/batch.html"><span class="doc">Batch</span></a>类的对象。该方法返回一个用于反向传播的<code class="docutils literal notranslate"><span class="pre">Torch.Tensor</span></code>。</p>
@@ -304,8 +303,8 @@
 </div>
 <p>这里我们直接调用了<code class="docutils literal notranslate"><span class="pre">loss.py</span></code>中定义的<code class="docutils literal notranslate"><span class="pre">loss.masked_mae_torch</span></code>函数，其功能是计算 MAE 损失。</p>
 <p>现在我们已经完成了对模型结构的定义，还剩下一些简单的配置。</p>
-</section>
-<section id="id2">
+</div>
+<div class="section" id="id2">
 <h2>导入模型<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>添加模型后，你需要修改你的模型所属的任务文件夹中的<code class="docutils literal notranslate"><span class="pre">__init__.py</span></code>文件。在上面的例子中，你需要修改的文件是<code class="docutils literal notranslate"><span class="pre">libcity/model/traffic_speed_prediction/__init__.py</span></code>。</p>
 <p>请添加这样的代码：</p>
@@ -316,8 +315,8 @@
 <span class="p">]</span>
 </pre></div>
 </div>
-</section>
-<section id="id3">
+</div>
+<div class="section" id="id3">
 <h2>加入模型参数<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <p>最后，你需要修改一些相关的<code class="docutils literal notranslate"><span class="pre">config</span></code>文件。</p>
 <ul>
@@ -359,8 +358,8 @@
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>python run_model.py --task traffic_state_pred --model NewModel --dataset METR_LA
 </pre></div>
 </div>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>

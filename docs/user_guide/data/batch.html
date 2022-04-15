@@ -4,8 +4,7 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
-  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>Batch &mdash; Bigscity-LibCity  documentation</title>
@@ -84,14 +83,14 @@
               
             
             
-              <p><span class="caption-text">起步</span></p>
+              <p class="caption"><span class="caption-text">起步</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../get_started/introduction.html">介绍</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../get_started/install.html">安装LibCity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../get_started/quick_start.html">快速入门</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../get_started/directory_structure.html">目录结构</a></li>
 </ul>
-<p><span class="caption-text">用户指导</span></p>
+<p class="caption"><span class="caption-text">用户指导</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../config_settings.html">参数设置</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../data.html">数据说明</a><ul class="current">
@@ -109,14 +108,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../executor.html">执行模块简介</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../usage.html">使用示例</a></li>
 </ul>
-<p><span class="caption-text">开发者指导</span></p>
+<p class="caption"><span class="caption-text">开发者指导</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../developer_guide/code_style.html">代码风格</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../developer_guide/implemented_datasets.html">自定义Dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../developer_guide/implemented_models.html">自定义Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../developer_guide/implemented_executors.html">自定义Executor</a></li>
 </ul>
-<p><span class="caption-text">入门教程</span></p>
+<p class="caption"><span class="caption-text">入门教程</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorial/install_quick_start.html">安装和快速上手</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorial/run_model.html">运行LibCity中已复现的模型</a></li>
@@ -124,7 +123,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../tutorial/hyper_tune.html">使用自动化工具调参</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorial/data_visualization.html">原子文件可视化</a></li>
 </ul>
-<p><span class="caption-text">API文档</span></p>
+<p class="caption"><span class="caption-text">API文档</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../libcity/libcity.config.html">libcity.config</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../libcity/libcity.data.html">libcity.data</a></li>
@@ -200,7 +199,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <section id="batch">
+  <div class="section" id="batch">
 <h1>Batch<a class="headerlink" href="#batch" title="Permalink to this headline">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">Batch</span></code> 类是由 <code class="docutils literal notranslate"><span class="pre">DataLoader</span></code> 加载并输入到预测模型中的<strong>内部数据表示</strong>。</p>
 <p><strong>从数据流的 <code class="docutils literal notranslate"><span class="pre">Dataloader</span></code> 取出的对象都是 <code class="docutils literal notranslate"><span class="pre">Batch</span></code> 类的对象。</strong></p>
@@ -211,7 +210,7 @@
 </pre></div>
 </div>
 <p><strong><code class="docutils literal notranslate"><span class="pre">Batch</span></code> 类统一了模型的输入格式，框架得以实现通用的训练、预测执行器类和标准模型抽象类。</strong></p>
-</section>
+</div>
 
 
            </div>

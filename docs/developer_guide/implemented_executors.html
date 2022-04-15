@@ -4,8 +4,7 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
-  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>自定义Executor &mdash; Bigscity-LibCity  documentation</title>
@@ -84,14 +83,14 @@
               
             
             
-              <p><span class="caption-text">起步</span></p>
+              <p class="caption"><span class="caption-text">起步</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../get_started/introduction.html">介绍</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../get_started/install.html">安装LibCity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../get_started/quick_start.html">快速入门</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../get_started/directory_structure.html">目录结构</a></li>
 </ul>
-<p><span class="caption-text">用户指导</span></p>
+<p class="caption"><span class="caption-text">用户指导</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/config_settings.html">参数设置</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/data.html">数据说明</a></li>
@@ -100,7 +99,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/executor.html">执行模块简介</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/usage.html">使用示例</a></li>
 </ul>
-<p><span class="caption-text">开发者指导</span></p>
+<p class="caption"><span class="caption-text">开发者指导</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="code_style.html">代码风格</a></li>
 <li class="toctree-l1"><a class="reference internal" href="implemented_datasets.html">自定义Dataset</a></li>
@@ -111,7 +110,7 @@
 </ul>
 </li>
 </ul>
-<p><span class="caption-text">入门教程</span></p>
+<p class="caption"><span class="caption-text">入门教程</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../tutorial/install_quick_start.html">安装和快速上手</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorial/run_model.html">运行LibCity中已复现的模型</a></li>
@@ -119,7 +118,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../tutorial/hyper_tune.html">使用自动化工具调参</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorial/data_visualization.html">原子文件可视化</a></li>
 </ul>
-<p><span class="caption-text">API文档</span></p>
+<p class="caption"><span class="caption-text">API文档</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../libcity/libcity.config.html">libcity.config</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../libcity/libcity.data.html">libcity.data</a></li>
@@ -193,11 +192,11 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <section id="executor">
+  <div class="section" id="executor">
 <h1>自定义Executor<a class="headerlink" href="#executor" title="Permalink to this headline">¶</a></h1>
 <p>本文档将介绍如何在<code class="docutils literal notranslate"><span class="pre">LibCity</span></code>中开发一个新的执行器。</p>
 <p>当一个新添加的模型训练方法复杂，现有的执行器不能用于训练和评估，我们就需要开发一个新的执行器。</p>
-<section id="id1">
+<div class="section" id="id1">
 <h2>创建新的Executor类<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>首先，我们创建的执行器应该继承自<code class="docutils literal notranslate"><span class="pre">AbstractExecutoror</span></code>。</p>
 <p>例如，如下代码可用于开发一个名为<code class="docutils literal notranslate"><span class="pre">NewExecutor</span></code>的交通状态预测执行器，代码被写入<code class="docutils literal notranslate"><span class="pre">libcity/executor/</span></code>目录下的<code class="docutils literal notranslate"><span class="pre">newexecutor.py</span></code>。</p>
@@ -209,8 +208,8 @@
         <span class="k">pass</span>
 </pre></div>
 </div>
-</section>
-<section id="id2">
+</div>
+<div class="section" id="id2">
 <h2>重写对应的方法<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>用于训练模型的函数是<code class="docutils literal notranslate"><span class="pre">train()</span></code>，它将调用<code class="docutils literal notranslate"><span class="pre">_train_epoch()</span></code>来训练模型。</p>
 <p>用来评估模型的函数是<code class="docutils literal notranslate"><span class="pre">evaluate()</span></code>，它将调用<code class="docutils literal notranslate"><span class="pre">_valid_epoch()</span></code>来评估该模型。</p>
@@ -236,8 +235,8 @@
         <span class="k">pass</span>
 </pre></div>
 </div>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>

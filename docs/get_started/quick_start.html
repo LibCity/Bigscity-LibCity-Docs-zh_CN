@@ -4,8 +4,7 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
-  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>快速入门 &mdash; Bigscity-LibCity  documentation</title>
@@ -84,7 +83,7 @@
               
             
             
-              <p><span class="caption-text">起步</span></p>
+              <p class="caption"><span class="caption-text">起步</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">介绍</a></li>
 <li class="toctree-l1"><a class="reference internal" href="install.html">安装LibCity</a></li>
@@ -96,7 +95,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="directory_structure.html">目录结构</a></li>
 </ul>
-<p><span class="caption-text">用户指导</span></p>
+<p class="caption"><span class="caption-text">用户指导</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/config_settings.html">参数设置</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/data.html">数据说明</a></li>
@@ -105,14 +104,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/executor.html">执行模块简介</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/usage.html">使用示例</a></li>
 </ul>
-<p><span class="caption-text">开发者指导</span></p>
+<p class="caption"><span class="caption-text">开发者指导</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../developer_guide/code_style.html">代码风格</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_datasets.html">自定义Dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_models.html">自定义Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_executors.html">自定义Executor</a></li>
 </ul>
-<p><span class="caption-text">入门教程</span></p>
+<p class="caption"><span class="caption-text">入门教程</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../tutorial/install_quick_start.html">安装和快速上手</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorial/run_model.html">运行LibCity中已复现的模型</a></li>
@@ -120,7 +119,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../tutorial/hyper_tune.html">使用自动化工具调参</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorial/data_visualization.html">原子文件可视化</a></li>
 </ul>
-<p><span class="caption-text">API文档</span></p>
+<p class="caption"><span class="caption-text">API文档</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../libcity/libcity.config.html">libcity.config</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../libcity/libcity.data.html">libcity.data</a></li>
@@ -194,9 +193,9 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <section id="id1">
+  <div class="section" id="id1">
 <h1>快速入门<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<section id="id2">
+<div class="section" id="id2">
 <h2>下载一个数据集<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>LibCity中使用的数据集以一种名为<a class="reference internal" href="../user_guide/data/atomic_files.html"><span class="doc">原子文件</span></a>的统一数据存储格式存储。</p>
 <p>为了直接在<code class="docutils literal notranslate"><span class="pre">LibCity</span></code>中使用<a class="reference internal" href="../user_guide/data/raw_data.html"><span class="doc">原始数据集</span></a>，我们已经将所有这些数据集转换成了原子文件的格式，并提供了<a class="reference external" href="https://github.com/LibCity/Bigscity-LibCity-Datasets">转换工具</a>。</p>
@@ -209,8 +208,8 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">Bigscity-LibCity/raw_data/METR_LA/METR_LA.dyna</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Bigscity-LibCity/raw_data/METR_LA/config.json</span></code></p></li>
 </ul>
-</section>
-<section id="id3">
+</div>
+<div class="section" id="id3">
 <h2>运行模型流水线<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <p>用于训练和评测一个模型的脚本<code class="docutils literal notranslate"><span class="pre">run_model.py</span></code>位于项目根目录中，它提供了一系列命令行参数，使用户可以调整运行参数配置。</p>
 <p>当运行<code class="docutils literal notranslate"><span class="pre">run_model.py</span></code>时，您必须声明以下三个参数，分别是<code class="docutils literal notranslate"><span class="pre">task</span></code>、<code class="docutils literal notranslate"><span class="pre">dataset</span></code>和<code class="docutils literal notranslate"><span class="pre">model</span></code>。例如：</p>
@@ -235,8 +234,8 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">gpu</span></code>：是否使用GPU。默认为<code class="docutils literal notranslate"><span class="pre">True</span></code>。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">gpu_id</span></code>：使用的GPU的ID。默认为<code class="docutils literal notranslate"><span class="pre">0</span></code>。</p></li>
 </ul>
-</section>
-<section id="tensorboard-visualization">
+</div>
+<div class="section" id="tensorboard-visualization">
 <h2>TensorBoard Visualization<a class="headerlink" href="#tensorboard-visualization" title="Permalink to this headline">¶</a></h2>
 <p>在模型训练过程中，LibCity 会记录每个 epoch 的损失，并支持 tensorboard 可视化。</p>
 <p>模型运行一次后，可以使用以下命令进行可视化：</p>
@@ -245,13 +244,13 @@
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">TensorFlow</span> <span class="n">installation</span> <span class="ow">not</span> <span class="n">found</span> <span class="o">-</span> <span class="n">running</span> <span class="k">with</span> <span class="n">reduced</span> <span class="n">feature</span> <span class="nb">set</span><span class="o">.</span>
 <span class="n">Serving</span> <span class="n">TensorBoard</span> <span class="n">on</span> <span class="n">localhost</span><span class="p">;</span> <span class="n">to</span> <span class="n">expose</span> <span class="n">to</span> <span class="n">the</span> <span class="n">network</span><span class="p">,</span> <span class="n">use</span> <span class="n">a</span> <span class="n">proxy</span> <span class="ow">or</span> <span class="k">pass</span> <span class="o">--</span><span class="n">bind_all</span>
-<span class="n">TensorBoard</span> <span class="mf">2.4.1</span> <span class="n">at</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">6006</span><span class="o">/</span> <span class="p">(</span><span class="n">Press</span> <span class="n">CTRL</span><span class="o">+</span><span class="n">C</span> <span class="n">to</span> <span class="n">quit</span><span class="p">)</span>
+<span class="n">TensorBoard</span> <span class="mf">2.4</span><span class="o">.</span><span class="mi">1</span> <span class="n">at</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">6006</span><span class="o">/</span> <span class="p">(</span><span class="n">Press</span> <span class="n">CTRL</span><span class="o">+</span><span class="n">C</span> <span class="n">to</span> <span class="n">quit</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>在浏览器中访问这个地址（http://localhost:6006/）可以看到可视化的结果。</p>
 <p><img alt="../_images/tensorboard.png" src="../_images/tensorboard.png" /></p>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>

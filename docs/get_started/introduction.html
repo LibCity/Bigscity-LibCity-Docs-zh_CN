@@ -4,8 +4,7 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
-  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>介绍 &mdash; Bigscity-LibCity  documentation</title>
@@ -84,7 +83,7 @@
               
             
             
-              <p><span class="caption-text">起步</span></p>
+              <p class="caption"><span class="caption-text">起步</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">介绍</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#id2">特性</a></li>
@@ -96,7 +95,7 @@
 <li class="toctree-l1"><a class="reference internal" href="quick_start.html">快速入门</a></li>
 <li class="toctree-l1"><a class="reference internal" href="directory_structure.html">目录结构</a></li>
 </ul>
-<p><span class="caption-text">用户指导</span></p>
+<p class="caption"><span class="caption-text">用户指导</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/config_settings.html">参数设置</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/data.html">数据说明</a></li>
@@ -105,14 +104,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/executor.html">执行模块简介</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/usage.html">使用示例</a></li>
 </ul>
-<p><span class="caption-text">开发者指导</span></p>
+<p class="caption"><span class="caption-text">开发者指导</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../developer_guide/code_style.html">代码风格</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_datasets.html">自定义Dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_models.html">自定义Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_executors.html">自定义Executor</a></li>
 </ul>
-<p><span class="caption-text">入门教程</span></p>
+<p class="caption"><span class="caption-text">入门教程</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../tutorial/install_quick_start.html">安装和快速上手</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorial/run_model.html">运行LibCity中已复现的模型</a></li>
@@ -120,7 +119,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../tutorial/hyper_tune.html">使用自动化工具调参</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorial/data_visualization.html">原子文件可视化</a></li>
 </ul>
-<p><span class="caption-text">API文档</span></p>
+<p class="caption"><span class="caption-text">API文档</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../libcity/libcity.config.html">libcity.config</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../libcity/libcity.data.html">libcity.data</a></li>
@@ -195,7 +194,7 @@
            <div itemprop="articleBody">
             
   <p><img alt="../_images/logo.png" src="../_images/logo.png" /></p>
-<section id="id1">
+<div class="section" id="id1">
 <h1>介绍<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <p><a class="reference external" href="https://libcity.ai/">主页</a>|<a class="reference external" href="https://bigscity-libcity-docs.readthedocs.io/zh_CN/latest/#">文档</a>|<a class="reference external" href="https://github.com/LibCity/Bigscity-LibCity-Datasets">数据集</a>|<a class="reference external" href="https://github.com/LibCity/Bigscity-LibCity-Paper">论文列表</a></p>
 <p>LibCity 是一个统一、全面、可扩展的代码库，为交通预测领域的研究人员提供了一个可靠的实验工具和便捷的开发框架。 我们的库基于 PyTorch 实现，并将与交通预测相关的所有必要步骤或组件包含到系统的流水线中，使研究人员能够进行全面的对比实验。 我们的库将有助于交通预测领域的标准化和可复现性。</p>
@@ -215,15 +214,15 @@
 <li><p>路网匹配</p></li>
 <li><p>路网表征学习</p></li>
 </ul>
-<section id="id2">
+<div class="section" id="id2">
 <h2>特性<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><strong>统一性</strong>：LibCity 构建了一个系统的流水线以在一个统一的平台上实现、使用和评估交通预测模型。 我们设计了统一的时空数据存储格式、统一的模型实例化接口和标准的模型评估程序。</p></li>
 <li><p><strong>全面性</strong>：复现覆盖 9 个交通预测任务的 60 个模型，形成了全面的模型库。 同时，LibCity 收集了 35 个不同来源的常用数据集，并实现了一系列常用的性能评估指标和策略。</p></li>
 <li><p><strong>可扩展性</strong>：LibCity 实现了不同组件的模块化设计，允许用户灵活地加入自定义组件。 因此，新的研究人员可以在 LibCity 的支持下轻松开发新模型。</p></li>
 </ul>
-</section>
-<section id="id3">
+</div>
+<div class="section" id="id3">
 <h2>总体框架<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <p><img alt="../_images/framework.png" src="../_images/framework.png" /></p>
 <ul class="simple">
@@ -233,8 +232,8 @@
 <li><p><strong>Evaluation Module</strong>：负责通过多个指标评估模型预测结果。</p></li>
 <li><p><strong>Execution Module</strong>：负责模型训练和预测。</p></li>
 </ul>
-</section>
-<section id="id4">
+</div>
+<div class="section" id="id4">
 <h2>引用<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <p>该工作已被ACM SIGSPATIAL 2021接收。如果您认为LibCity对您的科研工作有帮助，请引用我们的<a class="reference external" href="https://dl.acm.org/doi/10.1145/3474717.3483923">论文</a>。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>@inproceedings{10.1145/3474717.3483923,
@@ -260,8 +259,8 @@
 </div>
 <p>LibCity 主要由北航智慧城市兴趣小组 (<a class="reference external" href="https://www.bigcity.ai/">BIGSCITY</a>) 开发和维护。 该库的核心开发人员是 <a class="reference external" href="https://github.com/aptx1231">&#64;aptx1231</a> 和 <a class="reference external" href="https://github.com/WenMellors">&#64;WenMellors</a>。</p>
 <p>如果您遇到错误或有任何建议，请通过 <a class="reference external" href="https://github.com/LibCity/Bigscity-LibCity/issues">提交issue</a> 的方式与我们联系。您也可以通过发送邮件的方式联系我们，邮箱为bigscity&#64;126.com。</p>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>

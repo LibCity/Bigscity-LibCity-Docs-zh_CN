@@ -4,8 +4,7 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
-  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>交通状态预测评估模块 &mdash; Bigscity-LibCity  documentation</title>
@@ -84,14 +83,14 @@
               
             
             
-              <p><span class="caption-text">起步</span></p>
+              <p class="caption"><span class="caption-text">起步</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../get_started/introduction.html">介绍</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../get_started/install.html">安装LibCity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../get_started/quick_start.html">快速入门</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../get_started/directory_structure.html">目录结构</a></li>
 </ul>
-<p><span class="caption-text">用户指导</span></p>
+<p class="caption"><span class="caption-text">用户指导</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../config_settings.html">参数设置</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data.html">数据说明</a></li>
@@ -110,14 +109,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../executor.html">执行模块简介</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../usage.html">使用示例</a></li>
 </ul>
-<p><span class="caption-text">开发者指导</span></p>
+<p class="caption"><span class="caption-text">开发者指导</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../developer_guide/code_style.html">代码风格</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../developer_guide/implemented_datasets.html">自定义Dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../developer_guide/implemented_models.html">自定义Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../developer_guide/implemented_executors.html">自定义Executor</a></li>
 </ul>
-<p><span class="caption-text">入门教程</span></p>
+<p class="caption"><span class="caption-text">入门教程</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorial/install_quick_start.html">安装和快速上手</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorial/run_model.html">运行LibCity中已复现的模型</a></li>
@@ -125,7 +124,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../tutorial/hyper_tune.html">使用自动化工具调参</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorial/data_visualization.html">原子文件可视化</a></li>
 </ul>
-<p><span class="caption-text">API文档</span></p>
+<p class="caption"><span class="caption-text">API文档</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../libcity/libcity.config.html">libcity.config</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../libcity/libcity.data.html">libcity.data</a></li>
@@ -201,10 +200,10 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <section id="id1">
+  <div class="section" id="id1">
 <h1>交通状态预测评估模块<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <p>我们实现了若干种评估损失函数，以使得同一任务下的不同的模型可以在同样的标准下进行比较。</p>
-<section id="id2">
+<div class="section" id="id2">
 <h2>评估指标<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>对于交通状态预测任务，本评估器实现了一系列评估指标：</p>
 <table class="docutils align-default">
@@ -259,8 +258,8 @@
 </tbody>
 </table>
 <p>其中，真实值为<span class="math notranslate nohighlight">\(y=\{y_1,y_2,...,y_n\}\)</span>，预测值为<span class="math notranslate nohighlight">\(\hat{y} = \{\hat{y_1}, \hat{y_2}, ..., \hat{y_n}\}\)</span>，<span class="math notranslate nohighlight">\(n\)</span>为样本个数，均值<span class="math notranslate nohighlight">\(\bar{y}=\frac{1}{n}\sum_{i=1}^ny_i\)</span>，方差<span class="math notranslate nohighlight">\(Var(y_i)=\frac{1}{n}\sum_{i=1}^n(y_{i}-\bar{y})^2\)</span>。</p>
-</section>
-<section id="id3">
+</div>
+<div class="section" id="id3">
 <h2>评估设置<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <p>下面是评估器所涉及到的一系列参数：</p>
 <p>位置：libcity/config/evaluator/TrafficStateEvaluator.json</p>
@@ -268,8 +267,8 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">metrics</span></code>：指定评价指标数组，评估类的<code class="docutils literal notranslate"><span class="pre">allowed_metrics</span></code>表示该任务可以接受的指标类型，不能超出此范围。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">mode</span></code>：评估模式，状态预测一般是多个时间步的预测，若设置为<code class="docutils literal notranslate"><span class="pre">average</span></code>表示计算前n个时间步平均的结果，设置成<code class="docutils literal notranslate"><span class="pre">single</span></code>则计算单独第n个时间步的评估结果。<strong>目前的评估函数会返回所有时间步的结果</strong>。默认<code class="docutils literal notranslate"><span class="pre">average</span></code>。例如，总时间步长为3，则<code class="docutils literal notranslate"><span class="pre">average</span></code>模式返回[前1个时间步平均的loss，前2个时间步平均的loss，前3个步平均的loss]，<code class="docutils literal notranslate"><span class="pre">single</span></code>模式返回[第1个时间步的loss，第2个时间步的loss，第3个时间步的loss]。</p></li>
 </ul>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>

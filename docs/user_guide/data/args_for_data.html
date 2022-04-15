@@ -4,8 +4,7 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
-  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>数据模块参数 &mdash; Bigscity-LibCity  documentation</title>
@@ -84,14 +83,14 @@
               
             
             
-              <p><span class="caption-text">起步</span></p>
+              <p class="caption"><span class="caption-text">起步</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../get_started/introduction.html">介绍</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../get_started/install.html">安装LibCity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../get_started/quick_start.html">快速入门</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../get_started/directory_structure.html">目录结构</a></li>
 </ul>
-<p><span class="caption-text">用户指导</span></p>
+<p class="caption"><span class="caption-text">用户指导</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../config_settings.html">参数设置</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../data.html">数据说明</a><ul class="current">
@@ -115,14 +114,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../executor.html">执行模块简介</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../usage.html">使用示例</a></li>
 </ul>
-<p><span class="caption-text">开发者指导</span></p>
+<p class="caption"><span class="caption-text">开发者指导</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../developer_guide/code_style.html">代码风格</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../developer_guide/implemented_datasets.html">自定义Dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../developer_guide/implemented_models.html">自定义Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../developer_guide/implemented_executors.html">自定义Executor</a></li>
 </ul>
-<p><span class="caption-text">入门教程</span></p>
+<p class="caption"><span class="caption-text">入门教程</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorial/install_quick_start.html">安装和快速上手</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorial/run_model.html">运行LibCity中已复现的模型</a></li>
@@ -130,7 +129,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../tutorial/hyper_tune.html">使用自动化工具调参</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorial/data_visualization.html">原子文件可视化</a></li>
 </ul>
-<p><span class="caption-text">API文档</span></p>
+<p class="caption"><span class="caption-text">API文档</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../libcity/libcity.config.html">libcity.config</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../libcity/libcity.data.html">libcity.data</a></li>
@@ -206,10 +205,10 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <section id="id1">
+  <div class="section" id="id1">
 <h1>数据模块参数<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <p>下文描述数据模块中涉及的相关参数。</p>
-<section id="id2">
+<div class="section" id="id2">
 <h2>交通状况预测数据模块<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>以下参数是在流量状态预测任务中用到的所有参数。</p>
 <ul>
@@ -268,8 +267,8 @@
 <blockquote>
 <div><p>注： 从 <code class="docutils literal notranslate"><span class="pre">Dataset</span></code>类的<code class="docutils literal notranslate"><span class="pre">get_feature()</span></code> 方法当中获取的 <code class="docutils literal notranslate"><span class="pre">len_closeness</span></code>/<code class="docutils literal notranslate"><span class="pre">len_period</span></code>/<code class="docutils literal notranslate"><span class="pre">len_trend</span></code> 表示<strong>这三段数据的实际长度</strong>。 在返回值 <code class="docutils literal notranslate"><span class="pre">batch['X']</span></code> 中， 这三段数据按顺序拼接在一起。因此根据长度可以获得每一组数据。</p>
 </div></blockquote>
-</section>
-<section id="id3">
+</div>
+<div class="section" id="id3">
 <h2>轨迹下一跳预测数据模块<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <p>以下参数均为标准轨迹下一跳预测数据集使用的参数：</p>
 <ul class="simple">
@@ -292,15 +291,15 @@
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">traj_encoder</span></code>：数据集使用的轨迹编码器类。默认为<code class="docutils literal notranslate"><span class="pre">StandardTrajectoryEncoder</span></code>。编码器负责根据签到记录对模型输入进行编码。</p></li>
 </ul>
-</section>
-<section id="id4">
+</div>
+<div class="section" id="id4">
 <h2>路网匹配数据模块<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <p>以下参数均为标准路网匹配数据集使用的参数：</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">delta_time</span></code>: 如果设置为 <code class="docutils literal notranslate"><span class="pre">True</span></code>，数据集将计算出当前时间与轨迹开始时间之间的时间差，单位为秒，否则时间将以 <code class="docutils literal notranslate"><span class="pre">datetime</span> </code>的形式给出。</p></li>
 </ul>
-</section>
-<section id="id5">
+</div>
+<div class="section" id="id5">
 <h2>到达时间估计数据模块<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
 <p>以下参数均为标准到达时间估计数据集使用的参数：</p>
 <ul class="simple">
@@ -311,8 +310,8 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">eval_rate</span></code>：验证集的比例。默认为<code class="docutils literal notranslate"><span class="pre">0.1</span></code>。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">eta_encoder</span></code>：数据集使用的轨迹编码器类。没有默认参数。通常对于不同的数据集，需要使用不同的轨迹编码器类。</p></li>
 </ul>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>
