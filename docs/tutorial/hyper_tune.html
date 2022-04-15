@@ -4,7 +4,8 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>使用自动化工具调参 &mdash; Bigscity-LibCity  documentation</title>
@@ -37,7 +38,7 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="libcity.config" href="../libcity/libcity.config.html" />
+    <link rel="next" title="原子文件可视化" href="data_visualization.html" />
     <link rel="prev" title="在LibCity中添加新模型" href="add_model.html" /> 
 </head>
 
@@ -83,14 +84,14 @@
               
             
             
-              <p class="caption"><span class="caption-text">起步</span></p>
+              <p><span class="caption-text">起步</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../get_started/introduction.html">介绍</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../get_started/install.html">安装LibCity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../get_started/quick_start.html">快速入门</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../get_started/directory_structure.html">目录结构</a></li>
 </ul>
-<p class="caption"><span class="caption-text">用户指导</span></p>
+<p><span class="caption-text">用户指导</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/config_settings.html">参数设置</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/data.html">数据说明</a></li>
@@ -99,14 +100,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/executor.html">执行模块简介</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/usage.html">使用示例</a></li>
 </ul>
-<p class="caption"><span class="caption-text">开发者指导</span></p>
+<p><span class="caption-text">开发者指导</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../developer_guide/code_style.html">代码风格</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_datasets.html">自定义Dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_models.html">自定义Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_executors.html">自定义Executor</a></li>
 </ul>
-<p class="caption"><span class="caption-text">入门教程</span></p>
+<p><span class="caption-text">入门教程</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="install_quick_start.html">安装和快速上手</a></li>
 <li class="toctree-l1"><a class="reference internal" href="run_model.html">运行LibCity中已复现的模型</a></li>
@@ -117,8 +118,9 @@
 <li class="toctree-l2"><a class="reference internal" href="#hyper-tune-py">执行 hyper_tune.py</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="data_visualization.html">原子文件可视化</a></li>
 </ul>
-<p class="caption"><span class="caption-text">API文档</span></p>
+<p><span class="caption-text">API文档</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../libcity/libcity.config.html">libcity.config</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../libcity/libcity.data.html">libcity.data</a></li>
@@ -192,24 +194,24 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="id1">
+  <section id="id1">
 <h1>使用自动化工具调参<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <p>这里我们以 GRU 为例，使用 LibCity 中提供的自动化调参工具（<code class="docutils literal notranslate"><span class="pre">hyper_tune.py</span></code>）优化其在 METR_LA 数据集上的交通速度预测性能。</p>
 <p>首先，我们可以查看 GRU 在交通速度预测任务中可能会使用到的超参数，以决定要对哪些参数进行调整。</p>
-<div class="section" id="id2">
+<section id="id2">
 <h2>查看相关参数<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>根据 <code class="docutils literal notranslate"><span class="pre">/libcity/config/task_config.json</span></code> 查看 GRU 在交通速度预测任务下使用到的各个模块。</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span>&quot;GRU&quot;: {
-	&quot;dataset_class&quot;: &quot;TrafficStatePointDataset&quot;,
-	&quot;executor&quot;: &quot;TrafficStateExecutor&quot;,
-	&quot;evaluator&quot;: &quot;TrafficStateEvaluator&quot;
-}
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="nt">&quot;GRU&quot;</span><span class="p">:</span> <span class="p">{</span>
+	<span class="nt">&quot;dataset_class&quot;</span><span class="p">:</span> <span class="s2">&quot;TrafficStatePointDataset&quot;</span><span class="p">,</span>
+	<span class="nt">&quot;executor&quot;</span><span class="p">:</span> <span class="s2">&quot;TrafficStateExecutor&quot;</span><span class="p">,</span>
+	<span class="nt">&quot;evaluator&quot;</span><span class="p">:</span> <span class="s2">&quot;TrafficStateEvaluator&quot;</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <p>根据配置文件可知，GRU 所使用的数据模块类为 <code class="docutils literal notranslate"><span class="pre">TrafficStatePointDataset</span></code>，执行模块类为 <code class="docutils literal notranslate"><span class="pre">TrafficStateExecutor</span></code>，评估模块类为 <code class="docutils literal notranslate"><span class="pre">TrafficStateEvaluator</span></code>。我们可以根据查找到的模块类名去 <code class="docutils literal notranslate"><span class="pre">/libcity/config/</span></code> 具体模块配置的文件夹下，找到对应模块的详细超参数配置。</p>
 <p>这里，我们认为对模型性能影响较大的是执行模块与模型本身的超参数。因此，我们查看了 <code class="docutils literal notranslate"><span class="pre">/config/executor/TrafficStateExecutor.json</span></code> 与 <code class="docutils literal notranslate"><span class="pre">/config/model/traffic_state_pred/GRU.json</span></code>两个配置文件。在查看过后，我们决定对学习率 <code class="docutils literal notranslate"><span class="pre">learning_rate</span></code>，最大训练轮次 <code class="docutils literal notranslate"><span class="pre">max_epoch</span></code>，隐藏层维度 <code class="docutils literal notranslate"><span class="pre">hidden_size</span></code>，Dropout 率 <code class="docutils literal notranslate"><span class="pre">dropout</span></code> 四个超参数进行调整。</p>
-</div>
-<div class="section" id="id3">
+</section>
+<section id="id3">
 <h2>编写调参配置文件<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">hyper_tune.py</span></code> 脚本需要用户编写一个调参配置文件，以指定所要调整的超参数与对应的搜索空间。根据所要调整参数的意义，我们将搜索空间设定为：</p>
 <ul class="simple">
@@ -232,8 +234,8 @@
         <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;randint&quot;</span><span class="p">,</span>
         <span class="nt">&quot;lower&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
         <span class="nt">&quot;upper&quot;</span><span class="p">:</span> <span class="mi">10</span>
-    <span class="p">}</span>
-    <span class="s2">&quot;hidden_size&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;hidden_size&quot;</span><span class="p">:</span> <span class="p">{</span>
     	<span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;choice&quot;</span><span class="p">,</span>
     	<span class="nt">&quot;list&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">500</span><span class="p">]</span>
     <span class="p">},</span>
@@ -245,11 +247,11 @@
 <span class="p">}</span> 
 </pre></div>
 </div>
-</div>
-<div class="section" id="hyper-tune-py">
+</section>
+<section id="hyper-tune-py">
 <h2>执行 hyper_tune.py<a class="headerlink" href="#hyper-tune-py" title="Permalink to this headline">¶</a></h2>
 <p>在确保 <code class="docutils literal notranslate"><span class="pre">sample_space_file.json</span></code> 被正确放置于项目根目录后，我们便可以运行如下脚本进行自动调参了：</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>python hyper_tune.py --task traffc_state_pred --model GRU --dataset METR_LA --space_file sample_space_file
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>python hyper_tune.py --task traffic_state_pred --model GRU --dataset METR_LA --space_file sample_space_file
 </pre></div>
 </div>
 <p>运行以下指令后，脚本会自行从搜索空间中采样对应的参数值，并进行模型的训练与验证，并在搜索采样组合验证完成之后，在终端输出最好的参数组合。</p>
@@ -262,8 +264,8 @@
 <p>程序会将所采样到的参数组合输出至终端，并显示各线程的运行状态。</p>
 <p><img alt="../_images/hyper_tune2.png" src="../_images/hyper_tune2.png" /></p>
 <p>程序会将最好的参数组合输出至终端。</p>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
@@ -273,7 +275,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../libcity/libcity.config.html" class="btn btn-neutral float-right" title="libcity.config" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="data_visualization.html" class="btn btn-neutral float-right" title="原子文件可视化" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="add_model.html" class="btn btn-neutral float-left" title="在LibCity中添加新模型" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

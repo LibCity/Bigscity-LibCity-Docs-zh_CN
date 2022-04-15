@@ -4,7 +4,8 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>数据集适用的任务 &mdash; Bigscity-LibCity  documentation</title>
@@ -83,26 +84,24 @@
               
             
             
-              <p class="caption"><span class="caption-text">起步</span></p>
+              <p><span class="caption-text">起步</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../get_started/introduction.html">介绍</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../get_started/install.html">安装LibCity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../get_started/quick_start.html">快速入门</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../get_started/directory_structure.html">目录结构</a></li>
 </ul>
-<p class="caption"><span class="caption-text">用户指导</span></p>
+<p><span class="caption-text">用户指导</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../config_settings.html">参数设置</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../data.html">数据说明</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="data_flow.html">数据流</a></li>
 <li class="toctree-l2"><a class="reference internal" href="raw_data.html">原始数据</a></li>
 <li class="toctree-l2"><a class="reference internal" href="atomic_files.html">原子文件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dataset_class.html">已实现的Dataset类</a></li>
 <li class="toctree-l2"><a class="reference internal" href="batch.html">Batch</a></li>
 <li class="toctree-l2"><a class="reference internal" href="args_for_data.html">数据模块参数</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">数据集适用的任务</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#note">Note</a></li>
-</ul>
-</li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">数据集适用的任务</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../model.html">复现模型列表</a></li>
@@ -110,21 +109,22 @@
 <li class="toctree-l1"><a class="reference internal" href="../executor.html">执行模块简介</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../usage.html">使用示例</a></li>
 </ul>
-<p class="caption"><span class="caption-text">开发者指导</span></p>
+<p><span class="caption-text">开发者指导</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../developer_guide/code_style.html">代码风格</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../developer_guide/implemented_datasets.html">自定义Dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../developer_guide/implemented_models.html">自定义Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../developer_guide/implemented_executors.html">自定义Executor</a></li>
 </ul>
-<p class="caption"><span class="caption-text">入门教程</span></p>
+<p><span class="caption-text">入门教程</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorial/install_quick_start.html">安装和快速上手</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorial/run_model.html">运行LibCity中已复现的模型</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorial/add_model.html">在LibCity中添加新模型</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorial/hyper_tune.html">使用自动化工具调参</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial/data_visualization.html">原子文件可视化</a></li>
 </ul>
-<p class="caption"><span class="caption-text">API文档</span></p>
+<p><span class="caption-text">API文档</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../libcity/libcity.config.html">libcity.config</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../libcity/libcity.data.html">libcity.data</a></li>
@@ -200,9 +200,10 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="id1">
+  <section id="id1">
 <h1>数据集适用的任务<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<p>在本节中，我们向您介绍我们提供的<a class="reference external" href="https://drive.google.com/drive/folders/1g5v2Gq1tkOq8XO0HDCZ9nOTtRpB6-gPe?usp=sharing">标准数据集</a>和任务之间的对应关系。 值得注意的是，某些数据集只能支持某个任务中的某些模型。</p>
+<p>在本节中，我们向您介绍我们提供的<a class="reference external" href="https://drive.google.com/drive/folders/1g5v2Gq1tkOq8XO0HDCZ9nOTtRpB6-gPe?usp=sharing">标准数据集</a>和任务、模型之间的对应关系。 值得注意的是，某些数据集只能支持某个任务中的某些模型。</p>
+<p>如果你觉得这个表格看起来不够方便，请点击<a class="reference external" href="https://github.com/LibCity/Bigscity-LibCity-Docs-zh_CN/blob/master/source/user_guide/data/dataset_for_task.md">这里</a>在Github上查看此表格。</p>
 <table border="1" class="docutils">
 <thead>
 <tr>
@@ -222,13 +223,13 @@
 <tr>
 <td></td>
 <td><strong>PEMSD3</strong>, <strong>PeMSD4</strong>, <strong>PeMSD7</strong>, <strong>PeMSD8</strong>, BEIJING_SUBWAY, M_DENSE, SHMETRO, HZMETRO, NYCTAXI_DYNA</td>
-<td>AGCRN, ASTGCNCommon, MSTGCNCommon, STSGCN, CONVGCNCommon, ToGCN, MultiSTGCnetCommon, STNN, ASTGCN, MSTGCN, CONVGCN, DGCN, ResLSTM, MultiSTGCnet</td>
+<td>RNN, Seq2Seq, FNN, AutoEncoder, AGCRN, ASTGCNCommon, MSTGCNCommon, STSGCN, CONVGCNCommon, ToGCN, MultiSTGCnetCommon, STNN, ASTGCN, MSTGCN, CONVGCN, DGCN, ResLSTM, MultiSTGCnet</td>
 <td>基于传感器点的数据</td>
 </tr>
 <tr>
 <td></td>
 <td><strong>TAXIBJ</strong>, PORTO, NYCTAXI_GRID, NYCBIKE, AUSTINRIDE, BIKEDC, BIKECHI, <strong>NYCBike20140409</strong>, <strong>NYCBike20160708</strong>, <strong>NYCBike20160809</strong>, <strong>NYCTaxi20140112</strong>, <strong>NYCTaxi20150103</strong>, <strong>NYCTaxi20160102</strong>, <strong>T_DRIVE20150206</strong>, T_DRIVE_SMALL</td>
-<td>AGCRN, ASTGCNCommon, MSTGCNCommon, STSGCN, CONVGCNCommon, ToGCN, MultiSTGCnetCommon, STNN, ASTGCN, MSTGCN, CONVGCN, DGCN, ResLSTM, MultiSTGCnet</td>
+<td>RNN, Seq2Seq, FNN, AutoEncoder, AGCRN, ASTGCNCommon, MSTGCNCommon, STSGCN, CONVGCNCommon, ToGCN, MultiSTGCnetCommon, STNN, ASTGCN, MSTGCN, CONVGCN, DGCN, ResLSTM, MultiSTGCnet</td>
 <td>需要简单的修改以用于网格数据， <strong>见 Note 3.</strong></td>
 </tr>
 <tr>
@@ -246,7 +247,7 @@
 <tr>
 <td>交通速度预测</td>
 <td><strong>METR_LA</strong>, <strong>LOS_LOOP</strong>, <strong>PeMSD4</strong>, <strong>PeMSD8</strong>, <strong>PEMSD7(M)</strong>, <strong>PEMS_BAY</strong>, LOS_LOOP_SMALL, SZ_TAXI, LOOP_SEATTLE, Q_TRAFFIC, ROTTERDAM</td>
-<td>DCRNN, STGCN, GWNET, MTGNN, STMGAT, TGCN, ATDM, HGCN, DKFN, STTN, GTS, GMAN, STAGGCN, TGCLSTM</td>
+<td>RNN, Seq2Seq, FNN, AutoEncoder, DCRNN, STGCN, GWNET, MTGNN, STMGAT, TGCN, ATDM, HGCN, DKFN, STTN, GTS, GMAN, STAGGCN, TGCLSTM</td>
 <td>基于传感器点的数据</td>
 </tr>
 <tr>
@@ -264,20 +265,38 @@
 <tr>
 <td></td>
 <td><strong>PEMSD3</strong>, <strong>PeMSD4</strong>, <strong>PeMSD7</strong>, <strong>PeMSD8</strong>, BEIJING_SUBWAY, M_DENSE, SHMETRO, HZMETRO, NYCTAXI_DYNA</td>
-<td>CCRNN, STG2Seq</td>
+<td>RNN, Seq2Seq, FNN, AutoEncoder, CCRNN, STG2Seq</td>
 <td>基于传感器点的数据</td>
 </tr>
 <tr>
 <td></td>
 <td><strong>TAXIBJ</strong>, PORTO, NYCTAXI_GRID, NYCBIKE, AUSTINRIDE, BIKEDC, BIKECHI, <strong>NYCBike20140409</strong>, <strong>NYCBike20160708</strong>, <strong>NYCBike20160809</strong>, <strong>NYCTaxi20140112</strong>, <strong>NYCTaxi20150103</strong>, <strong>NYCTaxi20160102</strong>, <strong>T_DRIVE20150206</strong>, T_DRIVE_SMALL</td>
 <td>CCRNN, STG2Seq</td>
-<td>Need <strong>simple modification</strong>   for grid based dataset. <strong>See Note 3.</strong></td>
+<td>需要简单的修改以用于网格数据， <strong>见 Note 3.</strong></td>
 </tr>
 <tr>
 <td>OD矩阵预测</td>
 <td><strong>NYCTAXI_OD</strong></td>
 <td>GEML</td>
-<td>基于OD的数据</td>
+<td>基于点的OD的数据</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>NYC_TOD</strong></td>
+<td>GEML</td>
+<td>需要简单的修改以用于网格OD数据， <strong>见 Note 4.</strong></td>
+</tr>
+<tr>
+<td></td>
+<td><strong>NYC_TOD</strong></td>
+<td>CSTN</td>
+<td>基于网格的OD的数据和<code>.ext</code> 文件</td>
+</tr>
+<tr>
+<td>交通事故预测</td>
+<td><strong>NYC_RISK</strong>, CHICAGO_RISK</td>
+<td>GSNet</td>
+<td>基于网格的交通事故数据</td>
 </tr>
 <tr>
 <td>轨迹下一跳预测</td>
@@ -292,22 +311,73 @@
 <td>轨迹数据</td>
 </tr>
 <tr>
-<td>路网匹配</td>
-<td><strong>Seattle</strong>, global</td>
-<td>STMatching, IVMM</td>
+<td>到达时间估计</td>
+<td><strong>Chengdu_Taxi_Sample1</strong></td>
+<td>DeepTTE</td>
 <td>轨迹数据</td>
 </tr>
+<tr>
+<td></td>
+<td><strong>Beijing_Taxi_Sample</strong></td>
+<td>DeepTTE, TTPNet</td>
+<td>轨迹数据</td>
+</tr>
+<tr>
+<td>路网匹配</td>
+<td><strong>Seattle</strong>, global</td>
+<td>STMatching, IVMM, HMMM</td>
+<td>轨迹数据</td>
+</tr>
+<tr>
+<td>路网表征学习</td>
+<td><strong>bj_roadmap_edge</strong></td>
+<td>ChebConv, LINE</td>
+<td>路网数据</td>
+</tr>
 </tbody>
-</table><div class="section" id="note">
-<h2>Note<a class="headerlink" href="#note" title="Permalink to this headline">¶</a></h2>
-<p>1.加粗的数据集是我们推荐的数据集。</p>
-<p>2.对于<code class="docutils literal notranslate"><span class="pre">TGCLSTM</span></code>，需要将<code class="docutils literal notranslate"><span class="pre">dataset_class</span></code>设置为<code class="docutils literal notranslate"><span class="pre">TrafficStatePointDataset</span></code>。 否则，默认的<code class="docutils literal notranslate"><span class="pre">dataset_class=TGCLSTMDataset</span></code> 只适用于数据集<code class="docutils literal notranslate"><span class="pre">LOOP_SEATTLE</span></code>。</p>
-<p>3.以下是如何将用于基于点的数据的模型推广到基于网格的数据。</p>
+</table><p><strong>Note 1</strong></p>
+<p>加粗的数据集是我们推荐的数据集。</p>
+<p><strong>Note 2</strong></p>
+<p>对于<code class="docutils literal notranslate"><span class="pre">TGCLSTM</span></code>，需要将<code class="docutils literal notranslate"><span class="pre">dataset_class</span></code>设置为<code class="docutils literal notranslate"><span class="pre">TrafficStatePointDataset</span></code>。 否则，默认的<code class="docutils literal notranslate"><span class="pre">dataset_class=TGCLSTMDataset</span></code> 只适用于数据集<code class="docutils literal notranslate"><span class="pre">LOOP_SEATTLE</span></code>。</p>
+<p><strong>Note 3</strong></p>
+<p>以下是如何将用于基于点的数据的模型推广到基于网格的数据。</p>
 <p>（1）如果模型使用的数据集类是<code class="docutils literal notranslate"><span class="pre">TrafficStatePointDataset</span></code>，如<code class="docutils literal notranslate"><span class="pre">AGCRN</span></code>、<code class="docutils literal notranslate"><span class="pre">ASTGCNCommon</span></code>、<code class="docutils literal notranslate"><span class="pre">CCRNN</span></code>等，可以直接在<code class="docutils literal notranslate"><span class="pre">task_file.json</span></code>中将<code class="docutils literal notranslate"><span class="pre">dataset_class</span></code>设为<code class="docutils literal notranslate"><span class="pre">TrafficStateGridDataset</span></code>或通过自定义配置文件（<code class="docutils literal notranslate"><span class="pre">--config_file</span></code>）设置。 然后将 <code class="docutils literal notranslate"><span class="pre">TrafficStateGridDataset</span></code> 的参数 <code class="docutils literal notranslate"><span class="pre">use_row_column</span></code> 设置为 <code class="docutils literal notranslate"><span class="pre">False</span></code>。</p>
 <p>（2）如果模型使用的数据集类是<code class="docutils literal notranslate"><span class="pre">TrafficStatePointDataset</span></code>的子类，如<code class="docutils literal notranslate"><span class="pre">ASTGCNDataset</span></code>、<code class="docutils literal notranslate"><span class="pre">CONVGCNDataset</span></code>、<code class="docutils literal notranslate"><span class="pre">STG2SeqDataset</span></code>等，可以修改数据集类的文件，使其继承<code class="docutils literal notranslate"><span class="pre">TrafficStateGridDataset</span></code> 取代当前的<code class="docutils literal notranslate"><span class="pre">TrafficStatePointDataset</span></code>。 然后将函数<code class="docutils literal notranslate"><span class="pre">__init__()</span></code>中的参数<code class="docutils literal notranslate"><span class="pre">use_row_column</span></code>设置为<code class="docutils literal notranslate"><span class="pre">False</span></code>。</p>
-<p>样例：</p>
+<p>样例（1）：</p>
 <p>修改前：</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">libcity.data.dataset</span> <span class="kn">import</span> <span class="n">TrafficStatePointDataset</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># task_config.json</span>
+<span class="s2">&quot;RNN&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;dataset_class&quot;</span><span class="p">:</span> <span class="s2">&quot;TrafficStatePointDataset&quot;</span><span class="p">,</span>
+<span class="p">},</span>
+<span class="c1"># TrafficStateGridDataset.json</span>
+<span class="p">{</span>
+  <span class="s2">&quot;use_row_column&quot;</span><span class="p">:</span> <span class="n">true</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>修改后：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># task_config.json</span>
+<span class="s2">&quot;RNN&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;dataset_class&quot;</span><span class="p">:</span> <span class="s2">&quot;TrafficStateGridDataset&quot;</span><span class="p">,</span>
+<span class="p">},</span>
+<span class="c1"># TrafficStateGridDataset.json</span>
+<span class="p">{</span>
+  <span class="s2">&quot;use_row_column&quot;</span><span class="p">:</span> <span class="n">false</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>样例（2）：</p>
+<p>修改前：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># task_config.json</span>
+<span class="s2">&quot;STG2Seq&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;dataset_class&quot;</span><span class="p">:</span> <span class="s2">&quot;STG2SeqDataset&quot;</span><span class="p">,</span>
+<span class="p">},</span>
+<span class="c1"># STG2SeqDataset.json</span>
+<span class="p">{</span>
+  <span class="s2">&quot;use_row_column&quot;</span><span class="p">:</span> <span class="n">false</span>
+<span class="p">}</span>
+<span class="c1"># stg2seq_dataset.py</span>
+<span class="kn">from</span> <span class="nn">libcity.data.dataset</span> <span class="kn">import</span> <span class="n">TrafficStatePointDataset</span>
 <span class="k">class</span> <span class="nc">STG2SeqDataset</span><span class="p">(</span><span class="n">TrafficStatePointDataset</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
@@ -315,7 +385,16 @@
 </pre></div>
 </div>
 <p>修改后：</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">libcity.data.dataset</span> <span class="kn">import</span> <span class="n">TrafficStateGridDataset</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># task_config.json</span>
+<span class="s2">&quot;STG2Seq&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;dataset_class&quot;</span><span class="p">:</span> <span class="s2">&quot;STG2SeqDataset&quot;</span><span class="p">,</span>
+<span class="p">},</span>
+<span class="c1"># STG2SeqDataset.json</span>
+<span class="p">{</span>
+  <span class="s2">&quot;use_row_column&quot;</span><span class="p">:</span> <span class="n">false</span>
+<span class="p">}</span>
+<span class="c1"># stg2seq_dataset.py</span>
+<span class="kn">from</span> <span class="nn">libcity.data.dataset</span> <span class="kn">import</span> <span class="n">TrafficStateGridDataset</span>
 <span class="k">class</span> <span class="nc">STG2SeqDataset</span><span class="p">(</span><span class="n">TrafficStateGridDataset</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
@@ -323,8 +402,11 @@
         <span class="k">pass</span>
 </pre></div>
 </div>
-</div>
-</div>
+<p><strong>Note 4</strong></p>
+<p>以下是如何将用于基于点的OD的数据的模型推广到基于网格的OD的数据。（跟Note 3是类似的）</p>
+<p>（1）如果模型使用的数据集类是<code class="docutils literal notranslate"><span class="pre">TrafficStateOdDataset</span></code>，如<code class="docutils literal notranslate"><span class="pre">GEML</span></code>等，可以直接在<code class="docutils literal notranslate"><span class="pre">task_file.json</span></code>中将<code class="docutils literal notranslate"><span class="pre">dataset_class</span></code>设为<code class="docutils literal notranslate"><span class="pre">TrafficStateGridOdDataset</span></code>或通过自定义配置文件（<code class="docutils literal notranslate"><span class="pre">--config_file</span></code>）设置。 然后将 <code class="docutils literal notranslate"><span class="pre">TrafficStateGridOdDataset</span></code> 的参数 <code class="docutils literal notranslate"><span class="pre">use_row_column</span></code> 设置为 <code class="docutils literal notranslate"><span class="pre">False</span></code>。</p>
+<p>（2）如果模型使用的数据集类是<code class="docutils literal notranslate"><span class="pre">TrafficStateOdDataset</span></code>的子类，可以修改数据集类的文件，使其继承<code class="docutils literal notranslate"><span class="pre">TrafficStateGridOdDataset</span></code> 取代当前的<code class="docutils literal notranslate"><span class="pre">TrafficStateOdDataset</span></code>。 然后将函数<code class="docutils literal notranslate"><span class="pre">__init__()</span></code>中的参数<code class="docutils literal notranslate"><span class="pre">use_row_column</span></code>设置为<code class="docutils literal notranslate"><span class="pre">False</span></code>。</p>
+</section>
 
 
            </div>

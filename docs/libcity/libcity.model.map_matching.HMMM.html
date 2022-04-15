@@ -1,0 +1,367 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>libcity.model.map_matching.HMMM &mdash; Bigscity-LibCity  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="libcity.model.map_matching.IVMM" href="libcity.model.map_matching.IVMM.html" />
+    <link rel="prev" title="libcity.model.map_matching" href="libcity.model.map_matching.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> Bigscity-LibCity
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p><span class="caption-text">起步</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/introduction.html">介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/install.html">安装LibCity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/quick_start.html">快速入门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/directory_structure.html">目录结构</a></li>
+</ul>
+<p><span class="caption-text">用户指导</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/config_settings.html">参数设置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/data.html">数据说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/model.html">复现模型列表</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/evaluator.html">评估模块简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/executor.html">执行模块简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/usage.html">使用示例</a></li>
+</ul>
+<p><span class="caption-text">开发者指导</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/code_style.html">代码风格</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_datasets.html">自定义Dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_models.html">自定义Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_executors.html">自定义Executor</a></li>
+</ul>
+<p><span class="caption-text">入门教程</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/install_quick_start.html">安装和快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/run_model.html">运行LibCity中已复现的模型</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/add_model.html">在LibCity中添加新模型</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/hyper_tune.html">使用自动化工具调参</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/data_visualization.html">原子文件可视化</a></li>
+</ul>
+<p><span class="caption-text">API文档</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="libcity.config.html">libcity.config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="libcity.data.html">libcity.data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="libcity.evaluator.html">libcity.evaluator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="libcity.executor.html">libcity.executor</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="libcity.model.html">libcity.model</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="libcity.model.eta.html">libcity.model.eta</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="libcity.model.map_matching.html">libcity.model.map_matching</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">libcity.model.map_matching.HMMM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libcity.model.map_matching.IVMM.html">libcity.model.map_matching.IVMM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libcity.model.map_matching.STMatching.html">libcity.model.map_matching.STMatching</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.model.road_representation.html">libcity.model.road_representation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.model.traffic_accident_prediction.html">libcity.model.traffic_accident_prediction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.model.traffic_demand_prediction.html">libcity.model.traffic_demand_prediction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.model.traffic_flow_prediction.html">libcity.model.traffic_flow_prediction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.model.traffic_od_prediction.html">libcity.model.traffic_od_prediction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.model.traffic_speed_prediction.html">libcity.model.traffic_speed_prediction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.model.trajectory_loc_prediction.html">libcity.model.trajectory_loc_prediction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.model.abstract_model.html">libcity.model.abstract_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.model.abstract_traffic_state_model.html">libcity.model.abstract_traffic_state_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.model.abstract_traffic_tradition_model.html">libcity.model.abstract_traffic_tradition_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.model.loss.html">libcity.model.loss</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.model.utils.html">libcity.model.utils</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="libcity.pipeline.html">libcity.pipeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="libcity.utils.html">libcity.utils</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Bigscity-LibCity</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="libcity.model.html">libcity.model</a> &raquo;</li>
+        
+          <li><a href="libcity.model.map_matching.html">libcity.model.map_matching</a> &raquo;</li>
+        
+      <li>libcity.model.map_matching.HMMM</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/libcity/libcity.model.map_matching.HMMM.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <section id="module-libcity.model.map_matching.HMMM">
+<span id="libcity-model-map-matching-hmmm"></span><h1>libcity.model.map_matching.HMMM<a class="headerlink" href="#module-libcity.model.map_matching.HMMM" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt id="libcity.model.map_matching.HMMM.HMMM">
+<em class="property">class </em><code class="sig-prename descclassname">libcity.model.map_matching.HMMM.</code><code class="sig-name descname">HMMM</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">config</span></em>, <em class="sig-param"><span class="n">data_feature</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/map_matching/HMMM.html#HMMM"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.map_matching.HMMM.HMMM" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="libcity.model.abstract_traffic_tradition_model.html#libcity.model.abstract_traffic_tradition_model.AbstractTraditionModel" title="libcity.model.abstract_traffic_tradition_model.AbstractTraditionModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">libcity.model.abstract_traffic_tradition_model.AbstractTraditionModel</span></code></a></p>
+<p>Hidden Markov Map Matching Through Noise and Sparseness</p>
+<dl class="py method">
+<dt id="libcity.model.map_matching.HMMM.HMMM._find_matched_sequence">
+<code class="sig-name descname">_find_matched_sequence</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/map_matching/HMMM.html#HMMM._find_matched_sequence"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.map_matching.HMMM.HMMM._find_matched_sequence" title="Permalink to this definition">¶</a></dt>
+<dd><p>Viterbi Algorithm
+Returns:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="libcity.model.map_matching.HMMM.HMMM._get_candidates">
+<code class="sig-name descname">_get_candidates</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/map_matching/HMMM.html#HMMM._get_candidates"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.map_matching.HMMM.HMMM._get_candidates" title="Permalink to this definition">¶</a></dt>
+<dd><p>get candidates of each GPS sample with given road network
+:returns:</p>
+<blockquote>
+<div><dl class="simple">
+<dt>a list of list.</dt><dd><p>In each list are tuples (edge, distance, node)</p>
+</dd>
+</dl>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>self.candidates</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="libcity.model.map_matching.HMMM.HMMM._observation_probability">
+<code class="sig-name descname">_observation_probability</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/map_matching/HMMM.html#HMMM._observation_probability"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.map_matching.HMMM.HMMM._observation_probability" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="libcity.model.map_matching.HMMM.HMMM._preprocess">
+<code class="sig-name descname">_preprocess</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/map_matching/HMMM.html#HMMM._preprocess"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.map_matching.HMMM.HMMM._preprocess" title="Permalink to this definition">¶</a></dt>
+<dd><p>removing points that are within 2 sigma_z of the previous included point
+The justification for this step is that until we see a point that is at least 2sigma_z away from
+its temporal predecessor, our confidence is low that the apparent movement is due to
+actual vehicle movement and not noise
+Returns:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="libcity.model.map_matching.HMMM.HMMM._run_one_tra">
+<code class="sig-name descname">_run_one_tra</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/map_matching/HMMM.html#HMMM._run_one_tra"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.map_matching.HMMM.HMMM._run_one_tra" title="Permalink to this definition">¶</a></dt>
+<dd><p>run ST-Matching for one trajectory
+self.trajectory self.rd_nwk
+Returns:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="libcity.model.map_matching.HMMM.HMMM._set_lon_lat_radius">
+<code class="sig-name descname">_set_lon_lat_radius</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">lon</span></em>, <em class="sig-param"><span class="n">lat</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/map_matching/HMMM.html#HMMM._set_lon_lat_radius"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.map_matching.HMMM.HMMM._set_lon_lat_radius" title="Permalink to this definition">¶</a></dt>
+<dd><p>get longitude range &amp; latitude range (because radius is actually achieved by a grid search)
+:param lon: longitude local
+:param lat: latitude local
+:param self.r:</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>self.lon_r
+self.lat_r</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="libcity.model.map_matching.HMMM.HMMM._transmission_probability">
+<code class="sig-name descname">_transmission_probability</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/map_matching/HMMM.html#HMMM._transmission_probability"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.map_matching.HMMM.HMMM._transmission_probability" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="libcity.model.map_matching.HMMM.HMMM.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/map_matching/HMMM.html#HMMM.run"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.map_matching.HMMM.HMMM.run" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data</strong> – input of tradition model</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>output of tradition model</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="libcity.model.map_matching.IVMM.html" class="btn btn-neutral float-right" title="libcity.model.map_matching.IVMM" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="libcity.model.map_matching.html" class="btn btn-neutral float-left" title="libcity.model.map_matching" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, aptx1231
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

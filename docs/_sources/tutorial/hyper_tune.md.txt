@@ -45,7 +45,7 @@
         "type": "randint",
         "lower": 2,
         "upper": 10
-    }
+    },
     "hidden_size": {
     	"type": "choice",
     	"list": [50, 100, 200, 500]
@@ -63,7 +63,7 @@
 在确保 `sample_space_file.json` 被正确放置于项目根目录后，我们便可以运行如下脚本进行自动调参了：
 
 ```shell
-python hyper_tune.py --task traffc_state_pred --model GRU --dataset METR_LA --space_file sample_space_file
+python hyper_tune.py --task traffic_state_pred --model GRU --dataset METR_LA --space_file sample_space_file
 ```
 
 运行以下指令后，脚本会自行从搜索空间中采样对应的参数值，并进行模型的训练与验证，并在搜索采样组合验证完成之后，在终端输出最好的参数组合。

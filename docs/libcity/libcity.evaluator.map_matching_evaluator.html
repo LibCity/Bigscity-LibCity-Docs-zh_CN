@@ -4,7 +4,8 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>libcity.evaluator.map_matching_evaluator &mdash; Bigscity-LibCity  documentation</title>
@@ -37,7 +38,7 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="libcity.evaluator.traffic_state_evaluator" href="libcity.evaluator.traffic_state_evaluator.html" />
+    <link rel="next" title="libcity.evaluator.road_representation_evaluator" href="libcity.evaluator.road_representation_evaluator.html" />
     <link rel="prev" title="libcity.evaluator.geosan_evaluator" href="libcity.evaluator.geosan_evaluator.html" /> 
 </head>
 
@@ -83,14 +84,14 @@
               
             
             
-              <p class="caption"><span class="caption-text">起步</span></p>
+              <p><span class="caption-text">起步</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../get_started/introduction.html">介绍</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../get_started/install.html">安装LibCity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../get_started/quick_start.html">快速入门</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../get_started/directory_structure.html">目录结构</a></li>
 </ul>
-<p class="caption"><span class="caption-text">用户指导</span></p>
+<p><span class="caption-text">用户指导</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/config_settings.html">参数设置</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/data.html">数据说明</a></li>
@@ -99,30 +100,34 @@
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/executor.html">执行模块简介</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/usage.html">使用示例</a></li>
 </ul>
-<p class="caption"><span class="caption-text">开发者指导</span></p>
+<p><span class="caption-text">开发者指导</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../developer_guide/code_style.html">代码风格</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_datasets.html">自定义Dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_models.html">自定义Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_executors.html">自定义Executor</a></li>
 </ul>
-<p class="caption"><span class="caption-text">入门教程</span></p>
+<p><span class="caption-text">入门教程</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../tutorial/install_quick_start.html">安装和快速上手</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorial/run_model.html">运行LibCity中已复现的模型</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorial/add_model.html">在LibCity中添加新模型</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorial/hyper_tune.html">使用自动化工具调参</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/data_visualization.html">原子文件可视化</a></li>
 </ul>
-<p class="caption"><span class="caption-text">API文档</span></p>
+<p><span class="caption-text">API文档</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="libcity.config.html">libcity.config</a></li>
 <li class="toctree-l1"><a class="reference internal" href="libcity.data.html">libcity.data</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="libcity.evaluator.html">libcity.evaluator</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="libcity.evaluator.abstract_evaluator.html">libcity.evaluator.abstract_evaluator</a></li>
 <li class="toctree-l2"><a class="reference internal" href="libcity.evaluator.cara_loc_pred_evaluator.html">libcity.evaluator.cara_loc_pred_evaluator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.evaluator.eta_evaluator.html">libcity.evaluator.eta_evaluator</a></li>
 <li class="toctree-l2"><a class="reference internal" href="libcity.evaluator.eval_funcs.html">libcity.evaluator.eval_funcs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="libcity.evaluator.geosan_evaluator.html">libcity.evaluator.geosan_evaluator</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">libcity.evaluator.map_matching_evaluator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.evaluator.road_representation_evaluator.html">libcity.evaluator.road_representation_evaluator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.evaluator.traffic_accident_evaluator.html">libcity.evaluator.traffic_accident_evaluator</a></li>
 <li class="toctree-l2"><a class="reference internal" href="libcity.evaluator.traffic_state_evaluator.html">libcity.evaluator.traffic_state_evaluator</a></li>
 <li class="toctree-l2"><a class="reference internal" href="libcity.evaluator.traj_loc_pred_evaluator.html">libcity.evaluator.traj_loc_pred_evaluator</a></li>
 <li class="toctree-l2"><a class="reference internal" href="libcity.evaluator.utils.html">libcity.evaluator.utils</a></li>
@@ -199,12 +204,18 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-libcity.evaluator.map_matching_evaluator">
+  <section id="module-libcity.evaluator.map_matching_evaluator">
 <span id="libcity-evaluator-map-matching-evaluator"></span><h1>libcity.evaluator.map_matching_evaluator<a class="headerlink" href="#module-libcity.evaluator.map_matching_evaluator" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
 <dt id="libcity.evaluator.map_matching_evaluator.MapMatchingEvaluator">
 <em class="property">class </em><code class="sig-prename descclassname">libcity.evaluator.map_matching_evaluator.</code><code class="sig-name descname">MapMatchingEvaluator</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">config</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/evaluator/map_matching_evaluator.html#MapMatchingEvaluator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.evaluator.map_matching_evaluator.MapMatchingEvaluator" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="libcity.evaluator.abstract_evaluator.html#libcity.evaluator.abstract_evaluator.AbstractEvaluator" title="libcity.evaluator.abstract_evaluator.AbstractEvaluator"><code class="xref py py-class docutils literal notranslate"><span class="pre">libcity.evaluator.abstract_evaluator.AbstractEvaluator</span></code></a></p>
+<dl class="py method">
+<dt id="libcity.evaluator.map_matching_evaluator.MapMatchingEvaluator._save_atom">
+<code class="sig-name descname">_save_atom</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">save_path</span></em>, <em class="sig-param"><span class="n">filename</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/evaluator/map_matching_evaluator.html#MapMatchingEvaluator._save_atom"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.evaluator.map_matching_evaluator.MapMatchingEvaluator._save_atom" title="Permalink to this definition">¶</a></dt>
+<dd><p>generate dyna</p>
+</dd></dl>
+
 <dl class="py method">
 <dt id="libcity.evaluator.map_matching_evaluator.MapMatchingEvaluator.clear">
 <code class="sig-name descname">clear</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/evaluator/map_matching_evaluator.html#MapMatchingEvaluator.clear"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.evaluator.map_matching_evaluator.MapMatchingEvaluator.clear" title="Permalink to this definition">¶</a></dt>
@@ -214,29 +225,35 @@
 <dl class="py method">
 <dt id="libcity.evaluator.map_matching_evaluator.MapMatchingEvaluator.collect">
 <code class="sig-name descname">collect</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">batch</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/evaluator/map_matching_evaluator.html#MapMatchingEvaluator.collect"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.evaluator.map_matching_evaluator.MapMatchingEvaluator.collect" title="Permalink to this definition">¶</a></dt>
-<dd><p>收集一 batch 的评估输入</p>
-<dl class="field-list simple">
+<dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>batch</strong> (<em>dict</em>) – 输入数据</p>
+<dd class="field-odd"><p><strong>batch</strong> – {‘route’: ground truth, ‘result’: matched result, ‘rd_nwk’: road network}</p>
 </dd>
 </dl>
+<p>set self.rd_nwk, self.result, self.rel_info,
+set self.merged_result based on self.result and self.rd_nwk
+set truth_sequence and self.lcs if we have ground truth</p>
 </dd></dl>
 
 <dl class="py method">
 <dt id="libcity.evaluator.map_matching_evaluator.MapMatchingEvaluator.evaluate">
 <code class="sig-name descname">evaluate</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/evaluator/map_matching_evaluator.html#MapMatchingEvaluator.evaluate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.evaluator.map_matching_evaluator.MapMatchingEvaluator.evaluate" title="Permalink to this definition">¶</a></dt>
-<dd><p>返回之前收集到的所有 batch 的评估结果</p>
+<dd><p>evaluation saved at self.evaluate_result</p>
 </dd></dl>
-
-<dl class="py method">
-<dt id="libcity.evaluator.map_matching_evaluator.MapMatchingEvaluator.find_completed_sequence">
-<code class="sig-name descname">find_completed_sequence</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/evaluator/map_matching_evaluator.html#MapMatchingEvaluator.find_completed_sequence"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.evaluator.map_matching_evaluator.MapMatchingEvaluator.find_completed_sequence" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
 
 <dl class="py method">
 <dt id="libcity.evaluator.map_matching_evaluator.MapMatchingEvaluator.find_lcs">
 <code class="sig-name descname">find_lcs</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/evaluator/map_matching_evaluator.html#MapMatchingEvaluator.find_lcs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.evaluator.map_matching_evaluator.MapMatchingEvaluator.find_lcs" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>self.merged_result + self.route =&gt; self.lcs
+Returns:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="libcity.evaluator.map_matching_evaluator.MapMatchingEvaluator.merge_result">
+<code class="sig-name descname">merge_result</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/evaluator/map_matching_evaluator.html#MapMatchingEvaluator.merge_result"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.evaluator.map_matching_evaluator.MapMatchingEvaluator.merge_result" title="Permalink to this definition">¶</a></dt>
+<dd><p>merge breaks in self.result.
+and the output will be saved at self.merged_result</p>
+</dd></dl>
 
 <dl class="py method">
 <dt id="libcity.evaluator.map_matching_evaluator.MapMatchingEvaluator.save_result">
@@ -247,6 +264,7 @@
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>save_path</strong> – 保存路径</p></li>
 <li><p><strong>filename</strong> – 保存文件名</p></li>
+<li><p><strong>rel .dyna</strong> (<em>yyyy_mm_dd_hh_mm_ss_model_dataset_result.geo</em>) – 模型输出(原子文件)</p></li>
 <li><p><strong>yyyy_mm_dd_hh_mm_ss_model_dataset_result.csv</strong> – 模型原始输出</p></li>
 <li><p><strong>yyyy_mm_dd_hh_mm_ss_model_dataset_result.json</strong> (<em>geojson</em>) – 原始输出扩充得到的连通路径</p></li>
 <li><p><strong>yyyy_mm_dd_hh_mm_ss_model_dataset.json</strong> – 评价结果</p></li>
@@ -258,7 +276,7 @@
 
 </dd></dl>
 
-</div>
+</section>
 
 
            </div>
@@ -268,7 +286,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="libcity.evaluator.traffic_state_evaluator.html" class="btn btn-neutral float-right" title="libcity.evaluator.traffic_state_evaluator" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="libcity.evaluator.road_representation_evaluator.html" class="btn btn-neutral float-right" title="libcity.evaluator.road_representation_evaluator" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="libcity.evaluator.geosan_evaluator.html" class="btn btn-neutral float-left" title="libcity.evaluator.geosan_evaluator" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

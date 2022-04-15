@@ -4,7 +4,8 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>标准赛道 &mdash; Bigscity-LibCity  documentation</title>
@@ -83,14 +84,14 @@
               
             
             
-              <p class="caption"><span class="caption-text">起步</span></p>
+              <p><span class="caption-text">起步</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../get_started/introduction.html">介绍</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../get_started/install.html">安装LibCity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../get_started/quick_start.html">快速入门</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../get_started/directory_structure.html">目录结构</a></li>
 </ul>
-<p class="caption"><span class="caption-text">用户指导</span></p>
+<p><span class="caption-text">用户指导</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../config_settings.html">参数设置</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data.html">数据说明</a></li>
@@ -102,6 +103,8 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">标准赛道</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id2">交通状态预测</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id3">轨迹位置预测</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">路网匹配</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">到达时间估计</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="parameter_tuning.html">参数调整</a></li>
@@ -109,21 +112,22 @@
 </ul>
 </li>
 </ul>
-<p class="caption"><span class="caption-text">开发者指导</span></p>
+<p><span class="caption-text">开发者指导</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../developer_guide/code_style.html">代码风格</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../developer_guide/implemented_datasets.html">自定义Dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../developer_guide/implemented_models.html">自定义Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../developer_guide/implemented_executors.html">自定义Executor</a></li>
 </ul>
-<p class="caption"><span class="caption-text">入门教程</span></p>
+<p><span class="caption-text">入门教程</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorial/install_quick_start.html">安装和快速上手</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorial/run_model.html">运行LibCity中已复现的模型</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorial/add_model.html">在LibCity中添加新模型</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorial/hyper_tune.html">使用自动化工具调参</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial/data_visualization.html">原子文件可视化</a></li>
 </ul>
-<p class="caption"><span class="caption-text">API文档</span></p>
+<p><span class="caption-text">API文档</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../libcity/libcity.config.html">libcity.config</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../libcity/libcity.data.html">libcity.data</a></li>
@@ -199,12 +203,12 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="id1">
+  <section id="id1">
 <h1>标准赛道<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <p>在交通大数据领域，长期存在数据集评价标准不一致，评估指标不一致和数据集预处理过程不一致等现象，导致了不同模型的可比性较差。因此，为了解决上述问题，本项目为每个任务实现了一套标准的pipeline(track)。</p>
 <p>在标准赛道上，项目提供的原始数据集，标准数据模块(Data module)和标准评估模块(Evaluator module)通过使用相同的数据输入与评估指标来限制不同的模型，以提高评估结果的可比性。</p>
 <p>不同任务的标准数据输入格式和评估输入格式解释如下：</p>
-<div class="section" id="id2">
+<section id="id2">
 <h2>交通状态预测<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>根据交通数据空间结构的不同，交通状态数据一般可以用以下格式的张量表示：</p>
 <ul class="simple">
@@ -220,13 +224,13 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">X_ext</span></code>： 可选的外部数据， <code class="docutils literal notranslate"><span class="pre">shape</span> <span class="pre">=</span> <span class="pre">(batch_size,</span> <span class="pre">T_in,</span> <span class="pre">ext_dim)</span></code>，每个维度表示batch中的样本总数，输入时间窗口的宽度，空间维度和外部数据特征维度。<strong>尤其是，一些模型可能直接将<code class="docutils literal notranslate"><span class="pre">X_ext</span></code>合并入<code class="docutils literal notranslate"><span class="pre">X</span></code>作为模型的输入</strong>。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">y_ext</span></code>：可选的外部数据O，<code class="docutils literal notranslate"><span class="pre">shape</span> <span class="pre">=</span> <span class="pre">(batch_size,</span> <span class="pre">T_out,</span> <span class="pre">ext_dim)</span></code>，每个维度表示batch中的样本总数，输出时间窗口的宽度，空间维度和外部数据特征维度。</p></li>
 </ul>
-<p>标准数据输入格式是一个字典对象，并且这个字典有下列key名：</p>
+<p>标准评价输入格式是一个字典对象，并且这个字典有下列key名：</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">y_true</span></code>：真实值，格式与输入的<code class="docutils literal notranslate"><span class="pre">y</span></code>相同。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">y_pred</span></code>：预测值，格式与输入的<code class="docutils literal notranslate"><span class="pre">y</span></code>相同。</p></li>
 </ul>
-</div>
-<div class="section" id="id3">
+</section>
+<section id="id3">
 <h2>轨迹位置预测<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <p>标准数据输入格式是类字典的<a class="reference internal" href="../data/batch.html"><span class="doc">Batch</span></a>对象实例。该对象的key名如下：</p>
 <ul class="simple">
@@ -243,8 +247,39 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">loc_true</span></code>：预期下一跳的位置， <code class="docutils literal notranslate"><span class="pre">shape</span> <span class="pre">=</span> <span class="pre">(batch_size)</span></code>。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">loc_pred</span></code>：模型预测输出，<code class="docutils literal notranslate"><span class="pre">shape</span> <span class="pre">=</span> <span class="pre">(batch_size,</span> <span class="pre">output_dim)</span></code>。</p></li>
 </ul>
-</div>
-</div>
+</section>
+<section id="id4">
+<h2>路网匹配<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p>标准的数据输入格式是一个字典。这个对象的key名如下：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">trajectory</span></code>：<code class="docutils literal notranslate"><span class="pre">trajectory</span></code>的格式可以写作<code class="docutils literal notranslate"><span class="pre">{&quot;usr_id&quot;:{&quot;traj_id&quot;:{numpy.ndarray}}}</span></code>。也就是说，<code class="docutils literal notranslate"><span class="pre">trajectory</span></code>的key是<code class="docutils literal notranslate"><span class="pre">usr_id</span></code>。每一个 <code class="docutils literal notranslate"><span class="pre">usr_id</span></code> 对应一个key为<code class="docutils literal notranslate"><span class="pre">traj_id</span></code>的字典。每个<code class="docutils literal notranslate"><span class="pre">traj_id</span></code>对应一个<code class="docutils literal notranslate"><span class="pre">numpy.ndarray</span></code>，表示从连续运动的对象上采样得到的按时间顺序排列的空间点序列，其列名为<code class="docutils literal notranslate"><span class="pre">columns=(index,longitude,latitude,time)</span></code>或者<code class="docutils literal notranslate"><span class="pre">columns=(index,longitude,latitude)</span></code>。轨迹的长度记为<code class="docutils literal notranslate"><span class="pre">num_sample</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rd_nwk</span></code>： 一个具有类型<code class="docutils literal notranslate"><span class="pre">networkx.classes.digraph.DiGraph</span></code>的路网数据。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">route</span></code>：<code class="docutils literal notranslate"><span class="pre">route</span></code>的格式可以写作<code class="docutils literal notranslate"><span class="pre">{&quot;usr_id&quot;:{&quot;traj_id&quot;:{numpy.ndarray}}}</span></code>。这和<code class="docutils literal notranslate"><span class="pre">trajectory</span></code>类似。<code class="docutils literal notranslate"><span class="pre">route</span></code>的<code class="docutils literal notranslate"><span class="pre">value</span></code>是一个由<code class="docutils literal notranslate"><span class="pre">geo_id</span></code>组成的<code class="docutils literal notranslate"><span class="pre">numpy.ndarray</span></code> 对象，<code class="docutils literal notranslate"><span class="pre">shape=(num_road,)</span></code>，代表真实路径。 <code class="docutils literal notranslate"><span class="pre">num_road</span></code>是真实路径的长度。</p></li>
+</ul>
+<p>标准的评价输入格式是一个字典。这个对象的key名如下：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">result</span></code>：<code class="docutils literal notranslate"><span class="pre">result</span></code>的格式几乎和<code class="docutils literal notranslate"><span class="pre">route</span></code>的格式相同。<code class="docutils literal notranslate"><span class="pre">result</span></code>的值是一个由<code class="docutils literal notranslate"><span class="pre">geo_id</span></code> 组成的 <code class="docutils literal notranslate"><span class="pre">numpy.ndarray</span></code>对象， <code class="docutils literal notranslate"><span class="pre">shape=(num_sample,)</span></code>，代表匹配的结果。<code class="docutils literal notranslate"><span class="pre">num_sample</span></code>是轨迹数据中GPS采样点的数量。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">route</span></code>：见标准的数据输入格式中的描述。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rd_nwk</span></code>：见标准的数据输入格式中的描述。</p></li>
+</ul>
+</section>
+<section id="id5">
+<h2>到达时间估计<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<p>标准数据输入格式是类字典的<a class="reference internal" href="../data/batch.html"><span class="doc">Batch</span></a>对象实例。该对象的key名如下：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">current_loc/(current_longi,current_lati)</span></code>：轨迹位置信息，<code class="docutils literal notranslate"><span class="pre">shape</span> <span class="pre">=</span> <span class="pre">(batch_size,</span> <span class="pre">traj_len)</span></code>，<code class="docutils literal notranslate"><span class="pre">traj_len</span></code> 是轨迹的长度。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">uid</span></code>：每个轨迹的用户的id，<code class="docutils literal notranslate"><span class="pre">shape</span> <span class="pre">=</span> <span class="pre">(batch_size)</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">timeid(weekid)</span></code>：轨迹开始的时间信息，<code class="docutils literal notranslate"><span class="pre">shape</span> <span class="pre">=</span> <span class="pre">(batch_size)</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dist</span></code>：轨迹总长度，<code class="docutils literal notranslate"><span class="pre">shape</span> <span class="pre">=</span> <span class="pre">(batch_size)</span></code>。</p></li>
+<li><p>其他信息，例如<code class="docutils literal notranslate"><span class="pre">current_dis</span></code>（从起点到当前位置的距离，<code class="docutils literal notranslate"><span class="pre">shape</span> <span class="pre">=</span> <span class="pre">(batch_size,</span> <span class="pre">traj_len)</span></code>）、<code class="docutils literal notranslate"><span class="pre">current_state</span></code>（是否载客，<code class="docutils literal notranslate"><span class="pre">shape</span> <span class="pre">=</span> <span class="pre">(batch_size,</span> <span class="pre">traj_len)</span></code>）等。（可选的）</p></li>
+</ul>
+<p>标准评价输入格式是一个字典对象，并且这个字典有下列key名：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">y_true</span></code>：起点到终点的真实时间，<code class="docutils literal notranslate"><span class="pre">shape</span> <span class="pre">=</span> <span class="pre">(batch_size)</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">y_pred</span></code>：起点到终点的预测时间，<code class="docutils literal notranslate"><span class="pre">shape</span> <span class="pre">=</span> <span class="pre">(batch_size)</span></code>。</p></li>
+</ul>
+</section>
+</section>
 
 
            </div>

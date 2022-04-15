@@ -10,5 +10,6 @@ libcity.utils
    libcity.utils.dataset
    libcity.utils.normalization
    libcity.utils.utils
+   libcity.utils.visualize
 
 

@@ -4,7 +4,8 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>libcity.model.traffic_od_prediction.GEML &mdash; Bigscity-LibCity  documentation</title>
@@ -38,7 +39,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="libcity.model.traffic_speed_prediction" href="libcity.model.traffic_speed_prediction.html" />
-    <link rel="prev" title="libcity.model.traffic_od_prediction" href="libcity.model.traffic_od_prediction.html" /> 
+    <link rel="prev" title="libcity.model.traffic_od_prediction.CSTN" href="libcity.model.traffic_od_prediction.CSTN.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -83,14 +84,14 @@
               
             
             
-              <p class="caption"><span class="caption-text">起步</span></p>
+              <p><span class="caption-text">起步</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../get_started/introduction.html">介绍</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../get_started/install.html">安装LibCity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../get_started/quick_start.html">快速入门</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../get_started/directory_structure.html">目录结构</a></li>
 </ul>
-<p class="caption"><span class="caption-text">用户指导</span></p>
+<p><span class="caption-text">用户指导</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/config_settings.html">参数设置</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/data.html">数据说明</a></li>
@@ -99,31 +100,36 @@
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/executor.html">执行模块简介</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/usage.html">使用示例</a></li>
 </ul>
-<p class="caption"><span class="caption-text">开发者指导</span></p>
+<p><span class="caption-text">开发者指导</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../developer_guide/code_style.html">代码风格</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_datasets.html">自定义Dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_models.html">自定义Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_executors.html">自定义Executor</a></li>
 </ul>
-<p class="caption"><span class="caption-text">入门教程</span></p>
+<p><span class="caption-text">入门教程</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../tutorial/install_quick_start.html">安装和快速上手</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorial/run_model.html">运行LibCity中已复现的模型</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorial/add_model.html">在LibCity中添加新模型</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorial/hyper_tune.html">使用自动化工具调参</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/data_visualization.html">原子文件可视化</a></li>
 </ul>
-<p class="caption"><span class="caption-text">API文档</span></p>
+<p><span class="caption-text">API文档</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="libcity.config.html">libcity.config</a></li>
 <li class="toctree-l1"><a class="reference internal" href="libcity.data.html">libcity.data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="libcity.evaluator.html">libcity.evaluator</a></li>
 <li class="toctree-l1"><a class="reference internal" href="libcity.executor.html">libcity.executor</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="libcity.model.html">libcity.model</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="libcity.model.eta.html">libcity.model.eta</a></li>
 <li class="toctree-l2"><a class="reference internal" href="libcity.model.map_matching.html">libcity.model.map_matching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.model.road_representation.html">libcity.model.road_representation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.model.traffic_accident_prediction.html">libcity.model.traffic_accident_prediction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="libcity.model.traffic_demand_prediction.html">libcity.model.traffic_demand_prediction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="libcity.model.traffic_flow_prediction.html">libcity.model.traffic_flow_prediction</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="libcity.model.traffic_od_prediction.html">libcity.model.traffic_od_prediction</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="libcity.model.traffic_od_prediction.CSTN.html">libcity.model.traffic_od_prediction.CSTN</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">libcity.model.traffic_od_prediction.GEML</a></li>
 </ul>
 </li>
@@ -133,6 +139,7 @@
 <li class="toctree-l2"><a class="reference internal" href="libcity.model.abstract_traffic_state_model.html">libcity.model.abstract_traffic_state_model</a></li>
 <li class="toctree-l2"><a class="reference internal" href="libcity.model.abstract_traffic_tradition_model.html">libcity.model.abstract_traffic_tradition_model</a></li>
 <li class="toctree-l2"><a class="reference internal" href="libcity.model.loss.html">libcity.model.loss</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.model.utils.html">libcity.model.utils</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="libcity.pipeline.html">libcity.pipeline</a></li>
@@ -206,7 +213,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-libcity.model.traffic_od_prediction.GEML">
+  <section id="module-libcity.model.traffic_od_prediction.GEML">
 <span id="libcity-model-traffic-od-prediction-geml"></span><h1>libcity.model.traffic_od_prediction.GEML<a class="headerlink" href="#module-libcity.model.traffic_od_prediction.GEML" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
 <dt id="libcity.model.traffic_od_prediction.GEML.GCN">
@@ -369,7 +376,7 @@ registered hooks while the latter silently ignores them.</p>
 
 <dl class="py function">
 <dt id="libcity.model.traffic_od_prediction.GEML.generate_geo_adj">
-<code class="sig-prename descclassname">libcity.model.traffic_od_prediction.GEML.</code><code class="sig-name descname">generate_geo_adj</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">cost_matrix</span><span class="p">:</span> <span class="n">numpy.matrix</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/traffic_od_prediction/GEML.html#generate_geo_adj"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.traffic_od_prediction.GEML.generate_geo_adj" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">libcity.model.traffic_od_prediction.GEML.</code><code class="sig-name descname">generate_geo_adj</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">distance_matrix</span><span class="p">:</span> <span class="n">numpy.matrix</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/traffic_od_prediction/GEML.html#generate_geo_adj"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.traffic_od_prediction.GEML.generate_geo_adj" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
@@ -377,7 +384,7 @@ registered hooks while the latter silently ignores them.</p>
 <code class="sig-prename descclassname">libcity.model.traffic_od_prediction.GEML.</code><code class="sig-name descname">generate_semantic_adj</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">demand_matrix</span></em>, <em class="sig-param"><span class="n">device</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/traffic_od_prediction/GEML.html#generate_semantic_adj"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.traffic_od_prediction.GEML.generate_semantic_adj" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-</div>
+</section>
 
 
            </div>
@@ -390,7 +397,7 @@ registered hooks while the latter silently ignores them.</p>
         <a href="libcity.model.traffic_speed_prediction.html" class="btn btn-neutral float-right" title="libcity.model.traffic_speed_prediction" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="libcity.model.traffic_od_prediction.html" class="btn btn-neutral float-left" title="libcity.model.traffic_od_prediction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="libcity.model.traffic_od_prediction.CSTN.html" class="btn btn-neutral float-left" title="libcity.model.traffic_od_prediction.CSTN" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

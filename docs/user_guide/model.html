@@ -4,7 +4,8 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>复现模型列表 &mdash; Bigscity-LibCity  documentation</title>
@@ -83,43 +84,50 @@
               
             
             
-              <p class="caption"><span class="caption-text">起步</span></p>
+              <p><span class="caption-text">起步</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../get_started/introduction.html">介绍</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../get_started/install.html">安装LibCity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../get_started/quick_start.html">快速入门</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../get_started/directory_structure.html">目录结构</a></li>
 </ul>
-<p class="caption"><span class="caption-text">用户指导</span></p>
+<p><span class="caption-text">用户指导</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="config_settings.html">参数设置</a></li>
 <li class="toctree-l1"><a class="reference internal" href="data.html">数据说明</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">复现模型列表</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#id2">交通流量预测</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id3">交通速度预测</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id4">交通需求量预测</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id5">轨迹下一跳预测</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">基线模型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">交通流量预测</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">交通速度预测</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">交通需求量预测</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#od">OD矩阵预测</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id6">交通事故预测</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id7">轨迹下一跳预测</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id8">到达时间估计</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id9">路网匹配</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id10">路网表征学习</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="evaluator.html">评估模块简介</a></li>
 <li class="toctree-l1"><a class="reference internal" href="executor.html">执行模块简介</a></li>
 <li class="toctree-l1"><a class="reference internal" href="usage.html">使用示例</a></li>
 </ul>
-<p class="caption"><span class="caption-text">开发者指导</span></p>
+<p><span class="caption-text">开发者指导</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../developer_guide/code_style.html">代码风格</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_datasets.html">自定义Dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_models.html">自定义Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_executors.html">自定义Executor</a></li>
 </ul>
-<p class="caption"><span class="caption-text">入门教程</span></p>
+<p><span class="caption-text">入门教程</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../tutorial/install_quick_start.html">安装和快速上手</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorial/run_model.html">运行LibCity中已复现的模型</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorial/add_model.html">在LibCity中添加新模型</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorial/hyper_tune.html">使用自动化工具调参</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/data_visualization.html">原子文件可视化</a></li>
 </ul>
-<p class="caption"><span class="caption-text">API文档</span></p>
+<p><span class="caption-text">API文档</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../libcity/libcity.config.html">libcity.config</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../libcity/libcity.data.html">libcity.data</a></li>
@@ -193,348 +201,409 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="id1">
+  <section id="id1">
 <h1>复现模型列表<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="id2">
-<h2>交通流量预测<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><p><strong>AutoEncoder</strong></p></li>
+<section id="id2">
+<h2>基线模型<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>对于时间序列预测任务：</p>
+<ul>
+<li><p><strong>HA</strong>:</p>
+<p>历史平均值，将历史流量建模为季节性过程，然后使用前几个季节的加权平均值作为预测值。</p>
+</li>
+<li><p><strong>VAR</strong>:</p>
+<p>向量自回归，这是一种常用的时间序列预测模型，用于捕捉多个变量随时间的关系。</p>
+</li>
+<li><p><strong>SVR</strong>:</p>
+<p>支持向量回归，它使用线性支持向量机进行回归任务。 SVR利用历史数据训练模型建立输入输出关系，然后进行预测。</p>
+</li>
+<li><p><strong>ARIMA</strong></p>
+<p>带有卡尔曼滤波器的自回归综合移动平均模型。</p>
+</li>
 </ul>
+<p>对于交通速度、流量、需求预测任务：</p>
+<ul>
+<li><p><strong>AutoEncoder</strong></p>
 <p>本基线模型由我们实现，采用编码器从数据中学习嵌入向量后用解码器预测未来交通状况。</p>
-<ul class="simple">
-<li><p><strong>RNN（FC-RNN）</strong></p></li>
-</ul>
+</li>
+<li><p><strong>RNN（FC-RNN）</strong></p>
 <p>本基线模型由我们实现，预测交通状态，基于 RNN。</p>
-<ul class="simple">
-<li><p><strong>Seq2Seq</strong></p></li>
-</ul>
+</li>
+<li><p><strong>Seq2Seq</strong></p>
 <p>本基线模型由我们实现，基于编码器-解码器架构，预测交通状态。采用基于门控循环单元的编码器-解码器框架，进行多步预测。</p>
-<ul class="simple">
-<li><p><strong>ST-ResNet</strong></p></li>
+</li>
 </ul>
+<ul>
+<li><p><strong>FNN</strong></p>
+<p>该基线模型由我们自己实现，用于基于具有两个隐藏层和 L2 正则化的前馈神经网络的交通状态预测任务。</p>
+</li>
+</ul>
+<p>对于轨迹下一跳预测任务：</p>
+<ul>
+<li><p><strong>RNN</strong></p>
+<p>该基线模型由我们实现，使用 RNN 建模序列信息进行下一跳预测。</p>
+</li>
+</ul>
+</section>
+<section id="id3">
+<h2>交通流量预测<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p><strong>ST-ResNet</strong></p>
 <p>时空残差网络，广泛用于基于网格的流量预测任务，以残差单元建模时空关联。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&gt; Junbo Zhang, Yu Zheng, and Dekang Qi. 2017. Deep Spatio-Temporal Residual Networks for Citywide Crowd Flows Prediction. In AAAI. AAAI Press, 1655–1661.
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Junbo Zhang, Yu Zheng, and Dekang Qi. 2017. Deep Spatio-Temporal Residual Networks for Citywide Crowd Flows Prediction. In AAAI. AAAI Press, 1655–1661.
 </pre></div>
 </div>
-<ul class="simple">
-<li><p><strong>ACFM</strong></p></li>
-</ul>
+</li>
+<li><p><strong>ACFM</strong></p>
 <p>注意力人群流量机，能推断人群流量，通过注意力机制学习随时间变化数据的动态表示。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&gt; Lingbo Liu, Ruimao Zhang, Jiefeng Peng, Guanbin Li, Bowen Du, and Liang Lin.2018. Attentive Crowd Flow Machines. In ACM Multimedia. ACM, 1553–1561.
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Lingbo Liu, Ruimao Zhang, Jiefeng Peng, Guanbin Li, Bowen Du, and Liang Lin.2018. Attentive Crowd Flow Machines. In ACM Multimedia. ACM, 1553–1561.
 </pre></div>
 </div>
-<ul class="simple">
-<li><p><strong>ASTGCN</strong></p></li>
-</ul>
+</li>
+<li><p><strong>ASTGCN</strong></p>
 <p>基于注意力的时空图卷积网络，融合时空注意力机制与时空卷积捕捉动态时空特征。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&gt; Shengnan Guo, Youfang Lin, Ning Feng, Chao Song, and Huaiyu Wan. 2019.Attention Based Spatial-Temporal Graph Convolutional Networks for Traffic Flow Forecasting. In AAAI. AAAI Press, 922–929.
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Shengnan Guo, Youfang Lin, Ning Feng, Chao Song, and Huaiyu Wan. 2019.Attention Based Spatial-Temporal Graph Convolutional Networks for Traffic Flow Forecasting. In AAAI. AAAI Press, 922–929.
 </pre></div>
 </div>
-<ul class="simple">
-<li><p><strong>MSTGCN</strong></p></li>
-</ul>
+</li>
+<li><p><strong>MSTGCN</strong></p>
 <p>降级版的ASTGCN，称为多组件时空图卷积网络，去掉了原模型的时空注意力机制。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&gt; Shengnan Guo, Youfang Lin, Ning Feng, Chao Song, and Huaiyu Wan. 2019.Attention Based Spatial-Temporal Graph Convolutional Networks for Traffic Flow Forecasting. In AAAI. AAAI Press, 922–929.
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Shengnan Guo, Youfang Lin, Ning Feng, Chao Song, and Huaiyu Wan. 2019.Attention Based Spatial-Temporal Graph Convolutional Networks for Traffic Flow Forecasting. In AAAI. AAAI Press, 922–929.
 </pre></div>
 </div>
-<ul class="simple">
-<li><p><strong>AGCRN</strong></p></li>
-</ul>
+</li>
+<li><p><strong>AGCRN</strong></p>
 <p>自适应图卷积循环网络，通过自适应模块增强传统图卷积，并组合成循环神经网络，以捕捉细粒度时空关联。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">Lei</span> <span class="n">Bai</span><span class="p">,</span> <span class="n">Lina</span> <span class="n">Yao</span><span class="p">,</span> <span class="n">Can</span> <span class="n">Li</span><span class="p">,</span> <span class="n">Xianzhi</span> <span class="n">Wang</span><span class="p">,</span> <span class="ow">and</span> <span class="n">Can</span> <span class="n">Wang</span><span class="o">.</span> <span class="mf">2020.</span> <span class="n">Adaptive</span> <span class="n">Graph</span> <span class="n">Convolutional</span> <span class="n">Recurrent</span> <span class="n">Network</span> <span class="k">for</span> <span class="n">Traffic</span> <span class="n">Forecasting</span><span class="o">.</span> <span class="n">In</span> <span class="n">NeurIPS</span><span class="o">.</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Lei</span> <span class="n">Bai</span><span class="p">,</span> <span class="n">Lina</span> <span class="n">Yao</span><span class="p">,</span> <span class="n">Can</span> <span class="n">Li</span><span class="p">,</span> <span class="n">Xianzhi</span> <span class="n">Wang</span><span class="p">,</span> <span class="ow">and</span> <span class="n">Can</span> <span class="n">Wang</span><span class="o">.</span> <span class="mf">2020.</span> <span class="n">Adaptive</span> <span class="n">Graph</span> <span class="n">Convolutional</span> <span class="n">Recurrent</span> <span class="n">Network</span> <span class="k">for</span> <span class="n">Traffic</span> <span class="n">Forecasting</span><span class="o">.</span> <span class="n">In</span> <span class="n">NeurIPS</span><span class="o">.</span>
 </pre></div>
 </div>
-<ul class="simple">
-<li><p><strong>CONVGCN</strong></p></li>
-</ul>
+</li>
+<li><p><strong>CONVGCN</strong></p>
 <p>Conv-GCN 组合图卷积网络（GCN）与三维卷积神经网络（3D CNN）。三维卷积神经网络创新性地应用在集成入流与出流信息，以及提取入流/出流模式间与距离远近不同站点间的高层次关联两方面。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&gt; Jinlei Zhang, Feng Chen, Yinan Guo, and Xiaohong Li. 2020. Multi-graph convolutional network for short-term passenger flow forecasting in urban rail transit. IET Intell. Trans. Syst.14, 10 (2020), 1210–1217.
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Jinlei Zhang, Feng Chen, Yinan Guo, and Xiaohong Li. 2020. Multi-graph convolutional network for short-term passenger flow forecasting in urban rail transit. IET Intell. Trans. Syst.14, 10 (2020), 1210–1217.
 </pre></div>
 </div>
-<ul class="simple">
-<li><p><strong>STDN</strong></p></li>
-</ul>
+</li>
+<li><p><strong>STDN</strong></p>
 <p>时空动态网络（STDN）引入流门控机制以学习位置间的动态相似性，以及设计了周期轮换变动的注意力机制来把握长期、周期性的随时间的变换。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&gt; Huaxiu Yao, Xianfeng Tang, Hua Wei, Guanjie Zheng, and Zhenhui Li. 2019.Revisiting Spatial-Temporal Similarity: A Deep Learning Framework for Traffic Prediction. In AAAI. AAAI Press, 5668–5675.
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Huaxiu Yao, Xianfeng Tang, Hua Wei, Guanjie Zheng, and Zhenhui Li. 2019.Revisiting Spatial-Temporal Similarity: A Deep Learning Framework for Traffic Prediction. In AAAI. AAAI Press, 5668–5675.
 </pre></div>
 </div>
-<ul class="simple">
-<li><p><strong>STSGCN</strong></p></li>
-</ul>
+</li>
+<li><p><strong>STSGCN</strong></p>
 <p>时空同步图卷积网络（STSGCN），致力于时空网络数据预测。通过精心设计的时空同步建模机制，该模型能够有效地提取复杂、局部化的时空关联。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&gt; Chao Song, Youfang Lin, Shengnan Guo, and Huaiyu Wan. 2020. Spatial-Temporal Synchronous Graph Convolutional Networks: A New Framework for Spatial-Temporal Network Data Forecasting. In AAAI. AAAI Press, 914–921.
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Chao Song, Youfang Lin, Shengnan Guo, and Huaiyu Wan. 2020. Spatial-Temporal Synchronous Graph Convolutional Networks: A New Framework for Spatial-Temporal Network Data Forecasting. In AAAI. AAAI Press, 914–921.
 </pre></div>
 </div>
-<ul class="simple">
-<li><p><strong>ToGCN</strong></p></li>
-</ul>
+</li>
+<li><p><strong>ToGCN</strong></p>
 <p>拓扑图卷积网络（ToGCN）后跟序列到序列（Seq2Seq）网络，以时间关联预测未来的交通流量与密度。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">Han</span> <span class="n">Qiu</span><span class="p">,</span> <span class="n">Qinkai</span> <span class="n">Zheng</span><span class="p">,</span> <span class="n">Mounira</span> <span class="n">Msahli</span><span class="p">,</span> <span class="n">Gerard</span> <span class="n">Memmi</span><span class="p">,</span> <span class="n">Meikang</span> <span class="n">Qiu</span><span class="p">,</span> <span class="ow">and</span> <span class="n">Jialiang</span> <span class="n">Lu</span><span class="o">.</span> <span class="mf">2020.</span> <span class="n">Topological</span> <span class="n">Graph</span> <span class="n">Convolutional</span> <span class="n">Network</span><span class="o">-</span><span class="n">Based</span> <span class="n">Urban</span> <span class="n">Traffic</span> <span class="n">Flow</span> <span class="ow">and</span> <span class="n">Density</span> <span class="n">Prediction</span><span class="o">.</span> <span class="n">IEEE</span> <span class="n">Trans</span><span class="o">.</span> <span class="n">Intell</span><span class="o">.</span> <span class="n">Transp</span><span class="o">.</span> <span class="n">Syst</span><span class="o">.</span><span class="p">(</span><span class="mi">2020</span><span class="p">)</span><span class="o">.</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Han</span> <span class="n">Qiu</span><span class="p">,</span> <span class="n">Qinkai</span> <span class="n">Zheng</span><span class="p">,</span> <span class="n">Mounira</span> <span class="n">Msahli</span><span class="p">,</span> <span class="n">Gerard</span> <span class="n">Memmi</span><span class="p">,</span> <span class="n">Meikang</span> <span class="n">Qiu</span><span class="p">,</span> <span class="ow">and</span> <span class="n">Jialiang</span> <span class="n">Lu</span><span class="o">.</span> <span class="mf">2020.</span> <span class="n">Topological</span> <span class="n">Graph</span> <span class="n">Convolutional</span> <span class="n">Network</span><span class="o">-</span><span class="n">Based</span> <span class="n">Urban</span> <span class="n">Traffic</span> <span class="n">Flow</span> <span class="ow">and</span> <span class="n">Density</span> <span class="n">Prediction</span><span class="o">.</span> <span class="n">IEEE</span> <span class="n">Trans</span><span class="o">.</span> <span class="n">Intell</span><span class="o">.</span> <span class="n">Transp</span><span class="o">.</span> <span class="n">Syst</span><span class="o">.</span><span class="p">(</span><span class="mi">2020</span><span class="p">)</span><span class="o">.</span>
 </pre></div>
 </div>
-<ul class="simple">
-<li><p><strong>ResLSTM</strong></p></li>
-</ul>
+</li>
+<li><p><strong>ResLSTM</strong></p>
 <p>ResLSTM是合并残差网络（ResNet），图卷积网络（GCN）和长短期记忆内存（LSTM）的深度学习架构，在交通网尺度预测城市轨道交通短期客流。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">Jinlei</span> <span class="n">Zhang</span><span class="p">,</span> <span class="n">Feng</span> <span class="n">Chen</span><span class="p">,</span> <span class="n">Zhiyong</span> <span class="n">Cui</span><span class="p">,</span> <span class="n">Yinan</span> <span class="n">Guo</span><span class="p">,</span> <span class="ow">and</span> <span class="n">Yadi</span> <span class="n">Zhu</span><span class="o">.</span> <span class="mf">2020.</span>  <span class="n">Deep</span> <span class="n">learning</span> <span class="n">architecture</span> <span class="k">for</span> <span class="n">short</span><span class="o">-</span><span class="n">term</span> <span class="n">passenger</span> <span class="n">flow</span> <span class="n">forecasting</span> <span class="ow">in</span> <span class="n">urban</span> <span class="n">rail</span> <span class="n">transit</span><span class="o">.</span> <span class="n">IEEE</span> <span class="n">Trans</span><span class="o">.</span> <span class="n">Intell</span><span class="o">.</span> <span class="n">Transp</span><span class="o">.</span> <span class="n">Syst</span><span class="o">.</span><span class="p">(</span><span class="mi">2020</span><span class="p">)</span><span class="o">.</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Jinlei</span> <span class="n">Zhang</span><span class="p">,</span> <span class="n">Feng</span> <span class="n">Chen</span><span class="p">,</span> <span class="n">Zhiyong</span> <span class="n">Cui</span><span class="p">,</span> <span class="n">Yinan</span> <span class="n">Guo</span><span class="p">,</span> <span class="ow">and</span> <span class="n">Yadi</span> <span class="n">Zhu</span><span class="o">.</span> <span class="mf">2020.</span>  <span class="n">Deep</span> <span class="n">learning</span> <span class="n">architecture</span> <span class="k">for</span> <span class="n">short</span><span class="o">-</span><span class="n">term</span> <span class="n">passenger</span> <span class="n">flow</span> <span class="n">forecasting</span> <span class="ow">in</span> <span class="n">urban</span> <span class="n">rail</span> <span class="n">transit</span><span class="o">.</span> <span class="n">IEEE</span> <span class="n">Trans</span><span class="o">.</span> <span class="n">Intell</span><span class="o">.</span> <span class="n">Transp</span><span class="o">.</span> <span class="n">Syst</span><span class="o">.</span><span class="p">(</span><span class="mi">2020</span><span class="p">)</span><span class="o">.</span>
 </pre></div>
 </div>
-<ul class="simple">
-<li><p><strong>CRANN</strong></p></li>
-</ul>
+</li>
+<li><p><strong>CRANN</strong></p>
 <p>CRANN是可解释的、基于注意力的神经网络，其中多个模块组合以捕捉关键的时空时间序列部分。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">Rodrigo</span>  <span class="n">de</span>  <span class="n">Medrano</span>  <span class="ow">and</span>  <span class="n">José</span>  <span class="n">Luis</span>  <span class="n">Aznarte</span><span class="o">.</span>  <span class="mf">2020.</span>   <span class="n">A</span>  <span class="n">Spatio</span><span class="o">-</span><span class="n">Temporal</span>  <span class="n">Spot</span><span class="o">-</span><span class="n">Forecasting</span> <span class="n">Framework</span> <span class="n">forUrban</span> <span class="n">Traffic</span> <span class="n">Prediction</span><span class="o">.</span> <span class="n">CoRR</span> <span class="nb">abs</span><span class="o">/</span><span class="mf">2003.13977</span> <span class="p">(</span><span class="mi">2020</span><span class="p">)</span><span class="o">.</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Rodrigo</span>  <span class="n">de</span>  <span class="n">Medrano</span>  <span class="ow">and</span>  <span class="n">José</span>  <span class="n">Luis</span>  <span class="n">Aznarte</span><span class="o">.</span>  <span class="mf">2020.</span>   <span class="n">A</span>  <span class="n">Spatio</span><span class="o">-</span><span class="n">Temporal</span>  <span class="n">Spot</span><span class="o">-</span><span class="n">Forecasting</span> <span class="n">Framework</span> <span class="n">forUrban</span> <span class="n">Traffic</span> <span class="n">Prediction</span><span class="o">.</span> <span class="n">CoRR</span> <span class="nb">abs</span><span class="o">/</span><span class="mf">2003.13977</span> <span class="p">(</span><span class="mi">2020</span><span class="p">)</span><span class="o">.</span>
 </pre></div>
 </div>
-<ul class="simple">
-<li><p><strong>Multi-STGCnet</strong></p></li>
-</ul>
+</li>
+<li><p><strong>Multi-STGCnet</strong></p>
 <p>Multi-STGCnet含有三个作为时间组件的基于长短期记忆内存（LSTM）的模块和作为空间组件的三个用于提取目标站点空间关联的空间矩阵。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&gt; Jiexia Ye, Juanjuan Zhao, Kejiang Ye, and Chengzhong Xu. 2020. Multi-STGCnet:A Graph Convolution Based Spatial-Temporal Framework for Subway PassengerFlow Forecasting. In IJCNN. IEEE, 1–8.
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Jiexia Ye, Juanjuan Zhao, Kejiang Ye, and Chengzhong Xu. 2020. Multi-STGCnet:A Graph Convolution Based Spatial-Temporal Framework for Subway PassengerFlow Forecasting. In IJCNN. IEEE, 1–8.
 </pre></div>
 </div>
-<ul class="simple">
-<li><p><strong>DGCN</strong></p></li>
-</ul>
+</li>
+<li><p><strong>DGCN</strong></p>
 <p>DGCN是用于交通预测的创新性的图卷积网络，其中引入了潜在网络以提取时空特征，为了适应性地建构动态路网图矩阵。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">Kan</span> <span class="n">Guo</span><span class="p">,</span> <span class="n">Yongli</span> <span class="n">Hu</span><span class="p">,</span> <span class="n">Zhen</span> <span class="n">Qian</span><span class="p">,</span> <span class="n">Yanfeng</span> <span class="n">Sun</span><span class="p">,</span> <span class="n">Junbin</span> <span class="n">Gao</span><span class="p">,</span> <span class="ow">and</span> <span class="n">Baocai</span> <span class="n">Yin</span><span class="o">.</span> <span class="mf">2020.</span><span class="n">Dynamic</span> <span class="n">Graph</span> <span class="n">Convolution</span> <span class="n">Network</span> <span class="k">for</span> <span class="n">Traffic</span> <span class="n">Forecasting</span> <span class="n">Based</span> <span class="n">on</span> <span class="n">Latent</span> <span class="n">Network</span> <span class="n">of</span> <span class="n">Laplace</span> <span class="n">Matrix</span> <span class="n">Estimation</span><span class="o">.</span> <span class="n">IEEE</span> <span class="n">Trans</span><span class="o">.</span> <span class="n">Intell</span><span class="o">.</span> <span class="n">Transp</span><span class="o">.</span> <span class="n">Syst</span><span class="o">.</span><span class="p">(</span><span class="mi">2020</span><span class="p">)</span><span class="o">.</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Kan</span> <span class="n">Guo</span><span class="p">,</span> <span class="n">Yongli</span> <span class="n">Hu</span><span class="p">,</span> <span class="n">Zhen</span> <span class="n">Qian</span><span class="p">,</span> <span class="n">Yanfeng</span> <span class="n">Sun</span><span class="p">,</span> <span class="n">Junbin</span> <span class="n">Gao</span><span class="p">,</span> <span class="ow">and</span> <span class="n">Baocai</span> <span class="n">Yin</span><span class="o">.</span> <span class="mf">2020.</span><span class="n">Dynamic</span> <span class="n">Graph</span> <span class="n">Convolution</span> <span class="n">Network</span> <span class="k">for</span> <span class="n">Traffic</span> <span class="n">Forecasting</span> <span class="n">Based</span> <span class="n">on</span> <span class="n">Latent</span> <span class="n">Network</span> <span class="n">of</span> <span class="n">Laplace</span> <span class="n">Matrix</span> <span class="n">Estimation</span><span class="o">.</span> <span class="n">IEEE</span> <span class="n">Trans</span><span class="o">.</span> <span class="n">Intell</span><span class="o">.</span> <span class="n">Transp</span><span class="o">.</span> <span class="n">Syst</span><span class="o">.</span><span class="p">(</span><span class="mi">2020</span><span class="p">)</span><span class="o">.</span>
 </pre></div>
 </div>
-<ul class="simple">
-<li><p><strong>DSAN</strong></p></li>
-</ul>
+</li>
+<li><p><strong>DSAN</strong></p>
 <p>动态切换注意力网络（DSAN）含有创新性的多空间注意力机制（MSA），通过在带噪声的输入上应用自注意力动态提取有价值的信息，再将各输出直接拼接。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&gt; Haoxing Lin, Rufan Bai, Weijia Jia, Xinyu Yang, and Yongjian You. 2020. Preserving Dynamic Attention for Long-Term Spatial-Temporal Prediction. In KDD. ACM,36–46.
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Haoxing Lin, Rufan Bai, Weijia Jia, Xinyu Yang, and Yongjian You. 2020. Preserving Dynamic Attention for Long-Term Spatial-Temporal Prediction. In KDD. ACM,36–46.
 </pre></div>
 </div>
-<ul class="simple">
-<li><p><strong>STNN</strong></p></li>
-</ul>
+</li>
+<li><p><strong>STNN</strong></p>
 <p>STNN通过结构化隐动态组件学习这些依赖，然后一个解码器从隐表示中得到观测值。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">Ali</span> <span class="n">Ziat</span><span class="p">,</span> <span class="n">Edouard</span> <span class="n">Delasalles</span><span class="p">,</span> <span class="n">Ludovic</span> <span class="n">Denoyer</span><span class="p">,</span> <span class="ow">and</span> <span class="n">Patrick</span> <span class="n">Gallinari</span><span class="o">.</span> <span class="mf">2018.</span> <span class="n">Spatio</span><span class="o">-</span><span class="n">Temporal</span> <span class="n">Neural</span> <span class="n">Networks</span> <span class="k">for</span> <span class="n">Space</span><span class="o">-</span><span class="n">Time</span> <span class="n">Series</span> <span class="n">Forecasting</span> <span class="ow">and</span> <span class="n">Relations</span> <span class="n">Discovery</span><span class="o">.</span> <span class="n">CoRRabs</span><span class="o">/</span><span class="mf">1804.08562</span> <span class="p">(</span><span class="mi">2018</span><span class="p">)</span><span class="o">.</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Ali</span> <span class="n">Ziat</span><span class="p">,</span> <span class="n">Edouard</span> <span class="n">Delasalles</span><span class="p">,</span> <span class="n">Ludovic</span> <span class="n">Denoyer</span><span class="p">,</span> <span class="ow">and</span> <span class="n">Patrick</span> <span class="n">Gallinari</span><span class="o">.</span> <span class="mf">2018.</span> <span class="n">Spatio</span><span class="o">-</span><span class="n">Temporal</span> <span class="n">Neural</span> <span class="n">Networks</span> <span class="k">for</span> <span class="n">Space</span><span class="o">-</span><span class="n">Time</span> <span class="n">Series</span> <span class="n">Forecasting</span> <span class="ow">and</span> <span class="n">Relations</span> <span class="n">Discovery</span><span class="o">.</span> <span class="n">CoRRabs</span><span class="o">/</span><span class="mf">1804.08562</span> <span class="p">(</span><span class="mi">2018</span><span class="p">)</span><span class="o">.</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="id3">
-<h2>交通速度预测<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><p><strong>AutoEncoder</strong></p></li>
+</li>
 </ul>
-<p>本基线模型由我们实现，采用编码器从数据中学习嵌入向量后用解码器预测未来交通状况。</p>
-<ul class="simple">
-<li><p><strong>RNN（FC-RNN）</strong></p></li>
-</ul>
-<p>本基线模型由我们实现，预测交通状态，基于 RNN。</p>
-<ul class="simple">
-<li><p><strong>Seq2Seq</strong></p></li>
-</ul>
-<p>本基线模型由我们实现，基于编码器-解码器架构，预测交通状态。采用基于门控循环单元的编码器-解码器框架，进行多步预测。</p>
-<ul class="simple">
-<li><p><strong>DCRNN</strong></p></li>
-</ul>
+</section>
+<section id="id4">
+<h2>交通速度预测<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p><strong>DCRNN</strong></p>
 <p>扩散卷积循环神经网络，用由扩散过程形式化的图卷积捕捉时间依赖，并用编码器-解码器框架捕捉空间依赖。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">Yaguang</span> <span class="n">Li</span><span class="p">,</span> <span class="n">Rose</span> <span class="n">Yu</span><span class="p">,</span> <span class="n">Cyrus</span> <span class="n">Shahabi</span><span class="p">,</span> <span class="ow">and</span> <span class="n">Yan</span> <span class="n">Liu</span><span class="o">.</span> <span class="mf">2018.</span> <span class="n">Diffusion</span> <span class="n">Convolutional</span> <span class="n">Recurrent</span> <span class="n">Neural</span> <span class="n">Network</span><span class="p">:</span> <span class="n">Data</span><span class="o">-</span><span class="n">Driven</span> <span class="n">Traffic</span> <span class="n">Forecasting</span><span class="o">.</span> <span class="n">In</span> <span class="n">ICLR</span> <span class="p">(</span><span class="n">Poster</span><span class="p">)</span><span class="o">.</span><span class="n">OpenReview</span><span class="o">.</span><span class="n">net</span><span class="o">.</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Yaguang</span> <span class="n">Li</span><span class="p">,</span> <span class="n">Rose</span> <span class="n">Yu</span><span class="p">,</span> <span class="n">Cyrus</span> <span class="n">Shahabi</span><span class="p">,</span> <span class="ow">and</span> <span class="n">Yan</span> <span class="n">Liu</span><span class="o">.</span> <span class="mf">2018.</span> <span class="n">Diffusion</span> <span class="n">Convolutional</span> <span class="n">Recurrent</span> <span class="n">Neural</span> <span class="n">Network</span><span class="p">:</span> <span class="n">Data</span><span class="o">-</span><span class="n">Driven</span> <span class="n">Traffic</span> <span class="n">Forecasting</span><span class="o">.</span> <span class="n">In</span> <span class="n">ICLR</span> <span class="p">(</span><span class="n">Poster</span><span class="p">)</span><span class="o">.</span><span class="n">OpenReview</span><span class="o">.</span><span class="n">net</span><span class="o">.</span>
 </pre></div>
 </div>
-<ul class="simple">
-<li><p><strong>STGCN</strong></p></li>
-</ul>
+</li>
+<li><p><strong>STGCN</strong></p>
 <p>时空图卷积网络，综合图卷积和门控时间卷积捕捉时空关联。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&gt; Bing Yu, Haoteng Yin, and Zhanxing Zhu. 2018. Spatio-Temporal Graph Convolutional Networks: A Deep Learning Framework for Traffic Forecasting. In IJCAI. ijcai.org, 3634–3640.
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Bing Yu, Haoteng Yin, and Zhanxing Zhu. 2018. Spatio-Temporal Graph Convolutional Networks: A Deep Learning Framework for Traffic Forecasting. In IJCAI. ijcai.org, 3634–3640.
 </pre></div>
 </div>
-<ul class="simple">
-<li><p><strong>GWNET</strong></p></li>
-</ul>
-<p>图波浪网络，集成扩散卷积与一维空洞因果卷积捕捉时空依赖的时空图卷积网络。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&gt; Zonghan Wu, Shirui Pan, Guodong Long, Jing Jiang, and Chengqi Zhang. 2019.Graph Wave Net for Deep Spatial-Temporal Graph Modeling. In IJCAI. ijcai.org,1907–1913.
+</li>
+<li><p><strong>GWNET</strong></p>
+<p>集成扩散卷积与一维空洞因果卷积捕捉时空依赖的时空图卷积网络。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Zonghan Wu, Shirui Pan, Guodong Long, Jing Jiang, and Chengqi Zhang. 2019.Graph Wave Net for Deep Spatial-Temporal Graph Modeling. In IJCAI. ijcai.org,1907–1913.
 </pre></div>
 </div>
-<ul class="simple">
-<li><p><strong>MTGNN</strong></p></li>
-</ul>
+</li>
+<li><p><strong>MTGNN</strong></p>
 <p>专门为多变量时间序列数据设计的图神经网络框架，组合图卷积网络与混跳传播层、空洞复合卷积层捕捉时空依赖。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&gt; Zonghan Wu, Shirui Pan, Guodong Long, Jing Jiang, Xiaojun Chang, and Chengqi Zhang. 2020.  Connecting the Dots: Multivariate Time Series Forecasting with Graph Neural Networks. In KDD. ACM, 753–763.
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Zonghan Wu, Shirui Pan, Guodong Long, Jing Jiang, Xiaojun Chang, and Chengqi Zhang. 2020.  Connecting the Dots: Multivariate Time Series Forecasting with Graph Neural Networks. In KDD. ACM, 753–763.
 </pre></div>
 </div>
-<ul class="simple">
-<li><p><strong>TGCN</strong></p></li>
-</ul>
+</li>
+<li><p><strong>TGCN</strong></p>
 <p>时间图卷积模型，混合图卷积网络和门控循环单元捕捉时空关联。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&gt; Ling Zhao, Yujiao Song, Chao Zhang, Yu Liu, Pu Wang, Tao Lin, Min Deng, and Haifeng Li. 2020. T-GCN: A Temporal Graph Convolutional Network for Traffic Prediction. IEEE Trans. Intell. Transp. Syst.21, 9 (2020), 3848–385.
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Ling Zhao, Yujiao Song, Chao Zhang, Yu Liu, Pu Wang, Tao Lin, Min Deng, and Haifeng Li. 2020. T-GCN: A Temporal Graph Convolutional Network for Traffic Prediction. IEEE Trans. Intell. Transp. Syst.21, 9 (2020), 3848–385.
 </pre></div>
 </div>
-<ul class="simple">
-<li><p><strong>TGCLSTM</strong></p></li>
-</ul>
+</li>
+<li><p><strong>TGCLSTM</strong></p>
 <p>交通图卷积长短期记忆内存神经网络（TGC-LSTM），能学习交通网络中路段之间的交互，以及预测全网络的交通状态。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&gt; Zhiyong Cui, Kristian Henrickson, Ruimin Ke, and Yinhai Wang. 2020.  Traffic Graph Convolutional Recurrent Neural Network: A Deep Learning Frame work for Network-Scale Traffic Learning and Forecasting. IEEE Trans. Intell. Transp.Syst.21, 11 (2020), 4883–4894.
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Zhiyong Cui, Kristian Henrickson, Ruimin Ke, and Yinhai Wang. 2020.  Traffic Graph Convolutional Recurrent Neural Network: A Deep Learning Frame work for Network-Scale Traffic Learning and Forecasting. IEEE Trans. Intell. Transp.Syst.21, 11 (2020), 4883–4894.
 </pre></div>
 </div>
-<ul class="simple">
-<li><p><strong>ATDM</strong></p></li>
-</ul>
+</li>
+<li><p><strong>ATDM</strong></p>
 <p>ATDM是使用先验空间知识的模型。它是基于卷积、用于回归的神经网络，也有对应的空间不敏感版本。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">Rodrigo</span> <span class="n">de</span> <span class="n">Medrano</span> <span class="ow">and</span> <span class="n">José</span> <span class="n">Luis</span> <span class="n">Aznarte</span><span class="o">.</span> <span class="mf">2020.</span>  <span class="n">On</span> <span class="n">the</span> <span class="n">Inclusion</span> <span class="n">of</span> <span class="n">Spatial</span> <span class="n">Information</span> <span class="k">for</span> <span class="n">Spatio</span><span class="o">-</span><span class="n">Temporal</span> <span class="n">Neural</span> <span class="n">Networks</span><span class="o">.</span> <span class="n">CoRR</span> <span class="nb">abs</span><span class="o">/</span><span class="mf">2007.07559</span> <span class="p">(</span><span class="mi">2020</span><span class="p">)</span><span class="o">.</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Rodrigo</span> <span class="n">de</span> <span class="n">Medrano</span> <span class="ow">and</span> <span class="n">José</span> <span class="n">Luis</span> <span class="n">Aznarte</span><span class="o">.</span> <span class="mf">2020.</span>  <span class="n">On</span> <span class="n">the</span> <span class="n">Inclusion</span> <span class="n">of</span> <span class="n">Spatial</span> <span class="n">Information</span> <span class="k">for</span> <span class="n">Spatio</span><span class="o">-</span><span class="n">Temporal</span> <span class="n">Neural</span> <span class="n">Networks</span><span class="o">.</span> <span class="n">CoRR</span> <span class="nb">abs</span><span class="o">/</span><span class="mf">2007.07559</span> <span class="p">(</span><span class="mi">2020</span><span class="p">)</span><span class="o">.</span>
 </pre></div>
 </div>
-<ul class="simple">
-<li><p><strong>GMAN</strong></p></li>
-</ul>
+</li>
+<li><p><strong>GMAN</strong></p>
 <p>GMAN采用编码器-解码器架构，编码器和解码器都由多个时空注意力块组成，来建模时空因素对交通状况的影响。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&gt; Chuanpan Zheng, Xiaoliang Fan, Cheng Wang, and Jianzhong Qi. 2020. GMAN:A Graph Multi-Attention Network for Traffic Prediction. In AAAI. AAAI Press,1234–1241.
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Chuanpan Zheng, Xiaoliang Fan, Cheng Wang, and Jianzhong Qi. 2020. GMAN:A Graph Multi-Attention Network for Traffic Prediction. In AAAI. AAAI Press,1234–1241.
 </pre></div>
 </div>
-<ul class="simple">
-<li><p><strong>GTS</strong></p></li>
-</ul>
+</li>
+<li><p><strong>GTS</strong></p>
 <p>GTS是节点图未知时能够用GNN同时学习的模型，也是在图概率分布上优化期望性能的图概率模型。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">Chao</span> <span class="n">Shang</span><span class="p">,</span> <span class="n">Jie</span> <span class="n">Chen</span><span class="p">,</span> <span class="ow">and</span> <span class="n">Jinbo</span> <span class="n">Bi</span><span class="o">.</span> <span class="mf">2021.</span> <span class="n">Discrete</span> <span class="n">Graph</span> <span class="n">Structure</span> <span class="n">Learning</span> <span class="n">forForecasting</span> <span class="n">Multiple</span> <span class="n">Time</span> <span class="n">Series</span><span class="o">.</span> <span class="n">CoRR</span> <span class="nb">abs</span><span class="o">/</span><span class="mf">2101.06861</span> <span class="p">(</span><span class="mi">2021</span><span class="p">)</span><span class="o">.</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Chao</span> <span class="n">Shang</span><span class="p">,</span> <span class="n">Jie</span> <span class="n">Chen</span><span class="p">,</span> <span class="ow">and</span> <span class="n">Jinbo</span> <span class="n">Bi</span><span class="o">.</span> <span class="mf">2021.</span> <span class="n">Discrete</span> <span class="n">Graph</span> <span class="n">Structure</span> <span class="n">Learning</span> <span class="n">forForecasting</span> <span class="n">Multiple</span> <span class="n">Time</span> <span class="n">Series</span><span class="o">.</span> <span class="n">CoRR</span> <span class="nb">abs</span><span class="o">/</span><span class="mf">2101.06861</span> <span class="p">(</span><span class="mi">2021</span><span class="p">)</span><span class="o">.</span>
 </pre></div>
 </div>
-<ul class="simple">
-<li><p><strong>STAGGCN</strong></p></li>
-</ul>
+</li>
+<li><p><strong>STAGGCN</strong></p>
 <p>STAGGCN利用城市交通流量的时空关联，通过寻找道路节点的空间与语义邻居构建动态带权图。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&gt; Bin Lu, Xiaoying Gan, Haiming Jin, Luoyi Fu, and Haisong Zhang. 2020.  Spa-tiotemporal Adaptive Gated Graph Convolution Network for Urban Traffic FlowForecasting. In CIKM. ACM, 1025–1034.
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Bin Lu, Xiaoying Gan, Haiming Jin, Luoyi Fu, and Haisong Zhang. 2020.  Spa-tiotemporal Adaptive Gated Graph Convolution Network for Urban Traffic FlowForecasting. In CIKM. ACM, 1025–1034.
 </pre></div>
 </div>
-<ul class="simple">
-<li><p><strong>HGCN</strong></p></li>
-</ul>
+</li>
+<li><p><strong>HGCN</strong></p>
 <p>结构化图卷积网络（HGCN）致力于交通预测，同时在宏观和微观交通图上进行。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">Kan</span> <span class="n">Guo</span><span class="p">,</span> <span class="n">Yongli</span> <span class="n">Hu</span><span class="p">,</span> <span class="n">Yanfeng</span> <span class="n">Sun</span><span class="p">,</span> <span class="n">Sean</span> <span class="n">Qian</span><span class="p">,</span> <span class="n">Junbin</span> <span class="n">Gao</span><span class="p">,</span> <span class="ow">and</span> <span class="n">Baocai</span> <span class="n">Yin</span><span class="o">.</span> <span class="mf">2021.</span><span class="n">Hierarchical</span> <span class="n">Graph</span> <span class="n">Convolution</span> <span class="n">Networks</span> <span class="k">for</span> <span class="n">Traffic</span> <span class="n">Forecasting</span><span class="o">.</span> <span class="p">(</span><span class="mi">2021</span><span class="p">)</span><span class="o">.</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Kan</span> <span class="n">Guo</span><span class="p">,</span> <span class="n">Yongli</span> <span class="n">Hu</span><span class="p">,</span> <span class="n">Yanfeng</span> <span class="n">Sun</span><span class="p">,</span> <span class="n">Sean</span> <span class="n">Qian</span><span class="p">,</span> <span class="n">Junbin</span> <span class="n">Gao</span><span class="p">,</span> <span class="ow">and</span> <span class="n">Baocai</span> <span class="n">Yin</span><span class="o">.</span> <span class="mf">2021.</span><span class="n">Hierarchical</span> <span class="n">Graph</span> <span class="n">Convolution</span> <span class="n">Networks</span> <span class="k">for</span> <span class="n">Traffic</span> <span class="n">Forecasting</span><span class="o">.</span> <span class="p">(</span><span class="mi">2021</span><span class="p">)</span><span class="o">.</span>
 </pre></div>
 </div>
-<ul class="simple">
-<li><p><strong>ST-MGAT</strong></p></li>
-</ul>
+</li>
+<li><p><strong>ST-MGAT</strong></p>
 <p>时空多头图注意力机制网络（ST-MGAT），在图上直接建构卷积的同时，考虑邻居节点的特征和边权，生成新的节点表示。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&gt; Kelang Tian, Jingjie Guo, Kejiang Ye, and Cheng-Zhong Xu. 2020.  ST-MGAT:Spatial-Temporal Multi-Head Graph Attention Networks for Traffic Forecasting. In ICTAI. IEEE, 714–721.
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Kelang Tian, Jingjie Guo, Kejiang Ye, and Cheng-Zhong Xu. 2020.  ST-MGAT:Spatial-Temporal Multi-Head Graph Attention Networks for Traffic Forecasting. In ICTAI. IEEE, 714–721.
 </pre></div>
 </div>
-<ul class="simple">
-<li><p><strong>DKFN</strong></p></li>
-</ul>
+</li>
+<li><p><strong>DKFN</strong></p>
 <p>深度卡曼滤波网络（DKFN）通过对自依赖和邻居依赖分别按照两序列进行建模，二者预测在统计学理论下融合，并经过卡曼滤波网络优化，来预测网络级别的交通状态。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&gt; Fanglan Chen, Zhiqian Chen, Subhodip Biswas, Shuo Lei, Naren Ramakrishnan,and Chang-Tien Lu. 2020. Graph Convolutional Networks with Kalman Filtering for Traffic Prediction. In SIGSPATIAL/GIS. ACM, 135–138.
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Fanglan Chen, Zhiqian Chen, Subhodip Biswas, Shuo Lei, Naren Ramakrishnan,and Chang-Tien Lu. 2020. Graph Convolutional Networks with Kalman Filtering for Traffic Prediction. In SIGSPATIAL/GIS. ACM, 135–138.
 </pre></div>
 </div>
+</li>
+</ul>
+<ul>
+<li><p><strong>STTN</strong></p>
+<p>该模型使用时间和空间的Transformer结构进行交通预测。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Xu</span><span class="p">,</span> <span class="n">M</span><span class="o">.</span><span class="p">,</span> <span class="n">Dai</span><span class="p">,</span> <span class="n">W</span><span class="o">.</span><span class="p">,</span> <span class="n">Liu</span><span class="p">,</span> <span class="n">C</span><span class="o">.</span><span class="p">,</span> <span class="n">Gao</span><span class="p">,</span> <span class="n">X</span><span class="o">.</span><span class="p">,</span> <span class="n">Lin</span><span class="p">,</span> <span class="n">W</span><span class="o">.</span><span class="p">,</span> <span class="n">Qi</span><span class="p">,</span> <span class="n">G</span><span class="o">.</span> <span class="n">J</span><span class="o">.</span><span class="p">,</span> <span class="o">&amp;</span> <span class="n">Xiong</span><span class="p">,</span> <span class="n">H</span><span class="o">.</span> <span class="p">(</span><span class="mi">2020</span><span class="p">)</span><span class="o">.</span> <span class="n">Spatial</span><span class="o">-</span><span class="n">temporal</span> <span class="n">transformer</span> <span class="n">networks</span> <span class="k">for</span> <span class="n">traffic</span> <span class="n">flow</span> <span class="n">forecasting</span><span class="o">.</span> <span class="n">arXiv</span> <span class="n">preprint</span> <span class="n">arXiv</span><span class="p">:</span><span class="mf">2001.02908</span><span class="o">.</span>
+</pre></div>
 </div>
-<div class="section" id="id4">
-<h2>交通需求量预测<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><p><strong>AutoEncoder</strong></p></li>
+</li>
 </ul>
-<p>本基线模型由我们实现，采用编码器从数据中学习嵌入向量后用解码器预测未来交通状况。</p>
-<ul class="simple">
-<li><p><strong>RNN（FC-RNN）</strong></p></li>
-</ul>
-<p>本基线模型由我们实现，预测交通状态，基于 RNN。</p>
-<ul class="simple">
-<li><p><strong>Seq2Seq</strong></p></li>
-</ul>
-<p>本基线模型由我们实现，基于编码器-解码器架构，预测交通状态。采用基于门控循环单元的编码器-解码器框架，进行多步预测。</p>
-<ul class="simple">
-<li><p><strong>DMVSTNET</strong></p></li>
-</ul>
+</section>
+<section id="id5">
+<h2>交通需求量预测<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p><strong>DMVSTNET</strong></p>
 <p>深度多视角时空网络（DVMST-Net）框架对时空关系进行建模。它由三个视角组成：时间视角、空间视角、语义视角。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">Huaxiu</span> <span class="n">Yao</span><span class="p">,</span> <span class="n">Fei</span> <span class="n">Wu</span><span class="p">,</span> <span class="n">Jintao</span> <span class="n">Ke</span><span class="p">,</span> <span class="n">Xianfeng</span> <span class="n">Tang</span><span class="p">,</span> <span class="n">Yitian</span> <span class="n">Jia</span><span class="p">,</span> <span class="n">Siyu</span> <span class="n">Lu</span><span class="p">,</span> <span class="n">Pinghua</span> <span class="n">Gong</span><span class="p">,</span> <span class="n">Jieping</span> <span class="n">Ye</span><span class="p">,</span> <span class="ow">and</span> <span class="n">Zhenhui</span> <span class="n">Li</span><span class="o">.</span> <span class="mf">2018.</span> <span class="n">Deep</span> <span class="n">Multi</span><span class="o">-</span><span class="n">View</span> <span class="n">Spatial</span><span class="o">-</span><span class="n">Temporal</span> <span class="n">Network</span> <span class="k">for</span> <span class="n">Taxi</span> <span class="n">Demand</span> <span class="n">Prediction</span><span class="o">.</span> <span class="n">In</span> <span class="n">AAAI</span><span class="o">.</span> <span class="n">AAAI</span> <span class="n">Press</span><span class="p">,</span> <span class="mf">2588.</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Huaxiu</span> <span class="n">Yao</span><span class="p">,</span> <span class="n">Fei</span> <span class="n">Wu</span><span class="p">,</span> <span class="n">Jintao</span> <span class="n">Ke</span><span class="p">,</span> <span class="n">Xianfeng</span> <span class="n">Tang</span><span class="p">,</span> <span class="n">Yitian</span> <span class="n">Jia</span><span class="p">,</span> <span class="n">Siyu</span> <span class="n">Lu</span><span class="p">,</span> <span class="n">Pinghua</span> <span class="n">Gong</span><span class="p">,</span> <span class="n">Jieping</span> <span class="n">Ye</span><span class="p">,</span> <span class="ow">and</span> <span class="n">Zhenhui</span> <span class="n">Li</span><span class="o">.</span> <span class="mf">2018.</span> <span class="n">Deep</span> <span class="n">Multi</span><span class="o">-</span><span class="n">View</span> <span class="n">Spatial</span><span class="o">-</span><span class="n">Temporal</span> <span class="n">Network</span> <span class="k">for</span> <span class="n">Taxi</span> <span class="n">Demand</span> <span class="n">Prediction</span><span class="o">.</span> <span class="n">In</span> <span class="n">AAAI</span><span class="o">.</span> <span class="n">AAAI</span> <span class="n">Press</span><span class="p">,</span> <span class="mf">2588.</span>
 </pre></div>
 </div>
-<ul class="simple">
-<li><p><strong>STG2Seq</strong></p></li>
-</ul>
+</li>
+<li><p><strong>STG2Seq</strong></p>
 <p>STG2Seq是基于图的多步城市客流量预测模型，使用层次化图卷积的网络结构同时捕捉时空关联。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">Lei</span> <span class="n">Bai</span><span class="p">,</span> <span class="n">Lina</span> <span class="n">Yao</span><span class="p">,</span> <span class="n">Salil</span> <span class="n">S</span><span class="o">.</span> <span class="n">Kanhere</span><span class="p">,</span> <span class="n">Xianzhi</span> <span class="n">Wang</span><span class="p">,</span> <span class="ow">and</span> <span class="n">Quan</span> <span class="n">Z</span><span class="o">.</span> <span class="n">Sheng</span><span class="o">.</span> <span class="mf">2019.</span> <span class="n">STG2Seq</span><span class="p">:</span> <span class="n">Spatial</span><span class="o">-</span><span class="n">Temporal</span> <span class="n">Graph</span> <span class="n">to</span> <span class="n">Sequence</span> <span class="n">Model</span> <span class="k">for</span> <span class="n">Multi</span><span class="o">-</span><span class="n">step</span> <span class="n">Passenger</span> <span class="n">Demand</span> <span class="n">Forecasting</span><span class="o">.</span> <span class="n">In</span> <span class="n">IJCAI</span><span class="o">.</span> <span class="n">ijcai</span><span class="o">.</span><span class="n">org</span><span class="p">,</span> <span class="mi">1981</span><span class="o">-</span><span class="mf">1987.</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Lei</span> <span class="n">Bai</span><span class="p">,</span> <span class="n">Lina</span> <span class="n">Yao</span><span class="p">,</span> <span class="n">Salil</span> <span class="n">S</span><span class="o">.</span> <span class="n">Kanhere</span><span class="p">,</span> <span class="n">Xianzhi</span> <span class="n">Wang</span><span class="p">,</span> <span class="ow">and</span> <span class="n">Quan</span> <span class="n">Z</span><span class="o">.</span> <span class="n">Sheng</span><span class="o">.</span> <span class="mf">2019.</span> <span class="n">STG2Seq</span><span class="p">:</span> <span class="n">Spatial</span><span class="o">-</span><span class="n">Temporal</span> <span class="n">Graph</span> <span class="n">to</span> <span class="n">Sequence</span> <span class="n">Model</span> <span class="k">for</span> <span class="n">Multi</span><span class="o">-</span><span class="n">step</span> <span class="n">Passenger</span> <span class="n">Demand</span> <span class="n">Forecasting</span><span class="o">.</span> <span class="n">In</span> <span class="n">IJCAI</span><span class="o">.</span> <span class="n">ijcai</span><span class="o">.</span><span class="n">org</span><span class="p">,</span> <span class="mi">1981</span><span class="o">-</span><span class="mf">1987.</span>
 </pre></div>
 </div>
-<ul class="simple">
-<li><p><strong>CCRNN</strong></p></li>
-</ul>
+</li>
+<li><p><strong>CCRNN</strong></p>
 <p>CCRNN是捕捉多级别空间依赖的模型。CGC中的依赖矩阵是自学习的，每个层都有变化。应用按层的耦合机制桥接上层与下层的图结构。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&gt; Junchen Ye, Leilei Sun, Bowen Du, Yanjie Fu, and Hui Xiong. 2021.  Coupled Layer-wise Graph Convolution for Transportation Demand Prediction. In AAAI. AAAI Press, 4617–4625.
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Junchen Ye, Leilei Sun, Bowen Du, Yanjie Fu, and Hui Xiong. 2021.  Coupled Layer-wise Graph Convolution for Transportation Demand Prediction. In AAAI. AAAI Press, 4617–4625.
 </pre></div>
 </div>
-</div>
-<div class="section" id="id5">
-<h2>轨迹下一跳预测<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><p><strong>FPMC</strong></p></li>
+</li>
 </ul>
+</section>
+<section id="od">
+<h2>OD矩阵预测<a class="headerlink" href="#od" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p><strong>GEML</strong></p>
+<p>该模型使用图卷积神经网络捕获空间信息，p-Skip LSTM 捕获时间信息、以及多任务学习机制，预测每对出发-到达地点间的出租车流量。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Wang</span><span class="p">,</span> <span class="n">Yuandong</span> <span class="o">&amp;</span> <span class="n">Yin</span><span class="p">,</span> <span class="n">Hongzhi</span> <span class="o">&amp;</span> <span class="n">Chen</span><span class="p">,</span> <span class="n">Hongxu</span> <span class="o">&amp;</span> <span class="n">Wo</span><span class="p">,</span> <span class="n">Tianyu</span> <span class="o">&amp;</span> <span class="n">xu</span><span class="p">,</span> <span class="n">Jiudong</span> <span class="o">&amp;</span> <span class="n">Zheng</span><span class="p">,</span> <span class="n">Kai</span><span class="o">.</span> <span class="p">(</span><span class="mi">2019</span><span class="p">)</span><span class="o">.</span> <span class="n">Origin</span><span class="o">-</span><span class="n">Destination</span> <span class="n">Matrix</span> <span class="n">Prediction</span> <span class="n">via</span> <span class="n">Graph</span> <span class="n">Convolution</span><span class="p">:</span> <span class="n">a</span> <span class="n">New</span> <span class="n">Perspective</span> <span class="n">of</span> <span class="n">Passenger</span> <span class="n">Demand</span> <span class="n">Modeling</span><span class="o">.</span> <span class="n">In</span> <span class="n">KDD</span><span class="o">.</span> <span class="n">ACM</span><span class="o">.</span> <span class="mf">2019.</span> <span class="mi">1227</span><span class="o">-</span><span class="mi">1235</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>CSTN</strong></p>
+<p>该模型使用双视图卷积神经网络，捕获出发地、目的地两个视图上节点的空间信息，并使用 ConvLSTM 捕获时间信息，最后通过卷积捕获全局相关性。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Liu</span><span class="p">,</span> <span class="n">Lingbo</span> <span class="o">&amp;</span> <span class="n">Qiu</span><span class="p">,</span> <span class="n">Zhilin</span> <span class="o">&amp;</span> <span class="n">Li</span><span class="p">,</span> <span class="n">Guanbin</span> <span class="o">&amp;</span> <span class="n">Wang</span><span class="p">,</span> <span class="n">Qing</span> <span class="o">&amp;</span> <span class="n">Ouyang</span><span class="p">,</span> <span class="n">Wanli</span> <span class="o">&amp;</span> <span class="n">Lin</span><span class="p">,</span> <span class="n">Liang</span><span class="o">.</span> <span class="p">(</span><span class="mi">2019</span><span class="p">)</span><span class="o">.</span> <span class="n">Contextualized</span> <span class="n">Spatial</span><span class="o">-</span><span class="n">Temporal</span> <span class="n">Network</span> <span class="k">for</span> <span class="n">Taxi</span> <span class="n">Origin</span><span class="o">-</span><span class="n">Destination</span> <span class="n">Demand</span> <span class="n">Prediction</span><span class="o">.</span> <span class="n">In</span> <span class="n">IEEE</span> <span class="n">Transactions</span> <span class="n">on</span> <span class="n">Intelligent</span> <span class="n">Transportation</span> <span class="n">Systems</span><span class="o">.</span> <span class="mf">2019.</span> <span class="mi">3875</span><span class="o">-</span><span class="mi">3887</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="id6">
+<h2>交通事故预测<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p><strong>GSNet</strong>：</p>
+<p>该模型提出从时空地理和时空语义两个角度综合考虑交通事故风险，并设计了加权损失函数，更多关注高风险区域的样本信息，以解决零膨胀问题。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Beibei</span> <span class="n">Wang</span><span class="p">,</span> <span class="n">Youfang</span> <span class="n">Lin</span><span class="p">,</span> <span class="n">Shengnan</span> <span class="n">Guo</span><span class="p">,</span> <span class="n">Huaiyu</span> <span class="n">Wan</span><span class="o">.</span> <span class="mf">2021.</span> <span class="n">GSNet</span><span class="p">:</span> <span class="n">Learning</span> <span class="n">Spatial</span><span class="o">-</span><span class="n">Temporal</span> <span class="n">Correlations</span> <span class="kn">from</span> <span class="nn">Geographical</span> <span class="ow">and</span> <span class="n">Semantic</span> <span class="n">Aspects</span> <span class="k">for</span> <span class="n">Traffic</span> <span class="n">Accident</span> <span class="n">Risk</span> <span class="n">Forecasting</span><span class="o">.</span> <span class="n">In</span> <span class="n">AAAI</span><span class="o">.</span> <span class="n">AAAI</span> <span class="n">Press</span><span class="p">,</span> <span class="mi">4402</span><span class="o">-</span><span class="mf">4409.</span> 
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="id7">
+<h2>轨迹下一跳预测<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p><strong>FPMC</strong></p>
 <p>经典下一跳预测基线模型。在下一跳预测领域研究早期，该模型经常作为基线模型使用。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&gt; Steffen Rendle, Christoph Freudenthaler, and Lars Schmidt-Thieme. 2010. Factorizing personalized Markov chains for next-basket recommendation. In WWW ACM, 811–820.
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Steffen Rendle, Christoph Freudenthaler, and Lars Schmidt-Thieme. 2010. Factorizing personalized Markov chains for next-basket recommendation. In WWW ACM, 811–820.
 </pre></div>
 </div>
-<ul class="simple">
-<li><p><strong>RNN</strong></p></li>
-</ul>
-<p>该基线模型由我们实现。</p>
-<ul class="simple">
-<li><p><strong>ST-RNN</strong></p></li>
-</ul>
+</li>
+<li><p><strong>ST-RNN</strong></p>
 <p>该模型聚焦于在RNN隐藏层引入时空转移特性。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&gt; Qiang Liu, Shu Wu, Liang Wang, and Tieniu Tan. 2016. Predicting the Next Location: A Recurrent Model with Spatial and Temporal Contexts. In AAAI. AAAI Press, 194–200.
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Qiang Liu, Shu Wu, Liang Wang, and Tieniu Tan. 2016. Predicting the Next Location: A Recurrent Model with Spatial and Temporal Contexts. In AAAI. AAAI Press, 194–200.
 </pre></div>
 </div>
-<ul class="simple">
-<li><p><strong>ATST-LSTM</strong></p></li>
-</ul>
+</li>
+<li><p><strong>ATST-LSTM</strong></p>
 <p>该模型将轨迹点间的时间与距离差引入LSTM，并使用注意力机制。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">Liwei</span> <span class="n">Huang</span><span class="p">,</span> <span class="n">Yutao</span> <span class="n">Ma</span><span class="p">,</span> <span class="n">Shibo</span> <span class="n">Wang</span><span class="p">,</span> <span class="ow">and</span> <span class="n">Yanbo</span> <span class="n">Liu</span><span class="o">.</span> <span class="mf">2019.</span> <span class="n">An</span> <span class="n">attention</span><span class="o">-</span><span class="n">based</span> <span class="n">spatiotemporal</span> <span class="n">lstm</span> <span class="n">network</span> <span class="k">for</span> <span class="nb">next</span> <span class="n">poi</span> <span class="n">recommendation</span><span class="o">.</span> <span class="n">IEEE</span> <span class="n">Transactions</span> <span class="n">on</span> <span class="n">Services</span> <span class="n">Computing</span><span class="p">(</span><span class="mi">2019</span><span class="p">)</span><span class="o">.</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Liwei</span> <span class="n">Huang</span><span class="p">,</span> <span class="n">Yutao</span> <span class="n">Ma</span><span class="p">,</span> <span class="n">Shibo</span> <span class="n">Wang</span><span class="p">,</span> <span class="ow">and</span> <span class="n">Yanbo</span> <span class="n">Liu</span><span class="o">.</span> <span class="mf">2019.</span> <span class="n">An</span> <span class="n">attention</span><span class="o">-</span><span class="n">based</span> <span class="n">spatiotemporal</span> <span class="n">lstm</span> <span class="n">network</span> <span class="k">for</span> <span class="nb">next</span> <span class="n">poi</span> <span class="n">recommendation</span><span class="o">.</span> <span class="n">IEEE</span> <span class="n">Transactions</span> <span class="n">on</span> <span class="n">Services</span> <span class="n">Computing</span><span class="p">(</span><span class="mi">2019</span><span class="p">)</span><span class="o">.</span>
 </pre></div>
 </div>
-<ul class="simple">
-<li><p><strong>SERM</strong></p></li>
-</ul>
-<p>该模型在网络中引入轨迹的语义信息。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&gt; Di Yao, Chao Zhang, Jian-Hui Huang, and Jingping Bi. 2017. SERM: A Recurrent Model for Next Location Prediction in Semantic Trajectories. In CIKM. ACM,2411–24.
+</li>
+<li><p><strong>SERM</strong></p>
+<p>该模型在网络中引入轨迹的语义信息。SERM 模型依赖于 Glove 预训练语料库。因此在您使用该模型前，请确保从 <a class="reference external" href="https://pan.baidu.com/s/1qEfcXBO-QwZfiT0G3IYMpQ">百度网盘 密码 1231</a> 或者 <a class="reference external" href="https://drive.google.com/drive/folders/1g5v2Gq1tkOq8XO0HDCZ9nOTtRpB6-gPe?usp=sharing">谷歌盘</a> 下载了 <code class="docutils literal notranslate"><span class="pre">serm_glove_word_vec.zip</span></code> 并将其解压至 <code class="docutils literal notranslate"><span class="pre">raw_data</span></code> 目录下.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Di Yao, Chao Zhang, Jian-Hui Huang, and Jingping Bi. 2017. SERM: A Recurrent Model for Next Location Prediction in Semantic Trajectories. In CIKM. ACM,2411–24.
 </pre></div>
 </div>
-<ul class="simple">
-<li><p><strong>DeepMove</strong></p></li>
-</ul>
+</li>
+<li><p><strong>DeepMove</strong></p>
 <p>该模型混合历史和当前的轨迹进行预测，在这方面第一次采用注意力机制。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&gt; Jie Feng, Yong Li, Chao Zhang, Funing Sun, Fanchao Meng, Ang Guo, and Depeng Jin. 2018. DeepMove: Predicting Human Mobility with Attentional Recurrent Networks. In WWW. ACM, 1459–1468.
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Jie Feng, Yong Li, Chao Zhang, Funing Sun, Fanchao Meng, Ang Guo, and Depeng Jin. 2018. DeepMove: Predicting Human Mobility with Attentional Recurrent Networks. In WWW. ACM, 1459–1468.
 </pre></div>
 </div>
-<ul class="simple">
-<li><p><strong>HST-LSTM</strong></p></li>
-</ul>
+</li>
+<li><p><strong>HST-LSTM</strong></p>
 <p>该模型也将时空转移因子引入LSTM，并采用编码器-解码器架构进行预测。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&gt; Dejiang Kong and Fei Wu. 2018.  HST-LSTM: A Hierarchical Spatial-Temporal Long-Short Term Memory Network for Location Prediction. In IJCAI. ijcai.org,2341–2347.
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Dejiang Kong and Fei Wu. 2018.  HST-LSTM: A Hierarchical Spatial-Temporal Long-Short Term Memory Network for Location Prediction. In IJCAI. ijcai.org,2341–2347.
 </pre></div>
 </div>
-<ul class="simple">
-<li><p><strong>LSTPM</strong></p></li>
-</ul>
+</li>
+<li><p><strong>LSTPM</strong></p>
 <p>该模型使用两个特别设计的LSTM捕捉用户长短期移动偏好，以联合二者预测下一位置。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">Ke</span> <span class="n">Sun</span><span class="p">,</span> <span class="n">Tieyun</span> <span class="n">Qian</span><span class="p">,</span> <span class="n">Tong</span> <span class="n">Chen</span><span class="p">,</span> <span class="n">Yile</span> <span class="n">Liang</span><span class="p">,</span> <span class="n">Quoc</span> <span class="n">Viet</span> <span class="n">Hung</span> <span class="n">Nguyen</span><span class="p">,</span> <span class="ow">and</span> <span class="n">HongzhiYin</span><span class="o">.</span> <span class="mf">2020.</span> <span class="n">Where</span> <span class="n">to</span> <span class="n">Go</span> <span class="n">Next</span><span class="p">:</span> <span class="n">Modeling</span> <span class="n">Long</span><span class="o">-</span> <span class="ow">and</span> <span class="n">Short</span><span class="o">-</span><span class="n">Term</span> <span class="n">User</span> <span class="n">Preferences</span> <span class="k">for</span> <span class="n">Point</span><span class="o">-</span><span class="n">of</span><span class="o">-</span><span class="n">Interest</span> <span class="n">Recommendation</span><span class="o">.</span> <span class="n">In</span> <span class="n">AAAI</span><span class="o">.</span> <span class="n">AAAI</span> <span class="n">Press</span><span class="p">,</span> <span class="mi">214</span><span class="o">-</span><span class="mf">221.</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Ke</span> <span class="n">Sun</span><span class="p">,</span> <span class="n">Tieyun</span> <span class="n">Qian</span><span class="p">,</span> <span class="n">Tong</span> <span class="n">Chen</span><span class="p">,</span> <span class="n">Yile</span> <span class="n">Liang</span><span class="p">,</span> <span class="n">Quoc</span> <span class="n">Viet</span> <span class="n">Hung</span> <span class="n">Nguyen</span><span class="p">,</span> <span class="ow">and</span> <span class="n">HongzhiYin</span><span class="o">.</span> <span class="mf">2020.</span> <span class="n">Where</span> <span class="n">to</span> <span class="n">Go</span> <span class="n">Next</span><span class="p">:</span> <span class="n">Modeling</span> <span class="n">Long</span><span class="o">-</span> <span class="ow">and</span> <span class="n">Short</span><span class="o">-</span><span class="n">Term</span> <span class="n">User</span> <span class="n">Preferences</span> <span class="k">for</span> <span class="n">Point</span><span class="o">-</span><span class="n">of</span><span class="o">-</span><span class="n">Interest</span> <span class="n">Recommendation</span><span class="o">.</span> <span class="n">In</span> <span class="n">AAAI</span><span class="o">.</span> <span class="n">AAAI</span> <span class="n">Press</span><span class="p">,</span> <span class="mi">214</span><span class="o">-</span><span class="mf">221.</span>
 </pre></div>
 </div>
-<ul class="simple">
-<li><p><strong>GeoSAN</strong></p></li>
-</ul>
+</li>
+<li><p><strong>GeoSAN</strong></p>
 <p>该模型使用自注意力机制实现某个关键点的表示学习，进而做到基于表征的预测。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&gt; Defu Lian, Yongji Wu, Yong Ge, Xing Xie, and Enhong Chen. 2020. Geography-Aware Sequential Location Recommendation. In KDD. ACM, 2009–2019.
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Defu Lian, Yongji Wu, Yong Ge, Xing Xie, and Enhong Chen. 2020. Geography-Aware Sequential Location Recommendation. In KDD. ACM, 2009–2019.
 </pre></div>
 </div>
-<ul class="simple">
-<li><p><strong>STAN</strong></p></li>
-</ul>
+</li>
+<li><p><strong>STAN</strong></p>
 <p>该模型采用自注意力机制捕捉时空信息来直接预测。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">Yingtao</span> <span class="n">Luo</span><span class="p">,</span> <span class="n">Qiang</span> <span class="n">Liu</span><span class="p">,</span> <span class="ow">and</span> <span class="n">Zhaocheng</span> <span class="n">Liu</span><span class="o">.</span> <span class="mf">2021.</span> <span class="n">STAN</span><span class="p">:</span> <span class="n">Spatio</span><span class="o">-</span><span class="n">Temporal</span> <span class="n">Attention</span> <span class="n">Network</span> <span class="k">for</span> <span class="n">Next</span> <span class="n">Location</span> <span class="n">Recommendation</span><span class="o">.</span> <span class="n">CoRR</span> <span class="nb">abs</span><span class="o">/</span><span class="mf">2102.04095</span> <span class="p">(</span><span class="mi">2021</span><span class="p">)</span><span class="o">.</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Yingtao</span> <span class="n">Luo</span><span class="p">,</span> <span class="n">Qiang</span> <span class="n">Liu</span><span class="p">,</span> <span class="ow">and</span> <span class="n">Zhaocheng</span> <span class="n">Liu</span><span class="o">.</span> <span class="mf">2021.</span> <span class="n">STAN</span><span class="p">:</span> <span class="n">Spatio</span><span class="o">-</span><span class="n">Temporal</span> <span class="n">Attention</span> <span class="n">Network</span> <span class="k">for</span> <span class="n">Next</span> <span class="n">Location</span> <span class="n">Recommendation</span><span class="o">.</span> <span class="n">CoRR</span> <span class="nb">abs</span><span class="o">/</span><span class="mf">2102.04095</span> <span class="p">(</span><span class="mi">2021</span><span class="p">)</span><span class="o">.</span>
 </pre></div>
 </div>
-<ul class="simple">
-<li><p><strong>CARA</strong></p></li>
-</ul>
+</li>
+<li><p><strong>CARA</strong></p>
 <p>该模型聚焦使用注意力机制提取轨迹间上下文信息来预测。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&gt; Jarana Manotumruksa, Craig Macdonald, and Iadh Ounis. 2018.  A Contextual Attention Recurrent Architecture for Context-Aware Venue Recommendation. In SIGIR. ACM, 555–564.
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Jarana Manotumruksa, Craig Macdonald, and Iadh Ounis. 2018.  A Contextual Attention Recurrent Architecture for Context-Aware Venue Recommendation. In SIGIR. ACM, 555–564.
 </pre></div>
 </div>
+</li>
+</ul>
+</section>
+<section id="id8">
+<h2>到达时间估计<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p><strong>DeepTTE</strong></p>
+<p>该模型是端到端的深度学习模型，直接预测整条路经所需的旅行时间；提出了地理卷积操作，通过将地理信息整合到传统的卷积中，用来捕捉空间相关性。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Wang, D., Zhang, J., Cao, W., Li, J., &amp; Zheng, Y. (2018). When Will You Arrive? Estimating Travel Time Based on Deep Neural Networks. Proceedings of the AAAI Conference on Artificial Intelligence, 32(1).
+</pre></div>
 </div>
+</li>
+<li><p><strong>TTPNet</strong></p>
+<p>该模型基于张量分解和图接入，可以从历史轨迹有效捕捉旅行速度和路网表征，以及可以更好地预测旅行时间。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Y</span><span class="o">.</span> <span class="n">Shen</span><span class="p">,</span> <span class="n">C</span><span class="o">.</span> <span class="n">Jin</span> <span class="ow">and</span> <span class="n">J</span><span class="o">.</span> <span class="n">Hua</span><span class="p">,</span> <span class="s2">&quot;TTPNet: A Neural Network for Travel Time Prediction Based on Tensor Decomposition and Graph Embedding,&quot;</span> <span class="ow">in</span> <span class="n">IEEE</span> <span class="n">Transactions</span> <span class="n">on</span> <span class="n">Knowledge</span> <span class="ow">and</span> <span class="n">Data</span> <span class="n">Engineering</span><span class="p">,</span> <span class="n">doi</span><span class="p">:</span> <span class="mf">10.1109</span><span class="o">/</span><span class="n">TKDE</span><span class="mf">.2020.3038259</span><span class="o">.</span>
+</pre></div>
 </div>
+</li>
+</ul>
+</section>
+<section id="id9">
+<h2>路网匹配<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p><strong>ST-Matching</strong></p>
+<p>该模型考虑了（1）道路网络的空间几何和拓扑结构，以及（2）轨迹的时间/速度约束，并专门为低采样率的GPS轨迹设计。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Lou Y, Zhang C, Zheng Y, Wang W, Huang Y. Map-Matching for low-sampling-rate GPS trajectories. In: Proc. of the ACM-GIS.  2009. 352−361.
+</pre></div>
+</div>
+</li>
+<li><p><strong>IVMM</strong></p>
+<p>该模型不仅考虑了GPS轨迹的空间和时间信息，而且还设计了一个基于投票的策略来模拟GPS点之间的加权相互影响。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Yuan J, Zheng Y, Zhang C, Xie X, Sun JZ. An interactive-voting based map matching algorithm. In: Proc. of the MDM. 2010.  43−52. [doi: 10.1109/MDM.2010.14]
+</pre></div>
+</div>
+</li>
+<li><p><strong>HMMM</strong></p>
+<p>该模型是一种新颖的、有原则的地图匹配算法，它使用隐马尔可夫模型（HMM）来寻找最可能的道路路线，该路线由有时间戳的经/纬度对序列代表。HMM优雅地考虑了测量噪声和道路网络的布局。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Newson P, Krumm J. Hidden Markov map matching through noise and sparseness. In: Proc. of the ACM-GIS. 2009.  336−343. [doi: 10.1145/1653771.1653818]
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="id10">
+<h2>路网表征学习<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p><strong>ChebConv</strong></p>
+<p>该模型使用基于切比雪夫多项式近似的图卷积模型计算路网表征。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Defferrard</span><span class="p">,</span> <span class="n">M</span><span class="o">.</span><span class="p">,</span> <span class="n">Bresson</span><span class="p">,</span> <span class="n">X</span><span class="o">.</span><span class="p">,</span> <span class="o">&amp;</span> <span class="n">Vandergheynst</span><span class="p">,</span> <span class="n">P</span><span class="o">.</span> <span class="p">(</span><span class="mi">2016</span><span class="p">)</span><span class="o">.</span> <span class="n">Convolutional</span> <span class="n">neural</span> <span class="n">networks</span> <span class="n">on</span> <span class="n">graphs</span> <span class="k">with</span> <span class="n">fast</span> <span class="n">localized</span> <span class="n">spectral</span> <span class="n">filtering</span><span class="o">.</span> <span class="n">Advances</span> <span class="ow">in</span> <span class="n">neural</span> <span class="n">information</span> <span class="n">processing</span> <span class="n">systems</span><span class="p">,</span> <span class="mi">29</span><span class="p">,</span> <span class="mi">3844</span><span class="o">-</span><span class="mf">3852.</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>LINE</strong></p>
+<p>适合大规模图结构的图嵌入模型，同时考虑一阶和二阶近似。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Tang</span><span class="p">,</span> <span class="n">J</span><span class="o">.</span><span class="p">,</span> <span class="n">Qu</span><span class="p">,</span> <span class="n">M</span><span class="o">.</span><span class="p">,</span> <span class="n">Wang</span><span class="p">,</span> <span class="n">M</span><span class="o">.</span><span class="p">,</span> <span class="n">Zhang</span><span class="p">,</span> <span class="n">M</span><span class="o">.</span><span class="p">,</span> <span class="n">Yan</span><span class="p">,</span> <span class="n">J</span><span class="o">.</span><span class="p">,</span> <span class="o">&amp;</span> <span class="n">Mei</span><span class="p">,</span> <span class="n">Q</span><span class="o">.</span> <span class="p">(</span><span class="mi">2015</span><span class="p">,</span> <span class="n">May</span><span class="p">)</span><span class="o">.</span> <span class="n">Line</span><span class="p">:</span> <span class="n">Large</span><span class="o">-</span><span class="n">scale</span> <span class="n">information</span> <span class="n">network</span> <span class="n">embedding</span><span class="o">.</span> <span class="n">In</span> <span class="n">Proceedings</span> <span class="n">of</span> <span class="n">the</span> <span class="mi">24</span><span class="n">th</span> <span class="n">international</span> <span class="n">conference</span> <span class="n">on</span> <span class="n">world</span> <span class="n">wide</span> <span class="n">web</span> <span class="p">(</span><span class="n">pp</span><span class="o">.</span> <span class="mi">1067</span><span class="o">-</span><span class="mi">1077</span><span class="p">)</span><span class="o">.</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+</section>
 
 
            </div>

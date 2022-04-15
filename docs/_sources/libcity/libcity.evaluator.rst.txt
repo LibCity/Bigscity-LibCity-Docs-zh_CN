@@ -7,9 +7,12 @@ libcity.evaluator
 
    libcity.evaluator.abstract_evaluator
    libcity.evaluator.cara_loc_pred_evaluator
+   libcity.evaluator.eta_evaluator
    libcity.evaluator.eval_funcs
    libcity.evaluator.geosan_evaluator
    libcity.evaluator.map_matching_evaluator
+   libcity.evaluator.road_representation_evaluator
+   libcity.evaluator.traffic_accident_evaluator
    libcity.evaluator.traffic_state_evaluator
    libcity.evaluator.traj_loc_pred_evaluator
    libcity.evaluator.utils

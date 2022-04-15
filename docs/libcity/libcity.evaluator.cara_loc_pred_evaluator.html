@@ -4,7 +4,8 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>libcity.evaluator.cara_loc_pred_evaluator &mdash; Bigscity-LibCity  documentation</title>
@@ -37,7 +38,7 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="libcity.evaluator.eval_funcs" href="libcity.evaluator.eval_funcs.html" />
+    <link rel="next" title="libcity.evaluator.eta_evaluator" href="libcity.evaluator.eta_evaluator.html" />
     <link rel="prev" title="libcity.evaluator.abstract_evaluator" href="libcity.evaluator.abstract_evaluator.html" /> 
 </head>
 
@@ -83,14 +84,14 @@
               
             
             
-              <p class="caption"><span class="caption-text">起步</span></p>
+              <p><span class="caption-text">起步</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../get_started/introduction.html">介绍</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../get_started/install.html">安装LibCity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../get_started/quick_start.html">快速入门</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../get_started/directory_structure.html">目录结构</a></li>
 </ul>
-<p class="caption"><span class="caption-text">用户指导</span></p>
+<p><span class="caption-text">用户指导</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/config_settings.html">参数设置</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/data.html">数据说明</a></li>
@@ -99,30 +100,34 @@
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/executor.html">执行模块简介</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/usage.html">使用示例</a></li>
 </ul>
-<p class="caption"><span class="caption-text">开发者指导</span></p>
+<p><span class="caption-text">开发者指导</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../developer_guide/code_style.html">代码风格</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_datasets.html">自定义Dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_models.html">自定义Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_executors.html">自定义Executor</a></li>
 </ul>
-<p class="caption"><span class="caption-text">入门教程</span></p>
+<p><span class="caption-text">入门教程</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../tutorial/install_quick_start.html">安装和快速上手</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorial/run_model.html">运行LibCity中已复现的模型</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorial/add_model.html">在LibCity中添加新模型</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorial/hyper_tune.html">使用自动化工具调参</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/data_visualization.html">原子文件可视化</a></li>
 </ul>
-<p class="caption"><span class="caption-text">API文档</span></p>
+<p><span class="caption-text">API文档</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="libcity.config.html">libcity.config</a></li>
 <li class="toctree-l1"><a class="reference internal" href="libcity.data.html">libcity.data</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="libcity.evaluator.html">libcity.evaluator</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="libcity.evaluator.abstract_evaluator.html">libcity.evaluator.abstract_evaluator</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">libcity.evaluator.cara_loc_pred_evaluator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.evaluator.eta_evaluator.html">libcity.evaluator.eta_evaluator</a></li>
 <li class="toctree-l2"><a class="reference internal" href="libcity.evaluator.eval_funcs.html">libcity.evaluator.eval_funcs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="libcity.evaluator.geosan_evaluator.html">libcity.evaluator.geosan_evaluator</a></li>
 <li class="toctree-l2"><a class="reference internal" href="libcity.evaluator.map_matching_evaluator.html">libcity.evaluator.map_matching_evaluator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.evaluator.road_representation_evaluator.html">libcity.evaluator.road_representation_evaluator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.evaluator.traffic_accident_evaluator.html">libcity.evaluator.traffic_accident_evaluator</a></li>
 <li class="toctree-l2"><a class="reference internal" href="libcity.evaluator.traffic_state_evaluator.html">libcity.evaluator.traffic_state_evaluator</a></li>
 <li class="toctree-l2"><a class="reference internal" href="libcity.evaluator.traj_loc_pred_evaluator.html">libcity.evaluator.traj_loc_pred_evaluator</a></li>
 <li class="toctree-l2"><a class="reference internal" href="libcity.evaluator.utils.html">libcity.evaluator.utils</a></li>
@@ -199,7 +204,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-libcity.evaluator.cara_loc_pred_evaluator">
+  <section id="module-libcity.evaluator.cara_loc_pred_evaluator">
 <span id="libcity-evaluator-cara-loc-pred-evaluator"></span><h1>libcity.evaluator.cara_loc_pred_evaluator<a class="headerlink" href="#module-libcity.evaluator.cara_loc_pred_evaluator" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
 <dt id="libcity.evaluator.cara_loc_pred_evaluator.CARALocPredEvaluator">
@@ -249,7 +254,7 @@
 
 </dd></dl>
 
-</div>
+</section>
 
 
            </div>
@@ -259,7 +264,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="libcity.evaluator.eval_funcs.html" class="btn btn-neutral float-right" title="libcity.evaluator.eval_funcs" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="libcity.evaluator.eta_evaluator.html" class="btn btn-neutral float-right" title="libcity.evaluator.eta_evaluator" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="libcity.evaluator.abstract_evaluator.html" class="btn btn-neutral float-left" title="libcity.evaluator.abstract_evaluator" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

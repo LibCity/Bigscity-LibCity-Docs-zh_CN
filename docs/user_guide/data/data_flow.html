@@ -4,7 +4,8 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>数据流 &mdash; Bigscity-LibCity  documentation</title>
@@ -83,20 +84,21 @@
               
             
             
-              <p class="caption"><span class="caption-text">起步</span></p>
+              <p><span class="caption-text">起步</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../get_started/introduction.html">介绍</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../get_started/install.html">安装LibCity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../get_started/quick_start.html">快速入门</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../get_started/directory_structure.html">目录结构</a></li>
 </ul>
-<p class="caption"><span class="caption-text">用户指导</span></p>
+<p><span class="caption-text">用户指导</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../config_settings.html">参数设置</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../data.html">数据说明</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">数据流</a></li>
 <li class="toctree-l2"><a class="reference internal" href="raw_data.html">原始数据</a></li>
 <li class="toctree-l2"><a class="reference internal" href="atomic_files.html">原子文件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dataset_class.html">已实现的Dataset类</a></li>
 <li class="toctree-l2"><a class="reference internal" href="batch.html">Batch</a></li>
 <li class="toctree-l2"><a class="reference internal" href="args_for_data.html">数据模块参数</a></li>
 <li class="toctree-l2"><a class="reference internal" href="dataset_for_task.html">数据集适用的任务</a></li>
@@ -107,21 +109,22 @@
 <li class="toctree-l1"><a class="reference internal" href="../executor.html">执行模块简介</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../usage.html">使用示例</a></li>
 </ul>
-<p class="caption"><span class="caption-text">开发者指导</span></p>
+<p><span class="caption-text">开发者指导</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../developer_guide/code_style.html">代码风格</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../developer_guide/implemented_datasets.html">自定义Dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../developer_guide/implemented_models.html">自定义Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../developer_guide/implemented_executors.html">自定义Executor</a></li>
 </ul>
-<p class="caption"><span class="caption-text">入门教程</span></p>
+<p><span class="caption-text">入门教程</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorial/install_quick_start.html">安装和快速上手</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorial/run_model.html">运行LibCity中已复现的模型</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorial/add_model.html">在LibCity中添加新模型</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorial/hyper_tune.html">使用自动化工具调参</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial/data_visualization.html">原子文件可视化</a></li>
 </ul>
-<p class="caption"><span class="caption-text">API文档</span></p>
+<p><span class="caption-text">API文档</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../libcity/libcity.config.html">libcity.config</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../libcity/libcity.data.html">libcity.data</a></li>
@@ -197,7 +200,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="id1">
+  <section id="id1">
 <h1>数据流<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <p>本文件介绍数据模块整体的数据流。</p>
 <ul>
@@ -208,13 +211,13 @@
 <p>不同交通预测任务的基础输入元素，用于构建 Dataset 类。</p>
 </li>
 <li><p>数据集 Dataset</p>
-<p>针对每一类交通预测任务制定了不同的 <code class="docutils literal notranslate"><span class="pre">Dataset</span></code> 类，负责读取原子文件并进行一些数据预处理操作。</p>
+<p>针对每一类交通预测任务制定了不同的 <code class="docutils literal notranslate"><span class="pre">Dataset</span></code> 类，负责读取原子文件并进行一些数据预处理操作。详情请参考<a class="reference internal" href="dataset_class.html"><span class="doc">这里</span></a>。</p>
 </li>
 <li><p>数据加载器 DataLoader</p>
 <p><code class="docutils literal notranslate"><span class="pre">Dataloader</span></code> 负责加载数据， 使用 <code class="docutils literal notranslate"><span class="pre">Pytorch</span></code> 原生的 <code class="docutils literal notranslate"><span class="pre">torch.utils.data.DataLoader</span></code> ，负责将数据以内部数据表示结构 <a class="reference internal" href="batch.html"><span class="doc">Batch</span></a> 类的形式返回给模型使用。</p>
 </li>
 </ul>
-</div>
+</section>
 
 
            </div>

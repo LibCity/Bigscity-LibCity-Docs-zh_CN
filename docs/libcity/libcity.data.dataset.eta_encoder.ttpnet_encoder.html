@@ -1,0 +1,379 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>libcity.data.dataset.eta_encoder.ttpnet_encoder &mdash; Bigscity-LibCity  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="libcity.data.dataset.trajectory_encoder" href="libcity.data.dataset.trajectory_encoder.html" />
+    <link rel="prev" title="libcity.data.dataset.eta_encoder.deeptte_encoder" href="libcity.data.dataset.eta_encoder.deeptte_encoder.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> Bigscity-LibCity
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p><span class="caption-text">起步</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/introduction.html">介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/install.html">安装LibCity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/quick_start.html">快速入门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/directory_structure.html">目录结构</a></li>
+</ul>
+<p><span class="caption-text">用户指导</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/config_settings.html">参数设置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/data.html">数据说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/model.html">复现模型列表</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/evaluator.html">评估模块简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/executor.html">执行模块简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/usage.html">使用示例</a></li>
+</ul>
+<p><span class="caption-text">开发者指导</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/code_style.html">代码风格</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_datasets.html">自定义Dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_models.html">自定义Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_executors.html">自定义Executor</a></li>
+</ul>
+<p><span class="caption-text">入门教程</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/install_quick_start.html">安装和快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/run_model.html">运行LibCity中已复现的模型</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/add_model.html">在LibCity中添加新模型</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/hyper_tune.html">使用自动化工具调参</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/data_visualization.html">原子文件可视化</a></li>
+</ul>
+<p><span class="caption-text">API文档</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="libcity.config.html">libcity.config</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="libcity.data.html">libcity.data</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="libcity.data.dataset.html">libcity.data.dataset</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="libcity.data.dataset.dataset_subclass.html">libcity.data.dataset.dataset_subclass</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="libcity.data.dataset.eta_encoder.html">libcity.data.dataset.eta_encoder</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="libcity.data.dataset.eta_encoder.abstract_eta_encoder.html">libcity.data.dataset.eta_encoder.abstract_eta_encoder</a></li>
+<li class="toctree-l4"><a class="reference internal" href="libcity.data.dataset.eta_encoder.deeptte_encoder.html">libcity.data.dataset.eta_encoder.deeptte_encoder</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">libcity.data.dataset.eta_encoder.ttpnet_encoder</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="libcity.data.dataset.trajectory_encoder.html">libcity.data.dataset.trajectory_encoder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libcity.data.dataset.abstract_dataset.html">libcity.data.dataset.abstract_dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libcity.data.dataset.eta_dataset.html">libcity.data.dataset.eta_dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libcity.data.dataset.map_matching_dataset.html">libcity.data.dataset.map_matching_dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libcity.data.dataset.roadnetwork_dataset.html">libcity.data.dataset.roadnetwork_dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libcity.data.dataset.traffic_state_cpt_dataset.html">libcity.data.dataset.traffic_state_cpt_dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libcity.data.dataset.traffic_state_datatset.html">libcity.data.dataset.traffic_state_datatset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libcity.data.dataset.traffic_state_grid_dataset.html">libcity.data.dataset.traffic_state_grid_dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libcity.data.dataset.traffic_state_grid_od_dataset.html">libcity.data.dataset.traffic_state_grid_od_dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libcity.data.dataset.traffic_state_od_dataset.html">libcity.data.dataset.traffic_state_od_dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libcity.data.dataset.traffic_state_point_dataset.html">libcity.data.dataset.traffic_state_point_dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libcity.data.dataset.trajectory_dataset.html">libcity.data.dataset.trajectory_dataset</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.data.batch.html">libcity.data.batch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.data.list_dataset.html">libcity.data.list_dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.data.utils.html">libcity.data.utils</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="libcity.evaluator.html">libcity.evaluator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="libcity.executor.html">libcity.executor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="libcity.model.html">libcity.model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="libcity.pipeline.html">libcity.pipeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="libcity.utils.html">libcity.utils</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Bigscity-LibCity</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="libcity.data.html">libcity.data</a> &raquo;</li>
+        
+          <li><a href="libcity.data.dataset.html">libcity.data.dataset</a> &raquo;</li>
+        
+          <li><a href="libcity.data.dataset.eta_encoder.html">libcity.data.dataset.eta_encoder</a> &raquo;</li>
+        
+      <li>libcity.data.dataset.eta_encoder.ttpnet_encoder</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/libcity/libcity.data.dataset.eta_encoder.ttpnet_encoder.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <section id="module-libcity.data.dataset.eta_encoder.ttpnet_encoder">
+<span id="libcity-data-dataset-eta-encoder-ttpnet-encoder"></span><h1>libcity.data.dataset.eta_encoder.ttpnet_encoder<a class="headerlink" href="#module-libcity.data.dataset.eta_encoder.ttpnet_encoder" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt id="libcity.data.dataset.eta_encoder.ttpnet_encoder.TtpnetEncoder">
+<em class="property">class </em><code class="sig-prename descclassname">libcity.data.dataset.eta_encoder.ttpnet_encoder.</code><code class="sig-name descname">TtpnetEncoder</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">config</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/eta_encoder/ttpnet_encoder.html#TtpnetEncoder"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.eta_encoder.ttpnet_encoder.TtpnetEncoder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="libcity.data.dataset.eta_encoder.abstract_eta_encoder.html#libcity.data.dataset.eta_encoder.abstract_eta_encoder.AbstractETAEncoder" title="libcity.data.dataset.eta_encoder.abstract_eta_encoder.AbstractETAEncoder"><code class="xref py py-class docutils literal notranslate"><span class="pre">libcity.data.dataset.eta_encoder.abstract_eta_encoder.AbstractETAEncoder</span></code></a></p>
+<dl class="py method">
+<dt id="libcity.data.dataset.eta_encoder.ttpnet_encoder.TtpnetEncoder.encode">
+<code class="sig-name descname">encode</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">uid</span></em>, <em class="sig-param"><span class="n">trajectories</span></em>, <em class="sig-param"><span class="n">dyna_feature_column</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/eta_encoder/ttpnet_encoder.html#TtpnetEncoder.encode"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.eta_encoder.ttpnet_encoder.TtpnetEncoder.encode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Encode trajectories of user uid.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>uid</strong> (<em>int</em>) – The uid of user. If there is no need to encode uid, just keep it.</p></li>
+<li><p><strong>trajectories</strong> (<em>list of trajectory</em>) – The trajectories of user. Each trajectory is</p></li>
+<li><p><strong>sequence of spatiotemporal point. The spatiotemporal point is represented by</strong> (<em>a</em>) – </p></li>
+<li><p><strong>list. Thus</strong> (<em>a</em>) – <dl class="simple">
+<dt>trajectory1 = [</dt><dd><p>[dyna_id, type, time, entity_id, traj_id, coordinates/location, properties],
+[dyna_id, type, time, entity_id, traj_id, coordinates/location, properties],
+…..</p>
+</dd>
+</dl>
+<p>]</p>
+</p></li>
+<li><p><strong>trajectory is represented by a list of lists. For example</strong> (<em>a</em>) – <dl class="simple">
+<dt>trajectory1 = [</dt><dd><p>[dyna_id, type, time, entity_id, traj_id, coordinates/location, properties],
+[dyna_id, type, time, entity_id, traj_id, coordinates/location, properties],
+…..</p>
+</dd>
+</dl>
+<p>]</p>
+</p></li>
+<li><p><strong>spatiotemporal tuple contains all useful information in a record of the Raw</strong> (<em>Every</em>) – </p></li>
+<li><p><strong>Data</strong> (<em>refer to corresponding .dyna file for details</em>) – </p></li>
+<li><p><strong>represented as</strong> (<em>are</em>) – <dl>
+<dt>[</dt><dd><dl class="simple">
+<dt>[ # trajectory1</dt><dd><p>[dyna_id, type, time, entity_id, traj_id, coordinates/location, properties],
+[dyna_id, type, time, entity_id, traj_id, coordinates/location, properties],
+…</p>
+</dd>
+</dl>
+<p>],
+trajectory2,
+…</p>
+</dd>
+</dl>
+<p>]</p>
+</p></li>
+<li><p><strong>dyna_feature_column</strong> (<em>dict</em>) – The key is a feature’s name and the value should be corresponding
+column id in .dyna file.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><p>The return value of this function is the list of encoded trajectories.
+Same as the input format, each encoded trajectory should be a tuple, which contains
+all features extracted from the input trajectory. The encoded trajectory will
+subsequently be converted to a torch.tensor and then directly input to the model.
+(see more in libcity.Batch)
+Take the DeeptteEncoder as an example.</p>
+<blockquote>
+<div><dl class="simple">
+<dt>encoded_trajectory = [current_longi, current_lati, current_tim, current_dis, current_state,</dt><dd><p>uid, weekid, timeid, dist, time]</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>Please make sure the order of the features in the list is consistent with the order
+of the features in self.feature_dict.</p>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="libcity.data.dataset.eta_encoder.ttpnet_encoder.TtpnetEncoder.gen_data_feature">
+<code class="sig-name descname">gen_data_feature</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/eta_encoder/ttpnet_encoder.html#TtpnetEncoder.gen_data_feature"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.eta_encoder.ttpnet_encoder.TtpnetEncoder.gen_data_feature" title="Permalink to this definition">¶</a></dt>
+<dd><p>After encode all trajectories, this method will be called to tell encoder that you can generate the
+data_feature and pad_item</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="libcity.data.dataset.eta_encoder.ttpnet_encoder.TtpnetEncoder.gen_scalar_data_feature">
+<code class="sig-name descname">gen_scalar_data_feature</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">train_data</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/eta_encoder/ttpnet_encoder.html#TtpnetEncoder.gen_scalar_data_feature"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.eta_encoder.ttpnet_encoder.TtpnetEncoder.gen_scalar_data_feature" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt id="libcity.data.dataset.eta_encoder.ttpnet_encoder.geo_distance">
+<code class="sig-prename descclassname">libcity.data.dataset.eta_encoder.ttpnet_encoder.</code><code class="sig-name descname">geo_distance</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">lon1</span></em>, <em class="sig-param"><span class="n">lat1</span></em>, <em class="sig-param"><span class="n">lon2</span></em>, <em class="sig-param"><span class="n">lat2</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/eta_encoder/ttpnet_encoder.html#geo_distance"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.eta_encoder.ttpnet_encoder.geo_distance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the great circle distance between two points
+on the earth (specified in decimal degrees)</p>
+</dd></dl>
+
+</section>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="libcity.data.dataset.trajectory_encoder.html" class="btn btn-neutral float-right" title="libcity.data.dataset.trajectory_encoder" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="libcity.data.dataset.eta_encoder.deeptte_encoder.html" class="btn btn-neutral float-left" title="libcity.data.dataset.eta_encoder.deeptte_encoder" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, aptx1231
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

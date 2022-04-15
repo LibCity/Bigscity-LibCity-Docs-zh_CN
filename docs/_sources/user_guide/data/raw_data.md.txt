@@ -10,7 +10,7 @@
 
 **描述：** 由环路探测器在高速公路上收集，包含来自 207 个传感器的交通速度数据。
 
-### Los\_loop
+### LOS_LOOP
 
 **地点：** Los Angeles County, USA
 
@@ -32,7 +32,7 @@
 
 ### LOOP\_SEATTLE
 
-**地点：** Greater Seattle Area, China
+**地点：** Greater Seattle Area, USA
 
 **时期：** 2015 全年
 
@@ -40,7 +40,7 @@
 
 **描述：** Loop Seattle 数据集由部署在西雅图地区高速公路(I-5、I-405、I-90和SR-520)上的感应环路探测器收集，包含来自323个传感器站的交通状态数据。
 
-### Q-TRAFFIC
+### Q_TRAFFIC
 
 **地点：** Beijing, China
 
@@ -60,7 +60,7 @@
 
 **描述：** PEMS 记录加利福尼亚高速公路的速度数据，包括时间小时，平均时间，车道点。
 
-### PeMSD3
+### PEMSD3
 
 **地点：** District 3 of California, USA
 
@@ -70,7 +70,7 @@
 
 **描述：** PeMSD3 数据集包括 358 个传感器和流量信息。
 
-### PeMSD4
+### PEMSD4
 
 **地点：** San Francisco Bay Area, USA
 
@@ -90,7 +90,7 @@
 
 **描述：** PeMSD7 数据集包含883个传感器站的交通流量信息。
 
-### PeMSD8
+### PEMSD8
 
 **地点：** San Bernardino Area, USA
 
@@ -110,7 +110,7 @@
 
 **描述：** PeMSD7(M) 数据集描述了加州第7区228个站点的高速公路速度信息。
 
-### PEMS-BAY
+### PEMS_BAY
 
 **地点：** San Francisco Bay Area, USA
 
@@ -170,7 +170,7 @@
 
 **描述：**  该数据集是根据 2019 年 1 月收集的杭州地铁系统交易记录创建的。该系统拥有 80 个运营站点和 248 个边，每天有 235 万乘客。
 
-### TaxiBJ
+### TAXIBJ
 
 **地点：** Beijing, China
 
@@ -223,6 +223,16 @@ Apr. 10, 2016
 
 - NYCTAXI_GRID 是一个数据集，它使用基于网格的划分方法计算区域的流入和流出。
 
+### NYC_TOD
+
+**地点：** New York, USA
+
+**时期：** 2014
+
+**链接：** https://github.com/liulingbo918/CSTN#:~:text=download%20NYC-TOD.tar.gz%20with%20following%20links%20and%20put%20it%20into%20folder%20NYC-TOD/.
+
+**描述：** NYC_TOD 使用基于网格的划分方法计算区域的流入和流出。由 [CSTN](https://arxiv.org/pdf/1905.06335) 的论文作者通过轨迹数据集处理得到。
+
 ### NYCBIKE
 
 **地点：** New York, USA
@@ -274,7 +284,7 @@ Apr. 10, 2016
 
 ### Gowalla
 
-**Place：**
+**地点：**
 
 **时期：**  Feb. 2009 ~ Oct. 2010
 
@@ -301,3 +311,103 @@ Apr. 10, 2016
 **链接：**  https://dmis.korea.ac.kr/cape
 
 **描述：**  该数据集最大的特点是每条签到记录不仅包含POI信息，还包含用户创建签到记录时写入的文本信息。因此，该数据集对于将轨迹语义特征纳入轨迹预测的相关研究尤为重要。
+
+### Seattle
+
+**地点：**  Seattle,WA,USA
+
+**时期：**  Jan. 17,2009 20:27:37~22:34:28
+
+**链接：** https://www.microsoft.com/en-us/research/publication/hidden-markov-map-matching-noise-sparseness/
+
+**描述：**  这个用于地图匹配的数据集显示了在美国华盛顿州西雅图及其东部郊区开车时拍摄的GPS数据。轨迹从Marymoor公园附近开始。数据是用RoyalTek RBT-2300 GPS记录器以1HZ的频率采样的。这次驾驶发生在2009年1月17日星期六，从20:27:37 UTC（当地时间12:27:37）开始，到22:34:28 UTC（当地时间14:34:28）结束，经过的时间为02:06:51。
+
+### Global
+
+**地点：**  全世界100个地区
+
+**时期：**  —
+
+**链接：**  https://zenodo.org/record/57731#.YVwZ7WJBxnK
+
+**描述：** 这个用于地图匹配的数据集可以在世界范围内验证地图匹配的假设。由于这个数据集覆盖全球，可以提高泛化能力。
+
+### BJ_ROADMAP
+
+**地点：** Beijing, China
+
+**时期：** -
+
+**链接：** 
+
+**描述：** 原始数据集包含 OpenStreetMap 格式的节点和边的属性。建图有两种实现方式，分别是节点为交叉点，关系为路段，以及节点为路段，关系为交叉点。分别命名为 “bj_roadmap_node” 和 “bj_roadmap_edge”。
+
+### BJ_TRAJ
+
+**地点：** Beijing, China
+
+**时期：** Apr. 2015 - Jul. 2015
+
+**链接：** 
+
+**描述：** BJ_TRAJ 数据集包含海量轨迹数据，每月约 760 万条。
+
+### CD_TRAJ
+
+**地点：** Chengdu, China
+
+**时期：** Oct. 01, 2018 - Nov. 30, 2018 
+
+**链接：** 
+
+**描述：** CD_TRAJ 数据集包含海量轨迹数据，每 10 天约 258 万条。 有 2 个月的数据可用。
+
+### XA_TRAJ
+
+**地点：** Xi'an, China
+
+**时期：** Oct. 01, 2018 - Nov. 30, 2018 
+
+**链接：** 
+
+**描述：** XA_TRAJ 数据集包含海量轨迹数据，每 15 天约 214 万条。 有 2 个月的数据可用。
+
+### Chengdu_Taxi_Sample1
+
+**地点：** Chengdu, China
+
+**时期：** Aug. 03, 2014 - Aug. 30, 2014
+
+**链接：** https://github.com/UrbComp/DeepTTE/tree/master/data
+
+**描述：** Chengdu_Taxi_Sample1 数据集是Chengdu_Taxi 数据集的部分样例数据集。包含1800条成都市出租车轨迹数据。
+
+### Beijing_Taxi_Sample
+
+**地点**：Beijing, China
+
+**时期**：Oct. 01, 2013 - Oct. 31, 2013
+
+**链接**：https://github.com/YibinShen/TTPNet/tree/master/data
+
+**描述**：Beijing_Taxi_Sample 数据集是Beijing_Taxi 数据集的部分样例数据集，这里每一天只提供了1000条北京市出租车轨迹数据。
+
+### NYC_RISK
+
+**地点:** New York, USA
+
+**时期:** Jan.01,2013 ~ Dec.31,2013
+
+**链接:** https://github.com/Echohhhhhh/GSNet
+
+**描述:** NYC_RISK 数据集包含了2013年纽约道路、风险和POI数据。
+
+### CHICAGO_RISK
+
+**地点:** New York, USA
+
+**时期:** Feb.01,2016 ~ Sep.30,2016
+
+**链接:** https://github.com/Echohhhhhh/GSNet
+
+**描述:** CHICAGO_RISK 数据集包含了2016年1月到9月芝加哥道路和风险数据。

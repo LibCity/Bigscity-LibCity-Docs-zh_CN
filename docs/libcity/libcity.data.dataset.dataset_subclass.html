@@ -1,0 +1,1523 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>libcity.data.dataset.dataset_subclass &mdash; Bigscity-LibCity  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="libcity.data.dataset.dataset_subclass.acfm_dataset" href="libcity.data.dataset.dataset_subclass.acfm_dataset.html" />
+    <link rel="prev" title="libcity.data.dataset" href="libcity.data.dataset.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> Bigscity-LibCity
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p><span class="caption-text">起步</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/introduction.html">介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/install.html">安装LibCity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/quick_start.html">快速入门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/directory_structure.html">目录结构</a></li>
+</ul>
+<p><span class="caption-text">用户指导</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/config_settings.html">参数设置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/data.html">数据说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/model.html">复现模型列表</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/evaluator.html">评估模块简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/executor.html">执行模块简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/usage.html">使用示例</a></li>
+</ul>
+<p><span class="caption-text">开发者指导</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/code_style.html">代码风格</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_datasets.html">自定义Dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_models.html">自定义Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_executors.html">自定义Executor</a></li>
+</ul>
+<p><span class="caption-text">入门教程</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/install_quick_start.html">安装和快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/run_model.html">运行LibCity中已复现的模型</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/add_model.html">在LibCity中添加新模型</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/hyper_tune.html">使用自动化工具调参</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/data_visualization.html">原子文件可视化</a></li>
+</ul>
+<p><span class="caption-text">API文档</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="libcity.config.html">libcity.config</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="libcity.data.html">libcity.data</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="libcity.data.dataset.html">libcity.data.dataset</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">libcity.data.dataset.dataset_subclass</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="libcity.data.dataset.dataset_subclass.acfm_dataset.html">libcity.data.dataset.dataset_subclass.acfm_dataset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="libcity.data.dataset.dataset_subclass.astgcn_dataset.html">libcity.data.dataset.dataset_subclass.astgcn_dataset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="libcity.data.dataset.dataset_subclass.ccrnn_dataset.html">libcity.data.dataset.dataset_subclass.ccrnn_dataset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="libcity.data.dataset.dataset_subclass.chebconv_dataset.html">libcity.data.dataset.dataset_subclass.chebconv_dataset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="libcity.data.dataset.dataset_subclass.convgcn_dataset.html">libcity.data.dataset.dataset_subclass.convgcn_dataset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="libcity.data.dataset.dataset_subclass.crann_dataset.html">libcity.data.dataset.dataset_subclass.crann_dataset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="libcity.data.dataset.dataset_subclass.cstn_dataset.html">libcity.data.dataset.dataset_subclass.cstn_dataset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="libcity.data.dataset.dataset_subclass.dmvstnet_dataset.html">libcity.data.dataset.dataset_subclass.dmvstnet_dataset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="libcity.data.dataset.dataset_subclass.geosan_dataset.html">libcity.data.dataset.dataset_subclass.geosan_dataset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="libcity.data.dataset.dataset_subclass.gman_dataset.html">libcity.data.dataset.dataset_subclass.gman_dataset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="libcity.data.dataset.dataset_subclass.gsnet_dataset.html">libcity.data.dataset.dataset_subclass.gsnet_dataset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="libcity.data.dataset.dataset_subclass.gts_dataset.html">libcity.data.dataset.dataset_subclass.gts_dataset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="libcity.data.dataset.dataset_subclass.hgcn_dataset.html">libcity.data.dataset.dataset_subclass.hgcn_dataset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="libcity.data.dataset.dataset_subclass.line_dataset.html">libcity.data.dataset.dataset_subclass.line_dataset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="libcity.data.dataset.dataset_subclass.multi_stgcnet_dataset.html">libcity.data.dataset.dataset_subclass.multi_stgcnet_dataset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="libcity.data.dataset.dataset_subclass.pbs_trajectory_dataset.html">libcity.data.dataset.dataset_subclass.pbs_trajectory_dataset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="libcity.data.dataset.dataset_subclass.reslstm_dataset.html">libcity.data.dataset.dataset_subclass.reslstm_dataset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="libcity.data.dataset.dataset_subclass.staggcn_dataset.html">libcity.data.dataset.dataset_subclass.staggcn_dataset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="libcity.data.dataset.dataset_subclass.stdn_dataset.html">libcity.data.dataset.dataset_subclass.stdn_dataset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="libcity.data.dataset.dataset_subclass.stg2seq_dataset.html">libcity.data.dataset.dataset_subclass.stg2seq_dataset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="libcity.data.dataset.dataset_subclass.stresnet_dataset.html">libcity.data.dataset.dataset_subclass.stresnet_dataset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="libcity.data.dataset.dataset_subclass.tgclstm_dataset.html">libcity.data.dataset.dataset_subclass.tgclstm_dataset</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="libcity.data.dataset.eta_encoder.html">libcity.data.dataset.eta_encoder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libcity.data.dataset.trajectory_encoder.html">libcity.data.dataset.trajectory_encoder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libcity.data.dataset.abstract_dataset.html">libcity.data.dataset.abstract_dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libcity.data.dataset.eta_dataset.html">libcity.data.dataset.eta_dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libcity.data.dataset.map_matching_dataset.html">libcity.data.dataset.map_matching_dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libcity.data.dataset.roadnetwork_dataset.html">libcity.data.dataset.roadnetwork_dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libcity.data.dataset.traffic_state_cpt_dataset.html">libcity.data.dataset.traffic_state_cpt_dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libcity.data.dataset.traffic_state_datatset.html">libcity.data.dataset.traffic_state_datatset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libcity.data.dataset.traffic_state_grid_dataset.html">libcity.data.dataset.traffic_state_grid_dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libcity.data.dataset.traffic_state_grid_od_dataset.html">libcity.data.dataset.traffic_state_grid_od_dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libcity.data.dataset.traffic_state_od_dataset.html">libcity.data.dataset.traffic_state_od_dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libcity.data.dataset.traffic_state_point_dataset.html">libcity.data.dataset.traffic_state_point_dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libcity.data.dataset.trajectory_dataset.html">libcity.data.dataset.trajectory_dataset</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.data.batch.html">libcity.data.batch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.data.list_dataset.html">libcity.data.list_dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.data.utils.html">libcity.data.utils</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="libcity.evaluator.html">libcity.evaluator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="libcity.executor.html">libcity.executor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="libcity.model.html">libcity.model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="libcity.pipeline.html">libcity.pipeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="libcity.utils.html">libcity.utils</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Bigscity-LibCity</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="libcity.data.html">libcity.data</a> &raquo;</li>
+        
+          <li><a href="libcity.data.dataset.html">libcity.data.dataset</a> &raquo;</li>
+        
+      <li>libcity.data.dataset.dataset_subclass</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/libcity/libcity.data.dataset.dataset_subclass.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <section id="libcity-data-dataset-dataset-subclass">
+<h1>libcity.data.dataset.dataset_subclass<a class="headerlink" href="#libcity-data-dataset-dataset-subclass" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="libcity.data.dataset.dataset_subclass.acfm_dataset.html">libcity.data.dataset.dataset_subclass.acfm_dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="libcity.data.dataset.dataset_subclass.astgcn_dataset.html">libcity.data.dataset.dataset_subclass.astgcn_dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="libcity.data.dataset.dataset_subclass.ccrnn_dataset.html">libcity.data.dataset.dataset_subclass.ccrnn_dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="libcity.data.dataset.dataset_subclass.chebconv_dataset.html">libcity.data.dataset.dataset_subclass.chebconv_dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="libcity.data.dataset.dataset_subclass.convgcn_dataset.html">libcity.data.dataset.dataset_subclass.convgcn_dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="libcity.data.dataset.dataset_subclass.crann_dataset.html">libcity.data.dataset.dataset_subclass.crann_dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="libcity.data.dataset.dataset_subclass.cstn_dataset.html">libcity.data.dataset.dataset_subclass.cstn_dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="libcity.data.dataset.dataset_subclass.dmvstnet_dataset.html">libcity.data.dataset.dataset_subclass.dmvstnet_dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="libcity.data.dataset.dataset_subclass.geosan_dataset.html">libcity.data.dataset.dataset_subclass.geosan_dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="libcity.data.dataset.dataset_subclass.gman_dataset.html">libcity.data.dataset.dataset_subclass.gman_dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="libcity.data.dataset.dataset_subclass.gsnet_dataset.html">libcity.data.dataset.dataset_subclass.gsnet_dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="libcity.data.dataset.dataset_subclass.gts_dataset.html">libcity.data.dataset.dataset_subclass.gts_dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="libcity.data.dataset.dataset_subclass.hgcn_dataset.html">libcity.data.dataset.dataset_subclass.hgcn_dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="libcity.data.dataset.dataset_subclass.line_dataset.html">libcity.data.dataset.dataset_subclass.line_dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="libcity.data.dataset.dataset_subclass.multi_stgcnet_dataset.html">libcity.data.dataset.dataset_subclass.multi_stgcnet_dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="libcity.data.dataset.dataset_subclass.pbs_trajectory_dataset.html">libcity.data.dataset.dataset_subclass.pbs_trajectory_dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="libcity.data.dataset.dataset_subclass.reslstm_dataset.html">libcity.data.dataset.dataset_subclass.reslstm_dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="libcity.data.dataset.dataset_subclass.staggcn_dataset.html">libcity.data.dataset.dataset_subclass.staggcn_dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="libcity.data.dataset.dataset_subclass.stdn_dataset.html">libcity.data.dataset.dataset_subclass.stdn_dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="libcity.data.dataset.dataset_subclass.stg2seq_dataset.html">libcity.data.dataset.dataset_subclass.stg2seq_dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="libcity.data.dataset.dataset_subclass.stresnet_dataset.html">libcity.data.dataset.dataset_subclass.stresnet_dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="libcity.data.dataset.dataset_subclass.tgclstm_dataset.html">libcity.data.dataset.dataset_subclass.tgclstm_dataset</a></li>
+</ul>
+</div>
+<span class="target" id="module-libcity.data.dataset.dataset_subclass"></span><dl class="py class">
+<dt id="libcity.data.dataset.dataset_subclass.ACFMDataset">
+<em class="property">class </em><code class="sig-prename descclassname">libcity.data.dataset.dataset_subclass.</code><code class="sig-name descname">ACFMDataset</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">config</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/acfm_dataset.html#ACFMDataset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.ACFMDataset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="libcity.data.dataset.traffic_state_grid_dataset.html#libcity.data.dataset.traffic_state_grid_dataset.TrafficStateGridDataset" title="libcity.data.dataset.traffic_state_grid_dataset.TrafficStateGridDataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">libcity.data.dataset.traffic_state_grid_dataset.TrafficStateGridDataset</span></code></a>, <a class="reference internal" href="libcity.data.dataset.traffic_state_cpt_dataset.html#libcity.data.dataset.traffic_state_cpt_dataset.TrafficStateCPTDataset" title="libcity.data.dataset.traffic_state_cpt_dataset.TrafficStateCPTDataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">libcity.data.dataset.traffic_state_cpt_dataset.TrafficStateCPTDataset</span></code></a></p>
+<dl class="py method">
+<dt id="libcity.data.dataset.dataset_subclass.ACFMDataset._get_external_array">
+<code class="sig-name descname">_get_external_array</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">timestamp_list</span></em>, <em class="sig-param"><span class="n">ext_data</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">previous_ext</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">ext_time</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/acfm_dataset.html#ACFMDataset._get_external_array"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.ACFMDataset._get_external_array" title="Permalink to this definition">¶</a></dt>
+<dd><p>根据时间戳数组，获取对应时间的外部特征</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>timestamp_list</strong> (<em>list</em>) – 时间戳序列</p></li>
+<li><p><strong>ext_data</strong> – 外部数据</p></li>
+<li><p><strong>previous_ext</strong> – 是否是用过去时间段的外部数据，因为对于预测的时间段Y，
+一般没有真实的外部数据，所以用前一个时刻的数据，<strong>多步预测则用提前多步的数据</strong></p></li>
+<li><p><strong>ext_time</strong> – 是否加载时间数据，False则只考虑星期，True则加上小时的信息</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>External data shape is (len(timestamp_list), ext_dim)</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="libcity.data.dataset.dataset_subclass.ACFMDataset._load_ext_data">
+<code class="sig-name descname">_load_ext_data</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ts_x</span></em>, <em class="sig-param"><span class="n">ts_y</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/acfm_dataset.html#ACFMDataset._load_ext_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.ACFMDataset._load_ext_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>加载对应时间的外部数据(.ext)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ts_x</strong> – 输入数据X对应的时间戳，shape: (num_samples, T_c+T_p+T_t)</p></li>
+<li><p><strong>ts_y</strong> – 输出数据Y对应的时间戳，shape:(num_samples, )</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>tuple contains:</dt><dd><p>ext_x(numpy.ndarray): 对应时间的外部数据, shape: (num_samples, T_c+T_p+T_t, ext_dim),
+ext_y(numpy.ndarray): 对应时间的外部数据, shape: (num_samples, ext_dim)</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="libcity.data.dataset.dataset_subclass.ACFMDataset.get_data_feature">
+<code class="sig-name descname">get_data_feature</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/acfm_dataset.html#ACFMDataset.get_data_feature"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.ACFMDataset.get_data_feature" title="Permalink to this definition">¶</a></dt>
+<dd><p>返回数据集特征，scaler是归一化方法，adj_mx是邻接矩阵，num_nodes是网格的个数，
+len_row是网格的行数，len_column是网格的列数，
+feature_dim是输入数据的维度，output_dim是模型输出的维度</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>包含数据集的相关特征的字典</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="libcity.data.dataset.dataset_subclass.ASTGCNDataset">
+<em class="property">class </em><code class="sig-prename descclassname">libcity.data.dataset.dataset_subclass.</code><code class="sig-name descname">ASTGCNDataset</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">config</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/astgcn_dataset.html#ASTGCNDataset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.ASTGCNDataset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="libcity.data.dataset.traffic_state_point_dataset.html#libcity.data.dataset.traffic_state_point_dataset.TrafficStatePointDataset" title="libcity.data.dataset.traffic_state_point_dataset.TrafficStatePointDataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">libcity.data.dataset.traffic_state_point_dataset.TrafficStatePointDataset</span></code></a></p>
+<dl class="py method">
+<dt id="libcity.data.dataset.dataset_subclass.ASTGCNDataset._generate_input_data">
+<code class="sig-name descname">_generate_input_data</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">df</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/astgcn_dataset.html#ASTGCNDataset._generate_input_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.ASTGCNDataset._generate_input_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>根据全局参数len_closeness/len_period/len_trend切分输入，产生模型需要的输入</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>df</strong> (<em>np.ndarray</em>) – 输入数据, shape: (len_time, …, feature_dim)</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><dl>
+<dt>tuple contains:</dt><dd><p>sources(np.ndarray): 模型输入数据, shape: (num_samples, Tw+Td+Th, …, feature_dim)</p>
+<p>targets(np.ndarray): 模型输出数据, shape: (num_samples, Tp, …, feature_dim)</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="libcity.data.dataset.dataset_subclass.ASTGCNDataset._get_sample_indices">
+<code class="sig-name descname">_get_sample_indices</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data_sequence</span></em>, <em class="sig-param"><span class="n">label_start_idx</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/astgcn_dataset.html#ASTGCNDataset._get_sample_indices"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.ASTGCNDataset._get_sample_indices" title="Permalink to this definition">¶</a></dt>
+<dd><p>根据全局参数len_closeness/len_period/len_trend找到数据预测目标数据
+段: [label_start_idx: label_start_idx+output_window)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data_sequence</strong> (<em>np.ndarray</em>) – 输入数据，shape: (len_time, …, feature_dim)</p></li>
+<li><p><strong>label_start_idx</strong> (<em>int</em>) – the first index of predicting target, 预测开始的时间片的索引</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><dl>
+<dt>tuple contains:</dt><dd><p>trend_sample: 输入数据1, (len_trend * self.output_window, …, feature_dim)</p>
+<p>period_sample: 输入数据2, (len_period * self.output_window, …, feature_dim)</p>
+<p>closeness_sample: 输入数据3, (len_closeness * self.output_window, …, feature_dim)</p>
+<p>target: 输出数据, (self.output_window, …, feature_dim)</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="libcity.data.dataset.dataset_subclass.ASTGCNDataset._search_data">
+<code class="sig-name descname">_search_data</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">sequence_length</span></em>, <em class="sig-param"><span class="n">label_start_idx</span></em>, <em class="sig-param"><span class="n">num_for_predict</span></em>, <em class="sig-param"><span class="n">num_of_depend</span></em>, <em class="sig-param"><span class="n">units</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/astgcn_dataset.html#ASTGCNDataset._search_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.ASTGCNDataset._search_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>根据全局参数len_closeness/len_period/len_trend找到数据索引的位置</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sequence_length</strong> (<em>int</em>) – 历史数据的总长度</p></li>
+<li><p><strong>label_start_idx</strong> (<em>int</em>) – 预测开始的时间片的索引</p></li>
+<li><p><strong>num_for_predict</strong> (<em>int</em>) – 预测的时间片序列长度</p></li>
+<li><p><strong>num_of_depend</strong> (<em>int</em>) – len_trend/len_period/len_closeness</p></li>
+<li><p><strong>units</strong> (<em>int</em>) – trend/period/closeness的长度(以小时为单位)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>起点-终点区间段的数组，list[(start_idx, end_idx)]</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="libcity.data.dataset.dataset_subclass.ASTGCNDataset.get_data_feature">
+<code class="sig-name descname">get_data_feature</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/astgcn_dataset.html#ASTGCNDataset.get_data_feature"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.ASTGCNDataset.get_data_feature" title="Permalink to this definition">¶</a></dt>
+<dd><p>返回数据集特征，scaler是归一化方法，adj_mx是邻接矩阵，num_nodes是点的个数，
+feature_dim是输入数据的维度，output_dim是模型输出的维度,
+len_closeness/len_period/len_trend分别是三段数据的长度</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>包含数据集的相关特征的字典</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="libcity.data.dataset.dataset_subclass.CCRNNDataset">
+<em class="property">class </em><code class="sig-prename descclassname">libcity.data.dataset.dataset_subclass.</code><code class="sig-name descname">CCRNNDataset</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">config</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/ccrnn_dataset.html#CCRNNDataset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.CCRNNDataset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="libcity.data.dataset.traffic_state_point_dataset.html#libcity.data.dataset.traffic_state_point_dataset.TrafficStatePointDataset" title="libcity.data.dataset.traffic_state_point_dataset.TrafficStatePointDataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">libcity.data.dataset.traffic_state_point_dataset.TrafficStatePointDataset</span></code></a></p>
+<dl class="py method">
+<dt id="libcity.data.dataset.dataset_subclass.CCRNNDataset._generate_data">
+<code class="sig-name descname">_generate_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/ccrnn_dataset.html#CCRNNDataset._generate_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.CCRNNDataset._generate_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>加载数据文件(.dyna/.grid/.od/.gridod)和外部数据(.ext)，且将二者融合，以X，y的形式返回</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><dl>
+<dt>tuple contains:</dt><dd><p>x(np.ndarray): 模型输入数据，(num_samples, input_length, …, feature_dim)</p>
+<p>y(np.ndarray): 模型输出数据，(num_samples, output_length, …, feature_dim)</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="libcity.data.dataset.dataset_subclass.CCRNNDataset._generate_train_val_test">
+<code class="sig-name descname">_generate_train_val_test</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/ccrnn_dataset.html#CCRNNDataset._generate_train_val_test"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.CCRNNDataset._generate_train_val_test" title="Permalink to this definition">¶</a></dt>
+<dd><p>加载数据集，并划分训练集、测试集、验证集，并缓存数据集</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><dl>
+<dt>tuple contains:</dt><dd><p>x_train: (num_samples, input_length, …, feature_dim)</p>
+<p>y_train: (num_samples, input_length, …, feature_dim)</p>
+<p>x_val: (num_samples, input_length, …, feature_dim)</p>
+<p>y_val: (num_samples, input_length, …, feature_dim)</p>
+<p>x_test: (num_samples, input_length, …, feature_dim)</p>
+<p>y_test: (num_samples, input_length, …, feature_dim)</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="libcity.data.dataset.dataset_subclass.CCRNNDataset._load_cache_train_val_test">
+<code class="sig-name descname">_load_cache_train_val_test</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/ccrnn_dataset.html#CCRNNDataset._load_cache_train_val_test"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.CCRNNDataset._load_cache_train_val_test" title="Permalink to this definition">¶</a></dt>
+<dd><p>加载之前缓存好的训练集、测试集、验证集</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><dl>
+<dt>tuple contains:</dt><dd><p>x_train: (num_samples, input_length, …, feature_dim)</p>
+<p>y_train: (num_samples, input_length, …, feature_dim)</p>
+<p>x_val: (num_samples, input_length, …, feature_dim)</p>
+<p>y_val: (num_samples, input_length, …, feature_dim)</p>
+<p>x_test: (num_samples, input_length, …, feature_dim)</p>
+<p>y_test: (num_samples, input_length, …, feature_dim)</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="libcity.data.dataset.dataset_subclass.CCRNNDataset._load_rel">
+<code class="sig-name descname">_load_rel</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/ccrnn_dataset.html#CCRNNDataset._load_rel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.CCRNNDataset._load_rel" title="Permalink to this definition">¶</a></dt>
+<dd><p>根据网格结构构建邻接矩阵，一个格子跟他周围的8个格子邻接</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>self.adj_mx, N*N的邻接矩阵</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="libcity.data.dataset.dataset_subclass.CCRNNDataset._split_train_val_test">
+<code class="sig-name descname">_split_train_val_test</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">y</span></em>, <em class="sig-param"><span class="n">df</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/ccrnn_dataset.html#CCRNNDataset._split_train_val_test"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.CCRNNDataset._split_train_val_test" title="Permalink to this definition">¶</a></dt>
+<dd><p>划分训练集、测试集、验证集，并缓存数据集</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>np.ndarray</em>) – 输入数据 (num_samples, input_length, …, feature_dim)</p></li>
+<li><p><strong>y</strong> (<em>np.ndarray</em>) – 输出数据 (num_samples, input_length, …, feature_dim)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><dl>
+<dt>tuple contains:</dt><dd><p>x_train: (num_samples, input_length, …, feature_dim)</p>
+<p>y_train: (num_samples, input_length, …, feature_dim)</p>
+<p>x_val: (num_samples, input_length, …, feature_dim)</p>
+<p>y_val: (num_samples, input_length, …, feature_dim)</p>
+<p>x_test: (num_samples, input_length, …, feature_dim)</p>
+<p>y_test: (num_samples, input_length, …, feature_dim)</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="libcity.data.dataset.dataset_subclass.CONVGCNDataset">
+<em class="property">class </em><code class="sig-prename descclassname">libcity.data.dataset.dataset_subclass.</code><code class="sig-name descname">CONVGCNDataset</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">config</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/convgcn_dataset.html#CONVGCNDataset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.CONVGCNDataset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="libcity.data.dataset.traffic_state_point_dataset.html#libcity.data.dataset.traffic_state_point_dataset.TrafficStatePointDataset" title="libcity.data.dataset.traffic_state_point_dataset.TrafficStatePointDataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">libcity.data.dataset.traffic_state_point_dataset.TrafficStatePointDataset</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt id="libcity.data.dataset.dataset_subclass.CRANNDataset">
+<em class="property">class </em><code class="sig-prename descclassname">libcity.data.dataset.dataset_subclass.</code><code class="sig-name descname">CRANNDataset</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">config</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/crann_dataset.html#CRANNDataset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.CRANNDataset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="libcity.data.dataset.traffic_state_point_dataset.html#libcity.data.dataset.traffic_state_point_dataset.TrafficStatePointDataset" title="libcity.data.dataset.traffic_state_point_dataset.TrafficStatePointDataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">libcity.data.dataset.traffic_state_point_dataset.TrafficStatePointDataset</span></code></a></p>
+<dl class="py method">
+<dt id="libcity.data.dataset.dataset_subclass.CRANNDataset.get_data">
+<code class="sig-name descname">get_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/crann_dataset.html#CRANNDataset.get_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.CRANNDataset.get_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>返回数据的DataLoader，包括训练数据、测试数据、验证数据</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><dl>
+<dt>tuple contains:</dt><dd><p>train_dataloader: Dataloader composed of Batch (class)</p>
+<p>eval_dataloader: Dataloader composed of Batch (class)</p>
+<p>test_dataloader: Dataloader composed of Batch (class)</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="libcity.data.dataset.dataset_subclass.CSTNDataset">
+<em class="property">class </em><code class="sig-prename descclassname">libcity.data.dataset.dataset_subclass.</code><code class="sig-name descname">CSTNDataset</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">config</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/cstn_dataset.html#CSTNDataset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.CSTNDataset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="libcity.data.dataset.traffic_state_grid_od_dataset.html#libcity.data.dataset.traffic_state_grid_od_dataset.TrafficStateGridOdDataset" title="libcity.data.dataset.traffic_state_grid_od_dataset.TrafficStateGridOdDataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">libcity.data.dataset.traffic_state_grid_od_dataset.TrafficStateGridOdDataset</span></code></a></p>
+<dl class="py method">
+<dt id="libcity.data.dataset.dataset_subclass.CSTNDataset._generate_data">
+<code class="sig-name descname">_generate_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/cstn_dataset.html#CSTNDataset._generate_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.CSTNDataset._generate_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>加载数据文件(.gridod)和外部数据(.ext)，以X, W, y的形式返回</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><dl>
+<dt>tuple contains:</dt><dd><p>X(np.ndarray): 模型输入数据，(num_samples, input_length, …, feature_dim)</p>
+<p>W(np.ndarray): 模型外部数据，(num_samples, input_length, ext_dim)
+y(np.ndarray): 模型输出数据，(num_samples, output_length, …, feature_dim)</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="libcity.data.dataset.dataset_subclass.CSTNDataset.get_data">
+<code class="sig-name descname">get_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/cstn_dataset.html#CSTNDataset.get_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.CSTNDataset.get_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>返回数据的DataLoader，包括训练数据、测试数据、验证数据</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><dl>
+<dt>tuple contains:</dt><dd><p>train_dataloader: Dataloader composed of Batch (class)</p>
+<p>eval_dataloader: Dataloader composed of Batch (class)</p>
+<p>test_dataloader: Dataloader composed of Batch (class)</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="libcity.data.dataset.dataset_subclass.CSTNDataset.get_data_feature">
+<code class="sig-name descname">get_data_feature</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/cstn_dataset.html#CSTNDataset.get_data_feature"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.CSTNDataset.get_data_feature" title="Permalink to this definition">¶</a></dt>
+<dd><p>返回数据集特征，scaler是归一化方法，adj_mx是邻接矩阵，num_nodes是网格的个数，
+len_row是网格的行数，len_column是网格的列数，
+feature_dim是输入数据的维度，output_dim是模型输出的维度</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>包含数据集的相关特征的字典</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="libcity.data.dataset.dataset_subclass.ChebConvDataset">
+<em class="property">class </em><code class="sig-prename descclassname">libcity.data.dataset.dataset_subclass.</code><code class="sig-name descname">ChebConvDataset</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">config</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/chebconv_dataset.html#ChebConvDataset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.ChebConvDataset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="libcity.data.dataset.abstract_dataset.html#libcity.data.dataset.abstract_dataset.AbstractDataset" title="libcity.data.dataset.abstract_dataset.AbstractDataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">libcity.data.dataset.abstract_dataset.AbstractDataset</span></code></a></p>
+<dl class="py method">
+<dt id="libcity.data.dataset.dataset_subclass.ChebConvDataset._get_scalar">
+<code class="sig-name descname">_get_scalar</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">scaler_type</span></em>, <em class="sig-param"><span class="n">data</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/chebconv_dataset.html#ChebConvDataset._get_scalar"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.ChebConvDataset._get_scalar" title="Permalink to this definition">¶</a></dt>
+<dd><p>根据全局参数`scaler_type`选择数据归一化方法</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data</strong> – 训练数据X</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>归一化对象</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="libcity.utils.normalization.html#libcity.utils.normalization.Scaler" title="libcity.utils.normalization.Scaler">Scaler</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="libcity.data.dataset.dataset_subclass.ChebConvDataset._load_cache_train_val_test">
+<code class="sig-name descname">_load_cache_train_val_test</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/chebconv_dataset.html#ChebConvDataset._load_cache_train_val_test"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.ChebConvDataset._load_cache_train_val_test" title="Permalink to this definition">¶</a></dt>
+<dd><p>加载之前缓存好的训练集、测试集、验证集</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="libcity.data.dataset.dataset_subclass.ChebConvDataset._load_geo">
+<code class="sig-name descname">_load_geo</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/chebconv_dataset.html#ChebConvDataset._load_geo"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.ChebConvDataset._load_geo" title="Permalink to this definition">¶</a></dt>
+<dd><p>加载.geo文件，格式[geo_id, type, coordinates, properties(若干列)]</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="libcity.data.dataset.dataset_subclass.ChebConvDataset._load_rel">
+<code class="sig-name descname">_load_rel</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/chebconv_dataset.html#ChebConvDataset._load_rel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.ChebConvDataset._load_rel" title="Permalink to this definition">¶</a></dt>
+<dd><p>加载.rel文件，格式[rel_id, type, origin_id, destination_id, properties(若干列)],
+生成N*N的矩阵，默认.rel存在的边表示为1，不存在的边表示为0</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>self.adj_mx, N*N的邻接矩阵</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="libcity.data.dataset.dataset_subclass.ChebConvDataset.get_data">
+<code class="sig-name descname">get_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/chebconv_dataset.html#ChebConvDataset.get_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.ChebConvDataset.get_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>返回数据的DataLoader，包括训练数据、测试数据、验证数据</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>batch_data</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="libcity.data.dataset.dataset_subclass.ChebConvDataset.get_data_feature">
+<code class="sig-name descname">get_data_feature</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/chebconv_dataset.html#ChebConvDataset.get_data_feature"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.ChebConvDataset.get_data_feature" title="Permalink to this definition">¶</a></dt>
+<dd><p>返回一个 dict，包含数据集的相关特征</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>包含数据集的相关特征的字典</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="libcity.data.dataset.dataset_subclass.DMVSTNetDataset">
+<em class="property">class </em><code class="sig-prename descclassname">libcity.data.dataset.dataset_subclass.</code><code class="sig-name descname">DMVSTNetDataset</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">config</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/dmvstnet_dataset.html#DMVSTNetDataset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.DMVSTNetDataset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="libcity.data.dataset.traffic_state_grid_dataset.html#libcity.data.dataset.traffic_state_grid_dataset.TrafficStateGridDataset" title="libcity.data.dataset.traffic_state_grid_dataset.TrafficStateGridDataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">libcity.data.dataset.traffic_state_grid_dataset.TrafficStateGridDataset</span></code></a></p>
+<dl class="py method">
+<dt id="libcity.data.dataset.dataset_subclass.DMVSTNetDataset.get_data_feature">
+<code class="sig-name descname">get_data_feature</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/dmvstnet_dataset.html#DMVSTNetDataset.get_data_feature"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.DMVSTNetDataset.get_data_feature" title="Permalink to this definition">¶</a></dt>
+<dd><p>返回数据集特征，scaler是归一化方法，adj_mx是邻接矩阵，num_nodes是点的个数，
+feature_dim是输入数据的维度，output_dim是模型输出的维度</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>包含数据集的相关特征的字典</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="libcity.data.dataset.dataset_subclass.DMVSTNetDataset.get_dtw_grpah">
+<code class="sig-name descname">get_dtw_grpah</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/dmvstnet_dataset.html#DMVSTNetDataset.get_dtw_grpah"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.DMVSTNetDataset.get_dtw_grpah" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="libcity.data.dataset.dataset_subclass.GMANDataset">
+<em class="property">class </em><code class="sig-prename descclassname">libcity.data.dataset.dataset_subclass.</code><code class="sig-name descname">GMANDataset</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">config</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/gman_dataset.html#GMANDataset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.GMANDataset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="libcity.data.dataset.traffic_state_point_dataset.html#libcity.data.dataset.traffic_state_point_dataset.TrafficStatePointDataset" title="libcity.data.dataset.traffic_state_point_dataset.TrafficStatePointDataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">libcity.data.dataset.traffic_state_point_dataset.TrafficStatePointDataset</span></code></a></p>
+<dl class="py method">
+<dt id="libcity.data.dataset.dataset_subclass.GMANDataset.get_data_feature">
+<code class="sig-name descname">get_data_feature</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/gman_dataset.html#GMANDataset.get_data_feature"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.GMANDataset.get_data_feature" title="Permalink to this definition">¶</a></dt>
+<dd><p>返回数据集特征，scaler是归一化方法，adj_mx是邻接矩阵，num_nodes是点的个数，
+feature_dim是输入数据的维度，output_dim是模型输出的维度</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>包含数据集的相关特征的字典</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="libcity.data.dataset.dataset_subclass.GSNetDataset">
+<em class="property">class </em><code class="sig-prename descclassname">libcity.data.dataset.dataset_subclass.</code><code class="sig-name descname">GSNetDataset</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">config</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/gsnet_dataset.html#GSNetDataset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.GSNetDataset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="libcity.data.dataset.traffic_state_cpt_dataset.html#libcity.data.dataset.traffic_state_cpt_dataset.TrafficStateCPTDataset" title="libcity.data.dataset.traffic_state_cpt_dataset.TrafficStateCPTDataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">libcity.data.dataset.traffic_state_cpt_dataset.TrafficStateCPTDataset</span></code></a></p>
+<dl class="py method">
+<dt id="libcity.data.dataset.dataset_subclass.GSNetDataset.get_data_feature">
+<code class="sig-name descname">get_data_feature</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/gsnet_dataset.html#GSNetDataset.get_data_feature"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.GSNetDataset.get_data_feature" title="Permalink to this definition">¶</a></dt>
+<dd><p>由于此类的数据输入包含len_closeness/len_period/len_trend的数据，但都融合到X中，
+因此，继承此类的子类此函数应该返回这三段数据的具体长度（不一定等于上述的三个参数的值）</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>包含数据集的相关特征的字典</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="libcity.data.dataset.dataset_subclass.GTSDataset">
+<em class="property">class </em><code class="sig-prename descclassname">libcity.data.dataset.dataset_subclass.</code><code class="sig-name descname">GTSDataset</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">config</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/gts_dataset.html#GTSDataset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.GTSDataset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="libcity.data.dataset.traffic_state_point_dataset.html#libcity.data.dataset.traffic_state_point_dataset.TrafficStatePointDataset" title="libcity.data.dataset.traffic_state_point_dataset.TrafficStatePointDataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">libcity.data.dataset.traffic_state_point_dataset.TrafficStatePointDataset</span></code></a></p>
+<dl class="py method">
+<dt id="libcity.data.dataset.dataset_subclass.GTSDataset.get_data_feature">
+<code class="sig-name descname">get_data_feature</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/gts_dataset.html#GTSDataset.get_data_feature"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.GTSDataset.get_data_feature" title="Permalink to this definition">¶</a></dt>
+<dd><p>返回数据集特征，scaler是归一化方法，adj_mx是邻接矩阵，num_nodes是点的个数，
+feature_dim是输入数据的维度，output_dim是模型输出的维度</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>包含数据集的相关特征的字典</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="libcity.data.dataset.dataset_subclass.GeoSANDataset">
+<em class="property">class </em><code class="sig-prename descclassname">libcity.data.dataset.dataset_subclass.</code><code class="sig-name descname">GeoSANDataset</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">config</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/geosan_dataset.html#GeoSANDataset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.GeoSANDataset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="libcity.data.dataset.abstract_dataset.html#libcity.data.dataset.abstract_dataset.AbstractDataset" title="libcity.data.dataset.abstract_dataset.AbstractDataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">libcity.data.dataset.abstract_dataset.AbstractDataset</span></code></a></p>
+<dl class="py method">
+<dt id="libcity.data.dataset.dataset_subclass.GeoSANDataset.add_location">
+<code class="sig-name descname">add_location</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">loc</span></em>, <em class="sig-param"><span class="n">coordinate</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/geosan_dataset.html#GeoSANDataset.add_location"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.GeoSANDataset.add_location" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="libcity.data.dataset.dataset_subclass.GeoSANDataset.build_vocab">
+<code class="sig-name descname">build_vocab</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">min_freq</span><span class="o">=</span><span class="default_value">10</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/geosan_dataset.html#GeoSANDataset.build_vocab"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.GeoSANDataset.build_vocab" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="libcity.data.dataset.dataset_subclass.GeoSANDataset.collect_fn_quadkey">
+<em class="property">static </em><code class="sig-name descname">collect_fn_quadkey</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">batch</span></em>, <em class="sig-param"><span class="n">data_source</span></em>, <em class="sig-param"><span class="n">sampler</span></em>, <em class="sig-param"><span class="n">region_processer</span></em>, <em class="sig-param"><span class="n">loc2quadkey</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">k</span><span class="o">=</span><span class="default_value">5</span></em>, <em class="sig-param"><span class="n">with_trg_quadkey</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/geosan_dataset.html#GeoSANDataset.collect_fn_quadkey"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.GeoSANDataset.collect_fn_quadkey" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="libcity.data.dataset.dataset_subclass.GeoSANDataset.get_data">
+<code class="sig-name descname">get_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/geosan_dataset.html#GeoSANDataset.get_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.GeoSANDataset.get_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>返回数据的DataLoader，包括训练数据、测试数据(事实上不提供)、验证数据</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><dl>
+<dt>tuple contains:</dt><dd><p>train_dataloader: Dataloader composed of Batch (class)</p>
+<p>eval_dataloader: None(no valid step)</p>
+<p>test_dataloader: Dataloader composed of Batch (class)</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="libcity.data.dataset.dataset_subclass.GeoSANDataset.get_data_feature">
+<code class="sig-name descname">get_data_feature</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/geosan_dataset.html#GeoSANDataset.get_data_feature"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.GeoSANDataset.get_data_feature" title="Permalink to this definition">¶</a></dt>
+<dd><p>返回一个 dict，包含数据集的相关特征</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>包含数据集的相关特征的字典</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="libcity.data.dataset.dataset_subclass.GeoSANDataset.get_visited_locs">
+<code class="sig-name descname">get_visited_locs</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/geosan_dataset.html#GeoSANDataset.get_visited_locs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.GeoSANDataset.get_visited_locs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="libcity.data.dataset.dataset_subclass.GeoSANDataset.processing">
+<code class="sig-name descname">processing</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">min_freq</span><span class="o">=</span><span class="default_value">20</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/geosan_dataset.html#GeoSANDataset.processing"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.GeoSANDataset.processing" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="libcity.data.dataset.dataset_subclass.GeoSANDataset.region_stats">
+<code class="sig-name descname">region_stats</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/geosan_dataset.html#GeoSANDataset.region_stats"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.GeoSANDataset.region_stats" title="Permalink to this definition">¶</a></dt>
+<dd><p>统计并打印数据集的一些基本信息</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="libcity.data.dataset.dataset_subclass.GeoSANDataset.split">
+<code class="sig-name descname">split</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">max_len</span><span class="o">=</span><span class="default_value">100</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/geosan_dataset.html#GeoSANDataset.split"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.GeoSANDataset.split" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="libcity.data.dataset.dataset_subclass.HGCNDataset">
+<em class="property">class </em><code class="sig-prename descclassname">libcity.data.dataset.dataset_subclass.</code><code class="sig-name descname">HGCNDataset</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">config</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/hgcn_dataset.html#HGCNDataset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.HGCNDataset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="libcity.data.dataset.traffic_state_point_dataset.html#libcity.data.dataset.traffic_state_point_dataset.TrafficStatePointDataset" title="libcity.data.dataset.traffic_state_point_dataset.TrafficStatePointDataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">libcity.data.dataset.traffic_state_point_dataset.TrafficStatePointDataset</span></code></a></p>
+<dl class="py method">
+<dt id="libcity.data.dataset.dataset_subclass.HGCNDataset.calculate_adj_mx_cluster">
+<code class="sig-name descname">calculate_adj_mx_cluster</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/hgcn_dataset.html#HGCNDataset.calculate_adj_mx_cluster"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.HGCNDataset.calculate_adj_mx_cluster" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>#聚类结果[cluster_num][]   聚类标识[cluster_num][]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="libcity.data.dataset.dataset_subclass.HGCNDataset.get_cluster">
+<code class="sig-name descname">get_cluster</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/hgcn_dataset.html#HGCNDataset.get_cluster"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.HGCNDataset.get_cluster" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>聚类后的中心向量矩阵，区域[节点]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="libcity.data.dataset.dataset_subclass.HGCNDataset.get_data_feature">
+<code class="sig-name descname">get_data_feature</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/hgcn_dataset.html#HGCNDataset.get_data_feature"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.HGCNDataset.get_data_feature" title="Permalink to this definition">¶</a></dt>
+<dd><p>返回数据集特征，scaler是归一化方法，adj_mx是邻接矩阵，num_nodes是点的个数，
+feature_dim是输入数据的维度，output_dim是模型输出的维度
+:returns: 包含数据集的相关特征的字典
+:rtype: dict</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="libcity.data.dataset.dataset_subclass.LINEDataset">
+<em class="property">class </em><code class="sig-prename descclassname">libcity.data.dataset.dataset_subclass.</code><code class="sig-name descname">LINEDataset</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">config</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/line_dataset.html#LINEDataset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.LINEDataset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="libcity.data.dataset.abstract_dataset.html#libcity.data.dataset.abstract_dataset.AbstractDataset" title="libcity.data.dataset.abstract_dataset.AbstractDataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">libcity.data.dataset.abstract_dataset.AbstractDataset</span></code></a></p>
+<dl class="py method">
+<dt id="libcity.data.dataset.dataset_subclass.LINEDataset._generate_data">
+<code class="sig-name descname">_generate_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/line_dataset.html#LINEDataset._generate_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.LINEDataset._generate_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>LINE 采用的是按类似于 Skip-Gram 的训练方式，类似于 Word2Vec(Skip-Gram)，将单词对类比成图中的一条边，
+LINE 同时采用了两个优化，一个是对边按照正比于边权重的概率进行采样，另一个是类似于 Word2Vec 当中的负采样方法，
+在采样一条边时，同时产生该边起始点到目标点（按正比于度^0.75的概率采样获得）的多个”负采样”边。
+最后，为了通过 Python 的均匀分布随机数产生符合目标分布的采样，使用 O(1) 的 alias 采样方法</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="libcity.data.dataset.dataset_subclass.LINEDataset._load_cache">
+<code class="sig-name descname">_load_cache</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/line_dataset.html#LINEDataset._load_cache"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.LINEDataset._load_cache" title="Permalink to this definition">¶</a></dt>
+<dd><p>加载之前缓存好的训练集、测试集、验证集</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="libcity.data.dataset.dataset_subclass.LINEDataset._load_geo">
+<code class="sig-name descname">_load_geo</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/line_dataset.html#LINEDataset._load_geo"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.LINEDataset._load_geo" title="Permalink to this definition">¶</a></dt>
+<dd><p>加载.geo文件，格式[geo_id, type, coordinates, properties(若干列)]</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="libcity.data.dataset.dataset_subclass.LINEDataset._load_rel">
+<code class="sig-name descname">_load_rel</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/line_dataset.html#LINEDataset._load_rel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.LINEDataset._load_rel" title="Permalink to this definition">¶</a></dt>
+<dd><p>加载.rel文件，格式[rel_id, type, origin_id, destination_id, properties(若干列)],
+生成N*N的矩阵，默认.rel存在的边表示为1，不存在的边表示为0</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>self.adj_mx, N*N的邻接矩阵</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="libcity.data.dataset.dataset_subclass.LINEDataset.get_data">
+<code class="sig-name descname">get_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/line_dataset.html#LINEDataset.get_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.LINEDataset.get_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>返回数据的DataLoader，包括训练数据、测试数据、验证数据</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>batch_data</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="libcity.data.dataset.dataset_subclass.LINEDataset.get_data_feature">
+<code class="sig-name descname">get_data_feature</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/line_dataset.html#LINEDataset.get_data_feature"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.LINEDataset.get_data_feature" title="Permalink to this definition">¶</a></dt>
+<dd><p>返回一个 dict，包含数据集的相关特征</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>包含数据集的相关特征的字典</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="libcity.data.dataset.dataset_subclass.MultiSTGCnetDataset">
+<em class="property">class </em><code class="sig-prename descclassname">libcity.data.dataset.dataset_subclass.</code><code class="sig-name descname">MultiSTGCnetDataset</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">config</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/multi_stgcnet_dataset.html#MultiSTGCnetDataset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.MultiSTGCnetDataset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="libcity.data.dataset.traffic_state_point_dataset.html#libcity.data.dataset.traffic_state_point_dataset.TrafficStatePointDataset" title="libcity.data.dataset.traffic_state_point_dataset.TrafficStatePointDataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">libcity.data.dataset.traffic_state_point_dataset.TrafficStatePointDataset</span></code></a>, <a class="reference internal" href="libcity.data.dataset.traffic_state_cpt_dataset.html#libcity.data.dataset.traffic_state_cpt_dataset.TrafficStateCPTDataset" title="libcity.data.dataset.traffic_state_cpt_dataset.TrafficStateCPTDataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">libcity.data.dataset.traffic_state_cpt_dataset.TrafficStateCPTDataset</span></code></a></p>
+<dl class="py method">
+<dt id="libcity.data.dataset.dataset_subclass.MultiSTGCnetDataset.get_data_feature">
+<code class="sig-name descname">get_data_feature</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/multi_stgcnet_dataset.html#MultiSTGCnetDataset.get_data_feature"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.MultiSTGCnetDataset.get_data_feature" title="Permalink to this definition">¶</a></dt>
+<dd><p>返回数据集特征，scaler是归一化方法，adj_mx是邻接矩阵，num_nodes是点的个数，
+feature_dim是输入数据的维度，output_dim是模型输出的维度,
+len_closeness/len_period/len_trend分别是三段数据的长度</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>包含数据集的相关特征的字典</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="libcity.data.dataset.dataset_subclass.PBSTrajectoryDataset">
+<em class="property">class </em><code class="sig-prename descclassname">libcity.data.dataset.dataset_subclass.</code><code class="sig-name descname">PBSTrajectoryDataset</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">config</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/pbs_trajectory_dataset.html#PBSTrajectoryDataset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.PBSTrajectoryDataset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="libcity.data.dataset.abstract_dataset.html#libcity.data.dataset.abstract_dataset.AbstractDataset" title="libcity.data.dataset.abstract_dataset.AbstractDataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">libcity.data.dataset.abstract_dataset.AbstractDataset</span></code></a></p>
+<p>popularity based negative sampling
+weighted random sampling based on np.random.choice</p>
+<dl class="py method">
+<dt id="libcity.data.dataset.dataset_subclass.PBSTrajectoryDataset.cutter_filter">
+<code class="sig-name descname">cutter_filter</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/pbs_trajectory_dataset.html#PBSTrajectoryDataset.cutter_filter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.PBSTrajectoryDataset.cutter_filter" title="Permalink to this definition">¶</a></dt>
+<dd><dl>
+<dt>切割后的轨迹存储格式: (dict)</dt><dd><dl>
+<dt>{</dt><dd><dl>
+<dt>uid: [</dt><dd><dl class="simple">
+<dt>[</dt><dd><p>checkin_record,
+checkin_record,
+…</p>
+</dd>
+</dl>
+<p>],
+[</p>
+<blockquote>
+<div><p>checkin_record,
+checkin_record,
+…</p>
+</div></blockquote>
+</dd>
+</dl>
+</dd>
+</dl>
+<p>}</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="libcity.data.dataset.dataset_subclass.PBSTrajectoryDataset.divide_data">
+<code class="sig-name descname">divide_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/pbs_trajectory_dataset.html#PBSTrajectoryDataset.divide_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.PBSTrajectoryDataset.divide_data" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>train_data (list)
+eval_data (list)
+test_data (list)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="libcity.data.dataset.dataset_subclass.PBSTrajectoryDataset.encode_traj">
+<code class="sig-name descname">encode_traj</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/pbs_trajectory_dataset.html#PBSTrajectoryDataset.encode_traj"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.PBSTrajectoryDataset.encode_traj" title="Permalink to this definition">¶</a></dt>
+<dd><p>encode the cut trajectory</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>dict</em>) – <p>the key is uid, the value is the uid’s trajectories. For example:
+{</p>
+<blockquote>
+<div><dl class="simple">
+<dt>uid: [</dt><dd><p>trajectory1,
+trajectory2</p>
+</dd>
+</dl>
+<p>]</p>
+</div></blockquote>
+<p>}
+trajectory1 = [</p>
+<blockquote>
+<div><p>dyna_id,
+dyna_id,
+…..</p>
+</div></blockquote>
+<p>]</p>
+</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><dl>
+<dt>For example:</dt><dd><dl class="simple">
+<dt>{</dt><dd><p>data_feature: {…},
+pad_item: {…},
+encoded_data: {uid: encoded_trajectories}</p>
+</dd>
+</dl>
+<p>}</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="libcity.data.dataset.dataset_subclass.PBSTrajectoryDataset.get_data">
+<code class="sig-name descname">get_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/pbs_trajectory_dataset.html#PBSTrajectoryDataset.get_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.PBSTrajectoryDataset.get_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>轨迹比较特殊，原子文件中存储的并不是轨迹而是一个一个点，因此需要先对轨迹进行切割</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="libcity.data.dataset.dataset_subclass.PBSTrajectoryDataset.get_data_feature">
+<code class="sig-name descname">get_data_feature</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/pbs_trajectory_dataset.html#PBSTrajectoryDataset.get_data_feature"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.PBSTrajectoryDataset.get_data_feature" title="Permalink to this definition">¶</a></dt>
+<dd><p>返回一个 dict，包含数据集的相关特征</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>包含数据集的相关特征的字典</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="libcity.data.dataset.dataset_subclass.PBSTrajectoryDataset.get_encoder">
+<code class="sig-name descname">get_encoder</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/pbs_trajectory_dataset.html#PBSTrajectoryDataset.get_encoder"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.PBSTrajectoryDataset.get_encoder" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="libcity.data.dataset.dataset_subclass.RESLSTMDataset">
+<em class="property">class </em><code class="sig-prename descclassname">libcity.data.dataset.dataset_subclass.</code><code class="sig-name descname">RESLSTMDataset</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">config</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/reslstm_dataset.html#RESLSTMDataset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.RESLSTMDataset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="libcity.data.dataset.traffic_state_point_dataset.html#libcity.data.dataset.traffic_state_point_dataset.TrafficStatePointDataset" title="libcity.data.dataset.traffic_state_point_dataset.TrafficStatePointDataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">libcity.data.dataset.traffic_state_point_dataset.TrafficStatePointDataset</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt id="libcity.data.dataset.dataset_subclass.STAGGCNDataset">
+<em class="property">class </em><code class="sig-prename descclassname">libcity.data.dataset.dataset_subclass.</code><code class="sig-name descname">STAGGCNDataset</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">config</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/staggcn_dataset.html#STAGGCNDataset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.STAGGCNDataset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="libcity.data.dataset.traffic_state_point_dataset.html#libcity.data.dataset.traffic_state_point_dataset.TrafficStatePointDataset" title="libcity.data.dataset.traffic_state_point_dataset.TrafficStatePointDataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">libcity.data.dataset.traffic_state_point_dataset.TrafficStatePointDataset</span></code></a></p>
+<dl class="py method">
+<dt id="libcity.data.dataset.dataset_subclass.STAGGCNDataset.edge_index_func">
+<code class="sig-name descname">edge_index_func</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">matrix</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/staggcn_dataset.html#STAGGCNDataset.edge_index_func"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.STAGGCNDataset.edge_index_func" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="libcity.data.dataset.dataset_subclass.STAGGCNDataset.get_data_feature">
+<code class="sig-name descname">get_data_feature</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/staggcn_dataset.html#STAGGCNDataset.get_data_feature"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.STAGGCNDataset.get_data_feature" title="Permalink to this definition">¶</a></dt>
+<dd><p>返回数据集特征，scaler是归一化方法，adj_mx是邻接矩阵，num_nodes是点的个数，
+feature_dim是输入数据的维度，output_dim是模型输出的维度</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>包含数据集的相关特征的字典</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="libcity.data.dataset.dataset_subclass.STAGGCNDataset.get_dtw_edge_index">
+<code class="sig-name descname">get_dtw_edge_index</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/staggcn_dataset.html#STAGGCNDataset.get_dtw_edge_index"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.STAGGCNDataset.get_dtw_edge_index" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="libcity.data.dataset.dataset_subclass.STAGGCNDataset.get_edge_index">
+<code class="sig-name descname">get_edge_index</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/staggcn_dataset.html#STAGGCNDataset.get_edge_index"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.STAGGCNDataset.get_edge_index" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="libcity.data.dataset.dataset_subclass.STDNDataset">
+<em class="property">class </em><code class="sig-prename descclassname">libcity.data.dataset.dataset_subclass.</code><code class="sig-name descname">STDNDataset</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">config</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/stdn_dataset.html#STDNDataset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.STDNDataset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="libcity.data.dataset.traffic_state_datatset.html#libcity.data.dataset.traffic_state_datatset.TrafficStateDataset" title="libcity.data.dataset.traffic_state_datatset.TrafficStateDataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">libcity.data.dataset.traffic_state_datatset.TrafficStateDataset</span></code></a></p>
+<dl class="py method">
+<dt id="libcity.data.dataset.dataset_subclass.STDNDataset._generate_train_val_test">
+<code class="sig-name descname">_generate_train_val_test</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/stdn_dataset.html#STDNDataset._generate_train_val_test"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.STDNDataset._generate_train_val_test" title="Permalink to this definition">¶</a></dt>
+<dd><p>加载数据集，并划分训练集、测试集、验证集，并缓存数据集</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="libcity.data.dataset.dataset_subclass.STDNDataset._load_cache_train_val_test">
+<code class="sig-name descname">_load_cache_train_val_test</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/stdn_dataset.html#STDNDataset._load_cache_train_val_test"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.STDNDataset._load_cache_train_val_test" title="Permalink to this definition">¶</a></dt>
+<dd><p>加载之前缓存好的训练集、测试集、验证集</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="libcity.data.dataset.dataset_subclass.STDNDataset._split_train_val_test_stdn">
+<code class="sig-name descname">_split_train_val_test_stdn</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">y</span></em>, <em class="sig-param"><span class="n">flatten_att_nbhd_inputs</span></em>, <em class="sig-param"><span class="n">flatten_att_flow_inputs</span></em>, <em class="sig-param"><span class="n">att_lstm_inputs</span></em>, <em class="sig-param"><span class="n">nbhd_inputs</span></em>, <em class="sig-param"><span class="n">flow_inputs</span></em>, <em class="sig-param"><span class="n">lstm_inputs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/stdn_dataset.html#STDNDataset._split_train_val_test_stdn"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.STDNDataset._split_train_val_test_stdn" title="Permalink to this definition">¶</a></dt>
+<dd><p>划分训练集、测试集、验证集，并缓存数据集</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>np.ndarray</em>) – 输入数据 (num_samples, input_length, …, feature_dim)</p></li>
+<li><p><strong>y</strong> (<em>np.ndarray</em>) – 输出数据 (num_samples, input_length, …, feature_dim)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><dl>
+<dt>tuple contains:</dt><dd><p>x_train: (num_samples, input_length, …, feature_dim)</p>
+<p>y_train: (num_samples, input_length, …, feature_dim)</p>
+<p>x_val: (num_samples, input_length, …, feature_dim)</p>
+<p>y_val: (num_samples, input_length, …, feature_dim)</p>
+<p>x_test: (num_samples, input_length, …, feature_dim)</p>
+<p>y_test: (num_samples, input_length, …, feature_dim)</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="libcity.data.dataset.dataset_subclass.STDNDataset.get_data">
+<code class="sig-name descname">get_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/stdn_dataset.html#STDNDataset.get_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.STDNDataset.get_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>返回数据的DataLoader，包括训练数据、测试数据、验证数据</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><dl>
+<dt>tuple contains:</dt><dd><p>train_dataloader: Dataloader composed of Batch (class)</p>
+<p>eval_dataloader: Dataloader composed of Batch (class)</p>
+<p>test_dataloader: Dataloader composed of Batch (class)</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="libcity.data.dataset.dataset_subclass.STDNDataset.get_data_feature">
+<code class="sig-name descname">get_data_feature</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/stdn_dataset.html#STDNDataset.get_data_feature"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.STDNDataset.get_data_feature" title="Permalink to this definition">¶</a></dt>
+<dd><p>返回数据集特征，子类必须实现这个函数，返回必要的特征</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>包含数据集的相关特征的字典</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="libcity.data.dataset.dataset_subclass.STG2SeqDataset">
+<em class="property">class </em><code class="sig-prename descclassname">libcity.data.dataset.dataset_subclass.</code><code class="sig-name descname">STG2SeqDataset</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">config</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/stg2seq_dataset.html#STG2SeqDataset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.STG2SeqDataset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="libcity.data.dataset.traffic_state_point_dataset.html#libcity.data.dataset.traffic_state_point_dataset.TrafficStatePointDataset" title="libcity.data.dataset.traffic_state_point_dataset.TrafficStatePointDataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">libcity.data.dataset.traffic_state_point_dataset.TrafficStatePointDataset</span></code></a></p>
+<dl class="py method">
+<dt id="libcity.data.dataset.dataset_subclass.STG2SeqDataset._generate_data">
+<code class="sig-name descname">_generate_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/stg2seq_dataset.html#STG2SeqDataset._generate_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.STG2SeqDataset._generate_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>加载数据文件(.dyna/.grid/.od/.gridod)和外部数据(.ext)，且将二者融合，以X，y的形式返回</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><dl>
+<dt>tuple contains:</dt><dd><p>x(np.ndarray): 模型输入数据，(num_samples, input_length, …, feature_dim)</p>
+<p>y(np.ndarray): 模型输出数据，(num_samples, output_length, …, feature_dim)</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="libcity.data.dataset.dataset_subclass.STG2SeqDataset._generate_train_val_test">
+<code class="sig-name descname">_generate_train_val_test</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/stg2seq_dataset.html#STG2SeqDataset._generate_train_val_test"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.STG2SeqDataset._generate_train_val_test" title="Permalink to this definition">¶</a></dt>
+<dd><p>加载数据集，并划分训练集、测试集、验证集，并缓存数据集</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><dl>
+<dt>tuple contains:</dt><dd><p>x_train: (num_samples, input_length, …, feature_dim)</p>
+<p>y_train: (num_samples, input_length, …, feature_dim)</p>
+<p>x_val: (num_samples, input_length, …, feature_dim)</p>
+<p>y_val: (num_samples, input_length, …, feature_dim)</p>
+<p>x_test: (num_samples, input_length, …, feature_dim)</p>
+<p>y_test: (num_samples, input_length, …, feature_dim)</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="libcity.data.dataset.dataset_subclass.STG2SeqDataset._load_cache_train_val_test">
+<code class="sig-name descname">_load_cache_train_val_test</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/stg2seq_dataset.html#STG2SeqDataset._load_cache_train_val_test"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.STG2SeqDataset._load_cache_train_val_test" title="Permalink to this definition">¶</a></dt>
+<dd><p>加载之前缓存好的训练集、测试集、验证集</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><dl>
+<dt>tuple contains:</dt><dd><p>x_train: (num_samples, input_length, …, feature_dim)</p>
+<p>y_train: (num_samples, input_length, …, feature_dim)</p>
+<p>x_val: (num_samples, input_length, …, feature_dim)</p>
+<p>y_val: (num_samples, input_length, …, feature_dim)</p>
+<p>x_test: (num_samples, input_length, …, feature_dim)</p>
+<p>y_test: (num_samples, input_length, …, feature_dim)</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="libcity.data.dataset.dataset_subclass.STG2SeqDataset._load_rel">
+<code class="sig-name descname">_load_rel</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/stg2seq_dataset.html#STG2SeqDataset._load_rel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.STG2SeqDataset._load_rel" title="Permalink to this definition">¶</a></dt>
+<dd><p>根据网格结构构建邻接矩阵，一个格子跟他周围的8个格子邻接</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>self.adj_mx, N*N的邻接矩阵</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="libcity.data.dataset.dataset_subclass.STG2SeqDataset._split_train_val_test">
+<code class="sig-name descname">_split_train_val_test</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">y</span></em>, <em class="sig-param"><span class="n">df</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/stg2seq_dataset.html#STG2SeqDataset._split_train_val_test"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.STG2SeqDataset._split_train_val_test" title="Permalink to this definition">¶</a></dt>
+<dd><p>划分训练集、测试集、验证集，并缓存数据集</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>np.ndarray</em>) – 输入数据 (num_samples, input_length, …, feature_dim)</p></li>
+<li><p><strong>y</strong> (<em>np.ndarray</em>) – 输出数据 (num_samples, input_length, …, feature_dim)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><dl>
+<dt>tuple contains:</dt><dd><p>x_train: (num_samples, input_length, …, feature_dim)</p>
+<p>y_train: (num_samples, input_length, …, feature_dim)</p>
+<p>x_val: (num_samples, input_length, …, feature_dim)</p>
+<p>y_val: (num_samples, input_length, …, feature_dim)</p>
+<p>x_test: (num_samples, input_length, …, feature_dim)</p>
+<p>y_test: (num_samples, input_length, …, feature_dim)</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="libcity.data.dataset.dataset_subclass.STResNetDataset">
+<em class="property">class </em><code class="sig-prename descclassname">libcity.data.dataset.dataset_subclass.</code><code class="sig-name descname">STResNetDataset</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">config</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/stresnet_dataset.html#STResNetDataset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.STResNetDataset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="libcity.data.dataset.traffic_state_grid_dataset.html#libcity.data.dataset.traffic_state_grid_dataset.TrafficStateGridDataset" title="libcity.data.dataset.traffic_state_grid_dataset.TrafficStateGridDataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">libcity.data.dataset.traffic_state_grid_dataset.TrafficStateGridDataset</span></code></a>, <a class="reference internal" href="libcity.data.dataset.traffic_state_cpt_dataset.html#libcity.data.dataset.traffic_state_cpt_dataset.TrafficStateCPTDataset" title="libcity.data.dataset.traffic_state_cpt_dataset.TrafficStateCPTDataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">libcity.data.dataset.traffic_state_cpt_dataset.TrafficStateCPTDataset</span></code></a></p>
+<p>STResNet外部数据源代码只用了ext_y, 没有用到ext_x!</p>
+<dl class="py method">
+<dt id="libcity.data.dataset.dataset_subclass.STResNetDataset._get_external_array">
+<code class="sig-name descname">_get_external_array</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">timestamp_list</span></em>, <em class="sig-param"><span class="n">ext_data</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">previous_ext</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">ext_time</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/stresnet_dataset.html#STResNetDataset._get_external_array"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.STResNetDataset._get_external_array" title="Permalink to this definition">¶</a></dt>
+<dd><p>根据时间戳数组，获取对应时间的外部特征</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>timestamp_list</strong> – 时间戳序列</p></li>
+<li><p><strong>ext_data</strong> – 外部数据</p></li>
+<li><p><strong>previous_ext</strong> – 是否是用过去时间段的外部数据，因为对于预测的时间段Y，
+一般没有真实的外部数据，所以用前一个时刻的数据，<strong>多步预测则用提前多步的数据</strong></p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>External data shape is (len(timestamp_list), ext_dim)</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="libcity.data.dataset.dataset_subclass.STResNetDataset._load_ext_data">
+<code class="sig-name descname">_load_ext_data</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ts_x</span></em>, <em class="sig-param"><span class="n">ts_y</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/stresnet_dataset.html#STResNetDataset._load_ext_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.STResNetDataset._load_ext_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>加载对应时间的外部数据(.ext)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ts_x</strong> – 输入数据X对应的时间戳，shape: (num_samples, T_c+T_p+T_t)</p></li>
+<li><p><strong>ts_y</strong> – 输出数据Y对应的时间戳，shape:(num_samples, )</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>tuple contains:</dt><dd><p>ext_x(np.ndarray): 对应时间的外部数据, shape: (num_samples, T_c+T_p+T_t, ext_dim),
+ext_y(np.ndarray): 对应时间的外部数据, shape: (num_samples, ext_dim)</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="libcity.data.dataset.dataset_subclass.STResNetDataset.get_data_feature">
+<code class="sig-name descname">get_data_feature</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/stresnet_dataset.html#STResNetDataset.get_data_feature"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.STResNetDataset.get_data_feature" title="Permalink to this definition">¶</a></dt>
+<dd><p>返回数据集特征，scaler是归一化方法，adj_mx是邻接矩阵，num_nodes是网格的个数，
+len_row是网格的行数，len_column是网格的列数，
+feature_dim是输入数据的维度，output_dim是模型输出的维度</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>包含数据集的相关特征的字典</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="libcity.data.dataset.dataset_subclass.TGCLSTMDataset">
+<em class="property">class </em><code class="sig-prename descclassname">libcity.data.dataset.dataset_subclass.</code><code class="sig-name descname">TGCLSTMDataset</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">config</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/tgclstm_dataset.html#TGCLSTMDataset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.TGCLSTMDataset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="libcity.data.dataset.traffic_state_point_dataset.html#libcity.data.dataset.traffic_state_point_dataset.TrafficStatePointDataset" title="libcity.data.dataset.traffic_state_point_dataset.TrafficStatePointDataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">libcity.data.dataset.traffic_state_point_dataset.TrafficStatePointDataset</span></code></a></p>
+<dl class="py method">
+<dt id="libcity.data.dataset.dataset_subclass.TGCLSTMDataset._load_rel">
+<code class="sig-name descname">_load_rel</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/tgclstm_dataset.html#TGCLSTMDataset._load_rel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.TGCLSTMDataset._load_rel" title="Permalink to this definition">¶</a></dt>
+<dd><p>加载.rel文件，格式[rel_id, type, origin_id, destination_id, properties(若干列)]</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="libcity.data.dataset.dataset_subclass.TGCLSTMDataset.get_data_feature">
+<code class="sig-name descname">get_data_feature</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/tgclstm_dataset.html#TGCLSTMDataset.get_data_feature"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.TGCLSTMDataset.get_data_feature" title="Permalink to this definition">¶</a></dt>
+<dd><p>返回数据集特征，scaler是归一化方法，adj_mx是邻接矩阵，num_nodes是点的个数，
+feature_dim是输入数据的维度，output_dim是模型输出的维度, FFR是额外的输入矩阵</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>包含数据集的相关特征的字典</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="libcity.data.dataset.dataset_subclass.acfm_dataset.html" class="btn btn-neutral float-right" title="libcity.data.dataset.dataset_subclass.acfm_dataset" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="libcity.data.dataset.html" class="btn btn-neutral float-left" title="libcity.data.dataset" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, aptx1231
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

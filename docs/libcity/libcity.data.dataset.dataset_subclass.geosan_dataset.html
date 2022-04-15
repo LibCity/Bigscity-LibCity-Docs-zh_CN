@@ -1,0 +1,471 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>libcity.data.dataset.dataset_subclass.geosan_dataset &mdash; Bigscity-LibCity  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="libcity.data.dataset.dataset_subclass.gman_dataset" href="libcity.data.dataset.dataset_subclass.gman_dataset.html" />
+    <link rel="prev" title="libcity.data.dataset.dataset_subclass.dmvstnet_dataset" href="libcity.data.dataset.dataset_subclass.dmvstnet_dataset.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> Bigscity-LibCity
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p><span class="caption-text">起步</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/introduction.html">介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/install.html">安装LibCity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/quick_start.html">快速入门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/directory_structure.html">目录结构</a></li>
+</ul>
+<p><span class="caption-text">用户指导</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/config_settings.html">参数设置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/data.html">数据说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/model.html">复现模型列表</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/evaluator.html">评估模块简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/executor.html">执行模块简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/usage.html">使用示例</a></li>
+</ul>
+<p><span class="caption-text">开发者指导</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/code_style.html">代码风格</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_datasets.html">自定义Dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_models.html">自定义Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_executors.html">自定义Executor</a></li>
+</ul>
+<p><span class="caption-text">入门教程</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/install_quick_start.html">安装和快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/run_model.html">运行LibCity中已复现的模型</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/add_model.html">在LibCity中添加新模型</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/hyper_tune.html">使用自动化工具调参</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/data_visualization.html">原子文件可视化</a></li>
+</ul>
+<p><span class="caption-text">API文档</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="libcity.config.html">libcity.config</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="libcity.data.html">libcity.data</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="libcity.data.dataset.html">libcity.data.dataset</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="libcity.data.dataset.dataset_subclass.html">libcity.data.dataset.dataset_subclass</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="libcity.data.dataset.dataset_subclass.acfm_dataset.html">libcity.data.dataset.dataset_subclass.acfm_dataset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="libcity.data.dataset.dataset_subclass.astgcn_dataset.html">libcity.data.dataset.dataset_subclass.astgcn_dataset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="libcity.data.dataset.dataset_subclass.ccrnn_dataset.html">libcity.data.dataset.dataset_subclass.ccrnn_dataset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="libcity.data.dataset.dataset_subclass.chebconv_dataset.html">libcity.data.dataset.dataset_subclass.chebconv_dataset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="libcity.data.dataset.dataset_subclass.convgcn_dataset.html">libcity.data.dataset.dataset_subclass.convgcn_dataset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="libcity.data.dataset.dataset_subclass.crann_dataset.html">libcity.data.dataset.dataset_subclass.crann_dataset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="libcity.data.dataset.dataset_subclass.cstn_dataset.html">libcity.data.dataset.dataset_subclass.cstn_dataset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="libcity.data.dataset.dataset_subclass.dmvstnet_dataset.html">libcity.data.dataset.dataset_subclass.dmvstnet_dataset</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">libcity.data.dataset.dataset_subclass.geosan_dataset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="libcity.data.dataset.dataset_subclass.gman_dataset.html">libcity.data.dataset.dataset_subclass.gman_dataset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="libcity.data.dataset.dataset_subclass.gsnet_dataset.html">libcity.data.dataset.dataset_subclass.gsnet_dataset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="libcity.data.dataset.dataset_subclass.gts_dataset.html">libcity.data.dataset.dataset_subclass.gts_dataset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="libcity.data.dataset.dataset_subclass.hgcn_dataset.html">libcity.data.dataset.dataset_subclass.hgcn_dataset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="libcity.data.dataset.dataset_subclass.line_dataset.html">libcity.data.dataset.dataset_subclass.line_dataset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="libcity.data.dataset.dataset_subclass.multi_stgcnet_dataset.html">libcity.data.dataset.dataset_subclass.multi_stgcnet_dataset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="libcity.data.dataset.dataset_subclass.pbs_trajectory_dataset.html">libcity.data.dataset.dataset_subclass.pbs_trajectory_dataset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="libcity.data.dataset.dataset_subclass.reslstm_dataset.html">libcity.data.dataset.dataset_subclass.reslstm_dataset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="libcity.data.dataset.dataset_subclass.staggcn_dataset.html">libcity.data.dataset.dataset_subclass.staggcn_dataset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="libcity.data.dataset.dataset_subclass.stdn_dataset.html">libcity.data.dataset.dataset_subclass.stdn_dataset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="libcity.data.dataset.dataset_subclass.stg2seq_dataset.html">libcity.data.dataset.dataset_subclass.stg2seq_dataset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="libcity.data.dataset.dataset_subclass.stresnet_dataset.html">libcity.data.dataset.dataset_subclass.stresnet_dataset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="libcity.data.dataset.dataset_subclass.tgclstm_dataset.html">libcity.data.dataset.dataset_subclass.tgclstm_dataset</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="libcity.data.dataset.eta_encoder.html">libcity.data.dataset.eta_encoder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libcity.data.dataset.trajectory_encoder.html">libcity.data.dataset.trajectory_encoder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libcity.data.dataset.abstract_dataset.html">libcity.data.dataset.abstract_dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libcity.data.dataset.eta_dataset.html">libcity.data.dataset.eta_dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libcity.data.dataset.map_matching_dataset.html">libcity.data.dataset.map_matching_dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libcity.data.dataset.roadnetwork_dataset.html">libcity.data.dataset.roadnetwork_dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libcity.data.dataset.traffic_state_cpt_dataset.html">libcity.data.dataset.traffic_state_cpt_dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libcity.data.dataset.traffic_state_datatset.html">libcity.data.dataset.traffic_state_datatset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libcity.data.dataset.traffic_state_grid_dataset.html">libcity.data.dataset.traffic_state_grid_dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libcity.data.dataset.traffic_state_grid_od_dataset.html">libcity.data.dataset.traffic_state_grid_od_dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libcity.data.dataset.traffic_state_od_dataset.html">libcity.data.dataset.traffic_state_od_dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libcity.data.dataset.traffic_state_point_dataset.html">libcity.data.dataset.traffic_state_point_dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libcity.data.dataset.trajectory_dataset.html">libcity.data.dataset.trajectory_dataset</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.data.batch.html">libcity.data.batch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.data.list_dataset.html">libcity.data.list_dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.data.utils.html">libcity.data.utils</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="libcity.evaluator.html">libcity.evaluator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="libcity.executor.html">libcity.executor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="libcity.model.html">libcity.model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="libcity.pipeline.html">libcity.pipeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="libcity.utils.html">libcity.utils</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Bigscity-LibCity</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="libcity.data.html">libcity.data</a> &raquo;</li>
+        
+          <li><a href="libcity.data.dataset.html">libcity.data.dataset</a> &raquo;</li>
+        
+          <li><a href="libcity.data.dataset.dataset_subclass.html">libcity.data.dataset.dataset_subclass</a> &raquo;</li>
+        
+      <li>libcity.data.dataset.dataset_subclass.geosan_dataset</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/libcity/libcity.data.dataset.dataset_subclass.geosan_dataset.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <section id="module-libcity.data.dataset.dataset_subclass.geosan_dataset">
+<span id="libcity-data-dataset-dataset-subclass-geosan-dataset"></span><h1>libcity.data.dataset.dataset_subclass.geosan_dataset<a class="headerlink" href="#module-libcity.data.dataset.dataset_subclass.geosan_dataset" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt id="libcity.data.dataset.dataset_subclass.geosan_dataset.GeoSANDataset">
+<em class="property">class </em><code class="sig-prename descclassname">libcity.data.dataset.dataset_subclass.geosan_dataset.</code><code class="sig-name descname">GeoSANDataset</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">config</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/geosan_dataset.html#GeoSANDataset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.geosan_dataset.GeoSANDataset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="libcity.data.dataset.abstract_dataset.html#libcity.data.dataset.abstract_dataset.AbstractDataset" title="libcity.data.dataset.abstract_dataset.AbstractDataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">libcity.data.dataset.abstract_dataset.AbstractDataset</span></code></a></p>
+<dl class="py method">
+<dt id="libcity.data.dataset.dataset_subclass.geosan_dataset.GeoSANDataset.add_location">
+<code class="sig-name descname">add_location</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">loc</span></em>, <em class="sig-param"><span class="n">coordinate</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/geosan_dataset.html#GeoSANDataset.add_location"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.geosan_dataset.GeoSANDataset.add_location" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="libcity.data.dataset.dataset_subclass.geosan_dataset.GeoSANDataset.build_vocab">
+<code class="sig-name descname">build_vocab</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">min_freq</span><span class="o">=</span><span class="default_value">10</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/geosan_dataset.html#GeoSANDataset.build_vocab"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.geosan_dataset.GeoSANDataset.build_vocab" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="libcity.data.dataset.dataset_subclass.geosan_dataset.GeoSANDataset.collect_fn_quadkey">
+<em class="property">static </em><code class="sig-name descname">collect_fn_quadkey</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">batch</span></em>, <em class="sig-param"><span class="n">data_source</span></em>, <em class="sig-param"><span class="n">sampler</span></em>, <em class="sig-param"><span class="n">region_processer</span></em>, <em class="sig-param"><span class="n">loc2quadkey</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">k</span><span class="o">=</span><span class="default_value">5</span></em>, <em class="sig-param"><span class="n">with_trg_quadkey</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/geosan_dataset.html#GeoSANDataset.collect_fn_quadkey"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.geosan_dataset.GeoSANDataset.collect_fn_quadkey" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="libcity.data.dataset.dataset_subclass.geosan_dataset.GeoSANDataset.get_data">
+<code class="sig-name descname">get_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/geosan_dataset.html#GeoSANDataset.get_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.geosan_dataset.GeoSANDataset.get_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>返回数据的DataLoader，包括训练数据、测试数据(事实上不提供)、验证数据</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><dl>
+<dt>tuple contains:</dt><dd><p>train_dataloader: Dataloader composed of Batch (class)</p>
+<p>eval_dataloader: None(no valid step)</p>
+<p>test_dataloader: Dataloader composed of Batch (class)</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="libcity.data.dataset.dataset_subclass.geosan_dataset.GeoSANDataset.get_data_feature">
+<code class="sig-name descname">get_data_feature</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/geosan_dataset.html#GeoSANDataset.get_data_feature"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.geosan_dataset.GeoSANDataset.get_data_feature" title="Permalink to this definition">¶</a></dt>
+<dd><p>返回一个 dict，包含数据集的相关特征</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>包含数据集的相关特征的字典</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="libcity.data.dataset.dataset_subclass.geosan_dataset.GeoSANDataset.get_visited_locs">
+<code class="sig-name descname">get_visited_locs</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/geosan_dataset.html#GeoSANDataset.get_visited_locs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.geosan_dataset.GeoSANDataset.get_visited_locs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="libcity.data.dataset.dataset_subclass.geosan_dataset.GeoSANDataset.processing">
+<code class="sig-name descname">processing</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">min_freq</span><span class="o">=</span><span class="default_value">20</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/geosan_dataset.html#GeoSANDataset.processing"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.geosan_dataset.GeoSANDataset.processing" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="libcity.data.dataset.dataset_subclass.geosan_dataset.GeoSANDataset.region_stats">
+<code class="sig-name descname">region_stats</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/geosan_dataset.html#GeoSANDataset.region_stats"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.geosan_dataset.GeoSANDataset.region_stats" title="Permalink to this definition">¶</a></dt>
+<dd><p>统计并打印数据集的一些基本信息</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="libcity.data.dataset.dataset_subclass.geosan_dataset.GeoSANDataset.split">
+<code class="sig-name descname">split</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">max_len</span><span class="o">=</span><span class="default_value">100</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/geosan_dataset.html#GeoSANDataset.split"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.geosan_dataset.GeoSANDataset.split" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="libcity.data.dataset.dataset_subclass.geosan_dataset.KNNSampler">
+<em class="property">class </em><code class="sig-prename descclassname">libcity.data.dataset.dataset_subclass.geosan_dataset.</code><code class="sig-name descname">KNNSampler</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">query_sys</span></em>, <em class="sig-param"><span class="n">user_visited_locs</span></em>, <em class="sig-param"><span class="n">num_nearest</span><span class="o">=</span><span class="default_value">100</span></em>, <em class="sig-param"><span class="n">exclude_visited</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/geosan_dataset.html#KNNSampler"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.geosan_dataset.KNNSampler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<dl class="py method">
+<dt id="libcity.data.dataset.dataset_subclass.geosan_dataset.KNNSampler.forward">
+<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">trg_seq</span></em>, <em class="sig-param"><span class="n">k</span></em>, <em class="sig-param"><span class="n">user</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/geosan_dataset.html#KNNSampler.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.geosan_dataset.KNNSampler.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>基于query_sys从候选集中随机采样k个作为负样例</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="libcity.data.dataset.dataset_subclass.geosan_dataset.KNNSampler.training">
+<code class="sig-name descname">training</code><em class="property">: bool</em><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.geosan_dataset.KNNSampler.training" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="libcity.data.dataset.dataset_subclass.geosan_dataset.LadderSampler">
+<em class="property">class </em><code class="sig-prename descclassname">libcity.data.dataset.dataset_subclass.geosan_dataset.</code><code class="sig-name descname">LadderSampler</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data_source</span></em>, <em class="sig-param"><span class="n">batch_sz</span></em>, <em class="sig-param"><span class="n">fix_order</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/geosan_dataset.html#LadderSampler"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.geosan_dataset.LadderSampler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.utils.data.sampler.Sampler</span></code></p>
+</dd></dl>
+
+<dl class="py class">
+<dt id="libcity.data.dataset.dataset_subclass.geosan_dataset.LocQuerySystem">
+<em class="property">class </em><code class="sig-prename descclassname">libcity.data.dataset.dataset_subclass.geosan_dataset.</code><code class="sig-name descname">LocQuerySystem</code><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/geosan_dataset.html#LocQuerySystem"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.geosan_dataset.LocQuerySystem" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt id="libcity.data.dataset.dataset_subclass.geosan_dataset.LocQuerySystem.build_tree">
+<code class="sig-name descname">build_tree</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dataset</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/geosan_dataset.html#LocQuerySystem.build_tree"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.geosan_dataset.LocQuerySystem.build_tree" title="Permalink to this definition">¶</a></dt>
+<dd><p>构建KNN(基于BallTree实现)，用于sampler中的采样操作</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="libcity.data.dataset.dataset_subclass.geosan_dataset.LocQuerySystem.get_knn">
+<code class="sig-name descname">get_knn</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">trg_loc</span></em>, <em class="sig-param"><span class="n">k</span><span class="o">=</span><span class="default_value">100</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/geosan_dataset.html#LocQuerySystem.get_knn"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.geosan_dataset.LocQuerySystem.get_knn" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="libcity.data.dataset.dataset_subclass.geosan_dataset.LocQuerySystem.get_radius">
+<code class="sig-name descname">get_radius</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">trg_loc</span></em>, <em class="sig-param"><span class="n">r</span><span class="o">=</span><span class="default_value">10.0</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/geosan_dataset.html#LocQuerySystem.get_radius"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.geosan_dataset.LocQuerySystem.get_radius" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="libcity.data.dataset.dataset_subclass.geosan_dataset.LocQuerySystem.prefetch_knn">
+<code class="sig-name descname">prefetch_knn</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">k</span><span class="o">=</span><span class="default_value">100</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/geosan_dataset.html#LocQuerySystem.prefetch_knn"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.geosan_dataset.LocQuerySystem.prefetch_knn" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="libcity.data.dataset.dataset_subclass.geosan_dataset.LocQuerySystem.prefetch_radius">
+<code class="sig-name descname">prefetch_radius</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">radius</span><span class="o">=</span><span class="default_value">10.0</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/geosan_dataset.html#LocQuerySystem.prefetch_radius"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.geosan_dataset.LocQuerySystem.prefetch_radius" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="libcity.data.dataset.dataset_subclass.geosan_dataset.LocQuerySystem.radius_stats">
+<code class="sig-name descname">radius_stats</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">radius</span><span class="o">=</span><span class="default_value">10</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/geosan_dataset.html#LocQuerySystem.radius_stats"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.geosan_dataset.LocQuerySystem.radius_stats" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt id="libcity.data.dataset.dataset_subclass.geosan_dataset.clip">
+<code class="sig-prename descclassname">libcity.data.dataset.dataset_subclass.geosan_dataset.</code><code class="sig-name descname">clip</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">n</span></em>, <em class="sig-param"><span class="n">min_value</span></em>, <em class="sig-param"><span class="n">max_value</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/geosan_dataset.html#clip"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.geosan_dataset.clip" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="libcity.data.dataset.dataset_subclass.geosan_dataset.latlon2pxy">
+<code class="sig-prename descclassname">libcity.data.dataset.dataset_subclass.geosan_dataset.</code><code class="sig-name descname">latlon2pxy</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">latitude</span></em>, <em class="sig-param"><span class="n">longitude</span></em>, <em class="sig-param"><span class="n">level_of_detail</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/geosan_dataset.html#latlon2pxy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.geosan_dataset.latlon2pxy" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="libcity.data.dataset.dataset_subclass.geosan_dataset.latlon2quadkey">
+<code class="sig-prename descclassname">libcity.data.dataset.dataset_subclass.geosan_dataset.</code><code class="sig-name descname">latlon2quadkey</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">lat</span></em>, <em class="sig-param"><span class="n">lon</span></em>, <em class="sig-param"><span class="n">level</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/geosan_dataset.html#latlon2quadkey"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.geosan_dataset.latlon2quadkey" title="Permalink to this definition">¶</a></dt>
+<dd><p>经纬度 to quadkey 转换函数</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="libcity.data.dataset.dataset_subclass.geosan_dataset.map_size">
+<code class="sig-prename descclassname">libcity.data.dataset.dataset_subclass.geosan_dataset.</code><code class="sig-name descname">map_size</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">level_of_detail</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/geosan_dataset.html#map_size"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.geosan_dataset.map_size" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="libcity.data.dataset.dataset_subclass.geosan_dataset.pxy2txy">
+<code class="sig-prename descclassname">libcity.data.dataset.dataset_subclass.geosan_dataset.</code><code class="sig-name descname">pxy2txy</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">pixel_x</span></em>, <em class="sig-param"><span class="n">pixel_y</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/geosan_dataset.html#pxy2txy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.geosan_dataset.pxy2txy" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="libcity.data.dataset.dataset_subclass.geosan_dataset.txy2quadkey">
+<code class="sig-prename descclassname">libcity.data.dataset.dataset_subclass.geosan_dataset.</code><code class="sig-name descname">txy2quadkey</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tile_x</span></em>, <em class="sig-param"><span class="n">tile_y</span></em>, <em class="sig-param"><span class="n">level_of_detail</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/data/dataset/dataset_subclass/geosan_dataset.html#txy2quadkey"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.data.dataset.dataset_subclass.geosan_dataset.txy2quadkey" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</section>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="libcity.data.dataset.dataset_subclass.gman_dataset.html" class="btn btn-neutral float-right" title="libcity.data.dataset.dataset_subclass.gman_dataset" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="libcity.data.dataset.dataset_subclass.dmvstnet_dataset.html" class="btn btn-neutral float-left" title="libcity.data.dataset.dataset_subclass.dmvstnet_dataset" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, aptx1231
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

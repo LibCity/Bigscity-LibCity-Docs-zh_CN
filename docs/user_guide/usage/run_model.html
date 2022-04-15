@@ -4,7 +4,8 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>使用 run_model &mdash; Bigscity-LibCity  documentation</title>
@@ -83,14 +84,14 @@
               
             
             
-              <p class="caption"><span class="caption-text">起步</span></p>
+              <p><span class="caption-text">起步</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../get_started/introduction.html">介绍</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../get_started/install.html">安装LibCity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../get_started/quick_start.html">快速入门</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../get_started/directory_structure.html">目录结构</a></li>
 </ul>
-<p class="caption"><span class="caption-text">用户指导</span></p>
+<p><span class="caption-text">用户指导</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../config_settings.html">参数设置</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data.html">数据说明</a></li>
@@ -105,21 +106,22 @@
 </ul>
 </li>
 </ul>
-<p class="caption"><span class="caption-text">开发者指导</span></p>
+<p><span class="caption-text">开发者指导</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../developer_guide/code_style.html">代码风格</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../developer_guide/implemented_datasets.html">自定义Dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../developer_guide/implemented_models.html">自定义Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../developer_guide/implemented_executors.html">自定义Executor</a></li>
 </ul>
-<p class="caption"><span class="caption-text">入门教程</span></p>
+<p><span class="caption-text">入门教程</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorial/install_quick_start.html">安装和快速上手</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorial/run_model.html">运行LibCity中已复现的模型</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorial/add_model.html">在LibCity中添加新模型</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorial/hyper_tune.html">使用自动化工具调参</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial/data_visualization.html">原子文件可视化</a></li>
 </ul>
-<p class="caption"><span class="caption-text">API文档</span></p>
+<p><span class="caption-text">API文档</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../libcity/libcity.config.html">libcity.config</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../libcity/libcity.data.html">libcity.data</a></li>
@@ -195,7 +197,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="run-model">
+  <section id="run-model">
 <h1>使用 run_model<a class="headerlink" href="#run-model" title="Permalink to this headline">¶</a></h1>
 <p>框架的根目录中提供了用于训练和评估单个模型的脚本<code class="docutils literal notranslate"><span class="pre">run_model.py</span></code> ，并提供了一系列命令行参数，允许用户调整运行参数配置。</p>
 <p>运行<code class="docutils literal notranslate"><span class="pre">run_model.py</span></code>时，必须指定以下三个参数，即<code class="docutils literal notranslate"><span class="pre">task</span></code>、<code class="docutils literal notranslate"><span class="pre">dataset</span></code>和<code class="docutils literal notranslate"><span class="pre">model</span></code>。也就是:</p>
@@ -205,7 +207,7 @@
 <p>此外，该脚本支持输入以下命令行参数来调整流水线的参数设置。</p>
 <p>支持参数:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">task</span></code>：要执行的任务的名称，包括<code class="docutils literal notranslate"><span class="pre">traffic_state_pred</span></code> 和<code class="docutils literal notranslate"><span class="pre">traj_loc_pred</span></code>。默认为 <code class="docutils literal notranslate"><span class="pre">traffic_state_pred</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">task</span></code>：要执行的任务的名称，包括<code class="docutils literal notranslate"><span class="pre">traffic_state_pred</span></code>，<code class="docutils literal notranslate"><span class="pre">traj_loc_pred</span></code>，<code class="docutils literal notranslate"><span class="pre">eta</span></code>，<code class="docutils literal notranslate"><span class="pre">map_matching</span></code>，<code class="docutils literal notranslate"><span class="pre">road_representation</span></code>。默认为 <code class="docutils literal notranslate"><span class="pre">traffic_state_pred</span></code>。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">model</span></code>：要执行的模型的名称。默认为 <code class="docutils literal notranslate"><span class="pre">GRU</span></code>。(<a class="reference internal" href="../model.html"><span class="doc">支持的模型</span></a>)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">dataset</span></code>：要执行的数据集。默认为 <code class="docutils literal notranslate"><span class="pre">METR_LA</span></code>。（<a class="reference internal" href="../data/raw_data.html"><span class="doc">支持的数据集</span></a>）</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">config_file</span></code>：用户定义配置文件的名称。默认为 <code class="docutils literal notranslate"><span class="pre">None</span></code>。(<a class="reference internal" href="../config_settings.html"><span class="doc">查看更多</span></a>)</p></li>
@@ -219,7 +221,7 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">gpu</span></code>：是否使用 GPU. 默认为 <code class="docutils literal notranslate"><span class="pre">True</span></code>。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">gpu_id</span></code>：所使用GPU的id。默认为<code class="docutils literal notranslate"><span class="pre">0</span></code>。</p></li>
 </ul>
-</div>
+</section>
 
 
            </div>

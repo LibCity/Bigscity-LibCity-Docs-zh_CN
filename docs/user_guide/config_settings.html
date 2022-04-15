@@ -4,7 +4,8 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>参数设置 &mdash; Bigscity-LibCity  documentation</title>
@@ -83,14 +84,14 @@
               
             
             
-              <p class="caption"><span class="caption-text">起步</span></p>
+              <p><span class="caption-text">起步</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../get_started/introduction.html">介绍</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../get_started/install.html">安装LibCity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../get_started/quick_start.html">快速入门</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../get_started/directory_structure.html">目录结构</a></li>
 </ul>
-<p class="caption"><span class="caption-text">用户指导</span></p>
+<p><span class="caption-text">用户指导</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">参数设置</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#id2">参数优先级</a></li>
@@ -110,21 +111,22 @@
 <li class="toctree-l1"><a class="reference internal" href="executor.html">执行模块简介</a></li>
 <li class="toctree-l1"><a class="reference internal" href="usage.html">使用示例</a></li>
 </ul>
-<p class="caption"><span class="caption-text">开发者指导</span></p>
+<p><span class="caption-text">开发者指导</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../developer_guide/code_style.html">代码风格</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_datasets.html">自定义Dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_models.html">自定义Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_executors.html">自定义Executor</a></li>
 </ul>
-<p class="caption"><span class="caption-text">入门教程</span></p>
+<p><span class="caption-text">入门教程</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../tutorial/install_quick_start.html">安装和快速上手</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorial/run_model.html">运行LibCity中已复现的模型</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorial/add_model.html">在LibCity中添加新模型</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorial/hyper_tune.html">使用自动化工具调参</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/data_visualization.html">原子文件可视化</a></li>
 </ul>
-<p class="caption"><span class="caption-text">API文档</span></p>
+<p><span class="caption-text">API文档</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../libcity/libcity.config.html">libcity.config</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../libcity/libcity.data.html">libcity.data</a></li>
@@ -198,16 +200,16 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="id1">
+  <section id="id1">
 <h1>参数设置<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <p>实验参数配置由三方面决定：命令行传入的参数、用户定义的配置文件和框架默认的配置文件。由此，用户可以灵活地通过前两种方式调整实验的参数配置。</p>
-<div class="section" id="id2">
+<section id="id2">
 <h2>参数优先级<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>命令行参数&gt;用户定义配置文件&gt;模型所在模块默认参数&gt;其它模块默认参数</p>
 <p><strong>高优先级的参数会覆盖低优先级的同名参数。</strong></p>
 <p>考虑到不同模型的最优训练参数并不一致，执行器默认训练参数也只能是固定值，我们做了将模型的最优训练参数存放在其默认配置文件、模型所在模块默认参数的优先级高于其它模块这两个决定，来解决该问题。</p>
-</div>
-<div class="section" id="id3">
+</section>
+<section id="id3">
 <h2>命令行参数<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <p>当用户在项目根目录运行脚本文件时，有些参数可以在命令行指定并修改。例如：</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>python run_model.py --task traj_loc_pred --model DeepMove --dataset foursquare_tky --gpu <span class="nb">false</span> --batch_size <span class="m">15</span>
@@ -242,8 +244,8 @@ optional arguments:
   --gpu_id GPU_ID
 </pre></div>
 </div>
-</div>
-<div class="section" id="id4">
+</section>
+<section id="id4">
 <h2>用户定义配置文件<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <p>大多数命令行接受的参数是实验中经常传入的参数，比如<code class="docutils literal notranslate"><span class="pre">batch_size</span></code>。进一步来说，为了让用户能自如地修改各模块默认参数，本框架允许用户在命令行中传入用户定义配置文件的文件名，然后从该文件中读入参数配置。该文件应满足以下格式要求：</p>
 <ol class="simple">
@@ -259,10 +261,10 @@ optional arguments:
 </pre></div>
 </div>
 <p>用户可通过自定义配置文件修改任何模块的默认配置。对修改具体的参数名而言，可参见每个模块的用户手册以获取更多信息。</p>
-</div>
-<div class="section" id="id5">
+</section>
+<section id="id5">
 <h2>默认配置<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id6">
+<section id="id6">
 <h3>模块默认配置<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 <p>数据模块、执行器模块、评估模块和模型所在模块的配置分别位于以下目录中：</p>
 <ul class="simple">
@@ -272,12 +274,12 @@ optional arguments:
 <li><p><code class="docutils literal notranslate"><span class="pre">/libcity/config/model</span></code></p></li>
 </ul>
 <p>各目录中文件命名规则均为<code class="docutils literal notranslate"><span class="pre">类名.json</span></code>。例如，对交通状态预测的执行模块而言，默认参数文件名为<code class="docutils literal notranslate"><span class="pre">TrafficStateExecutor.json</span></code>。</p>
-</div>
-<div class="section" id="id7">
+</section>
+<section id="id7">
 <h3>数据集配置文件<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
 <p>我们在数据集配置文件中存储了一些辅助信息，其存储路径为<code class="docutils literal notranslate"><span class="pre">/raw_data/数据集名字/config.json</span></code>。参见<a class="reference internal" href="data/atomic_files.html"><span class="doc">原子文件</span></a>一节获取更多信息。</p>
-</div>
-<div class="section" id="id8">
+</section>
+<section id="id8">
 <h3>任务配置文件<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
 <p>任务配置文件用来记录各任务支持的模型与数据集列表，以及其下各模型默认的数据模块、执行器模块和评估模块类名，它们的存储路径为<code class="docutils literal notranslate"><span class="pre">/libcity/config/task_config.json</span></code>。</p>
 <p>此处为任务配置文件一例：</p>
@@ -295,9 +297,9 @@ optional arguments:
 </div>
 <p><strong>增加新模块时，需要修改<code class="docutils literal notranslate"><span class="pre">libcity/config/task_config.json</span></code>。</strong></p>
 <p>由以上配置文件，<code class="docutils literal notranslate"><span class="pre">DCRNN</span></code>使用的数据模块类为<code class="docutils literal notranslate"><span class="pre">TrafficStatePointDataset</span></code>，执行器模块为<code class="docutils literal notranslate"><span class="pre">DCRNNExecutor</span></code>，评估模块类为<code class="docutils literal notranslate"><span class="pre">TrafficStateEvaluator</span></code>。</p>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
            </div>

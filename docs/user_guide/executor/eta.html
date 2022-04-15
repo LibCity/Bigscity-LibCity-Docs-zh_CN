@@ -1,0 +1,322 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>到达时间估计调度模块 &mdash; Bigscity-LibCity  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="使用示例" href="../usage.html" />
+    <link rel="prev" title="路网匹配调度模块" href="map_matching.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> Bigscity-LibCity
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p><span class="caption-text">起步</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../get_started/introduction.html">介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../get_started/install.html">安装LibCity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../get_started/quick_start.html">快速入门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../get_started/directory_structure.html">目录结构</a></li>
+</ul>
+<p><span class="caption-text">用户指导</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../config_settings.html">参数设置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data.html">数据说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model.html">复现模型列表</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../evaluator.html">评估模块简介</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../executor.html">执行模块简介</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="traffic_state_pred.html">交通状态预测调度模块</a></li>
+<li class="toctree-l2"><a class="reference internal" href="traj_loc_pred.html">交通轨迹预测调度模块</a></li>
+<li class="toctree-l2"><a class="reference internal" href="map_matching.html">路网匹配调度模块</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">到达时间估计调度模块</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">调度模块参数</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">使用示例</a></li>
+</ul>
+<p><span class="caption-text">开发者指导</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../developer_guide/code_style.html">代码风格</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer_guide/implemented_datasets.html">自定义Dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer_guide/implemented_models.html">自定义Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer_guide/implemented_executors.html">自定义Executor</a></li>
+</ul>
+<p><span class="caption-text">入门教程</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial/install_quick_start.html">安装和快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial/run_model.html">运行LibCity中已复现的模型</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial/add_model.html">在LibCity中添加新模型</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial/hyper_tune.html">使用自动化工具调参</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial/data_visualization.html">原子文件可视化</a></li>
+</ul>
+<p><span class="caption-text">API文档</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../libcity/libcity.config.html">libcity.config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../libcity/libcity.data.html">libcity.data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../libcity/libcity.evaluator.html">libcity.evaluator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../libcity/libcity.executor.html">libcity.executor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../libcity/libcity.model.html">libcity.model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../libcity/libcity.pipeline.html">libcity.pipeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../libcity/libcity.utils.html">libcity.utils</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Bigscity-LibCity</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../executor.html">执行模块简介</a> &raquo;</li>
+        
+      <li>到达时间估计调度模块</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/user_guide/executor/eta.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <section id="id1">
+<h1>到达时间估计调度模块<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p>本调度器类主要负责完成所有到达时间估计模型的训练和评估过程。</p>
+<section id="id2">
+<h2>调度模块参数<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>下面主要介绍此调度器类所能够接收的参数：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">max_epoch</span></code>：训练总轮数，初值由模型设定。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">epoch</span></code>：起始训练的轮数，如果大于0，会先从<code class="docutils literal notranslate"><span class="pre">./libcity/cache/model_cache</span></code>加载该epoch的模型（缓存文件名为[模型名_数据集名_epoch+轮数.tar]），然后继续完成接下来的训练或评估。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">learner</span></code>：优化器<a class="reference external" href="https://pytorch.org/docs/stable/optim.html#module-torch.optim">optimizer</a>的类别（字符串），目前支持<code class="docutils literal notranslate"><span class="pre">adam</span></code>、<code class="docutils literal notranslate"><span class="pre">sgd</span></code>、<code class="docutils literal notranslate"><span class="pre">adagrad</span></code>、<code class="docutils literal notranslate"><span class="pre">rmsprop</span></code>、<code class="docutils literal notranslate"><span class="pre">sparse_adam</span></code>，<strong>默认’adam’</strong>。</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">learning_rate</span></code>：optimizer的参数，学习率，<strong>默认0.01</strong>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">weight_decay</span></code>：optimizer的参数，<strong>默认0.0</strong>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lr_epsilon</span></code>：optimizer的参数，<strong>默认1e-8</strong>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lr_beta1</span></code>： optimizer的参数，<strong>默认0.9</strong>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lr_beta2</span></code>： optimizer的参数，<strong>默认0.999</strong>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lr_alpha</span></code>： optimizer的参数，<strong>默认0.99</strong>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lr_momentum</span></code>： optimizer的参数，<strong>默认0</strong>。</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lr_decay</span></code>：是否是用<a class="reference external" href="https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate">lr_scheduler</a>，<strong>默认False</strong>。</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">lr_scheduler</span></code>：<a class="reference external" href="https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate">lr_scheduler</a>的类别，目前支持<code class="docutils literal notranslate"><span class="pre">MultiStepLR</span></code>、<code class="docutils literal notranslate"><span class="pre">StepLR</span></code>、<code class="docutils literal notranslate"><span class="pre">ExponentialLR</span></code>、<code class="docutils literal notranslate"><span class="pre">CosineAnnealingLR</span></code>、<code class="docutils literal notranslate"><span class="pre">LambdaLR</span></code>以及<code class="docutils literal notranslate"><span class="pre">ReduceLROnPlateau</span></code>。</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">lr_decay_ratio</span></code>：<code class="docutils literal notranslate"><span class="pre">MultiStepLR</span></code>、<code class="docutils literal notranslate"><span class="pre">StepLR</span></code>、<code class="docutils literal notranslate"><span class="pre">ExponentialLR</span></code>、<code class="docutils literal notranslate"><span class="pre">ReduceLROnPlateau</span></code>的参数。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">steps</span></code>：<code class="docutils literal notranslate"><span class="pre">MultiStepLR</span></code>的参数。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">step_size</span></code>：<code class="docutils literal notranslate"><span class="pre">StepLR</span></code>的参数。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lr_lambda</span></code>：<code class="docutils literal notranslate"><span class="pre">LambdaLR</span></code>的参数【<strong>此参数需要指定为一个函数，目前基于json的配置文件不支持</strong>】。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lr_T_max</span></code>：<code class="docutils literal notranslate"><span class="pre">CosineAnnealingLR</span></code>的参数。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lr_eta_min</span></code>：<code class="docutils literal notranslate"><span class="pre">CosineAnnealingLR</span></code>的参数。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lr_patience</span></code>： <code class="docutils literal notranslate"><span class="pre">ReduceLROnPlateau</span></code>的参数。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lr_threshold</span></code>：<code class="docutils literal notranslate"><span class="pre">ReduceLROnPlateau</span></code>的参数。</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">clip_grad_norm</span></code>：是否是用<a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.nn.utils.clip_grad_norm_.html">clip_grad_norm_</a>，<strong>默认False</strong>（<code class="docutils literal notranslate"><span class="pre">torch.nn.utils.clip_grad_norm_</span></code>）。</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">max_grad_norm</span></code>：<a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.nn.utils.clip_grad_norm_.html">clip_grad_norm_</a>的参数。</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">use_early_stop</span></code>：是否是用早停机制，<strong>默认False。</strong></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">patience</span></code>：早停机制的轮数，每当验证集误差&gt;最小验证误差，则累计1，反之则清0从头累计，累计到<code class="docutils literal notranslate"><span class="pre">patience</span></code>次就结束训练。</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">train_loss</span></code>： 训练时使用的损失函数（字符串）。目前支持<code class="docutils literal notranslate"><span class="pre">mae</span></code>、<code class="docutils literal notranslate"><span class="pre">mape</span></code>、<code class="docutils literal notranslate"><span class="pre">mse</span></code>、<code class="docutils literal notranslate"><span class="pre">rmse</span></code>、<code class="docutils literal notranslate"><span class="pre">masked_mae</span></code>、<code class="docutils literal notranslate"><span class="pre">masked_mape</span></code>、<code class="docutils literal notranslate"><span class="pre">masked_mse</span></code>、<code class="docutils literal notranslate"><span class="pre">masked_rmse</span></code>、<code class="docutils literal notranslate"><span class="pre">r2</span></code>、<code class="docutils literal notranslate"><span class="pre">evar</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">log_level</span></code>：log的级别设置，默认为<code class="docutils literal notranslate"><span class="pre">INFO</span></code>，超过<code class="docutils literal notranslate"><span class="pre">INFO</span></code>级别的log都将被输出，具体参考第三方库logging。</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">log_every</span></code>：训练过程中用log记录过程的频次。</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">saved_model</span></code>：是否保存训练过程中的model，<strong>默认True。</strong></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">gpu</span></code>：是否是用gpu训练，<strong>默认True。</strong></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">gpu_id</span></code>：指定使用的gpu的id，<strong>默认0</strong>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">device*</span></code>：不能从外部指定，由参数<code class="docutils literal notranslate"><span class="pre">gpu</span></code>和<code class="docutils literal notranslate"><span class="pre">gpu_id</span></code>共同确定，在模型的代码中，使用<code class="docutils literal notranslate"><span class="pre">config['device']</span></code>即可取得，不需要使用参数<code class="docutils literal notranslate"><span class="pre">gpu</span></code>和<code class="docutils literal notranslate"><span class="pre">gpu_id</span></code>。</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../usage.html" class="btn btn-neutral float-right" title="使用示例" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="map_matching.html" class="btn btn-neutral float-left" title="路网匹配调度模块" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, aptx1231
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

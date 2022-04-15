@@ -1,0 +1,655 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>libcity.model.traffic_accident_prediction.GSNet &mdash; Bigscity-LibCity  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home" alt="Documentation Home"> Bigscity-LibCity
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p><span class="caption-text">起步</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../get_started/introduction.html">介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../get_started/install.html">安装LibCity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../get_started/quick_start.html">快速入门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../get_started/directory_structure.html">目录结构</a></li>
+</ul>
+<p><span class="caption-text">用户指导</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user_guide/config_settings.html">参数设置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user_guide/data.html">数据说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user_guide/model.html">复现模型列表</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user_guide/evaluator.html">评估模块简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user_guide/executor.html">执行模块简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user_guide/usage.html">使用示例</a></li>
+</ul>
+<p><span class="caption-text">开发者指导</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../developer_guide/code_style.html">代码风格</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../developer_guide/implemented_datasets.html">自定义Dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../developer_guide/implemented_models.html">自定义Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../developer_guide/implemented_executors.html">自定义Executor</a></li>
+</ul>
+<p><span class="caption-text">入门教程</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorial/install_quick_start.html">安装和快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorial/run_model.html">运行LibCity中已复现的模型</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorial/add_model.html">在LibCity中添加新模型</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorial/hyper_tune.html">使用自动化工具调参</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorial/data_visualization.html">原子文件可视化</a></li>
+</ul>
+<p><span class="caption-text">API文档</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../libcity/libcity.config.html">libcity.config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../libcity/libcity.data.html">libcity.data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../libcity/libcity.evaluator.html">libcity.evaluator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../libcity/libcity.executor.html">libcity.executor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../libcity/libcity.model.html">libcity.model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../libcity/libcity.pipeline.html">libcity.pipeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../libcity/libcity.utils.html">libcity.utils</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">Bigscity-LibCity</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../../index.html">Module code</a> &raquo;</li>
+        
+      <li>libcity.model.traffic_accident_prediction.GSNet</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for libcity.model.traffic_accident_prediction.GSNet</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
+<span class="kn">import</span> <span class="nn">torch.nn.functional</span> <span class="k">as</span> <span class="nn">F</span>
+
+
+<span class="kn">from</span> <span class="nn">libcity.model.abstract_traffic_state_model</span> <span class="kn">import</span> <span class="n">AbstractTrafficStateModel</span>
+
+
+<div class="viewcode-block" id="GCNLayer"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_accident_prediction.GSNet.html#libcity.model.traffic_accident_prediction.GCNLayer">[docs]</a><span class="k">class</span> <span class="nc">GCNLayer</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_of_features</span><span class="p">,</span> <span class="n">num_of_filter</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        One layer of GCN</span>
+
+<span class="sd">        Arguments:</span>
+<span class="sd">            num_of_features {int} -- the dimension of node feature</span>
+<span class="sd">            num_of_filter {int} -- the number of graph filters</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">GCNLayer</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">gcn_layer</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">in_features</span><span class="o">=</span><span class="n">num_of_features</span><span class="p">,</span>
+                      <span class="n">out_features</span><span class="o">=</span><span class="n">num_of_filter</span><span class="p">),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">()</span>
+        <span class="p">)</span>
+
+<div class="viewcode-block" id="GCNLayer.forward"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_accident_prediction.GSNet.html#libcity.model.traffic_accident_prediction.GCNLayer.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_</span><span class="p">,</span> <span class="n">adj</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Arguments:</span>
+<span class="sd">            input {Tensor} -- signal matrix,shape (batch_size,N,T*D)</span>
+<span class="sd">            adj {np.array} -- adjacent matrix，shape (N,N)</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            {Tensor} -- output,shape (batch_size,N,num_of_filter)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">batch_size</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">input_</span><span class="o">.</span><span class="n">shape</span>
+        <span class="n">adj</span> <span class="o">=</span> <span class="n">adj</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">input_</span><span class="o">.</span><span class="n">device</span><span class="p">)</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">input_</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">bmm</span><span class="p">(</span><span class="n">adj</span><span class="p">,</span> <span class="n">input_</span><span class="p">)</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">gcn_layer</span><span class="p">(</span><span class="n">input_</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">output</span></div></div>
+
+
+<div class="viewcode-block" id="STGeoModule"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_accident_prediction.GSNet.html#libcity.model.traffic_accident_prediction.STGeoModule">[docs]</a><span class="k">class</span> <span class="nc">STGeoModule</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">grid_in_channel</span><span class="p">,</span> <span class="n">num_of_gru_layers</span><span class="p">,</span>
+                 <span class="n">input_window</span><span class="p">,</span>
+                 <span class="n">gru_hidden_size</span><span class="p">,</span> <span class="n">num_of_target_time_feature</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Arguments:</span>
+<span class="sd">            grid_in_channel {int} -- the number of grid data feature (batch_size,T,D,W,H),grid_in_channel=D</span>
+<span class="sd">            num_of_gru_layers {int} -- the number of GRU layers</span>
+<span class="sd">            input_window {int} -- the time length of input</span>
+<span class="sd">            gru_hidden_size {int} -- the hidden size of GRU</span>
+<span class="sd">            num_of_target_time_feature {int} -- the number of target time feature, 24(hour)+7(week)+1(holiday)=32</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">STGeoModule</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">grid_conv</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="n">in_channels</span><span class="o">=</span><span class="n">grid_in_channel</span><span class="p">,</span> <span class="n">out_channels</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="n">in_channels</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">out_channels</span><span class="o">=</span><span class="n">grid_in_channel</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(),</span>
+        <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">grid_gru</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">GRU</span><span class="p">(</span><span class="n">grid_in_channel</span><span class="p">,</span> <span class="n">gru_hidden_size</span><span class="p">,</span> <span class="n">num_of_gru_layers</span><span class="p">,</span> <span class="n">batch_first</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">grid_att_fc1</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">in_features</span><span class="o">=</span><span class="n">gru_hidden_size</span><span class="p">,</span> <span class="n">out_features</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">grid_att_fc2</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">in_features</span><span class="o">=</span><span class="n">num_of_target_time_feature</span><span class="p">,</span> <span class="n">out_features</span><span class="o">=</span><span class="n">input_window</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">grid_att_bias</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">grid_att_softmax</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Softmax</span><span class="p">(</span><span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+
+<div class="viewcode-block" id="STGeoModule.forward"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_accident_prediction.GSNet.html#libcity.model.traffic_accident_prediction.STGeoModule.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">grid_input</span><span class="p">,</span> <span class="n">target_time_feature</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Arguments:</span>
+<span class="sd">            grid_input {Tensor} -- grid input，shape：(batch_size,input_window,D,W,H)</span>
+<span class="sd">            target_time_feature {Tensor} -- the feature of target time，shape：(batch_size,num_target_time_feature)</span>
+<span class="sd">        Returns:</span>
+<span class="sd">            {Tensor} -- shape：(batch_size,hidden_size,W,H)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">batch_size</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">D</span><span class="p">,</span> <span class="n">W</span><span class="p">,</span> <span class="n">H</span> <span class="o">=</span> <span class="n">grid_input</span><span class="o">.</span><span class="n">shape</span>
+
+        <span class="n">grid_input</span> <span class="o">=</span> <span class="n">grid_input</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">D</span><span class="p">,</span> <span class="n">W</span><span class="p">,</span> <span class="n">H</span><span class="p">)</span>
+        <span class="n">conv_output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">grid_conv</span><span class="p">(</span><span class="n">grid_input</span><span class="p">)</span>
+
+        <span class="n">conv_output</span> <span class="o">=</span> <span class="n">conv_output</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">D</span><span class="p">,</span> <span class="n">W</span><span class="p">,</span> <span class="n">H</span><span class="p">)</span> \
+                                 <span class="o">.</span><span class="n">permute</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> \
+                                 <span class="o">.</span><span class="n">contiguous</span><span class="p">()</span> \
+                                 <span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">D</span><span class="p">)</span>
+        <span class="n">gru_output</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">grid_gru</span><span class="p">(</span><span class="n">conv_output</span><span class="p">)</span>
+
+        <span class="n">grid_target_time</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="n">target_time_feature</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">W</span><span class="o">*</span><span class="n">H</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">batch_size</span><span class="o">*</span><span class="n">W</span><span class="o">*</span><span class="n">H</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">grid_att_fc1_output</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">grid_att_fc1</span><span class="p">(</span><span class="n">gru_output</span><span class="p">))</span>
+        <span class="n">grid_att_fc2_output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">grid_att_fc2</span><span class="p">(</span><span class="n">grid_target_time</span><span class="p">)</span>
+        <span class="n">grid_att_score</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">grid_att_softmax</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="n">grid_att_fc1_output</span><span class="o">+</span><span class="n">grid_att_fc2_output</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">grid_att_bias</span><span class="p">))</span>
+        <span class="n">grid_att_score</span> <span class="o">=</span> <span class="n">grid_att_score</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">batch_size</span><span class="o">*</span><span class="n">W</span><span class="o">*</span><span class="n">H</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">grid_output</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">gru_output</span> <span class="o">*</span> <span class="n">grid_att_score</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="n">grid_output</span> <span class="o">=</span> <span class="n">grid_output</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">W</span><span class="p">,</span> <span class="n">H</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">permute</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">contiguous</span><span class="p">()</span>
+
+        <span class="k">return</span> <span class="n">grid_output</span></div></div>
+
+
+<div class="viewcode-block" id="STSemModule"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_accident_prediction.GSNet.html#libcity.model.traffic_accident_prediction.STSemModule">[docs]</a><span class="k">class</span> <span class="nc">STSemModule</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_of_graph_feature</span><span class="p">,</span> <span class="n">nums_of_graph_filters</span><span class="p">,</span>
+                 <span class="n">input_window</span><span class="p">,</span>
+                 <span class="n">num_of_gru_layers</span><span class="p">,</span> <span class="n">gru_hidden_size</span><span class="p">,</span>
+                 <span class="n">num_of_target_time_feature</span><span class="p">,</span> <span class="n">north_south_map</span><span class="p">,</span> <span class="n">west_east_map</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Arguments:</span>
+<span class="sd">            num_of_graph_feature {int} -- the number of graph node feature,</span>
+<span class="sd">                                          (batch_size,input_window,D,N),num_of_graph_feature=D</span>
+<span class="sd">            nums_of_graph_filters {list} -- the number of GCN output feature</span>
+<span class="sd">            input_window {int} -- the time length of input</span>
+<span class="sd">            num_of_gru_layers {int} -- the number of GRU layers</span>
+<span class="sd">            gru_hidden_size {int} -- the hidden size of GRU</span>
+<span class="sd">            num_of_target_time_feature {int} -- the number of target time feature, 24(hour)+7(week)+1(holiday)=32</span>
+<span class="sd">            north_south_map {int} -- the weight of grid data</span>
+<span class="sd">            west_east_map {int} -- the height of grid data</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">STSemModule</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">north_south_map</span> <span class="o">=</span> <span class="n">north_south_map</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">west_east_map</span> <span class="o">=</span> <span class="n">west_east_map</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">road_gcn</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">ModuleList</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">num_of_filter</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">nums_of_graph_filters</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">idx</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">road_gcn</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">GCNLayer</span><span class="p">(</span><span class="n">num_of_graph_feature</span><span class="p">,</span> <span class="n">num_of_filter</span><span class="p">))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">road_gcn</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">GCNLayer</span><span class="p">(</span><span class="n">nums_of_graph_filters</span><span class="p">[</span><span class="n">idx</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">num_of_filter</span><span class="p">))</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">risk_gcn</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">ModuleList</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">num_of_filter</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">nums_of_graph_filters</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">idx</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">risk_gcn</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">GCNLayer</span><span class="p">(</span><span class="n">num_of_graph_feature</span><span class="p">,</span> <span class="n">num_of_filter</span><span class="p">))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">risk_gcn</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">GCNLayer</span><span class="p">(</span><span class="n">nums_of_graph_filters</span><span class="p">[</span><span class="n">idx</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">num_of_filter</span><span class="p">))</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">poi_gcn</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">ModuleList</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">num_of_filter</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">nums_of_graph_filters</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">idx</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">poi_gcn</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">GCNLayer</span><span class="p">(</span><span class="n">num_of_graph_feature</span><span class="p">,</span> <span class="n">num_of_filter</span><span class="p">))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">poi_gcn</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">GCNLayer</span><span class="p">(</span><span class="n">nums_of_graph_filters</span><span class="p">[</span><span class="n">idx</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">num_of_filter</span><span class="p">))</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">graph_gru</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">GRU</span><span class="p">(</span><span class="n">num_of_filter</span><span class="p">,</span> <span class="n">gru_hidden_size</span><span class="p">,</span> <span class="n">num_of_gru_layers</span><span class="p">,</span> <span class="n">batch_first</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">graph_att_fc1</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">in_features</span><span class="o">=</span><span class="n">gru_hidden_size</span><span class="p">,</span> <span class="n">out_features</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">graph_att_fc2</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">in_features</span><span class="o">=</span><span class="n">num_of_target_time_feature</span><span class="p">,</span> <span class="n">out_features</span><span class="o">=</span><span class="n">input_window</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">graph_att_bias</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">graph_att_softmax</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Softmax</span><span class="p">(</span><span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+
+<div class="viewcode-block" id="STSemModule.forward"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_accident_prediction.GSNet.html#libcity.model.traffic_accident_prediction.STSemModule.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">graph_feature</span><span class="p">,</span>
+                <span class="n">road_adj</span><span class="p">,</span> <span class="n">risk_adj</span><span class="p">,</span> <span class="n">poi_adj</span><span class="p">,</span>
+                <span class="n">target_time_feature</span><span class="p">,</span> <span class="n">grid_node_map</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Arguments:</span>
+<span class="sd">            graph_feature {Tensor} -- Graph signal matrix，(batch_size,T,D1,N)</span>
+<span class="sd">            road_adj {np.array} -- road adjacent matrix，shape：(N,N)</span>
+<span class="sd">            risk_adj {np.array} -- risk adjacent matrix，shape：(N,N)</span>
+<span class="sd">            poi_adj {np.array} -- poi adjacent matrix，shape：(N,N)</span>
+<span class="sd">            target_time_feature {Tensor} -- the feature of target time，shape：(batch_size,num_target_time_feature)</span>
+<span class="sd">            grid_node_map {np.array} -- map graph data to grid data,shape (W*H,N)</span>
+<span class="sd">        Returns:</span>
+<span class="sd">            {Tensor} -- shape：(batch_size,output_window,north_south_map,west_east_map)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">batch_size</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">D1</span><span class="p">,</span> <span class="n">N</span> <span class="o">=</span> <span class="n">graph_feature</span><span class="o">.</span><span class="n">shape</span>
+
+        <span class="n">road_graph_output</span> <span class="o">=</span> <span class="n">graph_feature</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">D1</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span><span class="o">.</span><span class="n">permute</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">contiguous</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">gcn_layer</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">road_gcn</span><span class="p">:</span>
+            <span class="n">road_graph_output</span> <span class="o">=</span> <span class="n">gcn_layer</span><span class="p">(</span><span class="n">road_graph_output</span><span class="p">,</span> <span class="n">road_adj</span><span class="p">)</span>
+
+        <span class="n">risk_graph_output</span> <span class="o">=</span> <span class="n">graph_feature</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">D1</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span><span class="o">.</span><span class="n">permute</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">contiguous</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">gcn_layer</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">risk_gcn</span><span class="p">:</span>
+            <span class="n">risk_graph_output</span> <span class="o">=</span> <span class="n">gcn_layer</span><span class="p">(</span><span class="n">risk_graph_output</span><span class="p">,</span> <span class="n">risk_adj</span><span class="p">)</span>
+
+        <span class="n">graph_output</span> <span class="o">=</span> <span class="n">road_graph_output</span> <span class="o">+</span> <span class="n">risk_graph_output</span>
+
+        <span class="k">if</span> <span class="n">poi_adj</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">poi_graph_output</span> <span class="o">=</span> <span class="n">graph_feature</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">D1</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span><span class="o">.</span><span class="n">permute</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">contiguous</span><span class="p">()</span>
+            <span class="k">for</span> <span class="n">gcn_layer</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">poi_gcn</span><span class="p">:</span>
+                <span class="n">poi_graph_output</span> <span class="o">=</span> <span class="n">gcn_layer</span><span class="p">(</span><span class="n">poi_graph_output</span><span class="p">,</span> <span class="n">poi_adj</span><span class="p">)</span>
+            <span class="n">graph_output</span> <span class="o">+=</span> <span class="n">poi_graph_output</span>
+
+        <span class="n">graph_output</span> <span class="o">=</span> <span class="n">graph_output</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> \
+            <span class="o">.</span><span class="n">permute</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> \
+            <span class="o">.</span><span class="n">contiguous</span><span class="p">()</span> \
+            <span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">batch_size</span><span class="o">*</span><span class="n">N</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">graph_output</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">graph_gru</span><span class="p">(</span><span class="n">graph_output</span><span class="p">)</span>
+
+        <span class="n">graph_target_time</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="n">target_time_feature</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">batch_size</span><span class="o">*</span><span class="n">N</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">graph_att_fc1_output</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">graph_att_fc1</span><span class="p">(</span><span class="n">graph_output</span><span class="p">))</span>
+        <span class="n">graph_att_fc2_output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">graph_att_fc2</span><span class="p">(</span><span class="n">graph_target_time</span><span class="p">)</span>
+        <span class="n">graph_att_score</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">graph_att_softmax</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="n">graph_att_fc1_output</span><span class="o">+</span><span class="n">graph_att_fc2_output</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">graph_att_bias</span><span class="p">))</span>
+        <span class="n">graph_att_score</span> <span class="o">=</span> <span class="n">graph_att_score</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">batch_size</span><span class="o">*</span><span class="n">N</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">graph_output</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">graph_output</span> <span class="o">*</span> <span class="n">graph_att_score</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">graph_output</span> <span class="o">=</span> <span class="n">graph_output</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">contiguous</span><span class="p">()</span>
+
+        <span class="n">grid_node_map_tmp</span> <span class="o">=</span> <span class="n">grid_node_map</span> \
+            <span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">graph_feature</span><span class="o">.</span><span class="n">device</span><span class="p">)</span> \
+            <span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">graph_output</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">bmm</span><span class="p">(</span><span class="n">grid_node_map_tmp</span><span class="p">,</span> <span class="n">graph_output</span><span class="p">)</span> \
+            <span class="o">.</span><span class="n">permute</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> \
+            <span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">north_south_map</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">west_east_map</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">graph_output</span></div></div>
+
+
+<span class="k">class</span> <span class="nc">_GSNet</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                 <span class="n">grid_in_channel</span><span class="p">,</span> <span class="n">num_of_gru_layers</span><span class="p">,</span>
+                 <span class="n">input_window</span><span class="p">,</span> <span class="n">output_window</span><span class="p">,</span>
+                 <span class="n">gru_hidden_size</span><span class="p">,</span>
+                 <span class="n">num_of_target_time_feature</span><span class="p">,</span> <span class="n">num_of_graph_feature</span><span class="p">,</span> <span class="n">nums_of_graph_filters</span><span class="p">,</span>
+                 <span class="n">north_south_map</span><span class="p">,</span> <span class="n">west_east_map</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        GSNet main module.</span>
+
+<span class="sd">        Arguments:</span>
+<span class="sd">            grid_in_channel {int} -- the number of grid data feature (batch_size,T,D,W,H),grid_in_channel=D</span>
+<span class="sd">            num_of_gru_layers {int} -- the number of GRU layers</span>
+<span class="sd">            input_window {int} -- the time length of input</span>
+<span class="sd">            output_window {int} -- the time length of prediction</span>
+<span class="sd">            gru_hidden_size {int} -- the hidden size of GRU</span>
+<span class="sd">            num_of_target_time_feature {int} -- the number of target time feature，为24(hour)+7(week)+1(holiday)=32</span>
+<span class="sd">            num_of_graph_feature {int} -- the number of graph node feature，(batch_size,input_window,D,N),</span>
+<span class="sd">                                          num_of_graph_feature=D</span>
+<span class="sd">            nums_of_graph_filters {list} -- the number of GCN output feature</span>
+<span class="sd">            north_south_map {int} -- the weight of grid data</span>
+<span class="sd">            west_east_map {int} -- the height of grid data</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="nb">super</span><span class="p">(</span><span class="n">_GSNet</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">north_south_map</span> <span class="o">=</span> <span class="n">north_south_map</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">west_east_map</span> <span class="o">=</span> <span class="n">west_east_map</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">st_geo_module</span> <span class="o">=</span> <span class="n">STGeoModule</span><span class="p">(</span><span class="n">grid_in_channel</span><span class="p">,</span> <span class="n">num_of_gru_layers</span><span class="p">,</span>
+                                         <span class="n">input_window</span><span class="p">,</span>
+                                         <span class="n">gru_hidden_size</span><span class="p">,</span> <span class="n">num_of_target_time_feature</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">st_sem_module</span> <span class="o">=</span> <span class="n">STSemModule</span><span class="p">(</span><span class="n">num_of_graph_feature</span><span class="p">,</span> <span class="n">nums_of_graph_filters</span><span class="p">,</span>
+                                         <span class="n">input_window</span><span class="p">,</span>
+                                         <span class="n">num_of_gru_layers</span><span class="p">,</span> <span class="n">gru_hidden_size</span><span class="p">,</span>
+                                         <span class="n">num_of_target_time_feature</span><span class="p">,</span>
+                                         <span class="n">north_south_map</span><span class="p">,</span> <span class="n">west_east_map</span><span class="p">)</span>
+
+        <span class="n">fusion_channel</span> <span class="o">=</span> <span class="mi">16</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">grid_weight</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="n">in_channels</span><span class="o">=</span><span class="n">gru_hidden_size</span><span class="p">,</span> <span class="n">out_channels</span><span class="o">=</span><span class="n">fusion_channel</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">graph_weight</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="n">in_channels</span><span class="o">=</span><span class="n">gru_hidden_size</span><span class="p">,</span> <span class="n">out_channels</span><span class="o">=</span><span class="n">fusion_channel</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">output_layer</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">fusion_channel</span><span class="o">*</span><span class="n">north_south_map</span><span class="o">*</span><span class="n">west_east_map</span><span class="p">,</span>
+                                      <span class="n">output_window</span><span class="o">*</span><span class="n">north_south_map</span><span class="o">*</span><span class="n">west_east_map</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                <span class="n">grid_input</span><span class="p">,</span>
+                <span class="n">target_time_feature</span><span class="p">,</span> <span class="n">graph_feature</span><span class="p">,</span>
+                <span class="n">road_adj</span><span class="p">,</span> <span class="n">risk_adj</span><span class="p">,</span> <span class="n">poi_adj</span><span class="p">,</span>
+                <span class="n">grid_node_map</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Arguments:</span>
+<span class="sd">            grid_input {Tensor} -- grid input，shape：(batch_size,T,D,W,H)</span>
+<span class="sd">            graph_feature {Tensor} -- Graph signal matrix，(batch_size,T,D1,N)</span>
+<span class="sd">            target_time_feature {Tensor} -- the feature of target time，shape：(batch_size,num_target_time_feature)</span>
+<span class="sd">            road_adj {np.array} -- road adjacent matrix，shape：(N,N)</span>
+<span class="sd">            risk_adj {np.array} -- risk adjacent matrix，shape：(N,N)</span>
+<span class="sd">            poi_adj {np.array} -- poi adjacent matrix，shape：(N,N)</span>
+<span class="sd">            grid_node_map {np.array} -- map graph data to grid data,shape (W*H,N)</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            {Tensor} -- shape：(batch_size,output_window,north_south_map,west_east_map)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">batch_size</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">grid_input</span><span class="o">.</span><span class="n">shape</span>
+
+        <span class="n">grid_output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">st_geo_module</span><span class="p">(</span><span class="n">grid_input</span><span class="p">,</span> <span class="n">target_time_feature</span><span class="p">)</span>
+        <span class="n">graph_output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">st_sem_module</span><span class="p">(</span><span class="n">graph_feature</span><span class="p">,</span>
+                                          <span class="n">road_adj</span><span class="p">,</span> <span class="n">risk_adj</span><span class="p">,</span> <span class="n">poi_adj</span><span class="p">,</span>
+                                          <span class="n">target_time_feature</span><span class="p">,</span> <span class="n">grid_node_map</span><span class="p">)</span>
+
+        <span class="n">grid_output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">grid_weight</span><span class="p">(</span><span class="n">grid_output</span><span class="p">)</span>
+        <span class="n">graph_output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">graph_weight</span><span class="p">(</span><span class="n">graph_output</span><span class="p">)</span>
+        <span class="n">fusion_output</span> <span class="o">=</span> <span class="p">(</span><span class="n">grid_output</span> <span class="o">+</span> <span class="n">graph_output</span><span class="p">)</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">final_output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_layer</span><span class="p">(</span><span class="n">fusion_output</span><span class="p">)</span> \
+                           <span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">north_south_map</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">west_east_map</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">final_output</span>
+
+
+<div class="viewcode-block" id="GSNet"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_accident_prediction.GSNet.html#libcity.model.traffic_accident_prediction.GSNet">[docs]</a><span class="k">class</span> <span class="nc">GSNet</span><span class="p">(</span><span class="n">AbstractTrafficStateModel</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">data_feature</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">GSNet</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="n">data_feature</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">device</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;device&#39;</span><span class="p">,</span> <span class="s1">&#39;cpu&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_scaler</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_feature</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;scaler&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">feature_dim</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_feature</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;feature_dim&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># 输入维度</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">output_dim</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_feature</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;output_dim&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># 输出维度</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">graph_input_indices</span> <span class="o">=</span> <span class="n">data_feature</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;graph_input_indices&#39;</span><span class="p">,</span> <span class="p">[])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">grid_in_channel</span> <span class="o">=</span> <span class="n">data_feature</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;feature_dim&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">target_time_indices</span> <span class="o">=</span> <span class="n">data_feature</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;target_time_indices&#39;</span><span class="p">,</span> <span class="p">[])</span>
+        <span class="c1"># currently examined feature dimension index</span>
+        <span class="n">curr_idx</span> <span class="o">=</span> <span class="n">data_feature</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;feature_dim&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="c1"># always in the beginning of external dimensions</span>
+        <span class="k">if</span> <span class="n">data_feature</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;add_time_in_day&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">target_time_indices</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">curr_idx</span><span class="p">,</span> <span class="n">curr_idx</span><span class="o">+</span><span class="mi">24</span><span class="p">))</span>
+            <span class="n">curr_idx</span> <span class="o">+=</span> <span class="mi">24</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">grid_in_channel</span> <span class="o">+=</span> <span class="mi">24</span>
+        <span class="c1"># always right after dimensions on time of day</span>
+        <span class="k">if</span> <span class="n">data_feature</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;add_day_in_week&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">target_time_indices</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">curr_idx</span><span class="p">,</span> <span class="n">curr_idx</span><span class="o">+</span><span class="mi">7</span><span class="p">))</span>
+            <span class="n">curr_idx</span> <span class="o">+=</span> <span class="mi">7</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">grid_in_channel</span> <span class="o">+=</span> <span class="mi">7</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">num_of_gru_layers</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;num_of_gru_layers&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">input_window</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+                <span class="s1">&#39;input_window&#39;</span><span class="p">,</span>
+                <span class="n">data_feature</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;len_closeness&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span>
+                <span class="n">data_feature</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;len_period&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span>
+                <span class="n">data_feature</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;len_trend&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">output_window</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;output_window&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">gru_hidden_size</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;gru_hidden_size&#39;</span><span class="p">,</span> <span class="mi">256</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">num_of_target_time_feature</span> <span class="o">=</span> <span class="n">data_feature</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;num_of_target_time_feature&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">num_of_graph_feature</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">graph_input_indices</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nums_of_graph_filters</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;gcn_nums_filters&#39;</span><span class="p">,</span> <span class="mi">64</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">north_south_map</span> <span class="o">=</span> <span class="n">data_feature</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;len_column&#39;</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>  <span class="c1"># N-S/W-E grid count</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">west_east_map</span> <span class="o">=</span> <span class="n">data_feature</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;len_row&#39;</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">risk_mask</span> <span class="o">=</span> <span class="n">data_feature</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;risk_mask&#39;</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">north_south_map</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">west_east_map</span><span class="p">)))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">road_adj</span> <span class="o">=</span> <span class="n">data_feature</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;road_adj&#39;</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">north_south_map</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">west_east_map</span><span class="p">)))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">risk_adj</span> <span class="o">=</span> <span class="n">data_feature</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;risk_adj&#39;</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">north_south_map</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">west_east_map</span><span class="p">)))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">poi_adj</span> <span class="o">=</span> <span class="n">data_feature</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;poi_adj&#39;</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">north_south_map</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">west_east_map</span><span class="p">)))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">grid_node_map</span> <span class="o">=</span> <span class="n">data_feature</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;grid_node_map&#39;</span><span class="p">,</span>
+                                              <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">north_south_map</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">west_east_map</span><span class="p">)))</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">dtype</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;dtype&#39;</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">risk_mask</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">risk_mask</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">road_adj</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">road_adj</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">risk_adj</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">risk_adj</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">poi_adj</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">poi_adj</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">poi_adj</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">grid_node_map</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">grid_node_map</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">risk_mask</span><span class="o">.</span><span class="n">requires_grad</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">road_adj</span><span class="o">.</span><span class="n">requires_grad</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">risk_adj</span><span class="o">.</span><span class="n">requires_grad</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">poi_adj</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">poi_adj</span><span class="o">.</span><span class="n">requires_grad</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">grid_node_map</span><span class="o">.</span><span class="n">requires_grad</span> <span class="o">=</span> <span class="kc">False</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">risk_thresholds</span> <span class="o">=</span> <span class="n">data_feature</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;risk_thresholds&#39;</span><span class="p">,</span> <span class="p">[])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">risk_weights</span> <span class="o">=</span> <span class="n">data_feature</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;risk_weights&#39;</span><span class="p">,</span> <span class="p">[])</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">gsnet</span> <span class="o">=</span> <span class="n">_GSNet</span><span class="p">(</span>
+                <span class="n">grid_in_channel</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">grid_in_channel</span><span class="p">,</span>
+                <span class="n">input_window</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">input_window</span><span class="p">,</span> <span class="n">output_window</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">output_window</span><span class="p">,</span>
+                <span class="n">num_of_gru_layers</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">num_of_gru_layers</span><span class="p">,</span> <span class="n">gru_hidden_size</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">gru_hidden_size</span><span class="p">,</span>
+                <span class="n">nums_of_graph_filters</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">nums_of_graph_filters</span><span class="p">,</span> <span class="n">num_of_graph_feature</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">num_of_graph_feature</span><span class="p">,</span>
+                <span class="n">num_of_target_time_feature</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">num_of_target_time_feature</span><span class="p">,</span>
+                <span class="n">north_south_map</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">north_south_map</span><span class="p">,</span> <span class="n">west_east_map</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">west_east_map</span><span class="p">)</span>
+
+<div class="viewcode-block" id="GSNet.forward"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_accident_prediction.GSNet.html#libcity.model.traffic_accident_prediction.GSNet.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">batch</span><span class="p">):</span>
+        <span class="n">batch_size</span> <span class="o">=</span> <span class="n">batch</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+        <span class="c1"># [batch_size, input_window, input_dim, num_cols, num_rows]</span>
+        <span class="n">grid_input</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">([</span>
+            <span class="c1"># [batch_size, input_window, num_rols, num_cols, ...] -&gt;</span>
+            <span class="c1"># [batch_size, input_window, ..., num_cols, num_rows]</span>
+            <span class="n">batch</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">permute</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+            <span class="c1"># [batch_size, input_window, ext_dim] -&gt;</span>
+            <span class="c1"># [batch_size, input_window, ext_dim, num_cols, num_rows]</span>
+            <span class="n">batch</span><span class="p">[</span><span class="s1">&#39;X_ext&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> \
+                          <span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">west_east_map</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">north_south_map</span><span class="p">)</span>
+                     <span class="p">],</span> <span class="n">dim</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+        <span class="c1"># [batch_size, input_window, input_dim, num_cols, num_rows] -&gt;</span>
+        <span class="c1"># [batch_size, input_window, len(graph_input_indices), num_cols*num_rows] -&gt;</span>
+        <span class="c1"># [batch_size, input_window, len(graph_input_indices), num_graph_nodes]</span>
+        <span class="n">graph_input</span> <span class="o">=</span> <span class="n">grid_input</span><span class="p">[:,</span> <span class="p">:,</span> <span class="bp">self</span><span class="o">.</span><span class="n">graph_input_indices</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:]</span> \
+            <span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span>
+                     <span class="bp">self</span><span class="o">.</span><span class="n">input_window</span><span class="p">,</span>
+                     <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">graph_input_indices</span><span class="p">),</span>
+                     <span class="bp">self</span><span class="o">.</span><span class="n">west_east_map</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">north_south_map</span><span class="p">)</span> \
+            <span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">grid_node_map</span><span class="p">)</span>
+
+        <span class="c1"># time features are supposed to be only dependent on time and indicate current time slot only</span>
+        <span class="c1"># [batch_size, len(target_time_indices)]</span>
+        <span class="n">target_time_feature</span> <span class="o">=</span> <span class="n">grid_input</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">target_time_indices</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+
+        <span class="c1"># [batch_size, output_window, num_cols, num_rows]</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">gsnet</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span>
+                 <span class="n">grid_input</span><span class="o">=</span><span class="n">grid_input</span><span class="p">,</span>
+                 <span class="n">target_time_feature</span><span class="o">=</span><span class="n">target_time_feature</span><span class="p">,</span>
+                 <span class="n">graph_feature</span><span class="o">=</span><span class="n">graph_input</span><span class="p">,</span>
+                 <span class="n">road_adj</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">road_adj</span><span class="p">,</span>
+                 <span class="n">risk_adj</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">risk_adj</span><span class="p">,</span>
+                 <span class="n">poi_adj</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">poi_adj</span><span class="p">,</span>
+                 <span class="n">grid_node_map</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">grid_node_map</span>
+        <span class="p">)</span>
+
+        <span class="c1"># [batch_size, output_window, num_cols, num_rows] -&gt;</span>
+        <span class="c1"># [batch_size, num_rows, num_cols, output_window] -&gt;</span>
+        <span class="c1"># [batch_size, output_dim, num_rows, num_cols, output_window]</span>
+        <span class="k">return</span> <span class="n">result</span><span class="o">.</span><span class="n">permute</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">contiguous</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="GSNet.calculate_loss"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_accident_prediction.GSNet.html#libcity.model.traffic_accident_prediction.GSNet.calculate_loss">[docs]</a>    <span class="k">def</span> <span class="nf">calculate_loss</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">batch</span><span class="p">):</span>
+        <span class="c1"># [batch_size, output_dim, num_cols, num_rows, output_window]</span>
+        <span class="n">y_pred</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">batch</span><span class="p">)</span>
+        <span class="c1"># [batch_size, output_window, num_rows, num_cols, feature_dim] -&gt;</span>
+        <span class="c1"># [batch_size, output_window, num_rows, num_cols, output_dim] -&gt;</span>
+        <span class="c1"># [batch_size, output_dim, num_rows, num_cols, output_window]</span>
+        <span class="n">y_true</span> <span class="o">=</span> <span class="n">batch</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">][</span><span class="o">...</span><span class="p">,</span> <span class="p">:</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">permute</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">y_true</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_scaler</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">y_true</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">output_dim</span><span class="p">])</span>
+        <span class="n">y_pred</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_scaler</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">y_pred</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">output_dim</span><span class="p">])</span>
+        <span class="n">risk_mask</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">risk_mask</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">risk_mask</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+        <span class="c1"># [batch_size, output_dim, num_cols, num_rows, output_window]</span>
+        <span class="n">loss</span> <span class="o">=</span> <span class="p">(</span><span class="n">y_true</span> <span class="o">-</span> <span class="n">y_pred</span><span class="p">)</span><span class="o">.</span><span class="n">mul</span><span class="p">(</span><span class="n">risk_mask</span><span class="p">)</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+        <span class="n">weight</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">y_true</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">risk_thresholds</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">weight</span><span class="p">[</span><span class="n">y_true</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">risk_thresholds</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">risk_weights</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            <span class="k">elif</span> <span class="n">i</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">risk_thresholds</span><span class="p">):</span>
+                <span class="n">weight</span><span class="p">[</span><span class="n">y_true</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">risk_thresholds</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">risk_weights</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">weight</span><span class="p">[(</span><span class="n">y_true</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">risk_thresholds</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="o">&amp;</span>
+                       <span class="p">(</span><span class="n">y_true</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">risk_thresholds</span><span class="p">[</span><span class="n">i</span><span class="p">])]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">risk_weights</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">loss</span><span class="o">.</span><span class="n">mul</span><span class="p">(</span><span class="n">weight</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="GSNet.predict"><a class="viewcode-back" href="../../../../libcity/libcity.model.traffic_accident_prediction.GSNet.html#libcity.model.traffic_accident_prediction.GSNet.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">batch</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">batch</span><span class="p">)</span></div></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, aptx1231
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

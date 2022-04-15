@@ -4,7 +4,8 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>交通轨迹预测评估模块 &mdash; Bigscity-LibCity  documentation</title>
@@ -37,7 +38,7 @@
     
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="执行模块简介" href="../executor.html" />
+    <link rel="next" title="路网匹配评估模块" href="map_matching.html" />
     <link rel="prev" title="交通状态预测评估模块" href="traffic_state_pred.html" /> 
 </head>
 
@@ -83,14 +84,14 @@
               
             
             
-              <p class="caption"><span class="caption-text">起步</span></p>
+              <p><span class="caption-text">起步</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../get_started/introduction.html">介绍</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../get_started/install.html">安装LibCity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../get_started/quick_start.html">快速入门</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../get_started/directory_structure.html">目录结构</a></li>
 </ul>
-<p class="caption"><span class="caption-text">用户指导</span></p>
+<p><span class="caption-text">用户指导</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../config_settings.html">参数设置</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data.html">数据说明</a></li>
@@ -102,26 +103,29 @@
 <li class="toctree-l3"><a class="reference internal" href="#id3">评估设置</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="map_matching.html">路网匹配评估模块</a></li>
+<li class="toctree-l2"><a class="reference internal" href="eta.html">到达时间估计评估模块</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../executor.html">执行模块简介</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../usage.html">使用示例</a></li>
 </ul>
-<p class="caption"><span class="caption-text">开发者指导</span></p>
+<p><span class="caption-text">开发者指导</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../developer_guide/code_style.html">代码风格</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../developer_guide/implemented_datasets.html">自定义Dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../developer_guide/implemented_models.html">自定义Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../developer_guide/implemented_executors.html">自定义Executor</a></li>
 </ul>
-<p class="caption"><span class="caption-text">入门教程</span></p>
+<p><span class="caption-text">入门教程</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorial/install_quick_start.html">安装和快速上手</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorial/run_model.html">运行LibCity中已复现的模型</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorial/add_model.html">在LibCity中添加新模型</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorial/hyper_tune.html">使用自动化工具调参</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial/data_visualization.html">原子文件可视化</a></li>
 </ul>
-<p class="caption"><span class="caption-text">API文档</span></p>
+<p><span class="caption-text">API文档</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../libcity/libcity.config.html">libcity.config</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../libcity/libcity.data.html">libcity.data</a></li>
@@ -197,55 +201,91 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="id1">
+  <section id="id1">
 <h1>交通轨迹预测评估模块<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="id2">
+<section id="id2">
 <h2>评估指标<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<p>对于轨迹下一跳预测任务，本评估器实现了一系列基于 TopK 的评估指标：</p>
-<ul class="simple">
-<li><p>Precision&#64;K</p>
-<ul>
-<li><p>R(u) 为根据用户在训练集上的行为给用户作出的预测列表。</p></li>
-<li><p>T(u) 为用户在测试集上的行为列表。</p></li>
-<li><p>准确率 <span class="math notranslate nohighlight">\(Precision=\frac{\sum_{u}|R(u)\bigcap T(u)|}{\sum_{u}|R(u)|}\)</span>。</p></li>
-</ul>
-</li>
-<li><p>Recall&#64;K</p>
-<ul>
-<li><p>召回率 <span class="math notranslate nohighlight">\(Recall=\frac{\sum_{u}|R(u)\bigcap T(u)|}{\sum_{u}|T(u)|}\)</span></p></li>
-<li><p>对于交通轨迹预测，下一跳仅有一个ground-truth，因此 <span class="math notranslate nohighlight">\(Precision=\frac{Recall}{topk}\)</span>。</p></li>
-</ul>
-</li>
-<li><p>F1-score&#64;K</p>
-<ul>
-<li><p><span class="math notranslate nohighlight">\(F1=\frac{2*Recall*Precision}{Recall+Precision}\)</span></p></li>
-</ul>
-</li>
-<li><p>MRR(Mean Reciprocal Rank)&#64;K</p>
-<ul>
-<li><p>rank(u) 为该用户预测列表第一个ground-truth所在排列位置。</p></li>
-<li><p><span class="math notranslate nohighlight">\(MRR=\sum_u\frac{1}{rank(u)}\)</span></p></li>
-</ul>
-</li>
-<li><p>MAP(Mean Average Precision)&#64;K</p>
-<ul>
-<li><p><span class="math notranslate nohighlight">\(Precision=f(Recall)\)</span></p></li>
-<li><p>AP(Average Precision)：<span class="math notranslate nohighlight">\(\int_0^1f(r)\text{d}r\)</span>，不同召回率下的准确率平均值。</p></li>
-<li><p>对于交通轨迹预测，下一跳仅有一个ground-truth，即召回率为 1，准确率为 <span class="math notranslate nohighlight">\(\frac{1}{rank}\)</span>，因此<span class="math notranslate nohighlight">\(AP_u=\frac{1}{rank(u)}\)</span>。</p></li>
-<li><p><span class="math notranslate nohighlight">\(MAP=\frac{\sum_{u\in U}AP_u}{|T(u)|}\)</span></p></li>
-</ul>
-</li>
-<li><p>NDCG(Normalized Discounted Cumulative Gain)&#64;K</p>
-<ul>
-<li><p>CG(Cumulative Gain)：<span class="math notranslate nohighlight">\(\sum_u{rel(u)}\)</span>，其中 rel(u) 表示相关性分数，<span class="math notranslate nohighlight">\(rel\in\{0,1\}\)</span>。</p></li>
-<li><p>DCG(Discounted Cumulative Gain)：<span class="math notranslate nohighlight">\(\sum_u \frac{rel(u)}{\log_2(rank(u)+1)}\)</span>，考虑排序顺序的因素，对排名靠后的物品进行折损。</p></li>
-<li><p>NDCG：<span class="math notranslate nohighlight">\(\frac{DCG}{IDCG}\)</span>，对 DCG 归一化，IDCG 为理想情况下最大的 DCG 值，实现中为 1。</p></li>
-</ul>
-</li>
-</ul>
+<p>对于轨迹下一跳预测任务，本评估器实现了一系列基于 TopK 的评估指标。</p>
+<p>评估指标公式符号表</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 79%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>符号</p></th>
+<th class="head"><p>含义</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(N\)</span></p></td>
+<td><p>测试集的大小</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(i\)</span></p></td>
+<td><p>第 <span class="math notranslate nohighlight">\(i\)</span> 条测试数据</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(K\)</span></p></td>
+<td><p>取置信度前 <span class="math notranslate nohighlight">\(K\)</span> 个预测输出进行评估</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(T(i)\)</span></p></td>
+<td><p>第 <span class="math notranslate nohighlight">\(i\)</span> 条测试数据中的真实下一跳位置</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(R(i)\)</span></p></td>
+<td><p>模型对于第 <span class="math notranslate nohighlight">\(i\)</span> 条测试数据预测结果中置信度前 <span class="math notranslate nohighlight">\(K\)</span> 的位置集合</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(Hit(i)\)</span></p></td>
+<td><p>第 <span class="math notranslate nohighlight">\(i\)</span> 条测试数据中预测命中的位置集合，即 <span class="math notranslate nohighlight">\(T(i) \cap R(i)\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(Rank(i)\)</span></p></td>
+<td><p>第 <span class="math notranslate nohighlight">\(i\)</span> 条测试数据中的 <span class="math notranslate nohighlight">\(T(i)\)</span> 在 <span class="math notranslate nohighlight">\(R(i)\)</span> 中的排名</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(|*|\)</span></p></td>
+<td><p>集合的取模运算符</p></td>
+</tr>
+</tbody>
+</table>
+<p>使用上述符号，TopK 评估指标的计算公式为：</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 86%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>指标</p></th>
+<th class="head"><p>公式</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>精准率</p></td>
+<td><div class="math notranslate nohighlight">
+\[Precision&#64;K=\frac{\sum_{i=1}^{N}|\operatorname{Hit}(i)|}{N \times K}\]</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>召回率</p></td>
+<td><div class="math notranslate nohighlight">
+\[Recall&#64;K=\frac{\sum_{i=1}^{N}|\operatorname{Hit}(i)|}{N}\]</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>F1 分数</p></td>
+<td><div class="math notranslate nohighlight">
+\[F1&#64;K=\frac{2 \times \text { Precision&#64; } \times \text { Recall&#64; } K}{\text { Precision } &#64;+\text { Recall&#64; } K}\]</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>平均倒数排名</p></td>
+<td><div class="math notranslate nohighlight">
+\[MRR&#64;K=\frac{1}{N} \sum_{i=1}^{N} \frac{1}{\operatorname{Rank}(i)}\]</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>归一化折损累计增益</p></td>
+<td><div class="math notranslate nohighlight">
+\[NDCG&#64;K=\frac{1}{N} \sum_{i=1}^{N} \frac{1}{\log _{2}(\operatorname{rank}(i)+1)}\]</div>
+</td>
+</tr>
+</tbody>
+</table>
 <p>可以通过在用户自定义 Config 文件中加入 <code class="docutils literal notranslate"><span class="pre">metrics</span></code> 与 <code class="docutils literal notranslate"><span class="pre">topk</span></code> 两个参数，来控制本评估器使用哪些评估方法。</p>
-</div>
-<div class="section" id="id3">
+</section>
+<section id="id3">
 <h2>评估设置<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <p>下面是评估器所涉及到的一系列参数：</p>
 <p>位置：libcity/config/evaluator/TrajLocPredEvaluator.json</p>
@@ -253,8 +293,8 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">metrics</span> <span class="pre">(list</span> <span class="pre">of</span> <span class="pre">string)</span></code>: 默认值为 <code class="docutils literal notranslate"><span class="pre">[&quot;Recall&quot;]</span></code>。可选参数为 <code class="docutils literal notranslate"><span class="pre">[&quot;Precision&quot;,</span> <span class="pre">&quot;Recall&quot;,</span> <span class="pre">&quot;F1&quot;,</span> <span class="pre">&quot;MRR&quot;,</span> <span class="pre">&quot;MAP&quot;,</span> <span class="pre">&quot;NDCG&quot;]</span></code>。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">topk</span> <span class="pre">(int)</span></code>: 默认值为 <code class="docutils literal notranslate"><span class="pre">1</span></code>。</p></li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
@@ -264,7 +304,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../executor.html" class="btn btn-neutral float-right" title="执行模块简介" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="map_matching.html" class="btn btn-neutral float-right" title="路网匹配评估模块" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="traffic_state_pred.html" class="btn btn-neutral float-left" title="交通状态预测评估模块" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

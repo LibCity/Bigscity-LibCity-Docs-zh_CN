@@ -81,14 +81,14 @@
               
             
             
-              <p class="caption"><span class="caption-text">起步</span></p>
+              <p><span class="caption-text">起步</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../get_started/introduction.html">介绍</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../get_started/install.html">安装LibCity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../get_started/quick_start.html">快速入门</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../get_started/directory_structure.html">目录结构</a></li>
 </ul>
-<p class="caption"><span class="caption-text">用户指导</span></p>
+<p><span class="caption-text">用户指导</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../user_guide/config_settings.html">参数设置</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../user_guide/data.html">数据说明</a></li>
@@ -97,21 +97,22 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../user_guide/executor.html">执行模块简介</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../user_guide/usage.html">使用示例</a></li>
 </ul>
-<p class="caption"><span class="caption-text">开发者指导</span></p>
+<p><span class="caption-text">开发者指导</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../developer_guide/code_style.html">代码风格</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../developer_guide/implemented_datasets.html">自定义Dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../developer_guide/implemented_models.html">自定义Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../developer_guide/implemented_executors.html">自定义Executor</a></li>
 </ul>
-<p class="caption"><span class="caption-text">入门教程</span></p>
+<p><span class="caption-text">入门教程</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../tutorial/install_quick_start.html">安装和快速上手</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../tutorial/run_model.html">运行LibCity中已复现的模型</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../tutorial/add_model.html">在LibCity中添加新模型</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../tutorial/hyper_tune.html">使用自动化工具调参</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorial/data_visualization.html">原子文件可视化</a></li>
 </ul>
-<p class="caption"><span class="caption-text">API文档</span></p>
+<p><span class="caption-text">API文档</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../libcity/libcity.config.html">libcity.config</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../libcity/libcity.data.html">libcity.data</a></li>
@@ -193,10 +194,10 @@
 <span class="kn">from</span> <span class="nn">ray.tune.suggest</span> <span class="kn">import</span> <span class="n">ConcurrencyLimiter</span>
 <span class="kn">import</span> <span class="nn">json</span>
 <span class="kn">import</span> <span class="nn">torch</span>
-
+<span class="kn">import</span> <span class="nn">random</span>
 <span class="kn">from</span> <span class="nn">libcity.config</span> <span class="kn">import</span> <span class="n">ConfigParser</span>
 <span class="kn">from</span> <span class="nn">libcity.data</span> <span class="kn">import</span> <span class="n">get_dataset</span>
-<span class="kn">from</span> <span class="nn">libcity.utils</span> <span class="kn">import</span> <span class="n">get_executor</span><span class="p">,</span> <span class="n">get_model</span><span class="p">,</span> <span class="n">get_logger</span><span class="p">,</span> <span class="n">ensure_dir</span>
+<span class="kn">from</span> <span class="nn">libcity.utils</span> <span class="kn">import</span> <span class="n">get_executor</span><span class="p">,</span> <span class="n">get_model</span><span class="p">,</span> <span class="n">get_logger</span><span class="p">,</span> <span class="n">ensure_dir</span><span class="p">,</span> <span class="n">set_random_seed</span>
 
 
 <div class="viewcode-block" id="run_model"><a class="viewcode-back" href="../../../libcity/libcity.pipeline.pipeline.html#libcity.pipeline.pipeline.run_model">[docs]</a><span class="k">def</span> <span class="nf">run_model</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">model_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dataset_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">config_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
@@ -215,20 +216,29 @@
     <span class="c1"># load config</span>
     <span class="n">config</span> <span class="o">=</span> <span class="n">ConfigParser</span><span class="p">(</span><span class="n">task</span><span class="p">,</span> <span class="n">model_name</span><span class="p">,</span> <span class="n">dataset_name</span><span class="p">,</span>
                           <span class="n">config_file</span><span class="p">,</span> <span class="n">saved_model</span><span class="p">,</span> <span class="n">train</span><span class="p">,</span> <span class="n">other_args</span><span class="p">)</span>
+    <span class="n">exp_id</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;exp_id&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">exp_id</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="c1"># Make a new experiment ID</span>
+        <span class="n">exp_id</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">SystemRandom</span><span class="p">()</span><span class="o">.</span><span class="n">random</span><span class="p">()</span> <span class="o">*</span> <span class="mi">100000</span><span class="p">)</span>
+        <span class="n">config</span><span class="p">[</span><span class="s1">&#39;exp_id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">exp_id</span>
     <span class="c1"># logger</span>
     <span class="n">logger</span> <span class="o">=</span> <span class="n">get_logger</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
-    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Begin pipeline, task=</span><span class="si">{}</span><span class="s1">, model_name=</span><span class="si">{}</span><span class="s1">, dataset_name=</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span>
-                <span class="nb">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">task</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">model_name</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">dataset_name</span><span class="p">)))</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Begin pipeline, task=</span><span class="si">{}</span><span class="s1">, model_name=</span><span class="si">{}</span><span class="s1">, dataset_name=</span><span class="si">{}</span><span class="s1">, exp_id=</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span>
+                <span class="nb">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">task</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">model_name</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">dataset_name</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">exp_id</span><span class="p">)))</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">config</span><span class="p">)</span>
+    <span class="c1"># seed</span>
+    <span class="n">seed</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;seed&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">set_random_seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
     <span class="c1"># 加载数据集</span>
     <span class="n">dataset</span> <span class="o">=</span> <span class="n">get_dataset</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
     <span class="c1"># 转换数据，并划分数据集</span>
     <span class="n">train_data</span><span class="p">,</span> <span class="n">valid_data</span><span class="p">,</span> <span class="n">test_data</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">get_data</span><span class="p">()</span>
     <span class="n">data_feature</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">get_data_feature</span><span class="p">()</span>
     <span class="c1"># 加载执行器</span>
-    <span class="n">model_cache_file</span> <span class="o">=</span> <span class="s1">&#39;./libcity/cache/model_cache/</span><span class="si">{}</span><span class="s1">_</span><span class="si">{}</span><span class="s1">.m&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-        <span class="n">model_name</span><span class="p">,</span> <span class="n">dataset_name</span><span class="p">)</span>
+    <span class="n">model_cache_file</span> <span class="o">=</span> <span class="s1">&#39;./libcity/cache/</span><span class="si">{}</span><span class="s1">/model_cache/</span><span class="si">{}</span><span class="s1">_</span><span class="si">{}</span><span class="s1">.m&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+        <span class="n">exp_id</span><span class="p">,</span> <span class="n">model_name</span><span class="p">,</span> <span class="n">dataset_name</span><span class="p">)</span>
     <span class="n">model</span> <span class="o">=</span> <span class="n">get_model</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="n">data_feature</span><span class="p">)</span>
-    <span class="n">executor</span> <span class="o">=</span> <span class="n">get_executor</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="n">model</span><span class="p">)</span>
+    <span class="n">executor</span> <span class="o">=</span> <span class="n">get_executor</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">data_feature</span><span class="p">)</span>
     <span class="c1"># 训练</span>
     <span class="k">if</span> <span class="n">train</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">model_cache_file</span><span class="p">):</span>
         <span class="n">executor</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">train_data</span><span class="p">,</span> <span class="n">valid_data</span><span class="p">)</span>
@@ -315,10 +325,14 @@
                                      <span class="n">other_args</span><span class="o">=</span><span class="n">other_args</span><span class="p">)</span>
     <span class="c1"># logger</span>
     <span class="n">logger</span> <span class="o">=</span> <span class="n">get_logger</span><span class="p">(</span><span class="n">experiment_config</span><span class="p">)</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">experiment_config</span><span class="o">.</span><span class="n">config</span><span class="p">)</span>
     <span class="c1"># check space_file</span>
     <span class="k">if</span> <span class="n">space_file</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s1">&#39;the space_file should not be None when hyperparameter tune.&#39;</span><span class="p">)</span>
         <span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="c1"># seed</span>
+    <span class="n">seed</span> <span class="o">=</span> <span class="n">experiment_config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;seed&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">set_random_seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
     <span class="c1"># parse space_file</span>
     <span class="n">search_sapce</span> <span class="o">=</span> <span class="n">parse_search_space</span><span class="p">(</span><span class="n">space_file</span><span class="p">)</span>
     <span class="c1"># load dataset</span>
@@ -346,7 +360,7 @@
         <span class="c1"># load model</span>
         <span class="n">model</span> <span class="o">=</span> <span class="n">get_model</span><span class="p">(</span><span class="n">experiment_config</span><span class="p">,</span> <span class="n">data_feature</span><span class="p">)</span>
         <span class="c1"># load executor</span>
-        <span class="n">executor</span> <span class="o">=</span> <span class="n">get_executor</span><span class="p">(</span><span class="n">experiment_config</span><span class="p">,</span> <span class="n">model</span><span class="p">)</span>
+        <span class="n">executor</span> <span class="o">=</span> <span class="n">get_executor</span><span class="p">(</span><span class="n">experiment_config</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">data_feature</span><span class="p">)</span>
         <span class="c1"># checkpoint by ray tune</span>
         <span class="k">if</span> <span class="n">checkpoint_dir</span><span class="p">:</span>
             <span class="n">checkpoint</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">checkpoint_dir</span><span class="p">,</span> <span class="s1">&#39;checkpoint&#39;</span><span class="p">)</span>
@@ -403,7 +417,7 @@
     <span class="n">data_feature</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">get_data_feature</span><span class="p">()</span>
 
     <span class="n">model</span> <span class="o">=</span> <span class="n">get_model</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="n">data_feature</span><span class="p">)</span>
-    <span class="n">executor</span> <span class="o">=</span> <span class="n">get_executor</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="n">model</span><span class="p">)</span>
+    <span class="n">executor</span> <span class="o">=</span> <span class="n">get_executor</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">data_feature</span><span class="p">)</span>
     <span class="n">best_valid_score</span> <span class="o">=</span> <span class="n">executor</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">train_data</span><span class="p">,</span> <span class="n">valid_data</span><span class="p">)</span>
     <span class="n">test_result</span> <span class="o">=</span> <span class="n">executor</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">test_data</span><span class="p">)</span>
 

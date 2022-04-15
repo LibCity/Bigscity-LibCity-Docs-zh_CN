@@ -9,6 +9,7 @@
    data/data_flow
    data/raw_data
    data/atomic_files
+   data/dataset_class
    data/batch
    data/args_for_data
    data/dataset_for_task

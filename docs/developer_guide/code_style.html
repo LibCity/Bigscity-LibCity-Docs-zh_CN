@@ -4,7 +4,8 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>代码风格 &mdash; Bigscity-LibCity  documentation</title>
@@ -83,14 +84,14 @@
               
             
             
-              <p class="caption"><span class="caption-text">起步</span></p>
+              <p><span class="caption-text">起步</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../get_started/introduction.html">介绍</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../get_started/install.html">安装LibCity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../get_started/quick_start.html">快速入门</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../get_started/directory_structure.html">目录结构</a></li>
 </ul>
-<p class="caption"><span class="caption-text">用户指导</span></p>
+<p><span class="caption-text">用户指导</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/config_settings.html">参数设置</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/data.html">数据说明</a></li>
@@ -99,7 +100,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/executor.html">执行模块简介</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/usage.html">使用示例</a></li>
 </ul>
-<p class="caption"><span class="caption-text">开发者指导</span></p>
+<p><span class="caption-text">开发者指导</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">代码风格</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#flake8">使用Flake8</a></li>
@@ -110,14 +111,15 @@
 <li class="toctree-l1"><a class="reference internal" href="implemented_models.html">自定义Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="implemented_executors.html">自定义Executor</a></li>
 </ul>
-<p class="caption"><span class="caption-text">入门教程</span></p>
+<p><span class="caption-text">入门教程</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../tutorial/install_quick_start.html">安装和快速上手</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorial/run_model.html">运行LibCity中已复现的模型</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorial/add_model.html">在LibCity中添加新模型</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorial/hyper_tune.html">使用自动化工具调参</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/data_visualization.html">原子文件可视化</a></li>
 </ul>
-<p class="caption"><span class="caption-text">API文档</span></p>
+<p><span class="caption-text">API文档</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../libcity/libcity.config.html">libcity.config</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../libcity/libcity.data.html">libcity.data</a></li>
@@ -191,11 +193,11 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="id1">
+  <section id="id1">
 <h1>代码风格<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <p>每个主流开源项目都有其自己的风格指南：关于如何为该项目编写代码的一组约定。当所有代码都采用统一的风格时，更加容易理解大型代码库。</p>
 <p>我们的代码风格基本遵循了 <a class="reference external" href="https://google.github.io/styleguide/pyguide.html">Google Python Style Guide</a>（<a class="reference external" href="https://zh-google-styleguide.readthedocs.io/en/latest/google-python-styleguide/contents/">Chinese version</a>）。为了更好的管理各合作开发者提交的代码质量，这个项目使用python lint工具<a class="reference external" href="https://flake8.pycqa.org/en/latest/">flake8</a>来查找潜在的bug和源代码中的风格问题。</p>
-<div class="section" id="flake8">
+<section id="flake8">
 <h2>使用Flake8<a class="headerlink" href="#flake8" title="Permalink to this headline">¶</a></h2>
 <p>除了使用flake8，项目也使用了<a class="reference external" href="https://github.com/PyCQA/pep8-naming">pep8-naming</a>，一种flake8的插件来检查代码命名风格，请根据requirements.txt安装flake8和pep8-naming库。</p>
 <p>在安装了flake8后，我们建议您将flake8集成到Git pre-commit hook中使用。例如，您可以运行下列指令：</p>
@@ -204,15 +206,15 @@ $ git config --bool flake8.strict <span class="nb">true</span>
 </pre></div>
 </div>
 <p>现在，每当您git commit时，flake8都将自动检查您commit的代码风格和并防止您submit错误代码。</p>
-</div>
-<div class="section" id="id2">
+</section>
+<section id="id2">
 <h2>项目Flake8配置<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>虽然这个项目基本遵循了<a class="reference external" href="https://google.github.io/styleguide/pyguide.html">Google Python Style Guide</a>，但我们已经针对一些不合适的规范做出了某些修改。我们做的修改将被详细记录，请见下方。</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">max-line-length</span></code>：我们将最大行长度从80个字符更改为120个字符。</p></li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>

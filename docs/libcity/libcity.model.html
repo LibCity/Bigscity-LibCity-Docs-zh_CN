@@ -4,7 +4,8 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>libcity.model &mdash; Bigscity-LibCity  documentation</title>
@@ -37,7 +38,7 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="libcity.model.map_matching" href="libcity.model.map_matching.html" />
+    <link rel="next" title="libcity.model.eta" href="libcity.model.eta.html" />
     <link rel="prev" title="libcity.executor.traj_loc_pred_executor" href="libcity.executor.traj_loc_pred_executor.html" /> 
 </head>
 
@@ -83,14 +84,14 @@
               
             
             
-              <p class="caption"><span class="caption-text">起步</span></p>
+              <p><span class="caption-text">起步</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../get_started/introduction.html">介绍</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../get_started/install.html">安装LibCity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../get_started/quick_start.html">快速入门</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../get_started/directory_structure.html">目录结构</a></li>
 </ul>
-<p class="caption"><span class="caption-text">用户指导</span></p>
+<p><span class="caption-text">用户指导</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/config_settings.html">参数设置</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/data.html">数据说明</a></li>
@@ -99,28 +100,32 @@
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/executor.html">执行模块简介</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide/usage.html">使用示例</a></li>
 </ul>
-<p class="caption"><span class="caption-text">开发者指导</span></p>
+<p><span class="caption-text">开发者指导</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../developer_guide/code_style.html">代码风格</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_datasets.html">自定义Dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_models.html">自定义Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_executors.html">自定义Executor</a></li>
 </ul>
-<p class="caption"><span class="caption-text">入门教程</span></p>
+<p><span class="caption-text">入门教程</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../tutorial/install_quick_start.html">安装和快速上手</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorial/run_model.html">运行LibCity中已复现的模型</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorial/add_model.html">在LibCity中添加新模型</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorial/hyper_tune.html">使用自动化工具调参</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/data_visualization.html">原子文件可视化</a></li>
 </ul>
-<p class="caption"><span class="caption-text">API文档</span></p>
+<p><span class="caption-text">API文档</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="libcity.config.html">libcity.config</a></li>
 <li class="toctree-l1"><a class="reference internal" href="libcity.data.html">libcity.data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="libcity.evaluator.html">libcity.evaluator</a></li>
 <li class="toctree-l1"><a class="reference internal" href="libcity.executor.html">libcity.executor</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">libcity.model</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="libcity.model.eta.html">libcity.model.eta</a></li>
 <li class="toctree-l2"><a class="reference internal" href="libcity.model.map_matching.html">libcity.model.map_matching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.model.road_representation.html">libcity.model.road_representation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.model.traffic_accident_prediction.html">libcity.model.traffic_accident_prediction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="libcity.model.traffic_demand_prediction.html">libcity.model.traffic_demand_prediction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="libcity.model.traffic_flow_prediction.html">libcity.model.traffic_flow_prediction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="libcity.model.traffic_od_prediction.html">libcity.model.traffic_od_prediction</a></li>
@@ -130,6 +135,7 @@
 <li class="toctree-l2"><a class="reference internal" href="libcity.model.abstract_traffic_state_model.html">libcity.model.abstract_traffic_state_model</a></li>
 <li class="toctree-l2"><a class="reference internal" href="libcity.model.abstract_traffic_tradition_model.html">libcity.model.abstract_traffic_tradition_model</a></li>
 <li class="toctree-l2"><a class="reference internal" href="libcity.model.loss.html">libcity.model.loss</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.model.utils.html">libcity.model.utils</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="libcity.pipeline.html">libcity.pipeline</a></li>
@@ -199,13 +205,32 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="libcity-model">
+  <section id="libcity-model">
 <h1>libcity.model<a class="headerlink" href="#libcity-model" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="libcity.model.eta.html">libcity.model.eta</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="libcity.model.eta.DeepTTE.html">libcity.model.eta.DeepTTE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.model.eta.TTPNet.html">libcity.model.eta.TTPNet</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="libcity.model.map_matching.html">libcity.model.map_matching</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="libcity.model.map_matching.HMMM.html">libcity.model.map_matching.HMMM</a></li>
 <li class="toctree-l2"><a class="reference internal" href="libcity.model.map_matching.IVMM.html">libcity.model.map_matching.IVMM</a></li>
 <li class="toctree-l2"><a class="reference internal" href="libcity.model.map_matching.STMatching.html">libcity.model.map_matching.STMatching</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="libcity.model.road_representation.html">libcity.model.road_representation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="libcity.model.road_representation.ChebConv.html">libcity.model.road_representation.ChebConv</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.model.road_representation.DeepWalk.html">libcity.model.road_representation.DeepWalk</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.model.road_representation.GAT.html">libcity.model.road_representation.GAT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.model.road_representation.GeomGCN.html">libcity.model.road_representation.GeomGCN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.model.road_representation.LINE.html">libcity.model.road_representation.LINE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.model.road_representation.Node2Vec.html">libcity.model.road_representation.Node2Vec</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="libcity.model.traffic_accident_prediction.html">libcity.model.traffic_accident_prediction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="libcity.model.traffic_accident_prediction.GSNet.html">libcity.model.traffic_accident_prediction.GSNet</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="libcity.model.traffic_demand_prediction.html">libcity.model.traffic_demand_prediction</a><ul>
@@ -239,6 +264,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="libcity.model.traffic_od_prediction.html">libcity.model.traffic_od_prediction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="libcity.model.traffic_od_prediction.CSTN.html">libcity.model.traffic_od_prediction.CSTN</a></li>
 <li class="toctree-l2"><a class="reference internal" href="libcity.model.traffic_od_prediction.GEML.html">libcity.model.traffic_od_prediction.GEML</a></li>
 </ul>
 </li>
@@ -254,6 +280,7 @@
 <li class="toctree-l2"><a class="reference internal" href="libcity.model.traffic_speed_prediction.HGCN.html">libcity.model.traffic_speed_prediction.HGCN</a></li>
 <li class="toctree-l2"><a class="reference internal" href="libcity.model.traffic_speed_prediction.MTGNN.html">libcity.model.traffic_speed_prediction.MTGNN</a></li>
 <li class="toctree-l2"><a class="reference internal" href="libcity.model.traffic_speed_prediction.RNN.html">libcity.model.traffic_speed_prediction.RNN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.model.traffic_speed_prediction.STAGGCN.html">libcity.model.traffic_speed_prediction.STAGGCN</a></li>
 <li class="toctree-l2"><a class="reference internal" href="libcity.model.traffic_speed_prediction.STGCN.html">libcity.model.traffic_speed_prediction.STGCN</a></li>
 <li class="toctree-l2"><a class="reference internal" href="libcity.model.traffic_speed_prediction.STMGAT.html">libcity.model.traffic_speed_prediction.STMGAT</a></li>
 <li class="toctree-l2"><a class="reference internal" href="libcity.model.traffic_speed_prediction.STTN.html">libcity.model.traffic_speed_prediction.STTN</a></li>
@@ -286,9 +313,10 @@
 <li class="toctree-l1"><a class="reference internal" href="libcity.model.abstract_traffic_state_model.html">libcity.model.abstract_traffic_state_model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="libcity.model.abstract_traffic_tradition_model.html">libcity.model.abstract_traffic_tradition_model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="libcity.model.loss.html">libcity.model.loss</a></li>
+<li class="toctree-l1"><a class="reference internal" href="libcity.model.utils.html">libcity.model.utils</a></li>
 </ul>
 </div>
-</div>
+</section>
 
 
            </div>
@@ -298,7 +326,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="libcity.model.map_matching.html" class="btn btn-neutral float-right" title="libcity.model.map_matching" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="libcity.model.eta.html" class="btn btn-neutral float-right" title="libcity.model.eta" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="libcity.executor.traj_loc_pred_executor.html" class="btn btn-neutral float-left" title="libcity.executor.traj_loc_pred_executor" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

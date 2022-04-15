@@ -4,7 +4,8 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>原子文件 &mdash; Bigscity-LibCity  documentation</title>
@@ -37,7 +38,7 @@
     
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Batch" href="batch.html" />
+    <link rel="next" title="已实现的Dataset类" href="dataset_class.html" />
     <link rel="prev" title="原始数据" href="raw_data.html" /> 
 </head>
 
@@ -83,14 +84,14 @@
               
             
             
-              <p class="caption"><span class="caption-text">起步</span></p>
+              <p><span class="caption-text">起步</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../get_started/introduction.html">介绍</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../get_started/install.html">安装LibCity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../get_started/quick_start.html">快速入门</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../get_started/directory_structure.html">目录结构</a></li>
 </ul>
-<p class="caption"><span class="caption-text">用户指导</span></p>
+<p><span class="caption-text">用户指导</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../config_settings.html">参数设置</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../data.html">数据说明</a><ul class="current">
@@ -100,12 +101,18 @@
 <li class="toctree-l3"><a class="reference internal" href="#geo">Geo 表</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#usr">Usr 表</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#rel">Rel 表</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#dyna">Dyna 表</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dyna">Dyna 表</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id2">各列介绍</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">详细说明</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">数据排列方式</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#ext">Ext 表</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id2">数据类型定义</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">数据类型定义</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#config">Config 文件</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="dataset_class.html">已实现的Dataset类</a></li>
 <li class="toctree-l2"><a class="reference internal" href="batch.html">Batch</a></li>
 <li class="toctree-l2"><a class="reference internal" href="args_for_data.html">数据模块参数</a></li>
 <li class="toctree-l2"><a class="reference internal" href="dataset_for_task.html">数据集适用的任务</a></li>
@@ -116,21 +123,22 @@
 <li class="toctree-l1"><a class="reference internal" href="../executor.html">执行模块简介</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../usage.html">使用示例</a></li>
 </ul>
-<p class="caption"><span class="caption-text">开发者指导</span></p>
+<p><span class="caption-text">开发者指导</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../developer_guide/code_style.html">代码风格</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../developer_guide/implemented_datasets.html">自定义Dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../developer_guide/implemented_models.html">自定义Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../developer_guide/implemented_executors.html">自定义Executor</a></li>
 </ul>
-<p class="caption"><span class="caption-text">入门教程</span></p>
+<p><span class="caption-text">入门教程</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorial/install_quick_start.html">安装和快速上手</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorial/run_model.html">运行LibCity中已复现的模型</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorial/add_model.html">在LibCity中添加新模型</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorial/hyper_tune.html">使用自动化工具调参</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial/data_visualization.html">原子文件可视化</a></li>
 </ul>
-<p class="caption"><span class="caption-text">API文档</span></p>
+<p><span class="caption-text">API文档</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../libcity/libcity.config.html">libcity.config</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../libcity/libcity.data.html">libcity.data</a></li>
@@ -206,7 +214,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="id1">
+  <section id="id1">
 <h1>原子文件<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <p>定义如下几种原子文件：</p>
 <table border="1" class="docutils">
@@ -251,7 +259,8 @@
 </tbody>
 </table><p>注：对于不同的交通预测任务，可能用到不同的原子文件，同一个数据集不一定包含全部六种原子文件。</p>
 <p><strong><code class="docutils literal notranslate"><span class="pre">.geo</span></code>、<code class="docutils literal notranslate"><span class="pre">.usr</span></code>、 <code class="docutils literal notranslate"><span class="pre">.rel</span></code>、 <code class="docutils literal notranslate"><span class="pre">.dyna</span></code> 和 <code class="docutils literal notranslate"><span class="pre">.ext</span></code> 的格式类似 <code class="docutils literal notranslate"><span class="pre">csv</span></code> 文件， 即含有多列数据。</strong></p>
-<div class="section" id="geo">
+<p>如果在处理成原子文件的过程中，对任意一种id进行了重映射，<strong>我们推荐从0开始编号</strong>！</p>
+<section id="geo">
 <h2>Geo 表<a class="headerlink" href="#geo" title="Permalink to this headline">¶</a></h2>
 <p>Geo 表中一个元素由以下四部分组成：</p>
 <p><strong>geo_id、 type、 coordinates、 properties （多列）</strong>。</p>
@@ -269,8 +278,8 @@
 <li><p>Polygon： [[ [100.0, 0.0], [101.0, 0.0], [101.0, 1.0], [100.0, 1.0], [100.0, 0.0] ]]</p></li>
 </ul>
 </div></blockquote>
-</div>
-<div class="section" id="usr">
+</section>
+<section id="usr">
 <h2>Usr 表<a class="headerlink" href="#usr" title="Permalink to this headline">¶</a></h2>
 <p>Usr 表中一个元素由以下两部分组成：</p>
 <p><strong>usr_id， properties （多列）</strong>。</p>
@@ -278,8 +287,8 @@
 <li><p>usr_id： 主键，唯一确定一个 usr 实体。</p></li>
 <li><p>properties： 描述该 usr 实体的属性信息，若有多个属性，可以使用不同的列名定义为多列数据，如 <code class="docutils literal notranslate"><span class="pre">gender</span></code>，<code class="docutils literal notranslate"><span class="pre">birth_date</span></code>。</p></li>
 </ul>
-</div>
-<div class="section" id="rel">
+</section>
+<section id="rel">
 <h2>Rel 表<a class="headerlink" href="#rel" title="Permalink to this headline">¶</a></h2>
 <p>Rel 表中一个元素由以下四个部分组成：</p>
 <p><strong>rel_id、 type、 origin_id、 destination_id、 properties（多列）</strong>。</p>
@@ -290,34 +299,101 @@
 <li><p>destination_id： 关系终点方的 ID，为 Geo 表或 Usr 表中的一个。</p></li>
 <li><p>properties： 描述该关系所具有的属性信息。若有多个属性，可以使用不同的列名定义多列数据。</p></li>
 </ul>
-</div>
-<div class="section" id="dyna">
+</section>
+<section id="dyna">
 <h2>Dyna 表<a class="headerlink" href="#dyna" title="Permalink to this headline">¶</a></h2>
 <p>Dyna 表中一个元素由以下五部分组成：</p>
 <p><strong>dyna_id、 type、 time、 entity_id（多列）、 properties（多列）</strong>。</p>
-<ul>
+<section id="id2">
+<h3>各列介绍<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
 <li><p>dyna_id： 主键，唯一标识动态表中的一条记录。</p></li>
 <li><p>type： 枚举类。一共有两种取值： <code class="docutils literal notranslate"><span class="pre">trajectory</span></code>（轨迹预测任务） 和 <code class="docutils literal notranslate"><span class="pre">state</span></code>（状态预测任务）。</p></li>
-<li><p>time： 时间信息，采用 <a class="reference external" href="https://www.iso.org/iso-8601-date-and-time-format.html">ISO-8601 标准</a> 中的日期时间组合表示法， 如： <code class="docutils literal notranslate"><span class="pre">2020-</span> <span class="pre">12-07T02:59:46Z</span></code>。</p></li>
-<li><p>entity_id： 描述该记录是基于哪一个实体观测产生的，就是 <code class="docutils literal notranslate"><span class="pre">geo</span></code> 或 <code class="docutils literal notranslate"><span class="pre">usr</span></code>的编号。</p>
-<ul>
-<li><p>对于轨迹预测任务：</p>
-<p>格式为：dyna_id, trajectory, time, entity_id, location。其中 <strong>entity_id</strong> 列的内容应该是 <strong>usr_id</strong>。</p>
-</li>
-<li><p>对于状态预测任务，<strong>entity_id</strong> 可能有不同变化：</p>
-<ul class="simple">
-<li><p>对于传感器、路段、区域等实体来讲此列就是对应的编号， 列名为 [<strong>entity_id</strong>]， 文件后缀名为 <code class="docutils literal notranslate"><span class="pre">.dyna</span></code>。</p></li>
-<li><p>对于网格结构的交通数据，列名为 [<strong>row_id, column_id</strong>]，文件后缀名为 <code class="docutils literal notranslate"><span class="pre">.grid</span></code>。</p></li>
-<li><p>对于基于od结构的交通数据，列名为 [<strong>origin_id, destination_id</strong>]，文件后缀名为 <code class="docutils literal notranslate"><span class="pre">.od</span></code>。</p></li>
-<li><p>对于网格结合od结构的交通数据，列名为 [<strong>origin_row_id, origin_column_id, destination_row_id, destination_column_id</strong>]，文件后缀名为 <code class="docutils literal notranslate"><span class="pre">.gridod</span></code>。</p></li>
-</ul>
-</li>
-</ul>
-</li>
+<li><p>time： 时间信息，采用 <a class="reference external" href="https://www.iso.org/iso-8601-date-and-time-format.html">ISO-8601 标准</a> 中的日期时间组合表示法， 如： <code class="docutils literal notranslate"><span class="pre">2020-12-07T02:59:46Z</span></code>。</p></li>
+<li><p>entity_id： 描述该记录是基于哪一个实体观测产生的，就是 <code class="docutils literal notranslate"><span class="pre">geo</span></code> 或 <code class="docutils literal notranslate"><span class="pre">usr</span></code>的编号。</p></li>
 <li><p>properties： 描述该条记录的属性信息，若有多个属性，可以使用不同的列名定义为多列数据，比如既有速度数据、又有流量数据。</p></li>
 </ul>
+</section>
+<section id="id3">
+<h3>详细说明<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p>对于交通状态预测任务：</p>
+<ul class="simple">
+<li><p>格式为：<em>dyna_id, state, time, entity_id, properties</em>，<strong>entity_id</strong> 可能有不同变化。</p></li>
+<li><p>对于传感器、路段、区域等实体来讲此列就是对应的编号， entity_id 的列名为 [<strong>entity_id</strong>]， 文件后缀名为 <code class="docutils literal notranslate"><span class="pre">.dyna</span></code>。</p></li>
+<li><p>对于网格结构的交通数据，entity_id 变成2列，列名为 [<strong>row_id, column_id</strong>]，文件后缀名为 <code class="docutils literal notranslate"><span class="pre">.grid</span></code>。</p></li>
+<li><p>对于基于OD结构的交通数据，entity_id 变成2列，列名为 [<strong>origin_id, destination_id</strong>]，文件后缀名为 <code class="docutils literal notranslate"><span class="pre">.od</span></code>。</p></li>
+<li><p>对于网格结合OD结构的交通数据，entity_id 变成4列，列名为 [<strong>origin_row_id, origin_column_id, destination_row_id, destination_column_id</strong>]，文件后缀名为 <code class="docutils literal notranslate"><span class="pre">.gridod</span></code>。</p></li>
+</ul>
+</li>
+<li><p>对于轨迹相关任务:</p>
+<p>轨迹数据包括GPS点轨迹、基于路段的轨迹（路网匹配后）、用户签到轨迹（基于POI的轨迹）。</p>
+<ul class="simple">
+<li><p>GPS点轨迹</p>
+<ul>
+<li><p>格式为： <em><strong>dyna_id, type, time, entity_id, (traj_id), coordinates, properties</strong></em>.</p></li>
+<li><p><strong>entity_id</strong>列的内容应为<strong>usr_id</strong>，<strong>traj_id</strong>表示同一用户的多条轨迹的编号（从0开始），如果用户只有一条轨迹，则该列可以为空，<strong>coordinates</strong>列的内容为GPS点的纬度和经度。</p></li>
+</ul>
+</li>
+</ul>
+<ul class="simple">
+<li><p>基于路段的轨迹</p>
+<ul>
+<li><p>格式为： <em><strong>dyna_id, type, time, entity_id, (traj_id), location, properties</strong></em>.</p></li>
+<li><p><strong>entity_id</strong>列的内容应为<strong>usr_id</strong>，<strong>traj_id</strong>表示同一用户的多条轨迹的编号（从0开始），如果用户只有一条轨迹，则该列可以为空，<strong>location</strong>列的内容是<strong>geo_id</strong>，指向geo表代表一个路段。</p></li>
+</ul>
+</li>
+<li><p>基于POI的轨迹</p>
+<ul>
+<li><p>格式为： <em><strong>dyna_id, type, time, entity_id, (traj_id), location, properties</strong></em>.</p></li>
+<li><p><strong>entity_id</strong>列的内容应为<strong>usr_id</strong>，<strong>traj_id</strong>表示同一用户的多条轨迹的编号（从0开始），如果用户只有一条轨迹，则该列可以为空，<strong>location</strong>列的内容是<strong>geo_id</strong>，指向geo表代表一个POI。</p></li>
+</ul>
+</li>
+</ul>
+<p>对于特定任务，轨迹下一个位置预测任务的输入基于POI点的轨迹，到达时间估计任务的输入为GPS点的轨迹或基于路段的轨迹，地图匹配任务的输入为GPS点的轨迹，输出的是基于路段的轨迹。</p>
+</li>
+</ul>
+</section>
+<section id="id4">
+<h3>数据排列方式<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>**Dyna 表中，应该按照 &lt;entity_id&gt; 和 <time> 双关键字排列，即&lt;entity_id&gt;相同的记录放在一起并按照<time>排序。 **</p></li>
+<li><p><strong>特别的，对于轨迹数据，同一用户 &lt;entity_id&gt; 的轨迹应先按 &lt;traj_id&gt; 排序，&lt;traj_id&gt; 相同者按照 <time> 排序。</strong></p></li>
+</ul>
+<p>例如：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dyna_id</span><span class="p">,</span><span class="nb">type</span><span class="p">,</span><span class="n">time</span><span class="p">,</span><span class="n">entity_id</span><span class="p">,</span><span class="n">traffic_speed</span>
+<span class="mi">0</span><span class="p">,</span><span class="n">state</span><span class="p">,</span><span class="mi">2012</span><span class="o">-</span><span class="mi">03</span><span class="o">-</span><span class="mi">01</span><span class="n">T00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="n">Z</span><span class="p">,</span><span class="mi">773869</span><span class="p">,</span><span class="mf">64.375</span>
+<span class="mi">1</span><span class="p">,</span><span class="n">state</span><span class="p">,</span><span class="mi">2012</span><span class="o">-</span><span class="mi">03</span><span class="o">-</span><span class="mi">01</span><span class="n">T00</span><span class="p">:</span><span class="mi">05</span><span class="p">:</span><span class="mi">00</span><span class="n">Z</span><span class="p">,</span><span class="mi">773869</span><span class="p">,</span><span class="mf">62.666666666666664</span>
+<span class="mi">2</span><span class="p">,</span><span class="n">state</span><span class="p">,</span><span class="mi">2012</span><span class="o">-</span><span class="mi">03</span><span class="o">-</span><span class="mi">01</span><span class="n">T00</span><span class="p">:</span><span class="mi">10</span><span class="p">:</span><span class="mi">00</span><span class="n">Z</span><span class="p">,</span><span class="mi">773869</span><span class="p">,</span><span class="mf">64.0</span>
+<span class="o">...</span>
+<span class="mi">34270</span><span class="p">,</span><span class="n">state</span><span class="p">,</span><span class="mi">2012</span><span class="o">-</span><span class="mi">06</span><span class="o">-</span><span class="mi">27</span><span class="n">T23</span><span class="p">:</span><span class="mi">50</span><span class="p">:</span><span class="mi">00</span><span class="n">Z</span><span class="p">,</span><span class="mi">773869</span><span class="p">,</span><span class="mf">66.75</span>
+<span class="mi">34271</span><span class="p">,</span><span class="n">state</span><span class="p">,</span><span class="mi">2012</span><span class="o">-</span><span class="mi">06</span><span class="o">-</span><span class="mi">27</span><span class="n">T23</span><span class="p">:</span><span class="mi">55</span><span class="p">:</span><span class="mi">00</span><span class="n">Z</span><span class="p">,</span><span class="mi">773869</span><span class="p">,</span><span class="mf">65.11111111111111</span>
+<span class="mi">34272</span><span class="p">,</span><span class="n">state</span><span class="p">,</span><span class="mi">2012</span><span class="o">-</span><span class="mi">03</span><span class="o">-</span><span class="mi">01</span><span class="n">T00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="n">Z</span><span class="p">,</span><span class="mi">767541</span><span class="p">,</span><span class="mf">67.625</span>
+<span class="mi">34273</span><span class="p">,</span><span class="n">state</span><span class="p">,</span><span class="mi">2012</span><span class="o">-</span><span class="mi">03</span><span class="o">-</span><span class="mi">01</span><span class="n">T00</span><span class="p">:</span><span class="mi">05</span><span class="p">:</span><span class="mi">00</span><span class="n">Z</span><span class="p">,</span><span class="mi">767541</span><span class="p">,</span><span class="mf">68.55555555555556</span>
+<span class="mi">34274</span><span class="p">,</span><span class="n">state</span><span class="p">,</span><span class="mi">2012</span><span class="o">-</span><span class="mi">03</span><span class="o">-</span><span class="mi">01</span><span class="n">T00</span><span class="p">:</span><span class="mi">10</span><span class="p">:</span><span class="mi">00</span><span class="n">Z</span><span class="p">,</span><span class="mi">767541</span><span class="p">,</span><span class="mf">63.75</span>
+<span class="o">...</span>
+<span class="mi">68542</span><span class="p">,</span><span class="n">state</span><span class="p">,</span><span class="mi">2012</span><span class="o">-</span><span class="mi">06</span><span class="o">-</span><span class="mi">27</span><span class="n">T23</span><span class="p">:</span><span class="mi">50</span><span class="p">:</span><span class="mi">00</span><span class="n">Z</span><span class="p">,</span><span class="mi">767541</span><span class="p">,</span><span class="mf">62.25</span>
+<span class="mi">68543</span><span class="p">,</span><span class="n">state</span><span class="p">,</span><span class="mi">2012</span><span class="o">-</span><span class="mi">06</span><span class="o">-</span><span class="mi">27</span><span class="n">T23</span><span class="p">:</span><span class="mi">55</span><span class="p">:</span><span class="mi">00</span><span class="n">Z</span><span class="p">,</span><span class="mi">767541</span><span class="p">,</span><span class="mf">66.88888888888889</span>
+<span class="mi">68544</span><span class="p">,</span><span class="n">state</span><span class="p">,</span><span class="mi">2012</span><span class="o">-</span><span class="mi">03</span><span class="o">-</span><span class="mi">01</span><span class="n">T00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="n">Z</span><span class="p">,</span><span class="mi">767542</span><span class="p">,</span><span class="mf">67.125</span>
+<span class="mi">68545</span><span class="p">,</span><span class="n">state</span><span class="p">,</span><span class="mi">2012</span><span class="o">-</span><span class="mi">03</span><span class="o">-</span><span class="mi">01</span><span class="n">T00</span><span class="p">:</span><span class="mi">05</span><span class="p">:</span><span class="mi">00</span><span class="n">Z</span><span class="p">,</span><span class="mi">767542</span><span class="p">,</span><span class="mf">65.44444444444444</span>
+<span class="o">...</span>
+</pre></div>
 </div>
-<div class="section" id="ext">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dyna_id</span><span class="p">,</span><span class="nb">type</span><span class="p">,</span><span class="n">time</span><span class="p">,</span><span class="n">entity_id</span><span class="p">,</span><span class="n">traj_id</span><span class="p">,</span><span class="n">coordinates</span><span class="p">,</span><span class="n">current_dis</span><span class="p">,</span><span class="n">current_state</span>
+<span class="mi">0</span><span class="p">,</span><span class="n">trajectory</span><span class="p">,</span><span class="mi">2014</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">03</span><span class="n">T18</span><span class="p">:</span><span class="mi">29</span><span class="p">:</span><span class="mi">00</span><span class="n">Z</span><span class="p">,</span><span class="mi">810</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="s2">&quot;[104.115353,30.64392]&quot;</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">1.0</span>
+<span class="mi">1</span><span class="p">,</span><span class="n">trajectory</span><span class="p">,</span><span class="mi">2014</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">03</span><span class="n">T18</span><span class="p">:</span><span class="mi">29</span><span class="p">:</span><span class="mi">40</span><span class="n">Z</span><span class="p">,</span><span class="mi">810</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="s2">&quot;[104.113091,30.642129]&quot;</span><span class="p">,</span><span class="mf">0.294091467</span><span class="p">,</span><span class="mf">1.0</span>
+<span class="mi">2</span><span class="p">,</span><span class="n">trajectory</span><span class="p">,</span><span class="mi">2014</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">03</span><span class="n">T18</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mi">20</span><span class="n">Z</span><span class="p">,</span><span class="mi">810</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="s2">&quot;[104.110404,30.64393]&quot;</span><span class="p">,</span><span class="mf">0.6199505718</span><span class="p">,</span><span class="mf">1.0</span>
+<span class="mi">3</span><span class="p">,</span><span class="n">trajectory</span><span class="p">,</span><span class="mi">2014</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">03</span><span class="n">T18</span><span class="p">:</span><span class="mi">31</span><span class="p">:</span><span class="mi">00</span><span class="n">Z</span><span class="p">,</span><span class="mi">810</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="s2">&quot;[104.108335,30.640667]&quot;</span><span class="p">,</span><span class="mf">1.0332595142</span><span class="p">,</span><span class="mf">1.0</span>
+<span class="o">...</span>
+<span class="mi">21</span><span class="p">,</span><span class="n">trajectory</span><span class="p">,</span><span class="mi">2014</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">03</span><span class="n">T18</span><span class="p">:</span><span class="mi">53</span><span class="p">:</span><span class="mi">23</span><span class="n">Z</span><span class="p">,</span><span class="mi">810</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="s2">&quot;[104.076552,30.626844]&quot;</span><span class="p">,</span><span class="mf">7.0811683597</span><span class="p">,</span><span class="mf">0.0</span>
+<span class="mi">22</span><span class="p">,</span><span class="n">trajectory</span><span class="p">,</span><span class="mi">2014</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">03</span><span class="n">T18</span><span class="p">:</span><span class="mi">13</span><span class="p">:</span><span class="mi">00</span><span class="n">Z</span><span class="p">,</span><span class="mi">810</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="s2">&quot;[104.106701,30.6916]&quot;</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">1.0</span>
+<span class="mi">23</span><span class="p">,</span><span class="n">trajectory</span><span class="p">,</span><span class="mi">2014</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">03</span><span class="n">T18</span><span class="p">:</span><span class="mi">13</span><span class="p">:</span><span class="mi">30</span><span class="n">Z</span><span class="p">,</span><span class="mi">810</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="s2">&quot;[104.103889,30.688151]&quot;</span><span class="p">,</span><span class="mf">0.4683813603</span><span class="p">,</span><span class="mf">1.0</span>
+<span class="mi">24</span><span class="p">,</span><span class="n">trajectory</span><span class="p">,</span><span class="mi">2014</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">03</span><span class="n">T18</span><span class="p">:</span><span class="mi">14</span><span class="p">:</span><span class="mi">21</span><span class="n">Z</span><span class="p">,</span><span class="mi">810</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="s2">&quot;[104.102828,30.68506]&quot;</span><span class="p">,</span><span class="mf">0.8267467429</span><span class="p">,</span><span class="mf">1.0</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="ext">
 <h2>Ext 表<a class="headerlink" href="#ext" title="Permalink to this headline">¶</a></h2>
 <p>Ext 表中一个元素由以下五部分组成：</p>
 <p><strong>ext_id、 time、 properties (multiple columns)</strong>。</p>
@@ -326,9 +402,9 @@
 <li><p>time： 时间信息，采用 <a class="reference external" href="https://www.iso.org/iso-8601-date-and-time-format.html">ISO-8601 标准</a> 中的日期时间组合表示法，如： <code class="docutils literal notranslate"><span class="pre">2020-</span> <span class="pre">12-07T02:59:46Z</span></code>。</p></li>
 <li><p>描述该条记录的属性信息，若有多个属性，可以使用不同的列名定义为多列数据，比如既有温度数据、又有湿度数据。</p></li>
 </ul>
-</div>
-<div class="section" id="id2">
-<h2>数据类型定义<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="id5">
+<h2>数据类型定义<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
 <p>需要在 config 文件中给出数据集中各列的数据类型定义，有助于后续的数据处理。</p>
 <table border="1" class="docutils">
 <thead>
@@ -356,7 +432,7 @@
 </tr>
 <tr>
 <td>coordinate</td>
-<td>符合 geojosn 格式的坐标表示法的字符串</td>
+<td>符合 Geojosn 格式的坐标表示法的字符串</td>
 </tr>
 <tr>
 <td>num</td>
@@ -371,8 +447,8 @@
 <td>其余的均以字符串类型存储</td>
 </tr>
 </tbody>
-</table></div>
-<div class="section" id="config">
+</table></section>
+<section id="config">
 <h2>Config 文件<a class="headerlink" href="#config" title="Permalink to this headline">¶</a></h2>
 <p>Config 文件用以补充描述上述五个表自身的信息， 以 <code class="docutils literal notranslate"><span class="pre">json</span></code> 形式保存并由 <code class="docutils literal notranslate"><span class="pre">geo</span></code>、 <code class="docutils literal notranslate"><span class="pre">usr</span></code>、 <code class="docutils literal notranslate"><span class="pre">rel</span></code>、 <code class="docutils literal notranslate"><span class="pre">dyna</span></code>、 <code class="docutils literal notranslate"><span class="pre">ext</span></code>、 <code class="docutils literal notranslate"><span class="pre">info</span></code> 六个键组成</p>
 <ul>
@@ -399,14 +475,14 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">init_weight_inf_or_zero</span></code>： 取值为 [<code class="docutils literal notranslate"><span class="pre">inf</span></code> , <code class="docutils literal notranslate"><span class="pre">zero</span></code>]。 加载 <code class="docutils literal notranslate"><span class="pre">.rel</span></code> 文件构建邻接矩阵时，初始化邻接矩阵为全INF (<code class="docutils literal notranslate"><span class="pre">inf</span></code>) 还是全0 (<code class="docutils literal notranslate"><span class="pre">zero</span></code>)， 默认为 <code class="docutils literal notranslate"><span class="pre">inf</span></code>。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">set_weight_link_or_dist</span></code>： 取值为 [<code class="docutils literal notranslate"><span class="pre">link</span></code>, <code class="docutils literal notranslate"><span class="pre">dist</span></code>]， 当加载 <code class="docutils literal notranslate"><span class="pre">.rel</span></code> 文件构建邻接矩阵时，使用文件中权重列中的原始值 (<code class="docutils literal notranslate"><span class="pre">dist</span></code>) 还是将之修订为全 01 的矩阵 (<code class="docutils literal notranslate"><span class="pre">link</span></code>)， 默认为 <code class="docutils literal notranslate"><span class="pre">dist</span></code>。 <strong>[注意： 如果 <code class="docutils literal notranslate"><span class="pre">.rel</span></code> 文件中只有相连的关系，没有不相连的关系，应该指定为 <code class="docutils literal notranslate"><span class="pre">link</span></code>]</strong></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">calculate_weight_adj</span></code>： 从 <code class="docutils literal notranslate"><span class="pre">.rel</span></code> 文件获取的邻接矩阵的权重是否需要进一步进行计算， <strong>默认为 <code class="docutils literal notranslate"><span class="pre">False</span></code></strong>。 部分邻接矩阵在原始数据的基础上，进行了一些计算。目前的计算方法是带有阈值的高斯核方法： $$  w_{ij} = \exp \left(- \frac{d_{ij}^{2}}{\sigma^{2}}\right)$$</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">weight_adj_epsilon</span></code>： 高斯核的阈值。 经过计算的权重如果小于该阈值，则变成0，即 $$  w_{ij}[w_{ij}&lt;\epsilon]=0​$$ 此参数依赖于参数 <code class="docutils literal notranslate"><span class="pre">calculate_weight_adj=True</span></code> 。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">weight_adj_epsilon</span></code>： 高斯核的阈值。 经过计算的权重如果小于该阈值，则变成0，即 $$  w_{ij}[w_{ij}&lt;\epsilon]=0$$ 此参数依赖于参数 <code class="docutils literal notranslate"><span class="pre">calculate_weight_adj=True</span></code> 。</p></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><p><strong>对于轨迹下一跳预测任务：</strong></p>
-<ul>
+<ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">distance_upper</span></code>： POI点之间的最大距离。</p></li>
-</ul>
-</li>
 </ul>
 </li>
 </ul>
@@ -498,8 +574,8 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
@@ -509,7 +585,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="batch.html" class="btn btn-neutral float-right" title="Batch" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="dataset_class.html" class="btn btn-neutral float-right" title="已实现的Dataset类" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="raw_data.html" class="btn btn-neutral float-left" title="原始数据" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

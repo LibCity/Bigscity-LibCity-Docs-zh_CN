@@ -1,0 +1,296 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>已实现的Dataset类 &mdash; Bigscity-LibCity  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Batch" href="batch.html" />
+    <link rel="prev" title="原子文件" href="atomic_files.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> Bigscity-LibCity
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p><span class="caption-text">起步</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../get_started/introduction.html">介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../get_started/install.html">安装LibCity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../get_started/quick_start.html">快速入门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../get_started/directory_structure.html">目录结构</a></li>
+</ul>
+<p><span class="caption-text">用户指导</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../config_settings.html">参数设置</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../data.html">数据说明</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="data_flow.html">数据流</a></li>
+<li class="toctree-l2"><a class="reference internal" href="raw_data.html">原始数据</a></li>
+<li class="toctree-l2"><a class="reference internal" href="atomic_files.html">原子文件</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">已实现的Dataset类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="batch.html">Batch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="args_for_data.html">数据模块参数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dataset_for_task.html">数据集适用的任务</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../model.html">复现模型列表</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../evaluator.html">评估模块简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../executor.html">执行模块简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">使用示例</a></li>
+</ul>
+<p><span class="caption-text">开发者指导</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../developer_guide/code_style.html">代码风格</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer_guide/implemented_datasets.html">自定义Dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer_guide/implemented_models.html">自定义Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer_guide/implemented_executors.html">自定义Executor</a></li>
+</ul>
+<p><span class="caption-text">入门教程</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial/install_quick_start.html">安装和快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial/run_model.html">运行LibCity中已复现的模型</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial/add_model.html">在LibCity中添加新模型</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial/hyper_tune.html">使用自动化工具调参</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial/data_visualization.html">原子文件可视化</a></li>
+</ul>
+<p><span class="caption-text">API文档</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../libcity/libcity.config.html">libcity.config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../libcity/libcity.data.html">libcity.data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../libcity/libcity.evaluator.html">libcity.evaluator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../libcity/libcity.executor.html">libcity.executor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../libcity/libcity.model.html">libcity.model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../libcity/libcity.pipeline.html">libcity.pipeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../libcity/libcity.utils.html">libcity.utils</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Bigscity-LibCity</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../data.html">数据说明</a> &raquo;</li>
+        
+      <li>已实现的Dataset类</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/user_guide/data/dataset_class.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <section id="dataset">
+<h1>已实现的Dataset类<a class="headerlink" href="#dataset" title="Permalink to this headline">¶</a></h1>
+<p>已实现的Dataset类的功能介绍如下</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">AbstractDataset</span></code></p>
+<p>所有数据集的基类。<strong>注意这是抽象类，不能直接使用</strong></p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TrajectoryDataset</span></code></p>
+<p>所有轨迹位置预测任务的基类。会根据设定的 <code class="docutils literal notranslate"><span class="pre">window_size</span></code> 与 <code class="docutils literal notranslate"><span class="pre">cut_method</span></code> 来对获取到的轨迹记录进行切割，将原始数据集中的数月长的轨迹切割为符合单次出行时间/距离长度的子轨迹。在完成切割后，会根据设定的 <code class="docutils literal notranslate"><span class="pre">traj_encoder</span></code> 参数调用相应的轨迹时空特征编码器来对轨迹进行特征提取并生成模型输入。</p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TrafficStateDataset</span></code></p>
+<p>用于交通状态预测任务的基类之一。<strong>注意这是抽象类，不能直接使用</strong>。默认情况下，<code class="docutils literal notranslate"><span class="pre">input_window</span></code>的数据被用来预测<code class="docutils literal notranslate"><span class="pre">output_window</span></code>对应的数据。此类生成的<a class="reference external" href="../user_guide/data/batch">Batch</a> 对象包含两个键，分别是<code class="docutils literal notranslate"><span class="pre">X</span></code>和<code class="docutils literal notranslate"><span class="pre">y</span></code>。此处的<code class="docutils literal notranslate"><span class="pre">input_window</span></code>和<code class="docutils literal notranslate"><span class="pre">output_window</span></code>是data的参数，点击<a class="reference external" href="../user_guide/data/args_for_data">此处</a>查看细节。</p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TrafficStateCPTDataset</span></code></p>
+<p>用于交通状态预测任务的另一个基类。<strong>注意这是抽象类，不能直接使用</strong>。一些交通预测模型通过对接近度/周期/趋势的建模来实现预测。默认情况下，<code class="docutils literal notranslate"><span class="pre">len_closeness</span></code>/<code class="docutils literal notranslate"><span class="pre">len_period</span></code>/<code class="docutils literal notranslate"><span class="pre">len_trend</span></code> 的数据被用来预测当前时刻的数据（单步预测）。此类生成的<a class="reference external" href="../user_guide/data/batch">Batch</a>对象包含4个键，分别是<code class="docutils literal notranslate"><span class="pre">X</span></code>，<code class="docutils literal notranslate"><span class="pre">y</span></code>，<code class="docutils literal notranslate"><span class="pre">X_ext</span></code>和<code class="docutils literal notranslate"><span class="pre">y_ext</span></code> 。此处的 <code class="docutils literal notranslate"><span class="pre">len_closeness</span></code>/<code class="docutils literal notranslate"><span class="pre">len_period</span></code>/<code class="docutils literal notranslate"><span class="pre">len_trend</span></code> 是data的参数, 点击<a class="reference external" href="../user_guide/data/args_for_data">此处</a>查看细节。</p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TrafficStatePointDataset</span></code></p>
+<p>一个继承了<code class="docutils literal notranslate"><span class="pre">TrafficStateDataset</span></code>的类，用于交通状态预测，该类适用于空间维度是一维的数据集（即基于点/基于段/基于区域的数据集）。该类生成的<a class="reference external" href="../user_guide/data/batch">Batch</a>对象中的张量形状是3维的，即<code class="docutils literal notranslate"><span class="pre">space_dim</span></code>, <code class="docutils literal notranslate"><span class="pre">time_dim</span></code>, <code class="docutils literal notranslate"><span class="pre">feature_dim</span></code>（空间维度、时间维度、特征维度）。</p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TrafficStateGridDataset</span></code></p>
+<p>一个继承了<code class="docutils literal notranslate"><span class="pre">TrafficStateDataset</span></code>的类，用于交通状态预测，该类适用于基于网格的数据集。这个类生成的<a class="reference external" href="../user_guide/data/batch">Batch</a>对象中的张量形状是3维还是4维取决于参数<code class="docutils literal notranslate"><span class="pre">use_row_column</span></code>。如果设置<code class="docutils literal notranslate"><span class="pre">use_row_column=True</span></code>，那么4个维度是<code class="docutils literal notranslate"><span class="pre">grid_row_dim</span></code>, <code class="docutils literal notranslate"><span class="pre">grid_column_dim</span></code>, <code class="docutils literal notranslate"><span class="pre">time_dim</span></code>, <code class="docutils literal notranslate"><span class="pre">feature_dim</span></code>（网格行数、网格列数、时间维度、特征维度）。否则，3个维度是<code class="docutils literal notranslate"><span class="pre">space_dim</span></code>、<code class="docutils literal notranslate"><span class="pre">time_dim</span></code>、<code class="docutils literal notranslate"><span class="pre">feature_dim</span></code>（空间维度、时间维度、特征维度），在这种情况下，网格被重新编号为一维的。</p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TrafficStateOdDataset</span></code></p>
+<p>一个继承了<code class="docutils literal notranslate"><span class="pre">TrafficStateDataset</span></code>的类，用于交通状态预测，该类适用于基于OD的数据集，即起点和终点。这个类生成的<a class="reference external" href="../user_guide/data/batch">Batch</a>对象中的张量形状是4维的，即<code class="docutils literal notranslate"><span class="pre">origin_dim</span></code>, <code class="docutils literal notranslate"><span class="pre">destination_dim</span></code>, <code class="docutils literal notranslate"><span class="pre">time_dim</span></code>, <code class="docutils literal notranslate"><span class="pre">feature_dim</span></code>（起点维度、终点维度，时间维度、特征维度）。</p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TrafficStateGridOdDataset</span></code></p>
+<p>一个继承了<code class="docutils literal notranslate"><span class="pre">TrafficStateDataset</span></code>的类，用于交通状态预测，该类适用于基于网格的OD数据集。这个类生成的<a class="reference external" href="../user_guide/data/batch">Batch</a>对象中的张量形状是4维或6维，取决于参数<code class="docutils literal notranslate"><span class="pre">use_row_column</span></code>。如果设置<code class="docutils literal notranslate"><span class="pre">use_row_column=True</span></code>，那么张量拥有6个维度，分别是<code class="docutils literal notranslate"><span class="pre">origin_grid_row_dim</span></code>, <code class="docutils literal notranslate"><span class="pre">origin_grid_column_dim</span></code>, <code class="docutils literal notranslate"><span class="pre">destination_grid_row_dim</span></code>, <code class="docutils literal notranslate"><span class="pre">destination_grid_column_dim</span></code>, <code class="docutils literal notranslate"><span class="pre">time_dim</span></code>, <code class="docutils literal notranslate"><span class="pre">feature_dim</span></code>（起点网格行数、起点网格列数、终点网格行数、终点网格列数、时间维度、特征维度）。否则，张量拥有4个维度，分别是<code class="docutils literal notranslate"><span class="pre">origin_dim</span></code>, <code class="docutils literal notranslate"><span class="pre">destination_dim</span></code>, <code class="docutils literal notranslate"><span class="pre">time_dim</span></code>, <code class="docutils literal notranslate"><span class="pre">feature_dim</span></code>（起点空间维度、终点空间维度、时间维度、特征维度），在这种情况下，二维网格被重新编号为一维的。</p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MapMatchingDataset</span></code></p>
+<p>所有地图匹配任务的基类。该类生成一个包含3个键的字典：<code class="docutils literal notranslate"><span class="pre">rd_nwk</span></code>, <code class="docutils literal notranslate"><span class="pre">trajectory</span></code>和<code class="docutils literal notranslate"><span class="pre">route</span></code>，分别代表路网、GPS样本的轨迹和真实轨迹。如果<code class="docutils literal notranslate"><span class="pre">delta_time=True</span></code>，<code class="docutils literal notranslate"><span class="pre">trajectory</span></code>将包括一个<code class="docutils literal notranslate"><span class="pre">time</span></code>列，表示轨迹时间读秒。<code class="docutils literal notranslate"><span class="pre">delta_time</span></code>是数据集的参数，详见<a class="reference internal" href="args_for_data.html"><span class="doc">此处</span></a>。标准数据输入的介绍见<a class="reference internal" href="../usage/standard_track.html"><span class="doc">此处</span></a>。</p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ETADataset</span></code></p>
+<p>所有ETA任务的基类。<code class="docutils literal notranslate"><span class="pre">_load_dyna</span></code>函数会读取轨迹信息。<code class="docutils literal notranslate"><span class="pre">_encode_traj</span></code>函数会根据设定的 <code class="docutils literal notranslate"><span class="pre">eta_encoder</span></code> 参数调用相应的轨迹时空特征编码器来对轨迹进行特征提取。提取到的特征会被分为训练集、验证集、测试集，来生成模型输入。</p>
+</li>
+</ul>
+</section>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="batch.html" class="btn btn-neutral float-right" title="Batch" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="atomic_files.html" class="btn btn-neutral float-left" title="原子文件" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, aptx1231
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

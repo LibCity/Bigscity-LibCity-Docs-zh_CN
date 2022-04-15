@@ -1,0 +1,536 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>libcity.model.road_representation.GAT &mdash; Bigscity-LibCity  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="libcity.model.road_representation.GeomGCN" href="libcity.model.road_representation.GeomGCN.html" />
+    <link rel="prev" title="libcity.model.road_representation.DeepWalk" href="libcity.model.road_representation.DeepWalk.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> Bigscity-LibCity
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p><span class="caption-text">起步</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/introduction.html">介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/install.html">安装LibCity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/quick_start.html">快速入门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/directory_structure.html">目录结构</a></li>
+</ul>
+<p><span class="caption-text">用户指导</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/config_settings.html">参数设置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/data.html">数据说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/model.html">复现模型列表</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/evaluator.html">评估模块简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/executor.html">执行模块简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide/usage.html">使用示例</a></li>
+</ul>
+<p><span class="caption-text">开发者指导</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/code_style.html">代码风格</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_datasets.html">自定义Dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_models.html">自定义Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/implemented_executors.html">自定义Executor</a></li>
+</ul>
+<p><span class="caption-text">入门教程</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/install_quick_start.html">安装和快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/run_model.html">运行LibCity中已复现的模型</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/add_model.html">在LibCity中添加新模型</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/hyper_tune.html">使用自动化工具调参</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/data_visualization.html">原子文件可视化</a></li>
+</ul>
+<p><span class="caption-text">API文档</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="libcity.config.html">libcity.config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="libcity.data.html">libcity.data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="libcity.evaluator.html">libcity.evaluator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="libcity.executor.html">libcity.executor</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="libcity.model.html">libcity.model</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="libcity.model.eta.html">libcity.model.eta</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.model.map_matching.html">libcity.model.map_matching</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="libcity.model.road_representation.html">libcity.model.road_representation</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="libcity.model.road_representation.ChebConv.html">libcity.model.road_representation.ChebConv</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libcity.model.road_representation.DeepWalk.html">libcity.model.road_representation.DeepWalk</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">libcity.model.road_representation.GAT</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libcity.model.road_representation.GeomGCN.html">libcity.model.road_representation.GeomGCN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libcity.model.road_representation.LINE.html">libcity.model.road_representation.LINE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libcity.model.road_representation.Node2Vec.html">libcity.model.road_representation.Node2Vec</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.model.traffic_accident_prediction.html">libcity.model.traffic_accident_prediction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.model.traffic_demand_prediction.html">libcity.model.traffic_demand_prediction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.model.traffic_flow_prediction.html">libcity.model.traffic_flow_prediction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.model.traffic_od_prediction.html">libcity.model.traffic_od_prediction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.model.traffic_speed_prediction.html">libcity.model.traffic_speed_prediction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.model.trajectory_loc_prediction.html">libcity.model.trajectory_loc_prediction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.model.abstract_model.html">libcity.model.abstract_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.model.abstract_traffic_state_model.html">libcity.model.abstract_traffic_state_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.model.abstract_traffic_tradition_model.html">libcity.model.abstract_traffic_tradition_model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.model.loss.html">libcity.model.loss</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libcity.model.utils.html">libcity.model.utils</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="libcity.pipeline.html">libcity.pipeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="libcity.utils.html">libcity.utils</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Bigscity-LibCity</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="libcity.model.html">libcity.model</a> &raquo;</li>
+        
+          <li><a href="libcity.model.road_representation.html">libcity.model.road_representation</a> &raquo;</li>
+        
+      <li>libcity.model.road_representation.GAT</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/libcity/libcity.model.road_representation.GAT.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <section id="module-libcity.model.road_representation.GAT">
+<span id="libcity-model-road-representation-gat"></span><h1>libcity.model.road_representation.GAT<a class="headerlink" href="#module-libcity.model.road_representation.GAT" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt id="libcity.model.road_representation.GAT.GAT">
+<em class="property">class </em><code class="sig-prename descclassname">libcity.model.road_representation.GAT.</code><code class="sig-name descname">GAT</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">config</span></em>, <em class="sig-param"><span class="n">data_feature</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/road_representation/GAT.html#GAT"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.road_representation.GAT.GAT" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="libcity.model.abstract_traffic_state_model.html#libcity.model.abstract_traffic_state_model.AbstractTrafficStateModel" title="libcity.model.abstract_traffic_state_model.AbstractTrafficStateModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">libcity.model.abstract_traffic_state_model.AbstractTrafficStateModel</span></code></a></p>
+<dl class="py method">
+<dt id="libcity.model.road_representation.GAT.GAT.calculate_loss">
+<code class="sig-name descname">calculate_loss</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">batch</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/road_representation/GAT.html#GAT.calculate_loss"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.road_representation.GAT.GAT.calculate_loss" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>batch</strong> – dict, need key ‘node_features’, ‘node_labels’, ‘mask’</p>
+</dd>
+</dl>
+<p>Returns:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="libcity.model.road_representation.GAT.GAT.forward">
+<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">batch</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/road_representation/GAT.html#GAT.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.road_representation.GAT.GAT.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>自回归任务
+:param batch: dict, need key ‘node_features’ contains tensor shape=(N, feature_dim)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>N, feature_dim</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>torch.tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="libcity.model.road_representation.GAT.GAT.predict">
+<code class="sig-name descname">predict</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">batch</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/road_representation/GAT.html#GAT.predict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.road_representation.GAT.GAT.predict" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>batch</strong> – dict, need key ‘node_features’</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>torch.tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="libcity.model.road_representation.GAT.GAT.training">
+<code class="sig-name descname">training</code><em class="property">: bool</em><a class="headerlink" href="#libcity.model.road_representation.GAT.GAT.training" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="libcity.model.road_representation.GAT.GATLayer">
+<em class="property">class </em><code class="sig-prename descclassname">libcity.model.road_representation.GAT.</code><code class="sig-name descname">GATLayer</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">num_in_features</span></em>, <em class="sig-param"><span class="n">num_out_features</span></em>, <em class="sig-param"><span class="n">num_of_heads</span></em>, <em class="sig-param"><span class="n">device</span></em>, <em class="sig-param"><span class="n">layer_type</span></em>, <em class="sig-param"><span class="n">concat</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">activation</span><span class="o">=</span><span class="default_value">ELU(alpha=1.0)</span></em>, <em class="sig-param"><span class="n">dropout_prob</span><span class="o">=</span><span class="default_value">0.6</span></em>, <em class="sig-param"><span class="n">add_skip_connection</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">bias</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">log_attention_weights</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/road_representation/GAT.html#GATLayer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.road_representation.GAT.GATLayer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<p>Base class for all implementations as there is much code that would otherwise be copy/pasted.</p>
+<dl class="py attribute">
+<dt id="libcity.model.road_representation.GAT.GATLayer.head_dim">
+<code class="sig-name descname">head_dim</code><em class="property"> = 1</em><a class="headerlink" href="#libcity.model.road_representation.GAT.GATLayer.head_dim" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="libcity.model.road_representation.GAT.GATLayer.init_params">
+<code class="sig-name descname">init_params</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">layer_type</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/road_representation/GAT.html#GATLayer.init_params"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.road_representation.GAT.GATLayer.init_params" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>The reason we’re using Glorot (aka Xavier uniform) initialization is because it’s a default TF initialization:</dt><dd><p><a class="reference external" href="https://stackoverflow.com/questions/37350131/what-is-the-default-variable-initializer-in-tensorflow">https://stackoverflow.com/questions/37350131/what-is-the-default-variable-initializer-in-tensorflow</a></p>
+</dd>
+</dl>
+<p>The original repo was developed in TensorFlow (TF) and they used the default initialization.
+Feel free to experiment - there may be better initializations depending on your problem.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="libcity.model.road_representation.GAT.GATLayer.skip_concat_bias">
+<code class="sig-name descname">skip_concat_bias</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">attention_coefficients</span></em>, <em class="sig-param"><span class="n">in_nodes_features</span></em>, <em class="sig-param"><span class="n">out_nodes_features</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/road_representation/GAT.html#GATLayer.skip_concat_bias"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.road_representation.GAT.GATLayer.skip_concat_bias" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="libcity.model.road_representation.GAT.GATLayer.training">
+<code class="sig-name descname">training</code><em class="property">: bool</em><a class="headerlink" href="#libcity.model.road_representation.GAT.GATLayer.training" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="libcity.model.road_representation.GAT.GATLayerImp1">
+<em class="property">class </em><code class="sig-prename descclassname">libcity.model.road_representation.GAT.</code><code class="sig-name descname">GATLayerImp1</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">num_in_features</span></em>, <em class="sig-param"><span class="n">num_out_features</span></em>, <em class="sig-param"><span class="n">num_of_heads</span></em>, <em class="sig-param"><span class="n">concat</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">activation</span><span class="o">=</span><span class="default_value">ELU(alpha=1.0)</span></em>, <em class="sig-param"><span class="n">dropout_prob</span><span class="o">=</span><span class="default_value">0.6</span></em>, <em class="sig-param"><span class="n">add_skip_connection</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">bias</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">log_attention_weights</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/road_representation/GAT.html#GATLayerImp1"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.road_representation.GAT.GATLayerImp1" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#libcity.model.road_representation.GAT.GATLayer" title="libcity.model.road_representation.GAT.GATLayer"><code class="xref py py-class docutils literal notranslate"><span class="pre">libcity.model.road_representation.GAT.GATLayer</span></code></a></p>
+<p>This implementation is only suitable for a transductive setting.
+It would be fairly easy to make it work in the inductive setting as well but the purpose of this layer
+is more educational since it’s way less efficient than implementation 3.</p>
+<dl class="py method">
+<dt id="libcity.model.road_representation.GAT.GATLayerImp1.forward">
+<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/road_representation/GAT.html#GATLayerImp1.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.road_representation.GAT.GATLayerImp1.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Defines the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="libcity.model.road_representation.GAT.GATLayerImp1.training">
+<code class="sig-name descname">training</code><em class="property">: bool</em><a class="headerlink" href="#libcity.model.road_representation.GAT.GATLayerImp1.training" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="libcity.model.road_representation.GAT.GATLayerImp2">
+<em class="property">class </em><code class="sig-prename descclassname">libcity.model.road_representation.GAT.</code><code class="sig-name descname">GATLayerImp2</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">num_in_features</span></em>, <em class="sig-param"><span class="n">num_out_features</span></em>, <em class="sig-param"><span class="n">num_of_heads</span></em>, <em class="sig-param"><span class="n">concat</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">activation</span><span class="o">=</span><span class="default_value">ELU(alpha=1.0)</span></em>, <em class="sig-param"><span class="n">dropout_prob</span><span class="o">=</span><span class="default_value">0.6</span></em>, <em class="sig-param"><span class="n">add_skip_connection</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">bias</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">log_attention_weights</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/road_representation/GAT.html#GATLayerImp2"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.road_representation.GAT.GATLayerImp2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#libcity.model.road_representation.GAT.GATLayer" title="libcity.model.road_representation.GAT.GATLayer"><code class="xref py py-class docutils literal notranslate"><span class="pre">libcity.model.road_representation.GAT.GATLayer</span></code></a></p>
+<p>Implementation #2 was inspired by the official GAT implementation: <a class="reference external" href="https://github.com/PetarV-/GAT">https://github.com/PetarV-/GAT</a>
+It’s conceptually simpler than implementation #3 but computationally much less efficient.
+Note: this is the naive implementation not the sparse one and it’s only suitable for a transductive setting.
+It would be fairly easy to make it work in the inductive setting as well but the purpose of this layer
+is more educational since it’s way less efficient than implementation 3.</p>
+<dl class="py method">
+<dt id="libcity.model.road_representation.GAT.GATLayerImp2.forward">
+<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/road_representation/GAT.html#GATLayerImp2.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.road_representation.GAT.GATLayerImp2.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Defines the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="libcity.model.road_representation.GAT.GATLayerImp2.training">
+<code class="sig-name descname">training</code><em class="property">: bool</em><a class="headerlink" href="#libcity.model.road_representation.GAT.GATLayerImp2.training" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="libcity.model.road_representation.GAT.GATLayerImp3">
+<em class="property">class </em><code class="sig-prename descclassname">libcity.model.road_representation.GAT.</code><code class="sig-name descname">GATLayerImp3</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">num_in_features</span></em>, <em class="sig-param"><span class="n">num_out_features</span></em>, <em class="sig-param"><span class="n">num_of_heads</span></em>, <em class="sig-param"><span class="n">device</span></em>, <em class="sig-param"><span class="n">concat</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">activation</span><span class="o">=</span><span class="default_value">ELU(alpha=1.0)</span></em>, <em class="sig-param"><span class="n">dropout_prob</span><span class="o">=</span><span class="default_value">0.6</span></em>, <em class="sig-param"><span class="n">add_skip_connection</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">bias</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">log_attention_weights</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/road_representation/GAT.html#GATLayerImp3"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.road_representation.GAT.GATLayerImp3" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#libcity.model.road_representation.GAT.GATLayer" title="libcity.model.road_representation.GAT.GATLayer"><code class="xref py py-class docutils literal notranslate"><span class="pre">libcity.model.road_representation.GAT.GATLayer</span></code></a></p>
+<p>Implementation #3 was inspired by PyTorch Geometric: <a class="reference external" href="https://github.com/rusty1s/pytorch_geometric">https://github.com/rusty1s/pytorch_geometric</a>
+But, it’s hopefully much more readable! (and of similar performance)
+It’s suitable for both transductive and inductive settings. In the inductive setting we just merge the graphs
+into a single graph with multiple components and this layer is agnostic to that fact! &lt;3</p>
+<dl class="py method">
+<dt id="libcity.model.road_representation.GAT.GATLayerImp3.aggregate_neighbors">
+<code class="sig-name descname">aggregate_neighbors</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">nodes_features_proj_lifted_weighted</span></em>, <em class="sig-param"><span class="n">edge_index</span></em>, <em class="sig-param"><span class="n">in_nodes_features</span></em>, <em class="sig-param"><span class="n">num_of_nodes</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/road_representation/GAT.html#GATLayerImp3.aggregate_neighbors"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.road_representation.GAT.GATLayerImp3.aggregate_neighbors" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="libcity.model.road_representation.GAT.GATLayerImp3.explicit_broadcast">
+<code class="sig-name descname">explicit_broadcast</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">this</span></em>, <em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/road_representation/GAT.html#GATLayerImp3.explicit_broadcast"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.road_representation.GAT.GATLayerImp3.explicit_broadcast" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="libcity.model.road_representation.GAT.GATLayerImp3.forward">
+<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/road_representation/GAT.html#GATLayerImp3.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.road_representation.GAT.GATLayerImp3.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Defines the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="libcity.model.road_representation.GAT.GATLayerImp3.head_dim">
+<code class="sig-name descname">head_dim</code><em class="property"> = 1</em><a class="headerlink" href="#libcity.model.road_representation.GAT.GATLayerImp3.head_dim" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="libcity.model.road_representation.GAT.GATLayerImp3.lift">
+<code class="sig-name descname">lift</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">scores_source</span></em>, <em class="sig-param"><span class="n">scores_target</span></em>, <em class="sig-param"><span class="n">nodes_features_matrix_proj</span></em>, <em class="sig-param"><span class="n">edge_index</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/road_representation/GAT.html#GATLayerImp3.lift"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.road_representation.GAT.GATLayerImp3.lift" title="Permalink to this definition">¶</a></dt>
+<dd><p>Lifts i.e. duplicates certain vectors depending on the edge index.
+One of the tensor dims goes from N -&gt; E (that’s where the “lift” comes from).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="libcity.model.road_representation.GAT.GATLayerImp3.neighborhood_aware_softmax">
+<code class="sig-name descname">neighborhood_aware_softmax</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">scores_per_edge</span></em>, <em class="sig-param"><span class="n">trg_index</span></em>, <em class="sig-param"><span class="n">num_of_nodes</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/road_representation/GAT.html#GATLayerImp3.neighborhood_aware_softmax"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.road_representation.GAT.GATLayerImp3.neighborhood_aware_softmax" title="Permalink to this definition">¶</a></dt>
+<dd><p>As the fn name suggest it does softmax over the neighborhoods. Example: say we have 5 nodes in a graph.
+Two of them 1, 2 are connected to node 3. If we want to calculate the representation for node 3 we should take
+into account feature vectors of 1, 2 and 3 itself. Since we have scores for edges 1-3, 2-3 and 3-3
+in scores_per_edge variable, this function will calculate attention scores like this: 1-3/(1-3+2-3+3-3)
+(where 1-3 is overloaded notation it represents the edge 1-3 and it’s (exp) score) and similarly for 2-3 and 3-3</p>
+<blockquote>
+<div><p>i.e. for this neighborhood we don’t care about other edge scores that include nodes 4 and 5.</p>
+</div></blockquote>
+<p>Note:
+Subtracting the max value from logits doesn’t change the end result but it improves the numerical stability
+and it’s a fairly common “trick” used in pretty much every deep learning framework.
+Check out this link for more details:
+<a class="reference external" href="https://stats.stackexchange.com/questions/338285/how-does-the-subtraction-of-the-logit-maximum-improve-learning">https://stats.stackexchange.com/questions/338285/how-does-the-subtraction-of-the-logit-maximum-improve-learning</a></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="libcity.model.road_representation.GAT.GATLayerImp3.nodes_dim">
+<code class="sig-name descname">nodes_dim</code><em class="property"> = 0</em><a class="headerlink" href="#libcity.model.road_representation.GAT.GATLayerImp3.nodes_dim" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="libcity.model.road_representation.GAT.GATLayerImp3.src_nodes_dim">
+<code class="sig-name descname">src_nodes_dim</code><em class="property"> = 0</em><a class="headerlink" href="#libcity.model.road_representation.GAT.GATLayerImp3.src_nodes_dim" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="libcity.model.road_representation.GAT.GATLayerImp3.sum_edge_scores_neighborhood_aware">
+<code class="sig-name descname">sum_edge_scores_neighborhood_aware</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">exp_scores_per_edge</span></em>, <em class="sig-param"><span class="n">trg_index</span></em>, <em class="sig-param"><span class="n">num_of_nodes</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/road_representation/GAT.html#GATLayerImp3.sum_edge_scores_neighborhood_aware"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.road_representation.GAT.GATLayerImp3.sum_edge_scores_neighborhood_aware" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="libcity.model.road_representation.GAT.GATLayerImp3.training">
+<code class="sig-name descname">training</code><em class="property">: bool</em><a class="headerlink" href="#libcity.model.road_representation.GAT.GATLayerImp3.training" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="libcity.model.road_representation.GAT.GATLayerImp3.trg_nodes_dim">
+<code class="sig-name descname">trg_nodes_dim</code><em class="property"> = 1</em><a class="headerlink" href="#libcity.model.road_representation.GAT.GATLayerImp3.trg_nodes_dim" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="libcity.model.road_representation.GAT.LayerType">
+<em class="property">class </em><code class="sig-prename descclassname">libcity.model.road_representation.GAT.</code><code class="sig-name descname">LayerType</code><a class="reference internal" href="../_modules/libcity/model/road_representation/GAT.html#LayerType"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.road_representation.GAT.LayerType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt id="libcity.model.road_representation.GAT.LayerType.IMP1">
+<code class="sig-name descname">IMP1</code><em class="property"> = (0,)</em><a class="headerlink" href="#libcity.model.road_representation.GAT.LayerType.IMP1" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="libcity.model.road_representation.GAT.LayerType.IMP2">
+<code class="sig-name descname">IMP2</code><em class="property"> = (1,)</em><a class="headerlink" href="#libcity.model.road_representation.GAT.LayerType.IMP2" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="libcity.model.road_representation.GAT.LayerType.IMP3">
+<code class="sig-name descname">IMP3</code><em class="property"> = 2</em><a class="headerlink" href="#libcity.model.road_representation.GAT.LayerType.IMP3" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt id="libcity.model.road_representation.GAT.get_layer_type">
+<code class="sig-prename descclassname">libcity.model.road_representation.GAT.</code><code class="sig-name descname">get_layer_type</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">layer_type</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/libcity/model/road_representation/GAT.html#get_layer_type"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#libcity.model.road_representation.GAT.get_layer_type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</section>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="libcity.model.road_representation.GeomGCN.html" class="btn btn-neutral float-right" title="libcity.model.road_representation.GeomGCN" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="libcity.model.road_representation.DeepWalk.html" class="btn btn-neutral float-left" title="libcity.model.road_representation.DeepWalk" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, aptx1231
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

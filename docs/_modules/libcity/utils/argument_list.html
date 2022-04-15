@@ -81,14 +81,14 @@
               
             
             
-              <p class="caption"><span class="caption-text">起步</span></p>
+              <p><span class="caption-text">起步</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../get_started/introduction.html">介绍</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../get_started/install.html">安装LibCity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../get_started/quick_start.html">快速入门</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../get_started/directory_structure.html">目录结构</a></li>
 </ul>
-<p class="caption"><span class="caption-text">用户指导</span></p>
+<p><span class="caption-text">用户指导</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../user_guide/config_settings.html">参数设置</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../user_guide/data.html">数据说明</a></li>
@@ -97,21 +97,22 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../user_guide/executor.html">执行模块简介</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../user_guide/usage.html">使用示例</a></li>
 </ul>
-<p class="caption"><span class="caption-text">开发者指导</span></p>
+<p><span class="caption-text">开发者指导</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../developer_guide/code_style.html">代码风格</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../developer_guide/implemented_datasets.html">自定义Dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../developer_guide/implemented_models.html">自定义Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../developer_guide/implemented_executors.html">自定义Executor</a></li>
 </ul>
-<p class="caption"><span class="caption-text">入门教程</span></p>
+<p><span class="caption-text">入门教程</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../tutorial/install_quick_start.html">安装和快速上手</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../tutorial/run_model.html">运行LibCity中已复现的模型</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../tutorial/add_model.html">在LibCity中添加新模型</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../tutorial/hyper_tune.html">使用自动化工具调参</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorial/data_visualization.html">原子文件可视化</a></li>
 </ul>
-<p class="caption"><span class="caption-text">API文档</span></p>
+<p><span class="caption-text">API文档</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../libcity/libcity.config.html">libcity.config</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../libcity/libcity.data.html">libcity.data</a></li>
@@ -190,13 +191,56 @@
 <span class="kn">import</span> <span class="nn">argparse</span>
 
 <span class="n">general_arguments</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;gpu&quot;</span><span class="p">:</span> <span class="s2">&quot;bool&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;batch_size&quot;</span><span class="p">:</span> <span class="s2">&quot;int&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;train_rate&quot;</span><span class="p">:</span> <span class="s2">&quot;float&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;eval_rate&quot;</span><span class="p">:</span> <span class="s2">&quot;float&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;learning_rate&quot;</span><span class="p">:</span> <span class="s2">&quot;float&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;max_epoch&quot;</span><span class="p">:</span> <span class="s2">&quot;int&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;gpu_id&quot;</span><span class="p">:</span> <span class="s2">&quot;int&quot;</span>
+    <span class="s2">&quot;gpu&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;bool&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;default&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="s2">&quot;help&quot;</span><span class="p">:</span> <span class="s2">&quot;whether use gpu&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;gpu_id&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;int&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;default&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="s2">&quot;help&quot;</span><span class="p">:</span> <span class="s2">&quot;the gpu id to use&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;train_rate&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;float&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;default&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="s2">&quot;help&quot;</span><span class="p">:</span> <span class="s2">&quot;the train set rate&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;eval_rate&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;float&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;default&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="s2">&quot;help&quot;</span><span class="p">:</span> <span class="s2">&quot;the validation set rate&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;batch_size&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;int&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;default&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="s2">&quot;help&quot;</span><span class="p">:</span> <span class="s2">&quot;the batch size&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;learning_rate&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;float&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;default&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="s2">&quot;help&quot;</span><span class="p">:</span> <span class="s2">&quot;learning rate&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;max_epoch&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;int&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;default&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="s2">&quot;help&quot;</span><span class="p">:</span> <span class="s2">&quot;the maximum epoch&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;dataset_class&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;default&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="s2">&quot;help&quot;</span><span class="p">:</span> <span class="s2">&quot;the dataset class name&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;executor&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;default&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="s2">&quot;help&quot;</span><span class="p">:</span> <span class="s2">&quot;the executor class name&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;evaluator&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;default&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="s2">&quot;help&quot;</span><span class="p">:</span> <span class="s2">&quot;the evaluator class name&quot;</span>
+    <span class="p">},</span>
 <span class="p">}</span>
 
 <span class="n">hyper_arguments</span> <span class="o">=</span> <span class="p">{</span>
@@ -247,6 +291,45 @@
     <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
         <span class="k">raise</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentTypeError</span><span class="p">(</span><span class="s1">&#39;float value expected.&#39;</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">x</span></div>
+
+
+<div class="viewcode-block" id="add_general_args"><a class="viewcode-back" href="../../../libcity/libcity.utils.argument_list.html#libcity.utils.argument_list.add_general_args">[docs]</a><span class="k">def</span> <span class="nf">add_general_args</span><span class="p">(</span><span class="n">parser</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">general_arguments</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">general_arguments</span><span class="p">[</span><span class="n">arg</span><span class="p">][</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;int&#39;</span><span class="p">:</span>
+            <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">arg</span><span class="p">),</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span>
+                                <span class="n">default</span><span class="o">=</span><span class="n">general_arguments</span><span class="p">[</span><span class="n">arg</span><span class="p">][</span><span class="s1">&#39;default&#39;</span><span class="p">],</span> <span class="n">help</span><span class="o">=</span><span class="n">general_arguments</span><span class="p">[</span><span class="n">arg</span><span class="p">][</span><span class="s1">&#39;help&#39;</span><span class="p">])</span>
+        <span class="k">elif</span> <span class="n">general_arguments</span><span class="p">[</span><span class="n">arg</span><span class="p">][</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;bool&#39;</span><span class="p">:</span>
+            <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">arg</span><span class="p">),</span> <span class="nb">type</span><span class="o">=</span><span class="n">str2bool</span><span class="p">,</span>
+                                <span class="n">default</span><span class="o">=</span><span class="n">general_arguments</span><span class="p">[</span><span class="n">arg</span><span class="p">][</span><span class="s1">&#39;default&#39;</span><span class="p">],</span> <span class="n">help</span><span class="o">=</span><span class="n">general_arguments</span><span class="p">[</span><span class="n">arg</span><span class="p">][</span><span class="s1">&#39;help&#39;</span><span class="p">])</span>
+        <span class="k">elif</span> <span class="n">general_arguments</span><span class="p">[</span><span class="n">arg</span><span class="p">][</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;float&#39;</span><span class="p">:</span>
+            <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">arg</span><span class="p">),</span> <span class="nb">type</span><span class="o">=</span><span class="n">str2float</span><span class="p">,</span>
+                                <span class="n">default</span><span class="o">=</span><span class="n">general_arguments</span><span class="p">[</span><span class="n">arg</span><span class="p">][</span><span class="s1">&#39;default&#39;</span><span class="p">],</span> <span class="n">help</span><span class="o">=</span><span class="n">general_arguments</span><span class="p">[</span><span class="n">arg</span><span class="p">][</span><span class="s1">&#39;help&#39;</span><span class="p">])</span>
+        <span class="k">elif</span> <span class="n">general_arguments</span><span class="p">[</span><span class="n">arg</span><span class="p">][</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;str&#39;</span><span class="p">:</span>
+            <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">arg</span><span class="p">),</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span>
+                                <span class="n">default</span><span class="o">=</span><span class="n">general_arguments</span><span class="p">[</span><span class="n">arg</span><span class="p">][</span><span class="s1">&#39;default&#39;</span><span class="p">],</span> <span class="n">help</span><span class="o">=</span><span class="n">general_arguments</span><span class="p">[</span><span class="n">arg</span><span class="p">][</span><span class="s1">&#39;help&#39;</span><span class="p">])</span>
+        <span class="k">elif</span> <span class="n">general_arguments</span><span class="p">[</span><span class="n">arg</span><span class="p">][</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;list of int&#39;</span><span class="p">:</span>
+            <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">arg</span><span class="p">),</span> <span class="n">nargs</span><span class="o">=</span><span class="s1">&#39;+&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span>
+                                <span class="n">default</span><span class="o">=</span><span class="n">general_arguments</span><span class="p">[</span><span class="n">arg</span><span class="p">][</span><span class="s1">&#39;default&#39;</span><span class="p">],</span> <span class="n">help</span><span class="o">=</span><span class="n">general_arguments</span><span class="p">[</span><span class="n">arg</span><span class="p">][</span><span class="s1">&#39;help&#39;</span><span class="p">])</span></div>
+
+
+<div class="viewcode-block" id="add_hyper_args"><a class="viewcode-back" href="../../../libcity/libcity.utils.argument_list.html#libcity.utils.argument_list.add_hyper_args">[docs]</a><span class="k">def</span> <span class="nf">add_hyper_args</span><span class="p">(</span><span class="n">parser</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">hyper_arguments</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">hyper_arguments</span><span class="p">[</span><span class="n">arg</span><span class="p">][</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;int&#39;</span><span class="p">:</span>
+            <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">arg</span><span class="p">),</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span>
+                                <span class="n">default</span><span class="o">=</span><span class="n">hyper_arguments</span><span class="p">[</span><span class="n">arg</span><span class="p">][</span><span class="s1">&#39;default&#39;</span><span class="p">],</span> <span class="n">help</span><span class="o">=</span><span class="n">hyper_arguments</span><span class="p">[</span><span class="n">arg</span><span class="p">][</span><span class="s1">&#39;help&#39;</span><span class="p">])</span>
+        <span class="k">elif</span> <span class="n">hyper_arguments</span><span class="p">[</span><span class="n">arg</span><span class="p">][</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;bool&#39;</span><span class="p">:</span>
+            <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">arg</span><span class="p">),</span> <span class="nb">type</span><span class="o">=</span><span class="n">str2bool</span><span class="p">,</span>
+                                <span class="n">default</span><span class="o">=</span><span class="n">hyper_arguments</span><span class="p">[</span><span class="n">arg</span><span class="p">][</span><span class="s1">&#39;default&#39;</span><span class="p">],</span> <span class="n">help</span><span class="o">=</span><span class="n">hyper_arguments</span><span class="p">[</span><span class="n">arg</span><span class="p">][</span><span class="s1">&#39;help&#39;</span><span class="p">])</span>
+        <span class="k">elif</span> <span class="n">hyper_arguments</span><span class="p">[</span><span class="n">arg</span><span class="p">][</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;float&#39;</span><span class="p">:</span>
+            <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">arg</span><span class="p">),</span> <span class="nb">type</span><span class="o">=</span><span class="n">str2float</span><span class="p">,</span>
+                                <span class="n">default</span><span class="o">=</span><span class="n">hyper_arguments</span><span class="p">[</span><span class="n">arg</span><span class="p">][</span><span class="s1">&#39;default&#39;</span><span class="p">],</span> <span class="n">help</span><span class="o">=</span><span class="n">hyper_arguments</span><span class="p">[</span><span class="n">arg</span><span class="p">][</span><span class="s1">&#39;help&#39;</span><span class="p">])</span>
+        <span class="k">elif</span> <span class="n">hyper_arguments</span><span class="p">[</span><span class="n">arg</span><span class="p">][</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;str&#39;</span><span class="p">:</span>
+            <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">arg</span><span class="p">),</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span>
+                                <span class="n">default</span><span class="o">=</span><span class="n">hyper_arguments</span><span class="p">[</span><span class="n">arg</span><span class="p">][</span><span class="s1">&#39;default&#39;</span><span class="p">],</span> <span class="n">help</span><span class="o">=</span><span class="n">hyper_arguments</span><span class="p">[</span><span class="n">arg</span><span class="p">][</span><span class="s1">&#39;help&#39;</span><span class="p">])</span>
+        <span class="k">elif</span> <span class="n">hyper_arguments</span><span class="p">[</span><span class="n">arg</span><span class="p">][</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;list of int&#39;</span><span class="p">:</span>
+            <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">arg</span><span class="p">),</span> <span class="n">nargs</span><span class="o">=</span><span class="s1">&#39;+&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span>
+                                <span class="n">default</span><span class="o">=</span><span class="n">hyper_arguments</span><span class="p">[</span><span class="n">arg</span><span class="p">][</span><span class="s1">&#39;default&#39;</span><span class="p">],</span> <span class="n">help</span><span class="o">=</span><span class="n">hyper_arguments</span><span class="p">[</span><span class="n">arg</span><span class="p">][</span><span class="s1">&#39;help&#39;</span><span class="p">])</span></div>
+
 </pre></div>
 
            </div>

@@ -4,7 +4,8 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>原始数据 &mdash; Bigscity-LibCity  documentation</title>
@@ -83,43 +84,44 @@
               
             
             
-              <p class="caption"><span class="caption-text">起步</span></p>
+              <p><span class="caption-text">起步</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../get_started/introduction.html">介绍</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../get_started/install.html">安装LibCity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../get_started/quick_start.html">快速入门</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../get_started/directory_structure.html">目录结构</a></li>
 </ul>
-<p class="caption"><span class="caption-text">用户指导</span></p>
+<p><span class="caption-text">用户指导</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../config_settings.html">参数设置</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../data.html">数据说明</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="data_flow.html">数据流</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">原始数据</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#metr-la">METR_LA</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#los-loop">Los_loop</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#los-loop">LOS_LOOP</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#sz-taxi">SZ_TAXI</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#loop-seattle">LOOP_SEATTLE</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#q-traffic">Q-TRAFFIC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#q-traffic">Q_TRAFFIC</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pems">PEMS</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#pemsd3">PeMSD3</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#pemsd4">PeMSD4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pemsd3">PEMSD3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pemsd4">PEMSD4</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pemsd7">PEMSD7</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#pemsd8">PeMSD8</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pemsd8">PEMSD8</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pemsd7-m">PEMSD7(M)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#pems-bay">PEMS-BAY</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pems-bay">PEMS_BAY</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#beijing-subway">BEIJING_SUBWAY</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#m-dense">M_DENSE</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#rotterdam">ROTTERDAM</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#shmetro">SHMETRO</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#hzmetro">HZMETRO</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#taxibj">TaxiBJ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#taxibj">TAXIBJ</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#t-drive">T_DRIVE</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#porto">PORTO</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#nyctaxi">NYCTAXI</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#nyctaxi-dyna">NYCTAXI_DYNA</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#nyctaxi-od">NYCTAXI_OD</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#nyctaxi-grid">NYCTAXI_GRID</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nyc-tod">NYC_TOD</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#nycbike">NYCBIKE</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#austinride">AUSTINRIDE</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#bikedc">BIKEDC</a></li>
@@ -128,9 +130,20 @@
 <li class="toctree-l3"><a class="reference internal" href="#gowalla">Gowalla</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#brightkite">Brightkite</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#instagram">Instagram</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#seattle">Seattle</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#global">Global</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bj-roadmap">BJ_ROADMAP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bj-traj">BJ_TRAJ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cd-traj">CD_TRAJ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#xa-traj">XA_TRAJ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#chengdu-taxi-sample1">Chengdu_Taxi_Sample1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#beijing-taxi-sample">Beijing_Taxi_Sample</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nyc-risk">NYC_RISK</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#chicago-risk">CHICAGO_RISK</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="atomic_files.html">原子文件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dataset_class.html">已实现的Dataset类</a></li>
 <li class="toctree-l2"><a class="reference internal" href="batch.html">Batch</a></li>
 <li class="toctree-l2"><a class="reference internal" href="args_for_data.html">数据模块参数</a></li>
 <li class="toctree-l2"><a class="reference internal" href="dataset_for_task.html">数据集适用的任务</a></li>
@@ -141,21 +154,22 @@
 <li class="toctree-l1"><a class="reference internal" href="../executor.html">执行模块简介</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../usage.html">使用示例</a></li>
 </ul>
-<p class="caption"><span class="caption-text">开发者指导</span></p>
+<p><span class="caption-text">开发者指导</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../developer_guide/code_style.html">代码风格</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../developer_guide/implemented_datasets.html">自定义Dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../developer_guide/implemented_models.html">自定义Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../developer_guide/implemented_executors.html">自定义Executor</a></li>
 </ul>
-<p class="caption"><span class="caption-text">入门教程</span></p>
+<p><span class="caption-text">入门教程</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorial/install_quick_start.html">安装和快速上手</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorial/run_model.html">运行LibCity中已复现的模型</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorial/add_model.html">在LibCity中添加新模型</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorial/hyper_tune.html">使用自动化工具调参</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial/data_visualization.html">原子文件可视化</a></li>
 </ul>
-<p class="caption"><span class="caption-text">API文档</span></p>
+<p><span class="caption-text">API文档</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../libcity/libcity.config.html">libcity.config</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../libcity/libcity.data.html">libcity.data</a></li>
@@ -231,231 +245,308 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="id1">
+  <section id="id1">
 <h1>原始数据<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="metr-la">
+<section id="metr-la">
 <h2>METR_LA<a class="headerlink" href="#metr-la" title="Permalink to this headline">¶</a></h2>
 <p><strong>地点：</strong> Los Angeles County, USA</p>
 <p><strong>时期：</strong> Mar. 1, 2012 ~ Jun. 27, 2012</p>
 <p><strong>链接：</strong> https://github.com/liyaguang/DCRNN</p>
 <p><strong>描述：</strong> 由环路探测器在高速公路上收集，包含来自 207 个传感器的交通速度数据。</p>
-</div>
-<div class="section" id="los-loop">
-<h2>Los_loop<a class="headerlink" href="#los-loop" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="los-loop">
+<h2>LOS_LOOP<a class="headerlink" href="#los-loop" title="Permalink to this headline">¶</a></h2>
 <p><strong>地点：</strong> Los Angeles County, USA</p>
 <p><strong>时期：</strong> Mar. 1, 2012 ~ Jun. 27, 2012</p>
 <p><strong>链接：</strong> https://github.com/lehaifeng/T-GCN/tree/master/data</p>
 <p><strong>描述：</strong> 与METR LA略有不同，缺失值通过线性插值得到补充。</p>
-</div>
-<div class="section" id="sz-taxi">
+</section>
+<section id="sz-taxi">
 <h2>SZ_TAXI<a class="headerlink" href="#sz-taxi" title="Permalink to this headline">¶</a></h2>
 <p><strong>地点：</strong> Shenzhen, China</p>
 <p><strong>时期：</strong> Jan. 1, 2015 ~ Jan. 31, 2015</p>
 <p><strong>链接：</strong> https://github.com/lehaifeng/T-GCN/tree/master/data</p>
 <p><strong>描述：</strong> SZ-Taxi 数据集包含深圳市的出租车轨迹，包括道路邻接矩阵和道路交通速度信息。</p>
-</div>
-<div class="section" id="loop-seattle">
+</section>
+<section id="loop-seattle">
 <h2>LOOP_SEATTLE<a class="headerlink" href="#loop-seattle" title="Permalink to this headline">¶</a></h2>
-<p><strong>地点：</strong> Greater Seattle Area, China</p>
+<p><strong>地点：</strong> Greater Seattle Area, USA</p>
 <p><strong>时期：</strong> 2015 全年</p>
 <p><strong>链接：</strong> https://github.com/zhiyongc/Seattle-Loop-Data</p>
 <p><strong>描述：</strong> Loop Seattle 数据集由部署在西雅图地区高速公路(I-5、I-405、I-90和SR-520)上的感应环路探测器收集，包含来自323个传感器站的交通状态数据。</p>
-</div>
-<div class="section" id="q-traffic">
-<h2>Q-TRAFFIC<a class="headerlink" href="#q-traffic" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="q-traffic">
+<h2>Q_TRAFFIC<a class="headerlink" href="#q-traffic" title="Permalink to this headline">¶</a></h2>
 <p><strong>地点：</strong> Beijing, China</p>
 <p><strong>时期：</strong> Apr. 1, 2017 ~ May 31, 2017</p>
 <p><strong>链接：</strong> https://github.com/JingqingZ/BaiduTraffic</p>
 <p><strong>描述：</strong> Q-Traffic 数据集包含三个子数据集：查询子数据集、交通速度子数据集和路网子数据集。</p>
-</div>
-<div class="section" id="pems">
+</section>
+<section id="pems">
 <h2>PEMS<a class="headerlink" href="#pems" title="Permalink to this headline">¶</a></h2>
 <p><strong>地点：</strong> California, USA</p>
 <p><strong>时期：</strong> 2001 ~ present</p>
 <p><strong>链接：</strong> http://pems.dot.ca.gov</p>
 <p><strong>描述：</strong> PEMS 记录加利福尼亚高速公路的速度数据，包括时间小时，平均时间，车道点。</p>
-</div>
-<div class="section" id="pemsd3">
-<h2>PeMSD3<a class="headerlink" href="#pemsd3" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="pemsd3">
+<h2>PEMSD3<a class="headerlink" href="#pemsd3" title="Permalink to this headline">¶</a></h2>
 <p><strong>地点：</strong> District 3 of California, USA</p>
 <p><strong>时期：</strong> Sept. 1, 2018 ~ Nov. 30, 2018</p>
 <p><strong>链接：</strong> https://github.com/Davidham3/STSGCN</p>
 <p><strong>描述：</strong> PeMSD3 数据集包括 358 个传感器和流量信息。</p>
-</div>
-<div class="section" id="pemsd4">
-<h2>PeMSD4<a class="headerlink" href="#pemsd4" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="pemsd4">
+<h2>PEMSD4<a class="headerlink" href="#pemsd4" title="Permalink to this headline">¶</a></h2>
 <p><strong>地点：</strong> San Francisco Bay Area, USA</p>
 <p><strong>时期：</strong> Jan. 1, 2018 ~ Feb. 28, 2018</p>
 <p><strong>链接：</strong> https://github.com/Davidham3/ASTGCN/tree/master/data/PEMS04</p>
 <p><strong>描述：</strong> PeMSD4 数据集描述了加州高速公路的速度流量占用信息，包含29条道路上的3848个传感器。</p>
-</div>
-<div class="section" id="pemsd7">
+</section>
+<section id="pemsd7">
 <h2>PEMSD7<a class="headerlink" href="#pemsd7" title="Permalink to this headline">¶</a></h2>
 <p><strong>地点：</strong> District 7 of California, USA</p>
 <p><strong>时期：</strong> Jul. 1, 2016 ~ Aug. 31, 2016</p>
 <p><strong>链接：</strong> https://github.com/Davidham3/STSGCN</p>
 <p><strong>描述：</strong> PeMSD7 数据集包含883个传感器站的交通流量信息。</p>
-</div>
-<div class="section" id="pemsd8">
-<h2>PeMSD8<a class="headerlink" href="#pemsd8" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="pemsd8">
+<h2>PEMSD8<a class="headerlink" href="#pemsd8" title="Permalink to this headline">¶</a></h2>
 <p><strong>地点：</strong> San Bernardino Area, USA</p>
 <p><strong>时期：</strong> Jul. 1, 2016 ~ Aug. 31, 2016</p>
 <p><strong>链接：</strong> https://github.com/Davidham3/ASTGCN/tree/master/data/PEMS08</p>
 <p><strong>描述：</strong> PeMSD8 数据集描述了加州高速公路的速度占用率，数据来自8条公路上的1979个传感器。</p>
-</div>
-<div class="section" id="pemsd7-m">
+</section>
+<section id="pemsd7-m">
 <h2>PEMSD7(M)<a class="headerlink" href="#pemsd7-m" title="Permalink to this headline">¶</a></h2>
 <p><strong>地点：</strong> District 7 of California, USA</p>
 <p><strong>时期：</strong> the weekdays of May and June of 2012</p>
 <p><strong>链接：</strong> https://github.com/Davidham3/STGCN/tree/master/datasets</p>
 <p><strong>描述：</strong> PeMSD7(M) 数据集描述了加州第7区228个站点的高速公路速度信息。</p>
-</div>
-<div class="section" id="pems-bay">
-<h2>PEMS-BAY<a class="headerlink" href="#pems-bay" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="pems-bay">
+<h2>PEMS_BAY<a class="headerlink" href="#pems-bay" title="Permalink to this headline">¶</a></h2>
 <p><strong>地点：</strong> San Francisco Bay Area, USA</p>
 <p><strong>时期：</strong> Jan. 1, 2017 ~ Jun. 30, 2017</p>
 <p><strong>链接：</strong> https://github.com/liyaguang/DCRNN</p>
 <p><strong>描述：</strong> PEMS-BAY 数据集包含6个月的交通速度统计数据，包括325个传感器。</p>
-</div>
-<div class="section" id="beijing-subway">
+</section>
+<section id="beijing-subway">
 <h2>BEIJING_SUBWAY<a class="headerlink" href="#beijing-subway" title="Permalink to this headline">¶</a></h2>
 <p><strong>地点：</strong> Beijing, China</p>
 <p><strong>时期：</strong>  Feb. 29, 2016 - Apr. 3, 2016</p>
 <p><strong>链接：</strong>  https://github.com/JinleiZhangBJTU/ResNet-LSTM-GCN</p>
 <p><strong>描述：</strong>   该数据集是从2016年2月29日至4月3日连续五周的05:00-23:00从北京地铁采集的数据。截至2016年3月北京共有17条线路和276个地铁站（不包括机场快线及其上的车站）。</p>
-</div>
-<div class="section" id="m-dense">
+</section>
+<section id="m-dense">
 <h2>M_DENSE<a class="headerlink" href="#m-dense" title="Permalink to this headline">¶</a></h2>
 <p><strong>地点：</strong> Madrid, Spain</p>
 <p><strong>时期：</strong>  Jan. 1, 2018 - Dec. 21, 2019</p>
 <p><strong>链接：</strong>  https://github.com/rdemedrano/crann_traffic</p>
 <p><strong>描述：</strong>  该数据集包含马德里市交通测量的历史数据。在每个点每 15 分钟进行一次测量，包括每小时汽车数量的交通强度。</p>
-</div>
-<div class="section" id="rotterdam">
+</section>
+<section id="rotterdam">
 <h2>ROTTERDAM<a class="headerlink" href="#rotterdam" title="Permalink to this headline">¶</a></h2>
 <p><strong>地点：</strong> Rotterdam, Holland</p>
 <p><strong>时期：</strong>  135 days of 2018</p>
 <p><strong>链接：</strong>  https://github.com/RomainLITUD/DGCN_traffic_forecasting</p>
 <p><strong>描述：</strong>  ROTTERDAM 数据集包含 208 条链路的交通状态信息。</p>
-</div>
-<div class="section" id="shmetro">
+</section>
+<section id="shmetro">
 <h2>SHMETRO<a class="headerlink" href="#shmetro" title="Permalink to this headline">¶</a></h2>
 <p><strong>地点：</strong> Shanghai, China</p>
 <p><strong>时期：</strong>  Jul. 1, 2016 - Sept. 30, 2016</p>
 <p><strong>链接：</strong>  https://github.com/ivechan/PVCGN</p>
 <p><strong>描述：</strong>  该数据集是基于中国上海的地铁系统构建的。 2016年7月1日至2016年9月30日，共收集8.118亿笔交易记录，日客流量882万人次。</p>
-</div>
-<div class="section" id="hzmetro">
+</section>
+<section id="hzmetro">
 <h2>HZMETRO<a class="headerlink" href="#hzmetro" title="Permalink to this headline">¶</a></h2>
 <p><strong>地点：</strong> Hangzhou, China</p>
 <p><strong>时期：</strong>  Jan. 1, 2019 - Jan. 25, 2019</p>
 <p><strong>链接：</strong>  https://github.com/ivechan/PVCGN</p>
 <p><strong>描述：</strong>  该数据集是根据 2019 年 1 月收集的杭州地铁系统交易记录创建的。该系统拥有 80 个运营站点和 248 个边，每天有 235 万乘客。</p>
-</div>
-<div class="section" id="taxibj">
-<h2>TaxiBJ<a class="headerlink" href="#taxibj" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="taxibj">
+<h2>TAXIBJ<a class="headerlink" href="#taxibj" title="Permalink to this headline">¶</a></h2>
 <p><strong>地点：</strong> Beijing, China</p>
 <p><strong>时期：</strong>  Jul. 1, 2013 ~ Oct. 30, 2013, Mar. 1, 2014 ~ Jun. 30, 2014, Mar. 1, 2015 ~ Jun. 30, 2015 and Nov. 1, 2015 ~
 Apr. 10, 2016</p>
 <p><strong>链接：</strong>  https://github.com/TolicWang/DeepST/issues/3</p>
 <p><strong>描述：</strong>  TaxiBJ 数据集包含出租车 GPS 数据，包括人流、气象和节假日信息。</p>
-</div>
-<div class="section" id="t-drive">
+</section>
+<section id="t-drive">
 <h2>T_DRIVE<a class="headerlink" href="#t-drive" title="Permalink to this headline">¶</a></h2>
 <p><strong>地点：</strong> Beijing, China</p>
 <p><strong>时期：</strong>  Feb. 2, 2008 ~ Feb. 8, 2008</p>
 <p><strong>链接：</strong>  https://www.microsoft.com/en-us/research/publication/t-drive-trajectory-data-sample/</p>
 <p><strong>描述：</strong>  T-Drive轨迹数据集样本包含10357辆北京出租车的每周轨迹约1500万个点，轨迹总距离达到900万公里。</p>
-</div>
-<div class="section" id="porto">
+</section>
+<section id="porto">
 <h2>PORTO<a class="headerlink" href="#porto" title="Permalink to this headline">¶</a></h2>
 <p><strong>地点：</strong> Porto, Portugal</p>
 <p><strong>时期：</strong>  Jul. 1, 2013 ~ Jun. 30, 2014</p>
 <p><strong>链接：</strong>  https://archive.ics.uci.edu/ml/datasets/Taxi+Service+Trajectory+-+Prediction+Challenge%2C+ECML+PKDD+2015</p>
 <p><strong>描述：</strong>  数据集描述了在葡萄牙波尔图市运行的所有 442 辆出租车所执行的轨迹。</p>
-</div>
-<div class="section" id="nyctaxi">
+</section>
+<section id="nyctaxi">
 <h2>NYCTAXI<a class="headerlink" href="#nyctaxi" title="Permalink to this headline">¶</a></h2>
 <p><strong>地点：</strong> New York, USA</p>
 <p><strong>时期：</strong>  2009 ~ present</p>
 <p><strong>链接：</strong>  https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page</p>
 <p><strong>描述：</strong>  NYC-Taxi 数据集包含 GPS 为纽约市从 2009 年到 2020 年收集的不同类型出租车的轨迹。</p>
-</div>
-<div class="section" id="nyctaxi-dyna">
+</section>
+<section id="nyctaxi-dyna">
 <h2>NYCTAXI_DYNA<a class="headerlink" href="#nyctaxi-dyna" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>NYCTAXI_DYNA 是一个用不规则区域划分方法统计区域流入流出的数据集。</p></li>
 </ul>
-</div>
-<div class="section" id="nyctaxi-od">
+</section>
+<section id="nyctaxi-od">
 <h2>NYCTAXI_OD<a class="headerlink" href="#nyctaxi-od" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>NYCTAXI_OD 是一个数据集，它使用不规则区域划分方法计算区域之间的起点-终点流量。</p></li>
 </ul>
-</div>
-<div class="section" id="nyctaxi-grid">
+</section>
+<section id="nyctaxi-grid">
 <h2>NYCTAXI_GRID<a class="headerlink" href="#nyctaxi-grid" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>NYCTAXI_GRID 是一个数据集，它使用基于网格的划分方法计算区域的流入和流出。</p></li>
 </ul>
-</div>
-<div class="section" id="nycbike">
+</section>
+<section id="nyc-tod">
+<h2>NYC_TOD<a class="headerlink" href="#nyc-tod" title="Permalink to this headline">¶</a></h2>
+<p><strong>地点：</strong> New York, USA</p>
+<p><strong>时期：</strong> 2014</p>
+<p><strong>链接：</strong> https://github.com/liulingbo918/CSTN#:~:text=download%20NYC-TOD.tar.gz%20with%20following%20links%20and%20put%20it%20into%20folder%20NYC-TOD/.</p>
+<p><strong>描述：</strong> NYC_TOD 使用基于网格的划分方法计算区域的流入和流出。由 <a class="reference external" href="https://arxiv.org/pdf/1905.06335">CSTN</a> 的论文作者通过轨迹数据集处理得到。</p>
+</section>
+<section id="nycbike">
 <h2>NYCBIKE<a class="headerlink" href="#nycbike" title="Permalink to this headline">¶</a></h2>
 <p><strong>地点：</strong> New York, USA</p>
 <p><strong>时期：</strong>  Jun. 2013 ~ present</p>
 <p><strong>链接：</strong>  https://www.citibikenyc.com/system-data</p>
 <p><strong>描述：</strong>  NYC-Bike 数据集包含从 NYC CitiBike 系统收集的自行车轨迹。</p>
-</div>
-<div class="section" id="austinride">
+</section>
+<section id="austinride">
 <h2>AUSTINRIDE<a class="headerlink" href="#austinride" title="Permalink to this headline">¶</a></h2>
 <p><strong>地点：</strong> Austin, USA</p>
 <p><strong>时期：</strong>  Jun. 4, 2016 ~ Apr. 13, 2017</p>
 <p><strong>链接：</strong>  https://data.world/ride-austin/ride-austin-june-6-april-13</p>
 <p><strong>描述：</strong>  AustinRide 数据集包含从 2016 年 8 月 1 日到 2017 年 4 月 13 日的奥斯汀骑行轨迹，包括超过 140 万次旅行。</p>
-</div>
-<div class="section" id="bikedc">
+</section>
+<section id="bikedc">
 <h2>BIKEDC<a class="headerlink" href="#bikedc" title="Permalink to this headline">¶</a></h2>
 <p><strong>地点：</strong> Washington, USA</p>
 <p><strong>时期：</strong>  Sept. 20, 2010 ~ Oct. 2020</p>
 <p><strong>链接：</strong>  https://www.capitalbikeshare.com/system-data</p>
 <p><strong>描述：</strong>  BikeDC 数据集描述了华盛顿自行车系统的自行车道，其中包括 472 个停靠点。</p>
-</div>
-<div class="section" id="bikechi">
+</section>
+<section id="bikechi">
 <h2>BIKECHI<a class="headerlink" href="#bikechi" title="Permalink to this headline">¶</a></h2>
 <p><strong>地点：</strong> Chicago, USA</p>
 <p><strong>时期：</strong>  Jun. 27, 2013 ~ 2018</p>
 <p><strong>链接：</strong>  https://www.divvybikes.com/system-data</p>
 <p><strong>描述：</strong>  BikeCHI 数据集展示了 2013 年至 2018 年芝加哥共享单车的发展情况。</p>
-</div>
-<div class="section" id="foursquare">
+</section>
+<section id="foursquare">
 <h2>Foursquare<a class="headerlink" href="#foursquare" title="Permalink to this headline">¶</a></h2>
 <p><strong>时期：</strong>  Apr. 12, 2012 ~ Feb. 16, 2013</p>
 <p><strong>链接：</strong>  https://sites.google.com/site/yangdingqi/home/foursquare-dataset#h.p_ID_46</p>
 <p><strong>描述：</strong>   Foursquare 是一个基于位置的社交网站，用户可以在其中通过签到来分享他们的位置。我们使用链接中的第二个数据集，即 <em>NYC and Tokyo Check-in Dataset</em>
 。我们对链接提供的原始数据进行了预处理，并将其拆分为 Foursquare-TKY 和 Foursquare-NYC。</p>
-</div>
-<div class="section" id="gowalla">
+</section>
+<section id="gowalla">
 <h2>Gowalla<a class="headerlink" href="#gowalla" title="Permalink to this headline">¶</a></h2>
-<p><strong>Place：</strong></p>
+<p><strong>地点：</strong></p>
 <p><strong>时期：</strong>  Feb. 2009 ~ Oct. 2010</p>
 <p><strong>链接：</strong>  https://snap.stanford.edu/data/loc-gowalla.html</p>
 <p><strong>描述：</strong>   Gowalla 是一个基于位置的社交网站，用户通过签到分享他们的位置，包含用户信息、用户签到时间、用户纬度、经度、用户位置ID。</p>
-</div>
-<div class="section" id="brightkite">
+</section>
+<section id="brightkite">
 <h2>Brightkite<a class="headerlink" href="#brightkite" title="Permalink to this headline">¶</a></h2>
 <p><strong>地点：</strong> Global</p>
 <p><strong>时期：</strong>  Apr. 2008 ~ Oct. 2010</p>
 <p><strong>链接：</strong>  http://snap.stanford.edu/data/loc-brightkite.html</p>
 <p><strong>描述：</strong>  Brightkite 是一个基于位置的社交网站，用户通过签到分享他们的位置，包含用户信息、用户签到时间、用户纬度、经度、用户位置ID。</p>
-</div>
-<div class="section" id="instagram">
+</section>
+<section id="instagram">
 <h2>Instagram<a class="headerlink" href="#instagram" title="Permalink to this headline">¶</a></h2>
 <p><strong>地点：</strong> New York, USA</p>
 <p><strong>时期：</strong>  Jun. 15, 2011 - Nov. 8, 2016</p>
 <p><strong>链接：</strong>  https://dmis.korea.ac.kr/cape</p>
 <p><strong>描述：</strong>  该数据集最大的特点是每条签到记录不仅包含POI信息，还包含用户创建签到记录时写入的文本信息。因此，该数据集对于将轨迹语义特征纳入轨迹预测的相关研究尤为重要。</p>
-</div>
-</div>
+</section>
+<section id="seattle">
+<h2>Seattle<a class="headerlink" href="#seattle" title="Permalink to this headline">¶</a></h2>
+<p><strong>地点：</strong>  Seattle,WA,USA</p>
+<p><strong>时期：</strong>  Jan. 17,2009 20:27:37~22:34:28</p>
+<p><strong>链接：</strong> https://www.microsoft.com/en-us/research/publication/hidden-markov-map-matching-noise-sparseness/</p>
+<p><strong>描述：</strong>  这个用于地图匹配的数据集显示了在美国华盛顿州西雅图及其东部郊区开车时拍摄的GPS数据。轨迹从Marymoor公园附近开始。数据是用RoyalTek RBT-2300 GPS记录器以1HZ的频率采样的。这次驾驶发生在2009年1月17日星期六，从20:27:37 UTC（当地时间12:27:37）开始，到22:34:28 UTC（当地时间14:34:28）结束，经过的时间为02:06:51。</p>
+</section>
+<section id="global">
+<h2>Global<a class="headerlink" href="#global" title="Permalink to this headline">¶</a></h2>
+<p><strong>地点：</strong>  全世界100个地区</p>
+<p><strong>时期：</strong>  —</p>
+<p><strong>链接：</strong>  https://zenodo.org/record/57731#.YVwZ7WJBxnK</p>
+<p><strong>描述：</strong> 这个用于地图匹配的数据集可以在世界范围内验证地图匹配的假设。由于这个数据集覆盖全球，可以提高泛化能力。</p>
+</section>
+<section id="bj-roadmap">
+<h2>BJ_ROADMAP<a class="headerlink" href="#bj-roadmap" title="Permalink to this headline">¶</a></h2>
+<p><strong>地点：</strong> Beijing, China</p>
+<p><strong>时期：</strong> -</p>
+<p><strong>链接：</strong></p>
+<p><strong>描述：</strong> 原始数据集包含 OpenStreetMap 格式的节点和边的属性。建图有两种实现方式，分别是节点为交叉点，关系为路段，以及节点为路段，关系为交叉点。分别命名为 “bj_roadmap_node” 和 “bj_roadmap_edge”。</p>
+</section>
+<section id="bj-traj">
+<h2>BJ_TRAJ<a class="headerlink" href="#bj-traj" title="Permalink to this headline">¶</a></h2>
+<p><strong>地点：</strong> Beijing, China</p>
+<p><strong>时期：</strong> Apr. 2015 - Jul. 2015</p>
+<p><strong>链接：</strong></p>
+<p><strong>描述：</strong> BJ_TRAJ 数据集包含海量轨迹数据，每月约 760 万条。</p>
+</section>
+<section id="cd-traj">
+<h2>CD_TRAJ<a class="headerlink" href="#cd-traj" title="Permalink to this headline">¶</a></h2>
+<p><strong>地点：</strong> Chengdu, China</p>
+<p><strong>时期：</strong> Oct. 01, 2018 - Nov. 30, 2018</p>
+<p><strong>链接：</strong></p>
+<p><strong>描述：</strong> CD_TRAJ 数据集包含海量轨迹数据，每 10 天约 258 万条。 有 2 个月的数据可用。</p>
+</section>
+<section id="xa-traj">
+<h2>XA_TRAJ<a class="headerlink" href="#xa-traj" title="Permalink to this headline">¶</a></h2>
+<p><strong>地点：</strong> Xi’an, China</p>
+<p><strong>时期：</strong> Oct. 01, 2018 - Nov. 30, 2018</p>
+<p><strong>链接：</strong></p>
+<p><strong>描述：</strong> XA_TRAJ 数据集包含海量轨迹数据，每 15 天约 214 万条。 有 2 个月的数据可用。</p>
+</section>
+<section id="chengdu-taxi-sample1">
+<h2>Chengdu_Taxi_Sample1<a class="headerlink" href="#chengdu-taxi-sample1" title="Permalink to this headline">¶</a></h2>
+<p><strong>地点：</strong> Chengdu, China</p>
+<p><strong>时期：</strong> Aug. 03, 2014 - Aug. 30, 2014</p>
+<p><strong>链接：</strong> https://github.com/UrbComp/DeepTTE/tree/master/data</p>
+<p><strong>描述：</strong> Chengdu_Taxi_Sample1 数据集是Chengdu_Taxi 数据集的部分样例数据集。包含1800条成都市出租车轨迹数据。</p>
+</section>
+<section id="beijing-taxi-sample">
+<h2>Beijing_Taxi_Sample<a class="headerlink" href="#beijing-taxi-sample" title="Permalink to this headline">¶</a></h2>
+<p><strong>地点</strong>：Beijing, China</p>
+<p><strong>时期</strong>：Oct. 01, 2013 - Oct. 31, 2013</p>
+<p><strong>链接</strong>：https://github.com/YibinShen/TTPNet/tree/master/data</p>
+<p><strong>描述</strong>：Beijing_Taxi_Sample 数据集是Beijing_Taxi 数据集的部分样例数据集，这里每一天只提供了1000条北京市出租车轨迹数据。</p>
+</section>
+<section id="nyc-risk">
+<h2>NYC_RISK<a class="headerlink" href="#nyc-risk" title="Permalink to this headline">¶</a></h2>
+<p><strong>地点:</strong> New York, USA</p>
+<p><strong>时期:</strong> Jan.01,2013 ~ Dec.31,2013</p>
+<p><strong>链接:</strong> https://github.com/Echohhhhhh/GSNet</p>
+<p><strong>描述:</strong> NYC_RISK 数据集包含了2013年纽约道路、风险和POI数据。</p>
+</section>
+<section id="chicago-risk">
+<h2>CHICAGO_RISK<a class="headerlink" href="#chicago-risk" title="Permalink to this headline">¶</a></h2>
+<p><strong>地点:</strong> New York, USA</p>
+<p><strong>时期:</strong> Feb.01,2016 ~ Sep.30,2016</p>
+<p><strong>链接:</strong> https://github.com/Echohhhhhh/GSNet</p>
+<p><strong>描述:</strong> CHICAGO_RISK 数据集包含了2016年1月到9月芝加哥道路和风险数据。</p>
+</section>
+</section>
 
 
            </div>
