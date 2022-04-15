@@ -10,7 +10,7 @@ import torch
 import random
 from libcity.config import ConfigParser
 from libcity.data import get_dataset
-from libcity.utils import get_executor, get_model, get_logger, ensure_dir
+from libcity.utils import get_executor, get_model, get_logger, ensure_dir, set_random_seed
 
 
 def run_model(task=None, model_name=None, dataset_name=None, config_file=None,
@@ -39,6 +39,9 @@ def run_model(task=None, model_name=None, dataset_name=None, config_file=None,
     logger.info('Begin pipeline, task={}, model_name={}, dataset_name={}, exp_id={}'.
                 format(str(task), str(model_name), str(dataset_name), str(exp_id)))
     logger.info(config.config)
+    # seed
+    seed = config.get('seed', 0)
+    set_random_seed(seed)
     # 加载数据集
     dataset = get_dataset(config)
     # 转换数据，并划分数据集
@@ -48,7 +51,7 @@ def run_model(task=None, model_name=None, dataset_name=None, config_file=None,
     model_cache_file = './libcity/cache/{}/model_cache/{}_{}.m'.format(
         exp_id, model_name, dataset_name)
     model = get_model(config, data_feature)
-    executor = get_executor(config, model)
+    executor = get_executor(config, model, data_feature)
     # 训练
     if train or not os.path.exists(model_cache_file):
         executor.train(train_data, valid_data)
@@ -135,10 +138,14 @@ def hyper_parameter(task=None, model_name=None, dataset_name=None, config_file=N
                                      other_args=other_args)
     # logger
     logger = get_logger(experiment_config)
+    logger.info(experiment_config.config)
     # check space_file
     if space_file is None:
         logger.error('the space_file should not be None when hyperparameter tune.')
         exit(0)
+    # seed
+    seed = experiment_config.get('seed', 0)
+    set_random_seed(seed)
     # parse space_file
     search_sapce = parse_search_space(space_file)
     # load dataset
@@ -166,7 +173,7 @@ def hyper_parameter(task=None, model_name=None, dataset_name=None, config_file=N
         # load model
         model = get_model(experiment_config, data_feature)
         # load executor
-        executor = get_executor(experiment_config, model)
+        executor = get_executor(experiment_config, model, data_feature)
         # checkpoint by ray tune
         if checkpoint_dir:
             checkpoint = os.path.join(checkpoint_dir, 'checkpoint')
@@ -223,7 +230,7 @@ def objective_function(task=None, model_name=None, dataset_name=None, config_fil
     data_feature = dataset.get_data_feature()
 
     model = get_model(config, data_feature)
-    executor = get_executor(config, model)
+    executor = get_executor(config, model, data_feature)
     best_valid_score = executor.train(train_data, valid_data)
     test_result = executor.evaluate(test_data)
 
