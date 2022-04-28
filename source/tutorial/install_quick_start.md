@@ -70,6 +70,8 @@ python run_model.py --task traffic_state_pred --model GRU --dataset METR_LA
 
 这个脚本会在默认参数配置下，在METR_LA数据集上运行GRU模型，执行交通状态预测任务。
 
+**目前我们已经在 [文档](../user_guide/data/dataset_for_task) 发布了数据集、模型和任务之间的对应关系表格供用户参考。**
+
 此外，这个脚本还支持输入下面的这些命令行参数，用于调整流水线的参数设置。
 
 支持的参数有：
