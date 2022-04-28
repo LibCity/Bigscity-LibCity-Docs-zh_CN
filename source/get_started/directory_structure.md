@@ -6,7 +6,7 @@
 
 - |-test/
 
-  存放测试脚本。
+  存放测试脚本和几个传统模型（HA、VAR、SVR、ARIMA）。
 
 - |-libcity/
 

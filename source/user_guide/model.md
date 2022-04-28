@@ -2,7 +2,7 @@
 
 #### 基线模型
 
-对于时间序列预测任务：
+对于时间序列预测任务：（模型在test/目录下）
 
 - **HA**:
 
@@ -477,5 +477,37 @@
 
   ```
   Tang, J., Qu, M., Wang, M., Zhang, M., Yan, J., & Mei, Q. (2015, May). Line: Large-scale information network embedding. In Proceedings of the 24th international conference on world wide web (pp. 1067-1077).
+  ```
+
+- **GeomGCN**
+
+  几何图神经网络
+
+  ```
+  Pei H, Wei B, Chang K C C, et al. Geom-gcn: Geometric graph convolutional networks. arXiv preprint arXiv:2002.05287, 2020.
+  ```
+
+- **DeepWalk**
+
+  将随机游走(random walk)和Word2Vec两种算法相结合的图结构数据挖掘算法
+  
+  ```
+  Perozzi B, Al-Rfou R, Skiena S. Deepwalk: Online learning of social representations. In Proceedings of the 20th ACM SIGKDD international conference on Knowledge discovery and data mining. 2014: 701-710.
+  ```
+  
+- **Node2Vec**
+
+  图随机游走，是一种综合考虑DFS邻域和BFS邻域的graph embedding方法
+  
+  ```
+  Grover A, Leskovec J. node2vec: Scalable feature learning for networks. In Proceedings of the 22nd ACM SIGKDD international conference on Knowledge discovery and data mining. 2016: 855-864.
+  ```
+  
+- **GAT**
+  
+  图注意力网络
+  
+  ```
+  Veličković P, Cucurull G, Casanova A, et al. Graph attention networks. arXiv preprint arXiv:1710.10903, 2017.
   ```
 
