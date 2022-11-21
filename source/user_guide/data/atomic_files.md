@@ -13,7 +13,7 @@
 
 注：对于不同的交通预测任务，可能用到不同的原子文件，同一个数据集不一定包含全部六种原子文件。
 
-**原子文件**是不同交通预测任务的基本输入元素。你可以在这里下载[交通数据原子文件的统一存储格式](https://libcity.ai/A%20Unified%20Storage%20Format%20of%20Traffic%20Data%20Atomic%20Files%20in%20LibCity.pdf)，了解详情。
+**原子文件**是不同交通预测任务的基本输入元素。你可以在这里下载[交通数据原子文件的统一存储格式](https://libcity.ai/LibCity%20%E4%B8%AD%E4%BA%A4%E9%80%9A%E6%95%B0%E6%8D%AE%E7%BB%9F%E4%B8%80%E5%AD%98%E5%82%A8%E6%A0%BC%E5%BC%8F-%E5%8E%9F%E5%AD%90%E6%96%87%E4%BB%B6.pdf)，了解详情。
 
 **`.geo`、`.usr`、 `.rel`、 `.dyna` 和 `.ext` 的格式类似 `csv` 文件， 即含有多列数据。**
 
